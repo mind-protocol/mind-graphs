@@ -295,6 +295,11 @@ test("a hard human order ignores the citizen choice and keeps its lease", () => 
 test("citizen discovery and scoring expose an explainable fallback", () => {
   const candidates = discoverCitizenCandidates({
     physicsState: { summary: { byCitizen: [{ citizenId: "citizen-a", energy: 2 }] } },
+    globalWorkspaceState: {
+      citizens: {
+        "stale-workspace": { activeTask: { id: "old-task" } }
+      }
+    },
     fallbackActorId: "actor-nlr"
   });
   assert.deepEqual(candidates.map(candidate => candidate.citizenId), ["actor-nlr", "citizen-a"]);

@@ -98,7 +98,6 @@ export function discoverCitizenCandidates({
   const citizenIds = [...new Set([
     ...energyByCitizen.keys(),
     ...Object.keys(physicsWorkspaces),
-    ...Object.keys(globalCitizens),
     fallbackActorId
   ].filter(Boolean))].sort((left, right) => left.localeCompare(right, "fr"));
   const maximumEnergy = Math.max(1, ...energyByCitizen.values());

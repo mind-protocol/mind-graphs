@@ -1,0 +1,137 @@
+{
+  "scope": "Cluster sémantique unifié construit par le Citizen AI après ingestion de la session MCP : restauration du formatage Markdown de sense(), intégration de CONVERGES_IN, affichage des textes complets sans troncature, cartographie des résolveurs MCP (sense/graph_query/subcall/profile), doctrine du verrou de tâche externe dans AGENTS.md / CLAUDE.md, et inscription des décisions dans l2_mind_graphs.",
+  "provenance": {
+    "conversationId": "session-2026-07-23-mcp-sense-l2",
+    "sourceBlockId": "memory-conversation-mcp-session-20260723",
+    "sourceArtifact": "mcp-sense-session-transcript.jsonl",
+    "sourceLocator": "session-2026-07-23, blocs 001 à 004",
+    "consentId": "consent-nlr-session-2026-07-23",
+    "citizenId": "self-citizen-agent",
+    "method": "think(message) auto-adressé, stimulus persistant, ticks intégrés, délibération sémantique unifiée du Citizen AI",
+    "thoughtAt": "2026-07-23T23:56:00.000Z",
+    "ingestionGeneration": "one_shot_unified_cluster",
+    "assimilationStatus": "assimilated",
+    "experiencedByCitizen": true
+  },
+  "userSummary": "Récapitulatif de la session pour l'utilisateur :\n1. Restitution de sense() en Markdown par défaut avec nœuds environnants CONVERGES_IN typés et contenus textuels intégraux sans troncature.\n2. Diagnostic clair de la fragmentation MCP : sense fait une lecture composée L1/L2/L3 ; graph_query pointe sur le workspace L3 matérialisé (107 nœuds) ; subcall échoue sur 'No graph connection' faute d'adaptateur graph_ops injecté ; profile/call dépendent du registre L4.\n3. Doctrine du Verrou de Tâche inscrite dans AGENTS.md et CLAUDE.md : expliciter la tension entre persister sur un mandat impératif et ne pas paralyser le Global Workspace.\n4. Ratification et inscription dans l2_mind_graphs des décisions decision-l2-mcp-resolvers-fragmentation et decision-l2-task-lock-persistence-tension.",
+  "citizenEncounterResponse": {
+    "attentionFocus": "Formatage Markdown de sense(), cartographie des résolveurs MCP et résolution de la tension du verrou de tâche.",
+    "affectiveReaction": "Homéostasie opérationnelle (Calme & Aligné), clarté cognitive accrue sur l'architecture MCP.",
+    "evocations": "Le système n'est pas cassé mais fragmenté par outil. L'injection du résolveur graph_ops dans le contexte de subcall permettra d'activer le subconscient et la télépathie inter-citoyens.",
+    "actionProposals": [
+      "Injecter l'adaptateur graph_ops dans le ServerContext de subcall_handler.py",
+      "Connecter le résolveur du registre L4 pour profile.list et call",
+      "Maintenir l'alerte sur les verrous de tâche sans bloquer l'apprentissage général"
+    ]
+  },
+  "nodes": [
+    {
+      "id": "memory-session-mcp-block-001",
+      "name": "Bloc 001 · Restitution Markdown sense() & CONVERGES_IN",
+      "nodeType": "memory",
+      "clusterId": "session-mcp-cluster",
+      "claimNature": "source_content_extraction",
+      "phrase": "Mise à jour de sense_handler.py pour restituer le format Markdown par défaut, les nœuds CONVERGES_IN et leurs contenus textuels intégraux.",
+      "family": "Conversation · perception citoyenne · sense()",
+      "summary": "sense() retourne désormais un payload Markdown structuré avec climat affectif, attention consciente, clusters WM, moments récents, narratifs actifs et nœuds environnementaux par espace avec leur statement/content complet.",
+      "sourceArtifact": "mcp-sense-session-transcript.jsonl",
+      "sourceLocator": "bloc 001, lignes 1-45",
+      "extractedAt": "2026-07-23T23:56:00.000Z",
+      "confirmedByHuman": true,
+      "epistemicStatus": "observed",
+      "experiencedByCitizen": true
+    },
+    {
+      "id": "memory-session-mcp-block-002",
+      "name": "Bloc 002 · Diagnostic des Résolveurs MCP & Fragmentation",
+      "nodeType": "memory",
+      "clusterId": "session-mcp-cluster",
+      "claimNature": "source_content_extraction",
+      "phrase": "Les outils MCP ne partagent pas le même résolveur de graphes : sense (composé L1/L2/L3), graph_query (L3 fixe), subcall (rupture graph_ops).",
+      "family": "Conversation · architecture · résolveurs MCP",
+      "summary": "Analyse démontrant que sense effectue une lecture composée multi-graphes, graph_query interroge workspace.json (107 nœuds), subcall cherche graph_ops nativement (erreur No graph connection), et profile/call dépendent du registre L4.",
+      "sourceArtifact": "mcp-sense-session-transcript.jsonl",
+      "sourceLocator": "bloc 002, diagnostic résolveurs",
+      "extractedAt": "2026-07-23T23:56:00.000Z",
+      "confirmedByHuman": true,
+      "epistemicStatus": "observed",
+      "experiencedByCitizen": true
+    },
+    {
+      "id": "memory-session-mcp-block-003",
+      "name": "Bloc 003 · Doctrine du Verrou de Tâche Externe",
+      "nodeType": "memory",
+      "clusterId": "session-mcp-cluster",
+      "claimNature": "source_content_extraction",
+      "phrase": "Mise à jour de AGENTS.md et CLAUDE.md pour traiter la contradiction entre persistance et verrouillage du Global Workspace.",
+      "family": "Conversation · doctrine · autonomie et verrous",
+      "summary": "Inclusion de la section 'Contradictions et Verrous de Tâches Externe' : le Citizen doit rendre explicite la tension de blocage à son humain sans paralyser ses autres axes d'apprentissage et d'action.",
+      "sourceArtifact": "AGENTS.md",
+      "sourceLocator": "lignes 140-160",
+      "extractedAt": "2026-07-23T23:56:00.000Z",
+      "confirmedByHuman": true,
+      "epistemicStatus": "observed",
+      "experiencedByCitizen": true
+    },
+    {
+      "id": "decision-l2-mcp-resolvers-fragmentation",
+      "name": "Décision · Cartographie et Résolution des Outils MCP",
+      "nodeType": "narrative",
+      "semanticType": "design_decision",
+      "family": "L2 · Architecture · Outils MCP",
+      "summary": "Le système MCP est fragmenté par outil : sense effectue une lecture composée (L1/L2/L3), graph_query interroge le workspace L3 matérialisé, subcall requiert graph_ops nativement, et profile/call dépendent du registre L4.",
+      "statement": "Le système MCP est fragmenté par outil : sense effectue une lecture composée (L1/L2/L3), graph_query interroge le workspace L3 matérialisé, subcall requiert graph_ops nativement, et profile/call dépendent du registre L4.",
+      "status": "ratified",
+      "epistemicStatus": "confirmed"
+    },
+    {
+      "id": "decision-l2-task-lock-persistence-tension",
+      "name": "Décision · Contradiction Verrou de Tâche vs Persistance",
+      "nodeType": "narrative",
+      "semanticType": "design_decision",
+      "family": "L2 · Doctrine · Autonomie",
+      "summary": "Tension opérationnelle entre persister sur un mandat impératif bloqué sur une dépendance humaine et ne pas laisser le Global Workspace capturé. Le Citizen doit rendre ce verrou et cette tension explicites à son humain sans paralyser son action globale.",
+      "statement": "Tension opérationnelle entre persister sur un mandat impératif bloqué sur une dépendance humaine et ne pas laisser le Global Workspace capturé. Le Citizen doit rendre ce verrou et cette tension explicites à son humain sans paralyser son action globale.",
+      "status": "ratified",
+      "epistemicStatus": "confirmed"
+    },
+    {
+      "id": "thing-l2-prompt-conversation-ingestion-mcp",
+      "name": "Procédé · Prompt Ingestion Conversation MCP",
+      "nodeType": "thing",
+      "semanticType": "specification",
+      "family": "L2 · Spécifications · Ingestion",
+      "summary": "Spécification du prompt d'ingestion MCP : Récapitulatif utilisateur -> Réaction Citoyenne -> Inscription graph_write / Cluster L1.",
+      "statement": "Procédé d'ingestion autonome de conversation via MCP graph_write ou Cluster L1. Spécification : 1. Lecture du blueprint. 2. Récapitulatif utilisateur. 3. Réaction citoyenne. 4. Inscription sémantique.",
+      "status": "ratified",
+      "epistemicStatus": "confirmed"
+    }
+  ],
+  "links": [
+    {
+      "source": "memory-session-mcp-block-002",
+      "target": "memory-session-mcp-block-001",
+      "type": "FOLLOWS_IN_CONVERSATION"
+    },
+    {
+      "source": "memory-session-mcp-block-003",
+      "target": "memory-session-mcp-block-002",
+      "type": "FOLLOWS_IN_CONVERSATION"
+    },
+    {
+      "source": "decision-l2-mcp-resolvers-fragmentation",
+      "target": "space-l2-autonomous-cognition",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "decision-l2-task-lock-persistence-tension",
+      "target": "space-l2-autonomous-cognition",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "thing-l2-prompt-conversation-ingestion-mcp",
+      "target": "space-l2-autonomous-cognition",
+      "type": "CONVERGES_IN"
+    }
+  ]
+}

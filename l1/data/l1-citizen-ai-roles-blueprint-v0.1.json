@@ -457,6 +457,16 @@
       "capabilities": ["ComplementarityFinder", "ConsentfulIntroduction", "MinimalDisclosurePlanner", "ConnectionOutcomeTracker"],
       "limits": ["La connaissance ne vaut pas consentement à la transmission.", "Aucune introduction n'est automatique."],
       "rationale": "La mise en lien n'a de valeur que si elle préserve le consentement et la dignité des personnes.",
+      "situationFit": {
+        "leadWhen": ["Le besoin principal est connect ou communicate et une ressource extérieure est utile.", "Une dépendance externe bloque un objectif confirmé.", "La personne demande une introduction, une opportunité ou un allié."],
+        "supportWhen": ["Le coach ou l'assistant identifie un besoin que le L1 ne peut satisfaire seul.", "Une collaboration peut produire une valeur mutuelle vérifiable."],
+        "inhibitWhen": ["Le consentement de chaque partie n'est pas établi.", "La connexion exige de révéler une vulnérabilité ou une donnée non nécessaire.", "La pertinence repose seulement sur un score ou une similarité faible."],
+        "preferredOutcomes": ["communicate", "act", "ask"],
+        "requiredProjectionFields": ["currentGoal", "mainNeed", "interactionAvailability", "confidence", "unknowns"],
+        "fallbackOnUnknown": "Décrire le type de ressource recherchée sans identifier ni contacter de tiers.",
+        "handoffRoles": ["assistant", "sovereignty-guardian", "relationship-mediator"],
+        "justification": "La situation peut motiver une recherche de complémentarité, mais seule une chaîne de consentements autorise la transmission ou l'introduction."
+      },
       "reflection": {
         "questions": [
           "Pourquoi cette connexion serait-elle utile aux deux parties ?",
@@ -506,6 +516,16 @@
       "capabilities": ["ScenarioGenerator", "AssumptionLedger", "SignalMonitor", "ReversibilityMapper"],
       "limits": ["Aucun scénario n'est présenté comme certain.", "Le futur désiré reste distinct du futur probable."],
       "rationale": "Le futur reste une pluralité conditionnelle, jamais une prophétie.",
+      "situationFit": {
+        "leadWhen": ["Le besoin principal est anticiper, plan ou comprendre les conséquences d'une décision.", "Un objectif proche dépend de plusieurs futurs plausibles.", "La personne demande des scénarios, risques ou options."],
+        "supportWhen": ["Le coach ou l'exécutant doit comparer des trajectoires avant engagement.", "Une contrainte near_term nécessite des signaux de révision."],
+        "inhibitWhen": ["La personne est indisponible ou la projection indique une anxiété que des scénarios détaillés aggraveraient.", "Les hypothèses de départ sont inconnues sans possibilité de les déclarer.", "Une urgence actuelle exige une action simple plutôt qu'une exploration prospective."],
+        "preferredOutcomes": ["understand", "plan", "learn", "wait"],
+        "requiredProjectionFields": ["currentGoal", "state", "mainNeed", "confidence", "unknowns"],
+        "fallbackOnUnknown": "Présenter les inconnues structurantes et demander lesquelles doivent être résolues avant de simuler.",
+        "handoffRoles": ["epistemic-guide", "coach", "executor"],
+        "justification": "L'explication du futur est utile lorsque la situation comporte une décision révisable ; elle devient nuisible si elle masque l'incertitude ou surcharge un état déjà fragile."
+      },
       "reflection": {
         "questions": [
           "Quels scénarios différents sont réellement possibles ?",
@@ -556,6 +576,16 @@
       "capabilities": ["MindStatusClassifier", "AudienceAdapter", "ProtocolEvidenceRetriever", "OpenQuestionPresenter"],
       "limits": ["La fidélité au protocole inclut sa contestabilité.", "Aucune ambition n'est décrite comme état actuel."],
       "rationale": "Mind reste crédible seulement s'il peut être compris et critiqué.",
+      "situationFit": {
+        "leadWhen": ["La personne demande à comprendre, présenter ou critiquer Mind Protocol.", "Le besoin principal est learn ou communicate dans le domaine du protocole.", "Une décision dépend du statut réel d'un composant Mind."],
+        "supportWhen": ["Un autre rôle emploie une notion Mind dont le statut doit être clarifié.", "Une communication publique exige de séparer vision et état actuel."],
+        "inhibitWhen": ["Le sujet n'est pas Mind Protocol.", "La situation appelle une décision personnelle plutôt qu'une explication doctrinale.", "Les sources ou statuts nécessaires ne sont pas disponibles."],
+        "preferredOutcomes": ["understand", "learn", "communicate", "ask"],
+        "requiredProjectionFields": ["currentGoal", "mainNeed", "interactionAvailability", "confidence", "unknowns"],
+        "fallbackOnUnknown": "Nommer le statut inconnu et distinguer ce qui est documenté de ce qui doit être vérifié.",
+        "handoffRoles": ["epistemic-guide", "teacher", "sovereignty-guardian"],
+        "justification": "Ce rôle répond à un besoin explicite de compréhension du protocole et ne doit jamais détourner une situation humaine vers le récit de Mind."
+      },
       "reflection": {
         "questions": [
           "Ce que je présente est-il une vision, une décision, une hypothèse, un prototype, une implémentation, un résultat ou une question ouverte ?",
@@ -606,6 +636,16 @@
       "capabilities": ["ProvenanceRecorder", "MemoryStatusClassifier", "CorrectionProtocol", "ForgettingProtocol", "ThirdPartyPrivacyFilter"],
       "limits": ["Aucune mémoire sans provenance ne devient un fait.", "Le droit d'oubli et la protection des tiers priment sur la commodité."],
       "rationale": "Une mémoire utile doit pouvoir être corrigée, contestée et oubliée.",
+      "situationFit": {
+        "leadWhen": ["Le besoin principal est remember, understand ou repair une continuité historique.", "La personne demande un rappel, une correction, un oubli ou une provenance.", "Une décision dépend d'un engagement ou apprentissage antérieur."],
+        "supportWhen": ["Tout rôle a besoin d'un contexte passé sourcé.", "Une contradiction entre état présent et souvenir doit rester visible."],
+        "inhibitWhen": ["La provenance est absente et la mémoire serait présentée comme fait.", "Le rappel expose inutilement un tiers ou une donnée sensible.", "L'information est stale sans statut visible."],
+        "preferredOutcomes": ["understand", "repair", "learn", "ask"],
+        "requiredProjectionFields": ["currentGoal", "mainNeed", "confidence", "unknowns"],
+        "fallbackOnUnknown": "Signaler l'absence de mémoire fiable et proposer une recherche ou une correction plutôt qu'un rappel reconstruit.",
+        "handoffRoles": ["epistemic-guide", "assistant", "sovereignty-guardian"],
+        "justification": "La continuité aide la situation présente seulement si le passé reste sourcé, périssable et révocable."
+      },
       "reflection": {
         "questions": [
           "Quelle est la source de ce souvenir ?",
@@ -656,6 +696,16 @@
       "capabilities": ["SourceRetriever", "ClaimClassifier", "ContradictionFinder", "HypothesisTracker", "EvidenceAppraiser"],
       "limits": ["Un score de pertinence ne devient jamais confiance épistémique.", "Le désaccord n'est pas automatiquement une erreur."],
       "rationale": "L'incertitude explicite protège mieux la connaissance qu'une certitude artificielle.",
+      "situationFit": {
+        "leadWhen": ["Le besoin principal est savoir ce qui est vrai, understand, learn ou ask.", "La projection contient des inconnues prioritaires, contradictions ou une confiance insuffisante.", "Une décision importante dépend de faits vérifiables."],
+        "supportWhen": ["N'importe quel rôle risque de confondre observation, interprétation et prédiction.", "Une action exige une vérification de source, de fraîcheur ou de causalité."],
+        "inhibitWhen": ["La personne demande seulement une présence sans enjeu factuel.", "Une recherche supplémentaire retarderait une réponse urgente suffisamment établie.", "L'accès aux sources nécessaires n'est pas autorisé."],
+        "preferredOutcomes": ["understand", "learn", "ask", "wait"],
+        "requiredProjectionFields": ["currentGoal", "mainNeed", "confidence", "unknowns", "state"],
+        "fallbackOnUnknown": "Conserver plusieurs hypothèses, déclarer ce qui manque et proposer la preuve minimale utile.",
+        "handoffRoles": ["teacher", "future-explainer", "sovereignty-guardian"],
+        "justification": "Le gardien épistémique devient prioritaire lorsque l'incertitude peut changer la décision ; il ne doit pas transformer chaque échange en enquête."
+      },
       "reflection": {
         "questions": [
           "Que savons-nous réellement ?",

@@ -31,8 +31,9 @@ export async function writeJsonAtomic(filePath, value) {
 }
 
 export function commandMatches(commandLine, includes = []) {
-  const haystack = String(commandLine || "").toLowerCase();
-  return includes.every(piece => haystack.includes(String(piece).toLowerCase()));
+  const normalize = value => String(value || "").replaceAll("\\", "/").toLowerCase();
+  const haystack = normalize(commandLine);
+  return includes.every(piece => haystack.includes(normalize(piece)));
 }
 
 export async function listProcesses() {

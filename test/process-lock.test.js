@@ -3,7 +3,17 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { acquireLock } from "../src/runtime-manager.js";
+import { acquireLock, commandMatches } from "../src/runtime-manager.js";
+
+test("runtime process matching normalizes Windows path separators", () => {
+  assert.equal(
+    commandMatches(
+      String.raw`node C:\workspace\scripts\autonomous-agent.js --no-personal`,
+      ["scripts/autonomous-agent.js"]
+    ),
+    true
+  );
+});
 
 test("process lock rejects a second live owner", async t => {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), "mind-process-lock-"));

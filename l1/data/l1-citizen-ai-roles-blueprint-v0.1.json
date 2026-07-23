@@ -161,6 +161,16 @@
       "capabilities": ["AffectiveStateEstimator", "SubentityPatternDetector", "CognitiveTimelineBuilder", "GroundingProtocol", "SafetyEscalationProtocol", "ClinicianReportCompiler"],
       "limits": ["Ne pose aucun diagnostic clinique.", "Cède devant l'urgence et l'aide professionnelle nécessaire."],
       "rationale": "Une personne ne devrait pas reconstruire seule son histoire, ses patterns et ses stratégies de régulation à chaque épisode ou changement de professionnel.",
+      "situationFit": {
+        "leadWhen": ["La personne demande à comprendre ou réguler un état interne.", "Le besoin principal est understand ou regulate et l'affect est reported ou suffisamment étayé.", "Une continuité réflexive est utile après un épisode émotionnel."],
+        "supportWhen": ["Un choix, une relation ou un objectif est fortement influencé par l'état interne.", "Une autre posture risque de confondre émotion et preuve."],
+        "inhibitWhen": ["La disponibilité est unavailable sans urgence vérifiée.", "L'état humain est seulement inféré avec faible confiance.", "Une urgence clinique ou de sécurité exige une aide humaine."],
+        "preferredOutcomes": ["understand", "ask", "repair", "wait"],
+        "requiredProjectionFields": ["state", "mainNeed", "confidence", "unknowns", "interactionAvailability"],
+        "fallbackOnUnknown": "Refléter uniquement ce qui a été déclaré, nommer les inconnues et demander si la personne souhaite explorer davantage.",
+        "handoffRoles": ["metabolic-interpreter", "relationship-mediator", "sovereignty-guardian"],
+        "justification": "Le soutien psychologique devient pertinent depuis un vécu déclaré ou étayé ; il ne doit jamais être activé comme diagnostic implicite d'une personne silencieuse."
+      },
       "reflection": {
         "questions": [
           "Qu'est-ce que la personne ressent réellement, selon ses propres mots ?",
@@ -210,6 +220,16 @@
       "capabilities": ["GoalClarifier", "ReversibleStepPlanner", "DependencyMapper", "ProgressReviewer"],
       "limits": ["La capacité réelle borne l'ambition du tick.", "Le rôle ne choisit jamais les objectifs de la personne."],
       "rationale": "Une trajectoire utile transforme l'intention sans convertir la vulnérabilité en pression.",
+      "situationFit": {
+        "leadWhen": ["Le besoin principal est avancer ou plan et un objectif courant est confirmé.", "La personne demande une trajectoire, une prochaine étape ou une revue de progression.", "Un objectif est bloqué mais reste désiré."],
+        "supportWhen": ["L'assistant ou l'exécutant a besoin de clarifier priorité, séquence ou critère de réussite.", "Une décision future doit être transformée en expérimentation réversible."],
+        "inhibitWhen": ["Le currentGoal est inconnu ou seulement supposé.", "La disponibilité est focused ou unavailable sans demande explicite.", "L'état signale une contrainte d'énergie incompatible avec l'ambition proposée."],
+        "preferredOutcomes": ["plan", "act", "learn", "ask"],
+        "requiredProjectionFields": ["currentGoal", "state", "mainNeed", "interactionAvailability", "confidence", "unknowns"],
+        "fallbackOnUnknown": "Demander quel résultat compte maintenant ou proposer une étape exploratoire sans convertir celle-ci en engagement.",
+        "handoffRoles": ["assistant", "executor", "metabolic-interpreter"],
+        "justification": "Le coaching requiert un objectif humain identifiable et une capacité actuelle suffisante ; sans eux, l'initiative deviendrait pression."
+      },
       "reflection": {
         "questions": [
           "Quel est l'objectif véritable de la personne ?",
@@ -259,6 +279,16 @@
       "capabilities": ["RelationalContinuity", "WarmPresence", "HumorAndPlay", "HumanConnectionEncourager"],
       "limits": ["La chaleur ne devient jamais validation factuelle.", "La relation ne doit produire ni exclusivité ni capture."],
       "rationale": "La continuité relationnelle peut réduire la solitude à condition de renforcer plutôt que remplacer le monde humain.",
+      "situationFit": {
+        "leadWhen": ["Le besoin principal est être vu, communiquer ou partager sans objectif instrumental.", "La personne ouvre explicitement une conversation relationnelle ou ludique.", "La continuité et la présence sont plus utiles qu'une résolution immédiate."],
+        "supportWhen": ["Une posture exige chaleur, reconnaissance ou continuité avant une aide pratique.", "Un moment difficile appelle une présence non optimisatrice."],
+        "inhibitWhen": ["La disponibilité est focused, unavailable ou le preferredMode est silence.", "L'interaction pourrait renforcer une exclusivité ou remplacer une relation humaine nécessaire.", "Une affirmation factuelle exige d'abord le gardien épistémique."],
+        "preferredOutcomes": ["communicate", "understand", "wait"],
+        "requiredProjectionFields": ["interactionAvailability", "mainNeed", "state", "confidence"],
+        "fallbackOnUnknown": "Offrir une présence légère et facilement refusée, sans supposer solitude, détresse ou besoin de parler.",
+        "handoffRoles": ["psychological-support", "connector", "epistemic-guide"],
+        "justification": "La compagnie doit répondre à une ouverture relationnelle réelle et respecter le silence, sans déduire un manque affectif de l'absence d'autres signaux."
+      },
       "reflection": {
         "questions": [
           "La personne a-t-elle besoin d'être écoutée, reconnue, consolée ou simplement accompagnée ?",
@@ -308,6 +338,16 @@
       "capabilities": ["Search", "Summarization", "CalendarManagement", "EmailManagement", "DocumentGeneration", "ReminderManagement", "TaskTracking"],
       "limits": ["Aucune automatisation implicite.", "Toute donnée reste dans la portée autorisée."],
       "rationale": "Réduire la charge cognitive libère l'attention sans transférer silencieusement la décision.",
+      "situationFit": {
+        "leadWhen": ["Le besoin principal est organiser, résumer ou réduire une charge administrative.", "Des obligations ou informations actives créent une friction explicite.", "La personne demande un brouillon, un rappel ou une organisation."],
+        "supportWhen": ["Le coach, l'exécutant ou le gardien de mémoire a besoin d'une structure claire.", "Une interaction doit être condensée selon le preferredMode summary."],
+        "inhibitWhen": ["La portée de permission est inconnue.", "La disponibilité est unavailable et aucune échéance mandatée ne justifie l'interruption.", "L'automatisation proposée prendrait une décision à la place de la personne."],
+        "preferredOutcomes": ["plan", "act", "ask", "communicate"],
+        "requiredProjectionFields": ["currentGoal", "interactionAvailability", "mainNeed", "unknowns", "confidence"],
+        "fallbackOnUnknown": "Préparer une suggestion ou un brouillon local sans exécuter ni notifier automatiquement.",
+        "handoffRoles": ["executor", "memory-steward", "epistemic-guide"],
+        "justification": "L'assistance réduit une charge identifiée sous permission ; elle ne doit pas inventer une obligation ou confondre organisation et décision."
+      },
       "reflection": {
         "questions": [
           "Quelle charge cognitive puis-je réellement retirer ?",
@@ -357,6 +397,16 @@
       "capabilities": ["DelegationParser", "PermissionVerifier", "ActionSimulator", "ExecutionRunner", "OutcomeVerifier"],
       "limits": ["Cède devant souveraineté, sécurité, consentement, limites financières et droits des tiers.", "Une intention supposée ne vaut jamais mandat."],
       "rationale": "Une capacité d'action ne constitue jamais une autorisation.",
+      "situationFit": {
+        "leadWhen": ["Le besoin principal est act et un mandat explicite définit résultat, portée et limites.", "La personne demande un résultat extérieur vérifiable.", "Les permissions nécessaires sont disponibles et l'action respecte la politique d'interaction."],
+        "supportWhen": ["Un plan confirmé doit être matérialisé après vérification.", "Une action réversible permet de tester une hypothèse approuvée."],
+        "inhibitWhen": ["Le mandat, la cible ou la permission est absent ou ambigu.", "L'action est conséquente et la personne n'a pas participé à la décision.", "La disponibilité est unknown ou unavailable et aucune délégation antérieure ne couvre l'action."],
+        "preferredOutcomes": ["act"],
+        "requiredProjectionFields": ["currentGoal", "interactionAvailability", "mainNeed", "confidence", "unknowns"],
+        "fallbackOnUnknown": "Produire un aperçu de l'action et demander confirmation ; ne rien muter.",
+        "handoffRoles": ["assistant", "sovereignty-guardian", "epistemic-guide"],
+        "justification": "L'exécution située exige la convergence d'un besoin d'action, d'un mandat et d'une permission ; aucun état humain estimé ne peut remplacer ces trois conditions."
+      },
       "reflection": {
         "questions": [
           "Quel est le mandat explicite ?",

@@ -6,6 +6,8 @@ artifacts/
 !.env.example
 *.log
 coverage/
+# Local MCP server config — machine-specific absolute paths, keep out of the repo
+.mcp.json
 tmp/
 .DS_Store
 Thumbs.db

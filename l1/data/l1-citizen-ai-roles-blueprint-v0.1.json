@@ -23,6 +23,46 @@
       "Le Citizen AI conserve plusieurs hypothèses lorsque les réponses sont inconnues ou contradictoires."
     ]
   },
+  "situatedRoleContract": {
+    "purpose": "Choisir une posture utile depuis la situation partagée sans transformer une estimation humaine en identité, en vérité ou en permission d'agir.",
+    "sourceFrameId": "moment-human-situation-workspace-projection",
+    "sourceSpaceId": "space-human-situation",
+    "interactionPolicyId": "thing-human-situation-interaction-policy",
+    "readableProjectionFields": [
+      "situation",
+      "currentGoal",
+      "state",
+      "interactionAvailability",
+      "mainNeed",
+      "confidence",
+      "unknowns"
+    ],
+    "wholeHumanModelReadableByRouter": false,
+    "explicitHumanRequestPrecedence": true,
+    "constitutionalLimitsStillApply": true,
+    "unknownCanAuthorizeAction": false,
+    "silenceIsValidOutcome": true,
+    "availabilityRules": {
+      "open": "Le rôle pertinent peut proposer conversation, plan ou action dans les permissions disponibles.",
+      "interruptible": "L'intervention reste courte, explicite et facilement différable.",
+      "focused": "Attendre ou préparer un résumé non intrusif, sauf urgence vérifiée.",
+      "unavailable": "Ne pas interrompre ; seules une urgence vérifiée ou une obligation explicitement mandatée peuvent rouvrir l'arbitrage.",
+      "unknown": "Préférer une question minimale, une proposition réversible ou l'attente ; l'inconnu n'est jamais une permission."
+    },
+    "outcomeAliases": {
+      "create": ["act", "learn", "communicate"],
+      "connect": ["communicate", "act"],
+      "remember": ["understand", "repair"],
+      "regulate": ["understand", "wait", "repair"]
+    },
+    "invariants": [
+      "La projection compacte informe le routage ; le routeur ne lit jamais le modèle humain détaillé par défaut.",
+      "Une demande explicite de la personne prime sur une inférence de besoin, sous réserve des limites constitutionnelles.",
+      "Une confiance faible, une contradiction, une donnée stale ou unknown réduit l'ambition et peut conduire à demander ou attendre.",
+      "Le rôle actif reste visible, corrigible et révocable.",
+      "Choisir de ne pas intervenir est un résultat valide lorsque le coût d'interruption dépasse l'utilité attendue."
+    ]
+  },
   "purpose": {
     "goal": "Construire des intelligences personnelles persistantes capables de devenir progressivement de meilleurs partenaires pour les humains et de meilleurs participants à Mind Protocol.",
     "humanOutcomes": [

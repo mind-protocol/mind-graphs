@@ -55,6 +55,61 @@ test("classification distinguishes unknown from down", () => {
   assert.equal(tcpDown.state, "down");
 });
 
+test("host pressure requires persistence while critical free memory acts immediately", () => {
+  const service = {
+    id: "host_resources",
+    observation: {
+      host: {
+        thresholds: {
+          pressureMemoryUsedPercent: 85,
+          pressureConsecutiveSamples: 2,
+          criticalMemoryUsedPercent: 95,
+          criticalFreeMemoryBytes: 500
+        }
+      }
+    }
+  };
+  const firstObservation = {
+    checks: {
+      host: {
+        usedMemoryPercent: 88,
+        freeMemoryBytes: 1_000,
+        cpuUsedPercent: 20
+      }
+    }
+  };
+  const first = classifyService(service, firstObservation);
+  assert.equal(first.state, "healthy");
+  assert.equal(firstObservation.checks.host.pressureSamples, 1);
+
+  const secondObservation = {
+    checks: {
+      host: {
+        usedMemoryPercent: 88,
+        freeMemoryBytes: 1_000,
+        cpuUsedPercent: 20
+      }
+    }
+  };
+  const second = classifyService(service, secondObservation, {
+    ...first,
+    observation: firstObservation
+  });
+  assert.equal(second.state, "degraded");
+  assert.equal(second.resourceLevel, "pressure");
+
+  const critical = classifyService(service, {
+    checks: {
+      host: {
+        usedMemoryPercent: 80,
+        freeMemoryBytes: 400,
+        cpuUsedPercent: 20
+      }
+    }
+  });
+  assert.equal(critical.resourceLevel, "critical");
+});
+
 test("stale artifact is not confused with a dead process", () => {
   const service = { id: "autonomy", required: true, observation: { artifact: { path: "wake-log", maxAgeSeconds: 60 } } };
   const result = classifyService(service, {
@@ -272,4 +327,111 @@ test("runtime cycle observes, classifies, repairs and records a transition", asy
   assert.deepEqual(spawned[0], ["npm", "start"]);
   assert.equal(result.events.find(event => event.type === "runtime_state_transition").state, "down");
   assert.equal(result.status.overall, "degraded");
+});
+
+test("critical host pressure sheds only explicitly authorized Mind services", async () => {
+  const cwd = await fs.mkdtemp(path.join(os.tmpdir(), "mind-runtime-manager-"));
+  const config = {
+    schemaVersion: "1.0.0",
+    manager: { id: "test-manager", statusPath: "status.json", eventsPath: "events.jsonl" },
+    services: [
+      {
+        id: "host_resources",
+        name: "Host",
+        required: true,
+        observation: {
+          host: {
+            thresholds: {
+              criticalMemoryUsedPercent: 90,
+              criticalFreeMemoryBytes: 500,
+              criticalConsecutiveSamples: 1
+            }
+          }
+        },
+        repair: { allowedActions: ["shed-load"], maxAttempts: 3, windowSeconds: 900 }
+      },
+      {
+        id: "api",
+        name: "API",
+        required: true,
+        observation: { process: { commandIncludes: ["src/server.js"] } },
+        repair: { allowedActions: ["restart"], command: ["node", "src/server.js"] }
+      },
+      {
+        id: "health",
+        name: "Health",
+        required: false,
+        resourcePolicy: { stopOnHostCritical: true },
+        observation: { process: { commandIncludes: ["verify-continuously.js"] } },
+        repair: { allowedActions: ["restart"], command: ["node", "scripts/verify-continuously.js", "--watch"] }
+      }
+    ]
+  };
+  const stopped = [];
+  const result = await runtimeCycle(config, {
+    cwd,
+    now: new Date("2026-07-23T12:00:00Z"),
+    previousStatus: { services: [] },
+    processes: [
+      { pid: 10, commandLine: "node src/server.js" },
+      { pid: 20, commandLine: "node scripts/verify-continuously.js --watch" }
+    ],
+    hostSnapshot: {
+      totalMemoryBytes: 1_000,
+      freeMemoryBytes: 100,
+      cpuSample: { idle: 50, total: 100 }
+    },
+    terminateProcess: pid => {
+      stopped.push(pid);
+      return true;
+    }
+  });
+  assert.deepEqual(stopped, [20]);
+  assert.equal(result.status.services.find(service => service.id === "host_resources").resourceLevel, "critical");
+  assert.equal(result.status.services.find(service => service.id === "health").repairDecision.action, "none");
+  assert.equal(result.events.find(event => event.action === "shed-load").targets[0].serviceId, "health");
+});
+
+test("singleton repair preserves one process and terminates only excess instances", async () => {
+  const cwd = await fs.mkdtemp(path.join(os.tmpdir(), "mind-runtime-manager-"));
+  const config = {
+    schemaVersion: "1.0.0",
+    manager: { id: "test-manager", statusPath: "status.json", eventsPath: "events.jsonl" },
+    services: [{
+      id: "agent",
+      name: "Agent",
+      required: true,
+      singleton: true,
+      observation: { process: { commandIncludes: ["autonomous-agent.js"] } },
+      repair: {
+        allowedActions: ["restart", "stop-excess"],
+        command: ["node", "scripts/autonomous-agent.js"],
+        maxAttempts: 3,
+        windowSeconds: 900
+      }
+    }]
+  };
+  const stopped = [];
+  const result = await runtimeCycle(config, {
+    cwd,
+    now: new Date("2026-07-23T12:00:00Z"),
+    previousStatus: {
+      services: [{
+        id: "agent",
+        state: "healthy",
+        observation: { checks: { process: { pids: [22] } } }
+      }]
+    },
+    processes: [
+      { pid: 11, commandLine: "node scripts/autonomous-agent.js" },
+      { pid: 22, commandLine: "node scripts/autonomous-agent.js" }
+    ],
+    terminateProcess: pid => {
+      stopped.push(pid);
+      return true;
+    }
+  });
+  assert.deepEqual(stopped, [11]);
+  assert.equal(result.status.services[0].issue, "duplicate_processes");
+  assert.equal(result.events.find(event => event.action === "stop-excess").survivorPid, 22);
 });

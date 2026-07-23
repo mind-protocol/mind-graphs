@@ -25,13 +25,30 @@ async function runOnce() {
     counts,
     events: result.events.length
   }));
+  return result;
 }
 
-await runOnce();
+const firstResult = await runOnce();
 if (!once) {
-  setInterval(() => runOnce().catch(error => console.error(JSON.stringify({
-    checkedAt: new Date().toISOString(),
-    ok: false,
-    error: error.message
-  }))), intervalSeconds * 1000);
+  const schedule = result => {
+    const hostLevel = result?.status?.services?.find(service => service.id === "host_resources")?.resourceLevel;
+    const seconds = hostLevel === "critical"
+      ? Number(config.manager.repairingIntervalSeconds || intervalSeconds)
+      : result?.status?.overall === "healthy"
+        ? Number(config.manager.healthyIntervalSeconds || intervalSeconds)
+        : Number(config.manager.degradedIntervalSeconds || intervalSeconds);
+    setTimeout(async () => {
+      try {
+        schedule(await runOnce());
+      } catch (error) {
+        console.error(JSON.stringify({
+          checkedAt: new Date().toISOString(),
+          ok: false,
+          error: error.message
+        }));
+        schedule(null);
+      }
+    }, Math.max(1, seconds) * 1000);
+  };
+  schedule(firstResult);
 }

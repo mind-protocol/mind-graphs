@@ -22,6 +22,35 @@
   "states": ["starting", "healthy", "degraded", "stale", "down", "flapping", "blocked", "unknown"],
   "services": [
     {
+      "id": "host_resources",
+      "name": "Host Resources",
+      "criticality": "critical",
+      "required": true,
+      "singleton": true,
+      "observation": {
+        "host": {
+          "thresholds": {
+            "pressureMemoryUsedPercent": 85,
+            "pressureCpuUsedPercent": 85,
+            "pressureConsecutiveSamples": 2,
+            "criticalMemoryUsedPercent": 92,
+            "criticalCpuUsedPercent": 95,
+            "criticalFreeMemoryBytes": 805306368,
+            "criticalConsecutiveSamples": 1,
+            "recoveryMemoryUsedPercent": 80,
+            "recoveryCpuUsedPercent": 70,
+            "recoveryFreeMemoryBytes": 1610612736
+          }
+        }
+      },
+      "repair": {
+        "allowedActions": ["shed-load"],
+        "maxAttempts": 3,
+        "windowSeconds": 900,
+        "circuitBreaker": { "openAfterFailures": 3, "retryAfterSeconds": 600 }
+      }
+    },
+    {
       "id": "falkordb",
       "name": "FalkorDB",
       "criticality": "critical",
@@ -51,7 +80,7 @@
         "http": { "url": "http://localhost:4173/api/health", "timeoutMs": 30000 }
       },
       "repair": {
-        "allowedActions": ["restart"],
+        "allowedActions": ["restart", "stop-excess"],
         "command": ["node", "src/server.js"],
         "maxAttempts": 3,
         "windowSeconds": 900,
@@ -71,7 +100,7 @@
         "artifact": { "path": "artifacts/autonomy/global-workspace.json", "maxAgeSeconds": 3600, "progressExpected": true }
       },
       "repair": {
-        "allowedActions": ["restart"],
+        "allowedActions": ["restart", "stop-excess"],
         "command": ["node", "scripts/autonomous-agent.js", "--no-personal"],
         "maxAttempts": 3,
         "windowSeconds": 900,
@@ -103,13 +132,17 @@
       "name": "Continuous Health",
       "criticality": "supporting",
       "required": true,
+      "singleton": true,
       "dependencies": ["falkordb"],
+      "resourcePolicy": {
+        "stopOnHostCritical": true
+      },
       "observation": {
         "process": { "commandIncludes": ["scripts/verify-continuously.js", "--watch"] },
         "artifact": { "path": "artifacts/l4/thing-energy-ledger.json", "maxAgeSeconds": 300, "progressExpected": false }
       },
       "repair": {
-        "allowedActions": ["restart"],
+        "allowedActions": ["restart", "stop-excess"],
         "command": ["node", "scripts/verify-continuously.js", "--watch"],
         "maxAttempts": 3,
         "windowSeconds": 900,
@@ -123,11 +156,14 @@
       "criticality": "supporting",
       "required": false,
       "singleton": true,
+      "resourcePolicy": {
+        "stopOnHostPressure": true
+      },
       "observation": {
         "process": { "commandIncludes": ["scripts/repo-autocommit-watch.js"] }
       },
       "repair": {
-        "allowedActions": ["restart"],
+        "allowedActions": ["restart", "stop-excess"],
         "command": ["node", "scripts/repo-autocommit-watch.js"],
         "maxAttempts": 2,
         "windowSeconds": 900,

@@ -85,7 +85,7 @@ for (let position = 0; position < ticks; position += 1) {
     embed,
     cache,
     sensoryConfig: {
-      citizenIds: [citizen.id, "actor-nlr", "self-nlr"],
+      citizenIds: [citizen.id, "nlr_ai"],
       minWeight,
       recentWindowMs,
       now: tickNow,

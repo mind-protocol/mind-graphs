@@ -34,7 +34,7 @@ function citizenAliases(nodes, configuredIds) {
   while (changed) {
     changed = false;
     for (const node of nodes) {
-      const references = [node.id, node.correspondsTo, node.identityRef, node.citizenId].filter(Boolean);
+      const references = [node.id, node.correspondsTo, node.identityRef, node.citizenId, node.handle].filter(Boolean);
       if ((node.citizen === true || references.some(reference => aliases.has(reference))) && references.some(reference => !aliases.has(reference))) {
         references.forEach(reference => aliases.add(reference));
         changed = true;

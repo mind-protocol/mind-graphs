@@ -206,21 +206,6 @@
       }
     },
     {
-      "id": "l1-demo",
-      "status": "active",
-      "label": "L1 · Citoyen Démo",
-      "falkorGraph": "l1_demo_graph",
-      "purpose": "Instance de démonstration du blueprint L1 pour l'observabilité et la comparaison multi-graphes.",
-      "ontology": "l1/ontology.json",
-      "dataDir": "l1/data",
-      "datasets": [
-        {
-          "id": "l1-demo-identity",
-          "file": "identity.json"
-        }
-      ]
-    },
-    {
       "id": "l2-mind",
       "status": "active",
       "label": "L2 · Organisation Mind Protocol",

@@ -1008,7 +1008,7 @@
     },
     {
       "source": "memory-identity-name-lester-reynolds-nlr",
-      "target": "self-nlr",
+      "target": "self-nlr-ai",
       "type": "DESCRIBES",
       "justification": "L'atome porte le nom proposé par le nouveau seed vers l'ancre d'identité, tout en conservant explicitement sa contradiction avec l'ancien atome au lieu de l'écraser."
     },
@@ -1020,7 +1020,7 @@
     },
     {
       "source": "memory-constitution-identity-exceeds-state",
-      "target": "self-nlr",
+      "target": "self-nlr-ai",
       "type": "DESCRIBES",
       "justification": "Le principe décrit la manière dont l'identité de NLR doit être interprétée : comme plus large que tout snapshot temporaire, jamais comme le snapshot lui-même."
     },

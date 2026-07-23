@@ -9,6 +9,7 @@
       "family": "Identité · personne",
       "summary": "Nœud-personne du L1 de NLR AI. C'est l'emplacement d'identité que le blueprint laissait délibérément vide à la naissance, désormais ancré. Il correspond, par référence d'identifiant stable et sans aucune arête inter-graphes, à actor-nlr-ai dans le graphe de design.",
       "correspondsTo": "actor-nlr-ai",
+      "handle": "nlr_ai",
       "epistemicStatus": "declared",
       "layer": "citizen_state"
     },

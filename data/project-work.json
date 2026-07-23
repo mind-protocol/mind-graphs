@@ -2811,6 +2811,7 @@
         "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés avant SharedSituationFrame.",
         "Les statuts observed, reported, inferred, conflicting, not_measured, stale et unknown sont explicites par champ.",
         "La fraîcheur décroît de fresh vers unknown selon une politique propre à la propriété et à la source, sans TTL arbitraire prérempli.",
+        "Un message Telegram entrant attribué à l'humain est une HumanObservation explicite ; un message sortant du Citizen AI reste un événement relationnel jusqu'à une réponse.",
         "Le Global Workspace reçoit une projection compacte et non le modèle humain complet.",
         "Le consentement gate les sources sensibles et le silence reste une issue d'aide valide.",
         "npm run validate et npm test réussissent."
@@ -2834,6 +2835,8 @@
         "l1/data/l1-human-situation-blueprint-v0.1.json",
         "scripts/build-l1-brain-blueprint.js",
         "l1/data/l1-brain-blueprint-v0.1.graph.json",
+        "src/l1-message-ingestion.js",
+        "test/l1-message-ingestion.test.js",
         "test/l1-brain-blueprint.test.js",
         "data/project-work.json"
       ],

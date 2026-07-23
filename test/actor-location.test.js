@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
-  relocateActorForCodeContext, relocateActorToSubjectSpace, resolveContainingSpace
+  relocateActorToSubjectSpace, resolveContainingSpace
 } from "../src/actor-location.js";
 
 const manifest = { graphs: [{ id: "design", status: "active", falkorGraph: "design_db" }] };
@@ -48,13 +48,4 @@ test("relocates the actor and creates its first location link", async () => {
   assert.equal(result.moved, true);
   assert.equal(result.space.id, "space-code");
   assert.ok(graph.calls.some(call => call.mode === "write" && call.query.includes("LOCATED_IN")));
-});
-
-test("code context anchors drive the same automatic location update", async () => {
-  const graph = graphFixture();
-  const updates = await relocateActorForCodeContext({
-    graphs: [{ graphId: "design", anchors: [{ id: "thing-file" }] }]
-  }, { manifest, selectGraph: async () => graph });
-  assert.equal(updates[0].moved, true);
-  assert.equal(updates[0].subjectId, "thing-file");
 });

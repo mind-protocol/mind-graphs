@@ -2,7 +2,7 @@
 // npm run work:propose -- --apply → écrit les candidats dans data/project-work.json
 //
 // Une réparation produit des candidats, jamais une mutation implicite : tout ce qui est écrit ici
-// reste `proposed` + `review_required`, conformément à AGENTS.md. Les ébauches de nœuds de graphe
+// reste `proposed` + `review_required`. Les ébauches de nœuds de graphe
 // (états, métriques) sont déposées dans artifacts/proposals/ avec des marqueurs TODO, parce qu'un
 // état observable encode un choix de projet qu'aucun algorithme ne doit trancher.
 

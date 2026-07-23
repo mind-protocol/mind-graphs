@@ -691,7 +691,7 @@
       "nearestRejectedInstrument": "method-probast",
       "certaintyImpact": "aucun : une absence d'instrument ne dégrade ni ne rehausse la certitude du claim, elle laisse la dimension methodological_fit non renseignée.",
       "scienceGraphRef": {
-        "graph": "mind_science_graph",
+        "graph": "mind_science",
         "clusterId": "satopaa-information-diversity",
         "studyNodeId": "study-satopaa-information-diversity",
         "sourceNodeId": "source-satopaa-1406.2148-v5",

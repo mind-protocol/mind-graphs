@@ -17,7 +17,7 @@
       "phrase": "NLR demande explicitement d'ajouter ce seed provisoire à son graphe personnel.",
       "family": "Gouvernance · consentement d'import",
       "summary": "Consentement borné à l'import de ce document dans le L1 personnel. Il ne vaut ni diagnostic, ni confirmation atomique de toutes les inférences, ni autorisation de diffusion vers d'autres graphes.",
-      "scope": "l1_nlr_graph uniquement",
+      "scope": "nlr_ai uniquement",
       "grantedAt": "2026-07-23",
       "revocable": true,
       "confirmedByHuman": true,

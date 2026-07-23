@@ -74,6 +74,19 @@
       "currentSpaceId": "space-l2-autonomous-cognition",
       "clusterId": "l2-mind-organization",
       "semanticType": "actor"
+    },
+    {
+      "id": "thing-l2-repo-mind-graphs",
+      "name": "Dépôt · mind-protocol/mind-graphs",
+      "nodeType": "artifact",
+      "phrase": "Dépôt GitHub canonique du graphe causal ; racine du miroir arborescent fichier↔graphe.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Nœud de coordonnées du dépôt : il porte l'URL du remote, le nom du remote et la branche par défaut. Source unique du remote pour l'auto-push, et ancre de l'arbre miroir (dossiers=spaces, fichiers=things).",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "thing",
+      "repositoryUrl": "https://github.com/mind-protocol/mind-graphs",
+      "remoteName": "origin",
+      "defaultBranch": "main"
     }
   ],
   "links": [
@@ -118,6 +131,12 @@
       "target": "space-l2-design",
       "type": "CONVERGES_IN",
       "justification": "L'agent nlr_ai participe activement aux réflexions et arbitrages du Space de Design."
+    },
+    {
+      "source": "thing-l2-repo-mind-graphs",
+      "target": "space-l2-architecture",
+      "type": "CONVERGES_IN",
+      "justification": "Le dépôt de code est l'artefact structurel racine de l'espace Architecture technique & Code du L2."
     }
   ]
 }

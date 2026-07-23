@@ -20,7 +20,7 @@ Le cluster `project-work` est le backlog et le journal du projet. Il contient tr
 - `task` : travail borné avec statut, priorité, niveau d’autonomie, critères de clôture et vérification ;
 - `change` : trace d’un changement effectivement livré, reliée à sa tâche par `DOCUMENTS_PROGRESS`.
 
-La donnée durable se trouve dans `data/project-work.json`. Dans l’application, choisir **Travail & avancement** dans le sélecteur de cluster. Les règles suivies par un agent sont décrites dans [`../AGENTS.md`](../AGENTS.md).
+La donnée durable se trouve dans `data/project-work.json`. Dans l’application, choisir **Travail & avancement** dans le sélecteur de cluster.
 
 Dire « travaille en autonomie sur le projet » sélectionne la tâche `ready` + `autonomous` de priorité maximale dont les dépendances sont terminées. La clôture met à jour la tâche et ajoute un nœud `change` ; il n’existe pas de journal Markdown concurrent.
 
@@ -85,7 +85,7 @@ npm run simulate:behaviors
 
 `npm run analyze` privilégie l’analyse causale complète via `/api/graph`. Si l’API ou FalkorDB est indisponible, la commande bascule explicitement sur un rapport incomplet construit depuis `data/project-work.json` : il liste les tâches autonomes prêtes, bloquées, proposées et en cours, mais ne produit aucun finding causal complet.
 
-Le seed reconstruit le graphe FalkorDB nommé `mind_causal_graph`. Les modifications durables doivent être faites dans les fichiers JSON de `data/`.
+Le seed reconstruit le graphe FalkorDB nommé `mind_causal`. Les modifications durables doivent être faites dans les fichiers JSON de `data/`.
 
 ## Contenu
 
@@ -117,18 +117,16 @@ Le seed reconstruit le graphe FalkorDB nommé `mind_causal_graph`. Les modificat
 - `scripts/seed.js` : chargement FalkorDB ;
 - `scripts/validate-data.js` : validation structurelle et séparation des domaines.
 
-## Enrichissement avant modification de code
+## Outils MCP
 
-Le serveur MCP expose `before_code_edit`. Un agent peut l'appeler avant chaque modification avec le chemin du fichier : l'outil cherche, dans toutes les bases FalkorDB actives de `graphs.json`, les nœuds `Thing` portant le même `sourcePath`, renvoie leur voisinage local, puis place `actor-nlr` dans le `Space` qui contient le `Thing`. Les chemins absolus ou relatifs, les séparateurs Windows/Unix et la casse sont normalisés.
-
-Il expose aussi `ask_graph`, qui reçoit une `question` en langage naturel, renvoie le cluster local parcouru et injecte l'énergie L4 correspondante. `query_graph` reste disponible pour les clients existants.
+Le serveur MCP expose `ask_graph`, qui reçoit une `question` en langage naturel, renvoie le cluster local parcouru et injecte l'énergie L4 correspondante. `query_graph` reste disponible pour les clients existants.
 
 `move` déplace les liens sortants d'un nœud qui ciblent des `Space` vers un nouveau `Space` du même graphe. Le type et les propriétés de chaque lien sont conservés ; `dryRun=true` permet de prévisualiser l'opération. Cette mutation agit sur l'état FalkorDB courant et sera remplacée par un prochain seed si elle n'est pas aussi reportée dans le dataset canonique.
 
-`enabled=false` désactive l'enrichissement et la mise à jour de location pour une modification. `maxDepth` borne la traversée entre 1 et 3 sauts (1 par défaut). La lecture du contexte reste sans effet sur le corpus canonique, mais la location de l’acteur est un état runtime FalkorDB mutable. MCP ne peut pas intercepter une primitive d'écriture d'un client : l'appel avant modification relève donc du protocole de l'agent, défini dans [`../AGENTS.md`](../AGENTS.md), ou de l'orchestrateur qui héberge ses outils.
+`sync_l1_blueprint` compare le blueprint L1 versionné aux projections structurelles des L1 ; le dry-run est la valeur par défaut et `apply=true` accepte explicitement la migration, sans écraser de contenu personnel. `l4_state` renvoie où le graphe est actuellement chaud.
 
 ## Garanties de séparation
 
 Le validateur refuse toute propriété `tattoo` dans les données du graphe causal. Le seed ne lit aucun fichier du sous-repo. Les liens historiques vers Mind sont conservés dans `../tattoo-language-atlas/data/mind-historical-crosslinks.json`, mais ne sont pas chargés ici.
 
-La frontière entre graphe de design et graphe scientifique suit la même logique. `graphs.json` déclare deux graphes actifs : `design` (`mind_causal_graph`) et `science` (`mind_science_graph`), chacun avec sa base, son ontologie et ses datasets. Le seed refuse d’écrire si la base connectée n’est pas celle que le manifeste déclare, et aucune arête ne traverse les deux bases. Une référence externe est conservée comme identifiant stable, jamais comme relation FalkorDB. Les nœuds `sci-*` et `csg-*` restent côté design : ils décrivent le graphe scientifique sans en être le contenu. Le premier cluster canonique, Satopää et al. sur la diversité d'information, est produit par `npm run science:ingest:satopaa`. Voir [`DOCUMENTATION.md`](DOCUMENTATION.md) et le cluster `graph-architecture`.
+La frontière entre graphe de design et graphe scientifique suit la même logique. `graphs.json` déclare deux graphes actifs : `design` (`mind_causal`) et `science` (`mind_science`), chacun avec sa base, son ontologie et ses datasets. Le seed refuse d’écrire si la base connectée n’est pas celle que le manifeste déclare, et aucune arête ne traverse les deux bases. Une référence externe est conservée comme identifiant stable, jamais comme relation FalkorDB. Les nœuds `sci-*` et `csg-*` restent côté design : ils décrivent le graphe scientifique sans en être le contenu. Le premier cluster canonique, Satopää et al. sur la diversité d'information, est produit par `npm run science:ingest:satopaa`. Voir [`DOCUMENTATION.md`](DOCUMENTATION.md) et le cluster `graph-architecture`.

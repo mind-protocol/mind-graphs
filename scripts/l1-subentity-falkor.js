@@ -1,5 +1,5 @@
 // Applique un tick au graphe personnel L1 ou repare sa projection runtime.
-// La cible est fixee par FALKORDB_L1_GRAPH (defaut l1_nlr_graph), jamais par
+// La cible est fixee par FALKORDB_L1_GRAPH (defaut nlr_ai), jamais par
 // FALKORDB_GRAPH afin d'eviter une ecriture accidentelle dans le graphe design.
 import fs from "node:fs/promises";
 import path from "node:path";

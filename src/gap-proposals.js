@@ -1,6 +1,6 @@
 // Transformation déterministe des lacunes détectées en objets de travail du graphe.
 //
-// Doctrine (AGENTS.md, analysis.html) : une réparation produit des candidats, jamais une mutation
+// Doctrine (analysis.html) : une réparation produit des candidats, jamais une mutation
 // implicite. Tout ce qui est généré ici choisit une direction du projet — quel état créer, quelle
 // métrique adosser, quelle arête retyper — et reste donc `proposed` + `review_required`.
 //

@@ -114,6 +114,70 @@
       "repositoryUrl": "https://github.com/mind-protocol/mind-graphs",
       "remoteName": "origin",
       "defaultBranch": "main"
+    },
+    {
+      "id": "decision-l2-living-runtime-manager",
+      "name": "Décision · Living Runtime & Citizen Scheduling",
+      "nodeType": "narrative",
+      "phrase": "Un gestionnaire runtime unique maintient la capacité de vivre sans devenir un second moteur cognitif.",
+      "family": "L2 Organization · Runtime",
+      "summary": "Le runtime manager déclare l'état attendu, observe FalkorDB, Web/API, Autonomy, Continuous Health, Repo Autocommit et les services optionnels, classifie leur état, applique seulement les réparations locales autorisées et escalade les blocages. Autonomy garde le scheduler cognitif ; le manager garantit l'uptime et l'observabilité.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_decision",
+      "epistemicStatus": "proposed",
+      "decisionStatus": "implemented",
+      "chosenOptionId": "single-runtime-manager-observes-and-repairs-authorized-services",
+      "decisionRationale": "Séparer disponibilité continue et cognition continue : le système doit pouvoir recevoir un stimulus et reprendre son état, mais un Citizen dormant ne doit pas ticker artificiellement.",
+      "sourcePath": "data/runtime-services.json",
+      "implementationPath": "src/runtime-manager.js"
+    },
+    {
+      "id": "rationale-l2-runtime-not-second-brain",
+      "name": "Justification · Le manager n'est pas un second cerveau",
+      "nodeType": "narrative",
+      "phrase": "Le gestionnaire supervise Autonomy, mais ne ticke pas lui-même les Citizens.",
+      "family": "L2 Organization · Runtime",
+      "summary": "Le manager maintient la capacité d'exécution, les alarmes système et les preuves de santé. Les ticks cognitifs restent déclenchés par stimuli, alarmes, résultats d'action, continuations ou réconciliation exceptionnelle dans Autonomy.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
+      "id": "policy-l2-runtime-transition-only-graph-write",
+      "name": "Politique · Écrire seulement les transitions runtime",
+      "nodeType": "narrative",
+      "phrase": "Un cycle de supervision ne crée pas un Moment ; seuls les changements d'état et incidents significatifs entrent dans le journal et le graphe.",
+      "family": "L2 Organization · Runtime",
+      "summary": "Le statut courant est écrasé dans artifacts/runtime/status.json. Les transitions, tentatives de réparation, succès, blocages et escalades sont ajoutés dans artifacts/runtime/events.jsonl. Cette politique empêche plusieurs milliers de Moments triviaux par jour.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "runtime_policy",
+      "epistemicStatus": "proposed",
+      "runtimeStates": ["starting", "healthy", "degraded", "stale", "down", "flapping", "blocked", "unknown"]
+    },
+    {
+      "id": "thing-l2-runtime-services-manifest",
+      "name": "Manifeste · runtime-services.json",
+      "nodeType": "thing",
+      "phrase": "Manifeste déclaratif des services qui doivent être vivants et de leurs règles de réparation autorisées.",
+      "family": "L2 Organization · Runtime",
+      "summary": "Décrit les services attendus, leur criticité, leurs preuves de santé, leurs dépendances, leurs budgets de redémarrage et les actions réversibles autorisées.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "runtime_manifest",
+      "epistemicStatus": "documented",
+      "sourcePath": "data/runtime-services.json"
+    },
+    {
+      "id": "thing-l2-mind-runtime-manager",
+      "name": "Composant · mind-runtime-manager",
+      "nodeType": "thing",
+      "phrase": "Superviseur local unique du runtime vivant de Mind.",
+      "family": "L2 Organization · Runtime",
+      "summary": "Observe les services, classifie leur état, écrit le statut courant, journalise les transitions et tente les relances locales autorisées avec circuit breaker.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "runtime_component",
+      "epistemicStatus": "documented",
+      "sourcePath": "src/runtime-manager.js",
+      "scriptPath": "scripts/runtime-manager.js"
     }
   ],
   "links": [
@@ -182,6 +246,54 @@
       "target": "space-l2-architecture",
       "type": "CONVERGES_IN",
       "justification": "Le dépôt de code est l'artefact structurel racine de l'espace Architecture technique & Code du L2."
+    },
+    {
+      "source": "decision-l2-living-runtime-manager",
+      "target": "space-l2-architecture",
+      "type": "CONVERGES_IN",
+      "justification": "Le design du runtime manager appartient à l'architecture technique L2 car il définit l'orchestration locale des services vivants."
+    },
+    {
+      "source": "decision-l2-living-runtime-manager",
+      "target": "space-l2-autonomous-cognition",
+      "type": "CONVERGES_IN",
+      "justification": "La décision protège la cognition autonome en distinguant supervision d'uptime et ticks cognitifs des Citizens."
+    },
+    {
+      "source": "rationale-l2-runtime-not-second-brain",
+      "target": "decision-l2-living-runtime-manager",
+      "type": "JUSTIFIES",
+      "justification": "La séparation entre disponibilité continue et cognition continue justifie que le manager supervise Autonomy sans devenir un second scheduler cognitif."
+    },
+    {
+      "source": "policy-l2-runtime-transition-only-graph-write",
+      "target": "decision-l2-living-runtime-manager",
+      "type": "JUSTIFIES",
+      "justification": "La politique d'écriture uniquement sur transition empêche le runtime de polluer le graphe avec des cycles de santé triviaux."
+    },
+    {
+      "source": "decision-l2-living-runtime-manager",
+      "target": "thing-l2-runtime-services-manifest",
+      "type": "TESTED_BY",
+      "justification": "Le manifeste matérialise l'état attendu, les preuves et les budgets de réparation du design."
+    },
+    {
+      "source": "decision-l2-living-runtime-manager",
+      "target": "thing-l2-mind-runtime-manager",
+      "type": "TESTED_BY",
+      "justification": "Le composant runtime-manager implémente la boucle Desired state -> Observation -> Classification -> Réparation autorisée -> Escalade."
+    },
+    {
+      "source": "thing-l2-runtime-services-manifest",
+      "target": "space-l2-architecture",
+      "type": "CONVERGES_IN",
+      "justification": "Le manifeste est un artefact d'architecture opérationnelle du L2."
+    },
+    {
+      "source": "thing-l2-mind-runtime-manager",
+      "target": "space-l2-architecture",
+      "type": "CONVERGES_IN",
+      "justification": "Le manager est un composant d'exécution local supervisant les services techniques du graphe."
     }
   ]
 }

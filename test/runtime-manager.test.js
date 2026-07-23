@@ -10,6 +10,33 @@ test("process command matching requires every declared fragment", () => {
   assert.equal(commandMatches("node scripts/autonomous-agent.js", ["scripts/autonomous-agent.js", "--watch"]), false);
 });
 
+test("runtime cycle lists processes only once for all service observations", async () => {
+  const cwd = await fs.mkdtemp(path.join(os.tmpdir(), "mind-runtime-manager-"));
+  const config = {
+    schemaVersion: "1.0.0",
+    manager: { id: "test-manager", statusPath: "status.json", eventsPath: "events.jsonl" },
+    services: [
+      { id: "api", name: "API", observation: { process: { commandIncludes: ["src/server.js"] } } },
+      { id: "agent", name: "Agent", observation: { process: { commandIncludes: ["autonomous-agent.js"] } } }
+    ]
+  };
+  let calls = 0;
+  const result = await runtimeCycle(config, {
+    cwd,
+    repair: false,
+    previousStatus: { services: [] },
+    listProcesses: async () => {
+      calls += 1;
+      return [
+        { pid: 10, commandLine: "node src/server.js" },
+        { pid: 11, commandLine: "node scripts/autonomous-agent.js" }
+      ];
+    }
+  });
+  assert.equal(calls, 1);
+  assert.deepEqual(result.status.services.map(service => service.state), ["healthy", "healthy"]);
+});
+
 test("classification distinguishes unknown from down", () => {
   const service = { id: "web", required: true, observation: { process: { commandIncludes: ["src/server.js"] } } };
   const unknown = classifyService(service, {

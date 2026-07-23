@@ -1,6 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import net from "node:net";
+import os from "node:os";
+import { randomUUID } from "node:crypto";
 import { spawn, execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
@@ -38,16 +40,20 @@ export function commandMatches(commandLine, includes = []) {
 
 export async function listProcesses() {
   if (process.platform === "win32") {
-    const { stdout } = await execFileAsync("powershell.exe", [
-      "-NoProfile",
-      "-Command",
-      "Get-CimInstance Win32_Process | Select-Object ProcessId,CommandLine | ConvertTo-Json -Compress"
-    ], { windowsHide: true, maxBuffer: 10 * 1024 * 1024 });
-    const parsed = JSON.parse(stdout || "[]");
-    return (Array.isArray(parsed) ? parsed : [parsed]).map(item => ({
-      pid: item.ProcessId,
-      commandLine: item.CommandLine || ""
-    }));
+    const helperPath = path.join(projectDir, "scripts", "list-windows-processes.vbs");
+    const outputPath = path.join(os.tmpdir(), `mind-processes-${process.pid}-${randomUUID()}.json`);
+    const wscriptPath = path.join(process.env.SystemRoot || "C:\\Windows", "System32", "wscript.exe");
+    try {
+      await execFileAsync(wscriptPath, [helperPath, outputPath], { windowsHide: true });
+      const raw = (await fs.readFile(outputPath, "utf8")).replace(/^\uFEFF/u, "");
+      const parsed = JSON.parse(raw || "[]");
+      return parsed.map(item => ({
+        pid: item.ProcessId,
+        commandLine: item.CommandLine || ""
+      }));
+    } finally {
+      await fs.rm(outputPath, { force: true });
+    }
   }
   const { stdout } = await execFileAsync("ps", ["-eo", "pid=,command="], { maxBuffer: 10 * 1024 * 1024 });
   return stdout.split("\n").filter(Boolean).map(line => {
@@ -105,6 +111,7 @@ export async function observeService(service, options = {}) {
 
   if (spec.process) {
     try {
+      if (options.processListError) throw options.processListError;
       const processes = options.processes || await listProcesses();
       const matches = processes.filter(item => commandMatches(item.commandLine, spec.process.commandIncludes || []));
       observation.checks.process = { ok: matches.length > 0, count: matches.length, pids: matches.map(item => item.pid).filter(Boolean) };
@@ -339,9 +346,19 @@ export async function runtimeCycle(config, options = {}) {
   const previousById = new Map((previousStatus?.services || []).map(service => [service.id, service]));
   const services = (config.services || []).filter(service => service.enabled !== false || options.includeDisabled);
   const statuses = [];
+  let processes = options.processes;
+  let processListError = null;
+
+  if (!processes && services.some(service => service.observation?.process)) {
+    try {
+      processes = await (options.listProcesses || listProcesses)();
+    } catch (error) {
+      processListError = error;
+    }
+  }
 
   for (const service of services) {
-    const observation = await observeService(service, { ...options, cwd, now });
+    const observation = await observeService(service, { ...options, cwd, now, processes, processListError });
     const classified = classifyService(service, observation, previousById.get(service.id), now);
     statuses.push({
       id: service.id,

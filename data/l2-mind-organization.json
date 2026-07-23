@@ -239,7 +239,7 @@
       "family": "L2 Organization · Runtime",
       "summary": "La pression demande deux échantillons consécutifs ; un manque critique de RAM agit immédiatement. L'hystérésis de récupération empêche les arrêts et redémarrages oscillants.",
       "clusterId": "l2-mind-organization",
-      "semanticType": "metric",
+      "semanticType": "runtime_manifest",
       "epistemicStatus": "documented",
       "unit": "percent_and_bytes",
       "measurementMethod": "os.totalmem, os.freemem et delta des temps CPU agrégés entre deux cycles runtime"
@@ -361,12 +361,6 @@
       "justification": "Le manager est un composant d'exécution local supervisant les services techniques du graphe."
     },
     {
-      "source": "decision-l2-host-resource-guardian",
-      "target": "decision-l2-living-runtime-manager",
-      "type": "JUSTIFIES",
-      "justification": "La continuité du runtime exige de distinguer la santé des services de la capacité réelle de leur hôte."
-    },
-    {
       "source": "policy-l2-host-resource-sovereignty",
       "target": "decision-l2-host-resource-guardian",
       "type": "JUSTIFIES",
@@ -385,10 +379,10 @@
       "justification": "Le délesteur implémente les actions graduelles, réversibles et explicitement autorisées."
     },
     {
-      "source": "thing-l2-host-resource-sensor",
+      "source": "decision-l2-host-resource-guardian",
       "target": "metric-l2-host-resource-budget",
       "type": "TESTED_BY",
-      "justification": "Les observations du capteur sont interprétées selon le budget mesurable déclaré."
+      "justification": "Le budget déclaratif rend mesurables les seuils de pression, critique et récupération choisis par la décision."
     },
     {
       "source": "thing-l2-host-resource-sensor",

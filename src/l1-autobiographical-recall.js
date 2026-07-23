@@ -67,14 +67,17 @@ const stableId = (prefix, ...parts) => {
 };
 
 const weightedMean = (values, weights) => {
-  const entries = Object.entries(values);
+  const entries = Object.entries(values).filter(([, value]) => value !== null);
   const weightTotal = entries.reduce((sum, [key]) => sum + Number(weights[key] || 0), 0);
   if (!weightTotal) return 0;
   return entries.reduce((sum, [key, value]) => sum + value * Number(weights[key] || 0), 0) / weightTotal;
 };
 
 const normalizeFactors = (names, provided = {}) =>
-  Object.fromEntries(names.map(name => [name, clamp01(provided[name])]));
+  Object.fromEntries(names.map(name => [
+    name,
+    provided[name] === undefined || provided[name] === null ? null : clamp01(provided[name])
+  ]));
 
 const currentMode = context => String(context.mode || context.cognitiveMode || "").toUpperCase();
 
@@ -197,7 +200,7 @@ export function scoreRecallOpportunity({
     },
     gates,
     reasons: [
-      ...Object.entries(positive).filter(([, value]) => value > 0).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([name]) => name),
+      ...Object.entries(positive).filter(([, value]) => value !== null && value > 0).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([name]) => name),
       ...gates
     ]
   };

@@ -1302,6 +1302,19 @@ const graph = {
     stateAwarenessIsEstimate: true,
     autonomousIrreversibleActionAllowed: false
   },
+  humanSituationSystem: {
+    scope: humanSituation.scope,
+    doctrine: humanSituation.doctrine,
+    epistemicContract: humanSituation.epistemicContract,
+    temporalContract: humanSituation.temporalContract,
+    frameContract: humanSituation.frameContract,
+    humanStateContract: humanSituation.humanStateContract,
+    interactionContract: humanSituation.interactionContract,
+    observationSources: humanSituation.observationSources,
+    humanActorStatePrefilled: false,
+    identityMutationAllowed: false,
+    sharedFramePreservesActorBoundaries: true
+  },
   citizenAIRoleSystem: {
     scope: citizenAIRoles.scope,
     doctrine: citizenAIRoles.doctrine,

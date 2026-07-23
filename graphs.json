@@ -198,6 +198,10 @@
         {
           "id": "l1-nlr-ai-personal-goals",
           "file": "personal-goals.json"
+        },
+        {
+          "id": "l1-nlr-citizen-observations",
+          "file": "citizen-observations.json"
         }
       ],
       "frontier": {

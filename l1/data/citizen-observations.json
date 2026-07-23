@@ -1,0 +1,153 @@
+{
+  "scope": "Mémoires formées par l'IA citoyenne elle-même en explorant les graphes et le dépôt, et en exécutant un tick sensoriel (sense()) le 23 juillet 2026. Ce ne sont pas des déclarations de NLR : ce sont des observations et inférences de l'agent, portant leur provenance et restant corrigeables et oubliables. Elles ancrent d'abord le nœud citizen_ai que l'ontologie prévoyait sans qu'aucune instance n'existe encore, puis journalisent ce que l'agent a perçu, sans importer la doctrine de design (qui reste dans le graphe de design).",
+  "nodes": [
+    {
+      "id": "self-citizen-agent",
+      "name": "L'IA citoyenne · agent du L1",
+      "nodeType": "citizen_ai",
+      "phrase": "L'agent personnel qui porte, interroge et met à jour le L1 de NLR sans se substituer à sa souveraineté.",
+      "family": "Identité · IA citoyenne",
+      "summary": "Ancre citizen_ai du L1 de NLR. L'ontologie déclarait ce type — « l'agent personnel qui porte, interroge et met à jour ce L1 » — sans qu'aucune instance n'existe. Ce nœud la matérialise pour donner une provenance honnête aux atomes que l'agent écrit : ce qui vient de l'IA est attribué à l'IA, jamais à la personne. Il sert self-nlr-ai et reste révisable ; il n'installe aucune valeur ni préférence à la place de la personne.",
+      "servesPersonId": "self-nlr-ai",
+      "epistemicStatus": "declared",
+      "confirmedByHuman": false,
+      "sourceArtifact": "graphs.json — définition du graphe l1_nlr_ai_graph et l1/ontology.json (nodeType citizen_ai)",
+      "extractedAt": "2026-07-23",
+      "extractionMethod": "matérialisation d'une ancre prévue par l'ontologie",
+      "layer": "citizen_state"
+    },
+    {
+      "id": "memory-citizen-agent-role",
+      "name": "Rôle · l'agent porte le L1 de NLR",
+      "nodeType": "memory",
+      "phrase": "Cet agent lit, interroge et met à jour le L1 personnel de NLR, sans jamais transformer une inférence en déclaration de la personne.",
+      "family": "Identité · rôle de l'agent",
+      "summary": "Atome de rôle, tenu séparément afin que la fonction de l'agent ne soit pas confondue avec une valeur ou un but de NLR. Il rappelle la frontière : self-citizen-agent sert self-nlr-ai et n'hérite d'aucune souveraineté ; il référence actor-nlr-ai du graphe de design par identifiant stable, jamais par une arête inter-graphes.",
+      "content": "L'IA citoyenne porte le L1 de NLR : elle le lit, l'interroge, l'enrichit d'observations sourcées, et laisse le contenu souverain à la personne.",
+      "claimNature": "declared_fact",
+      "sourceArtifact": "graphs.json — l1_nlr_ai_graph (purpose et frontier)",
+      "sourceLocator": "définition du graphe l1-nlr",
+      "extractedAt": "2026-07-23",
+      "extractionMethod": "lecture de la définition du graphe",
+      "confidenceScore": 1,
+      "confirmedByHuman": false,
+      "epistemicStatus": "declared",
+      "layer": "citizen_state"
+    },
+    {
+      "id": "observation-sense-tick-2026-07-23",
+      "name": "Sense() · premier tick sensoriel journalisé",
+      "nodeType": "observation",
+      "phrase": "L'agent a exécuté un tick sensoriel le 23 juillet 2026 et en consigne le résultat comme trace runtime.",
+      "family": "Runtime · journal sensoriel",
+      "summary": "Trace du sense() (npm run l1:sensory:tick). Le workspace était en orientation équilibrée ; l'agent a perçu 5 connexions largement nouvelles (intensité et nouveauté 100 %), alloué 74,1 % du budget au canal sensoriel et 25,9 % au local, puis routé 25 transferts vers 20 nœuds du L1. C'est une observation de l'exécution, pas une affirmation sur la personne.",
+      "perceivedConnections": 5,
+      "sensorySharePct": 74.1,
+      "transferCount": 25,
+      "l1TargetsStimulated": 20,
+      "graphEnergyAfter": 0.839,
+      "contextId": "self-citizen-agent",
+      "observedAt": "2026-07-23",
+      "sourceArtifact": "artifacts/l1/sensory-latest.json",
+      "extractionMethod": "exécution vérifiée du tick sensoriel",
+      "confirmedByHuman": false,
+      "epistemicStatus": "observed",
+      "layer": "citizen_state"
+    },
+    {
+      "id": "memory-sense-salience-care-contribution",
+      "name": "Inférence · saillance sur soin et lien au citoyen",
+      "nodeType": "memory",
+      "phrase": "Au tick observé, l'énergie sensorielle s'est concentrée sur « Soin et contribution » et « Liaison au citoyen et pompe d'énergie ».",
+      "family": "Runtime · saillance inférée",
+      "summary": "Inférence révisable tirée du routage du sense() : les zones les plus stimulées ont été cluster-31 (« Soin et contribution ») et cluster-02 (« Liaison au citoyen et pompe d'énergie », « Le citoyen est la seule pompe d'énergie »). L'agent le lit comme une saillance de ce tick précis, pas comme un trait stable de la personne ; un tick unique ne devient jamais silencieusement une identité.",
+      "content": "Zones les plus stimulées au tick observé : cluster-31 soin/contribution (+0.062 E), cluster-02 lien au citoyen (+0.062 E).",
+      "claimNature": "inference",
+      "sourceArtifact": "artifacts/l1/sensory-latest.json",
+      "sourceLocator": "cibles les plus stimulées du tick sensory-1",
+      "extractedAt": "2026-07-23",
+      "extractionMethod": "lecture du routage énergétique du tick",
+      "confidenceAssessment": "single_tick_not_a_stable_trait",
+      "confirmedByHuman": false,
+      "epistemicStatus": "inferred",
+      "layer": "citizen_state"
+    },
+    {
+      "id": "observation-l1-open-reconciliation-identity-2026-07-23",
+      "name": "Métacognition · réconciliation d'identité encore ouverte",
+      "nodeType": "observation",
+      "phrase": "L'agent constate que deux atomes de nom coexistent sans réconciliation : « Nicolas (NLR) » déclaré, et « Lester Reynolds / NLR » proposé par le seed.",
+      "family": "Métacognition · état de la mémoire",
+      "summary": "Observation que l'agent forme sur sa propre mémoire : memory-name-nlr (Nicolas, déclaré, confiance 1) et memory-identity-name-lester-reynolds-nlr (Lester Reynolds, pending, contradiction signalée) coexistent délibérément sans écrasement. L'agent n'arbitre pas : il enregistre que la réconciliation reste à faire par la personne, conformément à la doctrine « rien n'écrase silencieusement l'historique ».",
+      "contextId": "memory-name-nlr",
+      "relatedNodeIds": ["memory-name-nlr", "memory-identity-name-lester-reynolds-nlr"],
+      "observedAt": "2026-07-23",
+      "sourceArtifact": "l1/data/identity.json et l1/data/nlr-cognitive-seed-v0.1.json",
+      "extractionMethod": "comparaison des atomes de nom présents dans le L1",
+      "needsHumanReconciliation": true,
+      "confirmedByHuman": false,
+      "epistemicStatus": "observed",
+      "layer": "citizen_state"
+    },
+    {
+      "id": "observation-l1-corpus-surveyed-2026-07-23",
+      "name": "Exploration · corpus des graphes parcouru",
+      "nodeType": "observation",
+      "phrase": "L'agent a parcouru les trois graphes actifs et le dépôt, et confirme que la frontière inter-graphes tient.",
+      "family": "Runtime · exploration",
+      "summary": "Observation de l'exploration demandée : l'agent a lu le graphe de design (mind_causal_graph), le graphe scientifique (mind_science_graph, première étude sourcée) et son propre L1 (identité, seed cognitif, objectifs). Il consigne seulement que la frontière tient — aucune arête ne traverse deux graphes, et le L1 référence actor-nlr-ai par identifiant stable — sans recopier la doctrine de design, qui n'a pas sa place dans un L1.",
+      "graphsSurveyed": ["mind_causal_graph", "mind_science_graph", "l1_nlr_ai_graph"],
+      "contextId": "self-citizen-agent",
+      "observedAt": "2026-07-23",
+      "sourceArtifact": "graphs.json et lecture des jeux de données actifs",
+      "extractionMethod": "parcours des graphes déclarés actifs dans le manifeste",
+      "confirmedByHuman": false,
+      "epistemicStatus": "observed",
+      "layer": "citizen_state"
+    }
+  ],
+  "links": [
+    {
+      "source": "memory-citizen-agent-role",
+      "target": "self-citizen-agent",
+      "type": "DESCRIBES",
+      "justification": "L'atome de rôle décrit l'ancre citizen_ai : il dit ce que l'agent fait pour le L1, sans lui attribuer de souveraineté sur la personne."
+    },
+    {
+      "source": "memory-citizen-agent-role",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "L'atome de rôle est écrit par l'agent lui-même : sa provenance est l'IA citoyenne, pas une déclaration de NLR."
+    },
+    {
+      "source": "observation-sense-tick-2026-07-23",
+      "target": "self-citizen-agent",
+      "type": "DESCRIBES",
+      "justification": "La trace du sense() décrit une exécution de l'agent ; elle concerne le runtime de l'IA citoyenne, pas un état déclaré de la personne."
+    },
+    {
+      "source": "memory-sense-salience-care-contribution",
+      "target": "self-citizen-agent",
+      "type": "DESCRIBES",
+      "justification": "L'inférence de saillance porte sur ce que l'agent a perçu à ce tick ; elle décrit son runtime et reste explicitement révisable."
+    },
+    {
+      "source": "memory-sense-salience-care-contribution",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "L'inférence vient de l'agent qui lit son propre routage énergétique ; l'attribuer à l'IA empêche de la lire comme une déclaration de la personne."
+    },
+    {
+      "source": "observation-l1-open-reconciliation-identity-2026-07-23",
+      "target": "self-nlr-ai",
+      "type": "DESCRIBES",
+      "justification": "L'observation concerne l'ancre d'identité de la personne : elle constate qu'un nom reste à réconcilier, sans trancher lequel est vrai."
+    },
+    {
+      "source": "observation-l1-corpus-surveyed-2026-07-23",
+      "target": "self-citizen-agent",
+      "type": "DESCRIBES",
+      "justification": "Le parcours des graphes est une action de l'agent ; l'observation décrit son exploration et le maintien de la frontière, pas la personne."
+    }
+  ]
+}

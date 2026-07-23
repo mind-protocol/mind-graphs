@@ -60,7 +60,7 @@
       "dependencies": ["falkordb"],
       "observation": {
         "process": { "commandIncludes": ["scripts/autonomous-agent.js"] },
-        "artifact": { "path": "artifacts/autonomy/wake-log.jsonl", "maxAgeSeconds": 900, "progressExpected": true }
+        "artifact": { "path": "artifacts/autonomy/global-workspace.json", "maxAgeSeconds": 900, "progressExpected": true }
       },
       "repair": {
         "allowedActions": ["restart"],

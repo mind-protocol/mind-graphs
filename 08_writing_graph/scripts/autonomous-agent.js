@@ -3,7 +3,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { spawn } from "node:child_process";
 import {
-  buildPersonalWakePrompt, buildWakePrompt, collectTaskQueue, composeGlobalWorkspace
+  assignTasksToCitizens, buildPersonalWakePrompt, buildWakePrompt, collectTaskQueue, composeGlobalWorkspace,
+  resolveCitizenTaskChoice
 } from "../src/autonomous-agent-runtime.js";
 import { DEFAULT_CLUSTER_QUESTION_POLICY } from "../src/cluster-question-compiler.js";
 import { relocateActorToSubjectSpace } from "../src/actor-location.js";
@@ -119,60 +120,122 @@ async function wake() {
   const manifest = await loadManifest();
   const physicsState = await readJson(physicsPath, {});
   const queue = await collectTaskQueue({ manifest, now: startedAt, live: liveQueue, physicsState });
-  const previousWorkspace = await readJson(workspacePath, null);
-  const graphId = queue.nextTask?.graphId || physicsState?.graphId || "design";
-  const graphConfig = selectGraph(manifest, graphId);
-  const datasets = await readDatasets(graphConfig);
-  const graphNodes = datasets.flatMap(datasetNodes);
-  const graphLinks = datasets.flatMap(datasetLinks);
-  const priorCitizenWorkspace = previousWorkspace?.citizens?.[actorId] || previousWorkspace;
-  const workspace = composeGlobalWorkspace({
-    queue,
+  const previousWorkspace = await readJson(workspacePath, {});
+  const assignmentPlan = assignTasksToCitizens(queue, {
     physicsState,
-    previousWorkspace: priorCitizenWorkspace,
-    actorId,
-    observedAt: startedAt,
-    graphNodes,
-    graphLinks,
-    questionPolicy: {
-      ...DEFAULT_CLUSTER_QUESTION_POLICY,
-      maxQuestions: questionCount,
-      totalEnergyBudget: questionBudget
-    }
+    globalWorkspaceState: previousWorkspace,
+    fallbackActorId: actorId,
+    now: startedAt,
+    leaseMinutes: Math.max(10, intervalMs / 60_000 * 2)
   });
-  let location = null;
-  if (queue.nextTask) {
-    location = await relocateActorToSubjectSpace({
-      graphId: queue.nextTask.graphId,
-      subjectId: queue.nextTask.id,
-      actorId,
-      dryRun
+  const routes = assignmentPlan.assignments.length
+    ? assignmentPlan.assignments
+    : [{ citizenId: actorId, task: null, taskId: null, graphId: physicsState?.graphId || "design" }];
+  const workspaces = {};
+  const locations = [];
+  const datasetCache = new Map();
+
+  for (const route of routes) {
+    const graphId = route.task?.graphId || route.graphId || physicsState?.graphId || "design";
+    if (!datasetCache.has(graphId)) {
+      const graphConfig = selectGraph(manifest, graphId);
+      const datasets = await readDatasets(graphConfig);
+      datasetCache.set(graphId, {
+        nodes: datasets.flatMap(datasetNodes),
+        links: datasets.flatMap(datasetLinks)
+      });
+    }
+    const graph = datasetCache.get(graphId);
+    const citizenQueue = { ...queue, nextTask: route.task || null };
+    const workspace = composeGlobalWorkspace({
+      queue: citizenQueue,
+      physicsState,
+      previousWorkspace: previousWorkspace?.citizens?.[route.citizenId],
+      actorId: route.citizenId,
+      observedAt: startedAt,
+      graphNodes: graph.nodes,
+      graphLinks: graph.links,
+      assignment: route.task ? route : null,
+      questionPolicy: {
+        ...DEFAULT_CLUSTER_QUESTION_POLICY,
+        maxQuestions: questionCount,
+        totalEnergyBudget: questionBudget
+      }
     });
+    workspaces[route.citizenId] = workspace;
+    if (route.task) {
+      locations.push(await relocateActorToSubjectSpace({
+        graphId: route.task.graphId,
+        subjectId: route.task.id,
+        actorId: route.citizenId,
+        dryRun
+      }));
+    }
   }
 
-  const report = { startedAt, queue, workspace, location, codex: dryRun || noCodex ? "skipped" : "pending" };
+  const primaryWorkspace = workspaces[routes[0].citizenId];
+  const report = {
+    startedAt,
+    queue: { ...queue, assignments: assignmentPlan.assignments },
+    assignmentPlan,
+    workspaces,
+    workspace: primaryWorkspace,
+    locations,
+    location: locations[0] || null,
+    codex: dryRun || noCodex ? "skipped" : "pending",
+    citizenRuns: []
+  };
   if (dryRun) {
     console.log(JSON.stringify({
       startedAt,
       queue: { total: queue.total, eligible: queue.eligibleCount, nextTask: queue.nextTask?.id || null, graphs: queue.graphs },
-      workspace,
-      location,
+      assignments: assignmentPlan.assignments.map(assignment => ({
+        taskId: assignment.taskId,
+        citizenId: assignment.citizenId,
+        score: assignment.score,
+        factors: assignment.factors
+      })),
+      workspaces,
+      locations,
       codex: report.codex
     }, null, 2));
     return report;
   }
 
-  await persistJson(queuePath, queue);
-  await persistJson(workspacePath, { citizens: { [actorId]: workspace } });
+  await persistJson(queuePath, report.queue);
+  await persistJson(workspacePath, { citizens: workspaces });
   startPhysics();
   if (!noCodex) {
-    try {
-      report.codexResult = await enqueueCodex(buildWakePrompt(workspace));
-      report.codex = "completed";
-    } catch (error) {
-      report.codex = "failed";
-      report.error = error.message;
+    for (const route of routes) {
+      const citizenWorkspace = workspaces[route.citizenId];
+      const citizenRun = {
+        citizenId: route.citizenId,
+        taskId: route.taskId,
+        codex: "pending"
+      };
+      try {
+        citizenRun.codexResult = await enqueueCodex(buildWakePrompt(citizenWorkspace));
+        citizenRun.codex = "completed";
+        if (citizenWorkspace.activeTask) {
+          // Le lease est confirmé, basculé, décliné ou laissé au défaut selon le choix réel du citoyen.
+          const resolution = resolveCitizenTaskChoice({
+            activeAssignment: citizenWorkspace.activeAssignment,
+            taskProposals: citizenWorkspace.taskProposals,
+            reportText: citizenRun.codexResult,
+            now: new Date().toISOString()
+          });
+          citizenRun.leaseResolution = resolution;
+          citizenRun.taskId = resolution.taskId;
+        }
+      } catch (error) {
+        citizenRun.codex = "failed";
+        citizenRun.error = error.message;
+      }
+      report.citizenRuns.push(citizenRun);
     }
+    report.codex = report.citizenRuns.every(run => run.codex === "completed") ? "completed" : "failed";
+    report.codexResult = report.citizenRuns.map(run => run.codexResult).filter(Boolean).join("\n\n");
+    report.error = report.citizenRuns.map(run => run.error).filter(Boolean).join("; ") || null;
   }
   report.completedAt = new Date().toISOString();
   if (!noNotification) {
@@ -186,14 +249,32 @@ async function wake() {
     notification: report.notification || null,
     queueTotal: queue.total,
     eligibleCount: queue.eligibleCount,
-    taskId: queue.nextTask?.id || null,
-    graphId: workspace.graphId,
-    workspaceVersion: workspace.version,
-    workspaceHash: workspace.contentHash,
-    physicsTick: workspace.physics.tick,
-    location: location ? { moved: location.moved, spaceId: location.space?.id || null, reason: location.reason || null } : null
+    assignments: assignmentPlan.assignments.map(assignment => ({
+      taskId: assignment.taskId,
+      citizenId: assignment.citizenId,
+      kind: assignment.kind,
+      score: assignment.score,
+      leaseId: assignment.leaseId
+    })),
+    resolutions: report.citizenRuns.map(run => ({
+      citizenId: run.citizenId,
+      status: run.leaseResolution?.status || null,
+      taskId: run.leaseResolution?.taskId ?? null,
+      leaseId: run.leaseResolution?.leaseId ?? null,
+      leaseConfirmed: run.leaseResolution?.leaseConfirmed ?? null
+    })),
+    graphId: primaryWorkspace.graphId,
+    workspaceVersion: primaryWorkspace.version,
+    workspaceHash: primaryWorkspace.contentHash,
+    physicsTick: primaryWorkspace.physics.tick,
+    locations: locations.map(location => ({
+      actorId: location.actorId,
+      moved: location.moved,
+      spaceId: location.space?.id || null,
+      reason: location.reason || null
+    }))
   })}\n`, "utf8");
-  console.log(`Réveil ${report.codex} · queue ${queue.eligibleCount}/${queue.total} · workspace v${workspace.version}.`);
+  console.log(`Réveil ${report.codex} · ${assignmentPlan.assignments.length} attribution(s) · queue ${queue.eligibleCount}/${queue.total}.`);
   return report;
 }
 

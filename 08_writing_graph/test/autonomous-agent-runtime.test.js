@@ -1,8 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
-  adjustQuestionPolicyForFocus, buildPersonalWakePrompt, buildWakePrompt, collectTaskQueue, composeGlobalWorkspace,
-  renderQuestionAgendaMarkdown
+  adjustQuestionPolicyForFocus, assignTasksToCitizens, buildPersonalWakePrompt, buildWakePrompt, collectTaskQueue,
+  composeGlobalWorkspace, discoverCitizenCandidates, extractCitizenChoice, renderQuestionAgendaMarkdown,
+  resolveCitizenTaskChoice, scoreTaskForCitizen
 } from "../src/autonomous-agent-runtime.js";
 
 const manifest = { graphs: [{ id: "design", status: "active", falkorGraph: "design_db" }] };
@@ -68,6 +69,206 @@ test("the global workspace incorporates current physics and advances each wake",
   assert.notEqual(first.contentHash, second.contentHash);
 });
 
+test("tasks are assigned to the best available citizen and each citizen receives at most one", () => {
+  const queue = {
+    tasks: [
+      { id: "task-a", graphId: "design", clusterId: "alpha", eligible: true },
+      { id: "task-b", graphId: "design", clusterId: "beta", eligible: true }
+    ]
+  };
+  const physicsState = {
+    summary: {
+      byCitizen: [
+        { citizenId: "citizen-alpha", energy: 1 },
+        { citizenId: "citizen-beta", energy: 1 }
+      ]
+    },
+    workspaceIntentRankings: {
+      "citizen-alpha": [{ clusterId: "alpha", score: 0.9 }],
+      "citizen-beta": [{ clusterId: "beta", score: 0.8 }]
+    }
+  };
+  const plan = assignTasksToCitizens(queue, {
+    physicsState,
+    fallbackActorId: null,
+    now: "2026-07-23T12:00:00Z"
+  });
+  assert.deepEqual(plan.assignments.map(item => [item.taskId, item.citizenId]), [
+    ["task-a", "citizen-alpha"],
+    ["task-b", "citizen-beta"]
+  ]);
+  assert.equal(new Set(plan.assignments.map(item => item.citizenId)).size, 2);
+  assert.match(plan.assignments[0].leaseId, /^[a-f0-9]{20}$/);
+});
+
+test("an explicit citizen assignment is a hard routing constraint", () => {
+  const queue = {
+    tasks: [{
+      id: "task-explicit",
+      graphId: "design",
+      clusterId: "alpha",
+      assignedCitizenId: "citizen-low-energy",
+      eligible: true
+    }]
+  };
+  const physicsState = {
+    summary: {
+      byCitizen: [
+        { citizenId: "citizen-high-energy", energy: 10 },
+        { citizenId: "citizen-low-energy", energy: 1 }
+      ]
+    }
+  };
+  const plan = assignTasksToCitizens(queue, { physicsState, fallbackActorId: null });
+  assert.equal(plan.assignments[0].citizenId, "citizen-low-energy");
+  assert.equal(plan.assignments[0].factors.explicit, 1);
+  assert.equal(plan.assignments[0].kind, "assigned");
+  assert.equal(plan.assignments[0].provisional, false);
+});
+
+test("automatic routing is a declinable suggestion that exposes ranked alternatives", () => {
+  const queue = {
+    tasks: [
+      { id: "task-a", graphId: "design", name: "A", summary: "Faire A", clusterId: "alpha", eligible: true },
+      { id: "task-b", graphId: "design", name: "B", summary: "Faire B", clusterId: "beta", eligible: true }
+    ]
+  };
+  const physicsState = {
+    summary: { byCitizen: [{ citizenId: "citizen-solo", energy: 1 }] },
+    workspaceIntentRankings: {
+      "citizen-solo": [{ clusterId: "alpha", score: 0.9 }, { clusterId: "beta", score: 0.4 }]
+    }
+  };
+  const plan = assignTasksToCitizens(queue, { physicsState, fallbackActorId: null, now: "2026-07-23T12:00:00Z" });
+  const suggested = plan.assignments.find(item => item.taskId === "task-a");
+  assert.equal(suggested.kind, "suggested");
+  assert.equal(suggested.provisional, true);
+  assert.deepEqual(suggested.alternatives.map(item => item.taskId), ["task-b"]);
+  assert.ok(typeof suggested.alternatives[0].score === "number");
+
+  const workspace = composeGlobalWorkspace({
+    queue: { total: 2, eligibleCount: 2, tasks: queue.tasks, nextTask: suggested.task },
+    assignment: suggested,
+    observedAt: "2026-07-23T12:00:00Z"
+  });
+  assert.equal(workspace.activeAssignment.kind, "suggested");
+  assert.equal(workspace.taskProposals.binding, false);
+  assert.deepEqual(workspace.taskProposals.alternatives.map(item => item.taskId), ["task-b"]);
+  assert.deepEqual(workspace.assignmentContract.requiredFields, ["chosenTaskId", "declined", "reason"]);
+
+  const prompt = buildWakePrompt(workspace);
+  assert.match(prompt, /SUGGESTION, pas un ordre/);
+  assert.match(prompt, /décliner toute tâche/);
+  assert.match(prompt, /chosenTaskId ou declined/);
+});
+
+test("an explicit human order stays imperative in the wake prompt", () => {
+  const workspace = composeGlobalWorkspace({
+    queue: { total: 1, eligibleCount: 1, tasks: [], nextTask: { id: "task-explicit", graphId: "design", name: "T", summary: "S" } },
+    assignment: { taskId: "task-explicit", citizenId: "citizen-x", kind: "assigned", provisional: false, score: 5, factors: { explicit: 1 }, alternatives: [] },
+    observedAt: "2026-07-23T12:00:00Z"
+  });
+  assert.equal(workspace.activeAssignment.kind, "assigned");
+  assert.equal(workspace.taskProposals.binding, true);
+  assert.equal(workspace.assignmentContract, null);
+  const prompt = buildWakePrompt(workspace);
+  assert.match(prompt, /Ordre humain explicite/);
+  assert.doesNotMatch(prompt, /SUGGESTION, pas un ordre/);
+});
+
+test("a citizen choice is extracted from the last JSON block amid free prose", () => {
+  const report = "Voici mon raisonnement {not: valid} puis un brouillon "
+    + '{"chosenTaskId": "task-a", "declined": false} et enfin '
+    + '{"chosenTaskId": "task-b", "declined": false, "reason": "plus proche"}';
+  const choice = extractCitizenChoice(report);
+  assert.equal(choice.chosenTaskId, "task-b");
+  assert.equal(choice.reason, "plus proche");
+  assert.equal(extractCitizenChoice("aucun json ici"), null);
+});
+
+test("accepting the suggestion confirms the provisional lease unchanged", () => {
+  const resolution = resolveCitizenTaskChoice({
+    activeAssignment: { kind: "suggested", citizenId: "citizen-x", taskId: "task-a", leaseId: "lease-a", leaseExpiresAt: "2026-07-23T12:10:00Z" },
+    taskProposals: { suggested: { taskId: "task-a", graphId: "design" }, alternatives: [{ taskId: "task-b", graphId: "design" }] },
+    reportText: '{"chosenTaskId": "task-a", "declined": false}'
+  });
+  assert.equal(resolution.status, "confirmed");
+  assert.equal(resolution.taskId, "task-a");
+  assert.equal(resolution.leaseId, "lease-a");
+  assert.equal(resolution.leaseConfirmed, true);
+});
+
+test("switching to an alternative mints a fresh lease for the chosen task", () => {
+  const resolution = resolveCitizenTaskChoice({
+    activeAssignment: { kind: "suggested", citizenId: "citizen-x", taskId: "task-a", leaseId: "lease-a" },
+    taskProposals: { suggested: { taskId: "task-a", graphId: "design" }, alternatives: [{ taskId: "task-b", graphId: "design" }] },
+    reportText: '{"chosenTaskId": "task-b", "declined": false, "reason": "je préfère B"}',
+    now: "2026-07-23T12:00:00Z"
+  });
+  assert.equal(resolution.status, "switched");
+  assert.equal(resolution.taskId, "task-b");
+  assert.notEqual(resolution.leaseId, "lease-a");
+  assert.match(resolution.leaseId, /^[a-f0-9]{20}$/);
+  assert.equal(resolution.leaseConfirmed, true);
+});
+
+test("declining releases the provisional lease and executes nothing", () => {
+  const resolution = resolveCitizenTaskChoice({
+    activeAssignment: { kind: "suggested", citizenId: "citizen-x", taskId: "task-a", leaseId: "lease-a" },
+    taskProposals: { suggested: { taskId: "task-a", graphId: "design" }, alternatives: [] },
+    reportText: '{"chosenTaskId": null, "declined": true, "reason": "je poursuis ma veille"}'
+  });
+  assert.equal(resolution.status, "declined");
+  assert.equal(resolution.taskId, null);
+  assert.equal(resolution.leaseId, null);
+  assert.equal(resolution.leaseConfirmed, false);
+});
+
+test("no explicit or out-of-scope choice keeps the suggestion by default", () => {
+  const noChoice = resolveCitizenTaskChoice({
+    activeAssignment: { kind: "suggested", citizenId: "citizen-x", taskId: "task-a", leaseId: "lease-a" },
+    taskProposals: { suggested: { taskId: "task-a", graphId: "design" }, alternatives: [{ taskId: "task-b", graphId: "design" }] },
+    reportText: "j'ai travaillé sans rien déclarer"
+  });
+  assert.equal(noChoice.status, "defaulted");
+  assert.equal(noChoice.taskId, "task-a");
+  assert.equal(noChoice.leaseConfirmed, true);
+
+  const outOfScope = resolveCitizenTaskChoice({
+    activeAssignment: { kind: "suggested", citizenId: "citizen-x", taskId: "task-a", leaseId: "lease-a" },
+    taskProposals: { suggested: { taskId: "task-a", graphId: "design" }, alternatives: [{ taskId: "task-b", graphId: "design" }] },
+    reportText: '{"chosenTaskId": "task-ZZZ", "declined": false}'
+  });
+  assert.equal(outOfScope.status, "defaulted");
+  assert.equal(outOfScope.taskId, "task-a");
+});
+
+test("a hard human order ignores the citizen choice and keeps its lease", () => {
+  const resolution = resolveCitizenTaskChoice({
+    activeAssignment: { kind: "assigned", citizenId: "citizen-x", taskId: "task-a", leaseId: "lease-a", leaseExpiresAt: "2026-07-23T12:10:00Z" },
+    taskProposals: { suggested: { taskId: "task-a", graphId: "design" }, alternatives: [{ taskId: "task-b", graphId: "design" }] },
+    reportText: '{"chosenTaskId": "task-b", "declined": true}'
+  });
+  assert.equal(resolution.status, "assigned");
+  assert.equal(resolution.taskId, "task-a");
+  assert.equal(resolution.leaseId, "lease-a");
+  assert.equal(resolution.honoredChoice, false);
+});
+
+test("citizen discovery and scoring expose an explainable fallback", () => {
+  const candidates = discoverCitizenCandidates({
+    physicsState: { summary: { byCitizen: [{ citizenId: "citizen-a", energy: 2 }] } },
+    fallbackActorId: "actor-nlr"
+  });
+  assert.deepEqual(candidates.map(candidate => candidate.citizenId), ["actor-nlr", "citizen-a"]);
+  const match = scoreTaskForCitizen(
+    { id: "task", graphId: "design", clusterId: "alpha" },
+    { citizenId: "citizen-a", normalizedEnergy: 1, workspace: {}, intentRankings: [{ clusterId: "alpha", score: 0.5 }] }
+  );
+  assert.equal(match.eligible, true);
+  assert.deepEqual(match.factors, { explicit: 0, continuity: 0, intent: 0.5, energy: 1, sameGraph: 0 });
+});
+
 test("an idle wake explicitly forbids mutations", () => {
   const workspace = composeGlobalWorkspace({
     queue: { total: 4, eligibleCount: 0, tasks: [{}, {}, {}, {}], nextTask: null },
@@ -76,6 +277,7 @@ test("an idle wake explicitly forbids mutations", () => {
   const prompt = buildWakePrompt(workspace);
   assert.equal(workspace.mode, "observe_only");
   assert.match(prompt, /N'effectue aucune mutation/);
+  assert.match(prompt, /citoyen actor-nlr/);
 });
 
 test("cluster gaps become a typed autonomous question agenda", () => {

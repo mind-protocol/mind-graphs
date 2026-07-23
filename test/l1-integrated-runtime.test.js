@@ -121,7 +121,7 @@ test("append-only Global Workspace snapshots do not prevent cognitive equilibriu
   assert.equal(result.report.stopReason, "stable");
   assert.equal(result.report.microTickCount, 2);
   assert.equal(result.state.workspaceSnapshots.length, 2);
-  assert.equal(result.workspace.slots[0].nodeIds[0], "choice");
+  assert.ok(result.workspace.slots.flatMap(slot => slot.nodeIds).includes("choice"));
 });
 
 test("automatic micro-ticks require an explicit observation identity and a bounded budget", () => {

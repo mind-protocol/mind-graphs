@@ -168,7 +168,7 @@ function workspaceView(workspace) {
     id: workspace?.id || null,
     controllerId: workspace?.controllerId || null,
     characterBudget: workspace?.characterBudget ?? null,
-    usedCharacters: workspace?.usedCharacters ?? 0,
+    usedCharacters: workspace?.characterUsed ?? workspace?.usedCharacters ?? 0,
     activeNodeIds: [...new Set(slots.flatMap(slot => slot.nodeIds || []))],
     activeGoalIds: [...new Set(slots.flatMap(slot => slot.goalIds || []))],
     slots,

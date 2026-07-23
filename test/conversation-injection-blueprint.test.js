@@ -3,6 +3,10 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const blueprintPath = new URL("../data/conversation-injection-blueprint.json", import.meta.url);
+const interpretedFixturePath = new URL(
+  "../l1/data/conversation-choix-de-vie-complexe-block-001-citizen-cluster.json",
+  import.meta.url
+);
 
 async function loadBlueprint() {
   return JSON.parse(await readFile(blueprintPath, "utf8"));
@@ -154,5 +158,41 @@ test("the four missions are distinct analyses and valuable unknowns create valid
   assert.match(missions.unknownConversionRule, /tâche bornée/);
   assert.ok(task.acceptanceCriteria.some(criterion =>
     criterion.includes("un nœud de projection distinct")
+  ));
+});
+
+test("the interpreted fixture materializes four mission projections and a task for its unknown actor", async () => {
+  const fixture = JSON.parse(await readFile(interpretedFixturePath, "utf8"));
+  const missionNodes = fixture.nodes.filter(node => node.claimNature === "mission_projection");
+  const missionKeys = missionNodes.map(node => node.missionKey).sort();
+
+  assert.deepEqual(missionKeys, [
+    "financial",
+    "objectives_preferences",
+    "psychology",
+    "situation"
+  ]);
+  for (const mission of missionNodes) {
+    for (const field of [
+      "resolutionState",
+      "analysis",
+      "evidence",
+      "hypotheses",
+      "unknowns",
+      "nextValidation"
+    ]) {
+      assert.ok(field in mission, `${mission.id} lacks ${field}`);
+    }
+  }
+
+  const discoveryTask = fixture.nodes.find(node =>
+    node.id === "objective-citizen-block-001-recover-context"
+  );
+  assert.equal(discoveryTask.claimNature, "discovery_task");
+  assert.match(discoveryTask.phrase, /référent de « elle »/);
+  assert.ok(fixture.links.some(link =>
+    link.source === "memory-citizen-block-001-mission-situation"
+    && link.target === discoveryTask.id
+    && link.type === "DESCRIBES"
   ));
 });

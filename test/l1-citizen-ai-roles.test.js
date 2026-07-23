@@ -38,7 +38,8 @@ test("every role cluster is canonically complete", () => {
     assert.ok(role, `${cluster.id} has no role`);
     for (const semanticType of [
       "CitizenAIRoleCluster", "DesignRationale", "BehavioralPolicy", "OperationalDesire",
-      "OperationalFear", "ConstitutionalLimit", "Capability", "Script", "RoleAudit"
+      "OperationalFear", "ConstitutionalLimit", "Capability", "Script", "RoleAudit",
+      "RoleOrientationQuestion", "RoleStrategy", "InterventionIdea"
     ]) {
       assert.ok(members.some(node => node?.semanticType === semanticType), `${cluster.id} lacks ${semanticType}`);
     }
@@ -46,6 +47,48 @@ test("every role cluster is canonically complete", () => {
       assert.ok(outgoing(role.id, relationType).length > 0, `${role.id} lacks ${relationType}`);
     }
   }
+});
+
+test("every role has justified questions, strategies and proposal-only ideas", () => {
+  const questions = graph.nodes.filter(node => node.semanticType === "RoleOrientationQuestion");
+  const strategies = graph.nodes.filter(node => node.semanticType === "RoleStrategy");
+  const ideas = graph.nodes.filter(node => node.semanticType === "InterventionIdea");
+
+  assert.equal(questions.length, 88);
+  assert.equal(strategies.length, 45);
+  assert.equal(ideas.length, 30);
+  assert.ok(questions.every(node => node.answerPrefilled === false && node.status === "orientation_prompt"));
+  assert.ok(strategies.every(node => node.status === "design_proposal" && node.requiresMandateForAction === true));
+  assert.ok(ideas.every(node => node.status === "proposal_only" && node.executable === false && node.requiresMandateForAction === true));
+
+  for (const question of questions) {
+    assert.ok(outgoing(question.id, "TESTS").some(relation => nodes.get(relation.target)?.semanticType === "CitizenAIRole"), question.id);
+    assert.ok(relations.some(relation => relation.type === "JUSTIFIES" && relation.target === question.id && relation.justification), question.id);
+  }
+  for (const strategy of strategies) {
+    assert.ok(outgoing(strategy.id, "ADDRESSES").some(relation => nodes.get(relation.target)?.semanticType === "RoleOrientationQuestion"), strategy.id);
+    assert.ok(relations.some(relation => relation.type === "FOLLOWS" && relation.target === strategy.id), strategy.id);
+    assert.ok(relations.some(relation => relation.type === "JUSTIFIES" && relation.target === strategy.id && relation.justification), strategy.id);
+  }
+  for (const idea of ideas) {
+    assert.ok(outgoing(idea.id, "OPTION_FOR").some(relation => nodes.get(relation.target)?.semanticType === "RoleStrategy"), idea.id);
+    assert.ok(relations.some(relation => relation.type === "RECOMMENDS" && relation.target === idea.id), idea.id);
+    assert.ok(relations.some(relation => relation.type === "JUSTIFIES" && relation.target === idea.id && relation.justification), idea.id);
+  }
+});
+
+test("the reflection contract preserves sovereignty and empty personal answers", () => {
+  const contract = graph.citizenAIRoleSystem.reflectionContract;
+  const contractNode = nodes.get("narrative-citizen-ai-role-reflection-contract");
+
+  assert.equal(contract.questionStatus, "orientation_prompt");
+  assert.equal(contract.strategyStatus, "design_proposal");
+  assert.equal(contract.ideaStatus, "proposal_only");
+  assert.equal(contract.sequence.length, 5);
+  assert.ok(contract.invariants.some(statement => /ne déclenche jamais automatiquement/u.test(statement)));
+  assert.equal(contractNode.semanticType, "ReflectionContract");
+  assert.equal(contractNode.personalPrefill, false);
+  assert.ok(outgoing(contractNode.id, "GROUNDS").some(relation => relation.target === "space-citizen-ai-role-system"));
 });
 
 test("operational desires and fears never claim phenomenal consciousness", () => {

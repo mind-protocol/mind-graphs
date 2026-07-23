@@ -127,6 +127,16 @@ function normalizeNode(node, defaults = {}) {
     autonomyMode: node.autonomyMode || "",
     acceptanceCriteria: node.acceptanceCriteria || [],
     verificationCommand: node.verificationCommand || "",
+    // Les tâches autonomes doivent conserver dans FalkorDB la preuve du dernier
+    // contact humain et le blocage concret. Sinon `sense()` relit une tâche
+    // amnésique et peut renotifier sans savoir ce qui a déjà été livré.
+    depositPath: node.depositPath || "",
+    blockerCause: node.blockerCause || "",
+    needsFromCitizen: node.needsFromCitizen || "",
+    lastNotificationAt: node.lastNotificationAt || "",
+    lastNotificationChannel: node.lastNotificationChannel || "",
+    lastNotificationMessageId: node.lastNotificationMessageId || "",
+    notificationDeliveryStatus: node.notificationDeliveryStatus || "",
     probeIntervalSeconds: node.probeIntervalSeconds ?? "",
     probeFreshnessSeconds: node.probeFreshnessSeconds ?? "",
     probeTargetIds: node.probeTargetIds || [],

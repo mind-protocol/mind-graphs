@@ -62,6 +62,48 @@ export async function listProcesses() {
   });
 }
 
+function aggregateCpuTimes(cpus = os.cpus()) {
+  return cpus.reduce((acc, cpu) => {
+    const times = cpu?.times || {};
+    acc.idle += Number(times.idle || 0);
+    acc.total += Object.values(times).reduce((sum, value) => sum + Number(value || 0), 0);
+    return acc;
+  }, { idle: 0, total: 0 });
+}
+
+export function readHostSnapshot() {
+  return {
+    totalMemoryBytes: os.totalmem(),
+    freeMemoryBytes: os.freemem(),
+    cpuSample: aggregateCpuTimes()
+  };
+}
+
+export function observeHostResources(spec = {}, previous = {}, snapshot = readHostSnapshot()) {
+  const totalMemoryBytes = Number(snapshot.totalMemoryBytes || 0);
+  const freeMemoryBytes = Number(snapshot.freeMemoryBytes || 0);
+  const usedMemoryPercent = totalMemoryBytes > 0
+    ? Math.max(0, Math.min(100, (1 - freeMemoryBytes / totalMemoryBytes) * 100))
+    : null;
+  const cpuSample = snapshot.cpuSample || { idle: 0, total: 0 };
+  const previousSample = previous?.observation?.checks?.host?.cpuSample;
+  const totalDelta = Number(cpuSample.total || 0) - Number(previousSample?.total || 0);
+  const idleDelta = Number(cpuSample.idle || 0) - Number(previousSample?.idle || 0);
+  const cpuUsedPercent = previousSample && totalDelta > 0
+    ? Math.max(0, Math.min(100, (1 - idleDelta / totalDelta) * 100))
+    : null;
+
+  return {
+    ok: true,
+    totalMemoryBytes,
+    freeMemoryBytes,
+    usedMemoryPercent,
+    cpuUsedPercent,
+    cpuSample,
+    thresholds: spec.thresholds || {}
+  };
+}
+
 export function checkTcp({ host, port, timeoutMs = 1500 }) {
   return new Promise(resolve => {
     const socket = net.createConnection({ host, port });
@@ -124,14 +166,73 @@ export async function observeService(service, options = {}) {
   if (spec.tcp) observation.checks.tcp = await (options.checkTcp || checkTcp)(spec.tcp);
   if (spec.http) observation.checks.http = await checkHttp(spec.http, options.fetchImpl || fetch);
   if (spec.artifact) observation.checks.artifact = await checkArtifact(spec.artifact, { cwd, now, stat: options.stat });
+  if (spec.host) {
+    const snapshot = typeof options.hostSnapshot === "function"
+      ? await options.hostSnapshot()
+      : options.hostSnapshot || readHostSnapshot();
+    observation.checks.host = observeHostResources(spec.host, options.previousServiceStatus, snapshot);
+  }
 
   return observation;
+}
+
+export function classifyHostResources(service, observation, previous = {}) {
+  const check = observation.checks?.host || {};
+  if (!Number.isFinite(check.usedMemoryPercent) || !Number.isFinite(check.freeMemoryBytes)) {
+    return { state: "unknown", reason: "host memory measurement unavailable", resourceLevel: "unknown" };
+  }
+
+  const thresholds = service.observation?.host?.thresholds || check.thresholds || {};
+  const cpu = Number.isFinite(check.cpuUsedPercent) ? check.cpuUsedPercent : null;
+  const memory = check.usedMemoryPercent;
+  const free = check.freeMemoryBytes;
+  const pressure = memory >= Number(thresholds.pressureMemoryUsedPercent ?? 85)
+    || (cpu !== null && cpu >= Number(thresholds.pressureCpuUsedPercent ?? 85));
+  const critical = memory >= Number(thresholds.criticalMemoryUsedPercent ?? 92)
+    || free <= Number(thresholds.criticalFreeMemoryBytes ?? 805306368)
+    || (cpu !== null && cpu >= Number(thresholds.criticalCpuUsedPercent ?? 95));
+  const previousCheck = previous?.observation?.checks?.host || {};
+  check.pressureSamples = pressure ? Number(previousCheck.pressureSamples || 0) + 1 : 0;
+  check.criticalSamples = critical ? Number(previousCheck.criticalSamples || 0) + 1 : 0;
+
+  if (check.criticalSamples >= Number(thresholds.criticalConsecutiveSamples ?? 1)) {
+    return {
+      state: "degraded",
+      reason: `critical host pressure: memory ${memory.toFixed(1)}%, free ${(free / 1073741824).toFixed(2)} GiB${cpu === null ? "" : `, cpu ${cpu.toFixed(1)}%`}`,
+      issue: "host_resource_pressure",
+      resourceLevel: "critical"
+    };
+  }
+  if (check.pressureSamples >= Number(thresholds.pressureConsecutiveSamples ?? 2)) {
+    return {
+      state: "degraded",
+      reason: `sustained host pressure: memory ${memory.toFixed(1)}%${cpu === null ? "" : `, cpu ${cpu.toFixed(1)}%`}`,
+      issue: "host_resource_pressure",
+      resourceLevel: "pressure"
+    };
+  }
+
+  const recovering = previous?.resourceLevel && previous.resourceLevel !== "healthy";
+  const recovered = memory < Number(thresholds.recoveryMemoryUsedPercent ?? 80)
+    && free > Number(thresholds.recoveryFreeMemoryBytes ?? 1610612736)
+    && (cpu === null || cpu < Number(thresholds.recoveryCpuUsedPercent ?? 70));
+  if (recovering && !recovered) {
+    return {
+      state: "degraded",
+      reason: `host recovering: memory ${memory.toFixed(1)}%, free ${(free / 1073741824).toFixed(2)} GiB${cpu === null ? "" : `, cpu ${cpu.toFixed(1)}%`}`,
+      issue: "host_resource_recovery",
+      resourceLevel: "recovering"
+    };
+  }
+
+  return { state: "healthy", reason: "host resources are inside declared budgets", resourceLevel: "healthy" };
 }
 
 export function classifyService(service, observation, previous = {}, now = new Date()) {
   if (service.enabled === false) return { state: "blocked", reason: "service disabled in manifest" };
 
   const checks = observation.checks || {};
+  if (checks.host) return classifyHostResources(service, observation, previous);
   const values = Object.values(checks);
   const unknown = values.length > 0 && values.every(check => check.unknown);
   if (unknown) return { state: "unknown", reason: "all measurements failed or were unavailable" };
@@ -140,6 +241,14 @@ export function classifyService(service, observation, previous = {}, now = new D
   const tcpCheck = checks.tcp;
   const httpCheck = checks.http;
   const artifactCheck = checks.artifact;
+
+  if (service.singleton && processCheck?.ok && processCheck.count > 1) {
+    return {
+      state: "degraded",
+      reason: `singleton has ${processCheck.count} running processes`,
+      issue: "duplicate_processes"
+    };
+  }
 
   if (service.observation?.process && processCheck && !processCheck.ok && !processCheck.unknown) {
     const lastStartedAt = previous.lastStartedAt ? new Date(previous.lastStartedAt).getTime() : 0;
@@ -198,6 +307,12 @@ export function repairDecision(service, status, previous = {}, now = new Date())
     return { action: "none", reason: "restart budget exhausted", attempts: attempts.length };
   }
 
+  if (status.issue === "duplicate_processes" && allowed.has("stop-excess")) {
+    return { action: "stop-excess", attempts: attempts.length };
+  }
+  if (status.issue === "host_resource_pressure" && allowed.has("shed-load")) {
+    return { action: "shed-load", resourceLevel: status.resourceLevel, attempts: attempts.length };
+  }
   if (allowed.has("restart") || allowed.has("start")) return { action: allowed.has("restart") ? "restart" : "start", command: repair.command, attempts: attempts.length };
   if (allowed.has("restart-dependency")) return { action: "restart-dependency", targetServiceId: repair.targetServiceId, attempts: attempts.length };
   return { action: "none", reason: "allowed repair action is not implemented" };
@@ -224,6 +339,12 @@ export function spawnDetached(command, { cwd = projectDir } = {}) {
   });
   child.unref();
   return child.pid;
+}
+
+export function terminateProcess(pid) {
+  if (!Number.isInteger(pid) || pid <= 0 || pid === process.pid) return false;
+  process.kill(pid, "SIGTERM");
+  return true;
 }
 
 function repairCommandFor(service) {
@@ -358,8 +479,9 @@ export async function runtimeCycle(config, options = {}) {
   }
 
   for (const service of services) {
-    const observation = await observeService(service, { ...options, cwd, now, processes, processListError });
-    const classified = classifyService(service, observation, previousById.get(service.id), now);
+    const previousServiceStatus = previousById.get(service.id);
+    const observation = await observeService(service, { ...options, cwd, now, processes, processListError, previousServiceStatus });
+    const classified = classifyService(service, observation, previousServiceStatus, now);
     statuses.push({
       id: service.id,
       name: service.name,
@@ -375,13 +497,89 @@ export async function runtimeCycle(config, options = {}) {
 
   const statusesById = new Map(statuses.map(status => [status.id, status]));
   applyDependencyBlocks(statusesById, services);
+  const hostStatus = statusesById.get("host_resources");
 
   const repairEvents = [];
   if (options.repair !== false) {
     for (const service of services) {
       const status = statusesById.get(service.id);
-      const decision = repairDecision(service, status, previousById.get(service.id), now);
+      const resourcePolicy = service.resourcePolicy || {};
+      const mustStayStopped = hostStatus?.state === "degraded" && (
+        resourcePolicy.stopOnHostPressure
+        || (hostStatus.resourceLevel === "critical" && resourcePolicy.stopOnHostCritical)
+      );
+      const decision = mustStayStopped && service.id !== "host_resources"
+        ? { action: "none", reason: `repair suppressed during host ${hostStatus.resourceLevel}` }
+        : repairDecision(service, status, previousById.get(service.id), now);
       status.repairDecision = decision;
+      if (decision.action === "stop-excess") {
+        const pids = status.observation?.checks?.process?.pids || [];
+        const previousPids = previousById.get(service.id)?.observation?.checks?.process?.pids || [];
+        const survivor = previousPids.find(pid => pids.includes(pid)) || [...pids].sort((a, b) => a - b)[0];
+        const excessPids = pids.filter(pid => pid !== survivor && pid !== process.pid);
+        const stopped = [];
+        for (const pid of excessPids) {
+          try {
+            if (await (options.terminateProcess || terminateProcess)(pid)) stopped.push(pid);
+          } catch (error) {
+            repairEvents.push({ type: "runtime_repair_failed", serviceId: service.id, action: decision.action, pid, error: error.message, observedAt: now.toISOString() });
+          }
+        }
+        if (stopped.length) {
+          const attempt = { at: now.toISOString(), action: decision.action, pids: stopped };
+          status.repairAttempts = [...recentAttempts(previousById.get(service.id) || {}, service, now), attempt];
+          repairEvents.push({
+            type: "runtime_repair_attempt",
+            serviceId: service.id,
+            action: decision.action,
+            survivorPid: survivor,
+            pids: stopped,
+            observedAt: now.toISOString()
+          });
+        }
+      }
+      if (decision.action === "shed-load") {
+        const targetServices = services.filter(candidate => {
+          if (candidate.id === service.id) return false;
+          const policy = candidate.resourcePolicy || {};
+          return policy.stopOnHostPressure || (decision.resourceLevel === "critical" && policy.stopOnHostCritical);
+        });
+        const stopped = [];
+        for (const targetService of targetServices) {
+          const pids = statusesById.get(targetService.id)?.observation?.checks?.process?.pids || [];
+          for (const pid of pids.filter(candidate => candidate !== process.pid)) {
+            try {
+              if (await (options.terminateProcess || terminateProcess)(pid)) {
+                stopped.push({ serviceId: targetService.id, pid });
+              }
+            } catch (error) {
+              repairEvents.push({
+                type: "runtime_repair_failed",
+                serviceId: service.id,
+                action: decision.action,
+                targetServiceId: targetService.id,
+                pid,
+                error: error.message,
+                observedAt: now.toISOString()
+              });
+            }
+          }
+        }
+        if (stopped.length) {
+          const attempt = { at: now.toISOString(), action: decision.action, targets: stopped };
+          status.repairAttempts = [...recentAttempts(previousById.get(service.id) || {}, service, now), attempt];
+          repairEvents.push({
+            type: "runtime_repair_attempt",
+            serviceId: service.id,
+            action: decision.action,
+            resourceLevel: decision.resourceLevel,
+            targets: stopped,
+            observedAt: now.toISOString()
+          });
+        } else {
+          status.repairDecision = { action: "none", reason: "all authorized pressure services are already stopped" };
+        }
+      }
       if (decision.action === "restart" || decision.action === "start" || decision.action === "restart-dependency") {
         const targetService = decision.action === "restart-dependency"
           ? services.find(candidate => candidate.id === decision.targetServiceId)

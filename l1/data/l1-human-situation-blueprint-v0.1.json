@@ -206,6 +206,10 @@
       "outboundCitizenMessageIsHumanObservation": false,
       "outboundCitizenMessageIsRelationshipEvent": true,
       "replyOrReactionCreatesNewObservation": true,
+      "conversationIsSpace": true,
+      "messageBelongsToConversationRelation": "OCCURS_IN",
+      "messagesAreChronologicallyChained": true,
+      "messageChainRelation": "FOLLOWS_IN_CONVERSATION",
       "rule": "Un message Telegram entrant attribué à l'humain devient un Moment HumanObservation. Un message sortant du Citizen AI décrit son action relationnelle et ne prouve rien sur l'état humain avant une réponse ou réaction attribuée."
     }
   },

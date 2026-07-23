@@ -7,6 +7,8 @@ const requiredText = (value, field) => {
 };
 const stableMomentId = (kind, conversationId, externalId) =>
   `moment-${kind}-${hash(`${conversationId}\u0000${externalId}`).slice(0, 24)}`;
+const stableConversationSpaceId = conversationId =>
+  `space-conversation-${hash(conversationId).slice(0, 24)}`;
 const validPosition = value => Number.isInteger(Number(value)) && Number(value) >= 0;
 const isoDate = (value, field) => {
   requiredText(value, field);
@@ -36,6 +38,7 @@ function lifecycleInput({ kind, conversationId, externalId, position, content, o
         sourceKind,
         sourceMessageId: externalId,
         conversationId,
+        conversationSpaceId: stableConversationSpaceId(conversationId),
         conversationPosition: Number(position),
         speakerRole,
         authorNodeId,
@@ -131,4 +134,4 @@ export function createConversationUtteranceTick(conversationIdValue, payload, { 
   });
 }
 
-export { stableMomentId };
+export { stableConversationSpaceId, stableMomentId };

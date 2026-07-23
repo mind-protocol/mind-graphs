@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createConversationBlockTick, createConversationUtteranceTick, createLiveMessageTick } from "../src/l1-message-ingestion.js";
+import { createConversationBlockTick, createConversationUtteranceTick, createLiveMessageTick, stableConversationSpaceId } from "../src/l1-message-ingestion.js";
 import { createMemoryMoment } from "../src/l1-subentities.js";
+import { EMPTY_SUBENTITY_RUNTIME_STATE, runSubentityLifecycleTick } from "../src/l1-subentity-runtime.js";
 
 const now = () => "2026-07-23T18:00:00.000Z";
 
@@ -11,6 +12,7 @@ test("a live user message becomes a dated and placed Moment", () => {
   assert.equal(tick.memory.metadata.timestampBasis, "server_received_at");
   assert.deepEqual(tick.memory.metadata.place, { kind: "conversation", conversationId: "thread-1", blockIndex: 4 });
   assert.equal(tick.memory.metadata.authorNodeId, "self-nlr");
+  assert.equal(tick.memory.metadata.conversationSpaceId, stableConversationSpaceId("thread-1"));
 });
 
 test("an inbound Telegram message is an explicit human observation source", () => {
@@ -79,5 +81,21 @@ test("Moment creation writes author and conversational placement relations", () 
   const result = createMemoryMoment({ ...tick.memory, workspaceSnapshot: tick.workspaceSnapshot });
   assert.ok(result.relations.some(relation => relation.type === "AUTHORED_BY" && relation.target === "self-nlr"));
   assert.ok(result.relations.some(relation => relation.type === "FOLLOWS_IN_CONVERSATION" && relation.target === tick.memory.metadata.previousMomentId));
+  assert.ok(result.relations.some(relation => relation.type === "OCCURS_IN" && relation.target === stableConversationSpaceId("thread-1")));
   assert.ok(result.relations.some(relation => relation.type === "CONTROLLED_WORKSPACE_DURING" && relation.source === "subentity-captain"));
+});
+
+test("conversation messages share one Space and are chained automatically by position", () => {
+  const firstTick = createLiveMessageTick({ conversationId: "thread-chain", messageId: "msg-1", position: 0, content: "Premier" }, { now });
+  const first = runSubentityLifecycleTick(EMPTY_SUBENTITY_RUNTIME_STATE, firstTick);
+  const secondTick = createLiveMessageTick({ conversationId: "thread-chain", messageId: "msg-2", position: 1, content: "Second" }, { now });
+  const second = runSubentityLifecycleTick(first.state, secondTick);
+  const conversationSpaceId = stableConversationSpaceId("thread-chain");
+
+  assert.equal(second.state.spaces.filter(space => space.id === conversationSpaceId).length, 1);
+  assert.equal(second.state.spaces.find(space => space.id === conversationSpaceId).observationCount, 2);
+  assert.ok(second.state.relations.some(relation =>
+    relation.type === "OCCURS_IN" && relation.source === secondTick.memory.id && relation.target === conversationSpaceId));
+  assert.ok(second.state.relations.some(relation =>
+    relation.type === "FOLLOWS_IN_CONVERSATION" && relation.source === secondTick.memory.id && relation.target === firstTick.memory.id));
 });

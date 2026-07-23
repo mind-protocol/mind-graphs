@@ -318,6 +318,10 @@ test("the human situation model keeps human, citizen and relationship state sepa
   assert.equal(system.messageSourceContract.telegram.inboundHumanMessageIsObservation, true);
   assert.equal(system.messageSourceContract.telegram.outboundCitizenMessageIsHumanObservation, false);
   assert.equal(system.messageSourceContract.telegram.outboundCitizenMessageIsRelationshipEvent, true);
+  assert.equal(system.messageSourceContract.telegram.conversationIsSpace, true);
+  assert.equal(system.messageSourceContract.telegram.messageBelongsToConversationRelation, "OCCURS_IN");
+  assert.equal(system.messageSourceContract.telegram.messagesAreChronologicallyChained, true);
+  assert.equal(system.messageSourceContract.telegram.messageChainRelation, "FOLLOWS_IN_CONVERSATION");
 
   const humanActor = nodes.get("actor-human-situation-human-partner");
   const humanFrame = nodes.get("moment-human-situation-state-snapshot");

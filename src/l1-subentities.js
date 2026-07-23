@@ -234,5 +234,13 @@ export function createMemoryMoment({ id, occurredAt, content, workspaceSnapshot 
     conversationId: metadata.conversationId || null,
     position: metadata.conversationPosition ?? null
   });
+  if (metadata.conversationSpaceId) relations.push({
+    id: `${id}-occurs-in-${metadata.conversationSpaceId}`,
+    source: id,
+    type: "OCCURS_IN",
+    target: metadata.conversationSpaceId,
+    conversationId: metadata.conversationId || null,
+    position: metadata.conversationPosition ?? null
+  });
   return { moment, relations };
 }

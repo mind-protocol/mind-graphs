@@ -69,6 +69,18 @@ function upsertCandidates(existing, candidates) {
   return [...byId.values()];
 }
 
+function previousConversationMoment(moments, memory) {
+  const metadata = memory?.metadata || {};
+  if (metadata.previousMomentId || !metadata.conversationId) return metadata.previousMomentId || null;
+  const position = Number(metadata.conversationPosition);
+  if (!Number.isFinite(position)) return null;
+  return [...moments]
+    .filter(moment => moment.conversationId === metadata.conversationId
+      && Number.isFinite(Number(moment.conversationPosition))
+      && Number(moment.conversationPosition) < position)
+    .sort((left, right) => Number(right.conversationPosition) - Number(left.conversationPosition))[0]?.id || null;
+}
+
 /**
  * Exécute une transaction logique pure. L'appelant ne persiste le résultat
  * qu'après succès complet : aucune fusion partielle ne peut devenir visible.
@@ -106,7 +118,14 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
   let memoryResult = null;
   let attributionResult = null;
   if (input.memory) {
-    memoryResult = createMemoryMoment({ ...input.memory, workspaceSnapshot: input.workspaceSnapshot || {} });
+    const inferredPreviousMomentId = previousConversationMoment(state.moments, input.memory);
+    const memory = inferredPreviousMomentId && !input.memory.metadata?.previousMomentId
+      ? {
+          ...input.memory,
+          metadata: { ...(input.memory.metadata || {}), previousMomentId: inferredPreviousMomentId }
+        }
+      : input.memory;
+    memoryResult = createMemoryMoment({ ...memory, workspaceSnapshot: input.workspaceSnapshot || {} });
     newRelations.push(...memoryResult.relations);
     attributionResult = attributeMemoryMoment({
       moment: memoryResult.moment,
@@ -146,11 +165,27 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
   const perception = input.perception || null;
   const previousSpace = perception?.space ? state.spaces.find(space => space.id === perception.space.id) : null;
   const nextActors = perception?.actor ? upsertById(state.actors, [perception.actor]) : state.actors;
-  const nextSpaces = perception?.space ? upsertById(state.spaces, [{
+  const incomingSpaces = perception?.space ? [{
     ...perception.space,
     firstObservedAt: previousSpace?.firstObservedAt || perception.space.firstObservedAt,
     observationCount: Number(previousSpace?.observationCount || 0) + 1
-  }]) : state.spaces;
+  }] : [];
+  const conversationSpaceId = memoryResult?.moment.conversationSpaceId;
+  if (conversationSpaceId) {
+    const previousConversationSpace = state.spaces.find(space => space.id === conversationSpaceId);
+    incomingSpaces.push({
+      id: conversationSpaceId,
+      nodeType: "Space",
+      semanticType: "Conversation",
+      name: `Conversation · ${memoryResult.moment.conversationId}`,
+      conversationId: memoryResult.moment.conversationId,
+      channel: memoryResult.moment.channel || null,
+      firstObservedAt: previousConversationSpace?.firstObservedAt || memoryResult.moment.occurredAt,
+      lastObservedAt: memoryResult.moment.occurredAt,
+      observationCount: Number(previousConversationSpace?.observationCount || 0) + 1
+    });
+  }
+  const nextSpaces = incomingSpaces.length ? upsertById(state.spaces, incomingSpaces) : state.spaces;
   const nextPerceptualMoments = perception?.moment
     ? upsertById(state.perceptualMoments, [perception.moment])
     : state.perceptualMoments;

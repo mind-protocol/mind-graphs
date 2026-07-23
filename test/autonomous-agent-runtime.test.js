@@ -68,6 +68,11 @@ test("the global workspace incorporates current physics and advances each wake",
   assert.deepEqual(first.activeNodeIds, ["task", "source", "target"]);
   assert.equal(first.sense.status, "read_at_wake");
   assert.match(first.sense.contract, /Global Workspace courant/);
+  assert.equal(first.consciousState.schemaVersion, "conscious-state-frame-v1");
+  assert.equal(first.voice.schemaVersion, "awareness-voice-v1");
+  assert.match(first.voice.text, /Mon attention est équilibrée/);
+  assert.match(first.voice.text, /état émotionnel/);
+  assert.ok(first.voice.sentences.every(item => item.ruleId && item.derivedFrom.length));
   assert.notEqual(first.contentHash, second.contentHash);
 });
 

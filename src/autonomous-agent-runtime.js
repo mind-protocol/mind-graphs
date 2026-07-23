@@ -8,6 +8,9 @@ import {
   compileClusterQuestions, DEFAULT_CLUSTER_QUESTION_POLICY
 } from "./cluster-question-compiler.js";
 import { innerOuterFocusOf } from "./l1-attention-arbitrator.js";
+import {
+  compileConsciousStateFrame, narrateConsciousState
+} from "./l1-conscious-state.js";
 
 async function queueFromDatabase(graphConfig, selectGraph, energyByNode) {
   const graph = await selectGraph(graphConfig.falkorGraph);
@@ -475,7 +478,8 @@ export function composeGlobalWorkspace({
   affectVector,
   innerOuterFocus,
   questionPolicy = null,
-  assignment = null
+  assignment = null,
+  consciousStateContext = {}
 }) {
   const version = Number(previousWorkspace?.version || 0) + 1;
   const task = queue.nextTask;
@@ -626,7 +630,14 @@ export function composeGlobalWorkspace({
       graphPersistenceRule: "Toute réponse étayée est matérialisée dans le graphe ; no_mutation reste dans le registre si aucune preuve admissible n'existe."
     } : null
   };
-  return { ...workspace, contentHash: workspaceDigest(workspace) };
+  const consciousState = compileConsciousStateFrame({
+    workspace,
+    previousWorkspace,
+    ...consciousStateContext
+  });
+  const voice = narrateConsciousState(consciousState);
+  const consciousWorkspace = { ...workspace, consciousState, voice };
+  return { ...consciousWorkspace, contentHash: workspaceDigest(consciousWorkspace) };
 }
 
 export function buildWakePrompt(workspace) {

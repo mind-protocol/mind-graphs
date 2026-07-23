@@ -14,6 +14,7 @@ const affectSourcePath = args.get("--affect-source") || "l1/data/l1-affective-bl
 const sensorySourcePath = args.get("--sensory-source") || "l1/data/l1-sensory-blueprint-v0.1.json";
 const metacognitiveSourcePath = args.get("--metacognitive-source") || "l1/data/l1-metacognitive-blueprint-v0.1.json";
 const citizenAIRolesSourcePath = args.get("--citizen-ai-roles-source") || "l1/data/l1-citizen-ai-roles-blueprint-v0.1.json";
+const subentityAttributionSourcePath = args.get("--subentity-attribution-source") || "l1/data/l1-subentity-memory-attribution-blueprint-v0.1.json";
 if (!sourcePath) throw new Error("Usage: node scripts/build-l1-brain-blueprint.js --source=<texte> [--output=<json>]");
 
 const text = await fs.readFile(sourcePath, "utf8");
@@ -752,6 +753,189 @@ addDerivedRelation({ source: "thing-citizen-ai-role-handoff-protocol", type: "PR
 addDerivedRelation({ source: "thing-ai-operational-requirement-monitor", type: "FEEDS", target: "thing-citizen-ai-role-activation-scorer", justification: "Les déficits opérationnels modifient le choix de rôle : clarification, recherche, vérification, repli, arrêt sûr ou évaluation, sans être interprétés comme des émotions.", cluster: roleSystemCluster, provenance: "needs_blueprint" });
 addDerivedRelation({ source: "thing-ai-operational-requirement-schema", type: "CONSTRAINS", target: "actor-blueprint-citizen-ai", justification: "Le Citizen AI est décrit par des exigences fonctionnelles observables et non par des besoins biologiques ou phénoménaux.", cluster: roleSystemCluster, provenance: "needs_blueprint" });
 
+const afterCitizenAIRoleCounts = { nodes: nodes.length, relations: relations.length, clusters: clusters.length };
+const subentityAttribution = JSON.parse(await fs.readFile(subentityAttributionSourcePath, "utf8"));
+const attributionCluster = cortexCluster;
+const attributionSpaceId = "space-subentity-memory-attribution";
+const attributionNodeIds = [];
+const addAttributionNode = definition => {
+  addNode({
+    ...definition,
+    facets: ["blueprint", "subentity_memory_attribution", ...(definition.facets || [])],
+    epistemicStatus: definition.epistemicStatus || "design_proposal",
+    clusterId: attributionCluster.id,
+    citizen: false,
+    injectsEnergy: false,
+    initialEnergy: 0
+  });
+  if (!attributionCluster.nodeIds.includes(definition.id)) attributionCluster.nodeIds.push(definition.id);
+  attributionNodeIds.push(definition.id);
+};
+const parsePair = entry => {
+  const [key, ...description] = String(entry).split("|");
+  return { key, description: description.join("|") };
+};
+
+addAttributionNode({
+  id: attributionSpaceId,
+  nodeType: "Space",
+  semanticType: "BlueprintSubcluster",
+  name: "Attribution mémorielle des sous-entités",
+  description: subentityAttribution.doctrine
+});
+
+const attributionCollections = [
+  ["principles", "narrative-attribution-principle", "Narrative", "DesignPrinciple", "Principe"],
+  ["justifications", "narrative-attribution-justification", "Narrative", "DesignJustification", "Justification"],
+  ["risks", "narrative-attribution-risk", "Narrative", "Risk", "Risque"],
+  ["scenarios", "moment-attribution-scenario", "Moment", "ValidationScenario", "Scénario"],
+  ["relationDefinitions", "thing-attribution-relation", "Thing", "AttributionRelationContract", "Relation"],
+  ["modes", "narrative-attribution-mode", "Narrative", "AttributionMode", "Mode"],
+  ["contractFields", "thing-attribution-field", "Thing", "AttributionContractField", "Champ"],
+  ["guardrails", "narrative-attribution-guardrail", "Narrative", "ConstitutionalGuardrail", "Garde-fou"],
+  ["momentTemplates", "moment-attribution-template", "Moment", "RuntimeMomentTemplate", "Moment template"],
+  ["decisions", "moment-attribution-decision", "Moment", "Decision", "Décision"]
+];
+const attributionIds = {};
+for (const [collection, prefix, nodeType, semanticType, label] of attributionCollections) {
+  attributionIds[collection] = subentityAttribution[collection].map((entry, index) => {
+    const pair = parsePair(entry);
+    const id = `${prefix}-${index + 1}`;
+    addAttributionNode({
+      id,
+      nodeType,
+      semanticType,
+      name: `${label} · ${pair.key || index + 1}`,
+      description: pair.description || pair.key
+    });
+    return id;
+  });
+}
+
+attributionIds.mechanisms = subentityAttribution.mechanisms.map(entry => {
+  const pair = parsePair(entry);
+  const id = `thing-attribution-${pair.key}`;
+  addAttributionNode({
+    id,
+    nodeType: "Thing",
+    semanticType: "MemoryAttributionMechanism",
+    name: pair.key,
+    description: pair.description
+  });
+  return id;
+});
+
+for (const id of attributionNodeIds.filter(id => id !== attributionSpaceId)) {
+  addDerivedRelation({
+    source: id,
+    type: "PART_OF",
+    target: attributionSpaceId,
+    justification: `${id} appartient au contrat d'attribution mémorielle des sous-entités.`,
+    cluster: attributionCluster,
+    provenance: "subentity_memory_attribution"
+  });
+}
+attributionIds.justifications.forEach((id, index) => addDerivedRelation({
+  source: id,
+  type: "JUSTIFIES",
+  target: attributionIds.principles[index],
+  justification: subentityAttribution.justifications[index],
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+}));
+attributionIds.principles.forEach((id, index) => addDerivedRelation({
+  source: id,
+  type: "CONSTRAINS",
+  target: attributionIds.mechanisms[index % attributionIds.mechanisms.length],
+  justification: subentityAttribution.principles[index],
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+}));
+attributionIds.risks.forEach((id, index) => addDerivedRelation({
+  source: id,
+  type: "MITIGATED_BY",
+  target: attributionIds.mechanisms[(index + 3) % attributionIds.mechanisms.length],
+  justification: `Le mécanisme ciblé réduit le risque « ${subentityAttribution.risks[index]} ».`,
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+}));
+attributionIds.scenarios.forEach((id, index) => addDerivedRelation({
+  source: id,
+  type: "VALIDATES",
+  target: attributionIds.mechanisms[index % attributionIds.mechanisms.length],
+  justification: subentityAttribution.scenarios[index],
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+}));
+for (const id of attributionIds.relationDefinitions) addDerivedRelation({
+  source: id,
+  type: "CONFIGURES",
+  target: "thing-attribution-attribution-engine",
+  justification: "Le contrat de relation configure l'écriture de l'attribution.",
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+});
+for (const id of attributionIds.modes) addDerivedRelation({
+  source: id,
+  type: "CONFIGURES",
+  target: "thing-attribution-attribution-engine",
+  justification: "Le mode choisi qualifie explicitement la provenance temporelle et l'incertitude.",
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+});
+for (const id of attributionIds.contractFields) addDerivedRelation({
+  source: id,
+  type: "CONFIGURES",
+  target: "thing-attribution-attribution-contract",
+  justification: "Ce champ appartient au contrat de données versionné.",
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+});
+for (let index = 0; index < attributionIds.mechanisms.length - 1; index += 1) addDerivedRelation({
+  source: attributionIds.mechanisms[index],
+  type: "FEEDS",
+  target: attributionIds.mechanisms[index + 1],
+  justification: "Le pipeline conserve l'ordre causal entre sélection, snapshot, attribution, correction, audit et projection.",
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+});
+attributionIds.guardrails.forEach((id, index) => addDerivedRelation({
+  source: id,
+  type: "CONSTRAINS",
+  target: index % 2 ? "thing-attribution-workspace-selector" : "thing-attribution-attribution-engine",
+  justification: subentityAttribution.guardrails[index],
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+}));
+attributionIds.momentTemplates.forEach((id, index) => addDerivedRelation({
+  source: id,
+  type: "PRODUCED_BY",
+  target: attributionIds.mechanisms[(index + 1) % attributionIds.mechanisms.length],
+  justification: "Le Moment runtime est produit par un mécanisme explicite et auditable.",
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+}));
+attributionIds.decisions.forEach((id, index) => addDerivedRelation({
+  source: id,
+  type: "DECIDES",
+  target: attributionIds.mechanisms[index],
+  justification: subentityAttribution.decisions[index],
+  cluster: attributionCluster,
+  provenance: "subentity_memory_attribution"
+}));
+for (const entry of subentityAttribution.crossLinks) {
+  const [source, type, target] = entry.split("|");
+  addDerivedRelation({
+    source,
+    type,
+    target,
+    justification: `Le contrat d'attribution relie ${source} à ${target} sans créer d'énergie ni transférer la propriété du Moment.`,
+    cluster: attributionCluster,
+    provenance: "subentity_memory_attribution"
+  });
+}
+const afterSubentityAttributionCounts = { nodes: nodes.length, relations: relations.length, clusters: clusters.length };
+
 // Chaque lien porte le même contrat affectif extensible. Les valeurs initiales
 // sont des priors de blueprint faibles, jamais un profil psychologique personnel.
 // Le contexte runtime décide si une polarité négative devient surprise,
@@ -814,14 +998,19 @@ const graph = {
     clusters: afterMetacognitiveCounts.clusters - afterSensoryCounts.clusters
   },
   citizenAIRoleAugmentationCounts: {
-    nodes: actualCounts.nodes - afterMetacognitiveCounts.nodes,
-    relations: actualCounts.relations - afterMetacognitiveCounts.relations,
-    clusters: actualCounts.clusters - afterMetacognitiveCounts.clusters
+    nodes: afterCitizenAIRoleCounts.nodes - afterMetacognitiveCounts.nodes,
+    relations: afterCitizenAIRoleCounts.relations - afterMetacognitiveCounts.relations,
+    clusters: afterCitizenAIRoleCounts.clusters - afterMetacognitiveCounts.clusters
+  },
+  subentityMemoryAttributionAugmentationCounts: {
+    nodes: afterSubentityAttributionCounts.nodes - afterCitizenAIRoleCounts.nodes,
+    relations: afterSubentityAttributionCounts.relations - afterCitizenAIRoleCounts.relations,
+    clusters: afterSubentityAttributionCounts.clusters - afterCitizenAIRoleCounts.clusters
   },
   actualCounts,
   sourceAudit: {
-    sources: [path.resolve(sourcePath), path.resolve(cortexSourcePath), path.resolve(affectSourcePath), path.resolve(sensorySourcePath), path.resolve(metacognitiveSourcePath), path.resolve(citizenAIRolesSourcePath)],
-    extraction: "Le corps structuré du blueprint est autoritaire pour ses 23 clusters. La machine Cortex est projetée depuis l1-design.json. L'extension affective ajoute huit clusters. Le pont sensoriel et l'extension métacognitive complètent les clusters existants. Le système Citizen AI ajoute un Actor archétype, un template d'instance non souverain, un runtime partagé et quinze clusters de rôles fonctionnels explicites.",
+    sources: [path.resolve(sourcePath), path.resolve(cortexSourcePath), path.resolve(affectSourcePath), path.resolve(sensorySourcePath), path.resolve(metacognitiveSourcePath), path.resolve(citizenAIRolesSourcePath), path.resolve(subentityAttributionSourcePath)],
+    extraction: "Le corps structuré du blueprint est autoritaire pour ses 23 clusters. La machine Cortex est projetée depuis l1-design.json. L'extension affective ajoute huit clusters. Le pont sensoriel et l'extension métacognitive complètent les clusters existants. Le système Citizen AI ajoute un Actor archétype, un template d'instance non souverain, un runtime partagé et quinze clusters de rôles fonctionnels explicites. Le package d'attribution mémorielle ajoute 99 nodes et 206 relations au cluster des sous-entités.",
     discrepancies: [
       `Le résumé du blueprint annonce ${declaredCounts.nodes} nœuds, tandis que son corps contient ${baseBodyCounts.nodes} IDs uniques avant intégration Cortex.`,
       `Le résumé du blueprint annonce ${declaredCounts.relations} relations, tandis que son corps contient ${baseBodyCounts.relations} relations explicites avant intégration Cortex.`
@@ -901,6 +1090,21 @@ const graph = {
     consciousnessClaim: false,
     personalBeliefsPrefilled: false,
     roleActorsCreated: false
+  },
+  subentityMemoryAttributionSystem: {
+    scope: subentityAttribution.scope,
+    doctrine: subentityAttribution.doctrine,
+    principles: subentityAttribution.principles,
+    risks: subentityAttribution.risks,
+    scenarios: subentityAttribution.scenarios,
+    relationTypes: subentityAttribution.relationDefinitions.map(entry => entry.split("|")[0]),
+    modes: subentityAttribution.modes.map(entry => entry.split("|")[0]),
+    contractFields: subentityAttribution.contractFields.map(entry => entry.split("|")[0]),
+    memoryOwner: "citizen_ai_unique",
+    relationDirection: "Moment_to_Subentity",
+    unknownIsValid: true,
+    selfConfirmationAllowed: false,
+    correctionStrategy: "append_only_supersession"
   },
   openQuestionIds: nodes.filter(node => node.semanticType === "OpenQuestion").map(node => node.id),
   clusters,

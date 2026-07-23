@@ -60,6 +60,10 @@
           "file": "autonomous-improvement-endgame.json"
         },
         {
+          "id": "code-endgame-design",
+          "file": "code-endgame-design.json"
+        },
+        {
           "id": "continuous-verification",
           "file": "continuous-verification.json"
         },

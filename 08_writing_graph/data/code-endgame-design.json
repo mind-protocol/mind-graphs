@@ -1,0 +1,1984 @@
+{
+  "scope": "Endgame du code de Mind (design-only, différé). Le programme canonique devient un graphe atomisé de fonctions, contrats, comportements, types, tests, justifications et observations ; les fichiers redeviennent des artefacts de compilation reconstruits depuis une révision ; développeurs et Citizen AI travaillent exclusivement sur le Program Graph. Ce cluster décrit vision, mission, décisions de design, mécanismes cibles, gabarits d’événements et de tâches, risques, garde-fous et questions ouvertes. Il ne doit déclencher aucune migration avant stabilisation des priorités courantes.",
+  "clusterId": "code-endgame-design",
+  "lifecycle": "design_only",
+  "implementationStatus": "deferred",
+  "nodes": [
+    {
+      "id": "context-code-endgame-design",
+      "name": "Contexte · Endgame du code — le programme devient un graphe",
+      "nodeType": "space",
+      "semanticType": "context",
+      "phrase": "Le filesystem n’est qu’un détail de toolchain ; le programme canonique vit dans le graphe.",
+      "family": "Endgame du code · périmètre",
+      "summary": "Périmètre de conception (design-only, différé) de l’endgame du code : le programme canonique de Mind devient un graphe atomisé de fonctions, contrats, comportements, types, tests, justifications et observations. Développeurs et Citizen AI ne modifient jamais des fichiers directement ; les fichiers redeviennent des artefacts de compilation reconstruits depuis une révision. Ce cluster décrit l’état cible et ne doit déclencher aucune migration avant stabilisation des priorités courantes.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "lifecycle": "design_only",
+      "implementationStatus": "deferred",
+      "doNotImplementNow": true
+    },
+    {
+      "id": "actor-org-mind-protocol",
+      "name": "Organisation · Mind Protocol",
+      "nodeType": "actor",
+      "semanticType": "actor",
+      "phrase": "L’organisation porte la conception, la gouvernance et les futures expérimentations.",
+      "family": "Endgame du code · acteurs",
+      "summary": "Elle est propriétaire de la doctrine de l’endgame du code et arbitre le passage éventuel du design à l’implémentation.",
+      "epistemicStatus": "documented",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "actor-role-graph-native-developer",
+      "name": "Rôle · Développeur graph-native",
+      "nodeType": "actor",
+      "semanticType": "actor",
+      "phrase": "Humain ou Citizen AI qui travaille exclusivement sur le Program Graph.",
+      "family": "Endgame du code · acteurs",
+      "summary": "Il ne voit ni chemins ni fichiers : il navigue et modifie les unités sémantiques, leurs contrats, leurs tests et leurs révisions.",
+      "epistemicStatus": "documented",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "actor-role-code-steward",
+      "name": "Rôle · Code Steward",
+      "nodeType": "actor",
+      "semanticType": "actor",
+      "phrase": "Il préserve contrats, dépendances, révisions, provenance et cohérence.",
+      "family": "Endgame du code · acteurs",
+      "summary": "Rôle opérationnel garant de l’intégrité du graphe canonique et de la lisibilité humaine complète.",
+      "epistemicStatus": "documented",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "actor-role-repair-agent",
+      "name": "Rôle · Repair Agent",
+      "nodeType": "actor",
+      "semanticType": "actor",
+      "phrase": "Il reçoit des tâches de réparation et propose des ChangeSets bornés.",
+      "family": "Endgame du code · acteurs",
+      "summary": "Rôle futur, activé par une erreur devenue tâche ; ses propositions restent contraintes par budgets, permissions, portée et rollback.",
+      "epistemicStatus": "documented",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "horizon-program-becomes-graph",
+      "name": "Vision · Le programme devient un graphe exécutable",
+      "nodeType": "narrative",
+      "semanticType": "horizon",
+      "phrase": "Fonctions, contrats, comportements, types, tests, justifications et observations forment un graphe exécutable.",
+      "family": "Endgame du code · vision",
+      "summary": "Le programme canonique de Mind devient un graphe atomisé où chaque unité logicielle reste reliée à son objectif, ses invariants, ses dépendances, ses tests, ses erreurs et ses conséquences observées.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "horizon-abstract-filesystem",
+      "name": "Mission · Abstraire totalement le filesystem",
+      "nodeType": "narrative",
+      "semanticType": "horizon",
+      "phrase": "Développeurs et Citizen AI ne travaillent jamais directement sur des fichiers.",
+      "family": "Endgame du code · mission",
+      "summary": "La mission opérationnelle : toute compréhension, modification, revue, test et réparation passe par les unités sémantiques du Program Graph ; les fichiers sont masqués par une couche d’abstraction.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "rationale-filesystem-is-toolchain-detail",
+      "name": "Justification · Le filesystem est un détail de toolchain",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "La découpe en fichiers est imposée par compilateurs et runtimes, pas par la compréhension.",
+      "family": "Endgame du code · justification",
+      "summary": "La séparation en fichiers sert les outils actuels ; elle ne doit pas structurer la façon dont le programme est compris ni son identité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "rationale-causal-intelligibility",
+      "name": "Justification · Le programme doit rester causalement intelligible",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Chaque unité garde le lien vers son but, ses invariants, ses tests, ses erreurs et ses effets.",
+      "family": "Endgame du code · justification",
+      "summary": "L’atomisation n’a de valeur que si elle préserve la traçabilité causale : objectif, contrat, dépendances, tests, erreurs observées et conséquences restent attachés à l’unité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "axiom-design-now-implement-later",
+      "name": "Décision · Concevoir maintenant, implémenter plus tard",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Le cluster définit l’endgame mais ne déclenche aucune migration prématurée.",
+      "family": "Endgame du code · gouvernance",
+      "summary": "Aucune implémentation ne démarre avant stabilisation de la boucle autonome, de l’onboarding, de l’ingestion, de l’observabilité et de l’UX. La conception est explicite ; le passage à l’acte est un choix gouverné, réversible et daté.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "doNotStartImplementation": true,
+      "implementationStatus": "blocked_by_current_priorities"
+    },
+    {
+      "id": "axiom-decision-semantic-atoms",
+      "name": "Décision · Les unités sémantiques sont canoniques",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Fonctions, classes, interfaces, schemas, machines d’état, endpoints et tests sont les identités fondamentales.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Les atomes sémantiques — et non les fichiers — sont les identités canoniques du programme : chacun a un contrat, une raison de changer et une histoire propres.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-graph-only-work",
+      "name": "Décision · Les développeurs travaillent uniquement sur le graphe",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Compréhension, modification, revue, test et réparation passent par le Program Graph.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Aucun accès direct au filesystem dans le flux nominal : l’unité de travail est l’atome sémantique et ses relations, jamais la ligne dans un fichier.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-files-are-artifacts",
+      "name": "Décision · Les fichiers sont des artefacts de compilation",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Les fichiers sont reconstruits automatiquement et peuvent être supprimés ou déplacés sans changer l’identité du programme.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Un fichier devient une projection : le supprimer ou le réorganiser ne modifie pas le programme, seulement son rendu pour la toolchain.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-stable-logical-id",
+      "name": "Décision · L’identité logique est indépendante du chemin",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Une fonction garde son identifiant à travers renommages, déplacements et changements de langage.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "L’identité d’un atome est stable : elle survit aux réorganisations, ce qui rend les révisions comparables et les historiques continus.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-graph-source-maps",
+      "name": "Décision · Le runtime remonte vers les IDs du graphe",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Les artefacts portent des source maps reliant erreurs et frames aux Function IDs et Program Revisions.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Toute frame runtime peut être ramenée à un atome et à une révision précise, condition sans laquelle l’abstraction rendrait le debugging opaque.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-reality-as-moments",
+      "name": "Décision · La réalité retourne comme Moments",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Compilations, builds, tests, erreurs, performances et déploiements sont des événements datés reliés à une révision.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Les résultats réels ne sont jamais des propriétés figées : ce sont des Moments datés, attachés à une révision et renforçables.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-errors-are-moments-not-actors",
+      "name": "Décision · Les erreurs sont des Moments, pas des Actors",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Une erreur peut créer une tâche et mobiliser un Repair Agent, mais ne devient pas elle-même un acteur.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Une erreur observée est un fait daté ; elle déclenche du travail sans acquérir de finalité propre ni de statut d’agent.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-errors-become-tasks",
+      "name": "Décision · Les erreurs actionnables deviennent des Tasks",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Un routeur déduplique et contextualise les erreurs avant de créer ou d’actualiser une tâche.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Toutes les erreurs ne créent pas de tâche : seules les erreurs actionnables, dédupliquées et contextualisées, deviennent un travail identifié.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-transactional-materialization",
+      "name": "Décision · La matérialisation est transactionnelle",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Une révision candidate est matérialisée, compilée, testée et auditée en isolation avant promotion.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Aucun candidat ne touche les artefacts actifs : matérialisation, compilation, tests et audit se font dans un environnement isolé, puis promotion ou abandon.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-semantic-diff-review",
+      "name": "Décision · La revue porte sur un diff sémantique",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "La revue montre contrats, comportements, dépendances, tests et risques plutôt qu’un diff de lignes.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "La revue devient sémantique : elle expose ce qui change dans le sens du programme, pas seulement dans son texte.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-branches-as-revisions",
+      "name": "Décision · Les branches deviennent des Program Revisions",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Les alternatives sont des forks du graphe testables, comparables, fusionnables, promouvables ou abandonnables.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Le versionnement se déplace du fichier vers le graphe : une révision est un snapshot immuable ou un fork, comparable comportementalement.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-explicit-authority",
+      "name": "Décision · L’autorité est explicite pendant la transition",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Chaque zone est graph, file, external ou generated ; aucune unité n’a deux sources de vérité.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Durant la migration, chaque zone déclare son autorité unique, ce qui ferme le risque de double source de vérité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-bounded-granularity",
+      "name": "Décision · L’atomisation reste sémantique",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "La granularité est la plus petite unité ayant une identité, un contrat et une raison de changer indépendante.",
+      "family": "Endgame du code · décisions de design",
+      "summary": "Jamais un nœud par ligne ou par token : l’atome s’arrête là où disparaît une identité et une raison de changer autonomes.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-program-graph",
+      "name": "Program Graph canonique",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Graphe versionné des unités sémantiques, contrats, dépendances, tests, justifications et observations.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Source d’autorité du programme : il porte les atomes et leurs relations, et sert de base à toute matérialisation.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-semantic-atom-schema",
+      "name": "Schema des atomes sémantiques",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Contrat commun des Function, Class, Method, Interface, Schema, Constant, StateMachine, Endpoint et TestCase.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Définit la forme partagée d’un atome adressable : identité, contrat, dépendances, tests, historique.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-atom-function",
+      "name": "Type d’atome · Function",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Atome comportemental adressable avec contrat, implémentation, dépendances, tests et historique.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "L’unité comportementale de base du graphe, indépendamment du fichier qui la matérialisera.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-atom-contract",
+      "name": "Type d’atome · Contract",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Entrées, sorties, erreurs, effets, préconditions, postconditions et permissions.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Le contrat rend explicite ce qu’une unité promet, condition de la revue sémantique et de la validation.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-atom-behavior",
+      "name": "Type d’atome · Behavior",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Description observable de ce que le programme doit produire.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Le comportement relie une intention à des tests et à des observations runtime.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-atom-test-case",
+      "name": "Type d’atome · TestCase",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Test atomique relié à un comportement, un invariant et une unité logicielle.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Le test est un atome de première classe, sélectionnable par impact et attaché à une révision.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-program-revision",
+      "name": "Program Revision",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Fork ou snapshot immuable du programme canonique.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Unité de versionnement du graphe : testable, comparable, promouvable ou abandonnable.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-change-set",
+      "name": "ChangeSet sémantique",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Ensemble intentionnel de modifications relié à une justification et une validation.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Le ChangeSet regroupe des modifications d’atomes autour d’une intention et de ses preuves de validation.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-filesystem-abstraction-layer",
+      "name": "Couche d’abstraction du filesystem",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Masque chemins, fichiers et arborescences aux développeurs et agents.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "L’écran qui rend le filesystem invisible au flux nominal de travail.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-graph-ide",
+      "name": "Graph IDE",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Interface de navigation et modification par missions, fonctions, contrats, tests, erreurs et révisions.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "L’outil qui remplace l’éditeur de fichiers par une navigation sémantique du programme.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-program-materializer",
+      "name": "Program Materializer",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Reconstruit les artefacts de compilation depuis une Program Revision.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "La projection déterministe du graphe vers des fichiers compilables ; point critique de fiabilité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-dependency-resolver",
+      "name": "Dependency Resolver",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Résout appels, cycles, imports, interfaces et ordre d’initialisation.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Calcule la structure exécutable à partir des relations du graphe.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-compilation-unit-planner",
+      "name": "Compilation Unit Planner",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Affecte automatiquement les atomes aux unités de compilation requises.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Décide comment regrouper les atomes en fichiers pour la toolchain, sans que ce regroupement porte du sens.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-import-export-generator",
+      "name": "Import/Export Generator",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Dérive imports, exports et visibilité depuis les relations du graphe.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Génère la plomberie de modules à partir des dépendances déclarées dans le graphe.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-graph-source-map-emitter",
+      "name": "Graph Source Map Emitter",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Associe les frames runtime aux atomes et révisions du graphe.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Garantit que les erreurs réelles remontent vers des identités du graphe.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-semantic-diff-engine",
+      "name": "Semantic Diff Engine",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Compare contrats, comportements, dépendances, tests et risques.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Produit la revue sémantique en lieu et place d’un diff textuel.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-impact-analyzer",
+      "name": "Impact Analyzer",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Calcule appelants, dépendants, contrats affectés et tests pertinents.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Borne le rayon d’un changement et sélectionne les tests utiles.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-contract-validator",
+      "name": "Contract Validator",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Bloque les révisions violant schemas, invariants ou permissions.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Le garde qui empêche une révision incohérente d’être promue.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-build-runner",
+      "name": "Build Runner",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Exécute compiler et build sur les artefacts matérialisés.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Fait passer une révision candidate par la toolchain réelle en isolation.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-test-runner",
+      "name": "Test Runner",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Sélectionne et exécute les tests pertinents pour la révision.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Transforme l’exécution des tests en Moments datés attachés à des hashes précis.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-runtime-telemetry-ingestor",
+      "name": "Runtime Telemetry Ingestor",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Convertit erreurs et observations réelles en Moments.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "La porte d’entrée de la réalité runtime dans le graphe.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-error-to-task-router",
+      "name": "Error-to-Task Router",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Déduplique les erreurs et crée ou actualise les tâches actionnables.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Empêche l’explosion de tâches transitoires en contextualisant et regroupant les erreurs.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-bug-clusterer",
+      "name": "Bug Clusterer",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Regroupe les erreurs par signature, fonction, révision, contexte et cause probable.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Réduit le bruit d’erreurs en familles causales exploitables.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-promotion-pipeline",
+      "name": "Promotion Pipeline",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Matérialise, compile, teste, audite et promeut une révision candidate.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "La chaîne transactionnelle qui décide si un candidat devient la révision active.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-rollback-engine",
+      "name": "Rollback Engine",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Restaure une révision active antérieure.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "La garantie de réversibilité, préalable à toute migration authoritative.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-artifact-store",
+      "name": "Artifact Store",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Stocke sources atomiques, AST, IR, builds et hashes sans devenir la source d’autorité.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Mémoire des artefacts et hashes ; il conserve sans jamais faire autorité sur le programme.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "moment-template-materialization-run",
+      "name": "Gabarit de Moment · Materialization Run",
+      "nodeType": "moment",
+      "semanticType": "observation",
+      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "family": "Endgame du code · gabarits d’événements",
+      "summary": "Projection d’une révision vers des artefacts de compilation. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "populationOrSystem": "Program Graph (futur)",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "moment-template-compilation-run",
+      "name": "Gabarit de Moment · Compilation Run",
+      "nodeType": "moment",
+      "semanticType": "observation",
+      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "family": "Endgame du code · gabarits d’événements",
+      "summary": "Compilation d’artefacts reliée à une révision précise. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "populationOrSystem": "Program Graph (futur)",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "moment-template-compilation-error",
+      "name": "Gabarit de Moment · Compilation Error",
+      "nodeType": "moment",
+      "semanticType": "observation",
+      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "family": "Endgame du code · gabarits d’événements",
+      "summary": "Erreur observée, reliée aux atomes, contrats, artefacts et révision concernés. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "populationOrSystem": "Program Graph (futur)",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "moment-template-build-run",
+      "name": "Gabarit de Moment · Build Run",
+      "nodeType": "moment",
+      "semanticType": "observation",
+      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "family": "Endgame du code · gabarits d’événements",
+      "summary": "Build complet ou partiel d’une révision. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "populationOrSystem": "Program Graph (futur)",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "moment-template-test-run",
+      "name": "Gabarit de Moment · Test Run",
+      "nodeType": "moment",
+      "semanticType": "observation",
+      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "family": "Endgame du code · gabarits d’événements",
+      "summary": "Résultats datés des tests sur une révision et des hashes précis. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "populationOrSystem": "Program Graph (futur)",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "moment-template-runtime-error",
+      "name": "Gabarit de Moment · Runtime Error",
+      "nodeType": "moment",
+      "semanticType": "observation",
+      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "family": "Endgame du code · gabarits d’événements",
+      "summary": "Erreur runtime traduite vers les identités du Program Graph. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "populationOrSystem": "Program Graph (futur)",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "moment-template-performance-observation",
+      "name": "Gabarit de Moment · Performance Observation",
+      "nodeType": "moment",
+      "semanticType": "observation",
+      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "family": "Endgame du code · gabarits d’événements",
+      "summary": "Latence, mémoire, throughput ou coût observés. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "populationOrSystem": "Program Graph (futur)",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "moment-template-promotion-run",
+      "name": "Gabarit de Moment · Promotion Run",
+      "nodeType": "moment",
+      "semanticType": "observation",
+      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "family": "Endgame du code · gabarits d’événements",
+      "summary": "Décision et résultat de promotion d’une révision. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "populationOrSystem": "Program Graph (futur)",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "moment-template-rollback-run",
+      "name": "Gabarit de Moment · Rollback Run",
+      "nodeType": "moment",
+      "semanticType": "observation",
+      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "family": "Endgame du code · gabarits d’événements",
+      "summary": "Retour observé vers une révision antérieure. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "populationOrSystem": "Program Graph (futur)",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-repair-compilation-error-task-template",
+      "name": "Gabarit de tâche · Réparer une erreur de compilation",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Une erreur de compilation actionnable devient une tâche de réparation bornée.",
+      "family": "Endgame du code · réparation",
+      "summary": "Gabarit futur de tâche portant révision, atomes affectés, contrat violé, signature, reproduction, hypothèses, tests discriminants et critères de résolution. Il n’est pas une tâche active, mais la forme qu’une tâche de réparation prendra.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "code-endgame-design",
+      "isTemplate": true,
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-compilation-error-flow",
+      "name": "Comportement · Flux futur d’une erreur de compilation",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "CompilationRun → CompilationError → ingestion → clustering → routage → Task → ChangeSet candidat.",
+      "family": "Endgame du code · réparation",
+      "summary": "Une Compilation Run produit un Moment d’erreur ; le Telemetry Ingestor le relie au graphe ; le Bug Clusterer déduplique ; l’Error-to-Task Router crée ou actualise une Task ; un Repair Agent peut alors proposer un ChangeSet candidat soumis à la Promotion Pipeline.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "risk-dual-authority",
+      "name": "Risque · Deux sources de vérité",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Le graphe et les fichiers divergent pendant la transition.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-materializer-corruption",
+      "name": "Risque · Erreur systémique du matérialiseur",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Un bug du matérialiseur produit des artefacts incorrects à grande échelle.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-graph-corruption",
+      "name": "Risque · Corruption du Program Graph",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "La perte du graphe canonique équivaut à la perte du code source.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-bootstrap-paradox",
+      "name": "Risque · Paradoxe de bootstrap",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Le matérialiseur et le Graph IDE dépendent du système qu’ils produisent.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-ontology-lock-in",
+      "name": "Risque · Verrouillage ontologique",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Une mauvaise ontologie fige des choix prématurés.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-wrong-granularity",
+      "name": "Risque · Granularité incorrecte",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Des atomes trop petits explosent le graphe ; trop gros, ils empêchent les changements indépendants.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-dynamic-language-mismatch",
+      "name": "Risque · Mauvaise représentation des langages dynamiques",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Closures, métaprogrammation, imports dynamiques et effets de bord échappent au modèle.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-debugging-opacity",
+      "name": "Risque · Opacité du debugging",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "L’abstraction masque trop le runtime sous-jacent.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-tooling-loss",
+      "name": "Risque · Perte de l’écosystème IDE",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Les outils matures basés sur les fichiers deviennent temporairement indisponibles.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-graph-ide-usability",
+      "name": "Risque · Graph IDE inutilisable",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Une interface lente ou moins expressive réduit la productivité.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-performance-cost",
+      "name": "Risque · Coût de résolution et matérialisation",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Les validations et générations ralentissent les boucles de développement.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-status-fiction",
+      "name": "Risque · Statuts déconnectés du réel",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Le graphe affirme qu’une unité est validée alors que les artefacts actifs diffèrent.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-repair-runaway",
+      "name": "Risque · Réparation autonome incontrôlée",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Des agents enchaînent ChangeSets et promotions sans maîtrise suffisante.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-security",
+      "name": "Risque · Surface d’attaque centrale",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "La compromission du graphe ou du matérialiseur peut modifier tout le programme.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-concurrency",
+      "name": "Risque · Conflits de révisions concurrentes",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Plusieurs agents modifient des contrats interdépendants.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-external-dependencies",
+      "name": "Risque · Dépendances externes mal modélisées",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Bibliothèques et toolchains changent hors du Program Graph.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-false-equivalence",
+      "name": "Risque · Équivalence comportementale mal prouvée",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Les tests passent alors que le comportement a changé ailleurs.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-graph-bloat",
+      "name": "Risque · Croissance incontrôlée",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Moments, révisions et erreurs saturent le stockage et les interfaces.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-human-legibility",
+      "name": "Risque · Perte de lisibilité humaine",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Le système devient compréhensible uniquement par ses propres agents.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "risk-premature-migration",
+      "name": "Risque · Migration irréversible trop précoce",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "family": "Endgame du code · risques",
+      "summary": "Des zones critiques deviennent graph-authoritative avant preuve du rollback.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "institution-guardrail-exportability",
+      "name": "Garde-fou · Le programme reste exportable",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "Toute révision peut être exportée vers un format ouvert et reconstruite indépendamment.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "institution-guardrail-immutable-revisions",
+      "name": "Garde-fou · Les révisions promues sont immuables",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "Toute modification produit une nouvelle révision.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "institution-guardrail-signed-promotions",
+      "name": "Garde-fou · Les promotions sont signées et auditables",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "Initiateur, validations, artefacts, tests, hashes et décision sont conservés.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "institution-guardrail-isolated-candidates",
+      "name": "Garde-fou · Les candidats sont isolés",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "Aucune révision candidate ne modifie les artefacts actifs.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "institution-guardrail-independent-rebuild",
+      "name": "Garde-fou · Le rebuild indépendant est obligatoire",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "Les artefacts actifs doivent être reconstructibles depuis le graphe.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "institution-guardrail-bounded-repair",
+      "name": "Garde-fou · Les réparations autonomes sont bornées",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "Budgets, permissions, portée, rollback et confirmations protègent les zones critiques.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "institution-guardrail-moments-not-status",
+      "name": "Garde-fou · Les résultats réels sont des Moments",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "Tests, builds et santé ne sont jamais de simples propriétés permanentes.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "institution-guardrail-human-readable-view",
+      "name": "Garde-fou · Une vue humaine complète reste obligatoire",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "Toute unité, erreur, révision et décision doit rester inspectable.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "question-canonical-representation",
+      "name": "Question · Quelle représentation canonique ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Source textuelle atomique, AST, IR sémantique ou combinaison progressive ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "question-atom-boundary",
+      "name": "Question · Quelle frontière d’un atome ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Fonction, méthode, classe, closure, machine d’état ou module — selon quels critères ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "question-graph-ide-editing",
+      "name": "Question · Comment édite-t-on dans le Graph IDE ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Code atomique, éditeur structurel, dialogue agentique ou plusieurs vues synchronisées ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "question-bootstrap",
+      "name": "Question · Comment bootstrapper le système ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Quels composants restent hors du Program Graph pour pouvoir le reconstruire ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "question-merge-model",
+      "name": "Question · Comment fusionner les Program Revisions ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Quel équivalent de branche, commit, rebase, cherry-pick et conflit ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "question-source-maps",
+      "name": "Question · Comment garantir les source maps graph-native ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Quel mapping minimal entre instruction runtime, artefact, Function ID et révision ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "question-external-code",
+      "name": "Question · Comment représenter les dépendances externes ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Que référencer et que conserver localement ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "question-low-level-access",
+      "name": "Question · Jusqu’où masquer le runtime et le filesystem ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Quels détails bas niveau restent accessibles lors d’une panne de toolchain ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "question-error-threshold",
+      "name": "Question · Quand une erreur devient-elle une tâche ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Comment éviter une explosion de tâches transitoires ou dérivées ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "question-status-computation",
+      "name": "Question · Comment calculer les statuts courants ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Comment relier l’état affiché d’une unité aux Moments réels de build, de test et d’exécution plutôt qu’à une propriété figée ?",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    }
+  ],
+  "links": [
+    {
+      "source": "actor-org-mind-protocol",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cet acteur participe au périmètre de conception de l’endgame du code."
+    },
+    {
+      "source": "actor-role-graph-native-developer",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cet acteur participe au périmètre de conception de l’endgame du code."
+    },
+    {
+      "source": "actor-role-code-steward",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cet acteur participe au périmètre de conception de l’endgame du code."
+    },
+    {
+      "source": "actor-role-repair-agent",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cet acteur participe au périmètre de conception de l’endgame du code."
+    },
+    {
+      "source": "horizon-abstract-filesystem",
+      "target": "horizon-program-becomes-graph",
+      "type": "IMPLEMENTS",
+      "justification": "Abstraire le filesystem est la mission opérationnelle qui met en œuvre la vision d’un programme-graphe exécutable."
+    },
+    {
+      "source": "rationale-filesystem-is-toolchain-detail",
+      "target": "horizon-abstract-filesystem",
+      "type": "GROUNDS",
+      "justification": "Traiter le filesystem comme un simple détail de toolchain fonde le choix de le masquer entièrement aux développeurs."
+    },
+    {
+      "source": "rationale-causal-intelligibility",
+      "target": "horizon-program-becomes-graph",
+      "type": "GROUNDS",
+      "justification": "L’exigence d’intelligibilité causale fonde la vision : un graphe n’est supérieur aux fichiers que s’il conserve les liens de sens."
+    },
+    {
+      "source": "axiom-design-now-implement-later",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "Différer l’implémentation protège la vision d’une migration prématurée qui la discréditerait avant preuve du rollback."
+    },
+    {
+      "source": "horizon-program-becomes-graph",
+      "target": "actor-org-mind-protocol",
+      "type": "AUTHORED_BY",
+      "justification": "La vision de l’endgame du code est portée par l’organisation Mind Protocol."
+    },
+    {
+      "source": "horizon-abstract-filesystem",
+      "target": "actor-org-mind-protocol",
+      "type": "AUTHORED_BY",
+      "justification": "La mission d’abstraction du filesystem est décidée par l’organisation Mind Protocol."
+    },
+    {
+      "source": "axiom-decision-semantic-atoms",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-graph-only-work",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-files-are-artifacts",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-stable-logical-id",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-graph-source-maps",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-reality-as-moments",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-errors-are-moments-not-actors",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-errors-become-tasks",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-transactional-materialization",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-semantic-diff-review",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-branches-as-revisions",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-explicit-authority",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "axiom-decision-bounded-granularity",
+      "target": "horizon-abstract-filesystem",
+      "type": "IMPLEMENTS",
+      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+    },
+    {
+      "source": "mechanism-program-graph",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-semantic-atom-schema",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-atom-function",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-atom-contract",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-atom-behavior",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-atom-test-case",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-program-revision",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-change-set",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-filesystem-abstraction-layer",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-graph-ide",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-program-materializer",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-dependency-resolver",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-compilation-unit-planner",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-import-export-generator",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-graph-source-map-emitter",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-semantic-diff-engine",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-impact-analyzer",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-contract-validator",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-build-runner",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-test-runner",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-runtime-telemetry-ingestor",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-error-to-task-router",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-bug-clusterer",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-promotion-pipeline",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-rollback-engine",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-artifact-store",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-program-graph",
+      "target": "axiom-decision-semantic-atoms",
+      "type": "IMPLEMENTS",
+      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+    },
+    {
+      "source": "mechanism-filesystem-abstraction-layer",
+      "target": "axiom-decision-graph-only-work",
+      "type": "IMPLEMENTS",
+      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+    },
+    {
+      "source": "mechanism-program-materializer",
+      "target": "axiom-decision-files-are-artifacts",
+      "type": "IMPLEMENTS",
+      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+    },
+    {
+      "source": "mechanism-graph-source-map-emitter",
+      "target": "axiom-decision-graph-source-maps",
+      "type": "IMPLEMENTS",
+      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+    },
+    {
+      "source": "mechanism-runtime-telemetry-ingestor",
+      "target": "axiom-decision-reality-as-moments",
+      "type": "IMPLEMENTS",
+      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+    },
+    {
+      "source": "mechanism-error-to-task-router",
+      "target": "axiom-decision-errors-become-tasks",
+      "type": "IMPLEMENTS",
+      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+    },
+    {
+      "source": "mechanism-promotion-pipeline",
+      "target": "axiom-decision-transactional-materialization",
+      "type": "IMPLEMENTS",
+      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+    },
+    {
+      "source": "mechanism-semantic-diff-engine",
+      "target": "axiom-decision-semantic-diff-review",
+      "type": "IMPLEMENTS",
+      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+    },
+    {
+      "source": "moment-template-materialization-run",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce gabarit d’événement fait partie du modèle d’observation runtime de l’endgame du code."
+    },
+    {
+      "source": "moment-template-compilation-run",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce gabarit d’événement fait partie du modèle d’observation runtime de l’endgame du code."
+    },
+    {
+      "source": "moment-template-compilation-error",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce gabarit d’événement fait partie du modèle d’observation runtime de l’endgame du code."
+    },
+    {
+      "source": "moment-template-build-run",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce gabarit d’événement fait partie du modèle d’observation runtime de l’endgame du code."
+    },
+    {
+      "source": "moment-template-test-run",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce gabarit d’événement fait partie du modèle d’observation runtime de l’endgame du code."
+    },
+    {
+      "source": "moment-template-runtime-error",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce gabarit d’événement fait partie du modèle d’observation runtime de l’endgame du code."
+    },
+    {
+      "source": "moment-template-performance-observation",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce gabarit d’événement fait partie du modèle d’observation runtime de l’endgame du code."
+    },
+    {
+      "source": "moment-template-promotion-run",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce gabarit d’événement fait partie du modèle d’observation runtime de l’endgame du code."
+    },
+    {
+      "source": "moment-template-rollback-run",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce gabarit d’événement fait partie du modèle d’observation runtime de l’endgame du code."
+    },
+    {
+      "source": "mechanism-repair-compilation-error-task-template",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Le gabarit de tâche de réparation fait partie du périmètre de l’endgame du code."
+    },
+    {
+      "source": "mechanism-compilation-error-flow",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Le comportement de flux d’erreur fait partie du périmètre de l’endgame du code."
+    },
+    {
+      "source": "mechanism-repair-compilation-error-task-template",
+      "target": "actor-role-repair-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Le gabarit de tâche de réparation est destiné au Repair Agent, qui l’instancie et propose un ChangeSet."
+    },
+    {
+      "source": "mechanism-compilation-error-flow",
+      "target": "mechanism-runtime-telemetry-ingestor",
+      "type": "GROUNDS",
+      "justification": "Le flux d’erreur fonde le rôle du Telemetry Ingestor : sans ingestion, l’erreur observée ne rejoint pas le graphe."
+    },
+    {
+      "source": "mechanism-compilation-error-flow",
+      "target": "mechanism-bug-clusterer",
+      "type": "GROUNDS",
+      "justification": "Le flux d’erreur fonde le rôle du Bug Clusterer : la déduplication précède toute création de tâche."
+    },
+    {
+      "source": "mechanism-compilation-error-flow",
+      "target": "mechanism-error-to-task-router",
+      "type": "GROUNDS",
+      "justification": "Le flux d’erreur fonde le rôle du routeur : c’est lui qui transforme une erreur actionnable en tâche."
+    },
+    {
+      "source": "mechanism-compilation-error-flow",
+      "target": "mechanism-promotion-pipeline",
+      "type": "GROUNDS",
+      "justification": "Le flux d’erreur se referme sur la Promotion Pipeline qui teste et promeut le ChangeSet candidat."
+    },
+    {
+      "source": "risk-dual-authority",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-materializer-corruption",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-graph-corruption",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-bootstrap-paradox",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-ontology-lock-in",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-wrong-granularity",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-dynamic-language-mismatch",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-debugging-opacity",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-tooling-loss",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-graph-ide-usability",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-performance-cost",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-status-fiction",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-repair-runaway",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-security",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-concurrency",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-external-dependencies",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-false-equivalence",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-graph-bloat",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-human-legibility",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "risk-premature-migration",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "institution-guardrail-exportability",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+    },
+    {
+      "source": "institution-guardrail-exportability",
+      "target": "risk-graph-corruption",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+    },
+    {
+      "source": "institution-guardrail-immutable-revisions",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+    },
+    {
+      "source": "institution-guardrail-immutable-revisions",
+      "target": "risk-premature-migration",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+    },
+    {
+      "source": "institution-guardrail-signed-promotions",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+    },
+    {
+      "source": "institution-guardrail-signed-promotions",
+      "target": "risk-security",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+    },
+    {
+      "source": "institution-guardrail-isolated-candidates",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+    },
+    {
+      "source": "institution-guardrail-isolated-candidates",
+      "target": "risk-materializer-corruption",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+    },
+    {
+      "source": "institution-guardrail-independent-rebuild",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+    },
+    {
+      "source": "institution-guardrail-independent-rebuild",
+      "target": "risk-dual-authority",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+    },
+    {
+      "source": "institution-guardrail-bounded-repair",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+    },
+    {
+      "source": "institution-guardrail-bounded-repair",
+      "target": "risk-repair-runaway",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+    },
+    {
+      "source": "institution-guardrail-moments-not-status",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+    },
+    {
+      "source": "institution-guardrail-moments-not-status",
+      "target": "risk-status-fiction",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+    },
+    {
+      "source": "institution-guardrail-human-readable-view",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+    },
+    {
+      "source": "institution-guardrail-human-readable-view",
+      "target": "risk-human-legibility",
+      "type": "SAFEGUARDS",
+      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+    },
+    {
+      "source": "question-canonical-representation",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-canonical-representation",
+      "target": "axiom-decision-semantic-atoms",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "question-atom-boundary",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-atom-boundary",
+      "target": "axiom-decision-bounded-granularity",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "question-graph-ide-editing",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-graph-ide-editing",
+      "target": "mechanism-graph-ide",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "question-bootstrap",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-bootstrap",
+      "target": "mechanism-program-materializer",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "question-merge-model",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-merge-model",
+      "target": "axiom-decision-branches-as-revisions",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "question-source-maps",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-source-maps",
+      "target": "mechanism-graph-source-map-emitter",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "question-external-code",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-external-code",
+      "target": "risk-external-dependencies",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "question-low-level-access",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-low-level-access",
+      "target": "axiom-decision-graph-only-work",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "question-error-threshold",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-error-threshold",
+      "target": "axiom-decision-errors-become-tasks",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "question-status-computation",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-status-computation",
+      "target": "axiom-decision-reality-as-moments",
+      "type": "BLOCKS",
+      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    }
+  ]
+}

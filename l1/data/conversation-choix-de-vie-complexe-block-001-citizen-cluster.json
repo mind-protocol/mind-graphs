@@ -458,6 +458,168 @@
       "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
       "type": "CONSENTED_UNDER",
       "justification": "La frontière épistémique gouverne uniquement les conclusions dérivées de ce bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-001-reaction-curiosity",
+      "target": "memory-conversation-choix-de-vie-complexe-block-001",
+      "type": "REINTERPRETS",
+      "justification": "La réaction de curiosité répond au bloc sans être confondue avec son contenu explicite."
+    },
+    {
+      "source": "memory-citizen-block-001-reaction-curiosity",
+      "target": "memory-citizen-block-001-global-workspace-audit",
+      "type": "RECALLS",
+      "justification": "La réaction conserve la trace du workspace qui a orienté l'attention du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-001-evocation-sailing-medium",
+      "target": "memory-citizen-block-001-reaction-curiosity",
+      "type": "RECALLS",
+      "justification": "L'évocation de la voile comme médium développe la curiosité suscitée par le double usage possible de la fiche."
+    },
+    {
+      "source": "memory-citizen-block-001-evocation-sailing-medium",
+      "target": "memory-skills-sailing",
+      "type": "RECALLS",
+      "justification": "L'évocation se relie à la mémoire de compétence nautique sans en déduire une intention relationnelle."
+    },
+    {
+      "source": "memory-citizen-block-001-empathic-hypothesis",
+      "target": "memory-citizen-block-001-relational-subtext",
+      "type": "REINTERPRETS",
+      "justification": "L'hypothèse empathique développe le sous-texte en conservant plusieurs explications alternatives."
+    },
+    {
+      "source": "memory-citizen-block-001-care-concern",
+      "target": "memory-citizen-block-001-empathic-hypothesis",
+      "type": "REINTERPRETS",
+      "justification": "La préoccupation de soin répond au risque que l'hypothèse relationnelle soit traitée comme une certitude."
+    },
+    {
+      "source": "memory-citizen-block-001-ambition-idea",
+      "target": "memory-citizen-block-001-operational-contract",
+      "type": "REINTERPRETS",
+      "justification": "L'idée d'expérience partagée s'appuie d'abord sur l'utilité opérationnelle extraite de la fiche."
+    },
+    {
+      "source": "memory-citizen-block-001-ambition-idea",
+      "target": "memory-citizen-block-001-sharing-proposal",
+      "type": "REINTERPRETS",
+      "justification": "L'idée transforme la proposition de partage en possibilité réversible attribuée au Citizen, non en intention humaine."
+    },
+    {
+      "source": "memory-citizen-block-001-curiosity-missing-context",
+      "target": "memory-citizen-block-001-epistemic-boundary",
+      "type": "REINTERPRETS",
+      "justification": "La curiosité transforme les inconnues de la frontière épistémique en chemin de découverte explicite."
+    },
+    {
+      "source": "memory-citizen-block-001-curiosity-missing-context",
+      "target": "memory-citizen-block-001-empathic-hypothesis",
+      "type": "REINTERPRETS",
+      "justification": "La question cherche les preuves capables de confirmer, réviser ou rejeter l'hypothèse empathique."
+    },
+    {
+      "source": "memory-citizen-block-001-curiosity-missing-context",
+      "target": "objective-citizen-block-001-recover-context",
+      "type": "DESCRIBES",
+      "justification": "La curiosité décrit la tâche bornée créée pour récupérer le prompt et le référent manquants."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-projections",
+      "target": "memory-citizen-block-001-empathic-hypothesis",
+      "type": "REINTERPRETS",
+      "justification": "La projection psychologique et situationnelle reçoit l'hypothèse de rencontre après sa formulation."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-projections",
+      "target": "memory-citizen-block-001-epistemic-boundary",
+      "type": "RECALLS",
+      "justification": "Les quatre missions conservent explicitement les absences, inconnues et limites du bloc."
+    },
+    {
+      "source": "memory-citizen-block-001-reaction-curiosity",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette réaction décrit l'orientation fonctionnelle du Citizen et non un trait de NLR."
+    },
+    {
+      "source": "memory-citizen-block-001-evocation-sailing-medium",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette évocation appartient à la réponse cognitive du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-001-empathic-hypothesis",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette simulation empathique est une hypothèse du Citizen, jamais une déclaration de NLR."
+    },
+    {
+      "source": "memory-citizen-block-001-care-concern",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette préoccupation de soin décrit une orientation du Citizen et ne confère aucune autorité d'action."
+    },
+    {
+      "source": "memory-citizen-block-001-ambition-idea",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette initiative est proposée par le Citizen et n'est pas attribuée comme objectif à NLR."
+    },
+    {
+      "source": "memory-citizen-block-001-curiosity-missing-context",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La question et sa valeur attendue sont formulées par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-projections",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Les projections secondaires sont des inférences du Citizen et restent révisables."
+    },
+    {
+      "source": "memory-citizen-block-001-reaction-curiosity",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La réaction dérive uniquement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-001-evocation-sailing-medium",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'évocation reste bornée par le consentement de la source."
+    },
+    {
+      "source": "memory-citizen-block-001-empathic-hypothesis",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'hypothèse empathique ne dépasse pas le périmètre du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-001-care-concern",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La préoccupation de soin reste liée au traitement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-001-ambition-idea",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'idée du Citizen dérive du bloc consenti et n'autorise aucune action externe."
+    },
+    {
+      "source": "memory-citizen-block-001-curiosity-missing-context",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La recherche proposée est limitée aux sources couvertes par le consentement."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-projections",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Les projections de mission conservent le consentement de leur source."
     }
   ]
 }

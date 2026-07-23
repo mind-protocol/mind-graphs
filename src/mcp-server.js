@@ -16,9 +16,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { buildGraphQueryEngine } from "../public/graph-query.js";
 import { projectDir } from "./graph-manifest.js";
 import { L4_PHYSICS_TUNING } from "./l4-physics.js";
-import { augmentCodeContext, formatCodeContext } from "./code-context-augmentation.js";
 import { formatMoveResult, moveToSpace } from "./graph-move.js";
-import { relocateActorForCodeContext } from "./actor-location.js";
 import { formatL1BlueprintSync, syncDeclaredL1Blueprints } from "./l1-blueprint-sync.js";
 import {
   formatL1TaskReport,
@@ -57,41 +55,6 @@ async function injectPath(nodeIds) {
 }
 
 const server = new McpServer({ name: "mind-causal-graph", version: "0.1.0" });
-
-server.registerTool(
-  "before_code_edit",
-  {
-    title: "Enrichir le contexte avant une modification de code",
-    description:
-      "À appeler avant de modifier un fichier de code. Cherche dans toutes les bases FalkorDB actives les nœuds Thing dont sourcePath correspond au chemin du fichier, "
-      + "traverse leur voisinage local, puis place actor-nlr dans le Space contenant le Thing. enabled=false désactive explicitement ces deux effets.",
-    inputSchema: {
-      filePath: z.string().min(1).describe("Chemin absolu ou relatif du fichier qui va être modifié."),
-      enabled: z.boolean().default(true).describe("Active ou désactive l'augmentation pour cette modification."),
-      maxDepth: z.number().int().min(1).max(3).default(1).describe("Profondeur locale de traversée, entre 1 et 3 sauts.")
-    }
-  },
-  async ({ filePath, enabled, maxDepth }) => {
-    try {
-      const result = await augmentCodeContext({ filePath, enabled, maxDepth });
-      const locationUpdates = enabled && !result.skipped
-        ? await relocateActorForCodeContext(result, { actorId: "actor-nlr" })
-        : [];
-      const enriched = { ...result, locationUpdates };
-      const locationText = locationUpdates.length
-        ? `\n\nLocation acteur : ${locationUpdates.map(update => update.moved
-          ? `${update.actorId} → ${update.space.name || update.space.id}`
-          : `${update.graphId}: ${update.reason}`).join(", ")}`
-        : "";
-      return {
-        content: [{ type: "text", text: `${formatCodeContext(enriched)}${locationText}` }],
-        structuredContent: enriched
-      };
-    } catch (err) {
-      return { isError: true, content: [{ type: "text", text: `Augmentation impossible : ${err.message}` }] };
-    }
-  }
-);
 
 const graphQuestionSchema = {
   title: "Demander au graphe causal",

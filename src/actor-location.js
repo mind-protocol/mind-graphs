@@ -76,27 +76,3 @@ export async function relocateActorToSubjectSpace({
   });
   return { graphId, subjectId, actorId: actor.id, space, moved: result.movedLinks > 0, move: result };
 }
-
-export async function relocateActorForCodeContext(context, options = {}) {
-  const updates = [];
-  for (const graphContext of context.graphs || []) {
-    const anchor = graphContext.anchors?.[0];
-    if (!anchor) continue;
-    try {
-      updates.push(await relocateActorToSubjectSpace({
-        graphId: graphContext.graphId,
-        subjectId: anchor.id,
-        ...options
-      }));
-    } catch (error) {
-      updates.push({
-        graphId: graphContext.graphId,
-        subjectId: anchor.id,
-        moved: false,
-        reason: "location_update_failed",
-        error: error.message
-      });
-    }
-  }
-  return updates;
-}

@@ -1019,6 +1019,6 @@
     { "source": "oq-ci-deletion-policy", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La politique de suppression est une décision que la tâche doit trancher avant d'effacer quoi que ce soit." },
     { "source": "oq-ci-cadence-budget", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La cadence et le budget sont à calibrer par la tâche sur un prototype." }
     ,{ "source": "oq-ci-quality-threshold-calibration", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Les seuils souples de suffisance doivent être calibrés sur plusieurs formes réelles de conversation avant activation." },
-    { "source": "metric-conversation-injection-verified-coverage", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La mesure de couverture vérifiée motive le travail restant sur la mission sans prétendre qu'une tâche est elle-même un état mesurable." }
+    { "source": "metric-conversation-injection-verified-coverage", "target": "task-conversation-injection", "type": "PART_OF", "justification": "La mesure de couverture vérifiée fait partie du contrat de progression de la tâche sans prétendre qu'une tâche est elle-même un état mesurable." }
   ]
 }

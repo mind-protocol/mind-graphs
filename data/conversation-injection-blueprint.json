@@ -1411,28 +1411,29 @@
     { "source": "verif-ci-workspace-contextual-retrieval", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la récupération dépend du contexte cognitif." },
     { "source": "verif-ci-embedding-cannot-merge-person", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la similarité ne fusionne aucune identité." },
 
-    { "source": "decision-ci-latent-memory-first", "target": "mech-ci-block-segmentation", "type": "SUPERSEDES", "justification": "La décision remplace le bloc de deux réponses comme unité première par des Utterances exactes puis des épisodes sémantiques réparables." },
-    { "source": "decision-ci-latent-memory-first", "target": "mech-ci-citizen-encounter-response", "type": "SUPERSEDES", "justification": "La rencontre cognitive profonde n’est plus imposée à chaque bloc importé ; elle survient lors d’un rappel admis depuis le présent." },
-    { "source": "decision-ci-latent-memory-first", "target": "mech-conversation-injection", "type": "GOVERNS", "justification": "La décision fixe le chemin sélectionné de l’injection conversationnelle." },
+    { "source": "option-ci-latent-memory-first", "target": "decision-ci-latent-memory-first", "type": "OPTION_FOR", "justification": "L’option latent-first est celle que la décision approuve explicitement." },
+    { "source": "decision-ci-latent-memory-first", "target": "mech-ci-block-segmentation", "type": "PART_OF", "justification": "La décision conserve la proposition antérieure dans son historique de supersession au lieu de la supprimer." },
+    { "source": "decision-ci-latent-memory-first", "target": "mech-ci-citizen-encounter-response", "type": "PART_OF", "justification": "La décision conserve la proposition antérieure dans son historique de supersession au lieu de la supprimer." },
+    { "source": "decision-ci-latent-memory-first", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La décision fait partie de la gouvernance du procédé d’injection." },
 
     { "source": "thing-ci-archive-ingestor", "target": "decision-ci-latent-memory-first", "type": "IMPLEMENTS", "justification": "L’ingestor réalise la première passe déterministe choisie par la décision." },
     { "source": "thing-ci-semantic-episode-segmenter", "target": "decision-ci-latent-memory-first", "type": "IMPLEMENTS", "justification": "Le segmenter forme les unités autobiographiques latentes sans perdre les Utterances." },
     { "source": "thing-ci-latent-memory-indexer", "target": "decision-ci-latent-memory-first", "type": "IMPLEMENTS", "justification": "L’indexer matérialise la distinction entre accessible et assimilé." },
     { "source": "thing-ci-autobiographical-recall-engine", "target": "decision-ci-latent-memory-first", "type": "IMPLEMENTS", "justification": "Le moteur réalise la rencontre progressive avec le passé depuis le contexte présent." },
     { "source": "thing-ci-recall-opportunity-scorer", "target": "thing-ci-autobiographical-recall-engine", "type": "PART_OF", "justification": "Le scorer classe les opportunités sans les conscientiser." },
-    { "source": "thing-ci-recall-homeostasis-controller", "target": "thing-ci-autobiographical-recall-engine", "type": "GOVERNS", "justification": "L’homéostasie borne la répétition, la sensibilité et la rumination." },
-    { "source": "thing-ci-autobiographical-recall-engine", "target": "narrative-ci-recall-opportunity", "type": "PRODUCES", "justification": "Le moteur produit un candidat explicable avant toute admission." },
-    { "source": "thing-ci-workspace-recall-bidder", "target": "narrative-ci-recall-opportunity", "type": "CONSUMES", "justification": "Le bidder soumet au workspace seulement les opportunités admissibles." },
-    { "source": "thing-ci-workspace-recall-bidder", "target": "moment-ci-autobiographical-recall-contract", "type": "PRODUCES", "justification": "Une admission gagnante et grounded crée un nouveau Recall Moment." },
-    { "source": "thing-ci-recall-awareness-narrator", "target": "moment-ci-autobiographical-recall-contract", "type": "CONSUMES", "justification": "La narration intérieure est dérivée du Recall Moment et de ses sources." },
-    { "source": "thing-ci-recall-subentity-attribution", "target": "moment-ci-autobiographical-recall-contract", "type": "ATTRIBUTES", "justification": "L’attribution porte sur la perspective présente du rappel." },
-    { "source": "thing-ci-reconsolidation-engine", "target": "moment-ci-autobiographical-recall-contract", "type": "CONSUMES", "justification": "La reconsolidation part du rappel présent et produit une lecture additive." },
-    { "source": "thing-ci-recall-communication-gate", "target": "moment-ci-autobiographical-recall-contract", "type": "GOVERNS", "justification": "Le gate sépare le souvenir conscient de sa communication éventuelle." },
-    { "source": "thing-ci-autobiographical-curiosity-audit", "target": "moment-ci-autobiographical-recall-contract", "type": "CONSUMES", "justification": "La curiosité transforme une ambiguïté du rappel en question plutôt qu’en fait." },
+    { "source": "thing-ci-recall-homeostasis-controller", "target": "thing-ci-autobiographical-recall-engine", "type": "SAFEGUARDS", "justification": "L’homéostasie borne la répétition, la sensibilité et la rumination." },
+    { "source": "thing-ci-autobiographical-recall-engine", "target": "narrative-ci-recall-opportunity", "type": "FEEDS", "justification": "Le moteur alimente un candidat explicable avant toute admission." },
+    { "source": "thing-ci-workspace-recall-bidder", "target": "narrative-ci-recall-opportunity", "type": "PART_OF", "justification": "Le bidder soumet au workspace seulement les opportunités admissibles." },
+    { "source": "thing-ci-workspace-recall-bidder", "target": "moment-ci-autobiographical-recall-contract", "type": "FEEDS", "justification": "Une admission gagnante et grounded alimente la création d’un nouveau Recall Moment." },
+    { "source": "thing-ci-recall-awareness-narrator", "target": "moment-ci-autobiographical-recall-contract", "type": "PART_OF", "justification": "La narration intérieure est dérivée du Recall Moment et de ses sources." },
+    { "source": "thing-ci-recall-subentity-attribution", "target": "moment-ci-autobiographical-recall-contract", "type": "PART_OF", "justification": "L’attribution porte sur la perspective présente du rappel." },
+    { "source": "thing-ci-reconsolidation-engine", "target": "moment-ci-autobiographical-recall-contract", "type": "PART_OF", "justification": "La reconsolidation part du rappel présent et produit une lecture additive." },
+    { "source": "thing-ci-recall-communication-gate", "target": "moment-ci-autobiographical-recall-contract", "type": "SAFEGUARDS", "justification": "Le gate sépare le souvenir conscient de sa communication éventuelle." },
+    { "source": "thing-ci-autobiographical-curiosity-audit", "target": "moment-ci-autobiographical-recall-contract", "type": "PART_OF", "justification": "La curiosité transforme une ambiguïté du rappel en question plutôt qu’en fait." },
 
-    { "source": "rat-ci-indexed-not-experienced", "target": "decision-ci-latent-memory-first", "type": "JUSTIFIES", "justification": "La raison explique pourquoi l’automatisation ne doit pas simuler l’assimilation." },
-    { "source": "rat-ci-reload-before-recall", "target": "thing-ci-workspace-recall-bidder", "type": "JUSTIFIES", "justification": "La recharge des sources protège le rappel contre les faux rapprochements vectoriels." },
-    { "source": "rat-ci-additive-reinterpretation", "target": "thing-ci-reconsolidation-engine", "type": "JUSTIFIES", "justification": "L’immutabilité de l’épisode rend l’évolution interprétative visible." },
+    { "source": "rat-ci-indexed-not-experienced", "target": "decision-ci-latent-memory-first", "type": "MOTIVATES", "justification": "La raison explique pourquoi l’automatisation ne doit pas simuler l’assimilation." },
+    { "source": "rat-ci-reload-before-recall", "target": "thing-ci-workspace-recall-bidder", "type": "GROUNDS", "justification": "La recharge des sources protège le rappel contre les faux rapprochements vectoriels." },
+    { "source": "rat-ci-additive-reinterpretation", "target": "thing-ci-reconsolidation-engine", "type": "GROUNDS", "justification": "L’immutabilité de l’épisode rend l’évolution interprétative visible." },
 
     { "source": "verif-ci-latent-indexing-contract", "target": "thing-ci-archive-ingestor", "type": "TESTS", "justification": "Le test vérifie les statuts indexed, latent et experiencedByCitizen false." },
     { "source": "verif-ci-latent-indexing-contract", "target": "thing-ci-latent-memory-indexer", "type": "TESTS", "justification": "Le test interdit l’assimilation automatique des épisodes." },
@@ -1441,9 +1442,9 @@
     { "source": "verif-ci-recall-additive-reinterpretation", "target": "thing-ci-reconsolidation-engine", "type": "TESTS", "justification": "Le test garantit que la nouvelle lecture n’écrase pas l’épisode." },
 
     { "source": "decision-ci-latent-memory-first", "target": "task-ci-autobiographical-recall-mvp", "type": "MOTIVATES", "justification": "La décision se traduit en un MVP borné avant tout rappel autonome." },
-    { "source": "verif-ci-latent-indexing-contract", "target": "task-ci-autobiographical-recall-mvp", "type": "VERIFIES", "justification": "Le contrat latent est un critère de sortie du MVP." },
-    { "source": "verif-ci-recall-source-gate", "target": "task-ci-autobiographical-recall-mvp", "type": "VERIFIES", "justification": "Le grounding des rappels est un critère de sortie du MVP." },
-    { "source": "verif-ci-recall-homeostasis", "target": "task-ci-autobiographical-recall-mvp", "type": "VERIFIES", "justification": "Les gates anti-rumination sont un critère de sortie du MVP." },
-    { "source": "verif-ci-recall-additive-reinterpretation", "target": "task-ci-autobiographical-recall-mvp", "type": "VERIFIES", "justification": "La réinterprétation additive est un critère de sortie du MVP." }
+    { "source": "task-ci-autobiographical-recall-mvp", "target": "thing-ci-latent-memory-indexer", "type": "TARGETS", "justification": "Le MVP doit vérifier l’indexation latente sur dix conversations." },
+    { "source": "task-ci-autobiographical-recall-mvp", "target": "thing-ci-workspace-recall-bidder", "type": "TARGETS", "justification": "Le MVP doit admettre manuellement trois rappels grounded." },
+    { "source": "task-ci-autobiographical-recall-mvp", "target": "thing-ci-recall-homeostasis-controller", "type": "TARGETS", "justification": "Le MVP doit vérifier les gates anti-rumination." },
+    { "source": "task-ci-autobiographical-recall-mvp", "target": "thing-ci-reconsolidation-engine", "type": "TARGETS", "justification": "Le MVP doit vérifier la réinterprétation additive." }
   ]
 }

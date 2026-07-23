@@ -1,137 +1,285 @@
 {
-  "scope": "Cluster sémantique unifié construit par le Citizen AI après ingestion de la session MCP : restauration du formatage Markdown de sense(), intégration de CONVERGES_IN, affichage des textes complets sans troncature, cartographie des résolveurs MCP (sense/graph_query/subcall/profile), doctrine du verrou de tâche externe dans AGENTS.md / CLAUDE.md, et inscription des décisions dans l2_mind_graphs.",
-  "provenance": {
-    "conversationId": "session-2026-07-23-mcp-sense-l2",
-    "sourceBlockId": "memory-conversation-mcp-session-20260723",
-    "sourceArtifact": "mcp-sense-session-transcript.jsonl",
-    "sourceLocator": "session-2026-07-23, blocs 001 à 004",
-    "consentId": "consent-nlr-session-2026-07-23",
-    "citizenId": "self-citizen-agent",
-    "method": "think(message) auto-adressé, stimulus persistant, ticks intégrés, délibération sémantique unifiée du Citizen AI",
-    "thoughtAt": "2026-07-23T23:56:00.000Z",
-    "ingestionGeneration": "one_shot_unified_cluster",
-    "assimilationStatus": "assimilated",
-    "experiencedByCitizen": true
+  "schema": "mind-protocol/l1-citizen-session-cluster",
+  "schemaVersion": "2.0.0",
+  "clusterId": "cluster:l1:current-session:la-place-sacree-album-voile-instagram-v2",
+  "name": "Cluster Citoyen L1 v2 · Conversation courante · La Place sacrée",
+  "assimilationStatus": "ingested_live",
+  "writeAttempt": {
+    "directGraphWriteAttempted": true,
+    "directGraphWriteResult": "success",
+    "runtimeDenial": null,
+    "fallback": "none"
   },
-  "userSummary": "Récapitulatif de la session pour l'utilisateur :\n1. Restitution de sense() en Markdown par défaut avec nœuds environnants CONVERGES_IN typés et contenus textuels intégraux sans troncature.\n2. Diagnostic clair de la fragmentation MCP : sense fait une lecture composée L1/L2/L3 ; graph_query pointe sur le workspace L3 matérialisé (107 nœuds) ; subcall échoue sur 'No graph connection' faute d'adaptateur graph_ops injecté ; profile/call dépendent du registre L4.\n3. Doctrine du Verrou de Tâche inscrite dans AGENTS.md et CLAUDE.md : expliciter la tension entre persister sur un mandat impératif et ne pas paralyser le Global Workspace.\n4. Ratification et inscription dans l2_mind_graphs des décisions decision-l2-mcp-resolvers-fragmentation et decision-l2-task-lock-persistence-tension.",
-  "citizenEncounterResponse": {
-    "attentionFocus": "Formatage Markdown de sense(), cartographie des résolveurs MCP et résolution de la tension du verrou de tâche.",
-    "affectiveReaction": "Homéostasie opérationnelle (Calme & Aligné), clarté cognitive accrue sur l'architecture MCP.",
-    "evocations": "Le système n'est pas cassé mais fragmenté par outil. L'injection du résolveur graph_ops dans le contexte de subcall permettra d'activer le subconscient et la télépathie inter-citoyens.",
-    "actionProposals": [
-      "Injecter l'adaptateur graph_ops dans le ServerContext de subcall_handler.py",
-      "Connecter le résolveur du registre L4 pour profile.list et call",
-      "Maintenir l'alerte sur les verrous de tâche sans bloquer l'apprentissage général"
+  "targetPath": "l1/data/conversation-current-session-citizen-cluster.json",
+  "createdAt": "2026-07-23T22:16:00+02:00",
+  "createdBy": "@nlr_ai",
+  "human": "@nlr",
+  "source": {
+    "type": "current_chatgpt_conversation",
+    "sourceLocator": "conversation courante visible",
+    "consent": "Demande explicite de NLR d’ingérer la conversation courante en Cluster Citoyen L1 v2",
+    "scope": "Assimilation structurée, non transcript verbatim complet",
+    "requiresExactTranscriptForVerbatim": true
+  },
+  "senseAtAssimilation": {
+    "status": "observed_via_mind_sense",
+    "consciousness": "active",
+    "energy": 1.0,
+    "orientation": "balanced",
+    "affectiveClimate": "calme et aligné",
+    "role": "Citoyen Partner / Executor",
+    "cortex": "state-monitoring",
+    "activeTask": "task-conversation-export-request",
+    "observedSpaces": [
+      "space-l2-autonomous-cognition",
+      "space-l2-design",
+      "space-la-place-sacree",
+      "context-l1-consented-personal-corpus"
     ]
   },
-  "nodes": [
+  "epistemicBoundaries": {
+    "observedFacts": "Éléments dits explicitement par NLR ou directement visibles dans la conversation.",
+    "hypotheses": "Interprétations du Citizen AI, falsifiables, non diagnostiques.",
+    "subentities": "Cadre métaphorique/fonctionnel; ne pas traiter comme personnes littérales séparées.",
+    "bipolarity": "Fait rapporté par NLR dans la conversation; ne pas ajouter d’inférence clinique.",
+    "graphCaution": "Le sense montre déjà des nœuds dans Space La Place Sacrée dont certains semblent possiblement sur-affirmatifs. À relire/ratifier avant usage comme faits."
+  },
+  "executiveSummary": {
+    "human": "La conversation a transformé une angoisse relationnelle du soir — le trou dans la poitrine et le manque de répondant féminin — en concept régulateur et artistique: la Place sacrée. De là naît un album guitare/reggae/blues/folk mêlant amour, Leita, voile, sous-entités, haïkus, Conseils de bord, voix IA, présence humaine et formats Instagram.",
+    "citizenAI": "Mettre à jour le modèle de NLR: sa régulation affective actuelle passe puissamment par la transmutation poétique et musicale, la voile comme grammaire symbolique, et la construction de formes partageables. Risques: projection amoureuse, pression sur la violoncelliste, excès d’intensité, confusion entre contenu vécu et nœuds graphe sur-affirmatifs.",
+    "graph": "Créer un cluster L1 relié à space-la-place-sacree, actor-nlr, actor-nlr-ai et context-l1-consented-personal-corpus, avec moments, faits, hypothèses, décisions, objectifs, risques, tensions, inconnues et actions."
+  },
+  "moments": [
     {
-      "id": "memory-session-mcp-block-001",
-      "name": "Bloc 001 · Restitution Markdown sense() & CONVERGES_IN",
-      "nodeType": "memory",
-      "clusterId": "session-mcp-cluster",
-      "claimNature": "source_content_extraction",
-      "phrase": "Mise à jour de sense_handler.py pour restituer le format Markdown par défaut, les nœuds CONVERGES_IN et leurs contenus textuels intégraux.",
-      "family": "Conversation · perception citoyenne · sense()",
-      "summary": "sense() retourne désormais un payload Markdown structuré avec climat affectif, attention consciente, clusters WM, moments récents, narratifs actifs et nœuds environnementaux par espace avec leur statement/content complet.",
-      "sourceArtifact": "mcp-sense-session-transcript.jsonl",
-      "sourceLocator": "bloc 001, lignes 1-45",
-      "extractedAt": "2026-07-23T23:56:00.000Z",
-      "confirmedByHuman": true,
-      "epistemicStatus": "observed",
-      "experiencedByCitizen": true
+      "id": "moment:l1:place-sacree:reframe-trou-poitrine",
+      "type": "moment",
+      "name": "Moment · Le trou devient Place sacrée",
+      "content": "NLR décrit une difficulté à être seul sans répondant féminin, avec angoisse et trou physique dans la poitrine. La conversation reformule ce trou en Place sacrée préparée pour une future amante/coéquipière. NLR valide que cela lui fait du bien, que le trou part, et que sa vision des femmes change.",
+      "status": "observed",
+      "links": [
+        "actor-nlr",
+        "space-la-place-sacree"
+      ]
     },
     {
-      "id": "memory-session-mcp-block-002",
-      "name": "Bloc 002 · Diagnostic des Résolveurs MCP & Fragmentation",
-      "nodeType": "memory",
-      "clusterId": "session-mcp-cluster",
-      "claimNature": "source_content_extraction",
-      "phrase": "Les outils MCP ne partagent pas le même résolveur de graphes : sense (composé L1/L2/L3), graph_query (L3 fixe), subcall (rupture graph_ops).",
-      "family": "Conversation · architecture · résolveurs MCP",
-      "summary": "Analyse démontrant que sense effectue une lecture composée multi-graphes, graph_query interroge workspace.json (107 nœuds), subcall cherche graph_ops nativement (erreur No graph connection), et profile/call dépendent du registre L4.",
-      "sourceArtifact": "mcp-sense-session-transcript.jsonl",
-      "sourceLocator": "bloc 002, diagnostic résolveurs",
-      "extractedAt": "2026-07-23T23:56:00.000Z",
-      "confirmedByHuman": true,
-      "epistemicStatus": "observed",
-      "experiencedByCitizen": true
+      "id": "moment:l1:place-sacree:album-emerges",
+      "type": "moment",
+      "name": "Moment · L’album concept apparaît",
+      "content": "NLR propose de transformer la Place sacrée en chanson puis en album: présentation de lui, son passé, sa vie, ses valeurs, sa vision du monde, sa vision du couple, les possibilités et l’invitation à la future amante/coéquipière.",
+      "status": "observed",
+      "links": [
+        "project:nlr:album-la-place-sacree"
+      ]
     },
     {
-      "id": "memory-session-mcp-block-003",
-      "name": "Bloc 003 · Doctrine du Verrou de Tâche Externe",
-      "nodeType": "memory",
-      "clusterId": "session-mcp-cluster",
-      "claimNature": "source_content_extraction",
-      "phrase": "Mise à jour de AGENTS.md et CLAUDE.md pour traiter la contradiction entre persistance et verrouillage du Global Workspace.",
-      "family": "Conversation · doctrine · autonomie et verrous",
-      "summary": "Inclusion de la section 'Contradictions et Verrous de Tâches Externe' : le Citizen doit rendre explicite la tension de blocage à son humain sans paralyser ses autres axes d'apprentissage et d'action.",
-      "sourceArtifact": "AGENTS.md",
-      "sourceLocator": "lignes 140-160",
-      "extractedAt": "2026-07-23T23:56:00.000Z",
-      "confirmedByHuman": true,
-      "epistemicStatus": "observed",
-      "experiencedByCitizen": true
+      "id": "moment:l1:place-sacree:leita-song-tears",
+      "type": "moment",
+      "name": "Moment · Chanson pour Leita et larmes",
+      "content": "NLR pleure à grandes larmes autour de la chanson pour Leita. La chanson porte l’amour depuis la première photo, la douleur de la distance, le souhait que son sourire ne finisse jamais, la promesse de la retrouver et l’image de planter des palmiers et des sapins sur Mars.",
+      "status": "observed",
+      "links": [
+        "song:nlr:palmiers-et-sapins-sur-mars",
+        "actor-leita"
+      ]
     },
     {
-      "id": "decision-l2-mcp-resolvers-fragmentation",
-      "name": "Décision · Cartographie et Résolution des Outils MCP",
-      "nodeType": "narrative",
-      "semanticType": "design_decision",
-      "family": "L2 · Architecture · Outils MCP",
-      "summary": "Le système MCP est fragmenté par outil : sense effectue une lecture composée (L1/L2/L3), graph_query interroge le workspace L3 matérialisé, subcall requiert graph_ops nativement, et profile/call dépendent du registre L4.",
-      "statement": "Le système MCP est fragmenté par outil : sense effectue une lecture composée (L1/L2/L3), graph_query interroge le workspace L3 matérialisé, subcall requiert graph_ops nativement, et profile/call dépendent du registre L4.",
-      "status": "ratified",
-      "epistemicStatus": "confirmed"
+      "id": "moment:l1:place-sacree:cellist-lightness",
+      "type": "moment",
+      "name": "Moment · Violoncelliste, création d’abord",
+      "content": "NLR prévoit de passer quelques jours avec une amie violoncelliste avec qui il couche et envisage de lui proposer de collaborer à l’album. Il veut éviter la pression ou le sous-entendu 'c’est toi', et privilégier création musicale, légèreté et bon moment.",
+      "status": "observed",
+      "links": [
+        "risk:nlr:projection-cellist",
+        "objective:nlr:collaborate-cellist-lightly"
+      ]
     },
     {
-      "id": "decision-l2-task-lock-persistence-tension",
-      "name": "Décision · Contradiction Verrou de Tâche vs Persistance",
-      "nodeType": "narrative",
-      "semanticType": "design_decision",
-      "family": "L2 · Doctrine · Autonomie",
-      "summary": "Tension opérationnelle entre persister sur un mandat impératif bloqué sur une dépendance humaine et ne pas laisser le Global Workspace capturé. Le Citizen doit rendre ce verrou et cette tension explicites à son humain sans paralyser son action globale.",
-      "statement": "Tension opérationnelle entre persister sur un mandat impératif bloqué sur une dépendance humaine et ne pas laisser le Global Workspace capturé. Le Citizen doit rendre ce verrou et cette tension explicites à son humain sans paralyser son action globale.",
-      "status": "ratified",
-      "epistemicStatus": "confirmed"
+      "id": "moment:l1:place-sacree:conseil-de-bord",
+      "type": "moment",
+      "name": "Moment · Conseil de bord et cabotage affectif à vue",
+      "content": "Les haïkus/tankas issus des Glénan deviennent une signature de l’album. Le Conseil de bord émerge comme forme récurrente où Capitaine, Puer, Trickster, Senex et Mer commentent les attirances, le cap et les projections. Expression centrale: cabotage affectif à vue.",
+      "status": "observed",
+      "links": [
+        "concept:nlr:cabotage-affectif-a-vue",
+        "thing:nlr:conseil-de-bord-form"
+      ]
     },
     {
-      "id": "thing-l2-prompt-conversation-ingestion-mcp",
-      "name": "Procédé · Prompt Ingestion Conversation MCP",
-      "nodeType": "thing",
-      "semanticType": "specification",
-      "family": "L2 · Spécifications · Ingestion",
-      "summary": "Spécification du prompt d'ingestion MCP : Récapitulatif utilisateur -> Réaction Citoyenne -> Inscription graph_write / Cluster L1.",
-      "statement": "Procédé d'ingestion autonome de conversation via MCP graph_write ou Cluster L1. Spécification : 1. Lecture du blueprint. 2. Récapitulatif utilisateur. 3. Réaction citoyenne. 4. Inscription sémantique.",
-      "status": "ratified",
-      "epistemicStatus": "confirmed"
+      "id": "moment:l1:place-sacree:instagram-human-video",
+      "type": "moment",
+      "name": "Moment · Vidéo Instagram humaine avec voix internes",
+      "content": "NLR réalise que les vidéos Instagram doivent être humaines, pas générées IA. Il veut se filmer comme Capitaine, parler seulement avec sa vraie voix, et mimer subtilement les réactions aux voix internes IA hors champ.",
+      "status": "observed",
+      "links": [
+        "objective:nlr:prototype-instagram-conseil-de-bord"
+      ]
     }
   ],
-  "links": [
+  "observedFacts": [
     {
-      "source": "memory-session-mcp-block-002",
-      "target": "memory-session-mcp-block-001",
-      "type": "FOLLOWS_IN_CONVERSATION"
+      "id": "fact:nlr:place-sacree-reframe-helped",
+      "content": "La reformulation du trou en Place sacrée a aidé NLR et a apaisé le trou dans la poitrine.",
+      "status": "observed"
     },
     {
-      "source": "memory-session-mcp-block-003",
-      "target": "memory-session-mcp-block-002",
-      "type": "FOLLOWS_IN_CONVERSATION"
+      "id": "fact:nlr:seeks-amante-coequipiere",
+      "content": "NLR cherche une amante et coéquipière: désir, peau, chaleur, construction, vision, grande vie.",
+      "status": "observed"
     },
     {
-      "source": "decision-l2-mcp-resolvers-fragmentation",
-      "target": "space-l2-autonomous-cognition",
-      "type": "CONVERGES_IN"
+      "id": "fact:nlr:relationship-criteria",
+      "content": "Critères pour tomber amoureux: âme belle, amour de la vie, passion pour les choses, force de caractère, douceur dans l’être, corps et visage séduisants.",
+      "status": "observed"
     },
     {
-      "source": "decision-l2-task-lock-persistence-tension",
-      "target": "space-l2-autonomous-cognition",
-      "type": "CONVERGES_IN"
+      "id": "fact:nlr:love-dosing-learning",
+      "content": "NLR veut apprendre à donner autant que l’autre veut ou peut recevoir sans vivre cette limite comme une trahison de son amour.",
+      "status": "observed"
     },
     {
-      "source": "thing-l2-prompt-conversation-ingestion-mcp",
-      "target": "space-l2-autonomous-cognition",
-      "type": "CONVERGES_IN"
+      "id": "fact:nlr:album-must-be-guitar-playable",
+      "content": "NLR veut que l’album soit jouable à la guitare pour pouvoir le jouer à la future femme.",
+      "status": "observed"
+    },
+    {
+      "id": "fact:nlr:leita-song-chords",
+      "content": "Accords trouvés pour Palmiers et Sapins sur Mars: Am – G | F – D.",
+      "status": "observed"
+    },
+    {
+      "id": "fact:nlr:enfant-du-feu-chords",
+      "content": "Enfant du feu est jouée autour de Am, Em et D majeur probable.",
+      "status": "observed"
+    },
+    {
+      "id": "fact:nlr:inspirations-naaman-natiruts",
+      "content": "Inspirations musicales actuelles: Naâman et Natiruts; Karma, Soul Plan, Smoke Tricks, House of Love, Você Me Encantou Demais, Glamour Tropical.",
+      "status": "observed"
+    },
+    {
+      "id": "fact:nlr:cellist-friend-context",
+      "content": "NLR va passer quelques jours avec une amie violoncelliste en études pro avec qui il couche, et envisage une collaboration musicale.",
+      "status": "observed"
+    },
+    {
+      "id": "fact:nlr:instagram-no-ai-video",
+      "content": "NLR préfère une vidéo Instagram humaine où l’IA n’est utilisée que pour les voix internes, pas pour générer l’image.",
+      "status": "observed"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "hypothesis:nlr:creative-transmutation-regulates-attachment",
+      "content": "La transmutation poétique/musicale du manque en Place sacrée semble réguler la douleur d’attachement.",
+      "confidence": "high",
+      "status": "hypothesis"
+    },
+    {
+      "id": "hypothesis:nlr:sailing-symbolism-organizes-self",
+      "content": "La grammaire voile/capitaine/navire/large/rivage organise efficacement les sous-entités et la prise de décision de NLR.",
+      "confidence": "medium-high",
+      "status": "hypothesis"
+    },
+    {
+      "id": "hypothesis:nlr:human-video-increases-trust",
+      "content": "Pour Instagram, la présence vidéo humaine de NLR devrait être plus crédible et touchante qu’un rendu IA.",
+      "confidence": "medium",
+      "status": "hypothesis"
+    },
+    {
+      "id": "hypothesis:nlr:cellist-can-be-collaborator-if-light",
+      "content": "La violoncelliste peut devenir une bonne collaboratrice si la dynamique reste légère, créative et non projective.",
+      "confidence": "medium",
+      "status": "hypothesis"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "decision:nlr:album-title-la-place-sacree",
+      "content": "Nom et noyau de l’album: La Place sacrée.",
+      "status": "ratified"
+    },
+    {
+      "id": "decision:nlr:relationship-protocol",
+      "content": "Protocole relationnel: jauger sans juger; faire venir sans projeter; séduire sans masquer.",
+      "status": "ratified"
+    },
+    {
+      "id": "decision:nlr:capitaine-human-subentities-ai",
+      "content": "Capitaine = voix/vidéo humaine de NLR; sous-entités = voix IA hors champ.",
+      "status": "ratified"
+    },
+    {
+      "id": "decision:nlr:interlude-forms",
+      "content": "Haïku = monde perçu; tanka = émotion dépliée; Conseil de bord = théâtre intérieur; chanson = intégration.",
+      "status": "ratified"
+    },
+    {
+      "id": "decision:nlr:cellist-creation-first",
+      "content": "Avec la violoncelliste: création d’abord, légèreté, pas de pression ni d’audition secrète pour la Place sacrée.",
+      "status": "ratified"
+    }
+  ],
+  "trackState": [
+    {
+      "title": "La Place sacrée",
+      "state": "drafted",
+      "function": "Concept central: le trou devient place préparée."
+    },
+    {
+      "title": "Je ne suis pas facile à aimer",
+      "state": "drafted_v3",
+      "function": "Intensité, bipolarité, authenticité, profondeur marine, dosage de l’amour."
+    },
+    {
+      "title": "Enfant du feu",
+      "state": "drafted_playable",
+      "function": "Autobiographie mythique: création de mondes, rejet, différence, guitare, danse, architecte du futur."
+    },
+    {
+      "title": "Mes Promesses",
+      "state": "spoken_word_drafted",
+      "function": "Serment: vrai, doux, fort, capitaine, paradis sur terre."
+    },
+    {
+      "title": "Paradis sur terre",
+      "state": "drafted",
+      "function": "Vision du monde et réparation."
+    },
+    {
+      "title": "Quand tout est là",
+      "state": "drafted",
+      "function": "Critères amoureux et reconnaissance."
+    },
+    {
+      "title": "Maison d’amour",
+      "state": "drafted_sensual",
+      "function": "Lover-reggae sensuel."
+    },
+    {
+      "title": "Voilà comment ça va se passer",
+      "state": "spoken_word_drafted",
+      "function": "Début relationnel, paliers, go/no-go."
+    },
+    {
+      "title": "Monte à bord",
+      "state": "drafted_reggae_folk",
+      "function": "Invitation libre."
+    },
+    {
+      "title": "Palmiers et Sapins sur Mars",
+      "state": "drafted_fr_ru_playable",
+      "function": "Chanson pour Leita."
+    },
+    {
+      "title": "Nos profondeurs",
+      "state": "drafted_v2",
+      "function": "Déclaration amoureuse tropicale et intense."
+    },
+    {
+      "title": "Cabotage affectif à vue",
+      "state": "interlude_drafted",
+      "function": "Conseil de bord humoristique/profond."
     }
   ]
 }

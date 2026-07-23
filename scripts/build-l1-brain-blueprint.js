@@ -1178,6 +1178,7 @@ for (const relation of relations) {
   };
 }
 
+clusters.sort((left, right) => left.order - right.order);
 const declaredCounts = { nodes: 212, relations: 764, clusters: 23 };
 const actualCounts = { nodes: nodes.length, relations: relations.length, clusters: clusters.length };
 const graph = {
@@ -1222,10 +1223,15 @@ const graph = {
     relations: afterCitizenAIRoleCounts.relations - afterMetacognitiveCounts.relations,
     clusters: afterCitizenAIRoleCounts.clusters - afterMetacognitiveCounts.clusters
   },
+  humanSituationAugmentationCounts: {
+    nodes: afterHumanSituationCounts.nodes - afterCitizenAIRoleCounts.nodes,
+    relations: afterHumanSituationCounts.relations - afterCitizenAIRoleCounts.relations,
+    clusters: afterHumanSituationCounts.clusters - afterCitizenAIRoleCounts.clusters
+  },
   subentityMemoryAttributionAugmentationCounts: {
-    nodes: afterSubentityAttributionCounts.nodes - afterCitizenAIRoleCounts.nodes,
-    relations: afterSubentityAttributionCounts.relations - afterCitizenAIRoleCounts.relations,
-    clusters: afterSubentityAttributionCounts.clusters - afterCitizenAIRoleCounts.clusters
+    nodes: afterSubentityAttributionCounts.nodes - afterHumanSituationCounts.nodes,
+    relations: afterSubentityAttributionCounts.relations - afterHumanSituationCounts.relations,
+    clusters: afterSubentityAttributionCounts.clusters - afterHumanSituationCounts.clusters
   },
   actualCounts,
   sourceAudit: {

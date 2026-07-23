@@ -243,6 +243,86 @@ export function buildTransitionEvents(previousStatus, currentStatus, now = new D
   return events;
 }
 
+function unhealthyServices(status) {
+  return (status?.services || []).filter(service => service.state !== "healthy");
+}
+
+export function buildRuntimeAlert(previousStatus, currentStatus, now = new Date()) {
+  if (currentStatus.overall === "healthy") return null;
+  const previousOverall = previousStatus?.overall || "unknown";
+  const currentUnhealthy = unhealthyServices(currentStatus);
+  const previousById = new Map((previousStatus?.services || []).map(service => [service.id, service]));
+  const changedUnhealthy = currentUnhealthy.filter(service => previousById.get(service.id)?.state !== service.state);
+  if (previousOverall === currentStatus.overall && changedUnhealthy.length === 0) return null;
+
+  const lines = [
+    `Mind runtime n'est pas healthy (${currentStatus.overall}).`,
+    `Check: ${currentStatus.checkedAt || now.toISOString()}.`,
+    ...currentUnhealthy.map(service => `- ${service.name || service.id}: ${service.state} (${service.reason || "raison inconnue"})`)
+  ];
+  return {
+    type: "runtime_health_alert",
+    platform: "telegram",
+    observedAt: now.toISOString(),
+    overall: currentStatus.overall,
+    previousOverall,
+    unhealthyServiceIds: currentUnhealthy.map(service => service.id),
+    message: lines.join("\n")
+  };
+}
+
+function envValue(env, names = []) {
+  for (const name of names) {
+    const value = env?.[name];
+    if (value) return value;
+  }
+  return "";
+}
+
+async function sendTelegramAlert(alert, telegramConfig = {}, options = {}) {
+  const env = options.env || process.env;
+  const token = envValue(env, [telegramConfig.tokenEnv || "MIND_TELEGRAM_BOT_TOKEN", "TELEGRAM_BOT_TOKEN"]);
+  const chatId = telegramConfig.chatId || envValue(env, [telegramConfig.chatIdEnv || "MIND_TELEGRAM_CHAT_ID", "TELEGRAM_CHAT_ID"]);
+  if (!token || !chatId) return { delivered: false, reason: "telegram credentials missing" };
+
+  const fetchImpl = options.fetchImpl || fetch;
+  const response = await fetchImpl(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: alert.message,
+      disable_web_page_preview: true
+    })
+  });
+  if (!response.ok) return { delivered: false, reason: `telegram http ${response.status}` };
+  return { delivered: true, reason: "sent" };
+}
+
+async function emitRuntimeNotification(alert, config, options = {}) {
+  const telegramConfig = config.manager?.notifications?.telegram || {};
+  if (!telegramConfig.enabled || !alert) return [];
+  const now = options.now || new Date();
+  const cwd = options.cwd || projectDir;
+  const outboxPath = path.resolve(cwd, telegramConfig.outboxPath || "artifacts/runtime/telegram-alerts.jsonl");
+  const send = options.sendRuntimeAlert || ((payload, sendOptions) => sendTelegramAlert(payload, telegramConfig, sendOptions));
+  let delivery;
+  try {
+    delivery = await send(alert, options);
+  } catch (error) {
+    delivery = { delivered: false, reason: error.message };
+  }
+  const record = { ...alert, delivery, recordedAt: now.toISOString() };
+  await appendEvents(outboxPath, [record]);
+  return [{
+    type: delivery.delivered ? "runtime_notification_sent" : "runtime_notification_pending",
+    platform: "telegram",
+    delivered: delivery.delivered,
+    reason: delivery.reason,
+    observedAt: now.toISOString()
+  }];
+}
+
 async function appendEvents(eventsPath, events) {
   if (!events.length) return;
   await fs.mkdir(path.dirname(eventsPath), { recursive: true });
@@ -323,9 +403,10 @@ export async function runtimeCycle(config, options = {}) {
     services: statuses
   };
   const transitionEvents = buildTransitionEvents(previousStatus, currentStatus, now);
+  const notificationEvents = await emitRuntimeNotification(buildRuntimeAlert(previousStatus, currentStatus, now), config, { ...options, cwd, now });
   await writeJsonAtomic(statusPath, currentStatus);
-  await appendEvents(eventsPath, [...transitionEvents, ...repairEvents]);
-  return { status: currentStatus, events: [...transitionEvents, ...repairEvents] };
+  await appendEvents(eventsPath, [...transitionEvents, ...repairEvents, ...notificationEvents]);
+  return { status: currentStatus, events: [...transitionEvents, ...repairEvents, ...notificationEvents] };
 }
 
 export async function acquireLock(lockPath, { staleAfterMs = 10 * 60 * 1000 } = {}) {

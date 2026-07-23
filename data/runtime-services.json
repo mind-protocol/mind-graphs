@@ -9,7 +9,15 @@
     "degradedIntervalSeconds": 10,
     "repairingIntervalSeconds": 5,
     "defaultIntervalSeconds": 15,
-    "transitionOnlyEvents": true
+    "transitionOnlyEvents": true,
+    "notifications": {
+      "telegram": {
+        "enabled": true,
+        "tokenEnv": "MIND_TELEGRAM_BOT_TOKEN",
+        "chatIdEnv": "MIND_TELEGRAM_CHAT_ID",
+        "outboxPath": "artifacts/runtime/telegram-alerts.jsonl"
+      }
+    }
   },
   "states": ["starting", "healthy", "degraded", "stale", "down", "flapping", "blocked", "unknown"],
   "services": [

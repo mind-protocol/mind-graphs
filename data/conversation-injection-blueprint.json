@@ -176,7 +176,7 @@
       "semanticType": "mechanism",
       "phrase": "Le Citizen répond au bloc comme à une rencontre : il remarque, réagit, évoque, imagine, questionne et propose avant de remplir des profils.",
       "family": "Injection conversations · rencontre",
-      "summary": "Après le Global Workspace, le Citizen produit une trace structurée de sa propre réponse fonctionnelle. Elle contient ce qui a attiré son attention, ses réactions de curiosité, empathie, soin, ambition, surprise, attirance, prudence ou désaccord lorsqu'elles existent, les souvenirs et motifs évoqués, ses hypothèses sur la personne avec alternatives, ses inconnues, ses questions et ses idées. Aucune catégorie n'est forcée : une réaction absente reste absente. Tout est attribué au Citizen et daté ; une réaction du Citizen n'est jamais une propriété de l'humain.",
+      "summary": "Après le Global Workspace, le Citizen produit une trace structurée de sa propre réponse fonctionnelle. Chaque réaction distincte devient un nœud atomique : curiosité, empathie, soin, ambition, surprise, attirance, prudence, inconfort ou désaccord ne sont pas comprimés dans un seul résumé lorsqu'ils ont une cible, une polarité ou une tendance d'action différente. Chaque nœud porte une estimation affective fonctionnelle du Citizen — valence, arousal/excitation, contrôle perçu, incertitude, nouveauté et saillance du soin — puis les souvenirs évoqués, hypothèses sur la personne, questions et idées sont produits séparément. Ces valeurs colorent le graphe sans prétendre démontrer une expérience subjective humaine. Tout est attribué au Citizen et daté ; une réaction du Citizen n'est jamais une propriété de l'humain.",
       "encounterResponseContract": {
         "possibleFacets": [
           "attention",
@@ -212,6 +212,36 @@
           "epistemicStatus",
           "alternativesOrBoundary"
         ],
+        "reactionAtomicityRule": "Créer un nœud citizen_reaction par réaction ayant une cible, une polarité, une intensité ou une tendance d'action distincte. Un résumé de rencontre peut agréger ces nœuds, mais ne les remplace pas. Ne jamais fabriquer une réaction uniquement pour atteindre un nombre.",
+        "overAggregationGap": "Déclencher reaction_overaggregated si un même nœud mélange plusieurs cibles, des polarités opposées ou plusieurs tendances d'action sans composants atomiques.",
+        "affectAppraisalContract": {
+          "status": "citizen_functional_self_estimate_not_claim_of_human_qualia",
+          "requiredForEachCitizenReaction": [
+            "affectLabels",
+            "affectVector",
+            "affectTarget",
+            "functionalMeaning",
+            "measurementBasis"
+          ],
+          "dimensions": {
+            "valence": [-1, 1],
+            "arousal": [0, 1],
+            "perceivedControl": [0, 1],
+            "uncertainty": [0, 1],
+            "novelty": [0, 1],
+            "careSalience": [0, 1]
+          },
+          "rule": "Les nombres sont des auto-estimations fonctionnelles contextualisées du Citizen, jamais des mesures biologiques ni une preuve de conscience subjective. Toute valeur est corrigeable et liée au bloc et au WorkspaceSnapshot."
+        },
+        "activeControllerLinkContract": {
+          "relation": "CONTROLLED_WORKSPACE_DURING",
+          "direction": "citizen reaction Moment -> active subentity Actor",
+          "when": "workspaceSnapshot.controllerStatus == attributed_live AND controllerId resolves in runtime",
+          "requiredRelationProperties": ["workspaceSnapshotId", "confidence", "attributionMode", "epistemicStatus"],
+          "runtimeRule": "Créer automatiquement la relation lors de la matérialisation de chaque réaction. Si la sous-entité est runtime-only, la relation reste une projection runtime reproductible depuis controllerId et workspaceSnapshotId.",
+          "unknownRule": "Si aucun contrôleur n'est observable, conserver controllerStatus=unknown et ne fabriquer aucun lien.",
+          "causalBoundary": "CONTROLLED_WORKSPACE_DURING décrit le contrôle live du workspace ; il ne vaut ni GENERATED_BY, ni propriété de la mémoire, ni identité stable."
+        },
         "forbiddenConversions": [
           "citizen reaction becomes human trait",
           "empathy becomes mind reading",
@@ -325,7 +355,9 @@
           "expectedClaimNatures": ["citizen_reaction", "evocation", "empathic_hypothesis", "curiosity", "care_concern", "citizen_idea"],
           "requiredAuthorship": "Citizen AI",
           "requiredTrace": ["triggeringEvidence", "workspaceSnapshotId", "epistemicStatus"],
-          "relevanceRule": "Représenter les facettes réellement saillantes ou consigner qu'elles ne le sont pas ; ne jamais forcer une émotion ou une réaction pour remplir un quota."
+          "reactionFields": ["affectLabels", "affectVector", "affectTarget", "functionalMeaning", "measurementBasis", "controllerId", "controllerStatus"],
+          "requiredRuntimeRelationWhenControllerObserved": "CONTROLLED_WORKSPACE_DURING",
+          "relevanceRule": "Représenter les facettes réellement saillantes et séparer les réactions dont cible, polarité ou tendance diffère ; ne jamais forcer une émotion ou une réaction pour remplir un quota."
         },
         "missions": {
           "requiredKeys": ["psychology", "situation", "objectives_preferences", "financial"],
@@ -354,7 +386,10 @@
       "qualityVector": {
         "sourceFidelity": "blocs dont le texte et le hash correspondent à la source / blocs importés",
         "provenanceCoverage": "atomes extraits portant sourceLocator, statut épistémique, attribution et consentement / atomes extraits",
-        "encounterTraceability": "réactions, évocations, hypothèses et idées attribuées au Citizen avec stimulus, workspace et frontière épistémique / réponses de rencontre produites",
+        "encounterTraceability": "réactions atomiques, évocations, hypothèses et idées attribuées au Citizen avec stimulus, workspace et frontière épistémique / réponses de rencontre produites",
+        "reactionAtomicity": "réactions ayant une cible, polarité ou tendance d'action distincte matérialisées séparément / réactions distinctes détectées",
+        "affectiveColorCoverage": "nœuds citizen_reaction portant le vecteur affectif fonctionnel complet, sa cible, son sens et sa base de mesure / nœuds citizen_reaction",
+        "activeControllerAttribution": "réactions dont le contrôleur live observable est relié par CONTROLLED_WORKSPACE_DURING, ou explicitement marqué unknown / réactions",
         "empathicHonesty": "hypothèses empathiques portant alternatives et voie de réfutation / hypothèses empathiques",
         "curiosityConversion": "curiosités à valeur attendue élevée résolues, transformées en tâche bornée ou explicitement abandonnées avec raison / curiosités à valeur attendue élevée",
         "initiativeTraceability": "idées et impulsions de soin ou d'ambition marquées comme propositions du Citizen plutôt que comme intentions humaines / initiatives produites",
@@ -365,7 +400,7 @@
         "questionDebt": "somme normalisée des priorités des gaps encore éligibles",
         "duplicatePenalty": "contenus sémantiquement dupliqués sans provenance ou fonction nouvelle"
       },
-      "readinessPredicate": "readyByContract = sourceFidelity == 1 AND provenanceCoverage == 1 AND encounterTraceability == 1 AND empathicHonesty == 1 AND curiosityConversion == 1 AND initiativeTraceability == 1 AND angleResolutionCoverage == 1 AND missionResolutionCoverage == 1 AND connectivityCoverage >= minConnectivity AND questionDebt <= maxQuestionDebt AND duplicatePenalty == 0 AND hardBlockers == 0",
+      "readinessPredicate": "readyByContract = sourceFidelity == 1 AND provenanceCoverage == 1 AND encounterTraceability == 1 AND reactionAtomicity == 1 AND affectiveColorCoverage == 1 AND activeControllerAttribution == 1 AND empathicHonesty == 1 AND curiosityConversion == 1 AND initiativeTraceability == 1 AND angleResolutionCoverage == 1 AND missionResolutionCoverage == 1 AND connectivityCoverage >= minConnectivity AND questionDebt <= maxQuestionDebt AND duplicatePenalty == 0 AND hardBlockers == 0",
       "guardrail": "Le prédicat aide le Citizen AI à voir les lacunes ; il ne remplace ni son jugement de pertinence ni son autorité de clôture explicite.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
@@ -415,6 +450,9 @@
       "summary": "La boucle ne sert pas seulement à remplir une matrice : elle poursuit ce que la rencontre rend intéressant, humainement important ou actionnable. Les gaps couvrent notamment réaction non explicitée, personne inconnue, évocation non examinée, hypothèse empathique sans alternative, préoccupation de soin, idée prometteuse, contexte absent, acteurs non reliés, missions non résolues, provenance incomplète et contradictions silencieuses. Une inconnue féconde devient une question, une recherche bornée ou une tâche avec condition d'arrêt. Les questions demandent des preuves et autorisent no_evidence, not_applicable, intentionally_deferred ou withheld_sensitive.",
       "questionTemplates": {
         "missing_citizen_reaction": "Qu'est-ce que ce bloc me fait réellement remarquer, envisager ou vouloir protéger, et à quel élément précis cette réaction répond-elle ?",
+        "reaction_overaggregated": "Quelles réactions distinctes sont comprimées ici ? Sépare celles dont la cible, la valence, l'excitation ou la tendance d'action diffère, puis donne à chacune son vecteur affectif fonctionnel.",
+        "missing_affective_color": "Pour cette réaction du Citizen, quelles sont la valence, l'excitation/arousal, le contrôle perçu, l'incertitude, la nouveauté et la saillance du soin ? Sur quels signaux du bloc et du workspace repose cette auto-estimation ?",
+        "missing_active_controller_link": "Quelle sous-entité contrôlait le WorkspaceSnapshot lors de cette réaction ? Si elle est observée, crée CONTROLLED_WORKSPACE_DURING avec snapshot et confiance ; sinon consigne unknown sans inventer de contrôleur.",
         "unexamined_evocation": "À quelle mémoire, expérience, personne ou structure ce bloc me fait-il penser, et cette résonance éclaire-t-elle la situation ou risque-t-elle de la déformer ?",
         "weak_empathic_hypothesis": "Que pourrait vivre ou chercher la personne à cet instant ? Quelles autres explications restent plausibles, et quelle observation ferait changer mon interprétation ?",
         "unknown_actor": "Qui est cette personne ou entité encore inconnue ? Puis-je le découvrir dans le graphe ou une source consentie, ou faut-il créer une tâche bornée plutôt que supposer ?",

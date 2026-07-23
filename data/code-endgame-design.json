@@ -1203,6 +1203,81 @@
       "summary": "Comment relier l’état affiché d’une unité aux Moments réels de build, de test et d’exécution plutôt qu’à une propriété figée ?",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "hypothesis-status-from-revision-moments",
+      "name": "Hypothèse de travail · Calculer le statut depuis les Moments",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "Le statut courant est une vue calculée depuis les derniers Moments applicables à une révision et un environnement, jamais une propriété canonique figée.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : réduire les Moments de matérialisation, build, test, promotion et runtime qui ciblent la même Program Revision et le même environnement ; exposer séparément succès, échec, conflit, absence et obsolescence. Hypothèse : une règle de précédence déterministe peut produire une vue utile sans effacer les Moments sources. Inconnue résiduelle : la fenêtre de fraîcheur, la précédence exacte entre signaux concurrents et le traitement des environnements partiellement observés restent à calibrer.",
+      "answer": "Calculer une vue de statut par révision et environnement à partir des Moments applicables les plus récents, en conservant conflit, absence et obsolescence comme états distincts.",
+      "hypothesis": "Une réduction déterministe des Moments peut remplacer toute propriété de statut figée.",
+      "residualUnknown": "Fenêtre de fraîcheur, précédence des événements concurrents et agrégation multi-environnements.",
+      "supportingNodeIds": ["axiom-decision-reality-as-moments", "mechanism-program-revision", "moment-template-build-run", "moment-template-test-run", "moment-template-runtime-error", "institution-guardrail-moments-not-status", "risk-status-fiction"],
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "hypothesis-low-level-break-glass-access",
+      "name": "Hypothèse de travail · Accès bas niveau sous bris de glace",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "Le runtime et le filesystem restent masqués dans le flux nominal, mais une voie de diagnostic bornée et auditée doit survivre aux pannes de toolchain.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : aucun accès direct dans le flux nominal ; en panne, autoriser une voie de bris de glace donnant des artefacts immuables, logs, source maps et reconstruction/rollback, avec autorité explicite et Moment d'audit. Hypothèse : cet accès peut rester principalement en lecture et ne pas recréer une seconde source canonique. Inconnue résiduelle : qui l'autorise, quelles écritures de récupération sont permises et comment fonctionner si le graphe lui-même est indisponible.",
+      "answer": "Masquer totalement le bas niveau en fonctionnement nominal, tout en gardant une voie de diagnostic et de récupération bornée, auditée et non canonique.",
+      "hypothesis": "Un accès de bris de glace centré sur la lecture, les artefacts immuables, les source maps et le rollback préserve l'abstraction sans rendre la panne opaque.",
+      "residualUnknown": "Autorité d'ouverture, écritures de récupération admissibles et procédure hors graphe.",
+      "supportingNodeIds": ["axiom-decision-graph-only-work", "axiom-decision-graph-source-maps", "axiom-decision-explicit-authority", "mechanism-rollback-engine", "mechanism-artifact-store", "risk-debugging-opacity"],
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "hypothesis-external-dependency-reference",
+      "name": "Hypothèse de travail · Dépendances externes référencées et épinglées",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "Une dépendance externe est un Thing référencé par identité, version et intégrité, dont les effets réels reviennent comme Moments.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : représenter chaque dépendance par un Thing portant source, version/révision, hash d'intégrité, licence et politique de résolution ; conserver localement le lock, les métadonnées et les artefacts requis pour un rebuild conforme, sans recopier tout le code par défaut. Hypothèse : le resolver et l'artifact store suffisent à rendre la dépendance reproductible et observable. Inconnue résiduelle : critères de vendoring, disponibilité hors ligne, révocation et changements de licence.",
+      "answer": "Référencer la dépendance comme Thing épinglé et vérifiable, puis conserver localement ce qu'exigent le lock et la politique de rebuild.",
+      "hypothesis": "Identité, version, hash, provenance et artefact reproductible donnent une représentation suffisante sans ingérer systématiquement le code tiers.",
+      "residualUnknown": "Seuil de vendoring, garanties hors ligne, révocation et évolution des licences.",
+      "supportingNodeIds": ["mechanism-dependency-resolver", "mechanism-artifact-store", "mechanism-build-runner", "risk-external-dependencies", "institution-guardrail-independent-rebuild"],
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "hypothesis-bootstrap-trusted-kernel",
+      "name": "Hypothèse de travail · Noyau de bootstrap minimal",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "Un petit noyau versionné hors du Program Graph doit pouvoir valider, charger et matérialiser une révision sans dépendre de lui-même.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : garder hors graphe un noyau minimal comprenant lecteur du format canonique, validateur de schéma/contrats, matérialiseur déterministe, vérificateur d'intégrité et chemin de récupération ; tout le reste peut être décrit dans le Program Graph. Hypothèse : un rebuild indépendant de bout en bout peut borner ce noyau de confiance. Inconnue résiduelle : ensemble minimal exact, mécanisme de mise à jour et racine de confiance.",
+      "answer": "Bootstrapper avec un noyau externe minimal, versionné et vérifiable capable de charger, valider, matérialiser et restaurer le Program Graph.",
+      "hypothesis": "Le rebuild indépendant permet de tester que ce noyau est suffisant sans laisser toute la toolchain hors graphe.",
+      "residualUnknown": "Périmètre minimal exact, mise à jour du noyau et gestion de la racine de confiance.",
+      "supportingNodeIds": ["mechanism-program-materializer", "mechanism-contract-validator", "risk-bootstrap-paradox", "risk-materializer-corruption", "institution-guardrail-independent-rebuild"],
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "hypothesis-atom-independent-contract-change",
+      "name": "Hypothèse de travail · Frontière par contrat et raison de changer",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "L'atome est la plus petite unité dotée d'une identité stable, d'un contrat testable et d'une raison de changer indépendante.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : préférer fonction, contrat, comportement ou test quand l'unité possède une identité logique et peut évoluer indépendamment ; garder ensemble une closure, une machine d'état ou un module si les séparer détruit un invariant partagé. Hypothèse : identité, contrat, invariants et raison de changer forment un critère inter-langages plus robuste que la syntaxe. Inconnue résiduelle : seuils pratiques pour les langages dynamiques, effets implicites et unités trop fines ou trop larges.",
+      "answer": "Tracer la frontière à la plus petite unité ayant identité stable, contrat testable, invariants propres et raison de changer indépendante.",
+      "hypothesis": "Ce critère sémantique peut couvrir fonctions, closures, machines d'état et modules sans imposer une catégorie syntaxique unique.",
+      "residualUnknown": "Calibration sur langages dynamiques, effets implicites et détection des mauvaises granularités.",
+      "supportingNodeIds": ["axiom-decision-bounded-granularity", "axiom-decision-stable-logical-id", "mechanism-semantic-atom-schema", "mechanism-atom-function", "mechanism-atom-contract", "mechanism-atom-behavior", "risk-wrong-granularity", "risk-dynamic-language-mismatch"],
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
     }
   ],
   "links": [
@@ -1979,6 +2054,36 @@
       "target": "axiom-decision-reality-as-moments",
       "type": "BLOCKS",
       "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+    },
+    {
+      "source": "hypothesis-status-from-revision-moments",
+      "target": "question-status-computation",
+      "type": "ADDRESSES",
+      "justification": "L'hypothèse propose une réduction vérifiable des Moments tout en conservant les inconnues de précédence et de fraîcheur."
+    },
+    {
+      "source": "hypothesis-low-level-break-glass-access",
+      "target": "question-low-level-access",
+      "type": "ADDRESSES",
+      "justification": "L'hypothèse sépare le flux nominal graph-native d'une voie de récupération bornée dont l'autorité reste à trancher."
+    },
+    {
+      "source": "hypothesis-external-dependency-reference",
+      "target": "question-external-code",
+      "type": "ADDRESSES",
+      "justification": "L'hypothèse précise ce qui est référencé, épinglé et conservé localement sans prétendre clore la politique de vendoring."
+    },
+    {
+      "source": "hypothesis-bootstrap-trusted-kernel",
+      "target": "question-bootstrap",
+      "type": "ADDRESSES",
+      "justification": "L'hypothèse définit un noyau externe minimal et rend explicites les inconnues de périmètre et de confiance."
+    },
+    {
+      "source": "hypothesis-atom-independent-contract-change",
+      "target": "question-atom-boundary",
+      "type": "ADDRESSES",
+      "justification": "L'hypothèse applique la décision de granularité sémantique et conserve les cas dynamiques comme inconnue résiduelle."
     }
   ]
 }

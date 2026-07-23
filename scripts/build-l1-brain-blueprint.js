@@ -612,6 +612,27 @@ addRoleSystemNode({
   name: "Système universel des rôles Citizen AI",
   description: citizenAIRoles.doctrine
 });
+addRoleSystemNode({
+  id: "narrative-citizen-ai-role-reflection-contract",
+  nodeType: "Narrative",
+  semanticType: "ReflectionContract",
+  name: "Contrat de réflexion des rôles Citizen AI",
+  description: citizenAIRoles.reflectionContract.purpose,
+  sequence: citizenAIRoles.reflectionContract.sequence,
+  invariants: citizenAIRoles.reflectionContract.invariants,
+  questionStatus: citizenAIRoles.reflectionContract.questionStatus,
+  strategyStatus: citizenAIRoles.reflectionContract.strategyStatus,
+  ideaStatus: citizenAIRoles.reflectionContract.ideaStatus,
+  personalPrefill: false
+});
+addDerivedRelation({
+  source: "narrative-citizen-ai-role-reflection-contract",
+  type: "GROUNDS",
+  target: "space-citizen-ai-role-system",
+  justification: "Le contrat rend explicite la boucle question, stratégie, idée, vérification et apprentissage partagée par tous les rôles.",
+  cluster: roleSystemCluster,
+  provenance: "citizen_ai_roles_blueprint"
+});
 addRoleSystemNode(citizenAIRoles.actorArchetype);
 addRoleSystemNode({ ...citizenAIRoles.instanceTemplate, template: true });
 addDerivedRelation({
@@ -698,6 +719,7 @@ for (const [roleIndex, role] of citizenAIRoles.roles.entries()) {
   const behaviorId = `narrative-citizen-ai-role-${role.id}-policies`;
   const scriptId = `thing-citizen-ai-role-${role.id}-script`;
   const auditId = `thing-citizen-ai-role-${role.id}-audit`;
+  const questionRationaleId = `narrative-citizen-ai-role-${role.id}-questions-rationale`;
   roleNodeIds.set(role.id, roleId);
 
   addRoleSystemNode({ id: clusterSpaceId, nodeType: "Space", semanticType: "CitizenAIRoleCluster", name: cluster.title, description: role.mission }, cluster);
@@ -705,7 +727,15 @@ for (const [roleIndex, role] of citizenAIRoles.roles.entries()) {
   addRoleSystemNode({ id: rationaleId, nodeType: "Narrative", semanticType: "DesignRationale", name: `Justification · ${role.name}`, description: role.rationale, facets: ["justification"] }, cluster);
   addRoleSystemNode({ id: behaviorId, nodeType: "Narrative", semanticType: "BehavioralPolicy", name: `Politiques · ${role.name}`, description: role.behaviors.join(" "), policies: role.behaviors }, cluster);
   addRoleSystemNode({ id: scriptId, nodeType: "Thing", semanticType: "Script", name: `Script de rôle · ${role.name}`, description: `Orchestre les capacités admises pour enact ${role.name} sous contrôle du routeur, des permissions et des limites.` }, cluster);
-  addRoleSystemNode({ id: auditId, nodeType: "Thing", semanticType: "RoleAudit", name: `Audit · ${role.name}`, description: `Vérifie mission, attracteurs, risques, limites, permissions, handoff et résultat du rôle ${role.name}.` }, cluster);
+  addRoleSystemNode({ id: auditId, nodeType: "Thing", semanticType: "RoleAudit", name: `Audit · ${role.name}`, description: `Vérifie mission, attracteurs, risques, questions d'orientation, stratégies, idées, limites, permissions, handoff et résultat du rôle ${role.name}.` }, cluster);
+  addRoleSystemNode({
+    id: questionRationaleId,
+    nodeType: "Narrative",
+    semanticType: "DesignRationale",
+    name: `Justification des questions · ${role.name}`,
+    description: role.reflection.questionJustification,
+    facets: ["justification", "role_reflection"]
+  }, cluster);
 
   addDerivedRelation({ source: rationaleId, type: "JUSTIFIES", target: roleId, justification: role.rationale, cluster, provenance: "citizen_ai_roles_blueprint" });
   addDerivedRelation({ source: citizenAIRoles.actorArchetype.id, type: "CAN_ENACT", target: roleId, justification: `Le même Actor Citizen AI peut enact ${role.name} sans se fragmenter en agent souverain.`, cluster, provenance: "citizen_ai_roles_blueprint" });
@@ -714,6 +744,7 @@ for (const [roleIndex, role] of citizenAIRoles.roles.entries()) {
   addDerivedRelation({ source: roleId, type: "OPERATES_IN", target: role.domain, justification: `${role.name} intervient dans le domaine ${role.domain}.`, cluster, provenance: "citizen_ai_roles_blueprint" });
   addDerivedRelation({ source: roleId, type: "AUDITED_BY", target: auditId, justification: `Toute activation de ${role.name} produit une trace vérifiable.`, cluster, provenance: "citizen_ai_roles_blueprint" });
   addDerivedRelation({ source: roleId, type: "PART_OF", target: clusterSpaceId, justification: `${role.name} est le centre de son cluster canonique.`, cluster, provenance: "citizen_ai_roles_blueprint" });
+  addDerivedRelation({ source: auditId, type: "USES_METHOD", target: "narrative-citizen-ai-role-reflection-contract", justification: `L'audit de ${role.name} applique la boucle de réflexion universelle sans préremplir les réponses.`, cluster, provenance: "citizen_ai_roles_blueprint" });
 
   role.desires.forEach((statement, index) => {
     const id = `narrative-citizen-ai-role-${role.id}-desire-${index + 1}`;
@@ -736,6 +767,87 @@ for (const [roleIndex, role] of citizenAIRoles.roles.entries()) {
     addRoleSystemNode({ id, nodeType: "Thing", semanticType: "Capability", name: capability, description: `Capacité requise par le rôle ${role.name}. Sa disponibilité et ses permissions doivent être prouvées au runtime.` }, cluster);
     addDerivedRelation({ source: roleId, type: "REQUIRES", target: id, justification: `${role.name} requiert ${capability}.`, cluster, provenance: "citizen_ai_roles_blueprint" });
     addDerivedRelation({ source: scriptId, type: "USES", target: id, justification: `Le script de ${role.name} utilise ${capability} sous permission.`, cluster, provenance: "citizen_ai_roles_blueprint" });
+  });
+
+  const questionIds = role.reflection.questions.map((prompt, index) => {
+    const id = `narrative-citizen-ai-role-${role.id}-question-${index + 1}`;
+    addRoleSystemNode({
+      id,
+      nodeType: "Narrative",
+      semanticType: "RoleOrientationQuestion",
+      name: `Question d'orientation · ${role.name} · ${index + 1}`,
+      description: prompt,
+      prompt,
+      questionIndex: index + 1,
+      status: citizenAIRoles.reflectionContract.questionStatus,
+      answerPrefilled: false,
+      facets: ["question", "role_reflection"]
+    }, cluster);
+    addDerivedRelation({ source: questionRationaleId, type: "JUSTIFIES", target: id, justification: role.reflection.questionJustification, cluster, provenance: "citizen_ai_roles_blueprint" });
+    addDerivedRelation({ source: id, type: "TESTS", target: roleId, justification: `Cette question vérifie si ${role.name} comprend suffisamment le contexte, les limites et les inconnues avant d'intervenir.`, cluster, provenance: "citizen_ai_roles_blueprint" });
+    return id;
+  });
+
+  const strategyIds = role.reflection.strategies.map((strategy, index) => {
+    const id = `narrative-citizen-ai-role-${role.id}-strategy-${index + 1}`;
+    const strategyRationaleId = `${id}-rationale`;
+    addRoleSystemNode({
+      id,
+      nodeType: "Narrative",
+      semanticType: "RoleStrategy",
+      name: `Stratégie · ${role.name} · ${index + 1}`,
+      description: strategy.statement,
+      status: citizenAIRoles.reflectionContract.strategyStatus,
+      requiresMandateForAction: true,
+      facets: ["strategy", "role_reflection"]
+    }, cluster);
+    addRoleSystemNode({
+      id: strategyRationaleId,
+      nodeType: "Narrative",
+      semanticType: "DesignRationale",
+      name: `Justification de stratégie · ${role.name} · ${index + 1}`,
+      description: strategy.justification,
+      facets: ["justification", "role_reflection"]
+    }, cluster);
+    addDerivedRelation({ source: strategyRationaleId, type: "JUSTIFIES", target: id, justification: strategy.justification, cluster, provenance: "citizen_ai_roles_blueprint" });
+    addDerivedRelation({ source: roleId, type: "FOLLOWS", target: id, justification: `${role.name} peut suivre cette stratégie lorsque les questions qu'elle traite sont pertinentes.`, cluster, provenance: "citizen_ai_roles_blueprint" });
+    for (const questionIndex of strategy.addresses) {
+      const questionId = questionIds[questionIndex - 1];
+      if (!questionId) throw new Error(`Unknown question ${questionIndex} for role ${role.id} strategy ${index + 1}`);
+      addDerivedRelation({ source: id, type: "ADDRESSES", target: questionId, justification: strategy.justification, cluster, provenance: "citizen_ai_roles_blueprint" });
+    }
+    return id;
+  });
+
+  role.reflection.ideas.forEach((idea, index) => {
+    const id = `narrative-citizen-ai-role-${role.id}-idea-${index + 1}`;
+    const ideaRationaleId = `${id}-rationale`;
+    addRoleSystemNode({
+      id,
+      nodeType: "Narrative",
+      semanticType: "InterventionIdea",
+      name: `Idée d'intervention · ${role.name} · ${index + 1}`,
+      description: idea.statement,
+      status: citizenAIRoles.reflectionContract.ideaStatus,
+      executable: false,
+      requiresMandateForAction: true,
+      facets: ["idea", "role_reflection", "proposal_only"]
+    }, cluster);
+    addRoleSystemNode({
+      id: ideaRationaleId,
+      nodeType: "Narrative",
+      semanticType: "DesignRationale",
+      name: `Justification d'idée · ${role.name} · ${index + 1}`,
+      description: idea.justification,
+      facets: ["justification", "role_reflection"]
+    }, cluster);
+    addDerivedRelation({ source: ideaRationaleId, type: "JUSTIFIES", target: id, justification: idea.justification, cluster, provenance: "citizen_ai_roles_blueprint" });
+    addDerivedRelation({ source: roleId, type: "RECOMMENDS", target: id, justification: `Cette idée reste une proposition conditionnelle de ${role.name} et ne déclenche aucune action automatique.`, cluster, provenance: "citizen_ai_roles_blueprint" });
+    for (const strategyIndex of idea.supports) {
+      const strategyId = strategyIds[strategyIndex - 1];
+      if (!strategyId) throw new Error(`Unknown strategy ${strategyIndex} for role ${role.id} idea ${index + 1}`);
+      addDerivedRelation({ source: id, type: "OPTION_FOR", target: strategyId, justification: idea.justification, cluster, provenance: "citizen_ai_roles_blueprint" });
+    }
   });
 }
 

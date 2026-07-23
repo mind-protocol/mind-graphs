@@ -19,6 +19,9 @@
     { "id": "organizational_space", "label": "espace organisationnel", "family": "organization", "epistemicStatus": "declared", "description": "Périmètre dans lequel convergent les activités et décisions de l'organisation." },
     { "id": "citizen_ai", "label": "Citizen AI", "family": "organization", "epistemicStatus": "declared", "description": "Citizen AI agissant dans l'organisation pour son humain." },
     { "id": "repository", "label": "dépôt de code", "family": "artifacts", "epistemicStatus": "documented", "description": "Dépôt matériel projeté et gouverné par l'organisation." },
+    { "id": "runtime_component", "label": "composant runtime", "family": "artifacts", "epistemicStatus": "documented", "description": "Processus, service ou capacité d'exécution supervisée par l'organisation." },
+    { "id": "runtime_manifest", "label": "manifeste runtime", "family": "artifacts", "epistemicStatus": "documented", "description": "Artefact déclaratif décrivant l'état attendu des services vivants." },
+    { "id": "runtime_policy", "label": "politique runtime", "family": "design", "epistemicStatus": "proposed", "description": "Politique de disponibilité, réparation ou cadence d'activation du runtime." },
     { "id": "design_decision", "label": "décision de design", "family": "design", "epistemicStatus": "proposed", "description": "Arbitrage de design L2, distinct d'une règle canonique L4 ratifiée." },
     { "id": "design_rationale", "label": "justification de design", "family": "design", "epistemicStatus": "proposed", "description": "Raison explicite soutenant une décision ou un artefact de design." }
   ],
@@ -42,14 +45,14 @@
     { "id": "REQUESTS_PROMOTION_TO", "label": "demande promotion vers", "family": "governance", "scope": "promotion", "status": "active", "causalClaim": false, "description": "Demande explicite de promotion d'une décision L2 vers un registre canonique." }
   ],
   "typeGroups": {
-    "l2_elements": ["organizational_space", "citizen_ai", "repository", "design_decision"],
-    "l2_artifacts": ["repository"]
+    "l2_elements": ["organizational_space", "citizen_ai", "repository", "runtime_component", "runtime_manifest", "runtime_policy", "design_decision"],
+    "l2_artifacts": ["repository", "runtime_component", "runtime_manifest", "runtime_policy"]
   },
   "relationConstraints": {
     "PART_OF": { "sourceTypes": ["organizational_space"], "targetTypes": ["organizational_space"] },
     "CONVERGES_IN": { "sourceGroups": ["l2_elements"], "targetTypes": ["organizational_space"] },
     "JUSTIFIES": { "sourceTypes": ["design_rationale"], "targetTypes": ["design_decision"] },
-    "TESTED_BY": { "sourceTypes": ["design_decision"], "targetTypes": ["repository"] },
+    "TESTED_BY": { "sourceTypes": ["design_decision"], "targetGroups": ["l2_artifacts"] },
     "REQUESTS_PROMOTION_TO": { "sourceTypes": ["design_decision"], "targetGroups": ["l2_artifacts"] }
   },
   "quantification": {

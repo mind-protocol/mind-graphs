@@ -22,7 +22,7 @@ test("the whole brain blueprint projects as managed structure without personal d
 test("a facet can bound a migration to the universal Citizen AI role system", () => {
   const projection = projectL1Blueprint(blueprint, { scopeFacet: "citizen_ai_role_system" });
   assert.equal(projection.nodes.length, 596);
-  assert.equal(projection.relations.length, 999);
+  assert.equal(projection.relations.length, 1000);
   assert.ok(projection.nodes.every(node => node.props.facets.includes("citizen_ai_role_system")));
 });
 

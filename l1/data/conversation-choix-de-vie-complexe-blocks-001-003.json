@@ -130,7 +130,8 @@
     {
       "id": "observation-conversation-choix-de-vie-complexe-block-001-artifact",
       "name": "Observation · fiche de communication 29er produite",
-      "nodeType": "observation",
+      "nodeType": "memory",
+      "claimNature": "agent_observation",
       "phrase": "Le bloc 001 rapporte que l'assistant a produit une fiche 29er en deux pages et une formulation de partage sur WhatsApp.",
       "family": "Conversation importée · extraction factuelle",
       "summary": "Constat limité à l'acte documenté dans la réponse de l'assistant. Le fichier PDF n'a pas été fourni ni vérifié pendant cet import ; aucune intention ou préférence de NLR n'est déduite du seul texte assistant.",
@@ -150,7 +151,8 @@
     {
       "id": "observation-conversation-choix-de-vie-complexe-block-002-artifact",
       "name": "Observation · note sur la cognition symbiotique rapportée",
-      "nodeType": "observation",
+      "nodeType": "memory",
+      "claimNature": "agent_observation",
       "phrase": "Le bloc 002 rapporte la production d'une note fondatrice sur cognition symbiotique, sous-entités et architecture persistante.",
       "family": "Conversation importée · extraction factuelle",
       "summary": "Le contenu est conservé comme proposition formulée par l'assistant. L'existence du PDF n'est pas vérifiée ici et les thèses décrites ne sont ni promues en science établie ni attribuées à NLR comme croyances confirmées.",
@@ -170,7 +172,8 @@
     {
       "id": "observation-conversation-choix-de-vie-complexe-block-003-artifact",
       "name": "Observation · note Venise et Échos actifs rapportée",
-      "nodeType": "observation",
+      "nodeType": "memory",
+      "claimNature": "agent_observation",
       "phrase": "Le bloc 003 rapporte une note sur Venise, les Échos actifs, The Lagoon et une frontière simulation-réalité.",
       "family": "Conversation importée · extraction factuelle",
       "summary": "Trace d'une proposition de design attribuable à l'assistant source. Elle ne constitue pas une décision adoptée par NLR. Les six opérations d'édition précédentes sont présentes dans l'export mais leur contenu est inconnu.",
@@ -190,7 +193,8 @@
     {
       "id": "observation-conversation-choix-de-vie-complexe-blocks-001-003-profile-deferred",
       "name": "Contrôle épistémique · profil personnel non enrichi",
-      "nodeType": "observation",
+      "nodeType": "memory",
+      "claimNature": "epistemic_quality_control",
       "phrase": "Les trois premiers blocs ne suffisent pas à enrichir honnêtement les profils personnels de NLR parce que les prompts humains sont absents.",
       "family": "Conversation importée · contrôle qualité",
       "summary": "Les thèmes voile, cognition symbiotique et Venise peuvent être pertinents, mais ils apparaissent ici dans des productions de l'assistant. Sans les demandes humaines correspondantes, aucun objectif, préférence, trait psychologique, fait de situation ou élément financier nouveau n'est créé.",

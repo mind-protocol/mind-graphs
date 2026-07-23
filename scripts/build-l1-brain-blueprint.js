@@ -1235,8 +1235,8 @@ const graph = {
   },
   actualCounts,
   sourceAudit: {
-    sources: [path.resolve(sourcePath), path.resolve(cortexSourcePath), path.resolve(affectSourcePath), path.resolve(sensorySourcePath), path.resolve(metacognitiveSourcePath), path.resolve(citizenAIRolesSourcePath), path.resolve(subentityAttributionSourcePath)],
-    extraction: "Le corps structuré du blueprint est autoritaire pour ses 23 clusters. La machine Cortex est projetée depuis l1-design.json. L'extension affective ajoute huit clusters. Le pont sensoriel et l'extension métacognitive complètent les clusters existants. Le système Citizen AI ajoute un Actor archétype, un template d'instance non souverain, un runtime partagé et quinze clusters de rôles fonctionnels explicites. Le package d'attribution mémorielle ajoute 99 nodes et 206 relations au cluster des sous-entités.",
+    sources: [path.resolve(sourcePath), path.resolve(cortexSourcePath), path.resolve(affectSourcePath), path.resolve(sensorySourcePath), path.resolve(metacognitiveSourcePath), path.resolve(humanSituationSourcePath), path.resolve(citizenAIRolesSourcePath), path.resolve(subentityAttributionSourcePath)],
+    extraction: "Le corps structuré du blueprint est autoritaire pour ses 23 clusters. La machine Cortex est projetée depuis l1-design.json. L'extension affective ajoute dix clusters. Le pont sensoriel et l'extension métacognitive complètent les clusters existants. Le modèle de situation humaine ajoute le cluster 33, trois frames séparées et leur projection bornée vers le workspace. Le système Citizen AI ajoute un Actor archétype, un template d'instance non souverain, un runtime partagé et quinze clusters de rôles fonctionnels explicites. Le package d'attribution mémorielle ajoute 99 nodes et 206 relations au cluster des sous-entités.",
     discrepancies: [
       `Le résumé du blueprint annonce ${declaredCounts.nodes} nœuds, tandis que son corps contient ${baseBodyCounts.nodes} IDs uniques avant intégration Cortex.`,
       `Le résumé du blueprint annonce ${declaredCounts.relations} relations, tandis que son corps contient ${baseBodyCounts.relations} relations explicites avant intégration Cortex.`

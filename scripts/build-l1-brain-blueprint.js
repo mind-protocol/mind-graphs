@@ -906,6 +906,10 @@ const addHumanSituationNode = definition => {
   if (!humanSituationCluster.nodeIds.includes(definition.id)) humanSituationCluster.nodeIds.push(definition.id);
 };
 
+const humanSituationSpace = humanSituation.nodes.find(definition => definition.id === humanSituation.cluster.spaceId);
+if (!humanSituationSpace) throw new Error(`Space de situation humaine absent: ${humanSituation.cluster.spaceId}`);
+addHumanSituationNode(humanSituationSpace);
+
 for (const narrative of humanSituation.narratives) {
   addHumanSituationNode({
     id: narrative.id,

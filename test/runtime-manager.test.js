@@ -1,5 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs/promises";
+import os from "node:os";
+import path from "node:path";
 import { buildTransitionEvents, classifyService, commandMatches, repairDecision, runtimeCycle } from "../src/runtime-manager.js";
 
 test("process command matching requires every declared fragment", () => {
@@ -61,6 +64,7 @@ test("events are emitted only for transitions, not stable cycles", () => {
 });
 
 test("runtime cycle observes, classifies, repairs and records a transition", async () => {
+  const cwd = await fs.mkdtemp(path.join(os.tmpdir(), "mind-runtime-manager-"));
   const config = {
     schemaVersion: "1.0.0",
     manager: { id: "test-manager", statusPath: "status.json", eventsPath: "events.jsonl" },
@@ -75,7 +79,7 @@ test("runtime cycle observes, classifies, repairs and records a transition", asy
   };
   const spawned = [];
   const result = await runtimeCycle(config, {
-    cwd: ".",
+    cwd,
     now: new Date("2026-07-23T12:00:00Z"),
     previousStatus: { services: [] },
     processes: [],

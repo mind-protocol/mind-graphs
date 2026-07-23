@@ -51,7 +51,7 @@
   "relationConstraints": {
     "PART_OF": { "sourceTypes": ["organizational_space"], "targetTypes": ["organizational_space"] },
     "CONVERGES_IN": { "sourceGroups": ["l2_elements"], "targetTypes": ["organizational_space"] },
-    "JUSTIFIES": { "sourceTypes": ["design_rationale"], "targetTypes": ["design_decision"] },
+    "JUSTIFIES": { "sourceTypes": ["design_rationale", "runtime_policy"], "targetTypes": ["design_decision"] },
     "TESTED_BY": { "sourceTypes": ["design_decision"], "targetGroups": ["l2_artifacts"] },
     "REQUESTS_PROMOTION_TO": { "sourceTypes": ["design_decision"], "targetGroups": ["l2_artifacts"] }
   },

@@ -5326,7 +5326,7 @@
         "cluster-10"
       ],
       "name": "Sous-entité runtime",
-      "description": "Actor personnel citizen portant mission, objectifs, peurs, stratégies, énergie reçue, gates privilégiées et preuves-moments.",
+      "description": "Actor interne personnel, citizen=false, portant mission, objectifs, peurs, stratégies, énergie citoyenne reçue, gates privilégiées et preuves-moments.",
       "epistemicStatus": "design_proposal",
       "clusterId": "cluster-10",
       "citizen": false,
@@ -7682,7 +7682,7 @@
         "subentity_action"
       ],
       "name": "Action : PULSE (Effort exécutif)",
-      "description": "Injection d'énergie E ciblée. Transfert de la volition. Moteur de changement L4.",
+      "description": "Routage ciblé d'une quantité finie d'énergie citoyenne déjà disponible. PULSE transfère la volition sous conservation L4 et ne crée jamais une nouvelle pompe.",
       "epistemicStatus": "design_proposal",
       "clusterId": "cluster-10",
       "citizen": false,

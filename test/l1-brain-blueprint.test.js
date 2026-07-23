@@ -251,6 +251,25 @@ test("the subentity lifecycle is explicit, softly capacity-regulated and memory-
   assert.ok(graph.relations.some(relation => relation.source === "thing-subentities-moment-controller-writer" && relation.target === "moment-memory-autobiographical" && relation.type === "ANNOTATES"));
 });
 
+test("subentity memory attribution keeps common ownership, bounded workspace control and append-only correction", () => {
+  const system = graph.subentityMemoryAttributionSystem;
+  assert.equal(system.memoryOwner, "citizen_ai_unique");
+  assert.equal(system.relationDirection, "Moment_to_Subentity");
+  assert.equal(system.unknownIsValid, true);
+  assert.equal(system.selfConfirmationAllowed, false);
+  assert.equal(system.correctionStrategy, "append_only_supersession");
+  assert.equal(system.principles.length, 15);
+  assert.equal(system.risks.length, 9);
+  assert.equal(system.scenarios.length, 8);
+  assert.deepEqual(system.relationTypes, [
+    "ENCODED_UNDER", "GENERATED_BY", "INVOLVES",
+    "RESONATES_WITH", "RECALLS", "REINTERPRETS"
+  ]);
+  assert.deepEqual(graph.subentityMemoryAttributionAugmentationCounts, { nodes: 99, relations: 206, clusters: 0 });
+  assert.match(nodes.get("actor-subentities-subentity-template").description, /citizen=false/u);
+  assert.match(nodes.get("action-pulse").description, /ne crée jamais/u);
+});
+
 test("metacognition keeps parallel futures and only exposes positive bounded modes", () => {
   const system = graph.metacognitiveSystem;
   assert.deepEqual(system.modes, ["OBSERVE", "VERIFY", "STABILIZE", "PROTECT", "RECOVER", "ENGAGE"]);
@@ -283,7 +302,7 @@ test("the machine-readable audit preserves the source count discrepancy", () => 
   assert.deepEqual(graph.sensoryAugmentationCounts, { nodes: 24, relations: 80, clusters: 0 });
   assert.deepEqual(graph.metacognitiveAugmentationCounts, { nodes: 22, relations: 83, clusters: 0 });
   assert.deepEqual(graph.citizenAIRoleAugmentationCounts, { nodes: 326, relations: 437, clusters: 16 });
-  assert.deepEqual(graph.actualCounts, { nodes: 719, relations: 1625, clusters: 49 });
-  assert.equal(graph.sourceAudit.sources.length, 6);
+  assert.deepEqual(graph.actualCounts, { nodes: 818, relations: 1831, clusters: 49 });
+  assert.equal(graph.sourceAudit.sources.length, 7);
   assert.equal(graph.sourceAudit.discrepancies.length, 2);
 });

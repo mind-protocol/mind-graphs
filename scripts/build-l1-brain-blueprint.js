@@ -200,6 +200,17 @@ for (const sourceNode of cortex.nodes) {
   if (!cortexCluster.nodeIds.includes(sourceNode.id)) cortexCluster.nodeIds.push(sourceNode.id);
 }
 
+// Corrections constitutionnelles explicites : une sous-entité est personnelle
+// mais jamais citoyenne, et PULSE ne crée aucune énergie.
+const subentityTemplate = nodes.find(node => node.id === "actor-subentities-subentity-template");
+if (subentityTemplate) {
+  subentityTemplate.description = "Actor interne personnel, citizen=false, portant mission, objectifs, peurs, stratégies, énergie citoyenne reçue, gates privilégiées et preuves-moments.";
+}
+const pulsePrimitive = nodes.find(node => node.id === "action-pulse");
+if (pulsePrimitive) {
+  pulsePrimitive.description = "Routage ciblé d'une quantité finie d'énergie citoyenne déjà disponible. PULSE transfère la volition sous conservation L4 et ne crée jamais une nouvelle pompe.";
+}
+
 const addDerivedRelation = ({ source, type, target, W = 0.85, P = 1, G = 1, S = 0.9, justification, condition, cluster = cortexCluster, provenance = "cortex_state_machine" }) => {
   if (!nodeIds.has(source) || !nodeIds.has(target)) throw new Error(`Relation Cortex orpheline: ${source} ${type} ${target}`);
   const key = `${source}|${type}|${target}|${W}|${P}|${G}|${S}`;

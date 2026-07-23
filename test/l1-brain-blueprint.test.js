@@ -361,9 +361,9 @@ test("the machine-readable audit preserves the source count discrepancy", () => 
   assert.deepEqual(graph.affectiveAugmentationCounts, { nodes: 92, relations: 259, clusters: 10 });
   assert.deepEqual(graph.sensoryAugmentationCounts, { nodes: 24, relations: 80, clusters: 0 });
   assert.deepEqual(graph.metacognitiveAugmentationCounts, { nodes: 22, relations: 83, clusters: 0 });
-  assert.deepEqual(graph.citizenAIRoleAugmentationCounts, { nodes: 580, relations: 909, clusters: 16 });
-  assert.deepEqual(graph.humanSituationAugmentationCounts, { nodes: 25, relations: 93, clusters: 1 });
-  assert.deepEqual(graph.actualCounts, { nodes: 1097, relations: 2396, clusters: 50 });
+  assert.deepEqual(graph.citizenAIRoleAugmentationCounts, { nodes: 596, relations: 1001, clusters: 16 });
+  assert.deepEqual(graph.humanSituationAugmentationCounts, { nodes: 25, relations: 110, clusters: 1 });
+  assert.deepEqual(graph.actualCounts, { nodes: 1113, relations: 2505, clusters: 50 });
   assert.equal(graph.sourceAudit.sources.length, 8);
   assert.equal(graph.sourceAudit.discrepancies.length, 2);
 });

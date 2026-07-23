@@ -1,0 +1,303 @@
+{
+  "scope": "Principe, décision, mécanismes, invariants et première implémentation de la membrane temporelle fondée sur schedule_wake.",
+  "nodes": [
+    {
+      "id": "space-temporal-membrane",
+      "name": "Membrane temporelle",
+      "nodeType": "space",
+      "semanticType": "context",
+      "phrase": "Frontière qui permet à une intention présente de devenir un stimulus futur sans rester active entre les deux.",
+      "family": "Architecture temporelle",
+      "summary": "La membrane temporelle capture un engagement attribué, le filtre, le maintient dormant puis restaure son contexte à l’échéance.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "axiom-temporal-continuity-without-continuous-activation",
+      "name": "Axiome · Continuité sans activation continue",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Une intention peut survivre au présent sans consommer d’énergie active jusqu’à son échéance.",
+      "family": "Membrane temporelle · principe",
+      "summary": "L’engagement demeure lisible dans le graphe, mais la physique ne reçoit aucune énergie avant le réveil effectivement dû.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "rationale-schedule-wake-is-transport-not-authority",
+      "name": "Raison de design · schedule_wake transporte mais n’autorise pas",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Séparer le transport temporel de la décision évite qu’un scheduler transforme une suggestion en mandat.",
+      "family": "Membrane temporelle · souveraineté",
+      "summary": "L1 propose, L2 autorise et déduplique, L4 restaure une énergie attribuée ; schedule_wake ne fait que conserver et livrer l’instruction.",
+      "epistemicStatus": "documented",
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "decision-schedule-wake-as-temporal-membrane",
+      "name": "Décision · Utiliser schedule_wake comme membrane temporelle",
+      "nodeType": "moment",
+      "semanticType": "decision",
+      "phrase": "Adopter une chaîne L1 → L2 → L4 dans laquelle l’intention future devient un engagement dormant et attribué.",
+      "family": "Membrane temporelle · décision",
+      "summary": "L1 détecte l’intention prospective, L2 vérifie acteur, temps, prompt, contexte, doublon et consentement à la récurrence, puis L4 réinjecte un budget borné à l’échéance.",
+      "epistemicStatus": "documented",
+      "decisionStatus": "approved",
+      "responsibleRole": "actor-nlr",
+      "decisionDue": "2026-07-23",
+      "optionCriteria": [
+        "Ne pas dupliquer le scheduler existant.",
+        "Ne créer aucune énergie avant l’échéance.",
+        "Préserver l’attribution, le contexte et le consentement à la récurrence."
+      ],
+      "chosenOptionId": "option-use-schedule-wake-temporal-membrane",
+      "decisionRationale": "schedule_wake possède déjà le transport nécessaire ; une porte L2 et une livraison L4 suffisent à en faire une membrane gouvernée.",
+      "closureEvidence": "Accord explicite de NLR, implémentation src/temporal-membrane.js et suite test/temporal-membrane.test.js.",
+      "reviewDate": "2026-10-23",
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "option-use-schedule-wake-temporal-membrane",
+      "name": "Option retenue · Adapter schedule_wake",
+      "nodeType": "narrative",
+      "semanticType": "decision_option",
+      "phrase": "Conserver schedule_wake comme transport et ajouter autour de lui une politique L1/L2/L4.",
+      "family": "Membrane temporelle · option",
+      "summary": "Cette option minimise la duplication et rend la décision, la dormance et la livraison séparément testables.",
+      "epistemicStatus": "documented",
+      "optionCode": "adapt_existing_transport",
+      "optionBenefits": [
+        "Réutilise la sémantique temporelle déjà fournie.",
+        "Sépare clairement perception, autorisation, transport et physique.",
+        "Permet une vérification continue ciblée."
+      ],
+      "optionRisks": [
+        "Un prompt insuffisamment contextualisé peut devenir obsolète avant l’échéance.",
+        "Une récurrence mal gouvernée peut créer des interruptions répétées."
+      ],
+      "optionConditions": [
+        "Déduplication stable.",
+        "Récurrence explicitement consentie.",
+        "Réinjection bornée et idempotente."
+      ],
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "mechanism-l1-prospective-wake-signal",
+      "name": "Mécanisme L1 · Détection d’intention prospective",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "L1 reconnaît qu’une intention doit survivre au présent et produit une proposition contextualisée, sans programmer lui-même le réveil.",
+      "family": "Membrane temporelle · L1",
+      "summary": "Les signaux temporels explicites et le langage prospectif produisent une recommandation accompagnée de l’Actor, du prompt, du Space et des nœuds actifs.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "mechanism-l2-wake-sovereignty-gate",
+      "name": "Mécanisme L2 · Porte de souveraineté temporelle",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "L2 n’autorise le réveil que si l’acteur, le temps, l’instruction et le contexte sont explicites, non dupliqués et encore actifs.",
+      "family": "Membrane temporelle · L2",
+      "summary": "La récurrence n’est jamais inférée ; un objectif fermé, un prompt vague ou un engagement identique déjà pendant entraîne un refus.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "mechanism-l4-dormant-temporal-commitment",
+      "name": "Mécanisme L4 · Engagement dormant et réinjection",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "L4 conserve le Moment futur sans énergie, puis injecte à l’échéance un flux borné vers l’Actor, le Space, les objectifs et les nœuds capturés.",
+      "family": "Membrane temporelle · L4",
+      "summary": "Chaque occurrence possède un identifiant stable, un ledger d’idempotence et une attribution complète ; la livraison ne confère aucune nouvelle autorité d’action.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "thing-schedule-wake",
+      "name": "Méthode · schedule_wake",
+      "nodeType": "thing",
+      "semanticType": "method",
+      "phrase": "Fonction de transport qui réveille un Citizen avec une heure, un prompt, un Space optionnel et une répétition optionnelle.",
+      "family": "Membrane temporelle · transport",
+      "summary": "La méthode accepte une heure locale ou une date complète ; une heure déjà passée vise le lendemain. Elle ne décide ni de la pertinence ni de l’autorité.",
+      "epistemicStatus": "documented",
+      "clusterId": "temporal-membrane",
+      "implementationPath": "src/temporal-membrane.js"
+    },
+    {
+      "id": "invariant-temporal-wake-no-energy-before-due",
+      "name": "Invariant · Aucune énergie avant l’échéance",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Un engagement temporel dormant ne modifie pas la distribution d’énergie L4 avant son heure.",
+      "family": "Membrane temporelle · invariant",
+      "summary": "Le scheduler conserve l’engagement ; seul l’événement dû ouvre la porte de réinjection.",
+      "epistemicStatus": "documented",
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "invariant-temporal-wake-recurrence-explicit",
+      "name": "Invariant · La récurrence exige un consentement explicite",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Aucune répétition horaire, quotidienne ou hebdomadaire n’est déduite d’une intention ponctuelle.",
+      "family": "Membrane temporelle · invariant",
+      "summary": "Le repeat non ponctuel est refusé sans marqueur recurrenceExplicit.",
+      "epistemicStatus": "documented",
+      "clusterId": "temporal-membrane"
+    },
+    {
+      "id": "protocol-temporal-wake-delivery-health",
+      "name": "Protocole de santé · Livraison temporelle idempotente",
+      "nodeType": "narrative",
+      "semanticType": "protocol",
+      "phrase": "La sonde vérifie dormance avant échéance, attribution au réveil, budget borné, idempotence et prochaine occurrence.",
+      "family": "Membrane temporelle · santé",
+      "summary": "Le voyant décrit l’état du contrat exécutable ; il ne prouve pas que le prompt programmé était humainement souhaitable.",
+      "epistemicStatus": "documented",
+      "clusterId": "temporal-membrane",
+      "verificationCommand": "node --test test/temporal-membrane.test.js",
+      "probeTargetIds": [
+        "mechanism-l1-prospective-wake-signal",
+        "mechanism-l2-wake-sovereignty-gate",
+        "mechanism-l4-dormant-temporal-commitment",
+        "thing-schedule-wake",
+        "invariant-temporal-wake-no-energy-before-due",
+        "invariant-temporal-wake-recurrence-explicit"
+      ],
+      "probeIntervalSeconds": 60,
+      "probeFreshnessSeconds": 180
+    },
+    {
+      "id": "change-temporal-membrane-v1",
+      "name": "Changement · Première membrane temporelle exécutable",
+      "nodeType": "moment",
+      "semanticType": "change",
+      "phrase": "Implémenter la détection L1, la porte L2, la matérialisation du Moment et la réinjection L4 autour de schedule_wake.",
+      "family": "Membrane temporelle · livraison",
+      "summary": "La première version expose un contrat pur et testable sans dupliquer le scheduler externe.",
+      "epistemicStatus": "documented",
+      "clusterId": "temporal-membrane",
+      "workStatus": "delivered",
+      "completedAt": "2026-07-23T00:00:00.000Z",
+      "changedPaths": [
+        "src/temporal-membrane.js",
+        "src/continuous-verification.js",
+        "scripts/verify-continuously.js",
+        "scripts/seed.js",
+        "test/temporal-membrane.test.js",
+        "test/continuous-verification.test.js",
+        "data/temporal-membrane.json",
+        "graphs.json"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "source": "axiom-temporal-continuity-without-continuous-activation",
+      "target": "decision-schedule-wake-as-temporal-membrane",
+      "type": "MOTIVATES",
+      "justification": "Le besoin de conserver une intention sans activité permanente motive l’adoption d’une frontière temporelle explicite."
+    },
+    {
+      "source": "rationale-schedule-wake-is-transport-not-authority",
+      "target": "decision-schedule-wake-as-temporal-membrane",
+      "type": "MOTIVATES",
+      "justification": "La séparation entre transport et autorisation justifie la chaîne de décision L1, L2 puis L4."
+    },
+    {
+      "source": "decision-schedule-wake-as-temporal-membrane",
+      "target": "actor-nlr",
+      "type": "AUTHORED_BY",
+      "justification": "La décision formalise la proposition explicitement acceptée par NLR dans la conversation de conception."
+    },
+    {
+      "source": "decision-schedule-wake-as-temporal-membrane",
+      "target": "space-temporal-membrane",
+      "type": "APPLIES_IN",
+      "justification": "La décision borne son application au sous-système de continuité temporelle."
+    },
+    {
+      "source": "option-use-schedule-wake-temporal-membrane",
+      "target": "decision-schedule-wake-as-temporal-membrane",
+      "type": "OPTION_FOR",
+      "justification": "L’option décrit l’architecture retenue par la décision et reste distincte de son approbation."
+    },
+    {
+      "source": "mechanism-l1-prospective-wake-signal",
+      "target": "space-temporal-membrane",
+      "type": "PART_OF",
+      "justification": "La détection prospective constitue l’entrée perceptive de la membrane temporelle."
+    },
+    {
+      "source": "mechanism-l2-wake-sovereignty-gate",
+      "target": "space-temporal-membrane",
+      "type": "PART_OF",
+      "justification": "La porte L2 constitue la couche de filtrage et de consentement de la membrane temporelle."
+    },
+    {
+      "source": "mechanism-l4-dormant-temporal-commitment",
+      "target": "space-temporal-membrane",
+      "type": "PART_OF",
+      "justification": "La dormance et la livraison énergétique constituent la sortie physique de la membrane temporelle."
+    },
+    {
+      "source": "mechanism-l1-prospective-wake-signal",
+      "target": "mechanism-l2-wake-sovereignty-gate",
+      "type": "LEADS_TO",
+      "justification": "Une détection L1 produit seulement une proposition qui doit franchir la porte de souveraineté L2."
+    },
+    {
+      "source": "mechanism-l2-wake-sovereignty-gate",
+      "target": "mechanism-l4-dormant-temporal-commitment",
+      "type": "UNLOCKS",
+      "justification": "Seule une proposition approuvée, contextualisée et dédupliquée peut devenir un engagement dormant en L4."
+    },
+    {
+      "source": "thing-schedule-wake",
+      "target": "mechanism-l4-dormant-temporal-commitment",
+      "type": "IMPLEMENTS",
+      "justification": "schedule_wake fournit le transport de l’engagement jusqu’à l’échéance ; la physique L4 réalise ensuite la réinjection."
+    },
+    {
+      "source": "invariant-temporal-wake-no-energy-before-due",
+      "target": "mechanism-l4-dormant-temporal-commitment",
+      "type": "SAFEGUARDS",
+      "justification": "L’interdiction d’énergie prématurée empêche qu’un engagement futur influence la priorité courante avant son échéance."
+    },
+    {
+      "source": "invariant-temporal-wake-recurrence-explicit",
+      "target": "mechanism-l2-wake-sovereignty-gate",
+      "type": "SAFEGUARDS",
+      "justification": "Le consentement explicite à la répétition protège l’Actor contre la création silencieuse d’engagements persistants."
+    },
+    {
+      "source": "protocol-temporal-wake-delivery-health",
+      "target": "mechanism-l4-dormant-temporal-commitment",
+      "type": "TESTS",
+      "justification": "La sonde exécutable vérifie directement la dormance, la livraison attribuée, le budget et l’idempotence du mécanisme L4."
+    },
+    {
+      "source": "protocol-temporal-wake-delivery-health",
+      "target": "mechanism-l2-wake-sovereignty-gate",
+      "type": "TESTS",
+      "justification": "La même suite vérifie les refus de doublon, d’objectif inactif et de récurrence non consentie produits par la porte L2."
+    },
+    {
+      "source": "protocol-temporal-wake-delivery-health",
+      "target": "decision-schedule-wake-as-temporal-membrane",
+      "type": "IMPLEMENTS",
+      "justification": "Le protocole exécutable matérialise la décision sous forme de contrat continuellement vérifiable."
+    },
+    {
+      "source": "change-temporal-membrane-v1",
+      "target": "space-temporal-membrane",
+      "type": "PART_OF",
+      "justification": "Le changement livré appartient au périmètre de la membrane temporelle et en documente la première version."
+    }
+  ]
+}

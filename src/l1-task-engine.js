@@ -31,22 +31,24 @@ export function normalizeL1Task(task = {}) {
 
 const isActive = task => task.nodeType === "objective" && task.status === "active";
 const isReadyAt = (task, nowMs) => {
-  if (!isActive(task) || task.wakeStatus === "blocked") return false;
+  if (!isActive(task)) return false;
   const nextWakeMs = asTime(task.nextWakeAt, "nextWakeAt");
   return nextWakeMs === null || nextWakeMs <= nowMs;
 };
 
 const deadlineMs = task => asTime(task.dueAt, "dueAt") ?? Number.POSITIVE_INFINITY;
+const priorityOf = task => Number.isFinite(Number(task.priority)) ? Number(task.priority) : 0;
 
 export function selectNextL1TaskWake(tasks, { now = new Date().toISOString() } = {}) {
   const nowMs = asTime(now, "now");
   const active = tasks.map(normalizeL1Task).filter(isActive);
   const ready = active.filter(task => isReadyAt(task, nowMs))
-    .sort((left, right) => deadlineMs(left) - deadlineMs(right)
+    .sort((left, right) => priorityOf(right) - priorityOf(left)
+      || deadlineMs(left) - deadlineMs(right)
       || String(left.createdAt || "").localeCompare(String(right.createdAt || ""))
       || left.id.localeCompare(right.id, "fr"));
   const scheduled = active
-    .filter(task => !ready.some(candidate => candidate.id === task.id) && task.wakeStatus !== "blocked")
+    .filter(task => !ready.some(candidate => candidate.id === task.id))
     .map(task => task.nextWakeAt)
     .filter(Boolean)
     .sort();
@@ -127,6 +129,7 @@ function notificationFor(task, report) {
     required: true,
     platform: "telegram",
     recipient: "Nicolas (NLR)",
+    blockerMessage: report.blockerCause,
     message: lines.join("\n")
   };
 }
@@ -155,6 +158,11 @@ export function validateL1TaskReport(input, task, { now = new Date().toISOString
     }
     report.attemptedActions = ensureNonEmpty(input.attemptedActions, "attemptedActions");
     report.remainingOptions = ensureNonEmpty(input.remainingOptions, "remainingOptions");
+    const nextWakeMs = asTime(input.nextWakeAt, "nextWakeAt");
+    if (nextWakeMs === null || nextWakeMs <= reportedAtMs) {
+      throw new Error("A blocked task requires nextWakeAt after reportedAt so the blocker cannot become silent.");
+    }
+    report.nextWakeAt = new Date(nextWakeMs).toISOString();
   }
   return report;
 }

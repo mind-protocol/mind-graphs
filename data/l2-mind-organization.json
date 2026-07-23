@@ -76,6 +76,33 @@
       "semanticType": "citizen_ai"
     },
     {
+      "id": "decision-l2-interoception-snapshot-bridge",
+      "name": "Décision · Snapshot interoceptif L1 vers MCP",
+      "nodeType": "narrative",
+      "phrase": "Le moteur L1 vivant publie un snapshot interoceptif versionné dans le graphe personnel ; les processus MCP le lisent sans exécuter un second moteur cognitif.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Choix implémenté dans mind-mcp-v2 : un writer unique, le Dispatcher L1, remplace atomiquement interoception-current toutes les dix secondes. Le snapshot contient drives, émotions, mémoire de travail, énergie, arousal, orientation, phase circadienne, tick, horodatage et identifiant d'instance. sense classe la lecture comme fraîche jusqu'à trente secondes, puis l'affiche explicitement comme périmée. Cette décision reste une proposition L2 révisable tant qu'elle n'est pas ratifiée en L4.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_decision",
+      "epistemicStatus": "proposed",
+      "decisionStatus": "implemented",
+      "chosenOptionId": "single-writer-versioned-l1-snapshot",
+      "decisionRationale": "Préserver une autorité cognitive unique tout en donnant au MCP HTTP une lecture fraîche, découplée et vérifiable de l'état vivant.",
+      "sourceRepository": "mind-mcp-v2",
+      "sourcePath": "runtime/cognition/interoception_snapshot.py"
+    },
+    {
+      "id": "rationale-l2-single-authority-interoception",
+      "name": "Justification · Une seule autorité cognitive",
+      "nodeType": "narrative",
+      "phrase": "Le MCP ne doit pas recréer un dispatcher parallèle : deux moteurs produiraient deux présents incompatibles pour un même citoyen.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Le snapshot matérialise une frontière simple : le moteur vivant calcule et écrit ; le MCP lit. L'horodatage, la version de schéma, l'identifiant d'instance et le seuil de fraîcheur rendent les valeurs contestables et empêchent un état ancien de se présenter comme actuel.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
       "id": "thing-l2-repo-mind-graphs",
       "name": "Dépôt · mind-protocol/mind-graphs",
       "nodeType": "thing",
@@ -131,6 +158,24 @@
       "target": "space-l2-design",
       "type": "CONVERGES_IN",
       "justification": "L'agent nlr_ai participe activement aux réflexions et arbitrages du Space de Design."
+    },
+    {
+      "source": "rationale-l2-single-authority-interoception",
+      "target": "decision-l2-interoception-snapshot-bridge",
+      "type": "JUSTIFIES",
+      "justification": "La nécessité d'éviter deux états cognitifs concurrents justifie que le Dispatcher L1 soit l'unique writer et que le MCP reste un lecteur."
+    },
+    {
+      "source": "decision-l2-interoception-snapshot-bridge",
+      "target": "space-l2-architecture",
+      "type": "CONVERGES_IN",
+      "justification": "Le contrat de publication, de versionnement et de fraîcheur définit une interface technique entre le moteur L1, FalkorDB et le MCP."
+    },
+    {
+      "source": "decision-l2-interoception-snapshot-bridge",
+      "target": "space-l2-autonomous-cognition",
+      "type": "CONVERGES_IN",
+      "justification": "Le snapshot expose l'état vivant d'un Citizen AI sans déplacer son autorité cognitive hors du moteur autonome."
     },
     {
       "source": "thing-l2-repo-mind-graphs",

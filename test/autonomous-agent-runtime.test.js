@@ -442,14 +442,15 @@ test("continuous inner-outer focus changes question count without changing its b
 test("the personal wake pursues sourced curiosity without action authority", () => {
   const prompt = buildPersonalWakePrompt({
     version: 3,
-    sense: { handle: "nlr_ai", layer: "all" },
+    sense: { handle: "nlr_ai" },
     physics: { hotClusters: [{ cluster: "human-valence", energy: 2 }] }
   }, "2026-07-23T12:15:00Z");
   assert.match(prompt, /autonomie de curiosité, pas d'une autonomie d'action/);
   assert.match(prompt, /web en direct/);
   assert.match(prompt, /sources primaires/);
   assert.match(prompt, /outil sense du serveur MCP local mind \(mind-mcp-v2\)/);
-  assert.match(prompt, /layer="all", handle="nlr_ai"/);
+  assert.match(prompt, /handle="nlr_ai"/);
+  assert.doesNotMatch(prompt, /layer=/);
   assert.match(prompt, /Ne modifie aucun fichier, graphe, compte ou état externe/);
   assert.match(prompt, /human-valence/);
 });

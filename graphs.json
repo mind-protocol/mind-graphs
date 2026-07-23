@@ -225,17 +225,21 @@
       ]
     },
     {
-      "id": "l2-mind",
+      "id": "l2-mind-graphs",
       "status": "active",
-      "label": "L2 · Organisation Mind Protocol",
-      "falkorGraph": "l2_mind_protocol",
-      "purpose": "Cognition organisationnelle de Mind Protocol (L2), hébergeant les espaces de Design, Architecture, Recherche, Roadmap et Gouvernance.",
+      "label": "L2 · mind-graphs (organisation, code & miroir du dépôt)",
+      "falkorGraph": "l2_mind_graphs",
+      "purpose": "Cognition organisationnelle de Mind Protocol (L2), hébergeant les espaces de Design, Architecture, Recherche, Roadmap et Gouvernance, et le miroir arborescent du dépôt mind-graphs (dossiers=spaces, fichiers=things).",
       "ontology": "l2/ontology.json",
       "dataDir": "data",
       "datasets": [
         {
           "id": "l2-mind-organization",
           "file": "l2-mind-organization.json"
+        },
+        {
+          "id": "l2-repo-mirror-rationale",
+          "file": "l2-repo-mirror-rationale.json"
         }
       ]
     },

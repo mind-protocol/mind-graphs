@@ -40,7 +40,7 @@ export async function getL1Graph(name) {
 }
 
 export async function getL2MindGraph() {
-  return getGraphByName(process.env.FALKORDB_L2_MIND_GRAPH || "l2_mind_protocol");
+  return getGraphByName(process.env.FALKORDB_L2_MIND_GRAPH || "l2_mind_graphs");
 }
 
 export async function getL4RegistryGraph() {

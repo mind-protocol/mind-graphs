@@ -1,0 +1,132 @@
+{
+  "scope": "Justification de design du miroir arborescent dépôt↔graphe L2 et de l'auto-commit/push. Répond à deux questions : pourquoi représenter le dépôt dans le graphe, et pourquoi le faire de cette manière précise. Ces nœuds sont des propositions de design tracées, pas des effets empiriques établis.",
+  "nodes": [
+    {
+      "id": "decision-repo-graph-mirror",
+      "name": "Décision · Miroir arborescent dépôt↔graphe L2 + auto-commit/push",
+      "nodeType": "decision",
+      "semanticType": "narrative",
+      "status": "proposition de design",
+      "phrase": "Refléter chaque fichier en `thing` et chaque dossier en `space` dans le graphe L2, et déclencher un commit/push automatique debouncé à chaque modification.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Le dépôt mind-graphs est projeté dans le graphe L2 comme une arborescence de spaces (dossiers) et de things (fichiers). Le système de fichiers est le détecteur de changement ; le graphe en est le miroir ; une modification déclenche add/commit/push vers le remote déclaré dans le graphe, après un court debounce.",
+      "clusterId": "l2-repo-mirror-rationale"
+    },
+    {
+      "id": "rationale-repo-mirror-purpose",
+      "name": "Pourquoi · Unifier code et cognition dans le graphe",
+      "nodeType": "design_rationale",
+      "semanticType": "narrative",
+      "status": "proposition de design",
+      "phrase": "Rendre l'état matériel du dépôt lisible et reliable dans le même graphe que la cognition organisationnelle.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Tant que le code vit hors du graphe, aucune décision, aucun space et aucun acteur du L2 ne peut se relier causalement à un fichier concret. Miroir = le dépôt devient adressable dans le graphe : une décision peut pointer le fichier qu'elle gouverne, un space organisationnel peut contenir le sous-arbre de code correspondant. C'est la condition de la complétude causale appliquée au code lui-même.",
+      "clusterId": "l2-repo-mirror-rationale"
+    },
+    {
+      "id": "rationale-repo-mirror-fs-detector",
+      "name": "Pourquoi comme ça · Le système de fichiers est le détecteur, pas FalkorDB",
+      "nodeType": "design_rationale",
+      "semanticType": "narrative",
+      "status": "proposition de design",
+      "phrase": "FalkorDB n'émet pas d'événement de changement de nœud exploitable ; le détecteur reste `fs.watch`, le `thing` est le miroir.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Écouter des changements côté FalkorDB (Redis) exigerait un sondage coûteux et non fiable. Le détecteur autoritatif est donc le système de fichiers via fs.watch ; à chaque événement on met à jour le thing miroir puis on planifie le commit. Le graphe reste ce qu'on inspecte, jamais ce qu'on sonde.",
+      "clusterId": "l2-repo-mirror-rationale"
+    },
+    {
+      "id": "rationale-repo-mirror-perimeter",
+      "name": "Pourquoi comme ça · Périmètre via `git ls-files`",
+      "nodeType": "design_rationale",
+      "semanticType": "narrative",
+      "status": "proposition de design",
+      "phrase": "Le miroir suit exactement ce que git voit, en réutilisant `.gitignore` plutôt qu'une liste d'exclusions en dur.",
+      "family": "L2 Organization · Architecture",
+      "summary": "En dérivant l'arbre de `git ls-files -c -o --exclude-standard`, on mirror précisément les fichiers suivis et non ignorés ; `.git/`, `node_modules/` et tout chemin gitignore sont exclus sans liste maintenue à la main, qui divergerait silencieusement du dépôt réel.",
+      "clusterId": "l2-repo-mirror-rationale"
+    },
+    {
+      "id": "rationale-repo-mirror-runtime-overlay",
+      "name": "Pourquoi comme ça · Overlay runtime révisionné",
+      "nodeType": "design_rationale",
+      "semanticType": "narrative",
+      "status": "proposition de design",
+      "phrase": "Les nœuds miroir portent `runtimeManaged:true` et un `runtimeRevision` : ils survivent au seed déclaratif et se nettoient par révision, sans le polluer.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Le miroir est un flux d'observation, pas du design canonique. En le marquant runtimeManaged et en supprimant les nœuds `repo_*` dont la révision est périmée à chaque projection complète, la projection est idempotente et ne peut ni écraser ni laisser d'orphelins dans les données déclaratives du L2.",
+      "clusterId": "l2-repo-mirror-rationale"
+    },
+    {
+      "id": "rationale-repo-mirror-remote-from-graph",
+      "name": "Pourquoi comme ça · Le remote se lit dans le graphe",
+      "nodeType": "design_rationale",
+      "semanticType": "narrative",
+      "status": "proposition de design",
+      "phrase": "L'auto-push lit l'URL du remote sur le nœud dépôt du graphe, et vérifie que `git config` concorde.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Le graphe est la source de vérité de provenance : le nœud thing-l2-repo-mind-graphs porte l'URL et le nom du remote. L'automatisation les lit là plutôt que de faire confiance aveuglément à la config git locale, et signale toute divergence entre le graphe et `git remote get-url` — c'est le côté miroir de la cohérence.",
+      "clusterId": "l2-repo-mirror-rationale"
+    },
+    {
+      "id": "rationale-repo-mirror-debounce-mutex",
+      "name": "Pourquoi comme ça · Debounce + mutex",
+      "nodeType": "design_rationale",
+      "semanticType": "narrative",
+      "status": "proposition de design",
+      "phrase": "Un court debounce regroupe les salves d'édition ; un verrou d'exécution évite les collisions `index.lock`.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Sans debounce, une sauvegarde multi-fichiers produirait un commit par fichier et un historique illisible. Sans mutex, deux opérations git concurrentes se disputeraient `.git/index.lock`. Le debounce regroupe la salve en un commit, le mutex sérialise les opérations git.",
+      "clusterId": "l2-repo-mirror-rationale"
+    }
+  ],
+  "links": [
+    {
+      "source": "decision-repo-graph-mirror",
+      "target": "space-l2-architecture",
+      "type": "CONVERGES_IN",
+      "justification": "La décision du miroir de dépôt est un arbitrage d'architecture technique du L2."
+    },
+    {
+      "source": "decision-repo-graph-mirror",
+      "target": "thing-l2-repo-mind-graphs",
+      "type": "TESTED_BY",
+      "justification": "La décision se matérialise sur le dépôt mind-graphs, qui est l'artefact projeté et l'ancre de l'arbre miroir."
+    },
+    {
+      "source": "rationale-repo-mirror-purpose",
+      "target": "decision-repo-graph-mirror",
+      "type": "JUSTIFIES",
+      "justification": "La complétude causale appliquée au code motive la décision de projeter le dépôt dans le graphe."
+    },
+    {
+      "source": "rationale-repo-mirror-fs-detector",
+      "target": "decision-repo-graph-mirror",
+      "type": "JUSTIFIES",
+      "justification": "Le choix du détecteur système de fichiers justifie la forme de l'implémentation retenue."
+    },
+    {
+      "source": "rationale-repo-mirror-perimeter",
+      "target": "decision-repo-graph-mirror",
+      "type": "JUSTIFIES",
+      "justification": "Le périmètre via git ls-files justifie ce qui entre ou non dans le miroir."
+    },
+    {
+      "source": "rationale-repo-mirror-runtime-overlay",
+      "target": "decision-repo-graph-mirror",
+      "type": "JUSTIFIES",
+      "justification": "L'overlay runtime révisionné justifie que le miroir n'altère pas le design déclaratif."
+    },
+    {
+      "source": "rationale-repo-mirror-remote-from-graph",
+      "target": "decision-repo-graph-mirror",
+      "type": "JUSTIFIES",
+      "justification": "Lire le remote dans le graphe justifie que l'auto-push dépende de la provenance déclarée."
+    },
+    {
+      "source": "rationale-repo-mirror-debounce-mutex",
+      "target": "decision-repo-graph-mirror",
+      "type": "JUSTIFIES",
+      "justification": "Le debounce et le mutex justifient la robustesse opérationnelle de l'auto-commit."
+    }
+  ]
+}

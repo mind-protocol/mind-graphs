@@ -5,7 +5,7 @@ import { createPromotionRequest, ratifyPromotionToL4 } from "../src/l2-promotion
 
 test("le graphe L2 Mind contient l'espace racine et le Space de Design", async () => {
   const manifest = await loadManifest();
-  const graphSpec = selectGraph(manifest, "l2-mind");
+  const graphSpec = selectGraph(manifest, "l2-mind-graphs");
   assert.equal(graphSpec.ontology, "l2/ontology.json");
 
   const datasets = await readDatasets(graphSpec);
@@ -46,7 +46,7 @@ test("l'acteur nlr_ai est présent de façon cohérente dans L2, L3 et L4", asyn
   const manifest = await loadManifest();
 
   // L2
-  const l2Spec = selectGraph(manifest, "l2-mind");
+  const l2Spec = selectGraph(manifest, "l2-mind-graphs");
   const l2Data = (await readDatasets(l2Spec)).find(d => d.spec.id === "l2-mind-organization").data;
   const l2Actor = l2Data.nodes.find(n => n.id === "actor-nlr-ai");
   assert.ok(l2Actor);

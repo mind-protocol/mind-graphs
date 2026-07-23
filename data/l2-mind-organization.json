@@ -359,6 +359,48 @@
       "target": "space-l2-architecture",
       "type": "CONVERGES_IN",
       "justification": "Le manager est un composant d'exécution local supervisant les services techniques du graphe."
+    },
+    {
+      "source": "decision-l2-host-resource-guardian",
+      "target": "decision-l2-living-runtime-manager",
+      "type": "JUSTIFIES",
+      "justification": "La continuité du runtime exige de distinguer la santé des services de la capacité réelle de leur hôte."
+    },
+    {
+      "source": "policy-l2-host-resource-sovereignty",
+      "target": "decision-l2-host-resource-guardian",
+      "type": "JUSTIFIES",
+      "justification": "L'allowlist et l'exclusion des applications humaines préservent la souveraineté pendant les réparations automatiques."
+    },
+    {
+      "source": "decision-l2-host-resource-guardian",
+      "target": "thing-l2-host-resource-sensor",
+      "type": "TESTED_BY",
+      "justification": "Le capteur matérialise la distinction entre état applicatif et ressources physiques disponibles."
+    },
+    {
+      "source": "decision-l2-host-resource-guardian",
+      "target": "thing-l2-progressive-load-shedder",
+      "type": "TESTED_BY",
+      "justification": "Le délesteur implémente les actions graduelles, réversibles et explicitement autorisées."
+    },
+    {
+      "source": "thing-l2-host-resource-sensor",
+      "target": "metric-l2-host-resource-budget",
+      "type": "TESTED_BY",
+      "justification": "Les observations du capteur sont interprétées selon le budget mesurable déclaré."
+    },
+    {
+      "source": "thing-l2-host-resource-sensor",
+      "target": "space-l2-architecture",
+      "type": "CONVERGES_IN",
+      "justification": "Le capteur est une capacité technique du runtime L2."
+    },
+    {
+      "source": "thing-l2-progressive-load-shedder",
+      "target": "space-l2-architecture",
+      "type": "CONVERGES_IN",
+      "justification": "Le délestage progressif appartient à l'orchestration opérationnelle L2."
     }
   ]
 }

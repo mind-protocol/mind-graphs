@@ -231,7 +231,7 @@ server.registerTool(
       outcome: z.enum(["progressed", "completed", "blocked"]),
       summary: z.string().min(1).describe("Résultat factuel du réveil."),
       reportedAt: z.string().datetime({ offset: true }).optional(),
-      nextWakeAt: z.string().datetime({ offset: true }).optional().describe("Obligatoire après progressed ; doit précéder l'échéance."),
+      nextWakeAt: z.string().datetime({ offset: true }).optional().describe("Obligatoire après progressed ou blocked ; après blocked, garantit un nouveau réveil au lieu d'une veille silencieuse."),
       blockerCause: z.string().min(1).optional(),
       attemptedActions: z.array(z.string().min(1)).optional(),
       remainingOptions: z.array(z.string().min(1)).optional(),

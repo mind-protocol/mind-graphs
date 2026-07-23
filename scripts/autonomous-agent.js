@@ -22,6 +22,7 @@ const intervalMs = Number(valueOf("interval-minutes", "5")) * 60_000;
 const personalIntervalMs = Number(valueOf("personal-minutes", "15")) * 60_000;
 const tickSeconds = Number(valueOf("tick-seconds", "5"));
 const actorId = valueOf("actor", "actor-nlr");
+const senseHandle = valueOf("sense-handle", process.env.MIND_CITIZEN_HANDLE || "") || null;
 const once = args.includes("--once");
 const dryRun = args.includes("--dry-run");
 const noCodex = args.includes("--no-codex");
@@ -155,6 +156,7 @@ async function wake() {
       physicsState,
       previousWorkspace: previousWorkspace?.citizens?.[route.citizenId],
       actorId: route.citizenId,
+      senseHandle,
       observedAt: startedAt,
       graphNodes: graph.nodes,
       graphLinks: graph.links,
@@ -288,7 +290,7 @@ async function personalWake() {
   if (!workspace) {
     const physicsState = await readJson(physicsPath, {});
     const queue = await collectTaskQueue({ now: startedAt, live: false, physicsState });
-    workspace = composeGlobalWorkspace({ queue, physicsState, actorId, observedAt: startedAt });
+    workspace = composeGlobalWorkspace({ queue, physicsState, actorId, senseHandle, observedAt: startedAt });
   }
   const report = {
     kind: "personal",

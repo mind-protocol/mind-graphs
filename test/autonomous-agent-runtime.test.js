@@ -66,7 +66,40 @@ test("the global workspace incorporates current physics and advances each wake",
   assert.equal(first.version, 1);
   assert.equal(second.version, 2);
   assert.deepEqual(first.activeNodeIds, ["task", "source", "target"]);
+  assert.equal(first.sense.status, "read_at_wake");
+  assert.equal(first.sense.layer, "all");
   assert.notEqual(first.contentHash, second.contentHash);
+});
+
+test("the wake resolves the MCP sense handle from the citizen graph and reads every awareness layer", () => {
+  const workspace = composeGlobalWorkspace({
+    queue: { total: 0, eligibleCount: 0, tasks: [], nextTask: null },
+    actorId: "actor-nlr",
+    graphNodes: [{
+      id: "actor-nlr-ai",
+      handle: "nlr_ai",
+      nodeType: "actor"
+    }],
+    observedAt: "2026-07-23T12:00:00Z"
+  });
+  const prompt = buildWakePrompt(workspace);
+  assert.equal(workspace.sense.handle, "nlr_ai");
+  assert.match(prompt, /sense\(\) du MCP Mind Protocol/);
+  assert.match(prompt, /layer="all", handle="nlr_ai"/);
+  assert.match(prompt, /Une couche indisponible n'est pas un état nul/);
+});
+
+test("an explicit MCP sense handle takes precedence and survives workspace carryover", () => {
+  const first = composeGlobalWorkspace({
+    queue: { total: 0, eligibleCount: 0, tasks: [], nextTask: null },
+    senseHandle: "citizen_explicit"
+  });
+  const second = composeGlobalWorkspace({
+    queue: { total: 0, eligibleCount: 0, tasks: [], nextTask: null },
+    previousWorkspace: first
+  });
+  assert.equal(first.sense.handle, "citizen_explicit");
+  assert.equal(second.sense.handle, "citizen_explicit");
 });
 
 test("tasks are assigned to the best available citizen and each citizen receives at most one", () => {
@@ -405,11 +438,14 @@ test("continuous inner-outer focus changes question count without changing its b
 test("the personal wake pursues sourced curiosity without action authority", () => {
   const prompt = buildPersonalWakePrompt({
     version: 3,
+    sense: { handle: "nlr_ai", layer: "all" },
     physics: { hotClusters: [{ cluster: "human-valence", energy: 2 }] }
   }, "2026-07-23T12:15:00Z");
   assert.match(prompt, /autonomie de curiosité, pas d'une autonomie d'action/);
   assert.match(prompt, /web en direct/);
   assert.match(prompt, /sources primaires/);
+  assert.match(prompt, /sense\(\) du MCP Mind Protocol/);
+  assert.match(prompt, /layer="all", handle="nlr_ai"/);
   assert.match(prompt, /Ne modifie aucun fichier, graphe, compte ou état externe/);
   assert.match(prompt, /human-valence/);
 });

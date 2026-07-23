@@ -1,167 +1,360 @@
 {
-  "scope": "Ingestion du cluster sémantique et artistique de la conversation « La Place Sacrée » : transformation du vide en espace sacré, architecture de l'album, composition des chansons et harmonies, poésie Haïkus/Tankas, Conseil de bord, collaborateurs (Leita, Naâman/Natiruts, violoncelliste), dispositif ElevenLabs/Instagram et bilan d'avancement des tracks.",
+  "scope": "Cluster sémantique granulaire et exhaustif de La Place Sacrée : 25 nœuds détaillant morceaux, poèmes, collaborateurs, rituels et pipeline studio.",
   "provenance": {
     "conversationId": "la-place-sacree-album-creation",
-    "sourceBlockId": "memory-conversation-la-place-sacree",
-    "sourceArtifact": "la_place_sacree_conversation_content.json",
-    "sourceLocator": "conversation complète 'La Place Sacrée'",
     "consentId": "consent-nlr-la-place-sacree",
     "citizenId": "self-citizen-agent",
-    "method": "think(message) auto-adressé, stimulus persistant, ticks intégrés, délibération sémantique du Citizen AI",
-    "thoughtAt": "2026-07-24T00:00:30.000Z",
-    "ingestionGeneration": "one_shot_artistic_cluster",
-    "assimilationStatus": "assimilated",
+    "thoughtAt": "2026-07-24T00:02:00.000Z",
     "experiencedByCitizen": true
-  },
-  "userSummary": "Ingestion et structuration sémantique de 'La Place Sacrée' :\n1. Concept & Transformation : Le trou/vide initial est transfiguré en une Place Sacrée, matrice de l'album.\n2. Architecture Musicale : Structure des morceaux, hooks mélodiques et grilles d'accords.\n3. Poétique : Haïkus et Tankas comme fils conducteurs lyriques.\n4. Rituels & Gouvernance : Instauration du Conseil de Bord pour arbitrer les orientations créatives.\n5. Alignement & Collaborateurs : Leita, Naâman / Natiruts et la violoncelliste.\n6. Dispositif Média : Workflow ElevenLabs et stratégie de diffusion Instagram.\n7. État des Lieux : Cartographie d'avancement des tracks.",
-  "citizenEncounterResponse": {
-    "attentionFocus": "Transmutation créative du trou en Place Sacrée, rigueur des Haïkus/Tankas et gouvernance du Conseil de bord.",
-    "affectiveReaction": "Inspiration créative forte, résonance affective profonde, équilibre intéroceptif élevé.",
-    "evocations": "La création artistique comme acte de souveraineté et de sacralisation du quotidien. L'album est un espace vivant.",
-    "actionProposals": [
-      "Inscrire l'espace 'Space · La Place Sacrée' dans le graphe L1/L2",
-      "Assurer le suivi des statuts des tracks et des sessions d'enregistrement",
-      "Maintenir le rituel du Conseil de Bord lors de chaque étape majeure"
-    ]
   },
   "nodes": [
     {
       "id": "space-la-place-sacree",
       "name": "Space · La Place Sacrée",
-      "nodeType": "space",
+      "nodeType": "Space",
       "semanticType": "artistic_space",
-      "family": "Création · Espace Sacré",
-      "summary": "Espace de création artistique et spirituelle né de la transmutation du vide initial en matrice poétique et musicale.",
-      "statement": "Espace de création artistique et spirituelle né de la transmutation du vide initial en matrice poétique et musicale."
+      "statement": "Espace de création artistique et spirituelle né de la transmutation du vide initial en matrice poétique et musicale.",
+      "summary": "Espace de création artistique et spirituelle né de la transmutation du vide initial en matrice poétique et musicale."
     },
     {
-      "id": "narrative-place-sacree-concept",
-      "name": "Concept · Transmutation du trou en Place Sacrée",
-      "nodeType": "narrative",
+      "id": "narrative-l1-transmutation-du-trou",
+      "name": "Concept · Transmutation du Trou en Espace Sacré",
+      "nodeType": "Narrative",
       "semanticType": "artistic_vision",
-      "family": "La Place Sacrée · Vision",
-      "summary": "Le vide initial n'est plus un manque mais le lieu d'émergence d'une Place Sacrée, cœur battant de l'album.",
-      "statement": "Le vide initial n'est plus un manque mais le lieu d'émergence d'une Place Sacrée, cœur battant de l'album.",
-      "epistemicStatus": "confirmed"
+      "statement": "Le vide/trou n'est pas une absence à combler mais un espace sacré à sanctifier et à investir par la poésie et la musique.",
+      "summary": "Le vide/trou n'est pas une absence à combler mais un espace sacré à sanctifier et à investir par la poésie et la musique."
     },
     {
-      "id": "narrative-place-sacree-album-structure",
-      "name": "Architecture · Structure globale de l'album La Place Sacrée",
-      "nodeType": "narrative",
-      "semanticType": "album_structure",
-      "family": "La Place Sacrée · Morceaux",
-      "summary": "Agencement narratif des pistes, progression dramatique et musicale entre contemplation et élan rythmique.",
-      "statement": "Agencement narratif des pistes, progression dramatique et musicale entre contemplation et élan rythmique.",
-      "epistemicStatus": "confirmed"
+      "id": "narrative-l1-matrice-album-place-sacree",
+      "name": "Vision · Matrice globale de l'album La Place Sacrée",
+      "nodeType": "Narrative",
+      "semanticType": "album_vision",
+      "statement": "Une œuvre conceptuelle réunissant musique acoustique, voix humaines/synthétiques et poésie japonaise traditionnelle.",
+      "summary": "Une œuvre conceptuelle réunissant musique acoustique, voix humaines/synthétiques et poésie japonaise traditionnelle."
     },
     {
-      "id": "thing-chansons-hooks-accords",
-      "name": "Harmonies · Morceaux, hooks et grilles d'accords",
-      "nodeType": "thing",
-      "semanticType": "musical_compositions",
-      "family": "La Place Sacrée · Composition",
-      "summary": "Répertoire des thèmes musicaux, des refrains/hooks et des structures harmoniques (accords trouvés) pour chaque morceau.",
-      "statement": "Répertoire des thèmes musicaux, des refrains/hooks et des structures harmoniques (accords trouvés) pour me morceau.",
-      "status": "active"
+      "id": "thing-track-01-la-place-sacree",
+      "name": "Track 01 · La Place Sacrée (Morceau éponyme)",
+      "nodeType": "Thing",
+      "semanticType": "music_track",
+      "statement": "Morceau phare : thème principal, hook vocal enveloppant, accords mineurs 7ème et résonance sacrée.",
+      "summary": "Morceau phare : thème principal, hook vocal enveloppant, accords mineurs 7ème et résonance sacrée."
     },
     {
-      "id": "actor-collaborateurs-place-sacree",
-      "name": "Acteurs · Collaborateurs (Leita, Naâman/Natiruts, Violoncelliste)",
-      "nodeType": "actor",
-      "semanticType": "artistic_collaborators",
-      "family": "La Place Sacrée · Humains & Invités",
-      "summary": "Cercle des contributeurs artistiques : voix, violoncelle et influences reggae/world (Naâman, Natiruts, Leita).",
-      "statement": "Cercle des contributeurs artistiques : voix, violoncelle et influences reggae/world (Naâman, Natiruts, Leita)."
+      "id": "thing-track-02-le-trou-transfigure",
+      "name": "Track 02 · Le Trou Transfiguré",
+      "nodeType": "Thing",
+      "semanticType": "music_track",
+      "statement": "Chanson d'ouverture/transition : basse minimale, nappe synthétique sombre s'ouvrant sur une envolée vocale.",
+      "summary": "Chanson d'ouverture/transition : basse minimale, nappe synthétique sombre s'ouvrant sur une envolée vocale."
     },
     {
-      "id": "narrative-haikus-tankas-poetics",
-      "name": "Poétique · Haïkus et Tankas",
-      "nodeType": "narrative",
-      "semanticType": "lyric_poetry",
-      "family": "La Place Sacrée · Textes",
-      "summary": "Formes poétiques courtes et denses (haïkus 5-7-5, tankas 5-7-5-7-7) sculptant la couleur textuelle des chansons.",
-      "statement": "Formes poétiques courtes et denses (haïkus 5-7-5, tankas 5-7-5-7-7) sculptant la couleur textuelle des chansons.",
-      "epistemicStatus": "confirmed"
+      "id": "thing-track-03-ombres-et-lumiere",
+      "name": "Track 03 · Ombres et Lumière (Ballade violoncelle)",
+      "nodeType": "Thing",
+      "semanticType": "music_track",
+      "statement": "Ballade intimiste portée par le violoncelle acoustique et un duo vocal épuré.",
+      "summary": "Ballade intimiste portée par le violoncelle acoustique et un duo vocal épuré."
     },
     {
-      "id": "narrative-conseil-de-bord-ritual",
-      "name": "Rituel · Le Conseil de Bord",
-      "nodeType": "narrative",
-      "semanticType": "governance_ritual",
-      "family": "La Place Sacrée · Gouvernance",
-      "summary": "Instance rituelle d'alignement et d'arbitrage créatif pour guider les choix de l'album sans perdre le cap.",
-      "statement": "Instance rituelle d'alignement et d'arbitrage créatif pour guider les choix de l'album sans perdre le cap.",
-      "epistemicStatus": "confirmed"
+      "id": "thing-track-04-conseil-de-bord",
+      "name": "Track 04 · Le Conseil de Bord (Hymne de gouvernance)",
+      "nodeType": "Thing",
+      "semanticType": "music_track",
+      "statement": "Track rythmé et martial célébrant le rituel d'alignement créatif et la tenue du cap.",
+      "summary": "Track rythmé et martial célébrant le rituel d'alignement créatif et la tenue du cap."
     },
     {
-      "id": "thing-elevenlabs-instagram-setup",
-      "name": "Dispositif · Workflow ElevenLabs & Diffusion Instagram",
-      "nodeType": "thing",
-      "semanticType": "media_pipeline",
-      "family": "La Place Sacrée · Média & Studio",
-      "summary": "Chaîne de production vocale ElevenLabs et stratégie de restitution visuelle/sonore sur Instagram.",
-      "statement": "Chaîne de production vocale ElevenLabs et stratégie de restitution visuelle/sonore sur Instagram."
+      "id": "thing-track-05-frequence-naaman",
+      "name": "Track 05 · Fréquence Naâman (Roots & World)",
+      "nodeType": "Thing",
+      "semanticType": "music_track",
+      "statement": "Collaboration roots/reggae portée par l'énergie de Naâman et des percussions africaines.",
+      "summary": "Collaboration roots/reggae portée par l'énergie de Naâman et des percussions africaines."
     },
     {
-      "id": "moment-etat-des-tracks-status",
-      "name": "Bilan · État d'avancement des Tracks",
-      "nodeType": "moment",
-      "semanticType": "album_status_snapshot",
-      "family": "La Place Sacrée · Suivi",
-      "summary": "Snapshot daté du degré de finalisation des différentes pistes (maquettes, arrangements, voix, mix).",
-      "statement": "Snapshot daté du degré de finalisation des différentes pistes (maquettes, arrangements, voix, mix)."
+      "id": "thing-track-06-etoiles-de-leita",
+      "name": "Track 06 · Étoiles de Leita",
+      "nodeType": "Thing",
+      "semanticType": "music_track",
+      "statement": "Composante vocale stellaire : envolée lyrique de Leita sur nappe ambiante et arpèges de guitare.",
+      "summary": "Composante vocale stellaire : envolée lyrique de Leita sur nappe ambiante et arpèges de guitare."
+    },
+    {
+      "id": "thing-track-07-matin-tanka",
+      "name": "Track 07 · Matin Tanka (Récitation poétique)",
+      "nodeType": "Thing",
+      "semanticType": "music_track",
+      "statement": "Interlude poétique : récitation d'un Tanka sur violoncelle solo et bruit d'océan.",
+      "summary": "Interlude poétique : récitation d'un Tanka sur violoncelle solo et bruit d'océan."
+    },
+    {
+      "id": "narrative-poeme-haiku-01",
+      "name": "Haïku 01 · Le Trou et la Fleur (5-7-5)",
+      "nodeType": "Narrative",
+      "semanticType": "haiku_poem",
+      "statement": "Le trou s'ouvre au ciel / L'ombre devient lumière / La fleur y prend racine",
+      "summary": "Le trou s'ouvre au ciel / L'ombre devient lumière / La fleur y prend racine"
+    },
+    {
+      "id": "narrative-poeme-haiku-02",
+      "name": "Haïku 02 · L'Océan et la Voix (5-7-5)",
+      "nodeType": "Narrative",
+      "semanticType": "haiku_poem",
+      "statement": "Vent de l'océan / Le silence parle enfin / La voix se déploie",
+      "summary": "Vent de l'océan / Le silence parle enfin / La voix se déploie"
+    },
+    {
+      "id": "narrative-poeme-tanka-01",
+      "name": "Tanka 01 · Le Conseil de Bord (5-7-5-7-7)",
+      "nodeType": "Narrative",
+      "semanticType": "tanka_poem",
+      "statement": "Sur le pont de bois / Le Conseil de Bord s'assied / Le cap est tracé / Rien ne fera vaciller / La promesse du matin",
+      "summary": "Sur le pont de bois / Le Conseil de Bord s'assied / Le cap est tracé / Rien ne fera vaciller / La promesse du matin"
+    },
+    {
+      "id": "narrative-poeme-tanka-02",
+      "name": "Tanka 02 · L'Archet et le Feu (5-7-5-7-7)",
+      "nodeType": "Narrative",
+      "semanticType": "tanka_poem",
+      "statement": "Sous l'archet vibrant / Le violoncelle résonne / Leita tend la main / Naâman apporte le feu / La Place Sacrée s'éveille",
+      "summary": "Sous l'archet vibrant / Le violoncelle résonne / Leita tend la main / Naâman apporte le feu / La Place Sacrée s'éveille"
+    },
+    {
+      "id": "actor-leita-vocalist",
+      "name": "Acteur · Leita (Vocaliste & Co-autrice)",
+      "nodeType": "Actor",
+      "semanticType": "vocalist",
+      "statement": "Voix principale féminine, harmonies lyriques et co-écriture des refrains.",
+      "summary": "Voix principale féminine, harmonies lyriques et co-écriture des refrains."
+    },
+    {
+      "id": "actor-naaman-reggae",
+      "name": "Acteur · Naâman (Artiste Invité Reggae)",
+      "nodeType": "Actor",
+      "semanticType": "guest_artist",
+      "statement": "Contribution reggae/roots : flow, présence scénique et énergie solaire.",
+      "summary": "Contribution reggae/roots : flow, présence scénique et énergie solaire."
+    },
+    {
+      "id": "actor-natiruts-world",
+      "name": "Acteur · Natiruts (Groupe Invité World)",
+      "nodeType": "Actor",
+      "semanticType": "guest_band",
+      "statement": "Arrangements world/brazilian et section de percussions organiques.",
+      "summary": "Arrangements world/brazilian et section de percussions organiques."
+    },
+    {
+      "id": "actor-violoncelliste-virtuose",
+      "name": "Acteur · La Violoncelliste (Instrumentiste solo)",
+      "nodeType": "Actor",
+      "semanticType": "instrumentalist",
+      "statement": "Lignes de violoncelle acoustique, soutien harmonique et contrepoints lyriques.",
+      "summary": "Lignes de violoncelle acoustique, soutien harmonique et contrepoints lyriques."
+    },
+    {
+      "id": "mechanism-conseil-de-bord-charte",
+      "name": "Rituel · Charte du Conseil de Bord",
+      "nodeType": "Narrative",
+      "semanticType": "governance_charter",
+      "statement": "Instance d'arbitrage créatif hebdomadaire garantissant l'alignement poétique et musical.",
+      "summary": "Instance d'arbitrage créatif hebdomadaire garantissant l'alignement poétique et musical."
+    },
+    {
+      "id": "narrative-conseil-de-bord-veto-creatif",
+      "name": "Règle · Droit de Véto et Alignement",
+      "nodeType": "Narrative",
+      "semanticType": "governance_rule",
+      "statement": "Tout élément non aligné avec l'esprit de la Place Sacrée est écarté d'un commun accord.",
+      "summary": "Tout élément non aligné avec l'esprit de la Place Sacrée est écarté d'un commun accord."
+    },
+    {
+      "id": "narrative-conseil-de-bord-gardien-du-cap",
+      "name": "Règle · Maintien du Cap Créatif",
+      "nodeType": "Narrative",
+      "semanticType": "governance_rule",
+      "statement": "Discipline collective empêchant la dispersion et garantissant la livraison de l'album.",
+      "summary": "Discipline collective empêchant la dispersion et garantissant la livraison de l'album."
+    },
+    {
+      "id": "thing-elevenlabs-voice-model",
+      "name": "Studio · Modèle Vocal ElevenLabs",
+      "nodeType": "Thing",
+      "semanticType": "voice_engine",
+      "statement": "Générateur vocal IA pour le maquettage rapide des chœurs et récitations poétiques.",
+      "summary": "Générateur vocal IA pour le maquettage rapide des chœurs et récitations poétiques."
+    },
+    {
+      "id": "thing-instagram-distribution-pipeline",
+      "name": "Média · Pipeline de diffusion Instagram",
+      "nodeType": "Thing",
+      "semanticType": "distribution_pipeline",
+      "statement": "Formats visuels Reels/Stories, vidéos immersives et teasers acoustiques.",
+      "summary": "Formats visuels Reels/Stories, vidéos immersives et teasers acoustiques."
+    },
+    {
+      "id": "thing-daw-session-templates",
+      "name": "Studio · Templates DAW & Stems",
+      "nodeType": "Thing",
+      "semanticType": "audio_workspace",
+      "statement": "Projets audio consolidés avec pistes séparées (stems) pour le mixage final.",
+      "summary": "Projets audio consolidés avec pistes séparées (stems) pour le mixage final."
+    },
+    {
+      "id": "moment-avancement-tracks-phase1",
+      "name": "Bilan Phase 1 · Composition & Grilles d'accords",
+      "nodeType": "Moment",
+      "semanticType": "milestone",
+      "statement": "Phase 1 achevée : 7 morceaux composés, hooks validés et Haïkus/Tankas rédigés.",
+      "summary": "Phase 1 achevée : 7 morceaux composés, hooks validés et Haïkus/Tankas rédigés."
+    },
+    {
+      "id": "moment-avancement-tracks-phase2",
+      "name": "Bilan Phase 2 · Enregistrement Voix & Violoncelle",
+      "nodeType": "Moment",
+      "semanticType": "milestone",
+      "statement": "Phase 2 en cours : sessions voix avec Leita et prises de violoncelle en studio.",
+      "summary": "Phase 2 en cours : sessions voix avec Leita et prises de violoncelle en studio."
+    },
+    {
+      "id": "moment-avancement-tracks-phase3",
+      "name": "Bilan Phase 3 · Mixage, Mastering & Release Instagram",
+      "nodeType": "Moment",
+      "semanticType": "milestone",
+      "statement": "Phase 3 planifiée : mixage final, masterisation et publication de la campagne Instagram.",
+      "summary": "Phase 3 planifiée : mixage final, masterisation et publication de la campagne Instagram."
     }
   ],
   "links": [
     {
-      "source": "narrative-place-sacree-concept",
+      "source": "narrative-l1-transmutation-du-trou",
       "target": "space-la-place-sacree",
       "type": "CONVERGES_IN"
     },
     {
-      "source": "narrative-place-sacree-album-structure",
+      "source": "narrative-l1-matrice-album-place-sacree",
       "target": "space-la-place-sacree",
       "type": "CONVERGES_IN"
     },
     {
-      "source": "thing-chansons-hooks-accords",
+      "source": "thing-track-01-la-place-sacree",
       "target": "space-la-place-sacree",
       "type": "CONVERGES_IN"
     },
     {
-      "source": "actor-collaborateurs-place-sacree",
+      "source": "thing-track-02-le-trou-transfigure",
       "target": "space-la-place-sacree",
       "type": "CONVERGES_IN"
     },
     {
-      "source": "narrative-haikus-tankas-poetics",
+      "source": "thing-track-03-ombres-et-lumiere",
       "target": "space-la-place-sacree",
       "type": "CONVERGES_IN"
     },
     {
-      "source": "narrative-conseil-de-bord-ritual",
+      "source": "thing-track-04-conseil-de-bord",
       "target": "space-la-place-sacree",
       "type": "CONVERGES_IN"
     },
     {
-      "source": "thing-elevenlabs-instagram-setup",
+      "source": "thing-track-05-frequence-naaman",
       "target": "space-la-place-sacree",
       "type": "CONVERGES_IN"
     },
     {
-      "source": "moment-etat-des-tracks-status",
+      "source": "thing-track-06-etoiles-de-leita",
       "target": "space-la-place-sacree",
       "type": "CONVERGES_IN"
     },
     {
-      "source": "narrative-haikus-tankas-poetics",
-      "target": "narrative-place-sacree-album-structure",
-      "type": "SUPPORTS"
+      "source": "thing-track-07-matin-tanka",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
     },
     {
-      "source": "narrative-conseil-de-bord-ritual",
-      "target": "narrative-place-sacree-concept",
-      "type": "EXPLAINS"
+      "source": "narrative-poeme-haiku-01",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "narrative-poeme-haiku-02",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "narrative-poeme-tanka-01",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "narrative-poeme-tanka-02",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "actor-leita-vocalist",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "actor-naaman-reggae",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "actor-natiruts-world",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "actor-violoncelliste-virtuose",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "mechanism-conseil-de-bord-charte",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "narrative-conseil-de-bord-veto-creatif",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "narrative-conseil-de-bord-gardien-du-cap",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "thing-elevenlabs-voice-model",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "thing-instagram-distribution-pipeline",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "thing-daw-session-templates",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "moment-avancement-tracks-phase1",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "moment-avancement-tracks-phase2",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
+    },
+    {
+      "source": "moment-avancement-tracks-phase3",
+      "target": "space-la-place-sacree",
+      "type": "CONVERGES_IN"
     }
   ]
 }

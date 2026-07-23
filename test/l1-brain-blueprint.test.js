@@ -6,7 +6,7 @@ const graph = JSON.parse(await fs.readFile(new URL("../l1/data/l1-brain-blueprin
 const nodes = new Map(graph.nodes.map(node => [node.id, node]));
 
 test("the L1 brain blueprint is internally closed and uniquely addressable", () => {
-  assert.equal(graph.clusters.length, 49);
+  assert.equal(graph.clusters.length, 50);
   assert.equal(new Set(graph.nodes.map(node => node.id)).size, graph.nodes.length);
   assert.equal(new Set(graph.relations.map(relation => relation.id)).size, graph.relations.length);
   for (const relation of graph.relations) {
@@ -294,6 +294,58 @@ test("metacognition keeps parallel futures and only exposes positive bounded mod
   assert.ok(graph.relations.some(relation => relation.source === "thing-meta-runtime-auditor" && relation.target === "thing-validation-acceptance-suite"));
 });
 
+test("the human situation model keeps human, citizen and relationship state separate and temporal", () => {
+  const system = graph.humanSituationSystem;
+  assert.equal(system.humanActorStatePrefilled, false);
+  assert.equal(system.identityMutationAllowed, false);
+  assert.equal(system.sharedFramePreservesActorBoundaries, true);
+  assert.equal(system.epistemicContract.unknownIsNeutral, false);
+  assert.equal(system.epistemicContract.notMeasuredIsWell, false);
+  assert.deepEqual(system.temporalContract.freshnessLifecycle, ["fresh", "aging", "stale", "unknown"]);
+  assert.equal(system.temporalContract.lastKnownIsCurrent, false);
+  assert.deepEqual(system.frameContract.frameSequence, [
+    "CitizenStateFrame",
+    "HumanStateFrame",
+    "RelationshipStateFrame",
+    "SharedSituationFrame",
+    "GlobalWorkspaceProjection"
+  ]);
+  assert.equal(system.frameContract.wholeModelInWorkspace, false);
+  assert.equal(system.humanStateContract.activeGoalsAreReferences, true);
+  assert.deepEqual(system.humanStateContract.goalKindsRemainDistinct, ["Goal", "Task", "Need", "Desire", "Commitment"]);
+  assert.equal(system.interactionContract.silenceCanBeHelpful, true);
+
+  const humanActor = nodes.get("actor-human-situation-human-partner");
+  const humanFrame = nodes.get("moment-human-situation-state-snapshot");
+  const relationshipFrame = nodes.get("moment-human-situation-relationship-snapshot");
+  const sharedFrame = nodes.get("moment-human-situation-shared-frame");
+  const workspaceProjection = nodes.get("moment-human-situation-workspace-projection");
+  assert.equal(humanActor.nodeType, "Actor");
+  assert.equal(humanActor.personalPrefill, false);
+  assert.equal(humanActor.emotionalState, undefined);
+  assert.equal(humanFrame.nodeType, "Moment");
+  assert.equal(humanFrame.personalPrefill, false);
+  assert.equal(relationshipFrame.nodeType, "Moment");
+  assert.equal(sharedFrame.nodeType, "Moment");
+  assert.equal(workspaceProjection.nodeType, "Moment");
+  assert.ok(graph.relations.some(relation =>
+    relation.source === humanFrame.id
+    && relation.type === "DESCRIBES"
+    && relation.target === humanActor.id));
+  assert.ok(graph.relations.some(relation =>
+    relation.source === "moment-meta-state-awareness-snapshot"
+    && relation.type === "FEEDS"
+    && relation.target === "thing-human-situation-shared-compiler"));
+  assert.ok(graph.relations.some(relation =>
+    relation.source === workspaceProjection.id
+    && relation.type === "FEEDS"
+    && relation.target === "thing-global-workspace-compiler"));
+  assert.ok(graph.relations.some(relation =>
+    relation.source === "thing-citizen-ai-consent-checker"
+    && relation.type === "GATES"
+    && relation.target === "thing-human-situation-state-estimator"));
+});
+
 test("the machine-readable audit preserves the source count discrepancy", () => {
   assert.deepEqual(graph.declaredCounts, { nodes: 212, relations: 764, clusters: 23 });
   assert.deepEqual(graph.baseBodyCounts, { nodes: 209, relations: 668, clusters: 23 });
@@ -302,7 +354,8 @@ test("the machine-readable audit preserves the source count discrepancy", () => 
   assert.deepEqual(graph.sensoryAugmentationCounts, { nodes: 24, relations: 80, clusters: 0 });
   assert.deepEqual(graph.metacognitiveAugmentationCounts, { nodes: 22, relations: 83, clusters: 0 });
   assert.deepEqual(graph.citizenAIRoleAugmentationCounts, { nodes: 580, relations: 909, clusters: 16 });
-  assert.deepEqual(graph.actualCounts, { nodes: 1072, relations: 2303, clusters: 49 });
-  assert.equal(graph.sourceAudit.sources.length, 7);
+  assert.deepEqual(graph.humanSituationAugmentationCounts, { nodes: 25, relations: 93, clusters: 1 });
+  assert.deepEqual(graph.actualCounts, { nodes: 1097, relations: 2396, clusters: 50 });
+  assert.equal(graph.sourceAudit.sources.length, 8);
   assert.equal(graph.sourceAudit.discrepancies.length, 2);
 });

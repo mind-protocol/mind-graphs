@@ -46,6 +46,32 @@ test("integrated traversal persists state awareness and bounded behavioral adapt
   assert.ok(result.state.subentities.find(entity => entity.id === "explorer").behavioralState.strategies.includes("COMPARE_SCENARIOS"));
 });
 
+test("configured integrated tick selects, snapshots and attributes the workspace", () => {
+  const previous = {
+    ...EMPTY_SUBENTITY_RUNTIME_STATE,
+    subentities: [
+      { id: "protector", level: "high", status: "active", weight: 8, stability: 0.8, certainty: 0.8, signature: { "goal:safety": 1 }, goals: [{ key: "safety" }], lastActivation: 0.9 },
+      { id: "explorer", level: "high", status: "active", weight: 5, stability: 0.7, certainty: 0.7, signature: { "goal:novelty": 1 }, goals: [{ key: "novelty" }], lastActivation: 0.5 }
+    ]
+  };
+  const result = runIntegratedL1Tick(previous, {
+    tickId: "workspace-integrated-1",
+    recordedAt: "2026-07-23T18:00:00Z",
+    sensory: {},
+    affect: {},
+    workspace: { id: "previous", actorId: "actor-nlr", characterBudget: 800, goalIds: ["safety"] },
+    workspaceCandidates: [
+      { id: "workspace-candidate-protector", controllerId: "protector", heat: 1, goalSalience: 1, nodeIds: ["safety"] },
+      { id: "workspace-candidate-explorer", controllerId: "explorer", heat: 0.4, novelty: 1, nodeIds: ["novelty"] }
+    ],
+    memory: { id: "workspace-memory-1", content: "Safety plan entered the workspace." }
+  });
+  assert.equal(result.workspace.controllerId, "protector");
+  assert.equal(result.state.workspaceSnapshots.length, 1);
+  assert.equal(result.state.memoryAttributions.length, 1);
+  assert.ok(result.state.relations.some(edge => edge.type === "ENCODED_UNDER" && edge.source === "workspace-memory-1" && edge.target === "protector"));
+});
+
 test("automatic micro-ticks stop at equilibrium without repeating evidence", () => {
   const input = {
     tickId: "auto-stable-1",
@@ -86,7 +112,7 @@ test("runtime summary exposes active entities, latest controllers and recent eve
     relations: [{ id: "control", source: "protector", type: "CONTROLLED_WORKSPACE_DURING", target: "m1", rank: 1, confidence: 0.8, attribution: "primary" }],
     narratives: [{ id: "n1" }], events: [{ id: "e1", type: "SUBENTITY_PROMOTED" }]
   });
-  assert.deepEqual(summary.counts, { actors: 0, stimulusSpaces: 0, stimulusMoments: 0, active: 1, highLevel: 1, candidates: 0, merged: 1, narratives: 1, moments: 1 });
+  assert.deepEqual(summary.counts, { actors: 0, stimulusSpaces: 0, stimulusMoments: 0, active: 1, highLevel: 1, candidates: 0, merged: 1, narratives: 1, moments: 1, workspaceSnapshots: 0, memoryAttributions: 0 });
   assert.equal(summary.controllers[0].subentityId, "protector");
   assert.equal(summary.recentEvents[0].id, "e1");
 });

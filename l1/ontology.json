@@ -11,6 +11,8 @@
   "nodeTypes": [
     { "id": "subentity", "label": "sous-entite", "family": "cognition_runtime", "epistemicStatus": "inferred", "description": "Modele runtime d'une coalition cognitive recurrente. Son identite, son niveau et sa stabilite restent revisables et traces." },
     { "id": "subentity_narrative", "label": "narratif de sous-entite", "family": "cognition_runtime", "epistemicStatus": "inferred", "description": "Nom, personnalite observee ou preference inferee d'une sous-entite, toujours relie aux souvenirs qui l'etayent." },
+    { "id": "memory_attribution", "label": "attribution mémorielle", "family": "cognition_runtime", "epistemicStatus": "inferred", "description": "Version corrigeable de l'attribution d'un Moment à un contrôleur, des sources fonctionnelles, des contributeurs ou des résonances, sans transférer la propriété de la mémoire." },
+    { "id": "workspace_snapshot", "label": "snapshot du global workspace", "family": "cognition_runtime", "epistemicStatus": "observed", "description": "État versionné et borné du workspace contenant enchères, slots, contrôleur, alternatives, budget et audit de capture." },
     { "id": "lifecycle_event", "label": "evenement de cycle de vie", "family": "runtime", "epistemicStatus": "observed", "description": "Trace immutable d'une fusion, promotion ou autre transition appliquee par le moteur de sous-entites." },
     { "id": "person", "label": "personne", "family": "identite", "epistemicStatus": "declared", "description": "La personne dont ce graphe est la mémoire, ou un tiers présent dans son corpus. Ancre d'identité, initialement un emplacement vide." },
     { "id": "citizen_ai", "label": "IA citoyenne", "family": "identite", "epistemicStatus": "declared", "description": "L'agent personnel qui porte, interroge et met à jour ce L1 pour le compte de la personne." },
@@ -39,6 +41,12 @@
   ],
   "relationTypes": [
     { "id": "CONTROLLED_WORKSPACE_DURING", "label": "controlait le workspace durant", "family": "cognition_runtime", "status": "active", "description": "Relie un souvenir a la sous-entite attribuee comme controleur au moment de sa creation, avec confiance et alternatives." },
+    { "id": "ENCODED_UNDER", "label": "encodé sous", "family": "cognition_runtime", "status": "active", "description": "Un Moment pointe vers le contrôleur estimé du workspace lors de son encodage. Cette attribution ne transfère jamais la propriété du Moment." },
+    { "id": "GENERATED_BY", "label": "généré fonctionnellement par", "family": "cognition_runtime", "status": "active", "description": "Un Moment pointe vers une source fonctionnelle soutenue par des preuves indépendantes ; le contrôle du workspace seul ne suffit pas." },
+    { "id": "INVOLVES", "label": "implique", "family": "cognition_runtime", "status": "active", "description": "Un Moment implique une sous-entité contributrice sans lui attribuer le contrôle principal ni la causalité exclusive." },
+    { "id": "RESONATES_WITH", "label": "résonne avec", "family": "cognition_runtime", "status": "active", "description": "Similarité sémantique ou affective non causale entre un Moment et une sous-entité ; elle ne peut pas confirmer l'identité qui l'a produite." },
+    { "id": "RECALLS", "label": "rappelle", "family": "cognition_runtime", "status": "active", "description": "Un Moment rappelle explicitement un Moment antérieur sans les fusionner." },
+    { "id": "REINTERPRETS", "label": "réinterprète", "family": "cognition_runtime", "status": "active", "description": "Un Moment propose une nouvelle lecture versionnée d'un Moment antérieur sans écraser sa version précédente." },
     { "id": "DESCRIBES_SUBENTITY", "label": "decrit la sous-entite", "family": "cognition_runtime", "status": "active", "description": "Un narratif infere decrit une sous-entite sans transformer cette inference en declaration de la personne." },
     { "id": "SUPPORTS", "label": "etaye", "family": "cognition_runtime", "status": "active", "description": "Un souvenir ou une observation fournit la provenance d'un narratif de sous-entite." },
     { "id": "SUPERSEDES", "label": "remplace", "family": "runtime", "status": "active", "description": "Une sous-entite survivante remplace une sous-entite fusionnee tout en conservant sa trace." },
@@ -50,13 +58,19 @@
   ],
   "typeGroups": {
     "runtime_evidence": ["memory", "observation"],
-    "subentity_runtime": ["subentity", "subentity_narrative", "lifecycle_event"],
+    "subentity_runtime": ["subentity", "subentity_narrative", "memory_attribution", "workspace_snapshot", "lifecycle_event"],
     "content_atoms": ["memory", "observation"],
     "volition": ["objective", "obligation", "decision", "value", "preference"],
     "entities": ["person", "citizen_ai", "relation"]
   },
   "relationConstraints": {
     "CONTROLLED_WORKSPACE_DURING": { "sourceTypes": ["subentity"], "targetTypes": ["memory"] },
+    "ENCODED_UNDER": { "sourceTypes": ["memory"], "targetTypes": ["subentity"] },
+    "GENERATED_BY": { "sourceTypes": ["memory"], "targetTypes": ["subentity"] },
+    "INVOLVES": { "sourceTypes": ["memory"], "targetTypes": ["subentity"] },
+    "RESONATES_WITH": { "sourceTypes": ["memory"], "targetTypes": ["subentity"] },
+    "RECALLS": { "sourceTypes": ["memory"], "targetTypes": ["memory"] },
+    "REINTERPRETS": { "sourceTypes": ["memory"], "targetTypes": ["memory"] },
     "DESCRIBES_SUBENTITY": { "sourceTypes": ["subentity_narrative"], "targetTypes": ["subentity"] },
     "SUPPORTS": { "sourceGroups": ["runtime_evidence"], "targetTypes": ["subentity_narrative", "subentity"] },
     "SUPERSEDES": { "sourceTypes": ["subentity"], "targetTypes": ["subentity"] },

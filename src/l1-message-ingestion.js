@@ -29,7 +29,8 @@ function lifecycleInput({ kind, conversationId, externalId, position, content, o
       content,
       metadata: {
         claimNature: "message_moment",
-        sourceKind: kind === "message" ? "live_message" : "conversation_import_block",
+        semanticType: "Utterance",
+        sourceKind: kind === "message" ? "live_message" : kind === "utterance" ? "conversation_import_utterance" : "conversation_import_block",
         sourceMessageId: externalId,
         conversationId,
         conversationPosition: Number(position),
@@ -39,6 +40,12 @@ function lifecycleInput({ kind, conversationId, externalId, position, content, o
         channel,
         ingestedAt,
         timestampBasis,
+        contentHash: hash(content),
+        indexingStatus: "indexed",
+        assimilationStatus: kind === "message" ? "present" : "latent",
+        memoryState: kind === "message" ? "active" : "indexed",
+        experiencedByCitizen: kind === "message",
+        segmentationUnit: kind === "utterance" ? "utterance" : kind === "conversation-block" ? "legacy_block" : "live_message",
         place: { kind: "conversation", conversationId, blockIndex: Number(position) }
       }
     }
@@ -88,6 +95,32 @@ export function createConversationBlockTick(conversationIdValue, payload, { now 
     ingestedAt,
     speakerRole,
     previousMomentId: payload.previousBlockId ? stableMomentId("conversation-block", conversationId, payload.previousBlockId) : null,
+    authorNodeId: payload.authorNodeId || (speakerRole === "user" ? "self-nlr" : null),
+    channel: payload.channel || null,
+    timestampBasis: "source_timestamp",
+    workspaceSnapshot: payload.workspaceSnapshot || {}
+  });
+}
+
+export function createConversationUtteranceTick(conversationIdValue, payload, { now = () => new Date().toISOString() } = {}) {
+  const conversationId = requiredText(conversationIdValue, "conversationId");
+  const utteranceId = requiredText(payload?.utteranceId, "utteranceId");
+  const content = requiredText(payload?.content, "content");
+  const speakerRole = requiredText(payload?.speakerRole, "speakerRole");
+  if (!new Set(["user", "assistant", "system", "tool"]).has(speakerRole)) throw new Error("speakerRole must be user, assistant, system or tool.");
+  if (!validPosition(payload?.position)) throw new Error("position must be a non-negative integer.");
+  const occurredAt = isoDate(payload?.occurredAt, "occurredAt");
+  const ingestedAt = new Date(now()).toISOString();
+  return lifecycleInput({
+    kind: "utterance",
+    conversationId,
+    externalId: utteranceId,
+    position: payload.position,
+    content,
+    occurredAt,
+    ingestedAt,
+    speakerRole,
+    previousMomentId: payload.previousUtteranceId ? stableMomentId("utterance", conversationId, payload.previousUtteranceId) : null,
     authorNodeId: payload.authorNodeId || (speakerRole === "user" ? "self-nlr" : null),
     channel: payload.channel || null,
     timestampBasis: "source_timestamp",

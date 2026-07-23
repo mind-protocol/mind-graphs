@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createConversationBlockTick, createLiveMessageTick } from "../src/l1-message-ingestion.js";
+import { createConversationBlockTick, createConversationUtteranceTick, createLiveMessageTick } from "../src/l1-message-ingestion.js";
 import { createMemoryMoment } from "../src/l1-subentities.js";
 
 const now = () => "2026-07-23T18:00:00.000Z";
@@ -33,6 +33,29 @@ test("historical conversation ingestion requires one dated positioned block", ()
   assert.equal(tick.memory.metadata.sourceKind, "conversation_import_block");
   assert.equal(tick.memory.metadata.authorNodeId, null);
   assert.match(tick.memory.metadata.previousMomentId, /^moment-conversation-block-/);
+  assert.equal(tick.memory.metadata.assimilationStatus, "latent");
+  assert.equal(tick.memory.metadata.experiencedByCitizen, false);
+  assert.equal(tick.memory.metadata.segmentationUnit, "legacy_block");
+});
+
+test("archive utterances are indexed as latent memories without claiming assimilation", () => {
+  const tick = createConversationUtteranceTick("archive-1", {
+    utteranceId: "u2",
+    previousUtteranceId: "u1",
+    position: 1,
+    speakerRole: "assistant",
+    occurredAt: "2025-01-02T03:04:05Z",
+    content: "Réponse exacte"
+  }, { now });
+  assert.equal(tick.memory.metadata.semanticType, "Utterance");
+  assert.equal(tick.memory.metadata.sourceKind, "conversation_import_utterance");
+  assert.equal(tick.memory.metadata.indexingStatus, "indexed");
+  assert.equal(tick.memory.metadata.assimilationStatus, "latent");
+  assert.equal(tick.memory.metadata.memoryState, "indexed");
+  assert.equal(tick.memory.metadata.experiencedByCitizen, false);
+  assert.equal(tick.memory.metadata.segmentationUnit, "utterance");
+  assert.match(tick.memory.metadata.contentHash, /^[a-f0-9]{64}$/);
+  assert.match(tick.memory.metadata.previousMomentId, /^moment-utterance-/);
 });
 
 test("Moment creation writes author and conversational placement relations", () => {

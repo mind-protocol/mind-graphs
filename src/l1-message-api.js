@@ -1,6 +1,6 @@
 import express from "express";
 import { applyFalkorSubentityLifecycleTick, RuntimeRevisionConflictError } from "./l1-subentity-falkor.js";
-import { createConversationBlockTick, createLiveMessageTick } from "./l1-message-ingestion.js";
+import { createConversationBlockTick, createConversationUtteranceTick, createLiveMessageTick } from "./l1-message-ingestion.js";
 
 function statusFor(result) {
   if (result.report.status === "already_processed") return 200;
@@ -44,6 +44,16 @@ export function createL1MessageRouter({ getGraph, applyTick = applyFalkorSubenti
   router.post("/conversations/:conversationId/blocks", async (req, res) => {
     try {
       const input = createConversationBlockTick(req.params.conversationId, req.body, { now });
+      const result = await applyTick({ graph: await getGraph(), input });
+      res.status(statusFor(result)).json(responseFor(result, input));
+    } catch (error) {
+      sendError(res, error);
+    }
+  });
+
+  router.post("/conversations/:conversationId/utterances", async (req, res) => {
+    try {
+      const input = createConversationUtteranceTick(req.params.conversationId, req.body, { now });
       const result = await applyTick({ graph: await getGraph(), input });
       res.status(statusFor(result)).json(responseFor(result, input));
     } catch (error) {

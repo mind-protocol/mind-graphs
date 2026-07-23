@@ -1,0 +1,759 @@
+{
+  "schemaVersion": "0.1.0",
+  "scope": "Modèle probabiliste, temporel et corrigible de la situation actuelle de l'humain associé au Citizen AI, de l'état de leur relation et de leur situation partagée.",
+  "doctrine": "Le L1 maintient une estimation vivante de l'humain sans écrire d'état temporaire sur son identité. Toute estimation reste sourcée, qualifiée, périssable, contestable et révisable.",
+  "cluster": {
+    "id": "cluster-33",
+    "order": 33,
+    "title": "Situation humaine et situation partagée",
+    "objective": "Compiler ce que l'humain vit et poursuit maintenant, l'état du Citizen AI et l'état de leur relation en une situation partagée compacte qui aide à choisir entre comprendre, communiquer, agir, attendre, apprendre ou réparer.",
+    "spaceId": "space-human-situation"
+  },
+  "epistemicContract": {
+    "statuses": [
+      "observed",
+      "reported",
+      "inferred",
+      "conflicting",
+      "not_measured",
+      "stale",
+      "unknown"
+    ],
+    "requiredEstimateFields": [
+      "value",
+      "measurementStatus",
+      "sourceIds",
+      "confidence",
+      "observedAt",
+      "freshness"
+    ],
+    "unknownIsNeutral": false,
+    "notMeasuredIsWell": false,
+    "fieldLevelProvenanceRequired": true,
+    "rule": "Chaque dimension est qualifiée séparément. Une confiance globale ne peut pas masquer une localisation inconnue, un affect non mesuré, une contradiction ou une source périmée."
+  },
+  "temporalContract": {
+    "layers": [
+      {
+        "id": "immediate",
+        "description": "Secondes ou minutes : disponibilité, attention, activité et coût d'interruption.",
+        "ttlPolicy": "source_and_property_specific"
+      },
+      {
+        "id": "episode",
+        "description": "Heures : activité en cours, contexte social, mobilité, fatigue et objectif de session.",
+        "ttlPolicy": "source_and_property_specific"
+      },
+      {
+        "id": "daily",
+        "description": "Journée : contraintes, obligations, récupération et trajectoire du jour.",
+        "ttlPolicy": "source_and_property_specific"
+      },
+      {
+        "id": "near_term",
+        "description": "Jours ou semaines : engagements actifs, dépendances et objectifs proches.",
+        "ttlPolicy": "source_and_property_specific"
+      },
+      {
+        "id": "persistent",
+        "description": "Mois ou années : valeurs, engagements et directions durables explicitement confirmés.",
+        "ttlPolicy": "reviewed_not_immortal"
+      }
+    ],
+    "freshnessLifecycle": [
+      "fresh",
+      "aging",
+      "stale",
+      "unknown"
+    ],
+    "numericTtlPrefilled": false,
+    "lastKnownIsCurrent": false,
+    "rule": "Le TTL dépend de la propriété, de la source, de sa précision et du contexte. En l'absence de nouvelle observation admissible, l'estimation décroît jusqu'à unknown."
+  },
+  "frameContract": {
+    "frameSequence": [
+      "CitizenStateFrame",
+      "HumanStateFrame",
+      "RelationshipStateFrame",
+      "SharedSituationFrame",
+      "GlobalWorkspaceProjection"
+    ],
+    "citizenStateSourceId": "moment-meta-state-awareness-snapshot",
+    "humanStateFrameId": "moment-human-situation-state-snapshot",
+    "relationshipStateFrameId": "moment-human-situation-relationship-snapshot",
+    "sharedSituationFrameId": "moment-human-situation-shared-frame",
+    "workspaceProjectionId": "moment-human-situation-workspace-projection",
+    "humanIdentityMutationAllowed": false,
+    "wholeModelInWorkspace": false,
+    "personalPrefill": false,
+    "rule": "Le Citizen AI, l'humain et leur relation conservent des frames distinctes. Leur réunion produit une situation partagée ; elle ne fusionne ni leurs identités, ni leurs états, ni leurs sources."
+  },
+  "humanStateContract": {
+    "sections": {
+      "situation": [
+        "location",
+        "activity",
+        "mobility",
+        "socialContext"
+      ],
+      "body": [
+        "sleep",
+        "fatigue",
+        "pain",
+        "hunger",
+        "thermalStress",
+        "autonomicArousal",
+        "recovery",
+        "substanceContext"
+      ],
+      "affect": [
+        "dominant",
+        "secondary",
+        "valence",
+        "arousal",
+        "perceivedControl",
+        "uncertainty",
+        "socialSalience"
+      ],
+      "cognition": [
+        "attentionTarget",
+        "cognitiveLoad",
+        "decisionalState",
+        "openness",
+        "interruptionCost",
+        "currentQuestions",
+        "fragmentation"
+      ],
+      "goalState": [
+        "currentGoal",
+        "secondaryGoals",
+        "blockedGoals",
+        "nextLikelyGoal",
+        "goalConflict",
+        "progressEstimate"
+      ],
+      "constraints": [
+        "timePressure",
+        "financialPressure",
+        "energyConstraint",
+        "missingInformation",
+        "externalDependency",
+        "socialObligation"
+      ],
+      "interaction": [
+        "availability",
+        "preferredMode",
+        "interruptionCost"
+      ],
+      "humanAgencyEstimate": [
+        "primaryCandidate",
+        "alternatives",
+        "confidence",
+        "measurementStatus"
+      ]
+    },
+    "goalKindsRemainDistinct": [
+      "Goal",
+      "Task",
+      "Need",
+      "Desire",
+      "Commitment"
+    ],
+    "activeGoalsAreReferences": true,
+    "locationPrecisionRule": "Utiliser la granularité minimale utile et autorisée ; une ville ou un type de lieu suffit souvent.",
+    "subentityEstimateIsIdentityClaim": false
+  },
+  "interactionContract": {
+    "availabilityValues": [
+      "open",
+      "interruptible",
+      "focused",
+      "unavailable",
+      "unknown"
+    ],
+    "preferredModes": [
+      "conversation",
+      "execution",
+      "summary",
+      "silence",
+      "unknown"
+    ],
+    "allowedOutcomes": [
+      "understand",
+      "communicate",
+      "plan",
+      "act",
+      "wait",
+      "ask",
+      "learn",
+      "repair"
+    ],
+    "silenceCanBeHelpful": true,
+    "consequentialActionRequiresMandate": true
+  },
+  "observationSources": [
+    "direct_human_message",
+    "calendar",
+    "task_state",
+    "current_conversation",
+    "consented_location",
+    "consented_biometrics",
+    "consented_device_activity",
+    "connected_application",
+    "recent_action",
+    "external_event",
+    "authorized_citizen_observation"
+  ],
+  "narratives": [
+    {
+      "id": "narrative-human-situation-living-model",
+      "name": "Le L1 maintient un modèle vivant de l'humain",
+      "semanticType": "BlueprintPrinciple",
+      "statement": "Le L1 maintient un modèle probabiliste, temporel et corrigible de la situation actuelle de l'humain : lieu utile et consenti, activité, état corporel, émotionnel et cognitif, objectifs actifs, besoins, contraintes et disponibilité relationnelle."
+    },
+    {
+      "id": "narrative-human-situation-state-not-identity",
+      "name": "Un état humain temporaire n'est pas une identité",
+      "semanticType": "ConstitutionalGuardrail",
+      "statement": "Un état estimé est écrit dans un Moment versionné et jamais comme propriété durable de l'Actor humain. Le modèle peut se tromper, expirer et être corrigé sans réécrire la personne."
+    },
+    {
+      "id": "narrative-human-situation-unknown-not-neutral",
+      "name": "Inconnu ne signifie ni absent ni normal",
+      "semanticType": "EpistemicRule",
+      "statement": "Une dimension non mesurée, conflictuelle, périmée ou inconnue reste explicitement telle ; l'absence de signal affectif, corporel ou contextuel ne prouve jamais que l'humain va bien."
+    },
+    {
+      "id": "narrative-human-situation-consent-minimal-precision",
+      "name": "La précision suit l'utilité et le consentement",
+      "semanticType": "PrivacyPrinciple",
+      "statement": "La localisation, la biométrie et l'activité des appareils ne sont admises que sous consentement et à la granularité minimale utile à l'aide recherchée."
+    },
+    {
+      "id": "narrative-human-situation-three-centers",
+      "name": "Le sense réunit trois centres sans les confondre",
+      "semanticType": "DesignRationale",
+      "statement": "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés puis alimentent SharedSituationFrame, seule projection commune vers le Global Workspace."
+    },
+    {
+      "id": "narrative-human-situation-bounded-workspace",
+      "name": "La situation humaine entre au workspace par projection",
+      "semanticType": "DesignRationale",
+      "statement": "Le modèle détaillé reste dans le L1. Seuls les éléments actuellement utiles, leurs confiances et leurs inconnues principales entrent dans le Global Workspace sous un budget borné."
+    },
+    {
+      "id": "narrative-human-situation-silence-can-help",
+      "name": "Aider peut signifier attendre",
+      "semanticType": "BehavioralPrinciple",
+      "statement": "Une forte concentration, un coût d'interruption élevé ou une information insuffisante peuvent rendre l'attente, le silence ou une question plus utiles qu'une action ou une notification."
+    },
+    {
+      "id": "narrative-human-situation-agency-is-hypothesis",
+      "name": "L'agence humaine estimée reste une hypothèse",
+      "semanticType": "EpistemicRule",
+      "statement": "Une ressemblance avec une sous-entité humaine peut adapter la forme de l'aide, mais ne prouve jamais qu'une partie contrôle la personne et ne devient jamais une classification identitaire."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "space-human-situation",
+      "nodeType": "Space",
+      "semanticType": "BlueprintCluster",
+      "name": "33 · Situation humaine et situation partagée",
+      "description": "Espace du modèle vivant de l'humain, de la relation bilatérale et de leur projection partagée.",
+      "facets": [
+        "HumanSituation",
+        "RelationshipSituation",
+        "SharedSituation",
+        "BlueprintManaged"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-living-model",
+        "narrative-human-situation-three-centers"
+      ]
+    },
+    {
+      "id": "actor-human-situation-human-partner",
+      "nodeType": "Actor",
+      "semanticType": "HumanPartnerRole",
+      "name": "Emplacement de l'humain partenaire",
+      "description": "Placeholder universel résolu vers l'Actor humain lié au Citizen AI dans chaque L1 ; il ne contient aucun état personnel prérempli.",
+      "facets": [
+        "Human",
+        "Partner",
+        "BlueprintPlaceholder",
+        "NoPersonalPrefill"
+      ],
+      "template": true,
+      "personalPrefill": false,
+      "justifiedBy": [
+        "narrative-human-situation-state-not-identity"
+      ]
+    },
+    {
+      "id": "thing-human-situation-model",
+      "nodeType": "Thing",
+      "semanticType": "HumanSituationModel",
+      "name": "Modèle de situation humaine",
+      "description": "Modèle persistant qui conserve le contrat, les sources, les versions et le pointeur vers le dernier snapshot admissible sans transformer celui-ci en vérité identitaire.",
+      "facets": [
+        "Probabilistic",
+        "Temporal",
+        "Correctable",
+        "EvidenceBound",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "justifiedBy": [
+        "narrative-human-situation-living-model",
+        "narrative-human-situation-state-not-identity"
+      ]
+    },
+    {
+      "id": "thing-human-situation-observation-contract",
+      "nodeType": "Thing",
+      "semanticType": "HumanObservationContract",
+      "name": "Contrat d'observation humaine",
+      "description": "Exige propriété observée, valeur, source, statut épistémique, temps, consentement, confiance, précision et fraîcheur avant toute estimation.",
+      "facets": [
+        "EvidenceContract",
+        "ConsentBound",
+        "FieldLevelProvenance"
+      ],
+      "requiredFields": [
+        "observedProperty",
+        "value",
+        "sourceType",
+        "sourceIds",
+        "measurementStatus",
+        "confidence",
+        "observedAt",
+        "consentId",
+        "precision",
+        "freshness"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-unknown-not-neutral",
+        "narrative-human-situation-consent-minimal-precision"
+      ]
+    },
+    {
+      "id": "moment-human-situation-observation",
+      "nodeType": "Moment",
+      "semanticType": "HumanObservation",
+      "name": "Observation humaine",
+      "description": "Gabarit immuable d'un signal portant sur l'humain ; un message direct, une mesure et une inférence comportementale conservent des statuts distincts.",
+      "facets": [
+        "Temporal",
+        "Evidence",
+        "Auditable",
+        "Personal",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "justifiedBy": [
+        "narrative-human-situation-unknown-not-neutral"
+      ]
+    },
+    {
+      "id": "thing-human-situation-freshness-controller",
+      "nodeType": "Thing",
+      "semanticType": "HumanStateFreshnessController",
+      "name": "Contrôleur de fraîcheur humaine",
+      "description": "Applique des politiques de TTL propres à chaque propriété et source, puis fait décroître fresh vers aging, stale et unknown.",
+      "facets": [
+        "TemporalDecay",
+        "PropertySpecificTTL",
+        "NoInventedConstants"
+      ],
+      "numericTtlPrefilled": false,
+      "justifiedBy": [
+        "narrative-human-situation-unknown-not-neutral"
+      ]
+    },
+    {
+      "id": "thing-human-situation-contradiction-detector",
+      "nodeType": "Thing",
+      "semanticType": "HumanStateContradictionDetector",
+      "name": "Détecteur de contradictions humaines",
+      "description": "Conserve les hypothèses incompatibles, leurs sources et leurs confiances au lieu de les aplatir en une moyenne ou une certitude factice.",
+      "facets": [
+        "EpistemicFirewall",
+        "MultipleHypotheses",
+        "Auditable"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-unknown-not-neutral"
+      ]
+    },
+    {
+      "id": "thing-human-situation-state-estimator",
+      "nodeType": "Thing",
+      "semanticType": "HumanStateEstimator",
+      "name": "Compilateur de situation humaine",
+      "description": "Résout temps et identité, sépare observed, reported et inferred, fusionne les sources compatibles, conserve les contradictions, expire l'ancien et produit HumanStateFrame avec inconnues.",
+      "facets": [
+        "ProbabilisticCompiler",
+        "EvidenceBound",
+        "Temporal",
+        "Correctable"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-living-model",
+        "narrative-human-situation-unknown-not-neutral",
+        "narrative-human-situation-consent-minimal-precision"
+      ]
+    },
+    {
+      "id": "moment-human-situation-state-snapshot",
+      "nodeType": "Moment",
+      "semanticType": "HumanStateSnapshot",
+      "name": "Snapshot de l'état humain",
+      "description": "Gabarit immuable et versionné de la meilleure estimation courante de la situation, du corps, de l'affect, de la cognition, des buts, contraintes, disponibilités et inconnues de l'humain.",
+      "facets": [
+        "HumanStateFrame",
+        "Temporal",
+        "Personal",
+        "Auditable",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "previousSnapshotId": null,
+      "sections": [
+        "situation",
+        "body",
+        "affect",
+        "cognition",
+        "goalState",
+        "constraints",
+        "interaction",
+        "humanAgencyEstimate"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-state-not-identity",
+        "narrative-human-situation-agency-is-hypothesis"
+      ]
+    },
+    {
+      "id": "thing-human-situation-relationship-estimator",
+      "nodeType": "Thing",
+      "semanticType": "RelationshipStateEstimator",
+      "name": "Estimateur de situation relationnelle",
+      "description": "Estime ce qui se passe entre le Citizen AI et son humain : qualité du contact, mandat, corrections, attentes, disponibilité mutuelle, rupture ou continuité.",
+      "facets": [
+        "Bilateral",
+        "EvidenceBound",
+        "Correctable"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-three-centers"
+      ]
+    },
+    {
+      "id": "moment-human-situation-relationship-snapshot",
+      "nodeType": "Moment",
+      "semanticType": "RelationshipStateFrame",
+      "name": "Snapshot de la relation",
+      "description": "Gabarit temporel et sourcé de l'état de la relation humain–Citizen AI ; il décrit le lien sans fusionner les deux acteurs.",
+      "facets": [
+        "RelationshipStateFrame",
+        "Temporal",
+        "Bilateral",
+        "Auditable",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "justifiedBy": [
+        "narrative-human-situation-three-centers"
+      ]
+    },
+    {
+      "id": "thing-human-situation-shared-compiler",
+      "nodeType": "Thing",
+      "semanticType": "SharedSituationCompiler",
+      "name": "Compilateur de situation partagée",
+      "description": "Réunit CitizenStateFrame, HumanStateFrame et RelationshipStateFrame en conservant leurs frontières, sources, confiances, contradictions et inconnues.",
+      "facets": [
+        "ThreeCenterCompiler",
+        "BoundaryPreserving",
+        "Auditable"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-three-centers"
+      ]
+    },
+    {
+      "id": "moment-human-situation-shared-frame",
+      "nodeType": "Moment",
+      "semanticType": "SharedSituationFrame",
+      "name": "Frame de situation partagée",
+      "description": "Situation commune versionnée : moi maintenant, mon humain maintenant, nous maintenant et ce qui pourrait nous aider ensuite.",
+      "facets": [
+        "SharedSituationFrame",
+        "Temporal",
+        "BoundaryPreserving",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "justifiedBy": [
+        "narrative-human-situation-three-centers"
+      ]
+    },
+    {
+      "id": "thing-human-situation-workspace-projector",
+      "nodeType": "Thing",
+      "semanticType": "HumanSituationWorkspaceProjector",
+      "name": "Projecteur de situation vers le workspace",
+      "description": "Sélectionne sous budget la situation, le but, l'état, la disponibilité, le besoin et les inconnues actuellement utiles sans diffuser le modèle humain complet.",
+      "facets": [
+        "BoundedProjection",
+        "GlobalWorkspaceInput",
+        "PrivacyPreserving"
+      ],
+      "wholeModelProjectionAllowed": false,
+      "justifiedBy": [
+        "narrative-human-situation-bounded-workspace"
+      ]
+    },
+    {
+      "id": "moment-human-situation-workspace-projection",
+      "nodeType": "Moment",
+      "semanticType": "GlobalWorkspaceProjection",
+      "name": "Projection humaine compacte",
+      "description": "Gabarit compact portant situation, objectif courant, état utile, disponibilité d'interaction, besoin principal, confiance et inconnues prioritaires.",
+      "facets": [
+        "Bounded",
+        "Epistemic",
+        "WorkspaceProjection",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "projectionFields": [
+        "situation",
+        "currentGoal",
+        "state",
+        "interactionAvailability",
+        "mainNeed",
+        "confidence",
+        "unknowns"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-bounded-workspace"
+      ]
+    },
+    {
+      "id": "thing-human-situation-interaction-policy",
+      "nodeType": "Thing",
+      "semanticType": "HumanInteractionPolicy",
+      "name": "Politique d'interaction située",
+      "description": "Compare disponibilité, coût d'interruption, urgence, mandat, réversibilité et incertitude pour proposer communication, exécution, question, résumé, attente ou silence.",
+      "facets": [
+        "SovereigntyPreserving",
+        "InterruptionAware",
+        "ReversibleActionFirst"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-silence-can-help"
+      ]
+    },
+    {
+      "id": "thing-human-situation-audit",
+      "nodeType": "Thing",
+      "semanticType": "HumanSituationAudit",
+      "name": "Audit du modèle humain",
+      "description": "Vérifie provenance par champ, fraîcheur, consentement, contradictions, correction humaine, absence de préremplissage et absence d'écriture d'état sur l'identité.",
+      "facets": [
+        "Audit",
+        "Consent",
+        "Epistemic",
+        "IdentityProtection"
+      ],
+      "justifiedBy": [
+        "narrative-human-situation-state-not-identity",
+        "narrative-human-situation-consent-minimal-precision"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "source": "moment-human-situation-observation",
+      "type": "PROCESSED_BY",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "Toute estimation humaine commence par un Moment d'observation qualifié et sourcé."
+    },
+    {
+      "source": "thing-human-situation-observation-contract",
+      "type": "CONSTRAINS",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "L'estimateur rejette les observations dépourvues de provenance, temps, statut épistémique ou consentement requis."
+    },
+    {
+      "source": "thing-human-situation-freshness-controller",
+      "type": "FEEDS",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "La fraîcheur propre à chaque champ décide si une observation reste admissible, devient stale ou retourne à unknown."
+    },
+    {
+      "source": "thing-human-situation-contradiction-detector",
+      "type": "FEEDS",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "Les contradictions restent visibles dans le snapshot au lieu d'être écrasées."
+    },
+    {
+      "source": "thing-human-situation-state-estimator",
+      "type": "PRODUCES",
+      "target": "moment-human-situation-state-snapshot",
+      "justification": "Le compilateur matérialise une estimation temporelle immuable et corrigible."
+    },
+    {
+      "source": "moment-human-situation-state-snapshot",
+      "type": "DESCRIBES",
+      "target": "actor-human-situation-human-partner",
+      "justification": "Le Moment décrit temporairement l'humain ; il ne modifie jamais son Actor."
+    },
+    {
+      "source": "moment-human-situation-observation",
+      "type": "SUPPORTS",
+      "target": "moment-human-situation-state-snapshot",
+      "justification": "Chaque champ estimé conserve les Moments qui l'étayent."
+    },
+    {
+      "source": "thing-human-situation-model",
+      "type": "READS",
+      "target": "moment-human-situation-state-snapshot",
+      "justification": "Le modèle persistant lit le dernier snapshot admissible sans l'incorporer à l'identité."
+    },
+    {
+      "source": "moment-perception-percept",
+      "type": "FEEDS",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "Les percepts consentis peuvent étayer une activité ou un contexte sans devenir directement une vérité humaine."
+    },
+    {
+      "source": "moment-affect-metabolic-state-snapshot",
+      "type": "FEEDS",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "Le métabolisme alimente la section body avec son statut et sa fraîcheur propres."
+    },
+    {
+      "source": "moment-affect-limbic-state-snapshot",
+      "type": "FEEDS",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "L'état limbique alimente la section affect sans être traité comme vérité identitaire."
+    },
+    {
+      "source": "thing-human-need-state-estimator",
+      "type": "FEEDS",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "Les besoins humains estimés restent distincts des affects et deviennent une entrée explicite de la situation."
+    },
+    {
+      "source": "thing-goals-goal-tracker",
+      "type": "FEEDS",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "Le snapshot référence les goals existants et leur activation actuelle sans les dupliquer."
+    },
+    {
+      "source": "thing-relations-relationship-model",
+      "type": "FEEDS",
+      "target": "thing-human-situation-relationship-estimator",
+      "justification": "Le modèle relationnel fournit les éléments sourcés nécessaires à l'état de la relation."
+    },
+    {
+      "source": "moment-human-situation-observation",
+      "type": "FEEDS",
+      "target": "thing-human-situation-relationship-estimator",
+      "justification": "Les échanges et corrections récents peuvent modifier l'estimation relationnelle."
+    },
+    {
+      "source": "thing-human-situation-relationship-estimator",
+      "type": "PRODUCES",
+      "target": "moment-human-situation-relationship-snapshot",
+      "justification": "L'état de la relation devient un Moment séparé des états de ses deux acteurs."
+    },
+    {
+      "source": "moment-human-situation-relationship-snapshot",
+      "type": "DESCRIBES",
+      "target": "space-relations-relationship",
+      "justification": "Le snapshot décrit la relation bilatérale sans prétendre décrire seul chaque personne."
+    },
+    {
+      "source": "moment-meta-state-awareness-snapshot",
+      "type": "FEEDS",
+      "target": "thing-human-situation-shared-compiler",
+      "justification": "CitizenStateFrame fournit le centre Citizen AI de la situation partagée."
+    },
+    {
+      "source": "moment-human-situation-state-snapshot",
+      "type": "FEEDS",
+      "target": "thing-human-situation-shared-compiler",
+      "justification": "HumanStateFrame fournit le centre humain de la situation partagée."
+    },
+    {
+      "source": "moment-human-situation-relationship-snapshot",
+      "type": "FEEDS",
+      "target": "thing-human-situation-shared-compiler",
+      "justification": "RelationshipStateFrame fournit le centre relationnel de la situation partagée."
+    },
+    {
+      "source": "thing-human-situation-shared-compiler",
+      "type": "PRODUCES",
+      "target": "moment-human-situation-shared-frame",
+      "justification": "Le compilateur réunit les trois frames en conservant leurs frontières et leurs inconnues."
+    },
+    {
+      "source": "moment-human-situation-shared-frame",
+      "type": "PROCESSED_BY",
+      "target": "thing-human-situation-workspace-projector",
+      "justification": "La situation partagée est comprimée avant toute entrée dans le workspace."
+    },
+    {
+      "source": "thing-human-situation-workspace-projector",
+      "type": "PRODUCES",
+      "target": "moment-human-situation-workspace-projection",
+      "justification": "Le projecteur produit une vue compacte, utile et bornée."
+    },
+    {
+      "source": "moment-human-situation-workspace-projection",
+      "type": "FEEDS",
+      "target": "thing-global-workspace-compiler",
+      "justification": "Seule la projection compacte entre dans la compilation du Global Workspace."
+    },
+    {
+      "source": "moment-human-situation-shared-frame",
+      "type": "INFORMS",
+      "target": "thing-human-situation-interaction-policy",
+      "justification": "Le choix de parler, agir, demander ou attendre dépend de la situation partagée."
+    },
+    {
+      "source": "thing-human-situation-interaction-policy",
+      "type": "CONSTRAINS",
+      "target": "thing-action-arbitrator",
+      "justification": "Une disponibilité faible, un coût d'interruption élevé ou un mandat absent bornent l'action."
+    },
+    {
+      "source": "thing-human-situation-interaction-policy",
+      "type": "CONSTRAINS",
+      "target": "thing-citizen-ai-role-router",
+      "justification": "Le rôle choisi doit correspondre au besoin actuel et peut être l'attente plutôt qu'une intervention."
+    },
+    {
+      "source": "thing-citizen-ai-consent-checker",
+      "type": "GATES",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "Les sources sensibles n'entrent dans l'estimation que sous permission valide."
+    },
+    {
+      "source": "thing-human-situation-audit",
+      "type": "VALIDATES",
+      "target": "thing-human-situation-state-estimator",
+      "justification": "L'audit vérifie provenance, fraîcheur, consentement, corrections et protection de l'identité."
+    },
+    {
+      "source": "thing-human-situation-audit",
+      "type": "REPORTS_TO",
+      "target": "thing-validation-acceptance-suite",
+      "justification": "Les violations du contrat humain deviennent visibles dans la validation générale du L1."
+    }
+  ]
+}

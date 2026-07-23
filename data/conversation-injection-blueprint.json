@@ -1004,6 +1004,25 @@
       "phrase": "Indexer les archives sans les assimiler, puis laisser le présent provoquer des rappels grounded.",
       "family": "Injection conversations · option d’architecture",
       "summary": "Option choisie contre la rencontre profonde systématique de chaque bloc et contre une simple archive passive sans capacité de rappel.",
+      "optionCode": "LATENT_FIRST",
+      "optionBenefits": [
+        "Préserve le débit déterministe de l’ingestion",
+        "Évite de prétendre que chaque archive a déjà été vécue",
+        "Permet une assimilation progressive depuis le contexte présent",
+        "Conserve chaque rappel et réinterprétation comme événements auditables"
+      ],
+      "optionRisks": [
+        "Des épisodes utiles peuvent rester longtemps latents",
+        "Un mauvais score peut favoriser répétition ou oubli",
+        "La narration peut dépasser les sources si le gate de grounding échoue"
+      ],
+      "optionConditions": [
+        "Utterances exactes et provenance complète",
+        "Vérification des sources avant admission",
+        "Anti-rumination actif",
+        "Communication inner_only par défaut",
+        "Reconsolidation additive uniquement"
+      ],
       "epistemicStatus": "documented",
       "clusterId": "conversation-injection"
     },

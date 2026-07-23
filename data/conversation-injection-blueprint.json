@@ -234,7 +234,7 @@
       "hypothesisContract": {
         "required": ["evidence", "alternatives", "falsifier", "nextQuestionOrObservation"],
         "authorship": "Citizen AI",
-        "defaultEpistemicStatus": "hypothesis",
+        "defaultEpistemicStatus": "working_hypothesis",
         "forbidden": ["mind_reading", "diagnosis_without_evidence", "single_impression_as_stable_trait"]
       },
       "epistemicStatus": "design_proposal",

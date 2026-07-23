@@ -165,7 +165,7 @@
       "extractedAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed_internal_response"
+      "epistemicStatus": "observed"
     },
     {
       "id": "memory-citizen-block-001-evocation-sailing-medium",
@@ -209,7 +209,7 @@
       "inferredAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "hypothesis"
+      "epistemicStatus": "working_hypothesis"
     },
     {
       "id": "memory-citizen-block-001-care-concern",
@@ -228,7 +228,7 @@
       "inferredAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "citizen_state"
+      "epistemicStatus": "observed"
     },
     {
       "id": "memory-citizen-block-001-ambition-idea",
@@ -248,7 +248,7 @@
       "inferredAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "proposal"
+      "epistemicStatus": "design_proposal"
     },
     {
       "id": "memory-citizen-block-001-curiosity-missing-context",
@@ -269,7 +269,7 @@
       "createdAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "open"
+      "epistemicStatus": "unresolved"
     },
     {
       "id": "objective-citizen-block-001-recover-context",

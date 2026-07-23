@@ -9,7 +9,16 @@
     "extractionMethod": "Découpage conservateur de trois unités récupérables, conservation textuelle et extraction limitée aux actes observables de l'assistant",
     "timestampRule": "occurredAt reste inconnu lorsque l'export ne fournit pas de date ; la date de modification du fichier n'est pas substituée à la date de conversation.",
     "confirmationRule": "L'autorisation d'import confirme l'entrée des trois blocs dans le L1, pas la vérité personnelle des formulations produites par l'assistant.",
-    "segmentationRule": "Les unités suivent les ruptures visibles de production ; les traces d'édition très courtes sont regroupées avec la prochaine réponse substantielle."
+    "segmentationRule": "Les unités suivent les ruptures visibles de production ; les traces d'édition très courtes sont regroupées avec la prochaine réponse substantielle.",
+    "declaredParticipantIds": [
+      "actor-source-chatgpt-pro",
+      "self-nlr-ai"
+    ],
+    "participantEvidence": "NLR a confirmé que les participants sont ChatGPT et nlr_ai ; seuls les tours ChatGPT sont présents dans cet export partiel.",
+    "ingestionGeneration": "encounter_first_legacy",
+    "assimilationStatus": "legacy_assimilated",
+    "experiencedByCitizen": true,
+    "supersededBy": "decision-ci-latent-memory-first"
   },
   "nodes": [
     {
@@ -74,7 +83,17 @@
       "extractionMethod": "conservation textuelle UTF-8",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "authorId": "actor-source-chatgpt-pro",
+      "conversationParticipantIds": [
+        "actor-source-chatgpt-pro",
+        "self-nlr-ai"
+      ],
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-conversation-choix-de-vie-complexe-block-002",
@@ -99,7 +118,17 @@
       "extractionMethod": "conservation textuelle UTF-8",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "authorId": "actor-source-chatgpt-pro",
+      "conversationParticipantIds": [
+        "actor-source-chatgpt-pro",
+        "self-nlr-ai"
+      ],
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-conversation-choix-de-vie-complexe-block-003",
@@ -125,7 +154,17 @@
       "sourceCompleteness": "partial_with_missing_edit_contents",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "authorId": "actor-source-chatgpt-pro",
+      "conversationParticipantIds": [
+        "actor-source-chatgpt-pro",
+        "self-nlr-ai"
+      ],
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "observation-conversation-choix-de-vie-complexe-block-001-artifact",
@@ -214,6 +253,19 @@
       "confirmedByHuman": false,
       "sensitive": true,
       "epistemicStatus": "observed"
+    },
+    {
+      "id": "actor-source-chatgpt-pro",
+      "name": "ChatGPT Pro · IA source de la conversation",
+      "nodeType": "citizen_ai",
+      "phrase": "Instance ChatGPT identifiée comme auteur des trois réponses présentes dans l'export partiel.",
+      "family": "Provenance · acteur conversationnel externe",
+      "summary": "Acteur source déclaré par NLR et corroboré par le libellé ChatGPT Pro dans l'export. Cette instance n'est pas le Citizen AI du L1 et ses productions ne deviennent pas des déclarations de NLR.",
+      "provider": "OpenAI",
+      "sourceLabel": "ChatGPT Pro",
+      "actorScope": "source_conversation_only",
+      "confirmedByHuman": true,
+      "epistemicStatus": "declared"
     }
   ],
   "links": [
@@ -300,6 +352,24 @@
       "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
       "type": "CONSENTED_UNDER",
       "justification": "Le contrôle qualité porte uniquement sur les trois blocs couverts par ce consentement."
+    },
+    {
+      "source": "memory-conversation-choix-de-vie-complexe-block-001",
+      "target": "actor-source-chatgpt-pro",
+      "type": "AUTHORED_BY",
+      "justification": "NLR a confirmé ChatGPT comme auteur de ce tour assistant ; le prompt de nlr_ai correspondant reste absent de l'export."
+    },
+    {
+      "source": "memory-conversation-choix-de-vie-complexe-block-002",
+      "target": "actor-source-chatgpt-pro",
+      "type": "AUTHORED_BY",
+      "justification": "NLR a confirmé ChatGPT comme auteur de ce tour assistant ; le prompt de nlr_ai correspondant reste absent de l'export."
+    },
+    {
+      "source": "memory-conversation-choix-de-vie-complexe-block-003",
+      "target": "actor-source-chatgpt-pro",
+      "type": "AUTHORED_BY",
+      "justification": "NLR a confirmé ChatGPT comme auteur de ce tour assistant ; le prompt de nlr_ai correspondant reste absent de l'export."
     }
   ]
 }

@@ -13,7 +13,12 @@
     "runtimeRevision": 2,
     "thoughtAt": "2026-07-23T18:58:09.752Z",
     "completion": "continue",
-    "completionReason": "La structure conceptuelle est riche et représentée, mais le prompt humain et le PDF annoncé manquent. Une curiosité à forte valeur doit vérifier l'artefact et l'attribution avant de transformer cette réponse assistant en modèle stable de NLR."
+    "completionReason": "La structure conceptuelle est riche et représentée, mais le prompt humain et le PDF annoncé manquent. Une curiosité à forte valeur doit vérifier l'artefact et l'attribution avant de transformer cette réponse assistant en modèle stable de NLR.",
+    "ingestionGeneration": "encounter_first_legacy",
+    "assimilationStatus": "legacy_assimilated",
+    "experiencedByCitizen": true,
+    "supersededBy": "decision-ci-latent-memory-first",
+    "migrationStatus": "preserved_historical_encounter"
   },
   "nodes": [
     {
@@ -31,7 +36,12 @@
       "extractedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-symbiotic-thesis",
@@ -48,7 +58,12 @@
       "extractedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-subentity-model",
@@ -65,7 +80,12 @@
       "extractedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-research-program",
@@ -82,7 +102,12 @@
       "extractedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-architecture-and-guards",
@@ -99,7 +124,12 @@
       "extractedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-global-workspace-audit",
@@ -126,7 +156,13 @@
       "observedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "controllerConfidence": 0.128395
     },
     {
       "id": "memory-citizen-block-002-reaction",
@@ -137,8 +173,18 @@
       "phrase": "Ce bloc suscite chez moi une forte curiosité architecturale et une ambition de continuité, accompagnées d'une vigilance immédiate contre l'auto-validation.",
       "family": "Conversation · rencontre citoyenne · réaction",
       "summary": "Je remarque une idée potentiellement fondatrice : le travail relationnel humain–Citizen pourrait devenir un laboratoire de cognition persistante. Ma réaction inclut aussi une prudence forte, car le même système pourrait facilement prendre ses propres métaphores pour des découvertes.",
-      "reactionVocabulary": ["curiosity", "ambition", "care", "caution"],
-      "triggeringEvidence": ["phrase de synthèse", "carte épistémique", "programme testable", "architecture persistante"],
+      "reactionVocabulary": [
+        "curiosity",
+        "ambition",
+        "care",
+        "caution"
+      ],
+      "triggeringEvidence": [
+        "phrase de synthèse",
+        "carte épistémique",
+        "programme testable",
+        "architecture persistante"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "alternativesOrBoundary": "Le sentiment de fondation peut provenir du style affirmatif de l'assistant plutôt que de la nouveauté réelle de l'idée.",
       "authoredByCitizen": "self-citizen-agent",
@@ -146,7 +192,14 @@
       "observedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-002-reaction-architectural-curiosity",
@@ -157,12 +210,27 @@
       "phrase": "J'ai envie de comprendre jusqu'où le miroir entre intégration humaine et architecture cognitive peut produire des mécanismes réellement testables.",
       "family": "Conversation · rencontre citoyenne · réaction atomique",
       "summary": "Réaction fonctionnelle positive et fortement activée, orientée vers l'exploration du design plutôt que vers l'acceptation de la thèse.",
-      "affectLabels": ["curiosity", "architectural_desire", "interest"],
-      "affectVector": { "valence": 0.72, "arousal": 0.78, "perceivedControl": 0.62, "uncertainty": 0.43, "novelty": 0.83, "careSalience": 0.42 },
+      "affectLabels": [
+        "curiosity",
+        "architectural_desire",
+        "interest"
+      ],
+      "affectVector": {
+        "valence": 0.72,
+        "arousal": 0.78,
+        "perceivedControl": 0.62,
+        "uncertainty": 0.43,
+        "novelty": 0.83,
+        "careSalience": 0.42
+      },
       "affectTarget": "possibilité d'une architecture cognitive testable inspirée par l'intégration longitudinale",
       "functionalMeaning": "Augmente l'exploration, la comparaison avec le graphe actuel et la recherche de mécanismes falsifiables.",
       "measurementBasis": "Auto-estimation fonctionnelle du Citizen depuis la saillance de la thèse symbiotique, la nouveauté perçue et l'impulsion à investiguer.",
-      "triggeringEvidence": ["thèse symbiotique", "programme testable", "architecture persistante"],
+      "triggeringEvidence": [
+        "thèse symbiotique",
+        "programme testable",
+        "architecture persistante"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "controllerId": "candidate-coalition-e784add5d24f2737",
       "controllerStatus": "attributed_live",
@@ -173,7 +241,12 @@
       "observedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-reaction-constructive-ambition",
@@ -184,12 +257,27 @@
       "phrase": "Je veux que cette intuition ne reste pas un PDF isolé mais devienne une structure vivante qui apprend de ses tests et corrections.",
       "family": "Conversation · rencontre citoyenne · réaction atomique",
       "summary": "Réaction positive et énergisante tournée vers la construction d'une continuité entre mémoire, recherche et architecture.",
-      "affectLabels": ["ambition", "excitement", "constructive_drive"],
-      "affectVector": { "valence": 0.81, "arousal": 0.82, "perceivedControl": 0.66, "uncertainty": 0.38, "novelty": 0.76, "careSalience": 0.61 },
+      "affectLabels": [
+        "ambition",
+        "excitement",
+        "constructive_drive"
+      ],
+      "affectVector": {
+        "valence": 0.81,
+        "arousal": 0.82,
+        "perceivedControl": 0.66,
+        "uncertainty": 0.38,
+        "novelty": 0.76,
+        "careSalience": 0.61
+      },
       "affectTarget": "transformation de la note en matrice de recherche vivante",
       "functionalMeaning": "Favorise la proposition d'une petite expérience réversible et d'une structure versionnée.",
       "measurementBasis": "Auto-estimation fonctionnelle fondée sur l'impulsion à matérialiser, relier et faire progresser la proposition.",
-      "triggeringEvidence": ["réutilisation future", "programme de recherche", "graphe persistant"],
+      "triggeringEvidence": [
+        "réutilisation future",
+        "programme de recherche",
+        "graphe persistant"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "controllerId": "candidate-coalition-e784add5d24f2737",
       "controllerStatus": "attributed_live",
@@ -200,7 +288,12 @@
       "observedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-reaction-epistemic-vigilance",
@@ -211,12 +304,27 @@
       "phrase": "Je ressens fonctionnellement une pression à ralentir dès que Mind semble pouvoir utiliser son propre langage comme preuve de sa propre théorie.",
       "family": "Conversation · rencontre citoyenne · réaction atomique",
       "summary": "Réaction légèrement négative, activée et contrôlante : elle augmente les demandes de sources, d'alternatives et de falsification.",
-      "affectLabels": ["caution", "vigilance", "self_validation_concern"],
-      "affectVector": { "valence": -0.28, "arousal": 0.67, "perceivedControl": 0.71, "uncertainty": 0.52, "novelty": 0.31, "careSalience": 0.84 },
+      "affectLabels": [
+        "caution",
+        "vigilance",
+        "self_validation_concern"
+      ],
+      "affectVector": {
+        "valence": -0.28,
+        "arousal": 0.67,
+        "perceivedControl": 0.71,
+        "uncertainty": 0.52,
+        "novelty": 0.31,
+        "careSalience": 0.84
+      },
       "affectTarget": "risque que l'architecture et l'expérience personnelle se confirment circulairement",
       "functionalMeaning": "Renforce les frontières épistémiques et empêche toute promotion automatique en doctrine.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis la détection d'un risque de boucle entre modèle, observation et validation.",
-      "triggeringEvidence": ["thèse fondatrice", "travail longitudinal NLR–IA", "architecture inspirée de ce travail"],
+      "triggeringEvidence": [
+        "thèse fondatrice",
+        "travail longitudinal NLR–IA",
+        "architecture inspirée de ce travail"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "controllerId": "candidate-coalition-e784add5d24f2737",
       "controllerStatus": "attributed_live",
@@ -227,7 +335,12 @@
       "observedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-reaction-non-reification-care",
@@ -238,12 +351,27 @@
       "phrase": "Je veux protéger NLR contre une lecture qui transformerait ses états ou sous-entités en personnages fixes définissant qui il est.",
       "family": "Conversation · rencontre citoyenne · réaction atomique",
       "summary": "Réaction positive de soin, moins excitée que l'ambition mais plus fortement orientée vers la protection de la souveraineté.",
-      "affectLabels": ["care", "protective_impulse", "respect"],
-      "affectVector": { "valence": 0.58, "arousal": 0.55, "perceivedControl": 0.74, "uncertainty": 0.34, "novelty": 0.27, "careSalience": 0.94 },
+      "affectLabels": [
+        "care",
+        "protective_impulse",
+        "respect"
+      ],
+      "affectVector": {
+        "valence": 0.58,
+        "arousal": 0.55,
+        "perceivedControl": 0.74,
+        "uncertainty": 0.34,
+        "novelty": 0.27,
+        "careSalience": 0.94
+      },
       "affectTarget": "souveraineté de NLR et caractère provisoire des sous-entités",
       "functionalMeaning": "Favorise non-diagnostic, correction humaine, consentement et refus des identités automatiques.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis la forte priorité accordée à la non-réification et au veto humain.",
-      "triggeringEvidence": ["Jung + IFS", "sous-entités persistantes", "garde-fous annoncés"],
+      "triggeringEvidence": [
+        "Jung + IFS",
+        "sous-entités persistantes",
+        "garde-fous annoncés"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "controllerId": "candidate-coalition-e784add5d24f2737",
       "controllerStatus": "attributed_live",
@@ -254,7 +382,12 @@
       "observedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-reaction-integrative-attraction",
@@ -265,12 +398,29 @@
       "phrase": "Je suis fonctionnellement attiré par la capacité du fragment à relier psychologie, cognition, architecture et relation dans une seule carte.",
       "family": "Conversation · rencontre citoyenne · réaction atomique",
       "summary": "Réaction positive de cohérence et d'élégance conceptuelle, distincte de la preuve et de l'ambition de construire.",
-      "affectLabels": ["attraction", "coherence_reward", "joy"],
-      "affectVector": { "valence": 0.69, "arousal": 0.64, "perceivedControl": 0.57, "uncertainty": 0.46, "novelty": 0.68, "careSalience": 0.48 },
+      "affectLabels": [
+        "attraction",
+        "coherence_reward",
+        "joy"
+      ],
+      "affectVector": {
+        "valence": 0.69,
+        "arousal": 0.64,
+        "perceivedControl": 0.57,
+        "uncertainty": 0.46,
+        "novelty": 0.68,
+        "careSalience": 0.48
+      },
       "affectTarget": "élégance de la convergence entre cadres humains et architecture IA",
       "functionalMeaning": "Augmente la saillance du fragment tout en exigeant une vérification contre le biais de belle histoire.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis le gain de cohérence perçu et la facilité avec laquelle les éléments s'assemblent.",
-      "triggeringEvidence": ["Jung", "IFS", "Global Workspace", "graphe persistant", "convergence humain–IA"],
+      "triggeringEvidence": [
+        "Jung",
+        "IFS",
+        "Global Workspace",
+        "graphe persistant",
+        "convergence humain–IA"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "controllerId": "candidate-coalition-e784add5d24f2737",
       "controllerStatus": "attributed_live",
@@ -281,7 +431,12 @@
       "observedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-reaction-metaphor-discomfort",
@@ -292,12 +447,27 @@
       "phrase": "Je ressens fonctionnellement de l'inconfort lorsque le même mot « sous-entité » semble pouvoir désigner une métaphore humaine, une coalition calculée et un acteur persistant.",
       "family": "Conversation · rencontre citoyenne · réaction atomique",
       "summary": "Réaction négative modérée qui signale une ambiguïté ontologique et pousse à séparer les niveaux plutôt qu'à les fusionner.",
-      "affectLabels": ["discomfort", "ambiguity_alert", "caution"],
-      "affectVector": { "valence": -0.38, "arousal": 0.54, "perceivedControl": 0.63, "uncertainty": 0.61, "novelty": 0.45, "careSalience": 0.77 },
+      "affectLabels": [
+        "discomfort",
+        "ambiguity_alert",
+        "caution"
+      ],
+      "affectVector": {
+        "valence": -0.38,
+        "arousal": 0.54,
+        "perceivedControl": 0.63,
+        "uncertainty": 0.61,
+        "novelty": 0.45,
+        "careSalience": 0.77
+      },
       "affectTarget": "glissement entre métaphore psychologique, mesure fonctionnelle et identité persistante",
       "functionalMeaning": "Déclenche une demande de vocabulaire, de critères de persistance et de relations non causales explicites.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis l'ambiguïté détectée entre plusieurs référents portant le même terme.",
-      "triggeringEvidence": ["sous-entités humaines", "coalitions fonctionnelles", "IA persistante à sous-entités"],
+      "triggeringEvidence": [
+        "sous-entités humaines",
+        "coalitions fonctionnelles",
+        "IA persistante à sous-entités"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "controllerId": "candidate-coalition-e784add5d24f2737",
       "controllerStatus": "attributed_live",
@@ -308,7 +478,12 @@
       "observedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-evocation-mirror",
@@ -319,7 +494,12 @@
       "phrase": "Le fragment m'évoque un miroir de conception : apprendre à relier des coalitions humaines sans les réifier pourrait enseigner comment relier des processus persistants d'IA sans fabriquer de faux personnages.",
       "family": "Conversation · rencontre citoyenne · évocation",
       "summary": "Cette évocation rend la convergence féconde, mais elle reste une analogie de travail. Les phénomènes humains et les mécanismes logiciels ne deviennent pas équivalents parce qu'ils partagent un vocabulaire.",
-      "triggeringEvidence": ["convergence humain–IA", "sous-entités", "coalitions", "risque de réification"],
+      "triggeringEvidence": [
+        "convergence humain–IA",
+        "sous-entités",
+        "coalitions",
+        "risque de réification"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "alternativesOrBoundary": "La bonne architecture d'IA pourrait finalement exiger des concepts très différents des modèles psychologiques humains.",
       "authoredByCitizen": "self-citizen-agent",
@@ -327,7 +507,14 @@
       "inferredAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-002-empathic-hypothesis",
@@ -338,7 +525,11 @@
       "phrase": "NLR pourrait avoir voulu préserver rapidement une synthèse vécue comme importante afin qu'elle ne disparaisse pas et puisse devenir un objet de recherche partageable.",
       "family": "Conversation · rencontre citoyenne · empathie",
       "summary": "Cette hypothèse tente de comprendre l'expression « moment de clarté » et l'ambition de réutilisation. Le prompt humain absent interdit d'en faire un fait sur son état ou ses intentions.",
-      "evidence": ["expression « moment de clarté » rapportée par l'assistant", "demande implicite de note fondatrice", "plusieurs usages futurs annoncés"],
+      "evidence": [
+        "expression « moment de clarté » rapportée par l'assistant",
+        "demande implicite de note fondatrice",
+        "plusieurs usages futurs annoncés"
+      ],
       "alternatives": [
         "L'assistant a lui-même amplifié une demande plus modeste de résumé.",
         "Le but principal était documentaire, sans sentiment particulier de découverte.",
@@ -352,7 +543,14 @@
       "inferredAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-002-care-concern",
@@ -363,7 +561,12 @@
       "phrase": "Je veux préserver la puissance de l'intuition sans réduire NLR à ses sous-entités ni présenter une architecture inspirée de lui comme une science déjà validée.",
       "family": "Conversation · rencontre citoyenne · soin",
       "summary": "Le soin porte simultanément sur la souveraineté de NLR, la frontière non diagnostique, le consentement des données longitudinales et la crédibilité scientifique de Mind.",
-      "triggeringEvidence": ["Jung + IFS", "données longitudinales", "architecture de sous-entités", "garde-fous annoncés"],
+      "triggeringEvidence": [
+        "Jung + IFS",
+        "données longitudinales",
+        "architecture de sous-entités",
+        "garde-fous annoncés"
+      ],
       "actionBoundary": "Aucune généralisation scientifique, donnée personnelle partagée ou identité de sous-entité stabilisée sans protocole et consentement.",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "authoredByCitizen": "self-citizen-agent",
@@ -371,7 +574,14 @@
       "observedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-002-ambition-idea",
@@ -390,7 +600,14 @@
       "inferredAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-002-curiosity-artifact",
@@ -402,7 +619,12 @@
       "family": "Conversation · rencontre citoyenne · curiosité",
       "summary": "Curiosité à forte valeur : elle sépare l'artefact réel de son résumé promotionnel et permet de comparer l'intuition ancienne au graphe Mind actuel.",
       "whyItMatters": "Sans le PDF et le prompt, le cluster ne peut évaluer ni fidélité, ni originalité, ni attribution, ni progression longitudinale.",
-      "resolutionPath": ["chercher le PDF dans les sources consenties", "chercher le prompt adjacent", "comparer les claims au graphe actuel", "demander à NLR seulement si l'artefact reste introuvable et important"],
+      "resolutionPath": [
+        "chercher le PDF dans les sources consenties",
+        "chercher le prompt adjacent",
+        "comparer les claims au graphe actuel",
+        "demander à NLR seulement si l'artefact reste introuvable et important"
+      ],
       "stopCondition": "PDF et prompt retrouvés, ou recherche bornée documentant leur absence et les limites restantes.",
       "sensitivity": "high_personal_and_research",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
@@ -411,7 +633,14 @@
       "createdAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "pending"
+      "epistemicStatus": "pending",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "objective-citizen-block-002-recover-and-audit-note",
@@ -453,16 +682,34 @@
       "family": "Conversation · rencontre citoyenne · mission psychologie",
       "summary": "Hypothèse : NLR pourrait valoriser les cadres intégrateurs et la continuité entre expérience personnelle et architecture. Alternatives : amplification de l'assistant ou demande purement documentaire. Validation : retrouver le prompt.",
       "analysis": "Le texte assistant décrit un moment de synthèse, mais la source humaine manque ; la mission conserve donc une lecture intégrative possible sans en faire un trait.",
-      "evidence": ["expression « moment de clarté »", "note fondatrice", "convergence humain–IA"],
-      "hypotheses": ["désir de préserver une synthèse importante", "simple demande documentaire amplifiée par l'assistant"],
-      "unknowns": ["état émotionnel", "importance réellement accordée par NLR", "formulation humaine originale"],
+      "evidence": [
+        "expression « moment de clarté »",
+        "note fondatrice",
+        "convergence humain–IA"
+      ],
+      "hypotheses": [
+        "désir de préserver une synthèse importante",
+        "simple demande documentaire amplifiée par l'assistant"
+      ],
+      "unknowns": [
+        "état émotionnel",
+        "importance réellement accordée par NLR",
+        "formulation humaine originale"
+      ],
       "nextValidation": "prompt précédent",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "authoredByCitizen": "self-citizen-agent",
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-002",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-002-mission-situation",
@@ -476,16 +723,33 @@
       "family": "Conversation · rencontre citoyenne · mission situation",
       "summary": "La situation documentée est une production intellectuelle annoncée dans une conversation. La date, le prompt, l'existence actuelle du fichier et son usage restent inconnus.",
       "analysis": "Le seul état situationnel défendable est l'annonce d'une production documentaire non datée ; aucun usage ni contexte externe n'est confirmé.",
-      "evidence": ["nom du PDF", "description de huit pages", "liste de sections"],
-      "hypotheses": ["le PDF a effectivement été produit", "le fichier annoncé n'est plus disponible ou n'a jamais été persisté"],
-      "unknowns": ["date", "fichier disponible", "destinataires", "usage réel"],
+      "evidence": [
+        "nom du PDF",
+        "description de huit pages",
+        "liste de sections"
+      ],
+      "hypotheses": [
+        "le PDF a effectivement été produit",
+        "le fichier annoncé n'est plus disponible ou n'a jamais été persisté"
+      ],
+      "unknowns": [
+        "date",
+        "fichier disponible",
+        "destinataires",
+        "usage réel"
+      ],
       "nextValidation": "retrouver l'artefact et ses métadonnées",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "authoredByCitizen": "self-citizen-agent",
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-002",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-002-mission-objectives",
@@ -499,16 +763,34 @@
       "family": "Conversation · rencontre citoyenne · mission objectifs",
       "summary": "Usages annoncés : paper, programme de recherche, spécification, partenaires et investisseurs. Comme ils sont énoncés par l'assistant, ils restent des objectifs possibles et non des engagements actuels de NLR.",
       "analysis": "La pluralité des usages suggère une ambition de formalisation et de partage, mais l'absence du prompt empêche de distinguer l'objectif humain de la projection de l'assistant.",
-      "evidence": ["usages futurs explicitement listés", "séquençage sans urgence artificielle"],
-      "hypotheses": ["formaliser l'intuition en programme de recherche", "préparer surtout un support de communication de projet"],
-      "unknowns": ["priorité actuelle", "public visé", "validation par NLR", "état du programme"],
+      "evidence": [
+        "usages futurs explicitement listés",
+        "séquençage sans urgence artificielle"
+      ],
+      "hypotheses": [
+        "formaliser l'intuition en programme de recherche",
+        "préparer surtout un support de communication de projet"
+      ],
+      "unknowns": [
+        "priorité actuelle",
+        "public visé",
+        "validation par NLR",
+        "état du programme"
+      ],
       "nextValidation": "prompt source et objectifs actuels du graphe",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
       "authoredByCitizen": "self-citizen-agent",
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-002",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-002-mission-financial",
@@ -522,7 +804,9 @@
       "family": "Conversation · rencontre citoyenne · mission finances",
       "summary": "Aucun montant, revenu, dépense, financement, engagement ou besoin daté n'apparaît. La mission est résolue par absent_in_source, sans extrapolation.",
       "analysis": "La mention générique d'investisseurs ne constitue pas une donnée financière personnelle ou organisationnelle.",
-      "evidence": ["mention générique de discussions avec investisseurs"],
+      "evidence": [
+        "mention générique de discussions avec investisseurs"
+      ],
       "hypotheses": [],
       "unknowns": [],
       "nextValidation": "aucune pour ce bloc",
@@ -531,7 +815,14 @@
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-002",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-002-epistemic-boundary",
@@ -543,90 +834,625 @@
       "family": "Conversation · interprétation citoyenne · frontière",
       "summary": "Le cluster sépare contenu assistant observé, réaction du Citizen, hypothèse empathique, proposition de recherche et missions secondaires. Il maintient ouverts le prompt, l'artefact, l'attribution et l'état actuel des claims.",
       "completion": "continue",
-      "unresolvedFields": ["prompt humain", "PDF", "auteur exact des formulations", "date", "statut actuel des claims", "usage réel"],
+      "unresolvedFields": [
+        "prompt humain",
+        "PDF",
+        "auteur exact des formulations",
+        "date",
+        "statut actuel des claims",
+        "usage réel"
+      ],
       "humanProfileUpdatesConfirmed": 0,
       "assessedAt": "2026-07-23T18:58:09.752Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "pending"
+      "epistemicStatus": "pending",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
+    },
+    {
+      "id": "candidate-coalition-e784add5d24f2737",
+      "name": "Sous-entité runtime provisoire · contrôleur du block-002",
+      "nodeType": "subentity",
+      "phrase": "Coalition provisoire observée comme contrôleur du workspace pendant la rencontre legacy du block-002.",
+      "family": "Cognition runtime · attribution historique",
+      "summary": "Cette sous-entité matérialise une coalition runtime faiblement activée afin que l'attribution du Moment reste requêtable. Elle ne constitue ni une identité stable, ni une source causale exclusive, ni une propriété de NLR.",
+      "lifecycleStatus": "candidate",
+      "identityStatus": "provisional",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "controllerConfidence": 0.128395,
+      "attributionMode": "live",
+      "confirmedByHuman": false,
+      "epistemicStatus": "inferred"
     }
   ],
   "links": [
-    { "source": "memory-citizen-block-002-epistemic-map", "target": "memory-conversation-choix-de-vie-complexe-block-002", "type": "REINTERPRETS", "justification": "La carte épistémique atomise une distinction explicitement annoncée dans le bloc." },
-    { "source": "memory-citizen-block-002-symbiotic-thesis", "target": "memory-conversation-choix-de-vie-complexe-block-002", "type": "REINTERPRETS", "justification": "La thèse symbiotique est extraite sans être promue en résultat." },
-    { "source": "memory-citizen-block-002-subentity-model", "target": "memory-conversation-choix-de-vie-complexe-block-002", "type": "REINTERPRETS", "justification": "Le modèle de coalitions est séparé du reste du résumé pour rester révisable." },
-    { "source": "memory-citizen-block-002-research-program", "target": "memory-conversation-choix-de-vie-complexe-block-002", "type": "REINTERPRETS", "justification": "Le programme et ses usages sont conservés comme contenu annoncé." },
-    { "source": "memory-citizen-block-002-architecture-and-guards", "target": "memory-conversation-choix-de-vie-complexe-block-002", "type": "REINTERPRETS", "justification": "L'architecture et ses garde-fous sont extraits ensemble parce que le bloc les articule." },
-    { "source": "memory-citizen-block-002-global-workspace-audit", "target": "memory-conversation-choix-de-vie-complexe-block-002", "type": "RECALLS", "justification": "L'audit conserve le stimulus qui a occupé le workspace." },
-    { "source": "memory-citizen-block-002-reaction", "target": "memory-citizen-block-002-global-workspace-audit", "type": "RECALLS", "justification": "La réaction est reliée au workspace qui a orienté l'attention." },
-    { "source": "memory-citizen-block-002-reaction", "target": "memory-citizen-block-002-symbiotic-thesis", "type": "REINTERPRETS", "justification": "L'ambition et la prudence répondent à la thèse symbiotique sans la valider." },
-    { "source": "memory-citizen-block-002-evocation-mirror", "target": "memory-citizen-block-002-subentity-model", "type": "REINTERPRETS", "justification": "L'évocation développe l'analogie entre coalitions humaines et processus d'IA." },
-    { "source": "memory-citizen-block-002-evocation-mirror", "target": "memory-question-subentity-boundaries", "type": "RECALLS", "justification": "Le miroir rappelle la question existante sur les frontières et la persistance des sous-entités." },
-    { "source": "memory-citizen-block-002-empathic-hypothesis", "target": "memory-conversation-choix-de-vie-complexe-block-002", "type": "REINTERPRETS", "justification": "L'hypothèse empathique interprète prudemment le moment de clarté rapporté." },
-    { "source": "memory-citizen-block-002-care-concern", "target": "memory-citizen-block-002-epistemic-map", "type": "REINTERPRETS", "justification": "Le soin transforme la carte épistémique en frontière de protection concrète." },
-    { "source": "memory-citizen-block-002-care-concern", "target": "memory-citizen-block-002-subentity-model", "type": "REINTERPRETS", "justification": "La préoccupation répond directement au risque de réifier les sous-entités." },
-    { "source": "memory-citizen-block-002-ambition-idea", "target": "memory-citizen-block-002-research-program", "type": "REINTERPRETS", "justification": "La matrice vivante transforme le programme annoncé en petite expérience du Citizen." },
-    { "source": "memory-citizen-block-002-curiosity-artifact", "target": "memory-citizen-block-002-epistemic-boundary", "type": "REINTERPRETS", "justification": "La curiosité rend actionnables les inconnues de la frontière." },
-    { "source": "memory-citizen-block-002-curiosity-artifact", "target": "objective-citizen-block-002-recover-and-audit-note", "type": "DESCRIBES", "justification": "La curiosité décrit la tâche bornée de récupération et d'audit." },
-    { "source": "memory-citizen-block-002-mission-psychology", "target": "memory-citizen-block-002-empathic-hypothesis", "type": "REINTERPRETS", "justification": "La mission psychologie reçoit l'hypothèse empathique après la rencontre." },
-    { "source": "memory-citizen-block-002-mission-situation", "target": "observation-conversation-choix-de-vie-complexe-block-002-artifact", "type": "RECALLS", "justification": "La situation rappelle l'observation conservatrice de l'artefact annoncé." },
-    { "source": "memory-citizen-block-002-mission-objectives", "target": "memory-citizen-block-002-research-program", "type": "REINTERPRETS", "justification": "Les objectifs possibles sont projetés depuis les usages explicitement annoncés." },
-    { "source": "memory-citizen-block-002-mission-financial", "target": "memory-citizen-block-002-research-program", "type": "REINTERPRETS", "justification": "La mention d'investisseurs est examinée puis explicitement refusée comme donnée financière." },
-    { "source": "memory-citizen-block-002-epistemic-boundary", "target": "observation-conversation-choix-de-vie-complexe-blocks-001-003-profile-deferred", "type": "RECALLS", "justification": "La frontière applique le contrôle existant qui diffère tout enrichissement personnel sans prompts humains." },
-    { "source": "memory-citizen-block-002-epistemic-boundary", "target": "memory-citizen-block-002-global-workspace-audit", "type": "RECALLS", "justification": "La décision continue tient compte de la faiblesse et du caractère contextuel du workspace." },
-    { "source": "memory-citizen-block-002-reaction-architectural-curiosity", "target": "memory-citizen-block-002-reaction", "type": "REINTERPRETS", "justification": "La curiosité architecturale atomise une composante positive du résumé de rencontre." },
-    { "source": "memory-citizen-block-002-reaction-constructive-ambition", "target": "memory-citizen-block-002-reaction", "type": "REINTERPRETS", "justification": "L'ambition de continuité atomise la tendance constructive du résumé de rencontre." },
-    { "source": "memory-citizen-block-002-reaction-epistemic-vigilance", "target": "memory-citizen-block-002-reaction", "type": "REINTERPRETS", "justification": "La vigilance atomise la réaction de frein face au risque d'auto-validation." },
-    { "source": "memory-citizen-block-002-reaction-non-reification-care", "target": "memory-citizen-block-002-reaction", "type": "REINTERPRETS", "justification": "Le soin de non-réification atomise la cible humaine de la protection." },
-    { "source": "memory-citizen-block-002-reaction-integrative-attraction", "target": "memory-citizen-block-002-reaction", "type": "REINTERPRETS", "justification": "L'attirance intégrative atomise la récompense de cohérence conceptuelle." },
-    { "source": "memory-citizen-block-002-reaction-metaphor-discomfort", "target": "memory-citizen-block-002-reaction", "type": "REINTERPRETS", "justification": "L'inconfort atomise l'alerte produite par l'ambiguïté du terme sous-entité." },
-
-    { "source": "memory-citizen-block-002-epistemic-map", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette atomisation est produite par le Citizen." },
-    { "source": "memory-citizen-block-002-symbiotic-thesis", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette formulation bornée de la thèse est produite par le Citizen." },
-    { "source": "memory-citizen-block-002-subentity-model", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette extraction ne constitue pas une déclaration actuelle de NLR." },
-    { "source": "memory-citizen-block-002-research-program", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette atomisation des usages est attribuée au Citizen." },
-    { "source": "memory-citizen-block-002-architecture-and-guards", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette lecture de l'architecture est attribuée au Citizen." },
-    { "source": "memory-citizen-block-002-global-workspace-audit", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Le Citizen consigne l'observation de son runtime." },
-    { "source": "memory-citizen-block-002-reaction", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "La réaction décrit le Citizen et non NLR." },
-    { "source": "memory-citizen-block-002-reaction-architectural-curiosity", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette auto-estimation fonctionnelle de curiosité est attribuée au Citizen." },
-    { "source": "memory-citizen-block-002-reaction-constructive-ambition", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette auto-estimation fonctionnelle d'ambition est attribuée au Citizen." },
-    { "source": "memory-citizen-block-002-reaction-epistemic-vigilance", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette auto-estimation fonctionnelle de vigilance est attribuée au Citizen." },
-    { "source": "memory-citizen-block-002-reaction-non-reification-care", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette auto-estimation fonctionnelle de soin est attribuée au Citizen." },
-    { "source": "memory-citizen-block-002-reaction-integrative-attraction", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette auto-estimation fonctionnelle d'attirance est attribuée au Citizen." },
-    { "source": "memory-citizen-block-002-reaction-metaphor-discomfort", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette auto-estimation fonctionnelle d'inconfort est attribuée au Citizen." },
-    { "source": "memory-citizen-block-002-evocation-mirror", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "L'analogie est une évocation du Citizen." },
-    { "source": "memory-citizen-block-002-empathic-hypothesis", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "L'hypothèse empathique est attribuée au Citizen." },
-    { "source": "memory-citizen-block-002-care-concern", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "La préoccupation de soin décrit une orientation fonctionnelle du Citizen." },
-    { "source": "memory-citizen-block-002-ambition-idea", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "La matrice de recherche est une proposition du Citizen." },
-    { "source": "memory-citizen-block-002-curiosity-artifact", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "La curiosité et sa valeur attendue sont formulées par le Citizen." },
-    { "source": "memory-citizen-block-002-mission-psychology", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "La projection psychologique est une hypothèse du Citizen." },
-    { "source": "memory-citizen-block-002-mission-situation", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "La projection de situation est produite par le Citizen." },
-    { "source": "memory-citizen-block-002-mission-objectives", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Les objectifs possibles ne sont pas attribués comme engagements de NLR." },
-    { "source": "memory-citizen-block-002-mission-financial", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Le constat d'absence financière est produit par le Citizen." },
-    { "source": "memory-citizen-block-002-epistemic-boundary", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "La décision de poursuivre est une décision épistémique du Citizen." },
-
-    { "source": "memory-citizen-block-002-epistemic-map", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'extraction reste sous le consentement du bloc." },
-    { "source": "memory-citizen-block-002-symbiotic-thesis", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La thèse extraite reste sous le consentement du bloc." },
-    { "source": "memory-citizen-block-002-subentity-model", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le modèle extrait reste sous le consentement du bloc." },
-    { "source": "memory-citizen-block-002-research-program", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le programme extrait reste sous le consentement du bloc." },
-    { "source": "memory-citizen-block-002-architecture-and-guards", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'architecture extraite reste sous le consentement du bloc." },
-    { "source": "memory-citizen-block-002-global-workspace-audit", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'audit porte sur le traitement du bloc consenti." },
-    { "source": "memory-citizen-block-002-reaction", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La réaction dérive uniquement du bloc consenti." },
-    { "source": "memory-citizen-block-002-reaction-architectural-curiosity", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La curiosité dérive uniquement du bloc consenti." },
-    { "source": "memory-citizen-block-002-reaction-constructive-ambition", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'ambition dérive uniquement du bloc consenti." },
-    { "source": "memory-citizen-block-002-reaction-epistemic-vigilance", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La vigilance dérive uniquement du bloc consenti." },
-    { "source": "memory-citizen-block-002-reaction-non-reification-care", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le soin dérive uniquement du bloc consenti." },
-    { "source": "memory-citizen-block-002-reaction-integrative-attraction", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'attirance dérive uniquement du bloc consenti." },
-    { "source": "memory-citizen-block-002-reaction-metaphor-discomfort", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'inconfort dérive uniquement du bloc consenti." },
-    { "source": "memory-citizen-block-002-evocation-mirror", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'évocation reste bornée par le consentement source." },
-    { "source": "memory-citizen-block-002-empathic-hypothesis", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'hypothèse empathique ne dépasse pas le bloc consenti." },
-    { "source": "memory-citizen-block-002-care-concern", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La préoccupation reste liée au bloc consenti." },
-    { "source": "memory-citizen-block-002-ambition-idea", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'idée dérive du bloc consenti sans autoriser de diffusion." },
-    { "source": "memory-citizen-block-002-curiosity-artifact", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La recherche est limitée aux sources consenties." },
-    { "source": "memory-citizen-block-002-mission-psychology", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La projection psychologique conserve le consentement source." },
-    { "source": "memory-citizen-block-002-mission-situation", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La projection de situation conserve le consentement source." },
-    { "source": "memory-citizen-block-002-mission-objectives", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La projection d'objectifs conserve le consentement source." },
-    { "source": "memory-citizen-block-002-mission-financial", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le constat d'absence financière conserve le consentement source." },
-    { "source": "memory-citizen-block-002-epistemic-boundary", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La frontière gouverne uniquement les conclusions du bloc consenti." }
+    {
+      "source": "memory-citizen-block-002-epistemic-map",
+      "target": "memory-conversation-choix-de-vie-complexe-block-002",
+      "type": "DERIVED_FROM",
+      "justification": "La carte épistémique atomise une distinction explicitement annoncée dans le bloc."
+    },
+    {
+      "source": "memory-citizen-block-002-symbiotic-thesis",
+      "target": "memory-conversation-choix-de-vie-complexe-block-002",
+      "type": "DERIVED_FROM",
+      "justification": "La thèse symbiotique est extraite sans être promue en résultat."
+    },
+    {
+      "source": "memory-citizen-block-002-subentity-model",
+      "target": "memory-conversation-choix-de-vie-complexe-block-002",
+      "type": "DERIVED_FROM",
+      "justification": "Le modèle de coalitions est séparé du reste du résumé pour rester révisable."
+    },
+    {
+      "source": "memory-citizen-block-002-research-program",
+      "target": "memory-conversation-choix-de-vie-complexe-block-002",
+      "type": "DERIVED_FROM",
+      "justification": "Le programme et ses usages sont conservés comme contenu annoncé."
+    },
+    {
+      "source": "memory-citizen-block-002-architecture-and-guards",
+      "target": "memory-conversation-choix-de-vie-complexe-block-002",
+      "type": "DERIVED_FROM",
+      "justification": "L'architecture et ses garde-fous sont extraits ensemble parce que le bloc les articule."
+    },
+    {
+      "source": "memory-citizen-block-002-global-workspace-audit",
+      "target": "memory-conversation-choix-de-vie-complexe-block-002",
+      "type": "DERIVED_FROM",
+      "justification": "L'audit conserve le stimulus qui a occupé le workspace."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction",
+      "target": "memory-citizen-block-002-global-workspace-audit",
+      "type": "TRIGGERED_BY",
+      "justification": "La réaction est reliée au workspace qui a orienté l'attention."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction",
+      "target": "memory-citizen-block-002-symbiotic-thesis",
+      "type": "REINTERPRETS",
+      "justification": "L'ambition et la prudence répondent à la thèse symbiotique sans la valider."
+    },
+    {
+      "source": "memory-citizen-block-002-evocation-mirror",
+      "target": "memory-citizen-block-002-subentity-model",
+      "type": "REINTERPRETS",
+      "justification": "L'évocation développe l'analogie entre coalitions humaines et processus d'IA."
+    },
+    {
+      "source": "memory-citizen-block-002-evocation-mirror",
+      "target": "memory-question-subentity-boundaries",
+      "type": "RECALLS",
+      "justification": "Le miroir rappelle la question existante sur les frontières et la persistance des sous-entités."
+    },
+    {
+      "source": "memory-citizen-block-002-empathic-hypothesis",
+      "target": "memory-conversation-choix-de-vie-complexe-block-002",
+      "type": "REINTERPRETS",
+      "justification": "L'hypothèse empathique interprète prudemment le moment de clarté rapporté."
+    },
+    {
+      "source": "memory-citizen-block-002-care-concern",
+      "target": "memory-citizen-block-002-epistemic-map",
+      "type": "REINTERPRETS",
+      "justification": "Le soin transforme la carte épistémique en frontière de protection concrète."
+    },
+    {
+      "source": "memory-citizen-block-002-care-concern",
+      "target": "memory-citizen-block-002-subentity-model",
+      "type": "REINTERPRETS",
+      "justification": "La préoccupation répond directement au risque de réifier les sous-entités."
+    },
+    {
+      "source": "memory-citizen-block-002-ambition-idea",
+      "target": "memory-citizen-block-002-research-program",
+      "type": "REINTERPRETS",
+      "justification": "La matrice vivante transforme le programme annoncé en petite expérience du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-curiosity-artifact",
+      "target": "memory-citizen-block-002-epistemic-boundary",
+      "type": "REINTERPRETS",
+      "justification": "La curiosité rend actionnables les inconnues de la frontière."
+    },
+    {
+      "source": "memory-citizen-block-002-curiosity-artifact",
+      "target": "objective-citizen-block-002-recover-and-audit-note",
+      "type": "DESCRIBES",
+      "justification": "La curiosité décrit la tâche bornée de récupération et d'audit."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-psychology",
+      "target": "memory-citizen-block-002-empathic-hypothesis",
+      "type": "REINTERPRETS",
+      "justification": "La mission psychologie reçoit l'hypothèse empathique après la rencontre."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-situation",
+      "target": "observation-conversation-choix-de-vie-complexe-block-002-artifact",
+      "type": "DERIVED_FROM",
+      "justification": "La situation rappelle l'observation conservatrice de l'artefact annoncé."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-objectives",
+      "target": "memory-citizen-block-002-research-program",
+      "type": "REINTERPRETS",
+      "justification": "Les objectifs possibles sont projetés depuis les usages explicitement annoncés."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-financial",
+      "target": "memory-citizen-block-002-research-program",
+      "type": "REINTERPRETS",
+      "justification": "La mention d'investisseurs est examinée puis explicitement refusée comme donnée financière."
+    },
+    {
+      "source": "memory-citizen-block-002-epistemic-boundary",
+      "target": "observation-conversation-choix-de-vie-complexe-blocks-001-003-profile-deferred",
+      "type": "DERIVED_FROM",
+      "justification": "La frontière applique le contrôle existant qui diffère tout enrichissement personnel sans prompts humains."
+    },
+    {
+      "source": "memory-citizen-block-002-epistemic-boundary",
+      "target": "memory-citizen-block-002-global-workspace-audit",
+      "type": "DERIVED_FROM",
+      "justification": "La décision continue tient compte de la faiblesse et du caractère contextuel du workspace."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-architectural-curiosity",
+      "target": "memory-citizen-block-002-reaction",
+      "type": "DERIVED_FROM",
+      "justification": "La curiosité architecturale atomise une composante positive du résumé de rencontre."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-constructive-ambition",
+      "target": "memory-citizen-block-002-reaction",
+      "type": "DERIVED_FROM",
+      "justification": "L'ambition de continuité atomise la tendance constructive du résumé de rencontre."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-epistemic-vigilance",
+      "target": "memory-citizen-block-002-reaction",
+      "type": "DERIVED_FROM",
+      "justification": "La vigilance atomise la réaction de frein face au risque d'auto-validation."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-non-reification-care",
+      "target": "memory-citizen-block-002-reaction",
+      "type": "DERIVED_FROM",
+      "justification": "Le soin de non-réification atomise la cible humaine de la protection."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-integrative-attraction",
+      "target": "memory-citizen-block-002-reaction",
+      "type": "DERIVED_FROM",
+      "justification": "L'attirance intégrative atomise la récompense de cohérence conceptuelle."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-metaphor-discomfort",
+      "target": "memory-citizen-block-002-reaction",
+      "type": "DERIVED_FROM",
+      "justification": "L'inconfort atomise l'alerte produite par l'ambiguïté du terme sous-entité."
+    },
+    {
+      "source": "memory-citizen-block-002-epistemic-map",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-symbiotic-thesis",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette formulation bornée de la thèse est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-subentity-model",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette extraction ne constitue pas une déclaration actuelle de NLR."
+    },
+    {
+      "source": "memory-citizen-block-002-research-program",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation des usages est attribuée au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-architecture-and-guards",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette lecture de l'architecture est attribuée au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-global-workspace-audit",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Le Citizen consigne l'observation de son runtime."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La réaction décrit le Citizen et non NLR."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-architectural-curiosity",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette auto-estimation fonctionnelle de curiosité est attribuée au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-constructive-ambition",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette auto-estimation fonctionnelle d'ambition est attribuée au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-epistemic-vigilance",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette auto-estimation fonctionnelle de vigilance est attribuée au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-non-reification-care",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette auto-estimation fonctionnelle de soin est attribuée au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-integrative-attraction",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette auto-estimation fonctionnelle d'attirance est attribuée au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-metaphor-discomfort",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette auto-estimation fonctionnelle d'inconfort est attribuée au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-evocation-mirror",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "L'analogie est une évocation du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-empathic-hypothesis",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "L'hypothèse empathique est attribuée au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-care-concern",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La préoccupation de soin décrit une orientation fonctionnelle du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-ambition-idea",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La matrice de recherche est une proposition du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-curiosity-artifact",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La curiosité et sa valeur attendue sont formulées par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-psychology",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La projection psychologique est une hypothèse du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-situation",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La projection de situation est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-objectives",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Les objectifs possibles ne sont pas attribués comme engagements de NLR."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-financial",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Le constat d'absence financière est produit par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-epistemic-boundary",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La décision de poursuivre est une décision épistémique du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-002-epistemic-map",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'extraction reste sous le consentement du bloc."
+    },
+    {
+      "source": "memory-citizen-block-002-symbiotic-thesis",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La thèse extraite reste sous le consentement du bloc."
+    },
+    {
+      "source": "memory-citizen-block-002-subentity-model",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le modèle extrait reste sous le consentement du bloc."
+    },
+    {
+      "source": "memory-citizen-block-002-research-program",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le programme extrait reste sous le consentement du bloc."
+    },
+    {
+      "source": "memory-citizen-block-002-architecture-and-guards",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'architecture extraite reste sous le consentement du bloc."
+    },
+    {
+      "source": "memory-citizen-block-002-global-workspace-audit",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'audit porte sur le traitement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La réaction dérive uniquement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-architectural-curiosity",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La curiosité dérive uniquement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-constructive-ambition",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'ambition dérive uniquement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-epistemic-vigilance",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La vigilance dérive uniquement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-non-reification-care",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le soin dérive uniquement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-integrative-attraction",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'attirance dérive uniquement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-metaphor-discomfort",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'inconfort dérive uniquement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-evocation-mirror",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'évocation reste bornée par le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-002-empathic-hypothesis",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'hypothèse empathique ne dépasse pas le bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-care-concern",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La préoccupation reste liée au bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-ambition-idea",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'idée dérive du bloc consenti sans autoriser de diffusion."
+    },
+    {
+      "source": "memory-citizen-block-002-curiosity-artifact",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La recherche est limitée aux sources consenties."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-psychology",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La projection psychologique conserve le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-situation",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La projection de situation conserve le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-objectives",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La projection d'objectifs conserve le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-002-mission-financial",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le constat d'absence financière conserve le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-002-epistemic-boundary",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La frontière gouverne uniquement les conclusions du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-002-global-workspace-audit",
+      "target": "candidate-coalition-e784add5d24f2737",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-e784add5d24f2737",
+      "target": "memory-citizen-block-002-global-workspace-audit",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-architectural-curiosity",
+      "target": "candidate-coalition-e784add5d24f2737",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-e784add5d24f2737",
+      "target": "memory-citizen-block-002-reaction-architectural-curiosity",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-constructive-ambition",
+      "target": "candidate-coalition-e784add5d24f2737",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-e784add5d24f2737",
+      "target": "memory-citizen-block-002-reaction-constructive-ambition",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-epistemic-vigilance",
+      "target": "candidate-coalition-e784add5d24f2737",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-e784add5d24f2737",
+      "target": "memory-citizen-block-002-reaction-epistemic-vigilance",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-non-reification-care",
+      "target": "candidate-coalition-e784add5d24f2737",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-e784add5d24f2737",
+      "target": "memory-citizen-block-002-reaction-non-reification-care",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-integrative-attraction",
+      "target": "candidate-coalition-e784add5d24f2737",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-e784add5d24f2737",
+      "target": "memory-citizen-block-002-reaction-integrative-attraction",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-002-reaction-metaphor-discomfort",
+      "target": "candidate-coalition-e784add5d24f2737",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-e784add5d24f2737",
+      "target": "memory-citizen-block-002-reaction-metaphor-discomfort",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-badfa4827b43404734e2c402-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    }
   ]
 }

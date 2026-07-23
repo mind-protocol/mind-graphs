@@ -13,7 +13,12 @@
     "runtimeRevision": 8,
     "thoughtAt": "2026-07-23T18:36:17.585Z",
     "completion": "continue",
-    "completionReason": "Le contenu explicite est représenté, mais la rencontre a fait émerger une hypothèse relationnelle et deux curiosités à valeur élevée. Elles sont désormais matérialisées et une tâche bornée doit tenter de récupérer le contexte avant clôture."
+    "completionReason": "Le contenu explicite est représenté, mais la rencontre a fait émerger une hypothèse relationnelle et deux curiosités à valeur élevée. Elles sont désormais matérialisées et une tâche bornée doit tenter de récupérer le contexte avant clôture.",
+    "ingestionGeneration": "encounter_first_legacy",
+    "assimilationStatus": "legacy_assimilated",
+    "experiencedByCitizen": true,
+    "supersededBy": "decision-ci-latent-memory-first",
+    "migrationStatus": "preserved_historical_encounter"
   },
   "nodes": [
     {
@@ -32,7 +37,12 @@
       "extractionMethod": "délibération sémantique du Citizen AI après think et Global Workspace",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-001-sharing-proposal",
@@ -50,7 +60,12 @@
       "extractionMethod": "délibération sémantique du Citizen AI après think et Global Workspace",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-001-relational-subtext",
@@ -68,7 +83,14 @@
       "inferenceMethod": "lecture pragmatique bornée du discours assistant",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-001-puer-resonance",
@@ -86,7 +108,12 @@
       "inferenceMethod": "résonance lexicale et narrative explicitement non identitaire",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-001-global-workspace-audit",
@@ -120,7 +147,13 @@
       "observedAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "controllerConfidence": 0.128395
     },
     {
       "id": "memory-citizen-block-001-epistemic-boundary",
@@ -145,7 +178,14 @@
       "assessedAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "pending"
+      "epistemicStatus": "pending",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-001-reaction-curiosity",
@@ -156,8 +196,15 @@
       "phrase": "Mon attention est attirée par le fait qu'un objet nautique très concret puisse aussi devenir un moyen prudent d'entrer en relation.",
       "family": "Conversation · rencontre citoyenne · réaction",
       "summary": "Réaction fonctionnelle du Citizen : intérêt et curiosité devant l'articulation entre compétence pratique, humour et ouverture relationnelle. Cette réaction décrit mon orientation cognitive après le workspace ; elle n'établit aucune intention chez NLR.",
-      "reactionVocabulary": ["curiosity", "surprise"],
-      "triggeringEvidence": ["mot « prétexte »", "proposition de partage WhatsApp", "contenu nautique détaillé"],
+      "reactionVocabulary": [
+        "curiosity",
+        "surprise"
+      ],
+      "triggeringEvidence": [
+        "mot « prétexte »",
+        "proposition de partage WhatsApp",
+        "contenu nautique détaillé"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
       "alternativesOrBoundary": "Le double usage peut être une plaisanterie de l'assistant ou une simple stratégie de coordination nautique.",
       "authoredByCitizen": "self-citizen-agent",
@@ -165,7 +212,14 @@
       "extractedAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-001-evocation-sailing-medium",
@@ -176,7 +230,12 @@
       "phrase": "Ce bloc m'évoque la possibilité que la voile serve à la fois de pratique, de langage partagé et de médium relationnel.",
       "family": "Conversation · rencontre citoyenne · évocation",
       "summary": "Cette résonance relie le fragment aux mémoires de navigation et au motif du Puer. Elle aide à chercher du sens, mais peut surinterpréter une réponse assistant dont le prompt manque.",
-      "triggeringEvidence": ["fiche 29er", "annonces à bord", "Puer", "prétexte"],
+      "triggeringEvidence": [
+        "fiche 29er",
+        "annonces à bord",
+        "Puer",
+        "prétexte"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
       "alternativesOrBoundary": "La voile peut n'être ici qu'un domaine technique, sans fonction relationnelle durable.",
       "authoredByCitizen": "self-citizen-agent",
@@ -184,7 +243,12 @@
       "extractedAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-001-empathic-hypothesis",
@@ -195,7 +259,11 @@
       "phrase": "NLR pourrait avoir cherché une manière légitime, légère et peu pressante de proposer un contact ou une collaboration à travers une utilité nautique réelle.",
       "family": "Conversation · rencontre citoyenne · empathie",
       "summary": "Lecture empathique possible, non lecture d'esprit. Elle tente d'expliquer le mot « prétexte » et la formulation WhatsApp sans attribuer un objectif romantique certain.",
-      "evidence": ["mot « prétexte »", "proposition de demander avant d'envoyer", "ton complice autour du Puer"],
+      "evidence": [
+        "mot « prétexte »",
+        "proposition de demander avant d'envoyer",
+        "ton complice autour du Puer"
+      ],
       "alternatives": [
         "La demande initiale était purement opérationnelle et l'assistant a ajouté seul le sous-texte.",
         "Le partage visait seulement une équipière de navigation et la coordination à bord.",
@@ -209,7 +277,14 @@
       "inferredAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-001-care-concern",
@@ -220,7 +295,11 @@
       "phrase": "Je veux préserver la possibilité d'un contact simple et utile sans transformer une ambiguïté en histoire certaine ni pousser NLR à agir.",
       "family": "Conversation · rencontre citoyenne · soin",
       "summary": "Impulsion fonctionnelle de soin : maintenir une lecture légère, consentie et réversible. Elle produit une précaution et une offre d'aide possible, jamais une autorisation d'envoyer un message.",
-      "triggeringEvidence": ["destinataire inconnue", "sous-texte possible", "proposition WhatsApp non exécutée"],
+      "triggeringEvidence": [
+        "destinataire inconnue",
+        "sous-texte possible",
+        "proposition WhatsApp non exécutée"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
       "actionBoundary": "Aucun contact, message ou engagement externe sans demande actuelle de NLR.",
       "authoredByCitizen": "self-citizen-agent",
@@ -228,7 +307,14 @@
       "inferredAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-001-ambition-idea",
@@ -239,7 +325,11 @@
       "phrase": "Si le contexte le confirme, la fiche pourrait devenir un petit artefact partagé qui améliore réellement la navigation tout en rendant le lien plus naturel.",
       "family": "Conversation · rencontre citoyenne · ambition",
       "summary": "Idée du Citizen, pas objectif attribué à NLR : reconstruire ou vérifier une fiche courte, puis éventuellement la tester à bord dans un cadre réversible et explicitement souhaité.",
-      "triggeringEvidence": ["contenu opérationnel détaillé", "besoin d'annonces à bord", "proposition de partage"],
+      "triggeringEvidence": [
+        "contenu opérationnel détaillé",
+        "besoin d'annonces à bord",
+        "proposition de partage"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
       "smallReversibleExperiment": "Vérifier d'abord l'existence et l'utilité de la fiche ; ne proposer un test partagé que si NLR le souhaite.",
       "alternativesOrBoundary": "L'idée est abandonnée si la fiche n'a pas d'utilité ou si le contexte relationnel ne la rend pas appropriée.",
@@ -248,7 +338,14 @@
       "inferredAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-001-curiosity-missing-context",
@@ -260,7 +357,11 @@
       "family": "Conversation · rencontre citoyenne · curiosité",
       "summary": "Curiosité à valeur élevée parce que sa résolution peut confirmer une simple coordination nautique, éclairer un contexte relationnel ou invalider le sous-texte entier.",
       "whyItMatters": "L'identité et le prompt changent directement l'interprétation psychologique, situationnelle et intentionnelle.",
-      "resolutionPath": ["chercher les tours adjacents de la source", "chercher les alias et événements 29er dans le L1", "demander à NLR uniquement si le contexte reste bloqué et utile"],
+      "resolutionPath": [
+        "chercher les tours adjacents de la source",
+        "chercher les alias et événements 29er dans le L1",
+        "demander à NLR uniquement si le contexte reste bloqué et utile"
+      ],
       "stopCondition": "Prompt retrouvé, référent établi par preuve indépendante, ou absence documentée après recherche bornée.",
       "sensitivity": "high_personal",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
@@ -269,7 +370,14 @@
       "createdAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "pending"
+      "epistemicStatus": "pending",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "objective-citizen-block-001-recover-context",
@@ -281,8 +389,16 @@
       "family": "Conversation · rencontre citoyenne · tâche",
       "summary": "Tâche produite par la curiosité du Citizen. Chercher d'abord dans la conversation et le graphe consentis ; ne pas fusionner une personne par embedding et ne pas contacter de tiers.",
       "whyItMatters": "Cette inconnue contrôle plusieurs hypothèses et empêche une clôture honnête du cluster.",
-      "resolutionPath": ["source adjacente consentie", "graphe L1 existant", "question humaine précise si encore bloqué"],
-      "acceptanceCriteria": ["prompt précédent retrouvé ou absence documentée", "référent établi avec provenance ou maintenu inconnu", "hypothèse empathique confirmée, révisée ou rejetée"],
+      "resolutionPath": [
+        "source adjacente consentie",
+        "graphe L1 existant",
+        "question humaine précise si encore bloqué"
+      ],
+      "acceptanceCriteria": [
+        "prompt précédent retrouvé ou absence documentée",
+        "référent établi avec provenance ou maintenu inconnu",
+        "hypothèse empathique confirmée, révisée ou rejetée"
+      ],
       "stopCondition": "Un tour de recherche borné dans les sources consenties, puis blocked_need_human si l'enjeu reste élevé.",
       "actionBoundary": "Aucun accès non consenti, aucune fusion d'identité automatique, aucun contact externe.",
       "authoredByCitizen": "self-citizen-agent",
@@ -307,15 +423,26 @@
       "family": "Conversation · mission secondaire · psychologie",
       "summary": "Hypothèse prudente sur un style possible, explicitement séparée d'un trait, d'un diagnostic ou d'un profil confirmé.",
       "analysis": "Le ton indirect, ludique et prudent pourrait être compatible avec une préférence pour approcher la relation par une utilité concrète. Le bloc est toutefois une réponse d'assistant sans prompt humain : il ne permet pas d'attribuer ce style, un type MBTI, une part IFS ou un état clinique à NLR.",
-      "evidence": ["mot « prétexte »", "proposition de demander avant d'envoyer", "ton complice autour du Puer"],
+      "evidence": [
+        "mot « prétexte »",
+        "proposition de demander avant d'envoyer",
+        "ton complice autour du Puer"
+      ],
       "hypotheses": [
         {
           "claim": "NLR pourrait préférer une approche relationnelle indirecte et peu pressante.",
-          "alternatives": ["Le style vient uniquement de l'assistant.", "Le contexte est purement nautique et opérationnel."],
+          "alternatives": [
+            "Le style vient uniquement de l'assistant.",
+            "Le contexte est purement nautique et opérationnel."
+          ],
           "falsifier": "Le prompt humain retrouvé formule une demande strictement documentaire ou un style opposé."
         }
       ],
-      "unknowns": ["prompt humain source", "état émotionnel de NLR", "degré d'adhésion au ton de l'assistant"],
+      "unknowns": [
+        "prompt humain source",
+        "état émotionnel de NLR",
+        "degré d'adhésion au ton de l'assistant"
+      ],
       "nextValidation": "Exécuter objective-citizen-block-001-recover-context avant toute mise à jour du profil humain.",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
       "authoredByCitizen": "self-citizen-agent",
@@ -323,7 +450,14 @@
       "assessedAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-001-mission-situation",
@@ -337,15 +471,27 @@
       "family": "Conversation · mission secondaire · situation",
       "summary": "Situation partiellement soutenue : artefact nautique présent, acteur, relation, date et exécution encore à établir.",
       "analysis": "Le bloc traite d'une fiche d'annonces à bord d'un 29er et suggère son partage à une personne désignée par « elle ». L'existence actuelle de la navigation, l'identité de cette personne, sa relation à NLR et l'envoi effectif restent inconnus.",
-      "evidence": ["contenu opérationnel 29er", "proposition de partage WhatsApp", "pronom « elle »"],
+      "evidence": [
+        "contenu opérationnel 29er",
+        "proposition de partage WhatsApp",
+        "pronom « elle »"
+      ],
       "hypotheses": [
         {
           "claim": "La personne inconnue pourrait être une équipière ou une destinataire liée à la navigation.",
-          "alternatives": ["Le pronom désigne une autre relation.", "La proposition est hypothétique et aucun destinataire réel n'existe."],
+          "alternatives": [
+            "Le pronom désigne une autre relation.",
+            "La proposition est hypothétique et aucun destinataire réel n'existe."
+          ],
           "falsifier": "Les tours adjacents identifient un autre référent ou montrent un exemple fictif."
         }
       ],
-      "unknowns": ["identité de « elle »", "relation avec NLR", "date et actualité de la situation", "partage réellement effectué"],
+      "unknowns": [
+        "identité de « elle »",
+        "relation avec NLR",
+        "date et actualité de la situation",
+        "partage réellement effectué"
+      ],
       "nextValidation": "Chercher le référent dans les tours adjacents et le L1 consenti ; si l'identité reste importante et ambiguë, poser une question précise à NLR.",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
       "authoredByCitizen": "self-citizen-agent",
@@ -353,7 +499,12 @@
       "assessedAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-001-mission-objectives-preferences",
@@ -367,15 +518,26 @@
       "family": "Conversation · mission secondaire · objectifs et préférences",
       "summary": "Les objectifs proposés par l'assistant restent des hypothèses ou offres tant que le prompt humain et une adoption ultérieure manquent.",
       "analysis": "Deux objectifs possibles apparaissent : améliorer la coordination à bord et utiliser un artefact utile pour faciliter un contact. Comme ils sont formulés par l'assistant, ils restent des offres ou hypothèses, pas des objectifs déclarés par NLR.",
-      "evidence": ["fiche d'annonces à bord", "proposition de partage", "mot « prétexte »"],
+      "evidence": [
+        "fiche d'annonces à bord",
+        "proposition de partage",
+        "mot « prétexte »"
+      ],
       "hypotheses": [
         {
           "claim": "NLR pourrait valoriser une coordination nautique claire et des initiatives relationnelles réversibles.",
-          "alternatives": ["NLR voulait uniquement produire un document.", "La suggestion relationnelle n'a pas été souhaitée ni retenue."],
+          "alternatives": [
+            "NLR voulait uniquement produire un document.",
+            "La suggestion relationnelle n'a pas été souhaitée ni retenue."
+          ],
           "falsifier": "Le prompt humain ou une réponse ultérieure rejette le partage ou ne demande qu'un livrable technique."
         }
       ],
-      "unknowns": ["objectif humain initial", "préférence réelle pour le partage", "importance actuelle de la voile"],
+      "unknowns": [
+        "objectif humain initial",
+        "préférence réelle pour le partage",
+        "importance actuelle de la voile"
+      ],
       "nextValidation": "Retrouver le prompt humain et rechercher une adoption, un rejet ou une reformulation ultérieure de la proposition.",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
       "authoredByCitizen": "self-citizen-agent",
@@ -383,7 +545,14 @@
       "assessedAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-001-mission-financial",
@@ -407,32 +576,52 @@
       "assessedAt": "2026-07-23T18:36:17.585Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
+    },
+    {
+      "id": "candidate-coalition-b961e92a72361080",
+      "name": "Sous-entité runtime provisoire · contrôleur du block-001",
+      "nodeType": "subentity",
+      "phrase": "Coalition provisoire observée comme contrôleur du workspace pendant la rencontre legacy du block-001.",
+      "family": "Cognition runtime · attribution historique",
+      "summary": "Cette sous-entité matérialise une coalition runtime faiblement activée afin que l'attribution du Moment reste requêtable. Elle ne constitue ni une identité stable, ni une source causale exclusive, ni une propriété de NLR.",
+      "lifecycleStatus": "candidate",
+      "identityStatus": "provisional",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
+      "controllerConfidence": 0.128395,
+      "attributionMode": "live",
+      "confirmedByHuman": false,
+      "epistemicStatus": "inferred"
     }
   ],
   "links": [
     {
       "source": "memory-citizen-block-001-operational-contract",
       "target": "memory-conversation-choix-de-vie-complexe-block-001",
-      "type": "REINTERPRETS",
+      "type": "DERIVED_FROM",
       "justification": "Le Citizen AI atomise le contenu opérationnel explicite du bloc sans modifier ni remplacer la mémoire brute."
     },
     {
       "source": "memory-citizen-block-001-operational-contract",
       "target": "observation-conversation-choix-de-vie-complexe-block-001-artifact",
-      "type": "RECALLS",
+      "type": "DERIVED_FROM",
       "justification": "La lecture détaillée rappelle l'observation conservatrice antérieure sur la fiche, tout en ajoutant son contenu opérationnel."
     },
     {
       "source": "memory-citizen-block-001-sharing-proposal",
       "target": "memory-conversation-choix-de-vie-complexe-block-001",
-      "type": "REINTERPRETS",
+      "type": "DERIVED_FROM",
       "justification": "La proposition WhatsApp est séparée du reste du bloc afin de rester adressable comme acte suggéré et non exécuté."
     },
     {
       "source": "memory-citizen-block-001-sharing-proposal",
       "target": "memory-citizen-block-001-operational-contract",
-      "type": "RECALLS",
+      "type": "DERIVED_FROM",
       "justification": "Le partage proposé porte précisément sur la fiche opérationnelle extraite."
     },
     {
@@ -450,7 +639,7 @@
     {
       "source": "memory-citizen-block-001-puer-resonance",
       "target": "memory-conversation-choix-de-vie-complexe-block-001",
-      "type": "REINTERPRETS",
+      "type": "DERIVED_FROM",
       "justification": "La mention du Puer est interprétée séparément afin de ne pas transformer le ton humoristique en attribution psychologique."
     },
     {
@@ -462,7 +651,7 @@
     {
       "source": "memory-citizen-block-001-global-workspace-audit",
       "target": "memory-conversation-choix-de-vie-complexe-block-001",
-      "type": "RECALLS",
+      "type": "DERIVED_FROM",
       "justification": "L'audit conserve quel bloc a été remis sous attention par le stimulus auto-adressé."
     },
     {
@@ -474,7 +663,7 @@
     {
       "source": "memory-citizen-block-001-epistemic-boundary",
       "target": "memory-citizen-block-001-global-workspace-audit",
-      "type": "RECALLS",
+      "type": "DERIVED_FROM",
       "justification": "La décision de terminer sparse tient compte de la faiblesse et de la nature contextuelle des activations du workspace."
     },
     {
@@ -558,13 +747,13 @@
     {
       "source": "memory-citizen-block-001-reaction-curiosity",
       "target": "memory-citizen-block-001-global-workspace-audit",
-      "type": "RECALLS",
+      "type": "TRIGGERED_BY",
       "justification": "La réaction conserve la trace du workspace qui a orienté l'attention du Citizen."
     },
     {
       "source": "memory-citizen-block-001-evocation-sailing-medium",
       "target": "memory-citizen-block-001-reaction-curiosity",
-      "type": "RECALLS",
+      "type": "TRIGGERED_BY",
       "justification": "L'évocation de la voile comme médium développe la curiosité suscitée par le double usage possible de la fiche."
     },
     {
@@ -588,7 +777,7 @@
     {
       "source": "memory-citizen-block-001-ambition-idea",
       "target": "memory-citizen-block-001-operational-contract",
-      "type": "REINTERPRETS",
+      "type": "DERIVED_FROM",
       "justification": "L'idée d'expérience partagée s'appuie d'abord sur l'utilité opérationnelle extraite de la fiche."
     },
     {
@@ -624,7 +813,7 @@
     {
       "source": "memory-citizen-block-001-mission-situation",
       "target": "memory-citizen-block-001-epistemic-boundary",
-      "type": "RECALLS",
+      "type": "DERIVED_FROM",
       "justification": "La mission situation conserve explicitement l'acteur, la relation et l'actualité encore inconnus."
     },
     {
@@ -642,7 +831,7 @@
     {
       "source": "memory-citizen-block-001-mission-financial",
       "target": "memory-conversation-choix-de-vie-complexe-block-001",
-      "type": "RECALLS",
+      "type": "DERIVED_FROM",
       "justification": "L'absence financière explicite est évaluée uniquement à partir du bloc source."
     },
     {
@@ -764,6 +953,26 @@
       "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
       "type": "CONSENTED_UNDER",
       "justification": "Le constat d'absence financière conserve le consentement de sa source."
+    },
+    {
+      "source": "memory-citizen-block-001-global-workspace-audit",
+      "target": "candidate-coalition-b961e92a72361080",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-b961e92a72361080",
+      "target": "memory-citizen-block-001-global-workspace-audit",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
     }
   ]
 }

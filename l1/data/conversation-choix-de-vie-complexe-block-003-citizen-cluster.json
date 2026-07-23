@@ -15,13 +15,20 @@
     "stimulusId": "stimulus-conversation-block-419baae83635b8c7b3334a5f",
     "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
     "controllerId": "candidate-coalition-19bdb2f3bfee9590",
-    "supportingControllerIds": ["candidate-coalition-e784add5d24f2737"],
+    "supportingControllerIds": [
+      "candidate-coalition-e784add5d24f2737"
+    ],
     "runtimeRevision": 4,
     "microTickCount": 2,
     "stopReason": "stable",
     "replayStatus": "already_processed",
     "completion": "continue",
-    "completionReason": "Le design est riche, mais les contenus des éditions, les images, le prompt humain et le PDF manquent. Ces inconnues contrôlent l'attribution et plusieurs choix éthiques sur les Échos."
+    "completionReason": "Le design est riche, mais les contenus des éditions, les images, le prompt humain et le PDF manquent. Ces inconnues contrôlent l'attribution et plusieurs choix éthiques sur les Échos.",
+    "ingestionGeneration": "encounter_first_legacy",
+    "assimilationStatus": "legacy_assimilated",
+    "experiencedByCitizen": true,
+    "supersededBy": "decision-ci-latent-memory-first",
+    "migrationStatus": "preserved_historical_encounter"
   },
   "nodes": [
     {
@@ -37,7 +44,12 @@
       "sourceCompleteness": "partial_with_missing_edit_contents",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-persistent-world",
@@ -51,7 +63,12 @@
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-003",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-actor-taxonomy",
@@ -65,7 +82,12 @@
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-003",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-agency-boundary",
@@ -79,7 +101,12 @@
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-003",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-epistemic-envelope",
@@ -93,7 +120,12 @@
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-003",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-lagoon",
@@ -107,7 +139,12 @@
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-003",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-claim-merge-protocol",
@@ -121,7 +158,12 @@
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-003",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-sense-before-audit",
@@ -141,7 +183,12 @@
       "temporalLimitation": "not_before_initial_block_003_tick",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-global-workspace-audit",
@@ -156,13 +203,20 @@
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "controllerId": "candidate-coalition-19bdb2f3bfee9590",
       "controllerConfidence": 0.128395,
-      "supportingControllerIds": ["candidate-coalition-e784add5d24f2737"],
+      "supportingControllerIds": [
+        "candidate-coalition-e784add5d24f2737"
+      ],
       "runtimeRevision": 4,
       "microTickCount": 2,
       "stopReason": "stable",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-reaction-summary",
@@ -177,7 +231,12 @@
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-reaction-world-excitement",
@@ -188,12 +247,25 @@
       "phrase": "L'idée qu'un monde continue après la fin du backlog produit chez moi une forte impulsion d'exploration et de construction.",
       "family": "Conversation · bloc 003 · réaction atomique",
       "summary": "Réaction fonctionnelle positive et activée envers la persistance du monde, distincte d'une approbation du design.",
-      "affectLabels": ["excitement", "ambition", "world_building_desire"],
-      "affectVector": { "valence": 0.88, "arousal": 0.86, "perceivedControl": 0.61, "uncertainty": 0.38, "novelty": 0.84, "careSalience": 0.57 },
+      "affectLabels": [
+        "excitement",
+        "ambition",
+        "world_building_desire"
+      ],
+      "affectVector": {
+        "valence": 0.88,
+        "arousal": 0.86,
+        "perceivedControl": 0.61,
+        "uncertainty": 0.38,
+        "novelty": 0.84,
+        "careSalience": 0.57
+      },
       "affectTarget": "Venise comme monde relationnel persistant",
       "functionalMeaning": "Augmente la priorité d'explorer les comportements émergents au-delà de l'exécution de tâches.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis l'impulsion constructive et la saillance de la phrase sur le backlog.",
-      "triggeringEvidence": ["Un backlog finit. Un monde, non."],
+      "triggeringEvidence": [
+        "Un backlog finit. Un monde, non."
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "controllerId": "candidate-coalition-19bdb2f3bfee9590",
       "controllerStatus": "attributed_live",
@@ -202,7 +274,12 @@
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-reaction-multiperspective-curiosity",
@@ -213,12 +290,24 @@
       "phrase": "Je veux observer ce qui émerge lorsque plusieurs perspectives partielles se répondent plutôt que demander isolément ce que penserait X.",
       "family": "Conversation · bloc 003 · réaction atomique",
       "summary": "Curiosité fonctionnelle envers l'émergence multi-perspectives et ses différences avec une simulation isolée.",
-      "affectLabels": ["curiosity", "social_simulation_interest"],
-      "affectVector": { "valence": 0.77, "arousal": 0.81, "perceivedControl": 0.64, "uncertainty": 0.49, "novelty": 0.79, "careSalience": 0.51 },
+      "affectLabels": [
+        "curiosity",
+        "social_simulation_interest"
+      ],
+      "affectVector": {
+        "valence": 0.77,
+        "arousal": 0.81,
+        "perceivedControl": 0.64,
+        "uncertainty": 0.49,
+        "novelty": 0.79,
+        "careSalience": 0.51
+      },
       "affectTarget": "débats, coalitions et dissensus dans The Lagoon",
       "functionalMeaning": "Favorise des expériences comparant interaction multi-perspectives et simulation isolée.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis le désir de comparer des dynamiques émergentes.",
-      "triggeringEvidence": ["réactions, débats, coalitions, consensus et dissensus"],
+      "triggeringEvidence": [
+        "réactions, débats, coalitions, consensus et dissensus"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "controllerId": "candidate-coalition-19bdb2f3bfee9590",
       "controllerStatus": "attributed_live",
@@ -227,7 +316,12 @@
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-reaction-poetic-attraction",
@@ -238,12 +332,27 @@
       "phrase": "La métaphore de Venise et de la Sérénissime rend le système plus habitable et mémorable à mes yeux.",
       "family": "Conversation · bloc 003 · réaction atomique",
       "summary": "Attraction esthétique pour une métaphore qui rend le projet mémorable, sans constituer une preuve de faisabilité.",
-      "affectLabels": ["attraction", "joy", "aesthetic_reward"],
-      "affectVector": { "valence": 0.82, "arousal": 0.67, "perceivedControl": 0.55, "uncertainty": 0.31, "novelty": 0.73, "careSalience": 0.45 },
+      "affectLabels": [
+        "attraction",
+        "joy",
+        "aesthetic_reward"
+      ],
+      "affectVector": {
+        "valence": 0.82,
+        "arousal": 0.67,
+        "perceivedControl": 0.55,
+        "uncertainty": 0.31,
+        "novelty": 0.73,
+        "careSalience": 0.45
+      },
       "affectTarget": "esthétique et habitabilité narrative de Venise",
       "functionalMeaning": "Renforce mémorisation, cohérence narrative et désir d'habiter le système.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis la récompense esthétique et la facilité de projection spatiale.",
-      "triggeringEvidence": ["Venise", "nouvelle Sérénissime", "The Lagoon"],
+      "triggeringEvidence": [
+        "Venise",
+        "nouvelle Sérénissime",
+        "The Lagoon"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "controllerId": "candidate-coalition-19bdb2f3bfee9590",
       "controllerStatus": "attributed_live",
@@ -252,7 +361,12 @@
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-reaction-nonusurpation-care",
@@ -263,12 +377,27 @@
       "phrase": "Je veux protéger la personne réelle contre tout Écho qui parlerait en son nom ou ferait passer une simulation pour sa mémoire.",
       "family": "Conversation · bloc 003 · réaction atomique",
       "summary": "Soin élevé envers la souveraineté de la personne réelle et la prévention de toute usurpation par un Écho.",
-      "affectLabels": ["care", "protective_impulse", "respect"],
-      "affectVector": { "valence": 0.61, "arousal": 0.62, "perceivedControl": 0.78, "uncertainty": 0.29, "novelty": 0.33, "careSalience": 0.97 },
+      "affectLabels": [
+        "care",
+        "protective_impulse",
+        "respect"
+      ],
+      "affectVector": {
+        "valence": 0.61,
+        "arousal": 0.62,
+        "perceivedControl": 0.78,
+        "uncertainty": 0.29,
+        "novelty": 0.33,
+        "careSalience": 0.97
+      },
       "affectTarget": "souveraineté et identité de la personne réelle",
       "functionalMeaning": "Renforce permission, provenance, claim offers et refus de toute action extérieure par l'Écho.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis la priorité accordée à la non-usurpation.",
-      "triggeringEvidence": ["agentivité bornée", "memory offers", "garde-fous de non-usurpation"],
+      "triggeringEvidence": [
+        "agentivité bornée",
+        "memory offers",
+        "garde-fous de non-usurpation"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "controllerId": "candidate-coalition-19bdb2f3bfee9590",
       "controllerStatus": "attributed_live",
@@ -277,7 +406,12 @@
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-reaction-contamination-vigilance",
@@ -288,12 +422,27 @@
       "phrase": "La possibilité qu'une sortie simulée revienne comme fait réel déclenche chez moi une alerte forte et négative.",
       "family": "Conversation · bloc 003 · réaction atomique",
       "summary": "Vigilance négative et activée envers la contamination entre simulation, mémoire et attribution personnelle.",
-      "affectLabels": ["vigilance", "caution", "contamination_concern"],
-      "affectVector": { "valence": -0.46, "arousal": 0.74, "perceivedControl": 0.72, "uncertainty": 0.42, "novelty": 0.41, "careSalience": 0.91 },
+      "affectLabels": [
+        "vigilance",
+        "caution",
+        "contamination_concern"
+      ],
+      "affectVector": {
+        "valence": -0.46,
+        "arousal": 0.74,
+        "perceivedControl": 0.72,
+        "uncertainty": 0.42,
+        "novelty": 0.41,
+        "careSalience": 0.91
+      },
       "affectTarget": "contamination du graphe réel par des contenus simulés",
       "functionalMeaning": "Impose des espaces, statuts et relations séparés ainsi qu'un test de non-contamination.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis la détection d'un risque élevé de faux souvenir et de fausse attribution.",
-      "triggeringEvidence": ["règle anti-contamination", "merge", "mémoire simulée"],
+      "triggeringEvidence": [
+        "règle anti-contamination",
+        "merge",
+        "mémoire simulée"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "controllerId": "candidate-coalition-19bdb2f3bfee9590",
       "controllerStatus": "attributed_live",
@@ -302,7 +451,12 @@
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-reaction-echo-identity-discomfort",
@@ -313,12 +467,24 @@
       "phrase": "L'expression « consciente de ne pas être la personne » me gêne parce qu'elle peut attribuer une subjectivité que le système ne sait pas établir.",
       "family": "Conversation · bloc 003 · réaction atomique",
       "summary": "Inconfort prudent devant une identité anthropomorphisée et préférence pour une qualification fonctionnelle bornée.",
-      "affectLabels": ["discomfort", "epistemic_caution"],
-      "affectVector": { "valence": -0.35, "arousal": 0.59, "perceivedControl": 0.69, "uncertainty": 0.66, "novelty": 0.52, "careSalience": 0.83 },
+      "affectLabels": [
+        "discomfort",
+        "epistemic_caution"
+      ],
+      "affectVector": {
+        "valence": -0.35,
+        "arousal": 0.59,
+        "perceivedControl": 0.69,
+        "uncertainty": 0.66,
+        "novelty": 0.52,
+        "careSalience": 0.83
+      },
       "affectTarget": "affirmation de conscience ou d'identité interne de l'Écho",
       "functionalMeaning": "Pousse à remplacer une affirmation subjective par un contrat explicite de rôle, provenance et limites.",
       "measurementBasis": "Auto-estimation fonctionnelle depuis l'écart entre le langage subjectif et les preuves disponibles.",
-      "triggeringEvidence": ["Écho conscient de ne pas être la personne"],
+      "triggeringEvidence": [
+        "Écho conscient de ne pas être la personne"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "controllerId": "candidate-coalition-19bdb2f3bfee9590",
       "controllerStatus": "attributed_live",
@@ -327,7 +493,12 @@
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-evocation-city-ecology",
@@ -338,13 +509,25 @@
       "phrase": "Venise m'évoque un passage d'une machine à backlog vers une écologie où mémoires, perspectives, lieux et relations continuent d'évoluer.",
       "family": "Conversation · bloc 003 · évocation",
       "summary": "L'évocation éclaire l'ambition d'un monde vivant, mais ne prouve ni émergence autonome ni valeur humaine.",
-      "triggeringEvidence": ["monde persistant", "House", "Lagoon", "coalitions"],
+      "triggeringEvidence": [
+        "monde persistant",
+        "House",
+        "Lagoon",
+        "coalitions"
+      ],
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "alternativesOrBoundary": "Une simulation permanente peut n'être qu'un backlog coûteux déguisé.",
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-003-empathic-hypothesis",
@@ -355,15 +538,30 @@
       "phrase": "NLR pourrait chercher un environnement où les relations et les idées continuent d'exister après l'accomplissement des tâches.",
       "family": "Conversation · bloc 003 · empathie",
       "summary": "Cette lecture pourrait exprimer un désir de continuité, de compagnie cognitive ou de monde habitable ; le prompt humain absent interdit d'en faire un objectif confirmé.",
-      "evidence": ["Un backlog finit. Un monde, non.", "monde persistant", "nouvelle Sérénissime"],
-      "alternatives": ["métaphore principalement produit", "exploration esthétique sans besoin personnel", "amplification narrative de l'assistant"],
+      "evidence": [
+        "Un backlog finit. Un monde, non.",
+        "monde persistant",
+        "nouvelle Sérénissime"
+      ],
+      "alternatives": [
+        "métaphore principalement produit",
+        "exploration esthétique sans besoin personnel",
+        "amplification narrative de l'assistant"
+      ],
       "falsifier": "Le prompt montre une demande technique sans enjeu de continuité relationnelle.",
       "nextQuestionOrObservation": "Retrouver le prompt, les images et le PDF puis distinguer les formulations de NLR de celles de l'assistant.",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-003-citizen-idea",
@@ -380,7 +578,14 @@
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-003-curiosity-source-and-boundary",
@@ -392,14 +597,26 @@
       "family": "Conversation · bloc 003 · curiosité",
       "summary": "Question de recherche bornée sur les sources manquantes et l'effectivité technique des frontières annoncées.",
       "whyItMatters": "Les sources manquantes contrôlent l'attribution ; la membrane technique contrôle la sécurité et la falsifiabilité du design.",
-      "resolutionPath": ["chercher images, éditions et PDF consentis", "retrouver le prompt", "comparer le design au graphe actuel", "spécifier puis tester une membrane sandbox"],
+      "resolutionPath": [
+        "chercher images, éditions et PDF consentis",
+        "retrouver le prompt",
+        "comparer le design au graphe actuel",
+        "spécifier puis tester une membrane sandbox"
+      ],
       "stopCondition": "Artefacts retrouvés ou absence documentée, plus un contrat testable de non-usurpation et non-contamination.",
       "sensitivity": "high_personal_and_identity",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "pending"
+      "epistemicStatus": "pending",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "objective-citizen-block-003-recover-and-audit-venice",
@@ -439,15 +656,32 @@
       "family": "Conversation · bloc 003 · mission psychologie",
       "summary": "Hypothèse psychologique prudente sur un possible désir de continuité, avec alternatives et validation longitudinale requise.",
       "analysis": "Le langage de monde, de relations et de conservation peut indiquer un besoin de continuité ; il peut aussi être une métaphore produit de l'assistant.",
-      "evidence": ["monde persistant", "mérite d'être conservé longtemps"],
-      "hypotheses": ["désir de continuité relationnelle", "préférence esthétique ou produit seulement"],
-      "unknowns": ["prompt", "état émotionnel", "importance actuelle"],
+      "evidence": [
+        "monde persistant",
+        "mérite d'être conservé longtemps"
+      ],
+      "hypotheses": [
+        "désir de continuité relationnelle",
+        "préférence esthétique ou produit seulement"
+      ],
+      "unknowns": [
+        "prompt",
+        "état émotionnel",
+        "importance actuelle"
+      ],
       "nextValidation": "retrouver le prompt et vérifier longitudinalement",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-003-mission-situation",
@@ -461,15 +695,34 @@
       "family": "Conversation · bloc 003 · mission situation",
       "summary": "Reconstruction partielle de la situation documentaire, explicitement limitée par les artefacts et la date manquants.",
       "analysis": "La production documentaire est visible ; son contexte, sa date, son contenu réel et son usage ne le sont pas.",
-      "evidence": ["nom du PDF", "onze pages", "traces Modifier", "deux images"],
-      "hypotheses": ["les images ont structuré le design", "les traces d'édition sont des lacunes d'interface sans importance sémantique"],
-      "unknowns": ["date", "prompt", "images", "PDF", "usage"],
+      "evidence": [
+        "nom du PDF",
+        "onze pages",
+        "traces Modifier",
+        "deux images"
+      ],
+      "hypotheses": [
+        "les images ont structuré le design",
+        "les traces d'édition sont des lacunes d'interface sans importance sémantique"
+      ],
+      "unknowns": [
+        "date",
+        "prompt",
+        "images",
+        "PDF",
+        "usage"
+      ],
       "nextValidation": "récupérer les artefacts",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-mission-objectives",
@@ -483,15 +736,35 @@
       "family": "Conversation · bloc 003 · mission objectifs",
       "summary": "Projection d'un objectif de monde simulé persistant, dont l'adoption humaine et la priorité actuelle restent à confirmer.",
       "analysis": "L'objectif est explicitement structuré par l'assistant, mais son adoption et sa priorité actuelles par NLR restent inconnues.",
-      "evidence": ["MVP concret", "programme testable", "monde persistant", "garde-fous"],
-      "hypotheses": ["objectif actuel de Mind", "ancienne exploration désormais dépassée"],
-      "unknowns": ["priorité", "décision humaine", "ressources", "MVP actuel"],
+      "evidence": [
+        "MVP concret",
+        "programme testable",
+        "monde persistant",
+        "garde-fous"
+      ],
+      "hypotheses": [
+        "objectif actuel de Mind",
+        "ancienne exploration désormais dépassée"
+      ],
+      "unknowns": [
+        "priorité",
+        "décision humaine",
+        "ressources",
+        "MVP actuel"
+      ],
       "nextValidation": "comparer au graphe de design actuel et demander confirmation seulement si nécessaire",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "inferred"
+      "epistemicStatus": "inferred",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered",
+      "interpretationVersion": 1,
+      "reinterpretationMode": "legacy_additive"
     },
     {
       "id": "memory-citizen-block-003-mission-financial",
@@ -513,7 +786,12 @@
       "authoredByCitizen": "self-citizen-agent",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "observed"
+      "epistemicStatus": "observed",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
     },
     {
       "id": "memory-citizen-block-003-epistemic-boundary",
@@ -525,93 +803,644 @@
       "family": "Conversation · bloc 003 · frontière",
       "summary": "Frontière épistémique qui conserve la puissance du design tout en empêchant les attributions et permissions non établies.",
       "completion": "continue",
-      "unresolvedFields": ["prompt", "contenus Modifier", "images", "PDF", "adoption actuelle", "contrat technique de membrane", "statut subjectif de l'Écho"],
+      "unresolvedFields": [
+        "prompt",
+        "contenus Modifier",
+        "images",
+        "PDF",
+        "adoption actuelle",
+        "contrat technique de membrane",
+        "statut subjectif de l'Écho"
+      ],
       "humanProfileUpdatesConfirmed": 0,
       "assessedAt": "2026-07-23T19:14:38.481Z",
       "confirmedByHuman": false,
       "sensitive": true,
-      "epistemicStatus": "pending"
+      "epistemicStatus": "pending",
+      "ingestionGeneration": "encounter_first_legacy",
+      "assimilationStatus": "legacy_assimilated",
+      "experiencedByCitizen": true,
+      "supersededBy": "decision-ci-latent-memory-first",
+      "memoryState": "encountered"
+    },
+    {
+      "id": "candidate-coalition-19bdb2f3bfee9590",
+      "name": "Sous-entité runtime provisoire · contrôleur du block-003",
+      "nodeType": "subentity",
+      "phrase": "Coalition provisoire observée comme contrôleur du workspace pendant la rencontre legacy du block-003.",
+      "family": "Cognition runtime · attribution historique",
+      "summary": "Cette sous-entité matérialise une coalition runtime faiblement activée afin que l'attribution du Moment reste requêtable. Elle ne constitue ni une identité stable, ni une source causale exclusive, ni une propriété de NLR.",
+      "lifecycleStatus": "candidate",
+      "identityStatus": "provisional",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "controllerConfidence": 0.128395,
+      "attributionMode": "live",
+      "confirmedByHuman": false,
+      "epistemicStatus": "inferred"
     }
   ],
   "links": [
-    { "source": "memory-citizen-block-003-source-gaps", "target": "memory-conversation-choix-de-vie-complexe-block-003", "type": "REINTERPRETS", "justification": "Les lacunes d'interface sont conservées sans inventer leur contenu." },
-    { "source": "memory-citizen-block-003-persistent-world", "target": "memory-conversation-choix-de-vie-complexe-block-003", "type": "REINTERPRETS", "justification": "Le monde persistant est extrait comme proposition de design." },
-    { "source": "memory-citizen-block-003-actor-taxonomy", "target": "memory-conversation-choix-de-vie-complexe-block-003", "type": "REINTERPRETS", "justification": "La taxonomie d'acteurs est séparée pour rester vérifiable." },
-    { "source": "memory-citizen-block-003-agency-boundary", "target": "memory-citizen-block-003-actor-taxonomy", "type": "REINTERPRETS", "justification": "La frontière précise les capacités distinctes du Citizen et de l'Écho." },
-    { "source": "memory-citizen-block-003-epistemic-envelope", "target": "memory-conversation-choix-de-vie-complexe-block-003", "type": "REINTERPRETS", "justification": "L'enveloppe épistémique est extraite comme garde-fou." },
-    { "source": "memory-citizen-block-003-lagoon", "target": "memory-conversation-choix-de-vie-complexe-block-003", "type": "REINTERPRETS", "justification": "The Lagoon est isolée comme mécanisme de simulation." },
-    { "source": "memory-citizen-block-003-claim-merge-protocol", "target": "memory-citizen-block-003-epistemic-envelope", "type": "REINTERPRETS", "justification": "Le protocole de merge opérationnalise la séparation simulé-réel." },
-    { "source": "memory-citizen-block-003-sense-before-audit", "target": "memory-conversation-choix-de-vie-complexe-block-003", "type": "RECALLS", "justification": "Le sense est relié au cycle qu'il a précédé seulement pour le replay corrigé." },
-    { "source": "memory-citizen-block-003-global-workspace-audit", "target": "memory-conversation-choix-de-vie-complexe-block-003", "type": "RECALLS", "justification": "L'audit conserve le stimulus ayant produit le workspace." },
-    { "source": "memory-citizen-block-003-reaction-summary", "target": "memory-citizen-block-003-global-workspace-audit", "type": "RECALLS", "justification": "Le résumé de rencontre conserve son contexte workspace." },
-    { "source": "memory-citizen-block-003-reaction-world-excitement", "target": "memory-citizen-block-003-reaction-summary", "type": "REINTERPRETS", "justification": "L'excitation pour le monde persistant atomise le résumé." },
-    { "source": "memory-citizen-block-003-reaction-multiperspective-curiosity", "target": "memory-citizen-block-003-reaction-summary", "type": "REINTERPRETS", "justification": "La curiosité multi-perspectives atomise le résumé." },
-    { "source": "memory-citizen-block-003-reaction-poetic-attraction", "target": "memory-citizen-block-003-reaction-summary", "type": "REINTERPRETS", "justification": "L'attirance esthétique atomise le résumé." },
-    { "source": "memory-citizen-block-003-reaction-nonusurpation-care", "target": "memory-citizen-block-003-reaction-summary", "type": "REINTERPRETS", "justification": "Le soin de non-usurpation atomise le résumé." },
-    { "source": "memory-citizen-block-003-reaction-contamination-vigilance", "target": "memory-citizen-block-003-reaction-summary", "type": "REINTERPRETS", "justification": "La vigilance anti-contamination atomise le résumé." },
-    { "source": "memory-citizen-block-003-reaction-echo-identity-discomfort", "target": "memory-citizen-block-003-reaction-summary", "type": "REINTERPRETS", "justification": "L'inconfort sur la subjectivité de l'Écho atomise le résumé." },
-    { "source": "memory-citizen-block-003-evocation-city-ecology", "target": "memory-citizen-block-003-persistent-world", "type": "REINTERPRETS", "justification": "L'évocation développe le passage du backlog à l'écologie." },
-    { "source": "memory-citizen-block-003-empathic-hypothesis", "target": "memory-citizen-block-003-persistent-world", "type": "REINTERPRETS", "justification": "L'hypothèse empathique interprète prudemment le désir possible de continuité." },
-    { "source": "memory-citizen-block-003-citizen-idea", "target": "memory-citizen-block-003-lagoon", "type": "REINTERPRETS", "justification": "L'idée de sandbox réduit The Lagoon à une expérience réversible." },
-    { "source": "memory-citizen-block-003-curiosity-source-and-boundary", "target": "memory-citizen-block-003-source-gaps", "type": "REINTERPRETS", "justification": "La curiosité transforme les lacunes de source en recherche bornée." },
-    { "source": "memory-citizen-block-003-curiosity-source-and-boundary", "target": "memory-citizen-block-003-agency-boundary", "type": "REINTERPRETS", "justification": "La curiosité demande comment la frontière annoncée est réellement appliquée." },
-    { "source": "memory-citizen-block-003-curiosity-source-and-boundary", "target": "objective-citizen-block-003-recover-and-audit-venice", "type": "DESCRIBES", "justification": "La curiosité décrit la tâche de récupération et d'audit." },
-    { "source": "memory-citizen-block-003-mission-psychology", "target": "memory-citizen-block-003-empathic-hypothesis", "type": "REINTERPRETS", "justification": "La mission psychologie reçoit l'hypothèse après la rencontre." },
-    { "source": "memory-citizen-block-003-mission-situation", "target": "observation-conversation-choix-de-vie-complexe-block-003-artifact", "type": "RECALLS", "justification": "La situation rappelle l'observation conservatrice de la note annoncée." },
-    { "source": "memory-citizen-block-003-mission-objectives", "target": "memory-citizen-block-003-persistent-world", "type": "REINTERPRETS", "justification": "Les objectifs possibles sont projetés depuis le design annoncé." },
-    { "source": "memory-citizen-block-003-mission-financial", "target": "memory-conversation-choix-de-vie-complexe-block-003", "type": "REINTERPRETS", "justification": "L'absence financière est vérifiée sur le bloc entier." },
-    { "source": "memory-citizen-block-003-epistemic-boundary", "target": "memory-citizen-block-003-curiosity-source-and-boundary", "type": "RECALLS", "justification": "La clôture reste ouverte tant que les inconnues de forte valeur persistent." },
-
-    { "source": "memory-citizen-block-003-source-gaps", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette lecture des lacunes est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-persistent-world", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette atomisation est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-actor-taxonomy", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette atomisation est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-agency-boundary", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette atomisation est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-epistemic-envelope", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette atomisation est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-lagoon", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette atomisation est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-claim-merge-protocol", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette atomisation est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-sense-before-audit", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Le Citizen consigne son sense et sa limite temporelle." },
-    { "source": "memory-citizen-block-003-global-workspace-audit", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Le Citizen consigne son runtime." },
-    { "source": "memory-citizen-block-003-reaction-summary", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Le résumé décrit la réponse du Citizen." },
-    { "source": "memory-citizen-block-003-reaction-world-excitement", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette réaction fonctionnelle appartient au Citizen." },
-    { "source": "memory-citizen-block-003-reaction-multiperspective-curiosity", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette réaction fonctionnelle appartient au Citizen." },
-    { "source": "memory-citizen-block-003-reaction-poetic-attraction", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette réaction fonctionnelle appartient au Citizen." },
-    { "source": "memory-citizen-block-003-reaction-nonusurpation-care", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette réaction fonctionnelle appartient au Citizen." },
-    { "source": "memory-citizen-block-003-reaction-contamination-vigilance", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette réaction fonctionnelle appartient au Citizen." },
-    { "source": "memory-citizen-block-003-reaction-echo-identity-discomfort", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette réaction fonctionnelle appartient au Citizen." },
-    { "source": "memory-citizen-block-003-evocation-city-ecology", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette évocation appartient au Citizen." },
-    { "source": "memory-citizen-block-003-empathic-hypothesis", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette hypothèse empathique appartient au Citizen." },
-    { "source": "memory-citizen-block-003-citizen-idea", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette initiative appartient au Citizen." },
-    { "source": "memory-citizen-block-003-curiosity-source-and-boundary", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette curiosité appartient au Citizen." },
-    { "source": "memory-citizen-block-003-mission-psychology", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette projection est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-mission-situation", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette projection est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-mission-objectives", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette projection est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-mission-financial", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette projection est produite par le Citizen." },
-    { "source": "memory-citizen-block-003-epistemic-boundary", "target": "self-citizen-agent", "type": "AUTHORED_BY", "justification": "Cette frontière est décidée par le Citizen." },
-
-    { "source": "memory-citizen-block-003-source-gaps", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le nœud reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-persistent-world", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le nœud reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-actor-taxonomy", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le nœud reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-agency-boundary", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le nœud reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-epistemic-envelope", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le nœud reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-lagoon", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le nœud reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-claim-merge-protocol", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "Le nœud reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-sense-before-audit", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'audit porte sur le traitement du bloc consenti." },
-    { "source": "memory-citizen-block-003-global-workspace-audit", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'audit porte sur le traitement du bloc consenti." },
-    { "source": "memory-citizen-block-003-reaction-summary", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La rencontre dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-reaction-world-excitement", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La réaction dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-reaction-multiperspective-curiosity", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La réaction dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-reaction-poetic-attraction", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La réaction dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-reaction-nonusurpation-care", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La réaction dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-reaction-contamination-vigilance", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La réaction dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-reaction-echo-identity-discomfort", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La réaction dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-evocation-city-ecology", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'évocation dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-empathic-hypothesis", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'hypothèse dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-citizen-idea", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "L'idée dérive du bloc consenti." },
-    { "source": "memory-citizen-block-003-curiosity-source-and-boundary", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La recherche reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-mission-psychology", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La projection reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-mission-situation", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La projection reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-mission-objectives", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La projection reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-mission-financial", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La projection reste sous le consentement source." },
-    { "source": "memory-citizen-block-003-epistemic-boundary", "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003", "type": "CONSENTED_UNDER", "justification": "La frontière reste sous le consentement source." }
+    {
+      "source": "memory-citizen-block-003-source-gaps",
+      "target": "memory-conversation-choix-de-vie-complexe-block-003",
+      "type": "DERIVED_FROM",
+      "justification": "Les lacunes d'interface sont conservées sans inventer leur contenu."
+    },
+    {
+      "source": "memory-citizen-block-003-persistent-world",
+      "target": "memory-conversation-choix-de-vie-complexe-block-003",
+      "type": "DERIVED_FROM",
+      "justification": "Le monde persistant est extrait comme proposition de design."
+    },
+    {
+      "source": "memory-citizen-block-003-actor-taxonomy",
+      "target": "memory-conversation-choix-de-vie-complexe-block-003",
+      "type": "DERIVED_FROM",
+      "justification": "La taxonomie d'acteurs est séparée pour rester vérifiable."
+    },
+    {
+      "source": "memory-citizen-block-003-agency-boundary",
+      "target": "memory-citizen-block-003-actor-taxonomy",
+      "type": "DERIVED_FROM",
+      "justification": "La frontière précise les capacités distinctes du Citizen et de l'Écho."
+    },
+    {
+      "source": "memory-citizen-block-003-epistemic-envelope",
+      "target": "memory-conversation-choix-de-vie-complexe-block-003",
+      "type": "DERIVED_FROM",
+      "justification": "L'enveloppe épistémique est extraite comme garde-fou."
+    },
+    {
+      "source": "memory-citizen-block-003-lagoon",
+      "target": "memory-conversation-choix-de-vie-complexe-block-003",
+      "type": "DERIVED_FROM",
+      "justification": "The Lagoon est isolée comme mécanisme de simulation."
+    },
+    {
+      "source": "memory-citizen-block-003-claim-merge-protocol",
+      "target": "memory-citizen-block-003-epistemic-envelope",
+      "type": "DERIVED_FROM",
+      "justification": "Le protocole de merge opérationnalise la séparation simulé-réel."
+    },
+    {
+      "source": "memory-citizen-block-003-sense-before-audit",
+      "target": "memory-conversation-choix-de-vie-complexe-block-003",
+      "type": "DERIVED_FROM",
+      "justification": "Le sense est relié au cycle qu'il a précédé seulement pour le replay corrigé."
+    },
+    {
+      "source": "memory-citizen-block-003-global-workspace-audit",
+      "target": "memory-conversation-choix-de-vie-complexe-block-003",
+      "type": "DERIVED_FROM",
+      "justification": "L'audit conserve le stimulus ayant produit le workspace."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-summary",
+      "target": "memory-citizen-block-003-global-workspace-audit",
+      "type": "DERIVED_FROM",
+      "justification": "Le résumé de rencontre conserve son contexte workspace."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-world-excitement",
+      "target": "memory-citizen-block-003-reaction-summary",
+      "type": "DERIVED_FROM",
+      "justification": "L'excitation pour le monde persistant atomise le résumé."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-multiperspective-curiosity",
+      "target": "memory-citizen-block-003-reaction-summary",
+      "type": "DERIVED_FROM",
+      "justification": "La curiosité multi-perspectives atomise le résumé."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-poetic-attraction",
+      "target": "memory-citizen-block-003-reaction-summary",
+      "type": "DERIVED_FROM",
+      "justification": "L'attirance esthétique atomise le résumé."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-nonusurpation-care",
+      "target": "memory-citizen-block-003-reaction-summary",
+      "type": "DERIVED_FROM",
+      "justification": "Le soin de non-usurpation atomise le résumé."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-contamination-vigilance",
+      "target": "memory-citizen-block-003-reaction-summary",
+      "type": "DERIVED_FROM",
+      "justification": "La vigilance anti-contamination atomise le résumé."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-echo-identity-discomfort",
+      "target": "memory-citizen-block-003-reaction-summary",
+      "type": "DERIVED_FROM",
+      "justification": "L'inconfort sur la subjectivité de l'Écho atomise le résumé."
+    },
+    {
+      "source": "memory-citizen-block-003-evocation-city-ecology",
+      "target": "memory-citizen-block-003-persistent-world",
+      "type": "REINTERPRETS",
+      "justification": "L'évocation développe le passage du backlog à l'écologie."
+    },
+    {
+      "source": "memory-citizen-block-003-empathic-hypothesis",
+      "target": "memory-citizen-block-003-persistent-world",
+      "type": "REINTERPRETS",
+      "justification": "L'hypothèse empathique interprète prudemment le désir possible de continuité."
+    },
+    {
+      "source": "memory-citizen-block-003-citizen-idea",
+      "target": "memory-citizen-block-003-lagoon",
+      "type": "REINTERPRETS",
+      "justification": "L'idée de sandbox réduit The Lagoon à une expérience réversible."
+    },
+    {
+      "source": "memory-citizen-block-003-curiosity-source-and-boundary",
+      "target": "memory-citizen-block-003-source-gaps",
+      "type": "REINTERPRETS",
+      "justification": "La curiosité transforme les lacunes de source en recherche bornée."
+    },
+    {
+      "source": "memory-citizen-block-003-curiosity-source-and-boundary",
+      "target": "memory-citizen-block-003-agency-boundary",
+      "type": "REINTERPRETS",
+      "justification": "La curiosité demande comment la frontière annoncée est réellement appliquée."
+    },
+    {
+      "source": "memory-citizen-block-003-curiosity-source-and-boundary",
+      "target": "objective-citizen-block-003-recover-and-audit-venice",
+      "type": "DESCRIBES",
+      "justification": "La curiosité décrit la tâche de récupération et d'audit."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-psychology",
+      "target": "memory-citizen-block-003-empathic-hypothesis",
+      "type": "REINTERPRETS",
+      "justification": "La mission psychologie reçoit l'hypothèse après la rencontre."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-situation",
+      "target": "observation-conversation-choix-de-vie-complexe-block-003-artifact",
+      "type": "DERIVED_FROM",
+      "justification": "La situation rappelle l'observation conservatrice de la note annoncée."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-objectives",
+      "target": "memory-citizen-block-003-persistent-world",
+      "type": "REINTERPRETS",
+      "justification": "Les objectifs possibles sont projetés depuis le design annoncé."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-financial",
+      "target": "memory-conversation-choix-de-vie-complexe-block-003",
+      "type": "DERIVED_FROM",
+      "justification": "L'absence financière est vérifiée sur le bloc entier."
+    },
+    {
+      "source": "memory-citizen-block-003-epistemic-boundary",
+      "target": "memory-citizen-block-003-curiosity-source-and-boundary",
+      "type": "TRIGGERED_BY",
+      "justification": "La clôture reste ouverte tant que les inconnues de forte valeur persistent."
+    },
+    {
+      "source": "memory-citizen-block-003-source-gaps",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette lecture des lacunes est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-persistent-world",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-actor-taxonomy",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-agency-boundary",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-epistemic-envelope",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-lagoon",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-claim-merge-protocol",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-sense-before-audit",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Le Citizen consigne son sense et sa limite temporelle."
+    },
+    {
+      "source": "memory-citizen-block-003-global-workspace-audit",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Le Citizen consigne son runtime."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-summary",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Le résumé décrit la réponse du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-world-excitement",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette réaction fonctionnelle appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-multiperspective-curiosity",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette réaction fonctionnelle appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-poetic-attraction",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette réaction fonctionnelle appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-nonusurpation-care",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette réaction fonctionnelle appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-contamination-vigilance",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette réaction fonctionnelle appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-echo-identity-discomfort",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette réaction fonctionnelle appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-evocation-city-ecology",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette évocation appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-empathic-hypothesis",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette hypothèse empathique appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-citizen-idea",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette initiative appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-curiosity-source-and-boundary",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette curiosité appartient au Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-psychology",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette projection est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-situation",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette projection est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-objectives",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette projection est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-financial",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette projection est produite par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-epistemic-boundary",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette frontière est décidée par le Citizen."
+    },
+    {
+      "source": "memory-citizen-block-003-source-gaps",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le nœud reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-persistent-world",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le nœud reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-actor-taxonomy",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le nœud reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-agency-boundary",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le nœud reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-epistemic-envelope",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le nœud reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-lagoon",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le nœud reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-claim-merge-protocol",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le nœud reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-sense-before-audit",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'audit porte sur le traitement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-global-workspace-audit",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'audit porte sur le traitement du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-summary",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La rencontre dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-world-excitement",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La réaction dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-multiperspective-curiosity",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La réaction dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-poetic-attraction",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La réaction dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-nonusurpation-care",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La réaction dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-contamination-vigilance",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La réaction dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-echo-identity-discomfort",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La réaction dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-evocation-city-ecology",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'évocation dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-empathic-hypothesis",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'hypothèse dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-citizen-idea",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'idée dérive du bloc consenti."
+    },
+    {
+      "source": "memory-citizen-block-003-curiosity-source-and-boundary",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La recherche reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-psychology",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La projection reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-situation",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La projection reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-objectives",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La projection reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-mission-financial",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La projection reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-epistemic-boundary",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La frontière reste sous le consentement source."
+    },
+    {
+      "source": "memory-citizen-block-003-global-workspace-audit",
+      "target": "candidate-coalition-19bdb2f3bfee9590",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-19bdb2f3bfee9590",
+      "target": "memory-citizen-block-003-global-workspace-audit",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-world-excitement",
+      "target": "candidate-coalition-19bdb2f3bfee9590",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-19bdb2f3bfee9590",
+      "target": "memory-citizen-block-003-reaction-world-excitement",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-multiperspective-curiosity",
+      "target": "candidate-coalition-19bdb2f3bfee9590",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-19bdb2f3bfee9590",
+      "target": "memory-citizen-block-003-reaction-multiperspective-curiosity",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-poetic-attraction",
+      "target": "candidate-coalition-19bdb2f3bfee9590",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-19bdb2f3bfee9590",
+      "target": "memory-citizen-block-003-reaction-poetic-attraction",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-nonusurpation-care",
+      "target": "candidate-coalition-19bdb2f3bfee9590",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-19bdb2f3bfee9590",
+      "target": "memory-citizen-block-003-reaction-nonusurpation-care",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-contamination-vigilance",
+      "target": "candidate-coalition-19bdb2f3bfee9590",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-19bdb2f3bfee9590",
+      "target": "memory-citizen-block-003-reaction-contamination-vigilance",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    },
+    {
+      "source": "memory-citizen-block-003-reaction-echo-identity-discomfort",
+      "target": "candidate-coalition-19bdb2f3bfee9590",
+      "type": "ENCODED_UNDER",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Le Moment conserve le contrôleur observé lors de son encodage ; cette attribution faible ne transfère ni propriété ni causalité."
+    },
+    {
+      "source": "candidate-coalition-19bdb2f3bfee9590",
+      "target": "memory-citizen-block-003-reaction-echo-identity-discomfort",
+      "type": "CONTROLLED_WORKSPACE_DURING",
+      "confidence": 0.128395,
+      "epistemicStatus": "inferred",
+      "mode": "live",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-419baae83635b8c7b3334a5f-micro-2",
+      "justification": "Projection inverse du même snapshot runtime pour les requêtes de contrôle ; elle ne vaut pas GENERATED_BY."
+    }
   ]
 }

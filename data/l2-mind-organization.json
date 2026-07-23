@@ -178,6 +178,71 @@
       "epistemicStatus": "documented",
       "sourcePath": "src/runtime-manager.js",
       "scriptPath": "scripts/runtime-manager.js"
+    },
+    {
+      "id": "decision-l2-host-resource-guardian",
+      "name": "Décision · Gardien des ressources hôte",
+      "nodeType": "narrative",
+      "phrase": "La santé du runtime inclut la capacité réelle de la machine, pas seulement la disponibilité de ses services.",
+      "family": "L2 Organization · Runtime",
+      "summary": "Le runtime manager mesure la RAM libre, la pression mémoire et le CPU moyen, exige une pression persistante avant d'agir sauf seuil critique, puis déleste uniquement les services Mind explicitement déclarés sacrifiables. Les applications humaines et les processus externes restent hors de son autorité.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_decision",
+      "epistemicStatus": "documented",
+      "decisionStatus": "implemented",
+      "chosenOptionId": "host-observation-with-allowlisted-progressive-load-shedding",
+      "decisionRationale": "Un runtime peut être applicativement healthy tout en épuisant son hôte. Une boucle graduelle avec hystérésis, budgets de réparation et allowlist protège la continuité sans transformer le superviseur en gestionnaire arbitraire de la machine.",
+      "sourcePath": "data/runtime-services.json",
+      "implementationPath": "src/runtime-manager.js"
+    },
+    {
+      "id": "policy-l2-host-resource-sovereignty",
+      "name": "Politique · Souveraineté du délestage hôte",
+      "nodeType": "narrative",
+      "phrase": "Le runtime répare ses propres charges ; il ne ferme pas les applications de l'humain.",
+      "family": "L2 Organization · Runtime",
+      "summary": "Les arrêts automatiques sont limités aux PID qui correspondent aux commandes déclarées de services Mind portant stopOnHostPressure ou stopOnHostCritical. FalkorDB, Web/API et les applications humaines ne sont pas délestés. Les singletons Mind peuvent supprimer leurs seules instances excédentaires en conservant une instance connue.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "runtime_policy",
+      "epistemicStatus": "documented"
+    },
+    {
+      "id": "thing-l2-host-resource-sensor",
+      "name": "Capteur · Ressources de l'hôte",
+      "nodeType": "thing",
+      "phrase": "Mesure locale bornée de la mémoire physique et de l'utilisation CPU entre deux cycles.",
+      "family": "L2 Organization · Runtime",
+      "summary": "Produit une observation avec mémoire totale, mémoire libre, pourcentage utilisé, échantillon CPU cumulatif et utilisation CPU différentielle. Le premier CPU sans échantillon antérieur reste inconnu au lieu d'être inventé.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "runtime_component",
+      "epistemicStatus": "documented",
+      "sourcePath": "src/runtime-manager.js"
+    },
+    {
+      "id": "thing-l2-progressive-load-shedder",
+      "name": "Composant · Délestage progressif",
+      "nodeType": "thing",
+      "phrase": "Réduit les charges Mind optionnelles lorsque les budgets hôte sont durablement dépassés.",
+      "family": "L2 Organization · Runtime",
+      "summary": "Sous pression, Repo Autocommit est suspendu. Au niveau critique, Continuous Health peut aussi être suspendu. Les réparations de ces services restent inhibées tant que l'hôte ne repasse pas sous les seuils de récupération, puis le superviseur normal peut les relancer.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "runtime_component",
+      "epistemicStatus": "documented",
+      "sourcePath": "src/runtime-manager.js",
+      "manifestPath": "data/runtime-services.json"
+    },
+    {
+      "id": "metric-l2-host-resource-budget",
+      "name": "Métrique · Budget des ressources hôte",
+      "nodeType": "thing",
+      "phrase": "RAM utilisée, RAM libre et CPU différentiel observés selon des seuils de pression, critique et récupération.",
+      "family": "L2 Organization · Runtime",
+      "summary": "La pression demande deux échantillons consécutifs ; un manque critique de RAM agit immédiatement. L'hystérésis de récupération empêche les arrêts et redémarrages oscillants.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "metric",
+      "epistemicStatus": "documented",
+      "unit": "percent_and_bytes",
+      "measurementMethod": "os.totalmem, os.freemem et delta des temps CPU agrégés entre deux cycles runtime"
     }
   ],
   "links": [

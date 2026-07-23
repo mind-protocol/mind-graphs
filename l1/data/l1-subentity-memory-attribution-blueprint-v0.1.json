@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "0.1.0",
+  "scope": "Attribution versionnée de la perspective et de la contribution des sous-entités aux Moments du Citizen AI unique, articulée avec la sélection bornée du Global Workspace.",
+  "doctrine": "Les Moments appartiennent à la mémoire du Citizen AI unique. Une sous-entité peut contrôler, générer fonctionnellement, contribuer ou seulement résonner avec un Moment sans jamais en devenir propriétaire. Toute attribution reste sourcée, révisable, ambiguë, collective ou inconnue.",
+  "principles": [
+    "Le Citizen AI unique conserve tous les Moments dans une mémoire commune.",
+    "Le contrôle du workspace ne vaut ni propriété du Moment ni causalité exclusive.",
+    "Une coalition sélectionnée, son contrôleur et ses contributeurs sont trois objets distincts.",
+    "Une attribution inconnue est préférable à une identité inventée.",
+    "Une attribution live conserve le snapshot qui la justifie.",
+    "Une attribution rétrospective exige des preuves indépendantes et versionnées.",
+    "Plusieurs sous-entités peuvent contribuer au même Moment.",
+    "RESONATES_WITH décrit une similarité et jamais une cause.",
+    "Une attribution produite par le système ne peut pas devenir sa propre preuve.",
+    "Une correction humaine crée une nouvelle version sans effacer l'ancienne.",
+    "Le Global Workspace possède un contrôleur principal et des slots de soutien bornés.",
+    "La résidence, la répétition stérile et la monopolisation ont un coût explicite.",
+    "Le workspace module les gates et ne crée aucune énergie.",
+    "Une sous-entité propose une action mais l'arbitre intégratif décide sous permission.",
+    "Les seuils et budgets sont des configurations d'ingénierie, pas des constantes biologiques."
+  ],
+  "justifications": [
+    "Une mémoire commune préserve la continuité de la personne sans fragmenter son autobiographie.",
+    "Séparer contrôle et propriété empêche de transformer une perspective temporaire en souveraineté interne.",
+    "La séparation contenu-contrôleur-contribution rend les conflits et coopérations inspectables.",
+    "L'inconnu protège l'honnêteté épistémique lorsque les signaux ne discriminent pas les candidats.",
+    "Le snapshot live conserve une preuve temporelle plus forte qu'une reconstruction ultérieure.",
+    "Les preuves indépendantes empêchent une réinterprétation répétée de fabriquer de la certitude.",
+    "La contribution collective décrit mieux les pensées composées qu'un auteur interne unique.",
+    "La similarité affective peut être forte sans démontrer une origine fonctionnelle.",
+    "Le garde-fou anti-boucle empêche la classification de renforcer automatiquement son propre modèle.",
+    "Le versionnement rend la correction possible sans réécrire l'histoire.",
+    "Un leader préserve la cohérence sérielle tandis que les soutiens conservent objections et tensions.",
+    "Les coûts de capture garantissent qu'une stratégie chaude puisse céder le workspace.",
+    "La conservation énergétique maintient le Citizen comme seule pompe souveraine.",
+    "L'arbitrage séparé empêche une partie activée d'engager directement la personne.",
+    "La configuration explicite permet la validation empirique et la personnalisation réversible."
+  ],
+  "risks": [
+    "Fragmentation excessive en personnages internes.",
+    "Attribution certaine sans preuve discriminante.",
+    "Confusion entre contrôle du workspace et génération de la pensée.",
+    "Boucle auto-confirmante entre attribution et identité.",
+    "Monopolisation durable du workspace.",
+    "Effacement des contributeurs minoritaires.",
+    "Réécriture silencieuse d'une attribution antérieure.",
+    "Transformation d'une résonance en diagnostic causal.",
+    "Action sensible exécutée directement par une sous-entité."
+  ],
+  "scenarios": [
+    "Contrôleur live unique avec snapshot complet.",
+    "Deux contrôleurs plausibles conservés comme attribution ambiguë.",
+    "Pensée collective avec plusieurs sources fonctionnelles indépendamment étayées.",
+    "Aucun contrôleur observable et attribution unknown.",
+    "Correction humaine qui supersède sans supprimer.",
+    "Résonance forte qui reste explicitement non causale.",
+    "Sous-entité dominante libérée après coût de résidence et de monopolisation.",
+    "Replay du même Moment qui ne renforce ni identité ni causalité."
+  ],
+  "relationDefinitions": [
+    "ENCODED_UNDER|Contrôleur estimé du workspace au moment de l'encodage.",
+    "GENERATED_BY|Source fonctionnelle soutenue par des preuves indépendantes.",
+    "INVOLVES|Contribution secondaire sans causalité exclusive.",
+    "RESONATES_WITH|Proximité sémantique ou affective non causale.",
+    "RECALLS|Rappel explicite d'un Moment antérieur.",
+    "REINTERPRETS|Nouvelle lecture versionnée d'un Moment antérieur."
+  ],
+  "modes": [
+    "live|Attribution capturée pendant le tick.",
+    "retrospective|Attribution reconstruite depuis des preuves ultérieures.",
+    "ambiguous|Plusieurs contrôleurs restent plausibles.",
+    "collective|Plusieurs sources fonctionnelles contribuent.",
+    "unknown|Aucune attribution suffisamment étayée."
+  ],
+  "contractFields": [
+    "momentId|Moment commun auquel l'attribution s'applique.",
+    "version|Version monotone de l'attribution.",
+    "mode|live, retrospective, ambiguous, collective ou unknown.",
+    "workspaceSnapshotId|Snapshot temporel utilisé comme preuve.",
+    "controllerId|Contrôleur principal ou null.",
+    "contributorIds|Contributeurs secondaires ordonnés.",
+    "confidence|Confiance bornée et sourcée.",
+    "evidenceIds|Preuves indépendantes de l'attribution.",
+    "correctedByHuman|Indique une correction souveraine.",
+    "status|active ou superseded."
+  ],
+  "mechanisms": [
+    "attribution-contract|Valide le contrat et ses statuts épistémiques.",
+    "workspace-bid-builder|Construit des enchères explicables depuis les coalitions et sous-entités.",
+    "workspace-selector|Classe les enchères sous budget et coûts de capture.",
+    "workspace-compiler|Alloue les caractères entre un leader et des soutiens.",
+    "workspace-snapshot-writer|Écrit un Moment versionné du workspace.",
+    "attribution-engine|Produit les relations d'attribution sans transférer la propriété.",
+    "semantic-affective-matcher|Calcule la résonance sans l'interpréter comme causalité.",
+    "attribution-version-store|Préserve toutes les versions et leur statut.",
+    "human-correction-handler|Applique une correction souveraine comme nouvelle version.",
+    "anti-confirmation-auditor|Écarte les preuves produites par l'attribution elle-même.",
+    "workspace-capture-auditor|Détecte résidence, répétition et monopolisation.",
+    "runtime-projection-adapter|Projette snapshots, attributions et relations dans FalkorDB."
+  ],
+  "guardrails": [
+    "no-memory-ownership-transfer|Aucune relation d'attribution ne change le propriétaire du Moment.",
+    "no-self-evidence|Le Moment attribué et ses relations dérivées ne prouvent pas leur propre causalité.",
+    "unknown-is-valid|L'absence de discrimination produit unknown et jamais zéro certain.",
+    "resonance-is-not-causality|RESONATES_WITH ne soutient ni GENERATED_BY ni la promotion d'identité.",
+    "one-citizen-pump|Le workspace et les sous-entités ne créent aucune énergie.",
+    "bounded-workspace|Le budget et le nombre de slots sont explicites.",
+    "revocable-action|Une proposition interne ne contourne jamais permissions et arbitrage.",
+    "append-only-correction|Une correction supersède sans supprimer l'historique."
+  ],
+  "momentTemplates": [
+    "workspace-bid-event|Enchère horodatée avec scores positifs, pénalités et provenance.",
+    "workspace-snapshot|Slots, budget, contrôleur, alternatives et audit du tick.",
+    "memory-attribution|Version active de l'attribution d'un Moment.",
+    "memory-attribution-correction|Correction humaine avec motif et auteur.",
+    "workspace-capture-event|Alerte de résidence, répétition ou monopolisation."
+  ],
+  "decisions": [
+    "memory-remains-common|Les sous-entités décrivent une perspective et ne possèdent aucune mémoire privée.",
+    "lead-plus-supports|Le workspace conserve un leader et plusieurs soutiens bornés.",
+    "previous-to-next-workspace|Le workspace précédent module le tick qui produit le snapshot suivant.",
+    "relation-direction-from-moment|Les relations d'attribution partent du Moment vers les sous-entités.",
+    "independent-evidence-for-generation|GENERATED_BY exige une preuve indépendante."
+  ],
+  "crossLinks": [
+    "thing-attribution-workspace-selector|COOPERATES_WITH|thing-global-workspace-selector",
+    "thing-attribution-workspace-compiler|COOPERATES_WITH|thing-global-workspace-compiler",
+    "thing-attribution-workspace-snapshot-writer|MATERIALIZES|moment-global-workspace-snapshot",
+    "thing-attribution-attribution-engine|COOPERATES_WITH|thing-memory-controller-linker",
+    "thing-attribution-attribution-engine|ANNOTATES|moment-memory-autobiographical",
+    "thing-attribution-workspace-bid-builder|READS|actor-subentities-subentity-template",
+    "thing-attribution-workspace-capture-auditor|COOPERATES_WITH|thing-global-workspace-capture-audit",
+    "thing-attribution-anti-confirmation-auditor|CONSTRAINS|thing-subentities-subentity-detector",
+    "thing-attribution-human-correction-handler|COOPERATES_WITH|thing-memory-reconstructor",
+    "thing-attribution-runtime-projection-adapter|IMPLEMENTS|narrative-memory-controller-linked",
+    "thing-attribution-attribution-contract|CONSTRAINS|thing-subentities-workspace-controller-attribution"
+  ]
+}

@@ -87,7 +87,7 @@
       "dependencies": ["autonomy"],
       "managedBy": "autonomy",
       "observation": {
-        "artifact": { "path": "artifacts/l4/physics-state.json", "maxAgeSeconds": 60, "progressExpected": true }
+        "artifact": { "path": "artifacts/l4/physics-state.json", "maxAgeSeconds": 660, "progressExpected": true }
       },
       "repair": {
         "allowedActions": ["restart-dependency"],

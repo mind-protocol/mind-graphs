@@ -24,6 +24,9 @@ import {
 import {
   buildClusterEmbeddingProfiles, rankClusterEmbeddingProfiles
 } from "../src/intent-embedding-profile.js";
+import {
+  DEFAULT_L4_PERSIST_SECONDS, DEFAULT_L4_TICK_SECONDS, resolveL4RuntimeSchedule
+} from "../src/l4-runtime-schedule.js";
 
 const args = process.argv.slice(2);
 const valueOf = (flag, fallback) => {
@@ -33,7 +36,12 @@ const valueOf = (flag, fallback) => {
 
 const graphId = valueOf("graph", "design");
 const ticks = Number(valueOf("ticks", "0"));
-const basePeriodMs = Number(valueOf("period", "5")) * 1000;
+const schedule = resolveL4RuntimeSchedule({
+  tickSeconds: valueOf("period", String(DEFAULT_L4_TICK_SECONDS)),
+  persistSeconds: valueOf("persist-seconds", String(DEFAULT_L4_PERSIST_SECONDS))
+});
+const basePeriodMs = schedule.tickPeriodMs;
+const persistPeriodMs = schedule.persistPeriodMs;
 const statePath = valueOf("state", "artifacts/l4/physics-state.json");
 const eventsPath = valueOf("events", "artifacts/l4/injections.jsonl");
 const workspacePath = valueOf("workspace", null);
@@ -183,6 +191,7 @@ async function drainEvents() {
 
 async function persist() {
   const target = path.resolve(projectDir, statePath);
+  const temporary = `${target}.${process.pid}.tmp`;
   await fs.mkdir(path.dirname(target), { recursive: true });
   const activeEnergyByNode = {};
   for (const entry of index.entries) {
@@ -218,7 +227,8 @@ async function persist() {
     momentReinforcement: Object.fromEntries(state.momentReinforcement),
     weight: Object.fromEntries([...state.weight].filter(([, value]) => Math.abs(value - 1) > 1e-6))
   };
-  await fs.writeFile(target, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+  await fs.writeFile(temporary, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+  await fs.rename(temporary, target);
 }
 
 if (ticks > 0) {
@@ -230,12 +240,16 @@ if (ticks > 0) {
   console.log(JSON.stringify(summarize(state, index), null, 2));
   console.log(`État écrit dans ${statePath}`);
 } else if (watch) {
-  console.log(`Tics par citoyen, période de base ${basePeriodMs / 1000}s, échelonnée. Ctrl+C pour arrêter.`);
+  console.log(
+    `Tics par citoyen toutes les ${schedule.tickSeconds}s, checkpoints durables toutes les `
+    + `${schedule.persistSeconds}s. Ctrl+C pour arrêter.`
+  );
+  const timers = [];
   for (const [position, pump] of pumps.entries()) {
     // Période propre à chaque citoyen : les tics ne coïncident pas, il n'y a pas
     // d'horloge commune. L'échelonnement est déterministe, pas aléatoire.
     const period = basePeriodMs * (1 + (position % 3) * 0.5);
-    setInterval(async () => {
+    const timer = setInterval(async () => {
       try {
         if (await reloadWorkspaces()) console.log(`Workspace rechargé depuis ${workspacePath}.`);
         tickActor(state, index, pump.id, loggerOptions);
@@ -243,14 +257,36 @@ if (ticks > 0) {
         console.error(`Rechargement du workspace impossible : ${error.message}`);
       }
     }, period).unref?.();
-    setTimeout(() => {}, 0);
+    timers.push(timer);
   }
-  setInterval(async () => {
+  await persist();
+  timers.push(setInterval(async () => {
     await drainEvents();
-    await persist();
     const view = summarize(state, index, { limit: 5 });
     console.log(`tic ${view.tick} · énergie ${view.totalEnergy} · liens vivants ${view.liveLinks}/${view.links} · chaud : ${view.byCluster.map(item => `${item.cluster} ${item.energy}`).join(", ")}`);
-  }, basePeriodMs);
+  }, basePeriodMs));
+  timers.push(setInterval(async () => {
+    try {
+      await persist();
+    } catch (error) {
+      console.error(`Checkpoint L4 impossible : ${error.message}`);
+    }
+  }, persistPeriodMs));
+
+  let stopping = false;
+  const stop = async () => {
+    if (stopping) return;
+    stopping = true;
+    for (const timer of timers) clearInterval(timer);
+    try {
+      await persist();
+    } finally {
+      if (fileStream) await fileStream.close();
+      process.exit(0);
+    }
+  };
+  process.once("SIGINT", stop);
+  process.once("SIGTERM", stop);
 } else {
   console.log("Rien à faire : passer --ticks=N pour une passe déterministe, ou --watch pour boucler.");
 }

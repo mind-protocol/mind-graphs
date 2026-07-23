@@ -219,6 +219,10 @@
         {
           "id": "l1-nlr-conversation-block-001-citizen-interpretation",
           "file": "conversation-choix-de-vie-complexe-block-001-citizen-cluster.json"
+        },
+        {
+          "id": "l1-nlr-conversation-block-002-citizen-interpretation",
+          "file": "conversation-choix-de-vie-complexe-block-002-citizen-cluster.json"
         }
       ],
       "frontier": {

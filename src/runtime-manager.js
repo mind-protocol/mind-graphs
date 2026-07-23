@@ -409,20 +409,57 @@ export async function runtimeCycle(config, options = {}) {
   return { status: currentStatus, events: [...transitionEvents, ...repairEvents, ...notificationEvents] };
 }
 
-export async function acquireLock(lockPath, { staleAfterMs = 10 * 60 * 1000 } = {}) {
-  await fs.mkdir(path.dirname(lockPath), { recursive: true });
+async function processIsAlive(pid) {
+  if (!Number.isInteger(pid) || pid <= 0) return false;
   try {
-    const existing = JSON.parse(await fs.readFile(lockPath, "utf8"));
-    if (existing.pid && Date.now() - new Date(existing.createdAt).getTime() < staleAfterMs) {
-      try {
-        process.kill(existing.pid, 0);
-        throw new Error(`runtime manager already running as pid ${existing.pid}`);
-      } catch (error) {
-        if (error.message.startsWith("runtime manager already")) throw error;
-      }
-    }
+    process.kill(pid, 0);
+    return true;
   } catch (error) {
-    if (error.code !== "ENOENT" && error.name !== "SyntaxError" && error.message.startsWith("runtime manager already")) throw error;
+    // EPERM means the process exists but cannot be signalled by this account.
+    return error.code === "EPERM";
   }
-  await fs.writeFile(lockPath, JSON.stringify({ pid: process.pid, createdAt: new Date().toISOString() }), { flag: "w" });
+}
+
+export async function acquireLock(lockPath, { label = "runtime manager" } = {}) {
+  await fs.mkdir(path.dirname(lockPath), { recursive: true });
+
+  for (let attempt = 0; attempt < 4; attempt += 1) {
+    try {
+      const handle = await fs.open(lockPath, "wx");
+      try {
+        await handle.writeFile(JSON.stringify({
+          pid: process.pid,
+          createdAt: new Date().toISOString()
+        }));
+      } finally {
+        await handle.close();
+      }
+      return;
+    } catch (error) {
+      if (error.code !== "EEXIST") throw error;
+    }
+
+    let existing = null;
+    try {
+      existing = JSON.parse(await fs.readFile(lockPath, "utf8"));
+    } catch (error) {
+      if (error.code === "ENOENT") continue;
+    }
+    if (await processIsAlive(existing?.pid)) {
+      throw new Error(`${label} already running as pid ${existing.pid}`);
+    }
+
+    // Rename is atomic: only one contender can claim and remove a stale lock.
+    const stalePath = `${lockPath}.stale-${process.pid}-${Date.now()}-${attempt}`;
+    try {
+      await fs.rename(lockPath, stalePath);
+      await fs.unlink(stalePath).catch(error => {
+        if (error.code !== "ENOENT") throw error;
+      });
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+    }
+  }
+
+  throw new Error(`unable to acquire ${label} lock`);
 }

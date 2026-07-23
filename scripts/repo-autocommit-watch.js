@@ -17,7 +17,15 @@ import { readRepoNode, verifyGitRemote } from "../src/repo-provenance.js";
 const exec = promisify(execFile);
 const ONCE = process.argv.includes("--once");
 const DEBOUNCE_MS = Number(process.env.REPO_AUTOCOMMIT_DEBOUNCE_MS || 2000);
-const IGNORE = [/^\.git(\/|$)/, /^node_modules(\/|$)/, /(^|\/)\.DS_Store$/];
+// Runtime artifacts change continuously and are already excluded from Git.
+// Watching them would still schedule `git add -A` on every tick and make
+// OneDrive rescan `.git`, even though there is nothing durable to commit.
+const IGNORE = [
+  /^\.git(\/|$)/,
+  /^node_modules(\/|$)/,
+  /^artifacts(\/|$)/,
+  /(^|\/)\.DS_Store$/
+];
 
 const git = args => exec("git", args, { cwd: projectDir, maxBuffer: 128 * 1024 * 1024 });
 

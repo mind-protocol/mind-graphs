@@ -11,6 +11,10 @@ import { relocateActorToSubjectSpace } from "../src/actor-location.js";
 import {
   datasetLinks, datasetNodes, loadManifest, projectDir, readDatasets, selectGraph
 } from "../src/graph-manifest.js";
+import {
+  DEFAULT_L4_PERSIST_SECONDS, DEFAULT_L4_TICK_SECONDS, resolveL4RuntimeSchedule
+} from "../src/l4-runtime-schedule.js";
+import { acquireLock } from "../src/runtime-manager.js";
 import { buildWakeNotification, showWindowsNotification } from "../src/windows-notification.js";
 
 const args = process.argv.slice(2);
@@ -20,7 +24,8 @@ const valueOf = (flag, fallback) => {
 };
 const intervalMs = Number(valueOf("interval-minutes", "5")) * 60_000;
 const personalIntervalMs = Number(valueOf("personal-minutes", "15")) * 60_000;
-const tickSeconds = Number(valueOf("tick-seconds", "5"));
+const tickSeconds = Number(valueOf("tick-seconds", String(DEFAULT_L4_TICK_SECONDS)));
+const persistSeconds = Number(valueOf("persist-seconds", String(DEFAULT_L4_PERSIST_SECONDS)));
 const actorId = valueOf("actor", "actor-nlr");
 const senseHandle = valueOf("sense-handle", process.env.MIND_CITIZEN_HANDLE || "") || null;
 const once = args.includes("--once");
@@ -38,7 +43,7 @@ const personalNow = args.includes("--personal-now");
 const personalOnly = args.includes("--personal-only");
 if (!Number.isFinite(intervalMs) || intervalMs < 1_000) throw new Error("--interval-minutes must be positive");
 if (!Number.isFinite(personalIntervalMs) || personalIntervalMs < 1_000) throw new Error("--personal-minutes must be positive");
-if (!Number.isFinite(tickSeconds) || tickSeconds < 1) throw new Error("--tick-seconds must be at least 1");
+resolveL4RuntimeSchedule({ tickSeconds, persistSeconds });
 if (!Number.isInteger(questionCount) || questionCount < 0) throw new Error("--question-count must be a non-negative integer");
 if (!Number.isFinite(questionBudget) || questionBudget < 0) throw new Error("--question-budget must be non-negative");
 
@@ -49,6 +54,11 @@ const wakeLogPath = path.join(runtimeDir, "wake-log.jsonl");
 const personalLatestPath = path.join(runtimeDir, "personal-latest.json");
 const personalLogPath = path.join(runtimeDir, "personal-log.jsonl");
 const physicsPath = path.resolve(projectDir, "artifacts/l4/physics-state.json");
+const lockPath = path.join(runtimeDir, "autonomous-agent.lock");
+
+if (!once && !dryRun) {
+  await acquireLock(lockPath, { label: "autonomous agent" });
+}
 
 async function readJson(filePath, fallback = null) {
   try {
@@ -111,6 +121,7 @@ function startPhysics() {
     "scripts/l4-tick.js",
     "--watch",
     `--period=${tickSeconds}`,
+    `--persist-seconds=${persistSeconds}`,
     "--workspace=artifacts/autonomy/global-workspace.json"
   ], { cwd: projectDir, stdio: "inherit", windowsHide: true });
   physicsProcess.once("exit", code => {

@@ -702,8 +702,11 @@ function normalizeLink(link, defaults = {}) {
     // Quantification portée par l'arête (ontologie 1.9.0, `linkQuantification`) :
     // absente par défaut, jamais inventée. Une arête causale nue reste nue.
     effectSizePct: link.effectSizePct ?? "",
-    confidenceScore: link.confidenceScore ?? "",
+    confidenceScore: link.confidenceScore ?? link.confidence ?? "",
     evidenceBasis: link.evidenceBasis || "",
+    attributionMode: link.attributionMode || link.mode || "",
+    workspaceSnapshotId: link.workspaceSnapshotId || "",
+    epistemicStatus: link.epistemicStatus || "",
     forecastEffect: defaults.forecastEffect || link.effect || "",
     forecastStrength: defaults.forecastStrength ?? link.strength ?? 0,
     forecastPolarity: defaults.forecastPolarity || link.polarity || "",
@@ -856,15 +859,16 @@ for (const link of allLinks) {
       causalClaim:$causalClaim, canonicalPredicate:$canonicalPredicate,
       quantificationStatus:$quantificationStatus, schemaVersion:$schemaVersion,
       effectSizePct:$effectSizePct, confidenceScore:$confidenceScore,
-      evidenceBasis:$evidenceBasis,
+      evidenceBasis:$evidenceBasis, attributionMode:$attributionMode,
+      workspaceSnapshotId:$workspaceSnapshotId, epistemicStatus:$epistemicStatus,
       traversalWeight:$traversalWeight, hierarchyWeight:$hierarchyWeight,
       hierarchyKind:$hierarchyKind, sourceRepository:$sourceRepository,
       sourceCommit:$sourceCommit, observedAt:$observedAt, weight:$weight
     }`, { params: {
       ...link,
       relationFamily: ontologyRelation.family,
-      relationScope: ontologyRelation.scope,
-      causalClaim: ontologyRelation.causalClaim,
+      relationScope: ontologyRelation.scope || "",
+      causalClaim: ontologyRelation.causalClaim ?? false,
       canonicalPredicate: ontologyRelation.canonicalPredicate || link.type,
       quantificationStatus: link.quantificationStatus || "unquantified",
       schemaVersion: graphOntology.schemaVersion,

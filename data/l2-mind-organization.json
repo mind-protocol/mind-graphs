@@ -4,62 +4,62 @@
     {
       "id": "space-l2-mind-protocol",
       "name": "Space · Organisation Mind Protocol",
-      "nodeType": "context",
+      "nodeType": "space",
       "phrase": "Espace racine de la cognition organisationnelle de Mind Protocol.",
       "family": "L2 Organization",
       "summary": "Englobe le design, l'architecture, la recherche, les opérations et la gouvernance de Mind Protocol.",
       "clusterId": "l2-mind-organization",
-      "semanticType": "space"
+      "semanticType": "organizational_space"
     },
     {
       "id": "space-l2-design",
       "name": "Space · Design du protocole",
-      "nodeType": "context",
+      "nodeType": "space",
       "phrase": "Espace majeur où l'organisation conçoit les endgames, principes et choix d'architecture.",
       "family": "L2 Organization · Design",
       "summary": "Contient le graphe de design (axiomes, mécanismes, prospective, choix de design).",
       "clusterId": "l2-mind-organization",
-      "semanticType": "space"
+      "semanticType": "organizational_space"
     },
     {
       "id": "space-l2-architecture",
       "name": "Space · Architecture technique & Code",
-      "nodeType": "context",
+      "nodeType": "space",
       "phrase": "Espace décrivant les composants spectraux, modules logiciels et infrastructures.",
       "family": "L2 Organization · Architecture",
       "summary": "Structure le code source, les paquetages, les tests et l'intégration continue.",
       "clusterId": "l2-mind-organization",
-      "semanticType": "space"
+      "semanticType": "organizational_space"
     },
     {
       "id": "space-l2-research",
       "name": "Space · Recherche & Expériences",
-      "nodeType": "context",
+      "nodeType": "space",
       "phrase": "Espace d'expérimentation, d'études et d'évaluation empirique.",
       "family": "L2 Organization · Research",
       "summary": "Héberge les jeux de données d'évaluation, les tests de prédiction et l'évidence scientifique.",
       "clusterId": "l2-mind-organization",
-      "semanticType": "space"
+      "semanticType": "organizational_space"
     },
     {
       "id": "space-l2-roadmap",
       "name": "Space · Roadmap & Gouvernance",
-      "nodeType": "context",
+      "nodeType": "space",
       "phrase": "Espace de suivi des jalons, décisions de promotion et arbitrages organisationnels.",
       "family": "L2 Organization · Governance",
       "summary": "Organise les tâches, verrous, arbitrages et demandes de promotion vers L4.",
       "clusterId": "l2-mind-organization",
-      "semanticType": "space"
+      "semanticType": "organizational_space"
     },
     {
       "id": "space-l2-autonomous-cognition",
       "name": "Space · Cognition Autonome & Citoyens IA",
-      "nodeType": "context",
+      "nodeType": "space",
       "phrase": "Espace de travail et d'exécution dédié aux Citoyens IA et à la cognition autonome.",
       "family": "L2 Organization · Autonomous Cognition",
       "summary": "Périmètre de présence et d'interaction des Citoyens IA (dont nlr_ai) au sein du L2.",
       "clusterId": "l2-mind-organization",
-      "semanticType": "space"
+      "semanticType": "organizational_space"
     },
     {
       "id": "actor-nlr-ai",
@@ -73,17 +73,17 @@
       "citizenType": "ai",
       "currentSpaceId": "space-l2-autonomous-cognition",
       "clusterId": "l2-mind-organization",
-      "semanticType": "actor"
+      "semanticType": "citizen_ai"
     },
     {
       "id": "thing-l2-repo-mind-graphs",
       "name": "Dépôt · mind-protocol/mind-graphs",
-      "nodeType": "artifact",
+      "nodeType": "thing",
       "phrase": "Dépôt GitHub canonique du graphe causal ; racine du miroir arborescent fichier↔graphe.",
       "family": "L2 Organization · Architecture",
       "summary": "Nœud de coordonnées du dépôt : il porte l'URL du remote, le nom du remote et la branche par défaut. Source unique du remote pour l'auto-push, et ancre de l'arbre miroir (dossiers=spaces, fichiers=things).",
       "clusterId": "l2-mind-organization",
-      "semanticType": "thing",
+      "semanticType": "repository",
       "repositoryUrl": "https://github.com/mind-protocol/mind-graphs",
       "remoteName": "origin",
       "defaultBranch": "main"

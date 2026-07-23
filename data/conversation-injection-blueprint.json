@@ -951,6 +951,8 @@
         "Les embeddings routent l'attention mais ne créent aucun lien, ne confirment aucune croyance et ne fusionnent aucune personne.",
         "Avant les quatre missions, le Citizen produit une réponse de rencontre pertinente et attribuée : attention, réactions fonctionnelles, évocations, hypothèses empathiques, curiosités, soin, ambition et idées ; aucune facette n'est forcée par quota.",
         "Toute réaction ou idée décrit l'état cognitif du Citizen et pointe vers son stimulus/workspace ; elle ne devient ni trait humain, ni intention humaine, ni autorisation d'agir.",
+        "Les réactions distinctes du Citizen sont matérialisées en plusieurs nœuds citizen_reaction lorsque leur cible, valence, excitation ou tendance d'action diffère ; chaque réaction porte son vecteur affectif fonctionnel complet et corrigeable.",
+        "Chaque réaction est automatiquement reliée par CONTROLLED_WORKSPACE_DURING à la sous-entité active observée dans son WorkspaceSnapshot, avec confiance et mode live ; un contrôleur absent reste explicitement unknown.",
         "Toute hypothèse empathique conserve ses preuves, alternatives plausibles, falsifier et prochaine voie d'observation.",
         "Toute curiosité à valeur attendue élevée est résolue, transformée en question/tâche bornée avec condition d'arrêt, ou explicitement abandonnée avec raison avant clôture.",
         "Chaque conversation possède un clusterId stable ; le Citizen AI produit depuis le bloc et son WorkspaceSnapshot des atomes sourcés de contexte, acteurs, faits et autres angles applicables, sous consentement.",

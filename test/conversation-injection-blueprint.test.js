@@ -128,6 +128,41 @@ test("valuable curiosity becomes bounded discovery work before completion", asyn
   ));
 });
 
+test("citizen reactions are atomic, affectively colored and attributed to the live controller", async () => {
+  const { nodes } = indexBlueprint(await loadBlueprint());
+  const encounter = nodes.get("mech-ci-citizen-encounter-response");
+  const shape = nodes.get("mech-ci-shape-audit");
+  const task = nodes.get("task-conversation-injection");
+  const contract = encounter.encounterResponseContract;
+  const affect = contract.affectAppraisalContract;
+  const controller = contract.activeControllerLinkContract;
+
+  assert.match(contract.reactionAtomicityRule, /un nœud citizen_reaction par réaction/);
+  assert.match(contract.overAggregationGap, /reaction_overaggregated/);
+  assert.deepEqual(Object.keys(affect.dimensions), [
+    "valence",
+    "arousal",
+    "perceivedControl",
+    "uncertainty",
+    "novelty",
+    "careSalience"
+  ]);
+  assert.equal(affect.dimensions.valence[0], -1);
+  assert.equal(affect.dimensions.arousal[1], 1);
+  assert.equal(controller.relation, "CONTROLLED_WORKSPACE_DURING");
+  assert.match(controller.causalBoundary, /ne vaut ni GENERATED_BY/);
+  assert.equal(
+    shape.shapeContract.encounterResponse.requiredRuntimeRelationWhenControllerObserved,
+    "CONTROLLED_WORKSPACE_DURING"
+  );
+  assert.ok(task.acceptanceCriteria.some(criterion =>
+    criterion.includes("plusieurs nœuds citizen_reaction")
+  ));
+  assert.ok(task.acceptanceCriteria.some(criterion =>
+    criterion.includes("sous-entité active")
+  ));
+});
+
 test("the four missions are distinct analyses and valuable unknowns create validation work", async () => {
   const { nodes } = indexBlueprint(await loadBlueprint());
   const missions = nodes.get("mech-ci-shape-audit").shapeContract.missions;

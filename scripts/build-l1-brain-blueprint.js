@@ -1204,6 +1204,7 @@ const graph = {
     doctrine: citizenAIRoles.doctrine,
     epistemicStatus: citizenAIRoles.epistemicStatus,
     purpose: citizenAIRoles.purpose,
+    reflectionContract: citizenAIRoles.reflectionContract,
     actorArchetypeId: citizenAIRoles.actorArchetype.id,
     instanceTemplateId: citizenAIRoles.instanceTemplate.id,
     roleIds: [...roleNodeIds.values()],

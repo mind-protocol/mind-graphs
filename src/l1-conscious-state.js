@@ -152,7 +152,9 @@ function compilePresence(workspace, awareness, integrity, attention, policy) {
 }
 
 function compileAttention(workspace, integrity, attention = {}) {
-  const focus = firstFinite(attention.innerOuterFocus, workspace.innerOuterFocus);
+  const focus = attention.measurementStatus === "unavailable"
+    ? null
+    : firstFinite(attention.innerOuterFocus, workspace.innerOuterFocus);
   const fragmentation = firstFinite(integrity.fragmentationPressure, workspace.integrity?.fragmentationPressure);
   const previousFocus = firstFinite(attention.previousFocus, workspace.focusDynamics?.previousFocus);
   const target = firstFinite(attention.target, workspace.focusDynamics?.target);
@@ -169,7 +171,7 @@ function compileAttention(workspace, integrity, attention = {}) {
           : focus > 0.15 ? "external"
             : "balanced";
   return {
-    measurementStatus: focus === null ? "unavailable" : "observed",
+    measurementStatus: focus === null ? "unavailable" : attention.measurementStatus || "observed",
     innerOuterFocus: focus,
     orientation,
     intensity: focus === null ? null : Math.abs(focus),

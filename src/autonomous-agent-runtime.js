@@ -509,6 +509,12 @@ export function composeGlobalWorkspace({
       : physicsWorkspace.activeEntity || physicsWorkspace.broadcastEntity || previousWorkspace?.activeEntity
         || { innerOuterFocus: previousWorkspace?.innerOuterFocus ?? 0 };
   const resolvedInnerOuterFocus = innerOuterFocusOf(focusSource);
+  const focusMeasurementStatus = innerOuterFocus !== undefined
+    || physicsWorkspace.innerOuterFocus !== undefined
+    ? "observed"
+    : previousWorkspace?.innerOuterFocus !== undefined
+      ? "carryover"
+      : "unavailable";
   const focusedQuestionPolicy = questionPolicy
     ? adjustQuestionPolicyForFocus(questionPolicy, resolvedInnerOuterFocus)
     : null;
@@ -633,7 +639,11 @@ export function composeGlobalWorkspace({
   const consciousState = compileConsciousStateFrame({
     workspace,
     previousWorkspace,
-    ...consciousStateContext
+    ...consciousStateContext,
+    attention: {
+      measurementStatus: focusMeasurementStatus,
+      ...(consciousStateContext.attention || {})
+    }
   });
   const voice = narrateConsciousState(consciousState);
   const consciousWorkspace = { ...workspace, consciousState, voice };

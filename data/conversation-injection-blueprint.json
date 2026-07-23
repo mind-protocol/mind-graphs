@@ -1,0 +1,371 @@
+{
+  "scope": "Blueprint du procédé « Injection des conversations IA dans le L1 » : une mission autonome, récurrente et à haute priorité qui ingère les conversations passées humain↔IA dans le graphe personnel (nlr_ai), bloc par bloc, en affinant quatre profils analytiques. Ce dataset modélise le procédé (mechanisms), justifie chaque choix (design_rationale), déclare comment vérifier qu'il est bien fait (experiments TESTS), expose les décisions encore ouvertes (open_question) et porte la tâche de travail. Doctrine de design uniquement — aucun contenu personnel n'entre ici ; le contenu vit dans le L1.",
+  "nodes": [
+    {
+      "id": "mech-conversation-injection",
+      "name": "Procédé · Injection des conversations dans le L1",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Ingérer en autonomie les conversations passées humain↔IA dans le L1, bloc par bloc, en affinant quatre profils.",
+      "family": "Injection conversations · procédé racine",
+      "summary": "Mission au long cours (plusieurs jours) : récupérer les conversations en ordre chrono-inverse, les découper en blocs d'environ deux réponses, produire pour chaque bloc des atomes sourcés (moment, contexte, acteurs, faits), et mettre à jour quatre missions transversales (profil psychologique, situation, objectifs/préférences, financier). Chaque sous-procédé est une pièce PART_OF de celui-ci.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-reverse-chrono-retrieval",
+      "name": "Récupération · ordre chrono-inverse",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Un adaptateur de source liste les conversations et les sert des plus récentes aux plus anciennes.",
+      "family": "Injection conversations · source",
+      "summary": "Adaptateur enfichable (export ChatGPT/Claude/Codex/dossier) exposant lister, récupérer, supprimer. Les conversations sont traitées par lastMessageAt décroissant : la situation présente et les chiffres récents entrent avant le passé.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-block-segmentation",
+      "name": "Découpage · blocs d'environ deux réponses",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Chaque conversation est coupée en blocs d'environ deux réponses, trois à quatre si elles sont très courtes.",
+      "family": "Injection conversations · découpage",
+      "summary": "Unité = bloc ≈ deux paires prompt→réponse. Sous un seuil de longueur, regrouper jusqu'à quatre réponses pour éviter des atomes triviaux. Blocs ordonnés (blockIndex) et chaînés par FOLLOWS_IN_CONVERSATION, via la primitive idempotente existante.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-block-atoms",
+      "name": "Formulaires · atomes sourcés par bloc",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Chaque bloc produit un moment brut et des atomes extraits : contexte, acteurs, faits saillants.",
+      "family": "Injection conversations · atomes",
+      "summary": "Pour chaque bloc : un moment-mémoire (message_moment, observed), un atome de contexte (observation avec contextId), des ancres d'acteurs tiers, et les faits/préférences/objectifs surgis. Chaque atome porte sa provenance (conversation, blockId, date, méthode) et un lien CONSENTED_UNDER vers le consentement du programme.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-mission-psych-profile",
+      "name": "Mission 1 · profil psychologique",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Affiner en continu MBTI, parts IFS, lecture jungienne et signaux cliniques, à partir des blocs.",
+      "family": "Injection conversations · mission psychologique",
+      "summary": "Ensemble d'atomes révisables : quatre axes MBTI (preuves datées + confiance qualitative, jamais un score inventé), extension des sous-entités IFS existantes, archétypes/fonctions jungiens, et signaux psychologiques/psychiatriques observés — sensibles, jamais diagnostiques ni autoritaires. Chaque inférence est attribuée à l'IA et reliée aux blocs qui l'étayent.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-mission-situation",
+      "name": "Mission 2 · tableau de situation",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Tenir un tableau factuel et daté de la situation présente de la personne.",
+      "family": "Injection conversations · mission situation",
+      "summary": "Faits précis (logement, santé, relations, travail, légal, localisation), datés et needsRefresh, avec membrane sensible pour la santé. Interdit de reconstruire le présent depuis des faits périmés ; toute contradiction est signalée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-mission-objectives-prefs",
+      "name": "Mission 3 · objectifs & préférences",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Étendre et préciser les objectifs, valeurs et préférences avec preuves et statuts.",
+      "family": "Injection conversations · mission objectifs",
+      "summary": "Enrichit les objective/value/preference existants du L1 : chaque but ou penchant reçoit statut, priorité, preuves datées et réconciliation explicite des contradictions, sans écraser l'historique.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-mission-financial",
+      "name": "Mission 4 · tableau financier",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Tenir une image financière précise, datée et strictement sous membrane.",
+      "family": "Injection conversations · mission financière",
+      "summary": "Revenus, dépenses, actifs, dettes, autonomie. Atomes très sensibles, membrane stricte, systématiquement datés et needsRefresh : la situation présente n'est jamais recomposée à partir de chiffres anciens.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-autonomous-loop",
+      "name": "Boucle · exécution autonome récurrente",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Tous les quelques jours, l'agent traite la file, journalise, reprend, et demande de l'aide s'il est bloqué.",
+      "family": "Injection conversations · autonomie",
+      "summary": "Réveil récurrent : prendre la conversation non traitée la plus récente, l'ingérer bloc par bloc, mettre à jour les quatre missions, vérifier, puis la retirer de la file, jusqu'à épuisement du budget temps/tokens. État persistant et idempotent (stableMomentId) pour reprendre entre deux réveils. En cas de blocage (source illisible, ambiguïté d'identité, arbitrage sensible), poser une question à la personne et mettre l'item en pause.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-verified-deletion",
+      "name": "Suppression · vérifiée, archivée, autorisée",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Une conversation n'est effacée à la source qu'après ingestion vérifiée, archivage et autorisation humaine.",
+      "family": "Injection conversations · suppression",
+      "summary": "La suppression retire la conversation de la file. Elle est encadrée : (1) tous les blocs ingérés et vérifiés ; (2) hash + manifest archivés avant tout effacement ; (3) l'effacement dur des données de la personne exige une autorisation humaine explicite — par défaut soft-delete/déplacement en « traité ». L'agent n'efface jamais seul.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+
+    {
+      "id": "rat-ci-two-response-blocks",
+      "name": "Justification · pourquoi des blocs de deux réponses",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Deux réponses portent assez de sens pour un atome utile, mais assez peu pour rester attribuable et corrigible.",
+      "family": "Injection conversations · justification",
+      "summary": "Trop gros, un bloc mélange plusieurs idées et devient inrévisable atome par atome ; trop fin, il produit du bruit. Deux réponses (élargies à quatre quand elles sont très courtes) est le grain qui garde la provenance nette et la correction possible.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-reverse-chrono",
+      "name": "Justification · pourquoi l'ordre chrono-inverse",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Les tableaux situation et finances ne valent que frais : le présent doit entrer avant le passé.",
+      "family": "Injection conversations · justification",
+      "summary": "Les quatre missions décrivent surtout un état présent. Traiter d'abord les conversations les plus récentes fait converger les profils sur la situation actuelle dès les premiers réveils, le passé venant ensuite enrichir sans écraser.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-missions-as-inference",
+      "name": "Justification · les missions sont des inférences de l'IA",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Un profil est ce que l'IA infère, jamais ce que la personne déclare : il est attribué, sourcé et révisable.",
+      "family": "Injection conversations · justification",
+      "summary": "Conforme à la doctrine du L1 : ce qui vient de l'IA est AUTHORED_BY l'agent, inferred, confirmedByHuman=false, relié aux blocs qui l'étayent. Aucun chiffre de confiance inventé ; le veto humain précède l'optimisation. Cela protège contre le glissement d'un snapshot en identité figée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-sensitive-membrane",
+      "name": "Justification · membrane sur santé, psychiatrie, finances",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Les données les plus intimes modulent le L1 mais ne circulent pas vers les autres graphes.",
+      "family": "Injection conversations · justification",
+      "summary": "Santé, psychiatrie, substances et finances sont marquées sensibles et confinées à nlr_ai. Elles n'alimentent pas automatiquement les graphes professionnels, économiques ou sociaux, et ne définissent jamais la personne par son dernier état.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-verified-deletion",
+      "name": "Justification · effacer seulement après vérif, archive et accord",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Effacer est irréversible : cela se mérite par une ingestion prouvée, une archive et un accord humain.",
+      "family": "Injection conversations · justification",
+      "summary": "Supprimer les conversations sort les traitées de la file et garde la source propre, mais l'effacement dur détruit des données de la personne. On le borne donc par une vérification d'ingestion, un archivage préalable (hash/manifest, réversible côté L1) et une autorisation humaine explicite — l'autonomie ne s'étend jamais à la destruction non gardée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-autonomy-help",
+      "name": "Justification · autonome mais demande de l'aide",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Un travail de plusieurs jours doit avancer seul, mais s'arrêter pour demander quand il est vraiment bloqué.",
+      "family": "Injection conversations · justification",
+      "summary": "Le volume (des centaines de conversations) impose l'autonomie ; mais certains blocages — source illisible, identité ambiguë, arbitrage sensible — exigent un humain. Poser une question et mettre l'item en pause vaut mieux qu'inventer ou qu'échouer en silence.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-idempotent-resume",
+      "name": "Justification · idempotence et reprise",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Rejouer un bloc ne doit rien dupliquer, pour reprendre sans risque entre deux réveils.",
+      "family": "Injection conversations · justification",
+      "summary": "Les identifiants de moment sont stables par contenu (stableMomentId) : un bloc réingéré retourne « déjà traité ». C'est ce qui rend la mission sûre à interrompre et à reprendre sur plusieurs jours sans doublons ni corruption d'état.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+
+    {
+      "id": "verif-ci-reverse-order",
+      "name": "Vérification · l'ordre chrono-inverse est respecté",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Contrôler que la file est traitée des plus récentes aux plus anciennes et strictement décroissante.",
+      "family": "Injection conversations · vérification",
+      "summary": "Sur un lot de conversations aux dates connues, vérifier que l'ordre de traitement suit lastMessageAt décroissant et qu'aucune conversation déjà traitée n'est reprise.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-provenance",
+      "name": "Vérification · chaque atome porte sa provenance",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Aucun atome de bloc sans source, date et nature ; les inférences sont attribuées à l'IA.",
+      "family": "Injection conversations · vérification",
+      "summary": "Valider que tout atome produit par un bloc porte sourceArtifact/sourceLocator/extractedAt, un epistemicStatus correct, un lien CONSENTED_UNDER, et que les inférences portent AUTHORED_BY vers l'agent. npm run validate doit passer sur le L1.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-idempotence",
+      "name": "Vérification · rejouer ne duplique rien",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Réingérer une conversation entière laisse le graphe identique.",
+      "family": "Injection conversations · vérification",
+      "summary": "Traiter deux fois la même conversation : le second passage retourne « déjà traité » pour chaque bloc et n'ajoute aucun nœud ni lien. Preuve de la reprise sûre sur plusieurs jours.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-deletion-gate",
+      "name": "Vérification · pas de suppression sans vérif, archive et accord",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Une conversation non entièrement ingérée, non archivée ou non autorisée ne peut pas être effacée.",
+      "family": "Injection conversations · vérification",
+      "summary": "Simuler chaque manque (bloc manquant, archive absente, autorisation absente) et vérifier que l'effacement est refusé. Vérifier qu'un effacement réussi laisse un manifest/hash consultable.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-missions-provenance",
+      "name": "Vérification · chaque inférence de profil est étayée",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Toute affirmation des quatre missions pointe vers au moins un bloc qui la soutient.",
+      "family": "Injection conversations · vérification",
+      "summary": "Pour un échantillon d'atomes de mission (MBTI, IFS, situation, objectifs, financier), vérifier qu'ils relient leurs preuves, ne portent aucun score de confiance inventé, et sont marqués sensibles/needsRefresh là où la doctrine l'exige.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-financial-freshness",
+      "name": "Vérification · le tableau financier reste daté et non recomposé",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Aucun chiffre financier présent n'est déduit de données périmées.",
+      "family": "Injection conversations · vérification",
+      "summary": "Vérifier que chaque atome financier porte une date et needsRefresh, et qu'aucune valeur « présente » n'est fabriquée par agrégation de chiffres anciens sans rafraîchissement explicite.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+
+    {
+      "id": "oq-ci-source-format",
+      "name": "Question ouverte · source et format des conversations",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Sous quelle forme sont les conversations, et quel adaptateur écrire en premier ?",
+      "family": "Injection conversations · question ouverte",
+      "summary": "Export ChatGPT JSON, export Claude, transcripts Codex, ou dossier de fichiers ? Le reste de la chaîne est agnostique ; seul l'adaptateur dépend de cette réponse.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "oq-ci-missions-location",
+      "name": "Question ouverte · où vivent les quatre missions",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Nœuds runtime, dataset validé, ou mixte pour les profils accumulés ?",
+      "family": "Injection conversations · question ouverte",
+      "summary": "Le volume et la mise à jour continue favorisent le runtime ; la relecture et la validation favorisent un dataset l1/data validé. Trancher détermine le chemin d'écriture des missions.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "oq-ci-deletion-policy",
+      "name": "Question ouverte · politique de suppression",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Effacement dur autorisé, ou archive/soft-delete par défaut ?",
+      "family": "Injection conversations · question ouverte",
+      "summary": "La spécification propose l'archive et l'autorisation humaine par défaut, l'effacement dur restant opt-in. À confirmer avant toute exécution qui touche la source.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "oq-ci-cadence-budget",
+      "name": "Question ouverte · cadence et budget par réveil",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Tous les combien, et combien de conversations ou de tokens par run ?",
+      "family": "Injection conversations · question ouverte",
+      "summary": "La cadence (tous les quelques jours) et le budget par réveil fixent la vitesse d'épuisement de la file et le coût. À calibrer sur un prototype.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "conversation-injection"
+    },
+
+    {
+      "id": "task-conversation-injection",
+      "name": "Tâche · Établir la mission d'injection des conversations",
+      "nodeType": "moment",
+      "semanticType": "task",
+      "phrase": "Construire et lancer la mission autonome récurrente d'injection des conversations dans le L1.",
+      "family": "Injection conversations · travail",
+      "summary": "Mission à haute priorité : implémenter l'adaptateur de source, le découpage en blocs, les atomes par bloc, les quatre missions, la boucle autonome récurrente et la suppression encadrée, puis prototyper sur une ou deux vraies conversations avant de scaler. Les questions ouvertes liées doivent être tranchées en cours de route, en demandant à la personne quand c'est nécessaire.",
+      "workStatus": "ready",
+      "priority": 95,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Un adaptateur de source liste, récupère et rend les conversations en ordre chrono-inverse.",
+        "Chaque conversation est découpée en blocs d'environ deux réponses (trois à quatre si très courtes) et ingérée via la primitive idempotente.",
+        "Chaque bloc produit ses atomes sourcés : moment, contexte, acteurs, faits, sous consentement.",
+        "Les quatre missions (profil psychologique, situation, objectifs/préférences, financier) sont mises à jour à chaque bloc, chaque inférence attribuée à l'IA et reliée à ses preuves.",
+        "La boucle autonome reprend entre deux réveils, journalise l'avancement et demande de l'aide en cas de blocage.",
+        "Aucune conversation n'est effacée avant ingestion vérifiée, archivage et autorisation humaine.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "clusterId": "conversation-injection"
+    }
+  ],
+  "links": [
+    { "source": "mech-ci-reverse-chrono-retrieval", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La récupération chrono-inverse est la première pièce du procédé d'injection." },
+    { "source": "mech-ci-block-segmentation", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le découpage en blocs est une pièce du procédé d'injection." },
+    { "source": "mech-ci-block-atoms", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La production d'atomes par bloc est le cœur du procédé d'injection." },
+    { "source": "mech-ci-mission-psych-profile", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La mission psychologique est l'une des quatre missions transversales du procédé." },
+    { "source": "mech-ci-mission-situation", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La mission situation est l'une des quatre missions transversales du procédé." },
+    { "source": "mech-ci-mission-objectives-prefs", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La mission objectifs/préférences est l'une des quatre missions transversales du procédé." },
+    { "source": "mech-ci-mission-financial", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La mission financière est l'une des quatre missions transversales du procédé." },
+    { "source": "mech-ci-autonomous-loop", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La boucle autonome orchestre le procédé dans le temps." },
+    { "source": "mech-ci-verified-deletion", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La suppression encadrée clôt le traitement de chaque conversation dans le procédé." },
+
+    { "source": "mech-ci-autonomous-loop", "target": "mech-ci-reverse-chrono-retrieval", "type": "LEADS_TO", "justification": "Chaque réveil de la boucle déclenche la récupération de la prochaine conversation." },
+    { "source": "mech-ci-reverse-chrono-retrieval", "target": "mech-ci-block-segmentation", "type": "LEADS_TO", "justification": "Une conversation récupérée est ensuite découpée en blocs." },
+    { "source": "mech-ci-block-segmentation", "target": "mech-ci-block-atoms", "type": "LEADS_TO", "justification": "Chaque bloc découpé est transformé en atomes sourcés." },
+    { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-psych-profile", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission psychologique." },
+    { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-situation", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission situation." },
+    { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-objectives-prefs", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission objectifs/préférences." },
+    { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-financial", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission financière." },
+    { "source": "mech-ci-block-atoms", "target": "mech-ci-verified-deletion", "type": "LEADS_TO", "justification": "Une fois tous les blocs d'une conversation en atomes vérifiés, la suppression encadrée peut la retirer de la file." },
+
+    { "source": "rat-ci-two-response-blocks", "target": "mech-ci-block-segmentation", "type": "GROUNDS", "justification": "Le choix du grain de deux réponses fonde la règle de découpage." },
+    { "source": "rat-ci-reverse-chrono", "target": "mech-ci-reverse-chrono-retrieval", "type": "GROUNDS", "justification": "La priorité au présent fonde l'ordre de récupération chrono-inverse." },
+    { "source": "rat-ci-missions-as-inference", "target": "mech-ci-block-atoms", "type": "GROUNDS", "justification": "L'attribution des inférences à l'IA fonde la façon dont les atomes de bloc sont écrits." },
+    { "source": "rat-ci-autonomy-help", "target": "mech-ci-autonomous-loop", "type": "GROUNDS", "justification": "Le compromis autonomie/demande d'aide fonde le comportement de la boucle." },
+    { "source": "rat-ci-idempotent-resume", "target": "mech-ci-autonomous-loop", "type": "GROUNDS", "justification": "L'idempotence fonde la capacité de la boucle à reprendre sans doublons." },
+    { "source": "rat-ci-sensitive-membrane", "target": "mech-ci-mission-financial", "type": "SAFEGUARDS", "justification": "La membrane sensible protège la mission financière contre la propagation hors du L1." },
+    { "source": "rat-ci-verified-deletion", "target": "mech-ci-verified-deletion", "type": "SAFEGUARDS", "justification": "L'exigence de vérif, archive et accord protège la suppression contre l'irréversible non gardé." },
+
+    { "source": "verif-ci-reverse-order", "target": "mech-ci-reverse-chrono-retrieval", "type": "TESTS", "justification": "L'expérience vérifie que la récupération suit bien l'ordre chrono-inverse." },
+    { "source": "verif-ci-provenance", "target": "mech-ci-block-atoms", "type": "TESTS", "justification": "L'expérience vérifie que chaque atome de bloc porte sa provenance et son attribution." },
+    { "source": "verif-ci-idempotence", "target": "mech-ci-autonomous-loop", "type": "TESTS", "justification": "L'expérience vérifie que la reprise de la boucle ne duplique rien." },
+    { "source": "verif-ci-deletion-gate", "target": "mech-ci-verified-deletion", "type": "TESTS", "justification": "L'expérience vérifie que la suppression est refusée sans vérif, archive et accord." },
+    { "source": "verif-ci-missions-provenance", "target": "mech-ci-mission-psych-profile", "type": "TESTS", "justification": "L'expérience vérifie que les inférences de profil sont étayées et non inventées." },
+    { "source": "verif-ci-financial-freshness", "target": "mech-ci-mission-financial", "type": "TESTS", "justification": "L'expérience vérifie que le tableau financier reste daté et non recomposé." },
+
+    { "source": "mech-conversation-injection", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le procédé motive la tâche de travail qui doit l'établir et le lancer." },
+    { "source": "oq-ci-source-format", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le choix de la source est un livrable que la tâche doit trancher." },
+    { "source": "oq-ci-missions-location", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le lieu des missions est une décision que la tâche doit trancher." },
+    { "source": "oq-ci-deletion-policy", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La politique de suppression est une décision que la tâche doit trancher avant d'effacer quoi que ce soit." },
+    { "source": "oq-ci-cadence-budget", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La cadence et le budget sont à calibrer par la tâche sur un prototype." }
+  ]
+}

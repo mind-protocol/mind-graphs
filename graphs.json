@@ -149,6 +149,10 @@
         {
           "id": "ontology-vocabulary",
           "file": "ontology-vocabulary.json"
+        },
+        {
+          "id": "conversation-injection-blueprint",
+          "file": "conversation-injection-blueprint.json"
         }
       ]
     },

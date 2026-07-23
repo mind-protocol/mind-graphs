@@ -21,12 +21,26 @@ test("task discovery is data-driven and selects the nearest ready deadline", () 
   assert.equal(result.nextScheduledAt, "2026-07-23T15:00:00Z");
 });
 
-test("blocked objectives remain visible but are not selected again", () => {
+test("blocked objectives remain visible and wake again instead of becoming silent", () => {
   const result = selectNextL1TaskWake([
-    { id: "blocked-dynamic-task", nodeType: "objective", status: "active", wakeStatus: "blocked" }
+    {
+      id: "blocked-dynamic-task",
+      nodeType: "objective",
+      status: "active",
+      wakeStatus: "blocked",
+      nextWakeAt: "2026-07-23T11:55:00Z"
+    }
   ], { now: "2026-07-23T12:00:00Z" });
-  assert.equal(result.task, null);
+  assert.equal(result.task.id, "blocked-dynamic-task");
   assert.deepEqual(result.blockedTaskIds, ["blocked-dynamic-task"]);
+});
+
+test("maximum-priority work wins before a nearer lower-priority deadline", () => {
+  const result = selectNextL1TaskWake([
+    { id: "nearer", nodeType: "objective", status: "active", priority: 50, dueAt: "2026-07-23T13:00:00Z" },
+    { id: "priority-one", nodeType: "objective", status: "active", priority: 100, dueAt: "2026-07-24T13:00:00Z" }
+  ], { now: "2026-07-23T12:00:00Z" });
+  assert.equal(result.task.id, "priority-one");
 });
 
 test("JSON-backed task policy is normalized without knowing task identifiers", () => {
@@ -55,6 +69,17 @@ test("a blocker cannot be reported without actionable notification context", () 
   }, { id: "task" }), /needsFromCitizen/);
 });
 
+test("a blocker must declare its next wake", () => {
+  assert.throws(() => validateL1TaskReport({
+    outcome: "blocked",
+    summary: "bloqué",
+    blockerCause: "export absent",
+    attemptedActions: ["vérifier le dossier"],
+    remainingOptions: ["demander l'export"],
+    needsFromCitizen: "fournir l'export"
+  }, { id: "task" }, { now: "2026-07-23T12:00:00Z" }), /cannot become silent/);
+});
+
 test("blocked reports append an observation and return an MCP Telegram payload", async () => {
   const writes = [];
   const graph = {
@@ -75,6 +100,7 @@ test("blocked reports append an observation and return an MCP Telegram payload",
     attemptedActions: ["Vérification des remotes Git"],
     remainingOptions: ["Autoriser le dépôt", "Choisir un autre hébergement"],
     needsFromCitizen: "Choisir ou autoriser le dépôt public.",
+    nextWakeAt: "2026-07-23T13:00:00Z",
     now: "2026-07-23T12:00:00Z",
     manifest: { graphs: [{ id: "personal-graph", status: "active", falkorGraph: "personal_db", blueprintSync: { enabled: true } }] },
     selectGraphByName: async () => graph
@@ -82,6 +108,8 @@ test("blocked reports append an observation and return an MCP Telegram payload",
   assert.equal(result.notification.platform, "telegram");
   assert.equal(result.notificationDelivery.status, "pending");
   assert.equal(result.notificationDelivery.delivered, false);
+  assert.equal(result.notification.blockerMessage, "Le dépôt distant n'est pas autorisé.");
+  assert.match(result.notification.message, /Le dépôt distant n'est pas autorisé\./u);
   assert.match(result.notification.message, /Attendu de Nicolas/u);
   assert.equal(writes.length, 1);
   assert.match(writes[0].query, /wakeCount = coalesce/u);
@@ -111,6 +139,7 @@ test("a failed Telegram delivery remains an explicit blocked delivery failure", 
     attemptedActions: ["Vérification du dossier privé"],
     remainingOptions: ["Fournir un export ChatGPT", "Fournir un export Claude"],
     needsFromCitizen: "Déposer au moins un export.",
+    nextWakeAt: "2026-07-23T20:10:00Z",
     deliverNotification: async () => ({ delivered: false, reason: "telegram http 503" }),
     now: "2026-07-23T20:00:00Z",
     manifest: { graphs: [{ id: "personal-graph", status: "active", falkorGraph: "personal_db", blueprintSync: { enabled: true } }] },

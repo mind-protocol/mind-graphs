@@ -52,7 +52,7 @@ async function cycle() {
     }
     lastProbeRun.set(probe.id, now.getTime());
   }
-  const graph = await getGraphByName("mind_causal_graph");
+  const graph = await getGraphByName("mind_causal");
   await writeHealthRuntime(graph, statuses, {
     runId: `health-run-${now.toISOString()}`,
     checkedAt: now.toISOString(),

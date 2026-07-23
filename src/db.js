@@ -2,7 +2,7 @@ import { FalkorDB } from "falkordb";
 
 const host = process.env.FALKORDB_HOST || "127.0.0.1";
 const port = Number(process.env.FALKORDB_PORT || 6379);
-const graphName = process.env.FALKORDB_GRAPH || "mind_causal_graph";
+const graphName = process.env.FALKORDB_GRAPH || "mind_causal";
 const connectTimeout = Number(process.env.FALKORDB_CONNECT_TIMEOUT_MS || 1500);
 
 let clientPromise;
@@ -36,11 +36,11 @@ export async function getGraphByName(name) {
 }
 
 export async function getL1Graph(name) {
-  return getGraphByName(name || process.env.FALKORDB_L1_GRAPH || "l1_nlr_ai_graph");
+  return getGraphByName(name || process.env.FALKORDB_L1_GRAPH || "nlr_ai");
 }
 
 export async function getL2MindGraph() {
-  return getGraphByName(process.env.FALKORDB_L2_MIND_GRAPH || "l2_mind_protocol_graph");
+  return getGraphByName(process.env.FALKORDB_L2_MIND_GRAPH || "l2_mind_protocol");
 }
 
 export async function getL4RegistryGraph() {

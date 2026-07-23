@@ -85,7 +85,7 @@ npm run simulate:behaviors
 
 `npm run analyze` privilégie l’analyse causale complète via `/api/graph`. Si l’API ou FalkorDB est indisponible, la commande bascule explicitement sur un rapport incomplet construit depuis `data/project-work.json` : il liste les tâches autonomes prêtes, bloquées, proposées et en cours, mais ne produit aucun finding causal complet.
 
-Le seed reconstruit le graphe FalkorDB nommé `mind_causal_graph`. Les modifications durables doivent être faites dans les fichiers JSON de `data/`.
+Le seed reconstruit le graphe FalkorDB nommé `mind_causal`. Les modifications durables doivent être faites dans les fichiers JSON de `data/`.
 
 ## Contenu
 
@@ -129,4 +129,4 @@ Le serveur MCP expose `ask_graph`, qui reçoit une `question` en langage naturel
 
 Le validateur refuse toute propriété `tattoo` dans les données du graphe causal. Le seed ne lit aucun fichier du sous-repo. Les liens historiques vers Mind sont conservés dans `../tattoo-language-atlas/data/mind-historical-crosslinks.json`, mais ne sont pas chargés ici.
 
-La frontière entre graphe de design et graphe scientifique suit la même logique. `graphs.json` déclare deux graphes actifs : `design` (`mind_causal_graph`) et `science` (`mind_science_graph`), chacun avec sa base, son ontologie et ses datasets. Le seed refuse d’écrire si la base connectée n’est pas celle que le manifeste déclare, et aucune arête ne traverse les deux bases. Une référence externe est conservée comme identifiant stable, jamais comme relation FalkorDB. Les nœuds `sci-*` et `csg-*` restent côté design : ils décrivent le graphe scientifique sans en être le contenu. Le premier cluster canonique, Satopää et al. sur la diversité d'information, est produit par `npm run science:ingest:satopaa`. Voir [`DOCUMENTATION.md`](DOCUMENTATION.md) et le cluster `graph-architecture`.
+La frontière entre graphe de design et graphe scientifique suit la même logique. `graphs.json` déclare deux graphes actifs : `design` (`mind_causal`) et `science` (`mind_science`), chacun avec sa base, son ontologie et ses datasets. Le seed refuse d’écrire si la base connectée n’est pas celle que le manifeste déclare, et aucune arête ne traverse les deux bases. Une référence externe est conservée comme identifiant stable, jamais comme relation FalkorDB. Les nœuds `sci-*` et `csg-*` restent côté design : ils décrivent le graphe scientifique sans en être le contenu. Le premier cluster canonique, Satopää et al. sur la diversité d'information, est produit par `npm run science:ingest:satopaa`. Voir [`DOCUMENTATION.md`](DOCUMENTATION.md) et le cluster `graph-architecture`.

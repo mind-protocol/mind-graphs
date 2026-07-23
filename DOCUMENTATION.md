@@ -35,7 +35,7 @@ graphs.json ──► JSON causal ──► validation ──► seed ──► 
                                    zoom, pan, filtres             audit + dialogue
 ```
 
-Le graphe utilise le label FalkorDB `MindNode` et le nom logique `mind_causal_graph`.
+Le graphe utilise le label FalkorDB `MindNode` et le nom logique `mind_causal`.
 
 ## Composition des graphes
 
@@ -45,8 +45,8 @@ Deux graphes sont déclarés :
 
 | Graphe | Base | Statut | Contenu |
 |---|---|---|---|
-| `design` | `mind_causal_graph` | actif | ce que Mind Protocol propose et décide : axiomes, mécanismes, institutions, questions, décisions, prospective, pilotage |
-| `science` | `mind_science_graph` | déclaré | la matière scientifique elle-même — études, claims, estimations, preuves — sous une ontologie propre |
+| `design` | `mind_causal` | actif | ce que Mind Protocol propose et décide : axiomes, mécanismes, institutions, questions, décisions, prospective, pilotage |
+| `science` | `mind_science` | déclaré | la matière scientifique elle-même — études, claims, estimations, preuves — sous une ontologie propre |
 
 Le graphe scientifique est **déclaré sans être peuplé** : sa base est nommée et sa frontière posée, mais il n'a encore ni ontologie ni donnée. Le validateur l'ignore et le signale explicitement comme non actif.
 

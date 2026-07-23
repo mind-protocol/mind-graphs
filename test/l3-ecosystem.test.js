@@ -12,7 +12,7 @@ test("L3 est un graphe actif, autonome et sans arête inter-graphe", async () =>
   const graph = manifest.graphs.find(candidate => candidate.id === "l3-ecosystem");
 
   assert.equal(graph?.status, "active");
-  assert.equal(graph?.falkorGraph, "l3_ecosystem_graph");
+  assert.equal(graph?.falkorGraph, "l3_ecosystem");
   assert.equal(graph?.ontology, "l3/ontology.json");
   assert.match(graph?.frontier?.rule || "", /Aucune arête/);
 });

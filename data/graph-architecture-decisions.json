@@ -353,7 +353,7 @@
       "family": "documented_source",
       "phrase": "Document de spécification des prédicats et familles de liens du graphe principal de design L4, dont les noms sémantiques sont inférés depuis les prototypes numériques.",
       "summary": "Artefact documentaire canonique décrivant les 41 prédicats et 12 familles de liens du graphe principal L4. En L4, le lien physique est unique (storedLinkType: link) et les verbes sémantiques sont inférés depuis les prototypes numériques (polarity, hierarchy, permanence).",
-      "context": "Graphe principal de design (mind_causal_graph)",
+      "context": "Graphe principal de design (mind_causal)",
       "epistemicStatus": "documented",
       "clusterId": "graph-architecture",
       "documentSection": "spécification_nomenclature_liens"

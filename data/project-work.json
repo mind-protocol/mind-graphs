@@ -932,7 +932,7 @@
       "id": "change-2026-07-22-science-ontology-active",
       "name": "Changement · Ontologie scientifique 0.1.0 activée",
       "nodeType": "moment",
-      "phrase": "mind_science_graph devient un graphe actif avec sa propre grammaire et une gouvernance de certitude continue.",
+      "phrase": "mind_science devient un graphe actif avec sa propre grammaire et une gouvernance de certitude continue.",
       "family": "Journal du projet · architecture scientifique",
       "summary": "Les primitives CSG et la chaîne Study vers Evidence sont contraintes dans science/ontology.json. Le validateur parcourt désormais les deux graphes actifs sans relâcher les invariants du graphe de design.",
       "workStatus": "delivered",

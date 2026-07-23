@@ -604,16 +604,34 @@
       "justification": "La curiosité décrit la tâche bornée créée pour récupérer le prompt et le référent manquants."
     },
     {
-      "source": "memory-citizen-block-001-mission-projections",
+      "source": "memory-citizen-block-001-mission-psychology",
       "target": "memory-citizen-block-001-empathic-hypothesis",
       "type": "REINTERPRETS",
-      "justification": "La projection psychologique et situationnelle reçoit l'hypothèse de rencontre après sa formulation."
+      "justification": "La mission psychologique projette l'hypothèse empathique sans la transformer en trait humain."
     },
     {
-      "source": "memory-citizen-block-001-mission-projections",
+      "source": "memory-citizen-block-001-mission-situation",
       "target": "memory-citizen-block-001-epistemic-boundary",
       "type": "RECALLS",
-      "justification": "Les quatre missions conservent explicitement les absences, inconnues et limites du bloc."
+      "justification": "La mission situation conserve explicitement l'acteur, la relation et l'actualité encore inconnus."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-situation",
+      "target": "objective-citizen-block-001-recover-context",
+      "type": "DESCRIBES",
+      "justification": "L'acteur inconnu de la situation motive directement la tâche bornée de récupération du contexte."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-objectives-preferences",
+      "target": "memory-citizen-block-001-empathic-hypothesis",
+      "type": "REINTERPRETS",
+      "justification": "La mission objectifs conserve comme hypothèse, et non comme engagement humain, le contact relationnel possible."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-financial",
+      "target": "memory-conversation-choix-de-vie-complexe-block-001",
+      "type": "RECALLS",
+      "justification": "L'absence financière explicite est évaluée uniquement à partir du bloc source."
     },
     {
       "source": "memory-citizen-block-001-reaction-curiosity",
@@ -652,10 +670,28 @@
       "justification": "La question et sa valeur attendue sont formulées par le Citizen."
     },
     {
-      "source": "memory-citizen-block-001-mission-projections",
+      "source": "memory-citizen-block-001-mission-psychology",
       "target": "self-citizen-agent",
       "type": "AUTHORED_BY",
-      "justification": "Les projections secondaires sont des inférences du Citizen et restent révisables."
+      "justification": "La projection psychologique est une hypothèse révisable du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-situation",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La projection de situation est une analyse révisable du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-objectives-preferences",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "La projection des objectifs est une hypothèse révisable du Citizen."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-financial",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Le constat d'absence de signal financier est attribué au Citizen."
     },
     {
       "source": "memory-citizen-block-001-reaction-curiosity",
@@ -694,10 +730,28 @@
       "justification": "La recherche proposée est limitée aux sources couvertes par le consentement."
     },
     {
-      "source": "memory-citizen-block-001-mission-projections",
+      "source": "memory-citizen-block-001-mission-psychology",
       "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
       "type": "CONSENTED_UNDER",
-      "justification": "Les projections de mission conservent le consentement de leur source."
+      "justification": "La projection psychologique conserve le consentement de sa source."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-situation",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La projection de situation conserve le consentement de sa source."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-objectives-preferences",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La projection des objectifs conserve le consentement de sa source."
+    },
+    {
+      "source": "memory-citizen-block-001-mission-financial",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "Le constat d'absence financière conserve le consentement de sa source."
     }
   ]
 }

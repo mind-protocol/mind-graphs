@@ -39,13 +39,58 @@ test("every role cluster is canonically complete", () => {
     for (const semanticType of [
       "CitizenAIRoleCluster", "DesignRationale", "BehavioralPolicy", "OperationalDesire",
       "OperationalFear", "ConstitutionalLimit", "Capability", "Script", "RoleAudit",
-      "RoleOrientationQuestion", "RoleStrategy", "InterventionIdea"
+      "RoleOrientationQuestion", "RoleStrategy", "InterventionIdea", "RoleSituationFit"
     ]) {
       assert.ok(members.some(node => node?.semanticType === semanticType), `${cluster.id} lacks ${semanticType}`);
     }
     for (const relationType of ["SEEKS", "AVOIDS", "FOLLOWS", "REQUIRES", "IMPLEMENTED_BY", "OPERATES_IN", "AUDITED_BY", "YIELDS_TO"]) {
       assert.ok(outgoing(role.id, relationType).length > 0, `${role.id} lacks ${relationType}`);
     }
+  }
+});
+
+test("every role is explicitly fitted to the compact Human Situation projection", () => {
+  const contract = graph.citizenAIRoleSystem.situatedRoleContract;
+  const allowedFields = new Set(contract.readableProjectionFields);
+  const allowedOutcomes = new Set(graph.humanSituationSystem.interactionContract.allowedOutcomes);
+  const fits = graph.nodes.filter(node => node.semanticType === "RoleSituationFit");
+
+  assert.equal(fits.length, 15);
+  assert.equal(contract.sourceFrameId, "moment-human-situation-workspace-projection");
+  assert.equal(contract.wholeHumanModelReadableByRouter, false);
+  assert.equal(contract.explicitHumanRequestPrecedence, true);
+  assert.equal(contract.constitutionalLimitsStillApply, true);
+  assert.equal(contract.unknownCanAuthorizeAction, false);
+  assert.equal(contract.silenceIsValidOutcome, true);
+
+  for (const fit of fits) {
+    assert.ok(fit.leadWhen.length > 0, fit.id);
+    assert.ok(fit.supportWhen.length > 0, fit.id);
+    assert.ok(fit.inhibitWhen.length > 0, fit.id);
+    assert.ok(fit.preferredOutcomes.every(outcome => allowedOutcomes.has(outcome)), fit.id);
+    assert.ok(fit.requiredProjectionFields.every(field => allowedFields.has(field)), fit.id);
+    assert.ok(fit.fallbackOnUnknown, fit.id);
+    assert.ok(outgoing(fit.id, "MOTIVATES").some(relation => nodes.get(relation.target)?.semanticType === "CitizenAIRole"), fit.id);
+    assert.ok(outgoing(fit.id, "CONSTRAINS").some(relation => nodes.get(relation.target)?.semanticType === "CitizenAIRole"), fit.id);
+    assert.ok(outgoing(fit.id, "DEPENDS_ON").some(relation => relation.target === contract.sourceFrameId), fit.id);
+  }
+
+  assert.ok(relations.some(relation =>
+    relation.source === contract.sourceFrameId
+    && relation.type === "FEEDS"
+    && relation.target === "thing-citizen-ai-role-activation-scorer"));
+  assert.ok(relations.some(relation =>
+    relation.source === "narrative-citizen-ai-situated-role-contract"
+    && relation.type === "CONSTRAINS"
+    && relation.target === "thing-citizen-ai-role-router"));
+});
+
+test("situated roles expose valid handoffs rather than persisting outside their fit", () => {
+  for (const roleId of graph.citizenAIRoleSystem.roleIds) {
+    const handoffs = outgoing(roleId, "CAN_HANDOFF_TO");
+    assert.ok(handoffs.length > 0, roleId);
+    assert.ok(handoffs.every(relation => nodes.get(relation.target)?.semanticType === "CitizenAIRole"), roleId);
+    assert.ok(handoffs.every(relation => relation.condition && relation.justification), roleId);
   }
 });
 

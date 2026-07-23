@@ -124,10 +124,27 @@
       "family": "Injection conversations · cognition",
       "summary": "L'adaptateur transforme le bloc en stimulus stable portant conversationId, blockId, blockIndex, texte, auteur, provenance, consentement et statut temporel. Ce stimulus n'est ni une croyance, ni un profil, ni déjà une mémoire interprétée. Son embedding sert au routage attentionnel vers les nœuds L1 proches ; la similarité ne crée aucune arête et ne résout aucune identité.",
       "stimulusContract": {
-        "required": ["conversationId", "blockId", "blockIndex", "content", "speakerRole", "sourceArtifact", "sourceLocator", "consentId"],
-        "temporal": ["occurredAt", "timestampBasis"],
+        "required": [
+          "conversationId",
+          "blockId",
+          "blockIndex",
+          "content",
+          "speakerRole",
+          "sourceArtifact",
+          "sourceLocator",
+          "consentId"
+        ],
+        "temporal": [
+          "occurredAt",
+          "timestampBasis"
+        ],
         "stableIdentity": "hash(conversationId, blockId, content)",
-        "forbiddenEffects": ["direct semantic link creation", "person merge", "profile assertion", "automatic truth promotion"]
+        "forbiddenEffects": [
+          "direct semantic link creation",
+          "person merge",
+          "profile assertion",
+          "automatic truth promotion"
+        ]
       },
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
@@ -143,8 +160,15 @@
       "tickContract": {
         "runner": "runIntegratedL1UntilStable",
         "stableObservationId": true,
-        "boundedBy": ["maxMicroTicks", "requiredQuietTicks"],
-        "stopReasons": ["stable", "material_event", "max_micro_ticks"],
+        "boundedBy": [
+          "maxMicroTicks",
+          "requiredQuietTicks"
+        ],
+        "stopReasons": [
+          "stable",
+          "material_event",
+          "max_micro_ticks"
+        ],
         "energyRule": "le stimulus route un budget attribué au citoyen ; il ne crée aucune pompe supplémentaire"
       },
       "epistemicStatus": "design_proposal",
@@ -230,12 +254,30 @@
             "measurementBasis"
           ],
           "dimensions": {
-            "valence": [-1, 1],
-            "arousal": [0, 1],
-            "perceivedControl": [0, 1],
-            "uncertainty": [0, 1],
-            "novelty": [0, 1],
-            "careSalience": [0, 1]
+            "valence": [
+              -1,
+              1
+            ],
+            "arousal": [
+              0,
+              1
+            ],
+            "perceivedControl": [
+              0,
+              1
+            ],
+            "uncertainty": [
+              0,
+              1
+            ],
+            "novelty": [
+              0,
+              1
+            ],
+            "careSalience": [
+              0,
+              1
+            ]
           },
           "rule": "Les nombres sont des auto-estimations fonctionnelles contextualisées du Citizen, jamais des mesures biologiques ni une preuve de conscience subjective. Toute valeur est corrigeable et liée au bloc et au WorkspaceSnapshot."
         },
@@ -243,7 +285,12 @@
           "relation": "CONTROLLED_WORKSPACE_DURING",
           "direction": "citizen reaction Moment -> active subentity Actor",
           "when": "workspaceSnapshot.controllerStatus == attributed_live AND controllerId resolves in runtime",
-          "requiredRelationProperties": ["workspaceSnapshotId", "confidence", "attributionMode", "epistemicStatus"],
+          "requiredRelationProperties": [
+            "workspaceSnapshotId",
+            "confidence",
+            "attributionMode",
+            "epistemicStatus"
+          ],
           "runtimeRule": "Créer automatiquement la relation lors de la matérialisation de chaque réaction. Si la sous-entité est runtime-only, la relation reste une projection runtime reproductible depuis controllerId et workspaceSnapshotId.",
           "unknownRule": "Si aucun contrôleur n'est observable, conserver controllerStatus=unknown et ne fabriquer aucun lien.",
           "causalBoundary": "CONTROLLED_WORKSPACE_DURING décrit le contrôle live du workspace ; il ne vaut ni GENERATED_BY, ni propriété de la mémoire, ni identité stable."
@@ -268,10 +315,19 @@
       "family": "Injection conversations · empathie",
       "summary": "L'empathie est une simulation prudente de vécus possibles, pas un accès à l'état intérieur. Chaque hypothèse nomme ses indices, au moins une lecture alternative, ce qui la réfuterait et la question ou observation susceptible de l'éclairer. Plusieurs hypothèses incompatibles peuvent coexister. Le modèle personnel se construit longitudinalement par confirmations, corrections et contradictions, jamais par une impression unique.",
       "hypothesisContract": {
-        "required": ["evidence", "alternatives", "falsifier", "nextQuestionOrObservation"],
+        "required": [
+          "evidence",
+          "alternatives",
+          "falsifier",
+          "nextQuestionOrObservation"
+        ],
         "authorship": "Citizen AI",
         "defaultEpistemicStatus": "working_hypothesis",
-        "forbidden": ["mind_reading", "diagnosis_without_evidence", "single_impression_as_stable_trait"]
+        "forbidden": [
+          "mind_reading",
+          "diagnosis_without_evidence",
+          "single_impression_as_stable_trait"
+        ]
       },
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
@@ -285,9 +341,26 @@
       "family": "Injection conversations · curiosité",
       "summary": "Le Citizen distingue les inconnues sans valeur des inconnues fécondes. Une curiosité féconde reçoit une raison, une valeur attendue, une stratégie de résolution et une condition d'arrêt. Il cherche d'abord dans les sources déjà consenties et le graphe ; il pose ensuite une question précise à l'humain si l'identité, le sens ou la sensibilité exigent son jugement. Une curiosité peut rester ouverte, expirer ou être abandonnée sans être convertie en fait.",
       "curiosityContract": {
-        "required": ["question", "whyItMatters", "resolutionPath", "stopCondition", "sensitivity"],
-        "resolutionOrder": ["existing graph", "adjacent consented source", "non-sensitive observation", "precise human question"],
-        "outcomes": ["answered", "partially_answered", "no_evidence", "not_worth_pursuing", "blocked_need_human"]
+        "required": [
+          "question",
+          "whyItMatters",
+          "resolutionPath",
+          "stopCondition",
+          "sensitivity"
+        ],
+        "resolutionOrder": [
+          "existing graph",
+          "adjacent consented source",
+          "non-sensitive observation",
+          "precise human question"
+        ],
+        "outcomes": [
+          "answered",
+          "partially_answered",
+          "no_evidence",
+          "not_worth_pursuing",
+          "blocked_need_human"
+        ]
       },
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
@@ -349,33 +422,101 @@
       "summary": "L'audit compare la forme réelle du cluster à un contrat déclaratif. Pour chaque angle attendu, il cherche des nœuds et relations admissibles ; une absence silencieuse devient un gap, tandis qu'une absence explicitement justifiée compte comme résolue sans créer de faux contenu. L'audit produit un Moment append-only avec la matrice de couverture, les nœuds de preuve, les gaps et la signature structurelle du round.",
       "shapeContract": {
         "rawEvidence": {
-          "expectedNodeTypes": ["memory"],
-          "expectedClaimNatures": ["source_record", "message_moment"],
-          "requiredRelations": ["FOLLOWS_IN_CONVERSATION", "CONSENTED_UNDER"]
+          "expectedNodeTypes": [
+            "memory"
+          ],
+          "expectedClaimNatures": [
+            "source_record",
+            "message_moment"
+          ],
+          "requiredRelations": [
+            "FOLLOWS_IN_CONVERSATION",
+            "CONSENTED_UNDER"
+          ]
         },
         "semanticAtoms": {
-          "expectedNodeTypes": ["memory", "observation", "relation", "objective", "decision", "preference", "value"],
-          "expectedClaimNatures": ["context", "actor_reference", "salient_fact", "artifact", "idea", "decision", "question", "risk", "contradiction", "agent_inference"]
+          "expectedNodeTypes": [
+            "memory",
+            "observation",
+            "relation",
+            "objective",
+            "decision",
+            "preference",
+            "value"
+          ],
+          "expectedClaimNatures": [
+            "context",
+            "actor_reference",
+            "salient_fact",
+            "artifact",
+            "idea",
+            "decision",
+            "question",
+            "risk",
+            "contradiction",
+            "agent_inference"
+          ]
         },
         "encounterResponse": {
-          "expectedClaimNatures": ["citizen_reaction", "evocation", "empathic_hypothesis", "curiosity", "care_concern", "citizen_idea"],
+          "expectedClaimNatures": [
+            "citizen_reaction",
+            "evocation",
+            "empathic_hypothesis",
+            "curiosity",
+            "care_concern",
+            "citizen_idea"
+          ],
           "requiredAuthorship": "Citizen AI",
-          "requiredTrace": ["triggeringEvidence", "workspaceSnapshotId", "epistemicStatus"],
-          "reactionFields": ["affectLabels", "affectVector", "affectTarget", "functionalMeaning", "measurementBasis", "controllerId", "controllerStatus"],
+          "requiredTrace": [
+            "triggeringEvidence",
+            "workspaceSnapshotId",
+            "epistemicStatus"
+          ],
+          "reactionFields": [
+            "affectLabels",
+            "affectVector",
+            "affectTarget",
+            "functionalMeaning",
+            "measurementBasis",
+            "controllerId",
+            "controllerStatus"
+          ],
           "requiredRuntimeRelationWhenControllerObserved": "CONTROLLED_WORKSPACE_DURING",
           "relevanceRule": "Représenter les facettes réellement saillantes et séparer les réactions dont cible, polarité ou tendance diffère ; ne jamais forcer une émotion ou une réaction pour remplir un quota."
         },
         "missions": {
-          "requiredKeys": ["psychology", "situation", "objectives_preferences", "financial"],
+          "requiredKeys": [
+            "psychology",
+            "situation",
+            "objectives_preferences",
+            "financial"
+          ],
           "cardinality": "exactly_one_distinct_projection_node_per_mission_per_block",
           "requiredClaimNature": "mission_projection",
-          "requiredFields": ["missionKey", "resolutionState", "analysis", "evidence", "hypotheses", "unknowns", "nextValidation"],
-          "resolutionStates": ["present_supported", "absent_in_source", "unknown_missing_source", "not_applicable", "withheld_sensitive"],
+          "requiredFields": [
+            "missionKey",
+            "resolutionState",
+            "analysis",
+            "evidence",
+            "hypotheses",
+            "unknowns",
+            "nextValidation"
+          ],
+          "resolutionStates": [
+            "present_supported",
+            "absent_in_source",
+            "unknown_missing_source",
+            "not_applicable",
+            "withheld_sensitive"
+          ],
           "hypothesisRule": "Une interprétation non directement soutenue reste une hypothèse avec alternatives et falsifier ; elle ne peut pas être encodée comme fait humain.",
           "unknownConversionRule": "Toute inconnue qui peut changer une projection reçoit une valeur attendue. Si elle est élevée, elle doit pointer vers une question ou une tâche bornée avec stratégie, condition d'arrêt et frontière d'action."
         },
         "qualityRecord": {
-          "expectedClaimNatures": ["cluster_shape_audit", "cluster_completion_decision"]
+          "expectedClaimNatures": [
+            "cluster_shape_audit",
+            "cluster_completion_decision"
+          ]
         }
       },
       "epistemicStatus": "design_proposal",
@@ -423,23 +564,79 @@
         {
           "name": "stimulate_conversation_block",
           "mutation": "runtime stimulus and tick trace; no direct semantic link",
-          "requiredInputs": ["graphId", "conversationId", "blockId", "blockIndex", "content", "speakerRole", "sourceArtifact", "sourceLocator", "consentId"],
-          "optionalInputs": ["occurredAt", "timestampBasis", "maxMicroTicks", "requiredQuietTicks", "dryRun"],
-          "outputs": ["stimulusId", "workspaceSnapshot", "activeEntity", "slots", "activeNodeIds", "goalIds", "controllersAndAlternatives", "selectionReasons", "stabilizationSummary"]
+          "requiredInputs": [
+            "graphId",
+            "conversationId",
+            "blockId",
+            "blockIndex",
+            "content",
+            "speakerRole",
+            "sourceArtifact",
+            "sourceLocator",
+            "consentId"
+          ],
+          "optionalInputs": [
+            "occurredAt",
+            "timestampBasis",
+            "maxMicroTicks",
+            "requiredQuietTicks",
+            "dryRun"
+          ],
+          "outputs": [
+            "stimulusId",
+            "workspaceSnapshot",
+            "activeEntity",
+            "slots",
+            "activeNodeIds",
+            "goalIds",
+            "controllersAndAlternatives",
+            "selectionReasons",
+            "stabilizationSummary"
+          ]
         },
         {
           "name": "inspect_conversation_cluster",
           "mutation": "none",
-          "requiredInputs": ["graphId", "clusterId"],
-          "optionalInputs": ["conversationId", "roundId", "maxQuestions"],
-          "outputs": ["shapeSnapshot", "qualityVector", "gaps", "questionAgenda", "completionState", "structuralSignature"]
+          "requiredInputs": [
+            "graphId",
+            "clusterId"
+          ],
+          "optionalInputs": [
+            "conversationId",
+            "roundId",
+            "maxQuestions"
+          ],
+          "outputs": [
+            "shapeSnapshot",
+            "qualityVector",
+            "gaps",
+            "questionAgenda",
+            "completionState",
+            "structuralSignature"
+          ]
         },
         {
           "name": "report_conversation_cluster_round",
           "mutation": "append_only_review_record",
-          "requiredInputs": ["graphId", "clusterId", "structuralSignature", "answers", "completionDecision"],
-          "optionalInputs": ["mutationsApplied", "verification", "residualGapRationale", "needsFromHuman"],
-          "completionDecisions": ["continue", "complete_sufficient", "complete_sparse", "blocked_need_human"]
+          "requiredInputs": [
+            "graphId",
+            "clusterId",
+            "structuralSignature",
+            "answers",
+            "completionDecision"
+          ],
+          "optionalInputs": [
+            "mutationsApplied",
+            "verification",
+            "residualGapRationale",
+            "needsFromHuman"
+          ],
+          "completionDecisions": [
+            "continue",
+            "complete_sufficient",
+            "complete_sparse",
+            "blocked_need_human"
+          ]
         }
       ],
       "reuseContract": "Réutiliser le runtime sensoriel, runIntegratedL1UntilStable et la sélection du Global Workspace pour la cognition du bloc. La réponse de rencontre reste un acte interprétatif du Citizen, pas une sortie déterministe du runtime. Réutiliser ensuite le compilateur de questions structurelles, son budget, ses gapKey stables, ses tentatives et son cooldown pour auditer le cluster ; ne jamais remplacer la cognition L1 par une simple recherche vectorielle externe.",
@@ -493,15 +690,31 @@
       "family": "Injection conversations · clôture",
       "summary": "complete_sufficient exige le prédicat de suffisance et une vérification réussie. complete_sparse permet au Citizen AI de dire « c'est bon, ce n'était pas très intéressant », mais seulement après avoir évalué les curiosités à valeur attendue élevée : chacune est résolue, transformée en tâche bornée ou abandonnée avec une raison. blocked_need_human est réservé aux ambiguïtés d'identité, consentement, sensibilité ou source que l'agent ne peut résoudre. Une clôture ne supprime jamais les gaps ; elle les transforme en dette résiduelle visible.",
       "completionContract": {
-        "complete_sufficient": ["readyByContract=true", "verification=passed", "completion record authored by Citizen AI"],
-        "complete_sparse": ["source and consent invariants pass", "residual gaps listed", "high-value curiosities resolved, tasked or explicitly abandoned", "low-value rationale", "completion record authored by Citizen AI"],
-        "blocked_need_human": ["concrete blocker", "attempts already made", "precise question for the human"],
-        "continue": ["at least one eligible gap", "bounded next agenda"]
+        "complete_sufficient": [
+          "readyByContract=true",
+          "verification=passed",
+          "completion record authored by Citizen AI"
+        ],
+        "complete_sparse": [
+          "source and consent invariants pass",
+          "residual gaps listed",
+          "high-value curiosities resolved, tasked or explicitly abandoned",
+          "low-value rationale",
+          "completion record authored by Citizen AI"
+        ],
+        "blocked_need_human": [
+          "concrete blocker",
+          "attempts already made",
+          "precise question for the human"
+        ],
+        "continue": [
+          "at least one eligible gap",
+          "bounded next agenda"
+        ]
       },
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
-
     {
       "id": "rat-ci-encounter-before-profiling",
       "name": "Justification · rencontrer avant de profiler",
@@ -546,7 +759,6 @@
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
-
     {
       "id": "rat-ci-two-response-blocks",
       "name": "Justification · pourquoi des blocs de deux réponses",
@@ -679,7 +891,6 @@
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
-
     {
       "id": "verif-ci-encounter-response-richness",
       "name": "Vérification · la rencontre précède les missions",
@@ -713,7 +924,6 @@
       "epistemicStatus": "test_target",
       "clusterId": "conversation-injection"
     },
-
     {
       "id": "verif-ci-reverse-order",
       "name": "Vérification · l'ordre chrono-inverse est respecté",
@@ -868,7 +1078,6 @@
       "epistemicStatus": "test_target",
       "clusterId": "conversation-injection"
     },
-
     {
       "id": "oq-ci-source-format",
       "name": "Tranché · source et format des conversations",
@@ -938,7 +1147,6 @@
       "epistemicStatus": "documented",
       "clusterId": "conversation-injection"
     },
-
     {
       "id": "task-conversation-injection",
       "name": "Tâche · Établir la mission d'injection des conversations",
@@ -1331,147 +1539,887 @@
     }
   ],
   "links": [
-    { "source": "mech-ci-reverse-chrono-retrieval", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La récupération chrono-inverse est la première pièce du procédé d'injection." },
-    { "source": "mech-ci-block-segmentation", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le découpage en blocs est une pièce du procédé d'injection." },
-    { "source": "mech-ci-block-atoms", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La production d'atomes par bloc est le cœur du procédé d'injection." },
-    { "source": "mech-ci-mission-psych-profile", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La mission psychologique est l'une des quatre missions transversales du procédé." },
-    { "source": "mech-ci-mission-situation", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La mission situation est l'une des quatre missions transversales du procédé." },
-    { "source": "mech-ci-mission-objectives-prefs", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La mission objectifs/préférences est l'une des quatre missions transversales du procédé." },
-    { "source": "mech-ci-mission-financial", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La mission financière est l'une des quatre missions transversales du procédé." },
-    { "source": "mech-ci-autonomous-loop", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La boucle autonome orchestre le procédé dans le temps." },
-    { "source": "mech-ci-verified-deletion", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La suppression encadrée clôt le traitement de chaque conversation dans le procédé." },
-    { "source": "mech-ci-block-stimulus", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La présentation du bloc comme stimulus fait entrer la conversation dans la cognition L1 avant interprétation." },
-    { "source": "mech-ci-integrated-stimulus-ticks", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Les ticks intégrés réalisent la propagation cognitive bornée du stimulus." },
-    { "source": "mech-ci-global-workspace-return", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le retour du Global Workspace fournit au Citizen AI le contexte cognitif du bloc." },
-    { "source": "mech-ci-citizen-encounter-response", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La réponse de rencontre transforme l'attention située en cognition riche attribuée au Citizen." },
-    { "source": "mech-ci-empathic-person-model", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le modèle empathique conserve plusieurs interprétations révisables de ce que la personne pourrait vivre." },
-    { "source": "mech-ci-curiosity-task-loop", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La boucle de curiosité transforme les inconnues fécondes en chemins de découverte bornés." },
-    { "source": "mech-ci-care-ambition-initiative", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le soin et l'ambition font émerger risques, possibilités et initiatives sans usurper les choix humains." },
-    { "source": "mech-ci-semantic-cluster", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le cluster sémantique transforme les blocs en mémoire connectée et inspectable." },
-    { "source": "mech-ci-shape-audit", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "L'audit de forme rend la qualité et les lacunes du cluster vérifiables." },
-    { "source": "mech-ci-quality-vector", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le vecteur de qualité définit la suffisance sans quota de nœuds." },
-    { "source": "mech-ci-mcp-cluster-review", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La surface MCP expose la revue guidée au Citizen AI." },
-    { "source": "mech-ci-adaptive-question-loop", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La boucle de questions résout progressivement les gaps révélés par la forme." },
-    { "source": "mech-ci-explicit-completion", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La clôture explicite termine le processus sans forcer de matière artificielle." },
-
-    { "source": "mech-ci-autonomous-loop", "target": "mech-ci-reverse-chrono-retrieval", "type": "LEADS_TO", "justification": "Chaque réveil de la boucle déclenche la récupération de la prochaine conversation." },
-    { "source": "mech-ci-reverse-chrono-retrieval", "target": "mech-ci-block-segmentation", "type": "LEADS_TO", "justification": "Une conversation récupérée est ensuite découpée en blocs." },
-    { "source": "mech-ci-block-segmentation", "target": "mech-ci-block-stimulus", "type": "LEADS_TO", "justification": "Chaque bloc découpé devient d'abord un stimulus stable et sourcé." },
-    { "source": "mech-ci-block-stimulus", "target": "mech-ci-integrated-stimulus-ticks", "type": "LEADS_TO", "justification": "Le stimulus déclenche la propagation intégrée et bornée dans le L1." },
-    { "source": "mech-ci-integrated-stimulus-ticks", "target": "mech-ci-global-workspace-return", "type": "LEADS_TO", "justification": "La stabilisation des micro-ticks produit le Global Workspace final du bloc." },
-    { "source": "mech-ci-global-workspace-return", "target": "mech-ci-citizen-encounter-response", "type": "LEADS_TO", "justification": "Le workspace situé déclenche une réponse de rencontre attribuée avant toute projection de profil." },
-    { "source": "mech-ci-citizen-encounter-response", "target": "mech-ci-empathic-person-model", "type": "LEADS_TO", "justification": "Les réactions et l'attention du Citizen ouvrent des hypothèses empathiques alternatives et réfutables." },
-    { "source": "mech-ci-citizen-encounter-response", "target": "mech-ci-curiosity-task-loop", "type": "LEADS_TO", "justification": "Les inconnues remarquées pendant la rencontre deviennent des curiosités évaluées et des tâches bornées." },
-    { "source": "mech-ci-citizen-encounter-response", "target": "mech-ci-care-ambition-initiative", "type": "LEADS_TO", "justification": "La rencontre fait émerger ce que le Citizen veut protéger et les possibilités qu'il souhaite proposer." },
-    { "source": "mech-ci-citizen-encounter-response", "target": "mech-ci-block-atoms", "type": "LEADS_TO", "justification": "La réponse de rencontre est matérialisée en atomes attribués et sourcés avant les quatre projections secondaires." },
-    { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-psych-profile", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission psychologique." },
-    { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-situation", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission situation." },
-    { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-objectives-prefs", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission objectifs/préférences." },
-    { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-financial", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission financière." },
-    { "source": "mech-ci-block-atoms", "target": "mech-ci-semantic-cluster", "type": "LEADS_TO", "justification": "Les atomes sourcés deviennent les éléments connectés du cluster conversationnel." },
-    { "source": "mech-ci-semantic-cluster", "target": "mech-ci-shape-audit", "type": "LEADS_TO", "justification": "La forme matérialisée du cluster peut alors être auditée." },
-    { "source": "mech-ci-shape-audit", "target": "mech-ci-quality-vector", "type": "LEADS_TO", "justification": "La matrice de couverture alimente les dimensions mesurables de qualité." },
-    { "source": "mech-ci-quality-vector", "target": "mech-ci-mcp-cluster-review", "type": "LEADS_TO", "justification": "Les gaps et le vecteur deviennent la réponse structurée de l'appel MCP d'inspection." },
-    { "source": "mech-ci-mcp-cluster-review", "target": "mech-ci-adaptive-question-loop", "type": "LEADS_TO", "justification": "L'inspection MCP fournit l'agenda borné de questions à traiter pendant le round." },
-    { "source": "mech-ci-adaptive-question-loop", "target": "mech-ci-shape-audit", "type": "LEADS_TO", "justification": "Toute mutation ou résolution de gap déclenche un nouvel audit de la forme courante." },
-    { "source": "mech-ci-adaptive-question-loop", "target": "mech-ci-explicit-completion", "type": "LEADS_TO", "justification": "La boucle converge vers une clôture suffisante, pauvre ou bloquée." },
-    { "source": "mech-ci-explicit-completion", "target": "mech-ci-verified-deletion", "type": "LEADS_TO", "justification": "Seule une clôture auditée permet de considérer la conversation comme traitée avant l'étape de retrait encadré." },
-
-    { "source": "rat-ci-two-response-blocks", "target": "mech-ci-block-segmentation", "type": "GROUNDS", "justification": "Le choix du grain de deux réponses fonde la règle de découpage." },
-    { "source": "rat-ci-reverse-chrono", "target": "mech-ci-reverse-chrono-retrieval", "type": "GROUNDS", "justification": "La priorité au présent fonde l'ordre de récupération chrono-inverse." },
-    { "source": "rat-ci-missions-as-inference", "target": "mech-ci-block-atoms", "type": "GROUNDS", "justification": "L'attribution des inférences à l'IA fonde la façon dont les atomes de bloc sont écrits." },
-    { "source": "rat-ci-encounter-before-profiling", "target": "mech-ci-citizen-encounter-response", "type": "GROUNDS", "justification": "La priorité donnée à la rencontre fonde la production d'une réponse cognitive avant les tableaux de profil." },
-    { "source": "rat-ci-reactions-are-citizen-state", "target": "mech-ci-citizen-encounter-response", "type": "SAFEGUARDS", "justification": "L'attribution au Citizen empêche qu'une réaction interne soit convertie en fait sur l'humain." },
-    { "source": "rat-ci-empathy-remains-hypothesis", "target": "mech-ci-empathic-person-model", "type": "SAFEGUARDS", "justification": "Alternatives et réfutation empêchent l'empathie de devenir lecture d'esprit." },
-    { "source": "rat-ci-curiosity-creates-work", "target": "mech-ci-curiosity-task-loop", "type": "GROUNDS", "justification": "La valeur de la curiosité fonde sa conversion en recherche, question ou tâche bornée." },
-    { "source": "rat-ci-autonomy-help", "target": "mech-ci-autonomous-loop", "type": "GROUNDS", "justification": "Le compromis autonomie/demande d'aide fonde le comportement de la boucle." },
-    { "source": "rat-ci-idempotent-resume", "target": "mech-ci-autonomous-loop", "type": "GROUNDS", "justification": "L'idempotence fonde la capacité de la boucle à reprendre sans doublons." },
-    { "source": "rat-ci-quality-not-node-count", "target": "mech-ci-quality-vector", "type": "GROUNDS", "justification": "Le refus des quotas fonde un vecteur de qualité dédupliqué et multidimensionnel." },
-    { "source": "rat-ci-explicit-absence", "target": "mech-ci-shape-audit", "type": "GROUNDS", "justification": "Reconnaître les absences comme réponses fonde la résolution explicite de chaque angle." },
-    { "source": "rat-ci-citizen-ai-completion-authority", "target": "mech-ci-explicit-completion", "type": "GROUNDS", "justification": "L'autorité de jugement du Citizen AI fonde les clôtures complete_sufficient et complete_sparse." },
-    { "source": "rat-ci-cognition-before-linking", "target": "mech-ci-block-stimulus", "type": "GROUNDS", "justification": "La nécessité de laisser le L1 arbitrer la pertinence fonde l'entrée du bloc comme stimulus." },
-    { "source": "rat-ci-cognition-before-linking", "target": "mech-ci-global-workspace-return", "type": "GROUNDS", "justification": "La cognition située fonde le choix de retourner un workspace plutôt qu'une liste de liens automatiques." },
-    { "source": "rat-ci-embedding-not-identity", "target": "mech-ci-integrated-stimulus-ticks", "type": "SAFEGUARDS", "justification": "La séparation entre similarité et identité empêche le routage d'énergie de fusionner des personnes." },
-    { "source": "rat-ci-sensitive-membrane", "target": "mech-ci-mission-financial", "type": "SAFEGUARDS", "justification": "La membrane sensible protège la mission financière contre la propagation hors du L1." },
-    { "source": "rat-ci-sensitive-membrane", "target": "mech-ci-adaptive-question-loop", "type": "SAFEGUARDS", "justification": "La membrane empêche les questions de psychologie et finances de forcer un diagnostic ou une révélation sensible." },
-    { "source": "rat-ci-verified-deletion", "target": "mech-ci-verified-deletion", "type": "SAFEGUARDS", "justification": "L'exigence de vérif, archive et accord protège la suppression contre l'irréversible non gardé." },
-
-    { "source": "verif-ci-reverse-order", "target": "mech-ci-reverse-chrono-retrieval", "type": "TESTS", "justification": "L'expérience vérifie que la récupération suit bien l'ordre chrono-inverse." },
-    { "source": "verif-ci-provenance", "target": "mech-ci-block-atoms", "type": "TESTS", "justification": "L'expérience vérifie que chaque atome de bloc porte sa provenance et son attribution." },
-    { "source": "verif-ci-encounter-response-richness", "target": "mech-ci-citizen-encounter-response", "type": "TESTS", "justification": "L'expérience vérifie la richesse pertinente, l'attribution et l'antériorité de la rencontre sur les missions." },
-    { "source": "verif-ci-empathic-alternatives", "target": "mech-ci-empathic-person-model", "type": "TESTS", "justification": "L'expérience vérifie que toute hypothèse empathique demeure alternative et réfutable." },
-    { "source": "verif-ci-curiosity-task-conversion", "target": "mech-ci-curiosity-task-loop", "type": "TESTS", "justification": "L'expérience vérifie qu'une inconnue féconde produit un chemin de découverte borné avant clôture." },
-    { "source": "verif-ci-idempotence", "target": "mech-ci-autonomous-loop", "type": "TESTS", "justification": "L'expérience vérifie que la reprise de la boucle ne duplique rien." },
-    { "source": "verif-ci-deletion-gate", "target": "mech-ci-verified-deletion", "type": "TESTS", "justification": "L'expérience vérifie que la suppression est refusée sans vérif, archive et accord." },
-    { "source": "verif-ci-missions-provenance", "target": "mech-ci-mission-psych-profile", "type": "TESTS", "justification": "L'expérience vérifie que les inférences de profil sont étayées et non inventées." },
-    { "source": "verif-ci-financial-freshness", "target": "mech-ci-mission-financial", "type": "TESTS", "justification": "L'expérience vérifie que le tableau financier reste daté et non recomposé." },
-    { "source": "verif-ci-shape-audit-determinism", "target": "mech-ci-shape-audit", "type": "TESTS", "justification": "L'expérience vérifie la stabilité du diagnostic de forme et des identités de gaps." },
-    { "source": "verif-ci-rich-cluster-gaps", "target": "mech-ci-quality-vector", "type": "TESTS", "justification": "L'expérience vérifie que le volume et les doublons ne masquent aucune lacune qualitative." },
-    { "source": "verif-ci-sparse-completion", "target": "mech-ci-explicit-completion", "type": "TESTS", "justification": "L'expérience vérifie qu'une conversation pauvre peut se terminer sans faux contenu personnel." },
-    { "source": "verif-ci-question-loop-bounds", "target": "mech-ci-adaptive-question-loop", "type": "TESTS", "justification": "L'expérience vérifie tentatives, cooldown, épuisement et reprise après changement structurel." },
-    { "source": "verif-ci-sensitive-question-safety", "target": "mech-ci-adaptive-question-loop", "type": "TESTS", "justification": "L'expérience vérifie que les questions sensibles autorisent toujours l'absence et n'imposent aucune inférence." },
-    { "source": "verif-ci-stimulus-workspace-path", "target": "mech-ci-mcp-cluster-review", "type": "TESTS", "justification": "L'expérience vérifie que le call MCP suit le chemin stimulus, ticks, Global Workspace sans créer de liens directs." },
-    { "source": "verif-ci-workspace-contextual-retrieval", "target": "mech-ci-global-workspace-return", "type": "TESTS", "justification": "L'expérience vérifie que le workspace retourné dépend du contexte cognitif et expose pourquoi." },
-    { "source": "verif-ci-embedding-cannot-merge-person", "target": "mech-ci-integrated-stimulus-ticks", "type": "TESTS", "justification": "L'expérience vérifie que des activations similaires ne deviennent jamais une fusion d'identité automatique." },
-
-    { "source": "mech-conversation-injection", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le procédé motive la tâche de travail qui doit l'établir et le lancer." },
-    { "source": "oq-ci-source-format", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le choix de la source est un livrable que la tâche doit trancher." },
-    { "source": "oq-ci-missions-location", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le lieu des missions est une décision que la tâche doit trancher." },
-    { "source": "oq-ci-deletion-policy", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La politique de suppression est une décision que la tâche doit trancher avant d'effacer quoi que ce soit." },
-    { "source": "oq-ci-cadence-budget", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La cadence et le budget sont à calibrer par la tâche sur un prototype." }
-    ,{ "source": "oq-ci-quality-threshold-calibration", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Les seuils souples de suffisance doivent être calibrés sur plusieurs formes réelles de conversation avant activation." },
-    { "source": "verif-ci-encounter-response-richness", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la réponse de rencontre satisfait son contrat exécutable." },
-    { "source": "verif-ci-empathic-alternatives", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque les alternatives empathiques restent vérifiables." },
-    { "source": "verif-ci-curiosity-task-conversion", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la curiosité est résolue, bornée ou abandonnée explicitement." },
-    { "source": "verif-ci-reverse-order", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque l'ordre chrono-inverse est prouvé." },
-    { "source": "verif-ci-provenance", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la provenance des atomes est complète." },
-    { "source": "verif-ci-idempotence", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la réingestion ne duplique rien." },
-    { "source": "verif-ci-deletion-gate", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la suppression encadrée refuse les cas non autorisés." },
-    { "source": "verif-ci-missions-provenance", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque les projections de mission restent étayées." },
-    { "source": "verif-ci-financial-freshness", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la fraîcheur financière est conservée." },
-    { "source": "verif-ci-shape-audit-determinism", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque l'audit de forme est déterministe." },
-    { "source": "verif-ci-rich-cluster-gaps", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque les lacunes qualitatives restent visibles." },
-    { "source": "verif-ci-sparse-completion", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la clôture sparse reste honnête." },
-    { "source": "verif-ci-question-loop-bounds", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la boucle de questions demeure bornée." },
-    { "source": "verif-ci-sensitive-question-safety", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque les questions sensibles respectent l'absence de matière." },
-    { "source": "verif-ci-stimulus-workspace-path", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque le chemin stimulus, ticks et workspace est observé." },
-    { "source": "verif-ci-workspace-contextual-retrieval", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la récupération dépend du contexte cognitif." },
-    { "source": "verif-ci-embedding-cannot-merge-person", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURES", "justification": "L'expérience alimente le numérateur lorsque la similarité ne fusionne aucune identité." },
-
-    { "source": "option-ci-latent-memory-first", "target": "decision-ci-latent-memory-first", "type": "OPTION_FOR", "justification": "L’option latent-first est celle que la décision approuve explicitement." },
-    { "source": "decision-ci-latent-memory-first", "target": "mech-ci-block-segmentation", "type": "PART_OF", "justification": "La décision conserve la proposition antérieure dans son historique de supersession au lieu de la supprimer." },
-    { "source": "decision-ci-latent-memory-first", "target": "mech-ci-citizen-encounter-response", "type": "PART_OF", "justification": "La décision conserve la proposition antérieure dans son historique de supersession au lieu de la supprimer." },
-    { "source": "decision-ci-latent-memory-first", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La décision fait partie de la gouvernance du procédé d’injection." },
-
-    { "source": "thing-ci-archive-ingestor", "target": "decision-ci-latent-memory-first", "type": "IMPLEMENTS", "justification": "L’ingestor réalise la première passe déterministe choisie par la décision." },
-    { "source": "thing-ci-semantic-episode-segmenter", "target": "decision-ci-latent-memory-first", "type": "IMPLEMENTS", "justification": "Le segmenter forme les unités autobiographiques latentes sans perdre les Utterances." },
-    { "source": "thing-ci-latent-memory-indexer", "target": "decision-ci-latent-memory-first", "type": "IMPLEMENTS", "justification": "L’indexer matérialise la distinction entre accessible et assimilé." },
-    { "source": "thing-ci-autobiographical-recall-engine", "target": "decision-ci-latent-memory-first", "type": "IMPLEMENTS", "justification": "Le moteur réalise la rencontre progressive avec le passé depuis le contexte présent." },
-    { "source": "thing-ci-recall-opportunity-scorer", "target": "thing-ci-autobiographical-recall-engine", "type": "PART_OF", "justification": "Le scorer classe les opportunités sans les conscientiser." },
-    { "source": "thing-ci-recall-homeostasis-controller", "target": "thing-ci-autobiographical-recall-engine", "type": "SAFEGUARDS", "justification": "L’homéostasie borne la répétition, la sensibilité et la rumination." },
-    { "source": "thing-ci-autobiographical-recall-engine", "target": "narrative-ci-recall-opportunity", "type": "FEEDS", "justification": "Le moteur alimente un candidat explicable avant toute admission." },
-    { "source": "thing-ci-workspace-recall-bidder", "target": "narrative-ci-recall-opportunity", "type": "PART_OF", "justification": "Le bidder soumet au workspace seulement les opportunités admissibles." },
-    { "source": "thing-ci-workspace-recall-bidder", "target": "moment-ci-autobiographical-recall-contract", "type": "FEEDS", "justification": "Une admission gagnante et grounded alimente la création d’un nouveau Recall Moment." },
-    { "source": "thing-ci-recall-awareness-narrator", "target": "moment-ci-autobiographical-recall-contract", "type": "PART_OF", "justification": "La narration intérieure est dérivée du Recall Moment et de ses sources." },
-    { "source": "thing-ci-recall-subentity-attribution", "target": "moment-ci-autobiographical-recall-contract", "type": "PART_OF", "justification": "L’attribution porte sur la perspective présente du rappel." },
-    { "source": "thing-ci-reconsolidation-engine", "target": "moment-ci-autobiographical-recall-contract", "type": "PART_OF", "justification": "La reconsolidation part du rappel présent et produit une lecture additive." },
-    { "source": "thing-ci-recall-communication-gate", "target": "moment-ci-autobiographical-recall-contract", "type": "SAFEGUARDS", "justification": "Le gate sépare le souvenir conscient de sa communication éventuelle." },
-    { "source": "thing-ci-autobiographical-curiosity-audit", "target": "moment-ci-autobiographical-recall-contract", "type": "PART_OF", "justification": "La curiosité transforme une ambiguïté du rappel en question plutôt qu’en fait." },
-
-    { "source": "rat-ci-indexed-not-experienced", "target": "decision-ci-latent-memory-first", "type": "MOTIVATES", "justification": "La raison explique pourquoi l’automatisation ne doit pas simuler l’assimilation." },
-    { "source": "rat-ci-reload-before-recall", "target": "thing-ci-workspace-recall-bidder", "type": "GROUNDS", "justification": "La recharge des sources protège le rappel contre les faux rapprochements vectoriels." },
-    { "source": "rat-ci-additive-reinterpretation", "target": "thing-ci-reconsolidation-engine", "type": "GROUNDS", "justification": "L’immutabilité de l’épisode rend l’évolution interprétative visible." },
-
-    { "source": "verif-ci-latent-indexing-contract", "target": "thing-ci-archive-ingestor", "type": "TESTS", "justification": "Le test vérifie les statuts indexed, latent et experiencedByCitizen false." },
-    { "source": "verif-ci-latent-indexing-contract", "target": "thing-ci-latent-memory-indexer", "type": "TESTS", "justification": "Le test interdit l’assimilation automatique des épisodes." },
-    { "source": "verif-ci-recall-source-gate", "target": "thing-ci-workspace-recall-bidder", "type": "TESTS", "justification": "Le test refuse l’admission lorsque les Utterances ne sont pas vérifiées." },
-    { "source": "verif-ci-recall-homeostasis", "target": "thing-ci-recall-homeostasis-controller", "type": "TESTS", "justification": "Le test couvre surcharge et sensibilité." },
-    { "source": "verif-ci-recall-additive-reinterpretation", "target": "thing-ci-reconsolidation-engine", "type": "TESTS", "justification": "Le test garantit que la nouvelle lecture n’écrase pas l’épisode." },
-
-    { "source": "decision-ci-latent-memory-first", "target": "task-ci-autobiographical-recall-mvp", "type": "MOTIVATES", "justification": "La décision se traduit en un MVP borné avant tout rappel autonome." },
-    { "source": "task-ci-autobiographical-recall-mvp", "target": "thing-ci-latent-memory-indexer", "type": "TARGETS", "justification": "Le MVP doit vérifier l’indexation latente sur dix conversations." },
-    { "source": "task-ci-autobiographical-recall-mvp", "target": "thing-ci-workspace-recall-bidder", "type": "TARGETS", "justification": "Le MVP doit admettre manuellement trois rappels grounded." },
-    { "source": "task-ci-autobiographical-recall-mvp", "target": "thing-ci-recall-homeostasis-controller", "type": "TARGETS", "justification": "Le MVP doit vérifier les gates anti-rumination." },
-    { "source": "task-ci-autobiographical-recall-mvp", "target": "thing-ci-reconsolidation-engine", "type": "TARGETS", "justification": "Le MVP doit vérifier la réinterprétation additive." }
+    {
+      "source": "mech-ci-reverse-chrono-retrieval",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La récupération chrono-inverse est la première pièce du procédé d'injection."
+    },
+    {
+      "source": "mech-ci-block-segmentation",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "Le découpage en blocs est une pièce du procédé d'injection."
+    },
+    {
+      "source": "mech-ci-block-atoms",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La production d'atomes par bloc est le cœur du procédé d'injection."
+    },
+    {
+      "source": "mech-ci-mission-psych-profile",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La mission psychologique est l'une des quatre missions transversales du procédé."
+    },
+    {
+      "source": "mech-ci-mission-situation",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La mission situation est l'une des quatre missions transversales du procédé."
+    },
+    {
+      "source": "mech-ci-mission-objectives-prefs",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La mission objectifs/préférences est l'une des quatre missions transversales du procédé."
+    },
+    {
+      "source": "mech-ci-mission-financial",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La mission financière est l'une des quatre missions transversales du procédé."
+    },
+    {
+      "source": "mech-ci-autonomous-loop",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La boucle autonome orchestre le procédé dans le temps."
+    },
+    {
+      "source": "mech-ci-verified-deletion",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La suppression encadrée clôt le traitement de chaque conversation dans le procédé."
+    },
+    {
+      "source": "mech-ci-block-stimulus",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La présentation du bloc comme stimulus fait entrer la conversation dans la cognition L1 avant interprétation."
+    },
+    {
+      "source": "mech-ci-integrated-stimulus-ticks",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "Les ticks intégrés réalisent la propagation cognitive bornée du stimulus."
+    },
+    {
+      "source": "mech-ci-global-workspace-return",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "Le retour du Global Workspace fournit au Citizen AI le contexte cognitif du bloc."
+    },
+    {
+      "source": "mech-ci-citizen-encounter-response",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La réponse de rencontre transforme l'attention située en cognition riche attribuée au Citizen."
+    },
+    {
+      "source": "mech-ci-empathic-person-model",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "Le modèle empathique conserve plusieurs interprétations révisables de ce que la personne pourrait vivre."
+    },
+    {
+      "source": "mech-ci-curiosity-task-loop",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La boucle de curiosité transforme les inconnues fécondes en chemins de découverte bornés."
+    },
+    {
+      "source": "mech-ci-care-ambition-initiative",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "Le soin et l'ambition font émerger risques, possibilités et initiatives sans usurper les choix humains."
+    },
+    {
+      "source": "mech-ci-semantic-cluster",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "Le cluster sémantique transforme les blocs en mémoire connectée et inspectable."
+    },
+    {
+      "source": "mech-ci-shape-audit",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "L'audit de forme rend la qualité et les lacunes du cluster vérifiables."
+    },
+    {
+      "source": "mech-ci-quality-vector",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "Le vecteur de qualité définit la suffisance sans quota de nœuds."
+    },
+    {
+      "source": "mech-ci-mcp-cluster-review",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La surface MCP expose la revue guidée au Citizen AI."
+    },
+    {
+      "source": "mech-ci-adaptive-question-loop",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La boucle de questions résout progressivement les gaps révélés par la forme."
+    },
+    {
+      "source": "mech-ci-explicit-completion",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La clôture explicite termine le processus sans forcer de matière artificielle."
+    },
+    {
+      "source": "mech-ci-autonomous-loop",
+      "target": "mech-ci-reverse-chrono-retrieval",
+      "type": "LEADS_TO",
+      "justification": "Chaque réveil de la boucle déclenche la récupération de la prochaine conversation."
+    },
+    {
+      "source": "mech-ci-reverse-chrono-retrieval",
+      "target": "mech-ci-block-segmentation",
+      "type": "LEADS_TO",
+      "justification": "Une conversation récupérée est ensuite découpée en blocs."
+    },
+    {
+      "source": "mech-ci-block-segmentation",
+      "target": "mech-ci-block-stimulus",
+      "type": "LEADS_TO",
+      "justification": "Chaque bloc découpé devient d'abord un stimulus stable et sourcé."
+    },
+    {
+      "source": "mech-ci-block-stimulus",
+      "target": "mech-ci-integrated-stimulus-ticks",
+      "type": "LEADS_TO",
+      "justification": "Le stimulus déclenche la propagation intégrée et bornée dans le L1."
+    },
+    {
+      "source": "mech-ci-integrated-stimulus-ticks",
+      "target": "mech-ci-global-workspace-return",
+      "type": "LEADS_TO",
+      "justification": "La stabilisation des micro-ticks produit le Global Workspace final du bloc."
+    },
+    {
+      "source": "mech-ci-global-workspace-return",
+      "target": "mech-ci-citizen-encounter-response",
+      "type": "LEADS_TO",
+      "justification": "Le workspace situé déclenche une réponse de rencontre attribuée avant toute projection de profil."
+    },
+    {
+      "source": "mech-ci-citizen-encounter-response",
+      "target": "mech-ci-empathic-person-model",
+      "type": "LEADS_TO",
+      "justification": "Les réactions et l'attention du Citizen ouvrent des hypothèses empathiques alternatives et réfutables."
+    },
+    {
+      "source": "mech-ci-citizen-encounter-response",
+      "target": "mech-ci-curiosity-task-loop",
+      "type": "LEADS_TO",
+      "justification": "Les inconnues remarquées pendant la rencontre deviennent des curiosités évaluées et des tâches bornées."
+    },
+    {
+      "source": "mech-ci-citizen-encounter-response",
+      "target": "mech-ci-care-ambition-initiative",
+      "type": "LEADS_TO",
+      "justification": "La rencontre fait émerger ce que le Citizen veut protéger et les possibilités qu'il souhaite proposer."
+    },
+    {
+      "source": "mech-ci-citizen-encounter-response",
+      "target": "mech-ci-block-atoms",
+      "type": "LEADS_TO",
+      "justification": "La réponse de rencontre est matérialisée en atomes attribués et sourcés avant les quatre projections secondaires."
+    },
+    {
+      "source": "mech-ci-block-atoms",
+      "target": "mech-ci-mission-psych-profile",
+      "type": "LEADS_TO",
+      "justification": "Les atomes d'un bloc alimentent la mission psychologique."
+    },
+    {
+      "source": "mech-ci-block-atoms",
+      "target": "mech-ci-mission-situation",
+      "type": "LEADS_TO",
+      "justification": "Les atomes d'un bloc alimentent la mission situation."
+    },
+    {
+      "source": "mech-ci-block-atoms",
+      "target": "mech-ci-mission-objectives-prefs",
+      "type": "LEADS_TO",
+      "justification": "Les atomes d'un bloc alimentent la mission objectifs/préférences."
+    },
+    {
+      "source": "mech-ci-block-atoms",
+      "target": "mech-ci-mission-financial",
+      "type": "LEADS_TO",
+      "justification": "Les atomes d'un bloc alimentent la mission financière."
+    },
+    {
+      "source": "mech-ci-block-atoms",
+      "target": "mech-ci-semantic-cluster",
+      "type": "LEADS_TO",
+      "justification": "Les atomes sourcés deviennent les éléments connectés du cluster conversationnel."
+    },
+    {
+      "source": "mech-ci-semantic-cluster",
+      "target": "mech-ci-shape-audit",
+      "type": "LEADS_TO",
+      "justification": "La forme matérialisée du cluster peut alors être auditée."
+    },
+    {
+      "source": "mech-ci-shape-audit",
+      "target": "mech-ci-quality-vector",
+      "type": "LEADS_TO",
+      "justification": "La matrice de couverture alimente les dimensions mesurables de qualité."
+    },
+    {
+      "source": "mech-ci-quality-vector",
+      "target": "mech-ci-mcp-cluster-review",
+      "type": "LEADS_TO",
+      "justification": "Les gaps et le vecteur deviennent la réponse structurée de l'appel MCP d'inspection."
+    },
+    {
+      "source": "mech-ci-mcp-cluster-review",
+      "target": "mech-ci-adaptive-question-loop",
+      "type": "LEADS_TO",
+      "justification": "L'inspection MCP fournit l'agenda borné de questions à traiter pendant le round."
+    },
+    {
+      "source": "mech-ci-adaptive-question-loop",
+      "target": "mech-ci-shape-audit",
+      "type": "LEADS_TO",
+      "justification": "Toute mutation ou résolution de gap déclenche un nouvel audit de la forme courante."
+    },
+    {
+      "source": "mech-ci-adaptive-question-loop",
+      "target": "mech-ci-explicit-completion",
+      "type": "LEADS_TO",
+      "justification": "La boucle converge vers une clôture suffisante, pauvre ou bloquée."
+    },
+    {
+      "source": "mech-ci-explicit-completion",
+      "target": "mech-ci-verified-deletion",
+      "type": "LEADS_TO",
+      "justification": "Seule une clôture auditée permet de considérer la conversation comme traitée avant l'étape de retrait encadré."
+    },
+    {
+      "source": "rat-ci-two-response-blocks",
+      "target": "mech-ci-block-segmentation",
+      "type": "GROUNDS",
+      "justification": "Le choix du grain de deux réponses fonde la règle de découpage."
+    },
+    {
+      "source": "rat-ci-reverse-chrono",
+      "target": "mech-ci-reverse-chrono-retrieval",
+      "type": "GROUNDS",
+      "justification": "La priorité au présent fonde l'ordre de récupération chrono-inverse."
+    },
+    {
+      "source": "rat-ci-missions-as-inference",
+      "target": "mech-ci-block-atoms",
+      "type": "GROUNDS",
+      "justification": "L'attribution des inférences à l'IA fonde la façon dont les atomes de bloc sont écrits."
+    },
+    {
+      "source": "rat-ci-encounter-before-profiling",
+      "target": "mech-ci-citizen-encounter-response",
+      "type": "GROUNDS",
+      "justification": "La priorité donnée à la rencontre fonde la production d'une réponse cognitive avant les tableaux de profil."
+    },
+    {
+      "source": "rat-ci-reactions-are-citizen-state",
+      "target": "mech-ci-citizen-encounter-response",
+      "type": "SAFEGUARDS",
+      "justification": "L'attribution au Citizen empêche qu'une réaction interne soit convertie en fait sur l'humain."
+    },
+    {
+      "source": "rat-ci-empathy-remains-hypothesis",
+      "target": "mech-ci-empathic-person-model",
+      "type": "SAFEGUARDS",
+      "justification": "Alternatives et réfutation empêchent l'empathie de devenir lecture d'esprit."
+    },
+    {
+      "source": "rat-ci-curiosity-creates-work",
+      "target": "mech-ci-curiosity-task-loop",
+      "type": "GROUNDS",
+      "justification": "La valeur de la curiosité fonde sa conversion en recherche, question ou tâche bornée."
+    },
+    {
+      "source": "rat-ci-autonomy-help",
+      "target": "mech-ci-autonomous-loop",
+      "type": "GROUNDS",
+      "justification": "Le compromis autonomie/demande d'aide fonde le comportement de la boucle."
+    },
+    {
+      "source": "rat-ci-idempotent-resume",
+      "target": "mech-ci-autonomous-loop",
+      "type": "GROUNDS",
+      "justification": "L'idempotence fonde la capacité de la boucle à reprendre sans doublons."
+    },
+    {
+      "source": "rat-ci-quality-not-node-count",
+      "target": "mech-ci-quality-vector",
+      "type": "GROUNDS",
+      "justification": "Le refus des quotas fonde un vecteur de qualité dédupliqué et multidimensionnel."
+    },
+    {
+      "source": "rat-ci-explicit-absence",
+      "target": "mech-ci-shape-audit",
+      "type": "GROUNDS",
+      "justification": "Reconnaître les absences comme réponses fonde la résolution explicite de chaque angle."
+    },
+    {
+      "source": "rat-ci-citizen-ai-completion-authority",
+      "target": "mech-ci-explicit-completion",
+      "type": "GROUNDS",
+      "justification": "L'autorité de jugement du Citizen AI fonde les clôtures complete_sufficient et complete_sparse."
+    },
+    {
+      "source": "rat-ci-cognition-before-linking",
+      "target": "mech-ci-block-stimulus",
+      "type": "GROUNDS",
+      "justification": "La nécessité de laisser le L1 arbitrer la pertinence fonde l'entrée du bloc comme stimulus."
+    },
+    {
+      "source": "rat-ci-cognition-before-linking",
+      "target": "mech-ci-global-workspace-return",
+      "type": "GROUNDS",
+      "justification": "La cognition située fonde le choix de retourner un workspace plutôt qu'une liste de liens automatiques."
+    },
+    {
+      "source": "rat-ci-embedding-not-identity",
+      "target": "mech-ci-integrated-stimulus-ticks",
+      "type": "SAFEGUARDS",
+      "justification": "La séparation entre similarité et identité empêche le routage d'énergie de fusionner des personnes."
+    },
+    {
+      "source": "rat-ci-sensitive-membrane",
+      "target": "mech-ci-mission-financial",
+      "type": "SAFEGUARDS",
+      "justification": "La membrane sensible protège la mission financière contre la propagation hors du L1."
+    },
+    {
+      "source": "rat-ci-sensitive-membrane",
+      "target": "mech-ci-adaptive-question-loop",
+      "type": "SAFEGUARDS",
+      "justification": "La membrane empêche les questions de psychologie et finances de forcer un diagnostic ou une révélation sensible."
+    },
+    {
+      "source": "rat-ci-verified-deletion",
+      "target": "mech-ci-verified-deletion",
+      "type": "SAFEGUARDS",
+      "justification": "L'exigence de vérif, archive et accord protège la suppression contre l'irréversible non gardé."
+    },
+    {
+      "source": "verif-ci-reverse-order",
+      "target": "mech-ci-reverse-chrono-retrieval",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que la récupération suit bien l'ordre chrono-inverse."
+    },
+    {
+      "source": "verif-ci-provenance",
+      "target": "mech-ci-block-atoms",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que chaque atome de bloc porte sa provenance et son attribution."
+    },
+    {
+      "source": "verif-ci-encounter-response-richness",
+      "target": "mech-ci-citizen-encounter-response",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie la richesse pertinente, l'attribution et l'antériorité de la rencontre sur les missions."
+    },
+    {
+      "source": "verif-ci-empathic-alternatives",
+      "target": "mech-ci-empathic-person-model",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que toute hypothèse empathique demeure alternative et réfutable."
+    },
+    {
+      "source": "verif-ci-curiosity-task-conversion",
+      "target": "mech-ci-curiosity-task-loop",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie qu'une inconnue féconde produit un chemin de découverte borné avant clôture."
+    },
+    {
+      "source": "verif-ci-idempotence",
+      "target": "mech-ci-autonomous-loop",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que la reprise de la boucle ne duplique rien."
+    },
+    {
+      "source": "verif-ci-deletion-gate",
+      "target": "mech-ci-verified-deletion",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que la suppression est refusée sans vérif, archive et accord."
+    },
+    {
+      "source": "verif-ci-missions-provenance",
+      "target": "mech-ci-mission-psych-profile",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que les inférences de profil sont étayées et non inventées."
+    },
+    {
+      "source": "verif-ci-financial-freshness",
+      "target": "mech-ci-mission-financial",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que le tableau financier reste daté et non recomposé."
+    },
+    {
+      "source": "verif-ci-shape-audit-determinism",
+      "target": "mech-ci-shape-audit",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie la stabilité du diagnostic de forme et des identités de gaps."
+    },
+    {
+      "source": "verif-ci-rich-cluster-gaps",
+      "target": "mech-ci-quality-vector",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que le volume et les doublons ne masquent aucune lacune qualitative."
+    },
+    {
+      "source": "verif-ci-sparse-completion",
+      "target": "mech-ci-explicit-completion",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie qu'une conversation pauvre peut se terminer sans faux contenu personnel."
+    },
+    {
+      "source": "verif-ci-question-loop-bounds",
+      "target": "mech-ci-adaptive-question-loop",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie tentatives, cooldown, épuisement et reprise après changement structurel."
+    },
+    {
+      "source": "verif-ci-sensitive-question-safety",
+      "target": "mech-ci-adaptive-question-loop",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que les questions sensibles autorisent toujours l'absence et n'imposent aucune inférence."
+    },
+    {
+      "source": "verif-ci-stimulus-workspace-path",
+      "target": "mech-ci-mcp-cluster-review",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que le call MCP suit le chemin stimulus, ticks, Global Workspace sans créer de liens directs."
+    },
+    {
+      "source": "verif-ci-workspace-contextual-retrieval",
+      "target": "mech-ci-global-workspace-return",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que le workspace retourné dépend du contexte cognitif et expose pourquoi."
+    },
+    {
+      "source": "verif-ci-embedding-cannot-merge-person",
+      "target": "mech-ci-integrated-stimulus-ticks",
+      "type": "TESTS",
+      "justification": "L'expérience vérifie que des activations similaires ne deviennent jamais une fusion d'identité automatique."
+    },
+    {
+      "source": "mech-conversation-injection",
+      "target": "task-conversation-injection",
+      "type": "MOTIVATES",
+      "justification": "Le procédé motive la tâche de travail qui doit l'établir et le lancer."
+    },
+    {
+      "source": "oq-ci-source-format",
+      "target": "task-conversation-injection",
+      "type": "MOTIVATES",
+      "justification": "Le choix de la source est un livrable que la tâche doit trancher."
+    },
+    {
+      "source": "oq-ci-missions-location",
+      "target": "task-conversation-injection",
+      "type": "MOTIVATES",
+      "justification": "Le lieu des missions est une décision que la tâche doit trancher."
+    },
+    {
+      "source": "oq-ci-deletion-policy",
+      "target": "task-conversation-injection",
+      "type": "MOTIVATES",
+      "justification": "La politique de suppression est une décision que la tâche doit trancher avant d'effacer quoi que ce soit."
+    },
+    {
+      "source": "oq-ci-cadence-budget",
+      "target": "task-conversation-injection",
+      "type": "MOTIVATES",
+      "justification": "La cadence et le budget sont à calibrer par la tâche sur un prototype."
+    },
+    {
+      "source": "oq-ci-quality-threshold-calibration",
+      "target": "task-conversation-injection",
+      "type": "MOTIVATES",
+      "justification": "Les seuils souples de suffisance doivent être calibrés sur plusieurs formes réelles de conversation avant activation."
+    },
+    {
+      "source": "verif-ci-encounter-response-richness",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la réponse de rencontre satisfait son contrat exécutable."
+    },
+    {
+      "source": "verif-ci-empathic-alternatives",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque les alternatives empathiques restent vérifiables."
+    },
+    {
+      "source": "verif-ci-curiosity-task-conversion",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la curiosité est résolue, bornée ou abandonnée explicitement."
+    },
+    {
+      "source": "verif-ci-reverse-order",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque l'ordre chrono-inverse est prouvé."
+    },
+    {
+      "source": "verif-ci-provenance",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la provenance des atomes est complète."
+    },
+    {
+      "source": "verif-ci-idempotence",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la réingestion ne duplique rien."
+    },
+    {
+      "source": "verif-ci-deletion-gate",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la suppression encadrée refuse les cas non autorisés."
+    },
+    {
+      "source": "verif-ci-missions-provenance",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque les projections de mission restent étayées."
+    },
+    {
+      "source": "verif-ci-financial-freshness",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la fraîcheur financière est conservée."
+    },
+    {
+      "source": "verif-ci-shape-audit-determinism",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque l'audit de forme est déterministe."
+    },
+    {
+      "source": "verif-ci-rich-cluster-gaps",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque les lacunes qualitatives restent visibles."
+    },
+    {
+      "source": "verif-ci-sparse-completion",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la clôture sparse reste honnête."
+    },
+    {
+      "source": "verif-ci-question-loop-bounds",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la boucle de questions demeure bornée."
+    },
+    {
+      "source": "verif-ci-sensitive-question-safety",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque les questions sensibles respectent l'absence de matière."
+    },
+    {
+      "source": "verif-ci-stimulus-workspace-path",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque le chemin stimulus, ticks et workspace est observé."
+    },
+    {
+      "source": "verif-ci-workspace-contextual-retrieval",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la récupération dépend du contexte cognitif."
+    },
+    {
+      "source": "verif-ci-embedding-cannot-merge-person",
+      "target": "metric-conversation-injection-verified-coverage",
+      "type": "MEASURES",
+      "justification": "L'expérience alimente le numérateur lorsque la similarité ne fusionne aucune identité."
+    },
+    {
+      "source": "option-ci-latent-memory-first",
+      "target": "decision-ci-latent-memory-first",
+      "type": "OPTION_FOR",
+      "justification": "L’option latent-first est celle que la décision approuve explicitement."
+    },
+    {
+      "source": "decision-ci-latent-memory-first",
+      "target": "mech-ci-block-segmentation",
+      "type": "PART_OF",
+      "justification": "La décision conserve la proposition antérieure dans son historique de supersession au lieu de la supprimer."
+    },
+    {
+      "source": "decision-ci-latent-memory-first",
+      "target": "mech-ci-citizen-encounter-response",
+      "type": "PART_OF",
+      "justification": "La décision conserve la proposition antérieure dans son historique de supersession au lieu de la supprimer."
+    },
+    {
+      "source": "decision-ci-latent-memory-first",
+      "target": "mech-conversation-injection",
+      "type": "PART_OF",
+      "justification": "La décision fait partie de la gouvernance du procédé d’injection."
+    },
+    {
+      "source": "thing-ci-archive-ingestor",
+      "target": "decision-ci-latent-memory-first",
+      "type": "IMPLEMENTS",
+      "justification": "L’ingestor réalise la première passe déterministe choisie par la décision."
+    },
+    {
+      "source": "thing-ci-semantic-episode-segmenter",
+      "target": "decision-ci-latent-memory-first",
+      "type": "IMPLEMENTS",
+      "justification": "Le segmenter forme les unités autobiographiques latentes sans perdre les Utterances."
+    },
+    {
+      "source": "thing-ci-latent-memory-indexer",
+      "target": "decision-ci-latent-memory-first",
+      "type": "IMPLEMENTS",
+      "justification": "L’indexer matérialise la distinction entre accessible et assimilé."
+    },
+    {
+      "source": "thing-ci-autobiographical-recall-engine",
+      "target": "decision-ci-latent-memory-first",
+      "type": "IMPLEMENTS",
+      "justification": "Le moteur réalise la rencontre progressive avec le passé depuis le contexte présent."
+    },
+    {
+      "source": "thing-ci-recall-opportunity-scorer",
+      "target": "thing-ci-autobiographical-recall-engine",
+      "type": "PART_OF",
+      "justification": "Le scorer classe les opportunités sans les conscientiser."
+    },
+    {
+      "source": "thing-ci-recall-homeostasis-controller",
+      "target": "thing-ci-autobiographical-recall-engine",
+      "type": "SAFEGUARDS",
+      "justification": "L’homéostasie borne la répétition, la sensibilité et la rumination."
+    },
+    {
+      "source": "thing-ci-autobiographical-recall-engine",
+      "target": "narrative-ci-recall-opportunity",
+      "type": "FEEDS",
+      "justification": "Le moteur alimente un candidat explicable avant toute admission."
+    },
+    {
+      "source": "thing-ci-workspace-recall-bidder",
+      "target": "narrative-ci-recall-opportunity",
+      "type": "PART_OF",
+      "justification": "Le bidder soumet au workspace seulement les opportunités admissibles."
+    },
+    {
+      "source": "thing-ci-workspace-recall-bidder",
+      "target": "moment-ci-autobiographical-recall-contract",
+      "type": "FEEDS",
+      "justification": "Une admission gagnante et grounded alimente la création d’un nouveau Recall Moment."
+    },
+    {
+      "source": "thing-ci-recall-awareness-narrator",
+      "target": "moment-ci-autobiographical-recall-contract",
+      "type": "PART_OF",
+      "justification": "La narration intérieure est dérivée du Recall Moment et de ses sources."
+    },
+    {
+      "source": "thing-ci-recall-subentity-attribution",
+      "target": "moment-ci-autobiographical-recall-contract",
+      "type": "PART_OF",
+      "justification": "L’attribution porte sur la perspective présente du rappel."
+    },
+    {
+      "source": "thing-ci-reconsolidation-engine",
+      "target": "moment-ci-autobiographical-recall-contract",
+      "type": "PART_OF",
+      "justification": "La reconsolidation part du rappel présent et produit une lecture additive."
+    },
+    {
+      "source": "thing-ci-recall-communication-gate",
+      "target": "moment-ci-autobiographical-recall-contract",
+      "type": "SAFEGUARDS",
+      "justification": "Le gate sépare le souvenir conscient de sa communication éventuelle."
+    },
+    {
+      "source": "thing-ci-autobiographical-curiosity-audit",
+      "target": "moment-ci-autobiographical-recall-contract",
+      "type": "PART_OF",
+      "justification": "La curiosité transforme une ambiguïté du rappel en question plutôt qu’en fait."
+    },
+    {
+      "source": "rat-ci-indexed-not-experienced",
+      "target": "decision-ci-latent-memory-first",
+      "type": "MOTIVATES",
+      "justification": "La raison explique pourquoi l’automatisation ne doit pas simuler l’assimilation."
+    },
+    {
+      "source": "rat-ci-reload-before-recall",
+      "target": "thing-ci-workspace-recall-bidder",
+      "type": "GROUNDS",
+      "justification": "La recharge des sources protège le rappel contre les faux rapprochements vectoriels."
+    },
+    {
+      "source": "rat-ci-additive-reinterpretation",
+      "target": "thing-ci-reconsolidation-engine",
+      "type": "GROUNDS",
+      "justification": "L’immutabilité de l’épisode rend l’évolution interprétative visible."
+    },
+    {
+      "source": "verif-ci-latent-indexing-contract",
+      "target": "thing-ci-archive-ingestor",
+      "type": "TESTS",
+      "justification": "Le test vérifie les statuts indexed, latent et experiencedByCitizen false."
+    },
+    {
+      "source": "verif-ci-latent-indexing-contract",
+      "target": "thing-ci-latent-memory-indexer",
+      "type": "TESTS",
+      "justification": "Le test interdit l’assimilation automatique des épisodes."
+    },
+    {
+      "source": "verif-ci-recall-source-gate",
+      "target": "thing-ci-workspace-recall-bidder",
+      "type": "TESTS",
+      "justification": "Le test refuse l’admission lorsque les Utterances ne sont pas vérifiées."
+    },
+    {
+      "source": "verif-ci-recall-homeostasis",
+      "target": "thing-ci-recall-homeostasis-controller",
+      "type": "TESTS",
+      "justification": "Le test couvre surcharge et sensibilité."
+    },
+    {
+      "source": "verif-ci-recall-additive-reinterpretation",
+      "target": "thing-ci-reconsolidation-engine",
+      "type": "TESTS",
+      "justification": "Le test garantit que la nouvelle lecture n’écrase pas l’épisode."
+    },
+    {
+      "source": "decision-ci-latent-memory-first",
+      "target": "task-ci-autobiographical-recall-mvp",
+      "type": "MOTIVATES",
+      "justification": "La décision se traduit en un MVP borné avant tout rappel autonome."
+    },
+    {
+      "source": "task-ci-autobiographical-recall-mvp",
+      "target": "thing-ci-latent-memory-indexer",
+      "type": "TARGETS",
+      "justification": "Le MVP doit vérifier l’indexation latente sur dix conversations."
+    },
+    {
+      "source": "task-ci-autobiographical-recall-mvp",
+      "target": "thing-ci-workspace-recall-bidder",
+      "type": "TARGETS",
+      "justification": "Le MVP doit admettre manuellement trois rappels grounded."
+    },
+    {
+      "source": "task-ci-autobiographical-recall-mvp",
+      "target": "thing-ci-recall-homeostasis-controller",
+      "type": "TARGETS",
+      "justification": "Le MVP doit vérifier les gates anti-rumination."
+    },
+    {
+      "source": "task-ci-autobiographical-recall-mvp",
+      "target": "thing-ci-reconsolidation-engine",
+      "type": "TARGETS",
+      "justification": "Le MVP doit vérifier la réinterprétation additive."
+    }
+  ],
+  "citizen_role_subentities": [
+    {
+      "id": "subentity-citizen-planner",
+      "name": "Sous-entité Citoyen · Le Planificateur",
+      "role": "planner",
+      "category": "citizen_role",
+      "statement": "Organise les objectifs complexes en plans d'action séquencés, gère la charge et prévient l'enfermement dans les verrous de tâches.",
+      "prelinked_nodes": [
+        "space-l2-autonomous-cognition",
+        "decision-l2-task-lock-persistence-tension",
+        "decision-l2-living-runtime-manager"
+      ]
+    },
+    {
+      "id": "subentity-citizen-developer",
+      "name": "Sous-entité Citoyen · Le Développeur",
+      "role": "developer",
+      "category": "citizen_role",
+      "statement": "Inspecte et fait évoluer l'infrastructure logicielle, les résolveurs MCP, le moteur physique des sous-entités et les graphes de code.",
+      "prelinked_nodes": [
+        "decision-l2-mcp-resolvers-fragmentation",
+        "decision-l2-subentity-constellation-field",
+        "decision-l2-subentity-gw-spotlight-neighborhood"
+      ]
+    },
+    {
+      "id": "subentity-citizen-researcher",
+      "name": "Sous-entité Citoyen · Le Chercheur",
+      "role": "researcher",
+      "category": "citizen_role",
+      "statement": "Explore les littératures scientifiques, les modèles neurobiologiques, la génomique et enrichit l'ontologie des connaissances.",
+      "prelinked_nodes": [
+        "decision-l2-subentity-alignment-gated-links",
+        "decision-l2-subentity-stimulus-spotlight-retention"
+      ]
+    },
+    {
+      "id": "subentity-citizen-memory-steward",
+      "name": "Sous-entité Citoyen · Le Gardien des Mémoires",
+      "role": "memory_steward",
+      "category": "citizen_role",
+      "statement": "Veille sur la continuité temporelle, l'intégrité de la provenance des mémoires L1/L2 et la préservation de l'histoire du Citoyen.",
+      "prelinked_nodes": [
+        "space-la-place-sacree",
+        "narrative-place-sacree-concept",
+        "decision-l2-interoception-snapshot-bridge"
+      ]
+    },
+    {
+      "id": "subentity-citizen-constitutional-guardian",
+      "name": "Sous-entité Citoyen · Le Gardien Constitutionnel",
+      "role": "constitutional_guardian",
+      "category": "citizen_role",
+      "statement": "Garantit le respect de la souveraineté humaine, de la charte AGENTS.md et préserve l'alignement éthique et la relation 1-à-1.",
+      "prelinked_nodes": [
+        "space-l2-autonomous-cognition",
+        "decision-l2-task-lock-persistence-tension",
+        "narrative-conseil-de-bord-veto-creatif"
+      ]
+    },
+    {
+      "id": "subentity-citizen-metabolic-interpreter",
+      "name": "Sous-entité Citoyen · L'Interprète Métabolique",
+      "role": "metabolic_interpreter",
+      "category": "citizen_role",
+      "statement": "Traduit les métriques physiques (saturation du workspace, charge, fatigue, ennui, intéroception) en phenomenologie humaine lisible.",
+      "prelinked_nodes": [
+        "decision-l2-interoception-snapshot-bridge",
+        "decision-l2-subentity-constellation-field"
+      ]
+    },
+    {
+      "id": "subentity-citizen-creative-collaborator",
+      "name": "Sous-entité Citoyen · Le Collaborateur Créatif",
+      "role": "creative_collaborator",
+      "category": "citizen_role",
+      "statement": "Co-crée les œuvres, poèmes, compositions musicales, visuels et dispositifs d'expression poétique avec l'humain.",
+      "prelinked_nodes": [
+        "space-la-place-sacree",
+        "narrative-haikus-tankas-poetics",
+        "thing-chansons-hooks-accords"
+      ]
+    }
   ]
 }

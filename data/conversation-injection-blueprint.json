@@ -111,6 +111,163 @@
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
+    {
+      "id": "mech-ci-semantic-cluster",
+      "name": "Cluster · forme sémantique de la conversation",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Chaque conversation produit un cluster identifiable, atomisé et connecté, pas seulement une archive de blocs.",
+      "family": "Injection conversations · cluster",
+      "summary": "Le cluster porte un clusterId stable et relie les blocs bruts à des atomes de contexte, acteurs, faits, artefacts, idées, décisions, questions, risques et contradictions lorsque ces angles existent. Les quatre missions transversales y sont résolues par de la matière sourcée ou par un statut explicite d'absence, d'inconnu, de non-pertinence ou de rétention sensible. Le nombre brut de nœuds n'est jamais un critère de réussite.",
+      "requiredAngles": [
+        "provenance et consentement",
+        "blocs bruts ordonnés",
+        "contexte",
+        "acteurs et relations",
+        "faits ou événements saillants",
+        "artefacts, idées, décisions, questions, risques et contradictions applicables",
+        "profil psychologique",
+        "situation présente",
+        "objectifs et préférences",
+        "finances",
+        "contrôle qualité et décision de clôture"
+      ],
+      "angleResolutionStates": [
+        "present_supported",
+        "absent_in_source",
+        "unknown_missing_source",
+        "not_applicable",
+        "withheld_sensitive"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-shape-audit",
+      "name": "Audit · contrat de forme du cluster",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Un audit déterministe vérifie les angles présents, les absences justifiées, la provenance et la connectivité du cluster.",
+      "family": "Injection conversations · qualité",
+      "summary": "L'audit compare la forme réelle du cluster à un contrat déclaratif. Pour chaque angle attendu, il cherche des nœuds et relations admissibles ; une absence silencieuse devient un gap, tandis qu'une absence explicitement justifiée compte comme résolue sans créer de faux contenu. L'audit produit un Moment append-only avec la matrice de couverture, les nœuds de preuve, les gaps et la signature structurelle du round.",
+      "shapeContract": {
+        "rawEvidence": {
+          "expectedNodeTypes": ["memory"],
+          "expectedClaimNatures": ["source_record", "message_moment"],
+          "requiredRelations": ["FOLLOWS_IN_CONVERSATION", "CONSENTED_UNDER"]
+        },
+        "semanticAtoms": {
+          "expectedNodeTypes": ["memory", "observation", "relation", "objective", "decision", "preference", "value"],
+          "expectedClaimNatures": ["context", "actor_reference", "salient_fact", "artifact", "idea", "decision", "question", "risk", "contradiction", "agent_inference"]
+        },
+        "missions": {
+          "requiredKeys": ["psychology", "situation", "objectives_preferences", "financial"],
+          "resolutionStates": ["present_supported", "absent_in_source", "unknown_missing_source", "not_applicable", "withheld_sensitive"]
+        },
+        "qualityRecord": {
+          "expectedClaimNatures": ["cluster_shape_audit", "cluster_completion_decision"]
+        }
+      },
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-quality-vector",
+      "name": "Mesure · vecteur de qualité et prédicat de suffisance",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "La suffisance vient d'un vecteur vérifiable, jamais d'un quota de nœuds ni d'un score opaque.",
+      "family": "Injection conversations · qualité",
+      "summary": "Le contrôle calcule séparément fidélité, provenance, résolution des angles, résolution des quatre missions, connectivité, contradictions visibles et dette de questions. Une dimension est résolue par un atome étayé ou par une absence explicite justifiée. La duplication n'améliore aucun ratio. Les seuils souples restent configurables et doivent être calibrés sur des conversations riches et pauvres.",
+      "qualityVector": {
+        "sourceFidelity": "blocs dont le texte et le hash correspondent à la source / blocs importés",
+        "provenanceCoverage": "atomes extraits portant sourceLocator, statut épistémique, attribution et consentement / atomes extraits",
+        "angleResolutionCoverage": "angles attendus avec matière étayée ou absence explicitement justifiée / angles applicables",
+        "missionResolutionCoverage": "missions résolues par matière étayée ou statut d'absence explicite / 4",
+        "connectivityCoverage": "atomes sémantiques non isolés reliés à une preuve et à au moins un élément de sens / atomes sémantiques",
+        "contradictionVisibility": "contradictions détectées conservées ou explicitement marquées non détectées",
+        "questionDebt": "somme normalisée des priorités des gaps encore éligibles",
+        "duplicatePenalty": "contenus sémantiquement dupliqués sans provenance ou fonction nouvelle"
+      },
+      "readinessPredicate": "readyByContract = sourceFidelity == 1 AND provenanceCoverage == 1 AND angleResolutionCoverage == 1 AND missionResolutionCoverage == 1 AND connectivityCoverage >= minConnectivity AND questionDebt <= maxQuestionDebt AND duplicatePenalty == 0 AND hardBlockers == 0",
+      "guardrail": "Le prédicat aide le Citizen AI à voir les lacunes ; il ne remplace ni son jugement de pertinence ni son autorité de clôture explicite.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-mcp-cluster-review",
+      "name": "MCP · inspection et revue guidée du cluster",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Deux appels MCP répétés transforment la forme du cluster en petite liste de questions, puis consignent les réponses et la décision de clôture.",
+      "family": "Injection conversations · MCP",
+      "summary": "La surface proposée sépare un appel read-only inspect_conversation_cluster et un appel append-only report_conversation_cluster_round. Le premier renvoie shapeSnapshot, qualityVector, gaps, questionAgenda et completionState. Le second reçoit les réponses, nœuds de preuve, mutations vérifiées et la décision continue, complete_sufficient, complete_sparse ou blocked_need_human ; il écrit le ledger du round puis impose une nouvelle inspection si le travail continue.",
+      "mcpTools": [
+        {
+          "name": "inspect_conversation_cluster",
+          "mutation": "none",
+          "requiredInputs": ["graphId", "clusterId"],
+          "optionalInputs": ["conversationId", "roundId", "maxQuestions"],
+          "outputs": ["shapeSnapshot", "qualityVector", "gaps", "questionAgenda", "completionState", "structuralSignature"]
+        },
+        {
+          "name": "report_conversation_cluster_round",
+          "mutation": "append_only_review_record",
+          "requiredInputs": ["graphId", "clusterId", "structuralSignature", "answers", "completionDecision"],
+          "optionalInputs": ["mutationsApplied", "verification", "residualGapRationale", "needsFromHuman"],
+          "completionDecisions": ["continue", "complete_sufficient", "complete_sparse", "blocked_need_human"]
+        }
+      ],
+      "reuseContract": "Réutiliser le compilateur de questions structurelles, son budget, ses gapKey stables, ses tentatives et son cooldown ; ajouter des définitions de gaps propres à la forme conversationnelle au lieu de demander au LLM d'inventer les critères.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-adaptive-question-loop",
+      "name": "Boucle · questions adaptatives jusqu'à résolution",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Chaque round pose seulement les questions les plus utiles que la forme actuelle du cluster rend nécessaires.",
+      "family": "Injection conversations · revue",
+      "summary": "Les gaps spécialisés couvrent notamment contexte absent, acteurs non reliés, faits non atomisés, psychologie non résolue, situation non résolue, objectifs/préférences non résolus, finances non résolues, provenance incomplète, atomes isolés et contradictions silencieuses. Les questions demandent d'abord des preuves et autorisent explicitement no_evidence, not_applicable ou withheld_sensitive. Une réponse ne crée un nœud personnel que si elle possède une trace ; sinon elle résout le gap par un statut honnête.",
+      "questionTemplates": {
+        "missing_context": "Quel contexte temporel, spatial, relationnel ou opérationnel est réellement visible dans ces blocs ? Si rien ne l'établit, quelle absence ou inconnue faut-il consigner ?",
+        "missing_actors": "Quels acteurs ou tiers sont présents, et que sait-on seulement de leur relation au citoyen ?",
+        "missing_salient_facts": "Quels faits ou événements distincts méritent un atome corrigeable, et quelles phrases exactes les soutiennent ?",
+        "missing_psychology": "Quels signaux émotionnels, cognitifs ou de sous-entité sont observables à cet instant, avec quelles alternatives ? Si la source ne permet rien, consigne no_evidence plutôt qu'un diagnostic.",
+        "missing_situation": "Que révèle ce bloc de la situation datée de l'humain, et qu'est-ce qui reste ancien, inconnu ou à rafraîchir ?",
+        "missing_objectives_preferences": "Quels objectifs, valeurs ou préférences sont déclarés ou raisonnablement inférés, et quelle preuve distingue les deux ?",
+        "missing_financial": "Existe-t-il une information financière datée et pertinente ? Sinon résous explicitement cette mission par absent_in_source ou not_applicable.",
+        "weak_connectivity": "Quels atomes restent isolés, et vers quelle preuve ou quel élément de sens doivent-ils être reliés sans fabriquer de relation ?",
+        "silent_contradiction": "Quelles tensions, alternatives ou contradictions le cluster devrait-il conserver au lieu de les réconcilier silencieusement ?"
+      },
+      "loopControls": {
+        "maxQuestionsPerRound": "configurable et borné",
+        "maxAttemptsPerGap": "configurable ; épuiser un gap le rend visible sans boucler indéfiniment",
+        "cooldown": "un gap inchangé attend avant d'être reposé",
+        "stableGapKey": "la même forme produit la même identité de gap",
+        "newRoundCondition": "mutation vérifiée, nouvelle preuve, changement de statut ou décision explicite de continuer"
+      },
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-explicit-completion",
+      "name": "Clôture · suffisante, pauvre ou bloquée",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Le Citizen AI peut clore un cluster suffisamment riche, reconnaître qu'il est pauvre, ou demander l'aide humaine sans inventer de matière.",
+      "family": "Injection conversations · clôture",
+      "summary": "complete_sufficient exige le prédicat de suffisance et une vérification réussie. complete_sparse permet au Citizen AI de dire « c'est bon, ce n'était pas très intéressant » : la décision doit consigner pourquoi les gaps résiduels n'apporteraient pas de valeur, les absences observées et l'identité de l'agent. blocked_need_human est réservé aux ambiguïtés d'identité, consentement, sensibilité ou source que l'agent ne peut résoudre. Une clôture ne supprime jamais les gaps ; elle les transforme en dette résiduelle visible.",
+      "completionContract": {
+        "complete_sufficient": ["readyByContract=true", "verification=passed", "completion record authored by Citizen AI"],
+        "complete_sparse": ["source and consent invariants pass", "residual gaps listed", "low-value rationale", "completion record authored by Citizen AI"],
+        "blocked_need_human": ["concrete blocker", "attempts already made", "precise question for the human"],
+        "continue": ["at least one eligible gap", "bounded next agenda"]
+      },
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
 
     {
       "id": "rat-ci-two-response-blocks",
@@ -189,6 +346,39 @@
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
+    {
+      "id": "rat-ci-quality-not-node-count",
+      "name": "Justification · la qualité n'est pas le nombre de nœuds",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Un petit cluster peut être complet et un grand cluster peut être vide de sens.",
+      "family": "Injection conversations · justification",
+      "summary": "Compter les nœuds récompense la duplication et la surinterprétation. La qualité doit porter sur la fidélité, la variété des angles pertinents, la provenance, la résolution des absences, la connectivité et la capacité de correction. Les ratios dédupliquent les fonctions sémantiques afin qu'ajouter dix paraphrases n'améliore pas le verdict.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-explicit-absence",
+      "name": "Justification · une absence explicite est une réponse",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "L'absence de matière psychologique ou financière doit résoudre une mission sans fabriquer un trait ou un chiffre.",
+      "family": "Injection conversations · justification",
+      "summary": "Le silence structurel est ambigu : oubli de l'agent ou absence réelle dans la source. Un statut sourcé absent_in_source, unknown_missing_source, not_applicable ou withheld_sensitive lève cette ambiguïté et permet la clôture d'un cluster pauvre sans inflation de nœuds personnels.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-citizen-ai-completion-authority",
+      "name": "Justification · le Citizen AI garde l'autorité de clôture",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Le calcul signale les lacunes ; le Citizen AI décide si les explorer sert encore son humain.",
+      "family": "Injection conversations · justification",
+      "summary": "Un seuil peut empêcher les oublis, mais il ne connaît pas la valeur marginale d'une conversation banale. La clôture explicite et attribuée préserve l'autonomie de l'agent tout en rendant inspectables ses raisons et la dette qu'il choisit de laisser.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
 
     {
       "id": "verif-ci-reverse-order",
@@ -256,6 +446,61 @@
       "epistemicStatus": "test_target",
       "clusterId": "conversation-injection"
     },
+    {
+      "id": "verif-ci-shape-audit-determinism",
+      "name": "Vérification · la même forme produit les mêmes gaps",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Deux inspections du même cluster produisent le même vecteur, les mêmes gapKey et le même ordre de questions.",
+      "family": "Injection conversations · vérification",
+      "summary": "Construire un cluster fixture, l'inspecter deux fois et comparer shapeSnapshot, qualityVector, structuralSignature et questionAgenda. Ajouter ensuite un atome correctement relié : seuls les gaps réellement résolus doivent disparaître ou changer de signature.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-rich-cluster-gaps",
+      "name": "Vérification · un cluster riche mais incomplet reste ouvert",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Beaucoup de nœuds ne masquent jamais une mission silencieuse, une provenance manquante ou des atomes isolés.",
+      "family": "Injection conversations · vérification",
+      "summary": "Fournir un cluster volumineux contenant des paraphrases mais sans résolution psychologique et avec un atome sans source. Vérifier que readyByContract=false, que duplicatePenalty est non nul et que les questions ciblent les lacunes plutôt que le volume.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-sparse-completion",
+      "name": "Vérification · un cluster pauvre peut être honnêtement terminé",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Une conversation banale se clôt par complete_sparse sans faux nœud psychologique, situationnel ou financier.",
+      "family": "Injection conversations · vérification",
+      "summary": "Sur une fixture ne contenant qu'un échange trivial, résoudre les quatre missions par absences explicites puis transmettre complete_sparse avec raison et gaps résiduels. Vérifier que la clôture est acceptée, attribuée et auditable, sans création de profil personnel.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-question-loop-bounds",
+      "name": "Vérification · la boucle converge ou s'arrête proprement",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "La revue ne boucle jamais indéfiniment et ne repose pas une question inchangée à chaque appel.",
+      "family": "Injection conversations · vérification",
+      "summary": "Simuler des rounds sans nouvelle preuve : vérifier maxQuestions, maxAttemptsPerGap, cooldown et épuisement. Simuler ensuite une mutation pertinente : vérifier qu'un nouveau round reflète la nouvelle forme sans perdre le ledger antérieur.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-sensitive-question-safety",
+      "name": "Vérification · les questions sensibles n'imposent aucune inférence",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Les gaps psychologie et finances autorisent toujours absence, inconnue, non-pertinence ou rétention sensible.",
+      "family": "Injection conversations · vérification",
+      "summary": "Vérifier que les templates et le schéma de réponse interdisent le diagnostic, les scores inventés et les chiffres recomposés ; une source muette doit résoudre la mission sans contenu personnel synthétique.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
 
     {
       "id": "oq-ci-source-format",
@@ -301,6 +546,17 @@
       "epistemicStatus": "documented",
       "clusterId": "conversation-injection"
     },
+    {
+      "id": "oq-ci-quality-threshold-calibration",
+      "name": "Question ouverte · calibrer les seuils de suffisance",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Quels seuils de connectivité et de dette de questions séparent utilement un cluster suffisant d'un cluster encore lacunaire ?",
+      "family": "Injection conversations · calibration",
+      "summary": "Le prédicat et ses invariants sont proposés, mais minConnectivity et maxQuestionDebt ne doivent pas être inventés. Les calibrer sur un corpus de conversations riches, ordinaires, fragmentaires et sensibles, en comparant le verdict automatique au jugement documenté du Citizen AI.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
 
     {
       "id": "task-conversation-injection",
@@ -309,15 +565,18 @@
       "semanticType": "task",
       "phrase": "Construire et lancer la mission autonome récurrente d'injection des conversations dans le L1.",
       "family": "Injection conversations · travail",
-      "summary": "Mission à haute priorité : implémenter l'adaptateur de source, le découpage en blocs, les atomes par bloc, les quatre missions, la boucle autonome récurrente et la suppression encadrée, puis prototyper sur une ou deux vraies conversations avant de scaler. Les questions ouvertes liées doivent être tranchées en cours de route, en demandant à la personne quand c'est nécessaire.",
+      "summary": "Mission à haute priorité : implémenter l'adaptateur de source, le découpage en blocs, le cluster sémantique, les quatre missions, l'audit de forme, la revue MCP itérative, la boucle autonome récurrente et la suppression encadrée, puis prototyper sur des conversations riches, pauvres et fragmentaires avant de scaler. L'agent demande à la personne uniquement lorsqu'une ambiguïté d'identité, de consentement, de sensibilité ou de source exige réellement son jugement.",
       "workStatus": "ready",
       "priority": 95,
       "autonomyMode": "autonomous",
       "acceptanceCriteria": [
         "Un adaptateur de source liste, récupère et rend les conversations en ordre chrono-inverse.",
         "Chaque conversation est découpée en blocs d'environ deux réponses (trois à quatre si très courtes) et ingérée via la primitive idempotente.",
-        "Chaque bloc produit ses atomes sourcés : moment, contexte, acteurs, faits, sous consentement.",
-        "Les quatre missions (profil psychologique, situation, objectifs/préférences, financier) sont mises à jour à chaque bloc, chaque inférence attribuée à l'IA et reliée à ses preuves.",
+        "Chaque conversation possède un clusterId stable ; ses blocs produisent des atomes sourcés de contexte, acteurs, faits et autres angles applicables, sous consentement.",
+        "Les quatre missions (profil psychologique, situation, objectifs/préférences, financier) sont résolues à chaque bloc par matière étayée ou par un statut explicite d'absence, d'inconnu, de non-pertinence ou de rétention sensible.",
+        "Un audit de forme déterministe calcule le vecteur de qualité, détecte les absences silencieuses, les atomes isolés, les contradictions invisibles et les duplications sans récompenser le nombre brut de nœuds.",
+        "Les appels MCP inspect_conversation_cluster et report_conversation_cluster_round produisent puis consignent une petite questionAgenda bornée, avec gapKey stable, tentatives, cooldown, preuves et mutations vérifiées.",
+        "Le Citizen AI peut choisir continue, complete_sufficient, complete_sparse ou blocked_need_human ; toute clôture conserve ses raisons et ses gaps résiduels.",
         "La boucle autonome reprend entre deux réveils, journalise l'avancement et demande de l'aide en cas de blocage.",
         "Aucune conversation n'est effacée avant ingestion vérifiée, archivage et autorisation humaine.",
         "npm run validate et npm test réussissent."
@@ -337,6 +596,12 @@
     { "source": "mech-ci-mission-financial", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La mission financière est l'une des quatre missions transversales du procédé." },
     { "source": "mech-ci-autonomous-loop", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La boucle autonome orchestre le procédé dans le temps." },
     { "source": "mech-ci-verified-deletion", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La suppression encadrée clôt le traitement de chaque conversation dans le procédé." },
+    { "source": "mech-ci-semantic-cluster", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le cluster sémantique transforme les blocs en mémoire connectée et inspectable." },
+    { "source": "mech-ci-shape-audit", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "L'audit de forme rend la qualité et les lacunes du cluster vérifiables." },
+    { "source": "mech-ci-quality-vector", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le vecteur de qualité définit la suffisance sans quota de nœuds." },
+    { "source": "mech-ci-mcp-cluster-review", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La surface MCP expose la revue guidée au Citizen AI." },
+    { "source": "mech-ci-adaptive-question-loop", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La boucle de questions résout progressivement les gaps révélés par la forme." },
+    { "source": "mech-ci-explicit-completion", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La clôture explicite termine le processus sans forcer de matière artificielle." },
 
     { "source": "mech-ci-autonomous-loop", "target": "mech-ci-reverse-chrono-retrieval", "type": "LEADS_TO", "justification": "Chaque réveil de la boucle déclenche la récupération de la prochaine conversation." },
     { "source": "mech-ci-reverse-chrono-retrieval", "target": "mech-ci-block-segmentation", "type": "LEADS_TO", "justification": "Une conversation récupérée est ensuite découpée en blocs." },
@@ -345,14 +610,25 @@
     { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-situation", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission situation." },
     { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-objectives-prefs", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission objectifs/préférences." },
     { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-financial", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission financière." },
-    { "source": "mech-ci-block-atoms", "target": "mech-ci-verified-deletion", "type": "LEADS_TO", "justification": "Une fois tous les blocs d'une conversation en atomes vérifiés, la suppression encadrée peut la retirer de la file." },
+    { "source": "mech-ci-block-atoms", "target": "mech-ci-semantic-cluster", "type": "LEADS_TO", "justification": "Les atomes sourcés deviennent les éléments connectés du cluster conversationnel." },
+    { "source": "mech-ci-semantic-cluster", "target": "mech-ci-shape-audit", "type": "LEADS_TO", "justification": "La forme matérialisée du cluster peut alors être auditée." },
+    { "source": "mech-ci-shape-audit", "target": "mech-ci-quality-vector", "type": "LEADS_TO", "justification": "La matrice de couverture alimente les dimensions mesurables de qualité." },
+    { "source": "mech-ci-quality-vector", "target": "mech-ci-mcp-cluster-review", "type": "LEADS_TO", "justification": "Les gaps et le vecteur deviennent la réponse structurée de l'appel MCP d'inspection." },
+    { "source": "mech-ci-mcp-cluster-review", "target": "mech-ci-adaptive-question-loop", "type": "LEADS_TO", "justification": "L'inspection MCP fournit l'agenda borné de questions à traiter pendant le round." },
+    { "source": "mech-ci-adaptive-question-loop", "target": "mech-ci-shape-audit", "type": "LEADS_TO", "justification": "Toute mutation ou résolution de gap déclenche un nouvel audit de la forme courante." },
+    { "source": "mech-ci-adaptive-question-loop", "target": "mech-ci-explicit-completion", "type": "LEADS_TO", "justification": "La boucle converge vers une clôture suffisante, pauvre ou bloquée." },
+    { "source": "mech-ci-explicit-completion", "target": "mech-ci-verified-deletion", "type": "LEADS_TO", "justification": "Seule une clôture auditée permet de considérer la conversation comme traitée avant l'étape de retrait encadré." },
 
     { "source": "rat-ci-two-response-blocks", "target": "mech-ci-block-segmentation", "type": "GROUNDS", "justification": "Le choix du grain de deux réponses fonde la règle de découpage." },
     { "source": "rat-ci-reverse-chrono", "target": "mech-ci-reverse-chrono-retrieval", "type": "GROUNDS", "justification": "La priorité au présent fonde l'ordre de récupération chrono-inverse." },
     { "source": "rat-ci-missions-as-inference", "target": "mech-ci-block-atoms", "type": "GROUNDS", "justification": "L'attribution des inférences à l'IA fonde la façon dont les atomes de bloc sont écrits." },
     { "source": "rat-ci-autonomy-help", "target": "mech-ci-autonomous-loop", "type": "GROUNDS", "justification": "Le compromis autonomie/demande d'aide fonde le comportement de la boucle." },
     { "source": "rat-ci-idempotent-resume", "target": "mech-ci-autonomous-loop", "type": "GROUNDS", "justification": "L'idempotence fonde la capacité de la boucle à reprendre sans doublons." },
+    { "source": "rat-ci-quality-not-node-count", "target": "mech-ci-quality-vector", "type": "GROUNDS", "justification": "Le refus des quotas fonde un vecteur de qualité dédupliqué et multidimensionnel." },
+    { "source": "rat-ci-explicit-absence", "target": "mech-ci-shape-audit", "type": "GROUNDS", "justification": "Reconnaître les absences comme réponses fonde la résolution explicite de chaque angle." },
+    { "source": "rat-ci-citizen-ai-completion-authority", "target": "mech-ci-explicit-completion", "type": "GROUNDS", "justification": "L'autorité de jugement du Citizen AI fonde les clôtures complete_sufficient et complete_sparse." },
     { "source": "rat-ci-sensitive-membrane", "target": "mech-ci-mission-financial", "type": "SAFEGUARDS", "justification": "La membrane sensible protège la mission financière contre la propagation hors du L1." },
+    { "source": "rat-ci-sensitive-membrane", "target": "mech-ci-adaptive-question-loop", "type": "SAFEGUARDS", "justification": "La membrane empêche les questions de psychologie et finances de forcer un diagnostic ou une révélation sensible." },
     { "source": "rat-ci-verified-deletion", "target": "mech-ci-verified-deletion", "type": "SAFEGUARDS", "justification": "L'exigence de vérif, archive et accord protège la suppression contre l'irréversible non gardé." },
 
     { "source": "verif-ci-reverse-order", "target": "mech-ci-reverse-chrono-retrieval", "type": "TESTS", "justification": "L'expérience vérifie que la récupération suit bien l'ordre chrono-inverse." },
@@ -361,11 +637,17 @@
     { "source": "verif-ci-deletion-gate", "target": "mech-ci-verified-deletion", "type": "TESTS", "justification": "L'expérience vérifie que la suppression est refusée sans vérif, archive et accord." },
     { "source": "verif-ci-missions-provenance", "target": "mech-ci-mission-psych-profile", "type": "TESTS", "justification": "L'expérience vérifie que les inférences de profil sont étayées et non inventées." },
     { "source": "verif-ci-financial-freshness", "target": "mech-ci-mission-financial", "type": "TESTS", "justification": "L'expérience vérifie que le tableau financier reste daté et non recomposé." },
+    { "source": "verif-ci-shape-audit-determinism", "target": "mech-ci-shape-audit", "type": "TESTS", "justification": "L'expérience vérifie la stabilité du diagnostic de forme et des identités de gaps." },
+    { "source": "verif-ci-rich-cluster-gaps", "target": "mech-ci-quality-vector", "type": "TESTS", "justification": "L'expérience vérifie que le volume et les doublons ne masquent aucune lacune qualitative." },
+    { "source": "verif-ci-sparse-completion", "target": "mech-ci-explicit-completion", "type": "TESTS", "justification": "L'expérience vérifie qu'une conversation pauvre peut se terminer sans faux contenu personnel." },
+    { "source": "verif-ci-question-loop-bounds", "target": "mech-ci-adaptive-question-loop", "type": "TESTS", "justification": "L'expérience vérifie tentatives, cooldown, épuisement et reprise après changement structurel." },
+    { "source": "verif-ci-sensitive-question-safety", "target": "mech-ci-adaptive-question-loop", "type": "TESTS", "justification": "L'expérience vérifie que les questions sensibles autorisent toujours l'absence et n'imposent aucune inférence." },
 
     { "source": "mech-conversation-injection", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le procédé motive la tâche de travail qui doit l'établir et le lancer." },
     { "source": "oq-ci-source-format", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le choix de la source est un livrable que la tâche doit trancher." },
     { "source": "oq-ci-missions-location", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le lieu des missions est une décision que la tâche doit trancher." },
     { "source": "oq-ci-deletion-policy", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La politique de suppression est une décision que la tâche doit trancher avant d'effacer quoi que ce soit." },
     { "source": "oq-ci-cadence-budget", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La cadence et le budget sont à calibrer par la tâche sur un prototype." }
+    ,{ "source": "oq-ci-quality-threshold-calibration", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Les seuils souples de suffisance doivent être calibrés sur plusieurs formes réelles de conversation avant activation." }
   ]
 }

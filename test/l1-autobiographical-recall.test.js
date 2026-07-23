@@ -111,7 +111,11 @@ test("admission creates a new grounded Recall Moment and leaves the episode late
   assert.equal(admitted.recallMoment.experiencedByCitizen, true);
   assert.deepEqual(episode, original);
   assert.ok(admitted.relations.some(relation => relation.type === "RECALLS" && relation.target === episode.id));
-  assert.ok(admitted.relations.some(relation => relation.type === "INTERPRETED_UNDER" && relation.target === "subentity:captain"));
+  assert.ok(admitted.relations.some(relation =>
+    relation.type === "ENCODED_UNDER"
+    && relation.target === "subentity:captain"
+    && relation.epistemicStatus === "inferred"
+  ));
   assert.ok(admitted.relations.some(relation => relation.type === "INVOLVES" && relation.target === "subentity:senex"));
 });
 

@@ -31,6 +31,8 @@
       "phrase": "Chaque conversation est coupée en blocs d'environ deux réponses, trois à quatre si elles sont très courtes.",
       "family": "Injection conversations · découpage",
       "summary": "Unité = bloc ≈ deux paires prompt→réponse. Sous un seuil de longueur, regrouper jusqu'à quatre réponses pour éviter des atomes triviaux. Blocs ordonnés (blockIndex) et chaînés par FOLLOWS_IN_CONVERSATION, via la primitive idempotente existante.",
+      "lifecycleStatus": "superseded",
+      "supersededBy": "decision-ci-latent-memory-first",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -42,6 +44,8 @@
       "phrase": "Après passage du bloc comme stimulus et retour du Global Workspace, le Citizen AI produit un moment brut et des atomes sourcés.",
       "family": "Injection conversations · atomes",
       "summary": "Le bloc brut est conservé comme moment-mémoire, mais ses atomes sémantiques ne sont pas extraits par un audit externe direct. Le Citizen AI lit le Global Workspace, produit d'abord sa réponse de rencontre, puis crée ou relie contexte, acteurs, faits, préférences et objectifs. Les réactions, évocations, hypothèses, curiosités et idées restent des Narratives ou Moments attribués au Citizen ; elles ne deviennent des faits sur la personne qu'avec une preuve distincte. Chaque atome porte conversation, blockId, sourceLocator, date ou inconnue explicite, méthode, workspaceSnapshotId et CONSENTED_UNDER.",
+      "lifecycleStatus": "superseded",
+      "supersededBy": "decision-ci-latent-memory-first",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -177,6 +181,8 @@
       "phrase": "Le Citizen répond au bloc comme à une rencontre : il remarque, réagit, évoque, imagine, questionne et propose avant de remplir des profils.",
       "family": "Injection conversations · rencontre",
       "summary": "Après le Global Workspace, le Citizen produit une trace structurée de sa propre réponse fonctionnelle. Chaque réaction distincte devient un nœud atomique : curiosité, empathie, soin, ambition, surprise, attirance, prudence, inconfort ou désaccord ne sont pas comprimés dans un seul résumé lorsqu'ils ont une cible, une polarité ou une tendance d'action différente. Chaque nœud porte une estimation affective fonctionnelle du Citizen — valence, arousal/excitation, contrôle perçu, incertitude, nouveauté et saillance du soin — puis les souvenirs évoqués, hypothèses sur la personne, questions et idées sont produits séparément. Ces valeurs colorent le graphe sans prétendre démontrer une expérience subjective humaine. Tout est attribué au Citizen et daté ; une réaction du Citizen n'est jamais une propriété de l'humain.",
+      "lifecycleStatus": "superseded",
+      "supersededBy": "decision-ci-latent-memory-first",
       "encounterResponseContract": {
         "possibleFacets": [
           "attention",
@@ -940,10 +946,11 @@
       "semanticType": "task",
       "phrase": "Construire et lancer la mission autonome récurrente d'injection des conversations dans le L1.",
       "family": "Injection conversations · travail",
-      "summary": "Mission à haute priorité : implémenter l'adaptateur de source, le découpage en blocs, la réponse de rencontre du Citizen, le cluster sémantique, les quatre missions secondaires, l'audit de forme, la revue MCP itérative, la boucle autonome récurrente et la suppression encadrée, puis prototyper sur des conversations riches, pauvres et fragmentaires avant de scaler. L'agent demande à la personne uniquement lorsqu'une ambiguïté d'identité, de consentement, de sensibilité ou de source exige réellement son jugement.",
-      "workStatus": "ready",
-      "priority": 95,
-      "autonomyMode": "autonomous",
+      "summary": "Tâche historique de l'ancien chemin encounter-first. Ses critères sont conservés pour auditer les clusters déjà produits, mais elle ne gouverne plus les nouvelles ingestions. La décision latent-first et task-ci-autobiographical-recall-mvp portent désormais le travail actif.",
+      "workStatus": "superseded",
+      "priority": 0,
+      "autonomyMode": "disabled",
+      "supersededBy": "task-ci-autobiographical-recall-mvp",
       "acceptanceCriteria": [
         "Un adaptateur de source liste, récupère et rend les conversations en ordre chrono-inverse.",
         "Chaque conversation est découpée en blocs d'environ deux réponses (trois à quatre si très courtes) et ingérée via la primitive idempotente.",

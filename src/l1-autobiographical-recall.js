@@ -277,7 +277,13 @@ export function admitRecallOpportunity({
     ...recallMoment.triggerContext.momentIds.map(target => ({ source: recallMoment.id, target, type: "TRIGGERED_BY" }))
   ];
   if (recallMoment.activeSubentityId) {
-    relations.push({ source: recallMoment.id, target: recallMoment.activeSubentityId, type: "INTERPRETED_UNDER", confidence: recallMoment.controllerConfidence });
+    relations.push({
+      source: recallMoment.id,
+      target: recallMoment.activeSubentityId,
+      type: "ENCODED_UNDER",
+      confidence: recallMoment.controllerConfidence,
+      epistemicStatus: "inferred"
+    });
   }
   recallMoment.contributors.forEach(target => relations.push({ source: recallMoment.id, target, type: "INVOLVES" }));
   return { admitted: true, reason: "admitted", recallMoment, relations };

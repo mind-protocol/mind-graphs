@@ -27,10 +27,32 @@ function hasLink(links, source, target, type) {
   );
 }
 
-test("conversation ingestion makes encounter response precede mission projections", async () => {
+test("latent-first is the selected ingestion path and encounter-first remains historical", async () => {
   const { nodes, links } = indexBlueprint(await loadBlueprint());
+  const decision = nodes.get("decision-ci-latent-memory-first");
+  const legacyTask = nodes.get("task-conversation-injection");
+  const recallTask = nodes.get("task-ci-autobiographical-recall-mvp");
   const encounter = nodes.get("mech-ci-citizen-encounter-response");
 
+  assert.equal(decision.decisionStatus, "approved");
+  assert.equal(decision.chosenOptionId, "option-ci-latent-memory-first");
+  assert.ok(decision.supersedesNodeIds.includes(encounter.id));
+  assert.equal(encounter.lifecycleStatus, "superseded");
+  assert.equal(encounter.supersededBy, decision.id);
+  assert.equal(nodes.get("mech-ci-block-segmentation").lifecycleStatus, "superseded");
+  assert.equal(nodes.get("mech-ci-block-atoms").lifecycleStatus, "superseded");
+  assert.equal(legacyTask.workStatus, "superseded");
+  assert.equal(legacyTask.supersededBy, recallTask.id);
+  assert.equal(recallTask.workStatus, "ready");
+  assert.ok(hasLink(
+    links,
+    "thing-ci-autobiographical-recall-engine",
+    decision.id,
+    "IMPLEMENTS"
+  ));
+
+  // The former contract remains inspectable so historical encounter clusters
+  // can be audited without making it the active ingestion path.
   assert.ok(encounter);
   const encounterContract = encounter.encounterResponseContract;
   for (const facet of [
@@ -128,7 +150,7 @@ test("valuable curiosity becomes bounded discovery work before completion", asyn
   ));
 });
 
-test("citizen reactions are atomic, affectively colored and attributed to the live controller", async () => {
+test("historical encounter reactions remain auditable and attributed to the live controller", async () => {
   const { nodes } = indexBlueprint(await loadBlueprint());
   const encounter = nodes.get("mech-ci-citizen-encounter-response");
   const shape = nodes.get("mech-ci-shape-audit");
@@ -163,7 +185,7 @@ test("citizen reactions are atomic, affectively colored and attributed to the li
   ));
 });
 
-test("the four missions are distinct analyses and valuable unknowns create validation work", async () => {
+test("the historical four-mission contract remains available for legacy cluster audits", async () => {
   const { nodes } = indexBlueprint(await loadBlueprint());
   const missions = nodes.get("mech-ci-shape-audit").shapeContract.missions;
   const task = nodes.get("task-conversation-injection");
@@ -196,7 +218,7 @@ test("the four missions are distinct analyses and valuable unknowns create valid
   ));
 });
 
-test("the interpreted fixture materializes four mission projections and a task for its unknown actor", async () => {
+test("the legacy fixture is preserved as an experienced encounter with explicit migration metadata", async () => {
   const fixture = JSON.parse(await readFile(interpretedFixturePath, "utf8"));
   const missionNodes = fixture.nodes.filter(node => node.claimNature === "mission_projection");
   const missionKeys = missionNodes.map(node => node.missionKey).sort();
@@ -230,4 +252,7 @@ test("the interpreted fixture materializes four mission projections and a task f
     && link.target === discoveryTask.id
     && link.type === "DESCRIBES"
   ));
+  assert.equal(fixture.provenance.ingestionGeneration, "encounter_first_legacy");
+  assert.equal(fixture.provenance.assimilationStatus, "legacy_assimilated");
+  assert.equal(fixture.provenance.experiencedByCitizen, true);
 });

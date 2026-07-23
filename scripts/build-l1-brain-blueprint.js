@@ -634,6 +634,34 @@ addDerivedRelation({
   cluster: roleSystemCluster,
   provenance: "citizen_ai_roles_blueprint"
 });
+addRoleSystemNode({
+  id: "narrative-citizen-ai-situated-role-contract",
+  nodeType: "Narrative",
+  semanticType: "SituatedRoleContract",
+  name: "Contrat de routage situé des rôles Citizen AI",
+  description: citizenAIRoles.situatedRoleContract.purpose,
+  sourceFrameId: citizenAIRoles.situatedRoleContract.sourceFrameId,
+  sourceSpaceId: citizenAIRoles.situatedRoleContract.sourceSpaceId,
+  interactionPolicyId: citizenAIRoles.situatedRoleContract.interactionPolicyId,
+  readableProjectionFields: citizenAIRoles.situatedRoleContract.readableProjectionFields,
+  wholeHumanModelReadableByRouter: citizenAIRoles.situatedRoleContract.wholeHumanModelReadableByRouter,
+  explicitHumanRequestPrecedence: citizenAIRoles.situatedRoleContract.explicitHumanRequestPrecedence,
+  constitutionalLimitsStillApply: citizenAIRoles.situatedRoleContract.constitutionalLimitsStillApply,
+  unknownCanAuthorizeAction: citizenAIRoles.situatedRoleContract.unknownCanAuthorizeAction,
+  silenceIsValidOutcome: citizenAIRoles.situatedRoleContract.silenceIsValidOutcome,
+  availabilityRules: citizenAIRoles.situatedRoleContract.availabilityRules,
+  outcomeAliases: citizenAIRoles.situatedRoleContract.outcomeAliases,
+  invariants: citizenAIRoles.situatedRoleContract.invariants,
+  personalPrefill: false
+});
+addDerivedRelation({
+  source: "narrative-citizen-ai-situated-role-contract",
+  type: "GROUNDS",
+  target: "space-citizen-ai-role-system",
+  justification: "Le routage des rôles est fondé sur une projection compacte, temporelle et corrigible de la situation humaine.",
+  cluster: roleSystemCluster,
+  provenance: "citizen_ai_roles_blueprint"
+});
 addRoleSystemNode(citizenAIRoles.actorArchetype);
 addRoleSystemNode({ ...citizenAIRoles.instanceTemplate, template: true });
 addDerivedRelation({
@@ -704,6 +732,7 @@ for (const domain of citizenAIRoles.domains) {
 }
 
 const roleNodeIds = new Map();
+const roleSituationFitNodeIds = new Map();
 for (const [roleIndex, role] of citizenAIRoles.roles.entries()) {
   const cluster = {
     id: `citizen-ai-role-${role.id}`,
@@ -721,7 +750,9 @@ for (const [roleIndex, role] of citizenAIRoles.roles.entries()) {
   const scriptId = `thing-citizen-ai-role-${role.id}-script`;
   const auditId = `thing-citizen-ai-role-${role.id}-audit`;
   const questionRationaleId = `narrative-citizen-ai-role-${role.id}-questions-rationale`;
+  const situationFitId = `narrative-citizen-ai-role-${role.id}-situation-fit`;
   roleNodeIds.set(role.id, roleId);
+  roleSituationFitNodeIds.set(role.id, situationFitId);
 
   addRoleSystemNode({ id: clusterSpaceId, nodeType: "Space", semanticType: "CitizenAIRoleCluster", name: cluster.title, description: role.mission }, cluster);
   addRoleSystemNode({ id: roleId, nodeType: "Narrative", semanticType: "CitizenAIRole", name: role.name, description: role.mission, facets: ["Universal", "Enactable", "Normative"] }, cluster);
@@ -737,8 +768,27 @@ for (const [roleIndex, role] of citizenAIRoles.roles.entries()) {
     description: role.reflection.questionJustification,
     facets: ["justification", "role_reflection"]
   }, cluster);
+  addRoleSystemNode({
+    id: situationFitId,
+    nodeType: "Narrative",
+    semanticType: "RoleSituationFit",
+    name: `Adéquation situationnelle · ${role.name}`,
+    description: role.situationFit.justification,
+    leadWhen: role.situationFit.leadWhen,
+    supportWhen: role.situationFit.supportWhen,
+    inhibitWhen: role.situationFit.inhibitWhen,
+    preferredOutcomes: role.situationFit.preferredOutcomes,
+    requiredProjectionFields: role.situationFit.requiredProjectionFields,
+    fallbackOnUnknown: role.situationFit.fallbackOnUnknown,
+    handoffRoles: role.situationFit.handoffRoles,
+    personalPrefill: false,
+    facets: ["situated_role_routing"]
+  }, cluster);
 
   addDerivedRelation({ source: rationaleId, type: "JUSTIFIES", target: roleId, justification: role.rationale, cluster, provenance: "citizen_ai_roles_blueprint" });
+  addDerivedRelation({ source: situationFitId, type: "MOTIVATES", target: roleId, justification: role.situationFit.justification, cluster, provenance: "citizen_ai_roles_blueprint" });
+  addDerivedRelation({ source: situationFitId, type: "CONSTRAINS", target: roleId, justification: role.situationFit.inhibitWhen.join(" "), cluster, provenance: "citizen_ai_roles_blueprint" });
+  addDerivedRelation({ source: roleId, type: "DEPENDS_ON", target: "narrative-citizen-ai-situated-role-contract", justification: "Le rôle ne peut être activé qu'après lecture située et bornée du besoin humain.", cluster, provenance: "citizen_ai_roles_blueprint" });
   addDerivedRelation({ source: citizenAIRoles.actorArchetype.id, type: "CAN_ENACT", target: roleId, justification: `Le même Actor Citizen AI peut enact ${role.name} sans se fragmenter en agent souverain.`, cluster, provenance: "citizen_ai_roles_blueprint" });
   addDerivedRelation({ source: roleId, type: "FOLLOWS", target: behaviorId, justification: `Le rôle ${role.name} suit ses politiques comportementales explicites.`, cluster, provenance: "citizen_ai_roles_blueprint" });
   addDerivedRelation({ source: roleId, type: "IMPLEMENTED_BY", target: scriptId, justification: `Le script réalise le rôle sans constituer une autorisation autonome.`, cluster, provenance: "citizen_ai_roles_blueprint" });
@@ -850,6 +900,22 @@ for (const [roleIndex, role] of citizenAIRoles.roles.entries()) {
       addDerivedRelation({ source: id, type: "OPTION_FOR", target: strategyId, justification: idea.justification, cluster, provenance: "citizen_ai_roles_blueprint" });
     }
   });
+}
+
+for (const role of citizenAIRoles.roles) {
+  for (const handoffRole of role.situationFit.handoffRoles) {
+    const targetRoleId = roleNodeIds.get(handoffRole);
+    if (!targetRoleId) throw new Error(`Unknown handoff role ${handoffRole} for role ${role.id}`);
+    addDerivedRelation({
+      source: roleNodeIds.get(role.id),
+      type: "CAN_HANDOFF_TO",
+      target: targetRoleId,
+      justification: `L'adéquation situationnelle de ${role.name} prévoit ce relais lorsque son rôle ne doit plus conduire.`,
+      condition: role.situationFit.fallbackOnUnknown,
+      cluster: clusters.find(candidate => candidate.id === `citizen-ai-role-${role.id}`),
+      provenance: "citizen_ai_roles_blueprint"
+    });
+  }
 }
 
 for (const conflict of citizenAIRoles.conflicts) {
@@ -974,6 +1040,32 @@ for (const link of humanSituation.links) {
     justification: link.justification,
     cluster: humanSituationCluster,
     provenance: "human_situation_blueprint"
+  });
+}
+addDerivedRelation({
+  source: "moment-human-situation-workspace-projection",
+  type: "FEEDS",
+  target: "thing-citizen-ai-role-activation-scorer",
+  justification: "Seule la projection compacte de la situation humaine alimente le score d'activation des rôles ; le modèle humain complet reste hors du routeur.",
+  cluster: humanSituationCluster,
+  provenance: "citizen_ai_roles_blueprint"
+});
+addDerivedRelation({
+  source: "narrative-citizen-ai-situated-role-contract",
+  type: "CONSTRAINS",
+  target: "thing-citizen-ai-role-router",
+  justification: "Le routeur respecte la disponibilité, la priorité de la demande explicite, les inconnues et la validité du silence.",
+  cluster: humanSituationCluster,
+  provenance: "citizen_ai_roles_blueprint"
+});
+for (const situationFitId of roleSituationFitNodeIds.values()) {
+  addDerivedRelation({
+    source: situationFitId,
+    type: "DEPENDS_ON",
+    target: "moment-human-situation-workspace-projection",
+    justification: "L'adéquation du rôle est recalculée depuis la projection de situation courante et non depuis une identité humaine figée.",
+    cluster: humanSituationCluster,
+    provenance: "citizen_ai_roles_blueprint"
   });
 }
 const afterHumanSituationCounts = { nodes: nodes.length, relations: relations.length, clusters: clusters.length };
@@ -1326,6 +1418,7 @@ const graph = {
     epistemicStatus: citizenAIRoles.epistemicStatus,
     purpose: citizenAIRoles.purpose,
     reflectionContract: citizenAIRoles.reflectionContract,
+    situatedRoleContract: citizenAIRoles.situatedRoleContract,
     actorArchetypeId: citizenAIRoles.actorArchetype.id,
     instanceTemplateId: citizenAIRoles.instanceTemplate.id,
     roleIds: [...roleNodeIds.values()],

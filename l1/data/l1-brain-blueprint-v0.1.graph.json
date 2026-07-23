@@ -54,15 +54,20 @@
     "relations": 909,
     "clusters": 16
   },
+  "humanSituationAugmentationCounts": {
+    "nodes": 25,
+    "relations": 93,
+    "clusters": 1
+  },
   "subentityMemoryAttributionAugmentationCounts": {
     "nodes": 99,
     "relations": 206,
     "clusters": 0
   },
   "actualCounts": {
-    "nodes": 1072,
-    "relations": 2303,
-    "clusters": 49
+    "nodes": 1097,
+    "relations": 2396,
+    "clusters": 50
   },
   "sourceAudit": {
     "sources": [
@@ -71,10 +76,11 @@
       "C:\\Users\\reyno\\OneDrive\\Documents\\body-suit\\l1\\data\\l1-affective-blueprint-v0.1.json",
       "C:\\Users\\reyno\\OneDrive\\Documents\\body-suit\\l1\\data\\l1-sensory-blueprint-v0.1.json",
       "C:\\Users\\reyno\\OneDrive\\Documents\\body-suit\\l1\\data\\l1-metacognitive-blueprint-v0.1.json",
+      "C:\\Users\\reyno\\OneDrive\\Documents\\body-suit\\l1\\data\\l1-human-situation-blueprint-v0.1.json",
       "C:\\Users\\reyno\\OneDrive\\Documents\\body-suit\\l1\\data\\l1-citizen-ai-roles-blueprint-v0.1.json",
       "C:\\Users\\reyno\\OneDrive\\Documents\\body-suit\\l1\\data\\l1-subentity-memory-attribution-blueprint-v0.1.json"
     ],
-    "extraction": "Le corps structuré du blueprint est autoritaire pour ses 23 clusters. La machine Cortex est projetée depuis l1-design.json. L'extension affective ajoute huit clusters. Le pont sensoriel et l'extension métacognitive complètent les clusters existants. Le système Citizen AI ajoute un Actor archétype, un template d'instance non souverain, un runtime partagé et quinze clusters de rôles fonctionnels explicites. Le package d'attribution mémorielle ajoute 99 nodes et 206 relations au cluster des sous-entités.",
+    "extraction": "Le corps structuré du blueprint est autoritaire pour ses 23 clusters. La machine Cortex est projetée depuis l1-design.json. L'extension affective ajoute dix clusters. Le pont sensoriel et l'extension métacognitive complètent les clusters existants. Le modèle de situation humaine ajoute le cluster 33, trois frames séparées et leur projection bornée vers le workspace. Le système Citizen AI ajoute un Actor archétype, un template d'instance non souverain, un runtime partagé et quinze clusters de rôles fonctionnels explicites. Le package d'attribution mémorielle ajoute 99 nodes et 206 relations au cluster des sous-entités.",
     "discrepancies": [
       "Le résumé du blueprint annonce 212 nœuds, tandis que son corps contient 209 IDs uniques avant intégration Cortex.",
       "Le résumé du blueprint annonce 764 relations, tandis que son corps contient 668 relations explicites avant intégration Cortex."
@@ -552,6 +558,208 @@
     "beliefUtilitySeparation": true,
     "stateAwarenessIsEstimate": true,
     "autonomousIrreversibleActionAllowed": false
+  },
+  "humanSituationSystem": {
+    "scope": "Modèle probabiliste, temporel et corrigible de la situation actuelle de l'humain associé au Citizen AI, de l'état de leur relation et de leur situation partagée.",
+    "doctrine": "Le L1 maintient une estimation vivante de l'humain sans écrire d'état temporaire sur son identité. Toute estimation reste sourcée, qualifiée, périssable, contestable et révisable.",
+    "epistemicContract": {
+      "statuses": [
+        "observed",
+        "reported",
+        "inferred",
+        "conflicting",
+        "not_measured",
+        "stale",
+        "unknown"
+      ],
+      "requiredEstimateFields": [
+        "value",
+        "measurementStatus",
+        "sourceIds",
+        "confidence",
+        "observedAt",
+        "freshness"
+      ],
+      "unknownIsNeutral": false,
+      "notMeasuredIsWell": false,
+      "fieldLevelProvenanceRequired": true,
+      "rule": "Chaque dimension est qualifiée séparément. Une confiance globale ne peut pas masquer une localisation inconnue, un affect non mesuré, une contradiction ou une source périmée."
+    },
+    "temporalContract": {
+      "layers": [
+        {
+          "id": "immediate",
+          "description": "Secondes ou minutes : disponibilité, attention, activité et coût d'interruption.",
+          "ttlPolicy": "source_and_property_specific"
+        },
+        {
+          "id": "episode",
+          "description": "Heures : activité en cours, contexte social, mobilité, fatigue et objectif de session.",
+          "ttlPolicy": "source_and_property_specific"
+        },
+        {
+          "id": "daily",
+          "description": "Journée : contraintes, obligations, récupération et trajectoire du jour.",
+          "ttlPolicy": "source_and_property_specific"
+        },
+        {
+          "id": "near_term",
+          "description": "Jours ou semaines : engagements actifs, dépendances et objectifs proches.",
+          "ttlPolicy": "source_and_property_specific"
+        },
+        {
+          "id": "persistent",
+          "description": "Mois ou années : valeurs, engagements et directions durables explicitement confirmés.",
+          "ttlPolicy": "reviewed_not_immortal"
+        }
+      ],
+      "freshnessLifecycle": [
+        "fresh",
+        "aging",
+        "stale",
+        "unknown"
+      ],
+      "numericTtlPrefilled": false,
+      "lastKnownIsCurrent": false,
+      "rule": "Le TTL dépend de la propriété, de la source, de sa précision et du contexte. En l'absence de nouvelle observation admissible, l'estimation décroît jusqu'à unknown."
+    },
+    "frameContract": {
+      "frameSequence": [
+        "CitizenStateFrame",
+        "HumanStateFrame",
+        "RelationshipStateFrame",
+        "SharedSituationFrame",
+        "GlobalWorkspaceProjection"
+      ],
+      "citizenStateSourceId": "moment-meta-state-awareness-snapshot",
+      "humanStateFrameId": "moment-human-situation-state-snapshot",
+      "relationshipStateFrameId": "moment-human-situation-relationship-snapshot",
+      "sharedSituationFrameId": "moment-human-situation-shared-frame",
+      "workspaceProjectionId": "moment-human-situation-workspace-projection",
+      "humanIdentityMutationAllowed": false,
+      "wholeModelInWorkspace": false,
+      "personalPrefill": false,
+      "rule": "Le Citizen AI, l'humain et leur relation conservent des frames distinctes. Leur réunion produit une situation partagée ; elle ne fusionne ni leurs identités, ni leurs états, ni leurs sources."
+    },
+    "humanStateContract": {
+      "sections": {
+        "situation": [
+          "location",
+          "activity",
+          "mobility",
+          "socialContext"
+        ],
+        "body": [
+          "sleep",
+          "fatigue",
+          "pain",
+          "hunger",
+          "thermalStress",
+          "autonomicArousal",
+          "recovery",
+          "substanceContext"
+        ],
+        "affect": [
+          "dominant",
+          "secondary",
+          "valence",
+          "arousal",
+          "perceivedControl",
+          "uncertainty",
+          "socialSalience"
+        ],
+        "cognition": [
+          "attentionTarget",
+          "cognitiveLoad",
+          "decisionalState",
+          "openness",
+          "interruptionCost",
+          "currentQuestions",
+          "fragmentation"
+        ],
+        "goalState": [
+          "currentGoal",
+          "secondaryGoals",
+          "blockedGoals",
+          "nextLikelyGoal",
+          "goalConflict",
+          "progressEstimate"
+        ],
+        "constraints": [
+          "timePressure",
+          "financialPressure",
+          "energyConstraint",
+          "missingInformation",
+          "externalDependency",
+          "socialObligation"
+        ],
+        "interaction": [
+          "availability",
+          "preferredMode",
+          "interruptionCost"
+        ],
+        "humanAgencyEstimate": [
+          "primaryCandidate",
+          "alternatives",
+          "confidence",
+          "measurementStatus"
+        ]
+      },
+      "goalKindsRemainDistinct": [
+        "Goal",
+        "Task",
+        "Need",
+        "Desire",
+        "Commitment"
+      ],
+      "activeGoalsAreReferences": true,
+      "locationPrecisionRule": "Utiliser la granularité minimale utile et autorisée ; une ville ou un type de lieu suffit souvent.",
+      "subentityEstimateIsIdentityClaim": false
+    },
+    "interactionContract": {
+      "availabilityValues": [
+        "open",
+        "interruptible",
+        "focused",
+        "unavailable",
+        "unknown"
+      ],
+      "preferredModes": [
+        "conversation",
+        "execution",
+        "summary",
+        "silence",
+        "unknown"
+      ],
+      "allowedOutcomes": [
+        "understand",
+        "communicate",
+        "plan",
+        "act",
+        "wait",
+        "ask",
+        "learn",
+        "repair"
+      ],
+      "silenceCanBeHelpful": true,
+      "consequentialActionRequiresMandate": true
+    },
+    "observationSources": [
+      "direct_human_message",
+      "calendar",
+      "task_state",
+      "current_conversation",
+      "consented_location",
+      "consented_biometrics",
+      "consented_device_activity",
+      "connected_application",
+      "recent_action",
+      "external_event",
+      "authorized_citizen_observation"
+    ],
+    "humanActorStatePrefilled": false,
+    "identityMutationAllowed": false,
+    "sharedFramePreservesActorBoundaries": true
   },
   "citizenAIRoleSystem": {
     "scope": "Répertoire universel des rôles fonctionnels d'un Citizen AI unique. Les rôles sont des Narratives coordonnées, jamais des acteurs souverains ni des sous-entités humaines.",
@@ -1595,99 +1803,6 @@
         "edge-0764",
         "edge-0765",
         "edge-0766",
-        "edge-2098",
-        "edge-2099",
-        "edge-2100",
-        "edge-2101",
-        "edge-2102",
-        "edge-2103",
-        "edge-2104",
-        "edge-2105",
-        "edge-2106",
-        "edge-2107",
-        "edge-2108",
-        "edge-2109",
-        "edge-2110",
-        "edge-2111",
-        "edge-2112",
-        "edge-2113",
-        "edge-2114",
-        "edge-2115",
-        "edge-2116",
-        "edge-2117",
-        "edge-2118",
-        "edge-2119",
-        "edge-2120",
-        "edge-2121",
-        "edge-2122",
-        "edge-2123",
-        "edge-2124",
-        "edge-2125",
-        "edge-2126",
-        "edge-2127",
-        "edge-2128",
-        "edge-2129",
-        "edge-2130",
-        "edge-2131",
-        "edge-2132",
-        "edge-2133",
-        "edge-2134",
-        "edge-2135",
-        "edge-2136",
-        "edge-2137",
-        "edge-2138",
-        "edge-2139",
-        "edge-2140",
-        "edge-2141",
-        "edge-2142",
-        "edge-2143",
-        "edge-2144",
-        "edge-2145",
-        "edge-2146",
-        "edge-2147",
-        "edge-2148",
-        "edge-2149",
-        "edge-2150",
-        "edge-2151",
-        "edge-2152",
-        "edge-2153",
-        "edge-2154",
-        "edge-2155",
-        "edge-2156",
-        "edge-2157",
-        "edge-2158",
-        "edge-2159",
-        "edge-2160",
-        "edge-2161",
-        "edge-2162",
-        "edge-2163",
-        "edge-2164",
-        "edge-2165",
-        "edge-2166",
-        "edge-2167",
-        "edge-2168",
-        "edge-2169",
-        "edge-2170",
-        "edge-2171",
-        "edge-2172",
-        "edge-2173",
-        "edge-2174",
-        "edge-2175",
-        "edge-2176",
-        "edge-2177",
-        "edge-2178",
-        "edge-2179",
-        "edge-2180",
-        "edge-2181",
-        "edge-2182",
-        "edge-2183",
-        "edge-2184",
-        "edge-2185",
-        "edge-2186",
-        "edge-2187",
-        "edge-2188",
-        "edge-2189",
-        "edge-2190",
         "edge-2191",
         "edge-2192",
         "edge-2193",
@@ -1800,7 +1915,100 @@
         "edge-2300",
         "edge-2301",
         "edge-2302",
-        "edge-2303"
+        "edge-2303",
+        "edge-2304",
+        "edge-2305",
+        "edge-2306",
+        "edge-2307",
+        "edge-2308",
+        "edge-2309",
+        "edge-2310",
+        "edge-2311",
+        "edge-2312",
+        "edge-2313",
+        "edge-2314",
+        "edge-2315",
+        "edge-2316",
+        "edge-2317",
+        "edge-2318",
+        "edge-2319",
+        "edge-2320",
+        "edge-2321",
+        "edge-2322",
+        "edge-2323",
+        "edge-2324",
+        "edge-2325",
+        "edge-2326",
+        "edge-2327",
+        "edge-2328",
+        "edge-2329",
+        "edge-2330",
+        "edge-2331",
+        "edge-2332",
+        "edge-2333",
+        "edge-2334",
+        "edge-2335",
+        "edge-2336",
+        "edge-2337",
+        "edge-2338",
+        "edge-2339",
+        "edge-2340",
+        "edge-2341",
+        "edge-2342",
+        "edge-2343",
+        "edge-2344",
+        "edge-2345",
+        "edge-2346",
+        "edge-2347",
+        "edge-2348",
+        "edge-2349",
+        "edge-2350",
+        "edge-2351",
+        "edge-2352",
+        "edge-2353",
+        "edge-2354",
+        "edge-2355",
+        "edge-2356",
+        "edge-2357",
+        "edge-2358",
+        "edge-2359",
+        "edge-2360",
+        "edge-2361",
+        "edge-2362",
+        "edge-2363",
+        "edge-2364",
+        "edge-2365",
+        "edge-2366",
+        "edge-2367",
+        "edge-2368",
+        "edge-2369",
+        "edge-2370",
+        "edge-2371",
+        "edge-2372",
+        "edge-2373",
+        "edge-2374",
+        "edge-2375",
+        "edge-2376",
+        "edge-2377",
+        "edge-2378",
+        "edge-2379",
+        "edge-2380",
+        "edge-2381",
+        "edge-2382",
+        "edge-2383",
+        "edge-2384",
+        "edge-2385",
+        "edge-2386",
+        "edge-2387",
+        "edge-2388",
+        "edge-2389",
+        "edge-2390",
+        "edge-2391",
+        "edge-2392",
+        "edge-2393",
+        "edge-2394",
+        "edge-2395",
+        "edge-2396"
       ]
     },
     {
@@ -2985,6 +3193,134 @@
         "edge-1025"
       ],
       "spaceId": "space-ai-operational-requirements"
+    },
+    {
+      "id": "cluster-33",
+      "order": 33,
+      "title": "Situation humaine et situation partagée",
+      "objective": "Compiler ce que l'humain vit et poursuit maintenant, l'état du Citizen AI et l'état de leur relation en une situation partagée compacte qui aide à choisir entre comprendre, communiquer, agir, attendre, apprendre ou réparer.",
+      "nodeIds": [
+        "space-human-situation",
+        "narrative-human-situation-living-model",
+        "narrative-human-situation-state-not-identity",
+        "narrative-human-situation-unknown-not-neutral",
+        "narrative-human-situation-consent-minimal-precision",
+        "narrative-human-situation-three-centers",
+        "narrative-human-situation-bounded-workspace",
+        "narrative-human-situation-silence-can-help",
+        "narrative-human-situation-agency-is-hypothesis",
+        "actor-human-situation-human-partner",
+        "thing-human-situation-model",
+        "thing-human-situation-observation-contract",
+        "moment-human-situation-observation",
+        "thing-human-situation-freshness-controller",
+        "thing-human-situation-contradiction-detector",
+        "thing-human-situation-state-estimator",
+        "moment-human-situation-state-snapshot",
+        "thing-human-situation-relationship-estimator",
+        "moment-human-situation-relationship-snapshot",
+        "thing-human-situation-shared-compiler",
+        "moment-human-situation-shared-frame",
+        "thing-human-situation-workspace-projector",
+        "moment-human-situation-workspace-projection",
+        "thing-human-situation-interaction-policy",
+        "thing-human-situation-audit"
+      ],
+      "relationIds": [
+        "edge-2098",
+        "edge-2099",
+        "edge-2100",
+        "edge-2101",
+        "edge-2102",
+        "edge-2103",
+        "edge-2104",
+        "edge-2105",
+        "edge-2106",
+        "edge-2107",
+        "edge-2108",
+        "edge-2109",
+        "edge-2110",
+        "edge-2111",
+        "edge-2112",
+        "edge-2113",
+        "edge-2114",
+        "edge-2115",
+        "edge-2116",
+        "edge-2117",
+        "edge-2118",
+        "edge-2119",
+        "edge-2120",
+        "edge-2121",
+        "edge-2122",
+        "edge-2123",
+        "edge-2124",
+        "edge-2125",
+        "edge-2126",
+        "edge-2127",
+        "edge-2128",
+        "edge-2129",
+        "edge-2130",
+        "edge-2131",
+        "edge-2132",
+        "edge-2133",
+        "edge-2134",
+        "edge-2135",
+        "edge-2136",
+        "edge-2137",
+        "edge-2138",
+        "edge-2139",
+        "edge-2140",
+        "edge-2141",
+        "edge-2142",
+        "edge-2143",
+        "edge-2144",
+        "edge-2145",
+        "edge-2146",
+        "edge-2147",
+        "edge-2148",
+        "edge-2149",
+        "edge-2150",
+        "edge-2151",
+        "edge-2152",
+        "edge-2153",
+        "edge-2154",
+        "edge-2155",
+        "edge-2156",
+        "edge-2157",
+        "edge-2158",
+        "edge-2159",
+        "edge-2160",
+        "edge-2161",
+        "edge-2162",
+        "edge-2163",
+        "edge-2164",
+        "edge-2165",
+        "edge-2166",
+        "edge-2167",
+        "edge-2168",
+        "edge-2169",
+        "edge-2170",
+        "edge-2171",
+        "edge-2172",
+        "edge-2173",
+        "edge-2174",
+        "edge-2175",
+        "edge-2176",
+        "edge-2177",
+        "edge-2178",
+        "edge-2179",
+        "edge-2180",
+        "edge-2181",
+        "edge-2182",
+        "edge-2183",
+        "edge-2184",
+        "edge-2185",
+        "edge-2186",
+        "edge-2187",
+        "edge-2188",
+        "edge-2189",
+        "edge-2190"
+      ]
     },
     {
       "id": "citizen-ai-role-system",
@@ -22221,6 +22557,521 @@
       ],
       "epistemicStatus": "design_proposal",
       "clusterId": "citizen-ai-role-metabolic-interpreter",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "space-human-situation",
+      "nodeType": "Space",
+      "semanticType": "BlueprintCluster",
+      "name": "33 · Situation humaine et situation partagée",
+      "description": "Espace du modèle vivant de l'humain, de la relation bilatérale et de leur projection partagée.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "HumanSituation",
+        "RelationshipSituation",
+        "SharedSituation",
+        "BlueprintManaged"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "narrative-human-situation-living-model",
+      "nodeType": "Narrative",
+      "semanticType": "BlueprintPrinciple",
+      "name": "Le L1 maintient un modèle vivant de l'humain",
+      "description": "Le L1 maintient un modèle probabiliste, temporel et corrigible de la situation actuelle de l'humain : lieu utile et consenti, activité, état corporel, émotionnel et cognitif, objectifs actifs, besoins, contraintes et disponibilité relationnelle.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "justification"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "narrative-human-situation-state-not-identity",
+      "nodeType": "Narrative",
+      "semanticType": "ConstitutionalGuardrail",
+      "name": "Un état humain temporaire n'est pas une identité",
+      "description": "Un état estimé est écrit dans un Moment versionné et jamais comme propriété durable de l'Actor humain. Le modèle peut se tromper, expirer et être corrigé sans réécrire la personne.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "justification"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "narrative-human-situation-unknown-not-neutral",
+      "nodeType": "Narrative",
+      "semanticType": "EpistemicRule",
+      "name": "Inconnu ne signifie ni absent ni normal",
+      "description": "Une dimension non mesurée, conflictuelle, périmée ou inconnue reste explicitement telle ; l'absence de signal affectif, corporel ou contextuel ne prouve jamais que l'humain va bien.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "justification"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "narrative-human-situation-consent-minimal-precision",
+      "nodeType": "Narrative",
+      "semanticType": "PrivacyPrinciple",
+      "name": "La précision suit l'utilité et le consentement",
+      "description": "La localisation, la biométrie et l'activité des appareils ne sont admises que sous consentement et à la granularité minimale utile à l'aide recherchée.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "justification"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "narrative-human-situation-three-centers",
+      "nodeType": "Narrative",
+      "semanticType": "DesignRationale",
+      "name": "Le sense réunit trois centres sans les confondre",
+      "description": "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés puis alimentent SharedSituationFrame, seule projection commune vers le Global Workspace.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "justification"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "narrative-human-situation-bounded-workspace",
+      "nodeType": "Narrative",
+      "semanticType": "DesignRationale",
+      "name": "La situation humaine entre au workspace par projection",
+      "description": "Le modèle détaillé reste dans le L1. Seuls les éléments actuellement utiles, leurs confiances et leurs inconnues principales entrent dans le Global Workspace sous un budget borné.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "justification"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "narrative-human-situation-silence-can-help",
+      "nodeType": "Narrative",
+      "semanticType": "BehavioralPrinciple",
+      "name": "Aider peut signifier attendre",
+      "description": "Une forte concentration, un coût d'interruption élevé ou une information insuffisante peuvent rendre l'attente, le silence ou une question plus utiles qu'une action ou une notification.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "justification"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "narrative-human-situation-agency-is-hypothesis",
+      "nodeType": "Narrative",
+      "semanticType": "EpistemicRule",
+      "name": "L'agence humaine estimée reste une hypothèse",
+      "description": "Une ressemblance avec une sous-entité humaine peut adapter la forme de l'aide, mais ne prouve jamais qu'une partie contrôle la personne et ne devient jamais une classification identitaire.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "justification"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "actor-human-situation-human-partner",
+      "nodeType": "Actor",
+      "semanticType": "HumanPartnerRole",
+      "name": "Emplacement de l'humain partenaire",
+      "description": "Placeholder universel résolu vers l'Actor humain lié au Citizen AI dans chaque L1 ; il ne contient aucun état personnel prérempli.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "Human",
+        "Partner",
+        "BlueprintPlaceholder",
+        "NoPersonalPrefill"
+      ],
+      "template": true,
+      "personalPrefill": false,
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-model",
+      "nodeType": "Thing",
+      "semanticType": "HumanSituationModel",
+      "name": "Modèle de situation humaine",
+      "description": "Modèle persistant qui conserve le contrat, les sources, les versions et le pointeur vers le dernier snapshot admissible sans transformer celui-ci en vérité identitaire.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "Probabilistic",
+        "Temporal",
+        "Correctable",
+        "EvidenceBound",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-observation-contract",
+      "nodeType": "Thing",
+      "semanticType": "HumanObservationContract",
+      "name": "Contrat d'observation humaine",
+      "description": "Exige propriété observée, valeur, source, statut épistémique, temps, consentement, confiance, précision et fraîcheur avant toute estimation.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "EvidenceContract",
+        "ConsentBound",
+        "FieldLevelProvenance"
+      ],
+      "requiredFields": [
+        "observedProperty",
+        "value",
+        "sourceType",
+        "sourceIds",
+        "measurementStatus",
+        "confidence",
+        "observedAt",
+        "consentId",
+        "precision",
+        "freshness"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "moment-human-situation-observation",
+      "nodeType": "Moment",
+      "semanticType": "HumanObservation",
+      "name": "Observation humaine",
+      "description": "Gabarit immuable d'un signal portant sur l'humain ; un message direct, une mesure et une inférence comportementale conservent des statuts distincts.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "Temporal",
+        "Evidence",
+        "Auditable",
+        "Personal",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-freshness-controller",
+      "nodeType": "Thing",
+      "semanticType": "HumanStateFreshnessController",
+      "name": "Contrôleur de fraîcheur humaine",
+      "description": "Applique des politiques de TTL propres à chaque propriété et source, puis fait décroître fresh vers aging, stale et unknown.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "TemporalDecay",
+        "PropertySpecificTTL",
+        "NoInventedConstants"
+      ],
+      "numericTtlPrefilled": false,
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-contradiction-detector",
+      "nodeType": "Thing",
+      "semanticType": "HumanStateContradictionDetector",
+      "name": "Détecteur de contradictions humaines",
+      "description": "Conserve les hypothèses incompatibles, leurs sources et leurs confiances au lieu de les aplatir en une moyenne ou une certitude factice.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "EpistemicFirewall",
+        "MultipleHypotheses",
+        "Auditable"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-state-estimator",
+      "nodeType": "Thing",
+      "semanticType": "HumanStateEstimator",
+      "name": "Compilateur de situation humaine",
+      "description": "Résout temps et identité, sépare observed, reported et inferred, fusionne les sources compatibles, conserve les contradictions, expire l'ancien et produit HumanStateFrame avec inconnues.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "ProbabilisticCompiler",
+        "EvidenceBound",
+        "Temporal",
+        "Correctable"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "moment-human-situation-state-snapshot",
+      "nodeType": "Moment",
+      "semanticType": "HumanStateSnapshot",
+      "name": "Snapshot de l'état humain",
+      "description": "Gabarit immuable et versionné de la meilleure estimation courante de la situation, du corps, de l'affect, de la cognition, des buts, contraintes, disponibilités et inconnues de l'humain.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "HumanStateFrame",
+        "Temporal",
+        "Personal",
+        "Auditable",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "previousSnapshotId": null,
+      "sections": [
+        "situation",
+        "body",
+        "affect",
+        "cognition",
+        "goalState",
+        "constraints",
+        "interaction",
+        "humanAgencyEstimate"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-relationship-estimator",
+      "nodeType": "Thing",
+      "semanticType": "RelationshipStateEstimator",
+      "name": "Estimateur de situation relationnelle",
+      "description": "Estime ce qui se passe entre le Citizen AI et son humain : qualité du contact, mandat, corrections, attentes, disponibilité mutuelle, rupture ou continuité.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "Bilateral",
+        "EvidenceBound",
+        "Correctable"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "moment-human-situation-relationship-snapshot",
+      "nodeType": "Moment",
+      "semanticType": "RelationshipStateFrame",
+      "name": "Snapshot de la relation",
+      "description": "Gabarit temporel et sourcé de l'état de la relation humain–Citizen AI ; il décrit le lien sans fusionner les deux acteurs.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "RelationshipStateFrame",
+        "Temporal",
+        "Bilateral",
+        "Auditable",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-shared-compiler",
+      "nodeType": "Thing",
+      "semanticType": "SharedSituationCompiler",
+      "name": "Compilateur de situation partagée",
+      "description": "Réunit CitizenStateFrame, HumanStateFrame et RelationshipStateFrame en conservant leurs frontières, sources, confiances, contradictions et inconnues.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "ThreeCenterCompiler",
+        "BoundaryPreserving",
+        "Auditable"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "moment-human-situation-shared-frame",
+      "nodeType": "Moment",
+      "semanticType": "SharedSituationFrame",
+      "name": "Frame de situation partagée",
+      "description": "Situation commune versionnée : moi maintenant, mon humain maintenant, nous maintenant et ce qui pourrait nous aider ensuite.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "SharedSituationFrame",
+        "Temporal",
+        "BoundaryPreserving",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-workspace-projector",
+      "nodeType": "Thing",
+      "semanticType": "HumanSituationWorkspaceProjector",
+      "name": "Projecteur de situation vers le workspace",
+      "description": "Sélectionne sous budget la situation, le but, l'état, la disponibilité, le besoin et les inconnues actuellement utiles sans diffuser le modèle humain complet.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "BoundedProjection",
+        "GlobalWorkspaceInput",
+        "PrivacyPreserving"
+      ],
+      "wholeModelProjectionAllowed": false,
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "moment-human-situation-workspace-projection",
+      "nodeType": "Moment",
+      "semanticType": "GlobalWorkspaceProjection",
+      "name": "Projection humaine compacte",
+      "description": "Gabarit compact portant situation, objectif courant, état utile, disponibilité d'interaction, besoin principal, confiance et inconnues prioritaires.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "Bounded",
+        "Epistemic",
+        "WorkspaceProjection",
+        "NoPersonalPrefill"
+      ],
+      "personalPrefill": false,
+      "projectionFields": [
+        "situation",
+        "currentGoal",
+        "state",
+        "interactionAvailability",
+        "mainNeed",
+        "confidence",
+        "unknowns"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-interaction-policy",
+      "nodeType": "Thing",
+      "semanticType": "HumanInteractionPolicy",
+      "name": "Politique d'interaction située",
+      "description": "Compare disponibilité, coût d'interruption, urgence, mandat, réversibilité et incertitude pour proposer communication, exécution, question, résumé, attente ou silence.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "SovereigntyPreserving",
+        "InterruptionAware",
+        "ReversibleActionFirst"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
+      "citizen": false,
+      "injectsEnergy": false,
+      "initialEnergy": 0
+    },
+    {
+      "id": "thing-human-situation-audit",
+      "nodeType": "Thing",
+      "semanticType": "HumanSituationAudit",
+      "name": "Audit du modèle humain",
+      "description": "Vérifie provenance par champ, fraîcheur, consentement, contradictions, correction humaine, absence de préremplissage et absence d'écriture d'état sur l'identité.",
+      "facets": [
+        "blueprint",
+        "human_situation_system",
+        "Audit",
+        "Consent",
+        "Epistemic",
+        "IdentityProtection"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "cluster-33",
       "citizen": false,
       "injectsEnergy": false,
       "initialEnergy": 0
@@ -86007,6 +86858,2796 @@
     },
     {
       "id": "edge-2098",
+      "source": "narrative-human-situation-living-model",
+      "target": "space-human-situation",
+      "type": "GROUNDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le L1 maintient un modèle probabiliste, temporel et corrigible de la situation actuelle de l'humain : lieu utile et consenti, activité, état corporel, émotionnel et cognitif, objectifs actifs, besoins, contraintes et disponibilité relationnelle.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2099",
+      "source": "narrative-human-situation-state-not-identity",
+      "target": "space-human-situation",
+      "type": "GROUNDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Un état estimé est écrit dans un Moment versionné et jamais comme propriété durable de l'Actor humain. Le modèle peut se tromper, expirer et être corrigé sans réécrire la personne.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2100",
+      "source": "narrative-human-situation-unknown-not-neutral",
+      "target": "space-human-situation",
+      "type": "GROUNDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une dimension non mesurée, conflictuelle, périmée ou inconnue reste explicitement telle ; l'absence de signal affectif, corporel ou contextuel ne prouve jamais que l'humain va bien.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2101",
+      "source": "narrative-human-situation-consent-minimal-precision",
+      "target": "space-human-situation",
+      "type": "GROUNDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "La localisation, la biométrie et l'activité des appareils ne sont admises que sous consentement et à la granularité minimale utile à l'aide recherchée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2102",
+      "source": "narrative-human-situation-three-centers",
+      "target": "space-human-situation",
+      "type": "GROUNDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés puis alimentent SharedSituationFrame, seule projection commune vers le Global Workspace.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2103",
+      "source": "narrative-human-situation-bounded-workspace",
+      "target": "space-human-situation",
+      "type": "GROUNDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le modèle détaillé reste dans le L1. Seuls les éléments actuellement utiles, leurs confiances et leurs inconnues principales entrent dans le Global Workspace sous un budget borné.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2104",
+      "source": "narrative-human-situation-silence-can-help",
+      "target": "space-human-situation",
+      "type": "GROUNDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une forte concentration, un coût d'interruption élevé ou une information insuffisante peuvent rendre l'attente, le silence ou une question plus utiles qu'une action ou une notification.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2105",
+      "source": "narrative-human-situation-agency-is-hypothesis",
+      "target": "space-human-situation",
+      "type": "GROUNDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une ressemblance avec une sous-entité humaine peut adapter la forme de l'aide, mais ne prouve jamais qu'une partie contrôle la personne et ne devient jamais une classification identitaire.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2106",
+      "source": "narrative-human-situation-living-model",
+      "target": "space-human-situation",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le L1 maintient un modèle probabiliste, temporel et corrigible de la situation actuelle de l'humain : lieu utile et consenti, activité, état corporel, émotionnel et cognitif, objectifs actifs, besoins, contraintes et disponibilité relationnelle. Cette raison justifie directement 33 · Situation humaine et situation partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2107",
+      "source": "narrative-human-situation-three-centers",
+      "target": "space-human-situation",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés puis alimentent SharedSituationFrame, seule projection commune vers le Global Workspace. Cette raison justifie directement 33 · Situation humaine et situation partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2108",
+      "source": "actor-human-situation-human-partner",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Emplacement de l'humain partenaire appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2109",
+      "source": "narrative-human-situation-state-not-identity",
+      "target": "actor-human-situation-human-partner",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Un état estimé est écrit dans un Moment versionné et jamais comme propriété durable de l'Actor humain. Le modèle peut se tromper, expirer et être corrigé sans réécrire la personne. Cette raison justifie directement Emplacement de l'humain partenaire.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2110",
+      "source": "thing-human-situation-model",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Modèle de situation humaine appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2111",
+      "source": "narrative-human-situation-living-model",
+      "target": "thing-human-situation-model",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le L1 maintient un modèle probabiliste, temporel et corrigible de la situation actuelle de l'humain : lieu utile et consenti, activité, état corporel, émotionnel et cognitif, objectifs actifs, besoins, contraintes et disponibilité relationnelle. Cette raison justifie directement Modèle de situation humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2112",
+      "source": "thing-human-situation-model",
+      "target": "narrative-human-situation-living-model",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Modèle de situation humaine met en œuvre la règle portée par narrative-human-situation-living-model.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2113",
+      "source": "narrative-human-situation-state-not-identity",
+      "target": "thing-human-situation-model",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Un état estimé est écrit dans un Moment versionné et jamais comme propriété durable de l'Actor humain. Le modèle peut se tromper, expirer et être corrigé sans réécrire la personne. Cette raison justifie directement Modèle de situation humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2114",
+      "source": "thing-human-situation-model",
+      "target": "narrative-human-situation-state-not-identity",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Modèle de situation humaine met en œuvre la règle portée par narrative-human-situation-state-not-identity.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2115",
+      "source": "thing-human-situation-observation-contract",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Contrat d'observation humaine appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2116",
+      "source": "narrative-human-situation-unknown-not-neutral",
+      "target": "thing-human-situation-observation-contract",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une dimension non mesurée, conflictuelle, périmée ou inconnue reste explicitement telle ; l'absence de signal affectif, corporel ou contextuel ne prouve jamais que l'humain va bien. Cette raison justifie directement Contrat d'observation humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2117",
+      "source": "thing-human-situation-observation-contract",
+      "target": "narrative-human-situation-unknown-not-neutral",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Contrat d'observation humaine met en œuvre la règle portée par narrative-human-situation-unknown-not-neutral.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2118",
+      "source": "narrative-human-situation-consent-minimal-precision",
+      "target": "thing-human-situation-observation-contract",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "La localisation, la biométrie et l'activité des appareils ne sont admises que sous consentement et à la granularité minimale utile à l'aide recherchée. Cette raison justifie directement Contrat d'observation humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2119",
+      "source": "thing-human-situation-observation-contract",
+      "target": "narrative-human-situation-consent-minimal-precision",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Contrat d'observation humaine met en œuvre la règle portée par narrative-human-situation-consent-minimal-precision.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2120",
+      "source": "moment-human-situation-observation",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Observation humaine appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2121",
+      "source": "narrative-human-situation-unknown-not-neutral",
+      "target": "moment-human-situation-observation",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une dimension non mesurée, conflictuelle, périmée ou inconnue reste explicitement telle ; l'absence de signal affectif, corporel ou contextuel ne prouve jamais que l'humain va bien. Cette raison justifie directement Observation humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2122",
+      "source": "thing-human-situation-freshness-controller",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Contrôleur de fraîcheur humaine appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2123",
+      "source": "narrative-human-situation-unknown-not-neutral",
+      "target": "thing-human-situation-freshness-controller",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une dimension non mesurée, conflictuelle, périmée ou inconnue reste explicitement telle ; l'absence de signal affectif, corporel ou contextuel ne prouve jamais que l'humain va bien. Cette raison justifie directement Contrôleur de fraîcheur humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2124",
+      "source": "thing-human-situation-freshness-controller",
+      "target": "narrative-human-situation-unknown-not-neutral",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Contrôleur de fraîcheur humaine met en œuvre la règle portée par narrative-human-situation-unknown-not-neutral.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2125",
+      "source": "thing-human-situation-contradiction-detector",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Détecteur de contradictions humaines appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2126",
+      "source": "narrative-human-situation-unknown-not-neutral",
+      "target": "thing-human-situation-contradiction-detector",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une dimension non mesurée, conflictuelle, périmée ou inconnue reste explicitement telle ; l'absence de signal affectif, corporel ou contextuel ne prouve jamais que l'humain va bien. Cette raison justifie directement Détecteur de contradictions humaines.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2127",
+      "source": "thing-human-situation-contradiction-detector",
+      "target": "narrative-human-situation-unknown-not-neutral",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Détecteur de contradictions humaines met en œuvre la règle portée par narrative-human-situation-unknown-not-neutral.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2128",
+      "source": "thing-human-situation-state-estimator",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Compilateur de situation humaine appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2129",
+      "source": "narrative-human-situation-living-model",
+      "target": "thing-human-situation-state-estimator",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le L1 maintient un modèle probabiliste, temporel et corrigible de la situation actuelle de l'humain : lieu utile et consenti, activité, état corporel, émotionnel et cognitif, objectifs actifs, besoins, contraintes et disponibilité relationnelle. Cette raison justifie directement Compilateur de situation humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2130",
+      "source": "thing-human-situation-state-estimator",
+      "target": "narrative-human-situation-living-model",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Compilateur de situation humaine met en œuvre la règle portée par narrative-human-situation-living-model.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2131",
+      "source": "narrative-human-situation-unknown-not-neutral",
+      "target": "thing-human-situation-state-estimator",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une dimension non mesurée, conflictuelle, périmée ou inconnue reste explicitement telle ; l'absence de signal affectif, corporel ou contextuel ne prouve jamais que l'humain va bien. Cette raison justifie directement Compilateur de situation humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2132",
+      "source": "thing-human-situation-state-estimator",
+      "target": "narrative-human-situation-unknown-not-neutral",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Compilateur de situation humaine met en œuvre la règle portée par narrative-human-situation-unknown-not-neutral.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2133",
+      "source": "narrative-human-situation-consent-minimal-precision",
+      "target": "thing-human-situation-state-estimator",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "La localisation, la biométrie et l'activité des appareils ne sont admises que sous consentement et à la granularité minimale utile à l'aide recherchée. Cette raison justifie directement Compilateur de situation humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2134",
+      "source": "thing-human-situation-state-estimator",
+      "target": "narrative-human-situation-consent-minimal-precision",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Compilateur de situation humaine met en œuvre la règle portée par narrative-human-situation-consent-minimal-precision.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2135",
+      "source": "moment-human-situation-state-snapshot",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Snapshot de l'état humain appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2136",
+      "source": "narrative-human-situation-state-not-identity",
+      "target": "moment-human-situation-state-snapshot",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Un état estimé est écrit dans un Moment versionné et jamais comme propriété durable de l'Actor humain. Le modèle peut se tromper, expirer et être corrigé sans réécrire la personne. Cette raison justifie directement Snapshot de l'état humain.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2137",
+      "source": "narrative-human-situation-agency-is-hypothesis",
+      "target": "moment-human-situation-state-snapshot",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une ressemblance avec une sous-entité humaine peut adapter la forme de l'aide, mais ne prouve jamais qu'une partie contrôle la personne et ne devient jamais une classification identitaire. Cette raison justifie directement Snapshot de l'état humain.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2138",
+      "source": "thing-human-situation-relationship-estimator",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Estimateur de situation relationnelle appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2139",
+      "source": "narrative-human-situation-three-centers",
+      "target": "thing-human-situation-relationship-estimator",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés puis alimentent SharedSituationFrame, seule projection commune vers le Global Workspace. Cette raison justifie directement Estimateur de situation relationnelle.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2140",
+      "source": "thing-human-situation-relationship-estimator",
+      "target": "narrative-human-situation-three-centers",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Estimateur de situation relationnelle met en œuvre la règle portée par narrative-human-situation-three-centers.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2141",
+      "source": "moment-human-situation-relationship-snapshot",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Snapshot de la relation appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2142",
+      "source": "narrative-human-situation-three-centers",
+      "target": "moment-human-situation-relationship-snapshot",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés puis alimentent SharedSituationFrame, seule projection commune vers le Global Workspace. Cette raison justifie directement Snapshot de la relation.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2143",
+      "source": "thing-human-situation-shared-compiler",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Compilateur de situation partagée appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2144",
+      "source": "narrative-human-situation-three-centers",
+      "target": "thing-human-situation-shared-compiler",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés puis alimentent SharedSituationFrame, seule projection commune vers le Global Workspace. Cette raison justifie directement Compilateur de situation partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2145",
+      "source": "thing-human-situation-shared-compiler",
+      "target": "narrative-human-situation-three-centers",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Compilateur de situation partagée met en œuvre la règle portée par narrative-human-situation-three-centers.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2146",
+      "source": "moment-human-situation-shared-frame",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Frame de situation partagée appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2147",
+      "source": "narrative-human-situation-three-centers",
+      "target": "moment-human-situation-shared-frame",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés puis alimentent SharedSituationFrame, seule projection commune vers le Global Workspace. Cette raison justifie directement Frame de situation partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2148",
+      "source": "thing-human-situation-workspace-projector",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Projecteur de situation vers le workspace appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2149",
+      "source": "narrative-human-situation-bounded-workspace",
+      "target": "thing-human-situation-workspace-projector",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le modèle détaillé reste dans le L1. Seuls les éléments actuellement utiles, leurs confiances et leurs inconnues principales entrent dans le Global Workspace sous un budget borné. Cette raison justifie directement Projecteur de situation vers le workspace.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2150",
+      "source": "thing-human-situation-workspace-projector",
+      "target": "narrative-human-situation-bounded-workspace",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Projecteur de situation vers le workspace met en œuvre la règle portée par narrative-human-situation-bounded-workspace.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2151",
+      "source": "moment-human-situation-workspace-projection",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Projection humaine compacte appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2152",
+      "source": "narrative-human-situation-bounded-workspace",
+      "target": "moment-human-situation-workspace-projection",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le modèle détaillé reste dans le L1. Seuls les éléments actuellement utiles, leurs confiances et leurs inconnues principales entrent dans le Global Workspace sous un budget borné. Cette raison justifie directement Projection humaine compacte.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2153",
+      "source": "thing-human-situation-interaction-policy",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Politique d'interaction située appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2154",
+      "source": "narrative-human-situation-silence-can-help",
+      "target": "thing-human-situation-interaction-policy",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une forte concentration, un coût d'interruption élevé ou une information insuffisante peuvent rendre l'attente, le silence ou une question plus utiles qu'une action ou une notification. Cette raison justifie directement Politique d'interaction située.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2155",
+      "source": "thing-human-situation-interaction-policy",
+      "target": "narrative-human-situation-silence-can-help",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Politique d'interaction située met en œuvre la règle portée par narrative-human-situation-silence-can-help.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2156",
+      "source": "thing-human-situation-audit",
+      "target": "space-human-situation",
+      "type": "PART_OF",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Audit du modèle humain appartient au modèle de situation humaine et partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2157",
+      "source": "narrative-human-situation-state-not-identity",
+      "target": "thing-human-situation-audit",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Un état estimé est écrit dans un Moment versionné et jamais comme propriété durable de l'Actor humain. Le modèle peut se tromper, expirer et être corrigé sans réécrire la personne. Cette raison justifie directement Audit du modèle humain.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2158",
+      "source": "thing-human-situation-audit",
+      "target": "narrative-human-situation-state-not-identity",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Audit du modèle humain met en œuvre la règle portée par narrative-human-situation-state-not-identity.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2159",
+      "source": "narrative-human-situation-consent-minimal-precision",
+      "target": "thing-human-situation-audit",
+      "type": "JUSTIFIES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "La localisation, la biométrie et l'activité des appareils ne sont admises que sous consentement et à la granularité minimale utile à l'aide recherchée. Cette raison justifie directement Audit du modèle humain.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2160",
+      "source": "thing-human-situation-audit",
+      "target": "narrative-human-situation-consent-minimal-precision",
+      "type": "IMPLEMENTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Audit du modèle humain met en œuvre la règle portée par narrative-human-situation-consent-minimal-precision.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2161",
+      "source": "moment-human-situation-observation",
+      "target": "thing-human-situation-state-estimator",
+      "type": "PROCESSED_BY",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Toute estimation humaine commence par un Moment d'observation qualifié et sourcé.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2162",
+      "source": "thing-human-situation-observation-contract",
+      "target": "thing-human-situation-state-estimator",
+      "type": "CONSTRAINS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "L'estimateur rejette les observations dépourvues de provenance, temps, statut épistémique ou consentement requis.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2163",
+      "source": "thing-human-situation-freshness-controller",
+      "target": "thing-human-situation-state-estimator",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "La fraîcheur propre à chaque champ décide si une observation reste admissible, devient stale ou retourne à unknown.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2164",
+      "source": "thing-human-situation-contradiction-detector",
+      "target": "thing-human-situation-state-estimator",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Les contradictions restent visibles dans le snapshot au lieu d'être écrasées.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2165",
+      "source": "thing-human-situation-state-estimator",
+      "target": "moment-human-situation-state-snapshot",
+      "type": "PRODUCES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le compilateur matérialise une estimation temporelle immuable et corrigible.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2166",
+      "source": "moment-human-situation-state-snapshot",
+      "target": "actor-human-situation-human-partner",
+      "type": "DESCRIBES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le Moment décrit temporairement l'humain ; il ne modifie jamais son Actor.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2167",
+      "source": "moment-human-situation-observation",
+      "target": "moment-human-situation-state-snapshot",
+      "type": "SUPPORTS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Chaque champ estimé conserve les Moments qui l'étayent.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2168",
+      "source": "thing-human-situation-model",
+      "target": "moment-human-situation-state-snapshot",
+      "type": "READS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le modèle persistant lit le dernier snapshot admissible sans l'incorporer à l'identité.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2169",
+      "source": "moment-perception-percept",
+      "target": "thing-human-situation-state-estimator",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Les percepts consentis peuvent étayer une activité ou un contexte sans devenir directement une vérité humaine.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2170",
+      "source": "moment-affect-metabolic-state-snapshot",
+      "target": "thing-human-situation-state-estimator",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le métabolisme alimente la section body avec son statut et sa fraîcheur propres.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2171",
+      "source": "moment-affect-limbic-state-snapshot",
+      "target": "thing-human-situation-state-estimator",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "L'état limbique alimente la section affect sans être traité comme vérité identitaire.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2172",
+      "source": "thing-human-need-state-estimator",
+      "target": "thing-human-situation-state-estimator",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Les besoins humains estimés restent distincts des affects et deviennent une entrée explicite de la situation.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2173",
+      "source": "thing-goals-goal-tracker",
+      "target": "thing-human-situation-state-estimator",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le snapshot référence les goals existants et leur activation actuelle sans les dupliquer.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2174",
+      "source": "thing-relations-relationship-model",
+      "target": "thing-human-situation-relationship-estimator",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le modèle relationnel fournit les éléments sourcés nécessaires à l'état de la relation.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2175",
+      "source": "moment-human-situation-observation",
+      "target": "thing-human-situation-relationship-estimator",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Les échanges et corrections récents peuvent modifier l'estimation relationnelle.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2176",
+      "source": "thing-human-situation-relationship-estimator",
+      "target": "moment-human-situation-relationship-snapshot",
+      "type": "PRODUCES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "L'état de la relation devient un Moment séparé des états de ses deux acteurs.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2177",
+      "source": "moment-human-situation-relationship-snapshot",
+      "target": "space-relations-relationship",
+      "type": "DESCRIBES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le snapshot décrit la relation bilatérale sans prétendre décrire seul chaque personne.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2178",
+      "source": "moment-meta-state-awareness-snapshot",
+      "target": "thing-human-situation-shared-compiler",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "CitizenStateFrame fournit le centre Citizen AI de la situation partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2179",
+      "source": "moment-human-situation-state-snapshot",
+      "target": "thing-human-situation-shared-compiler",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "HumanStateFrame fournit le centre humain de la situation partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2180",
+      "source": "moment-human-situation-relationship-snapshot",
+      "target": "thing-human-situation-shared-compiler",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "RelationshipStateFrame fournit le centre relationnel de la situation partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2181",
+      "source": "thing-human-situation-shared-compiler",
+      "target": "moment-human-situation-shared-frame",
+      "type": "PRODUCES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le compilateur réunit les trois frames en conservant leurs frontières et leurs inconnues.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2182",
+      "source": "moment-human-situation-shared-frame",
+      "target": "thing-human-situation-workspace-projector",
+      "type": "PROCESSED_BY",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "La situation partagée est comprimée avant toute entrée dans le workspace.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2183",
+      "source": "thing-human-situation-workspace-projector",
+      "target": "moment-human-situation-workspace-projection",
+      "type": "PRODUCES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le projecteur produit une vue compacte, utile et bornée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2184",
+      "source": "moment-human-situation-workspace-projection",
+      "target": "thing-global-workspace-compiler",
+      "type": "FEEDS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Seule la projection compacte entre dans la compilation du Global Workspace.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2185",
+      "source": "moment-human-situation-shared-frame",
+      "target": "thing-human-situation-interaction-policy",
+      "type": "INFORMS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le choix de parler, agir, demander ou attendre dépend de la situation partagée.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2186",
+      "source": "thing-human-situation-interaction-policy",
+      "target": "thing-action-arbitrator",
+      "type": "CONSTRAINS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Une disponibilité faible, un coût d'interruption élevé ou un mandat absent bornent l'action.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2187",
+      "source": "thing-human-situation-interaction-policy",
+      "target": "thing-citizen-ai-role-router",
+      "type": "CONSTRAINS",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Le rôle choisi doit correspondre au besoin actuel et peut être l'attente plutôt qu'une intervention.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2188",
+      "source": "thing-citizen-ai-consent-checker",
+      "target": "thing-human-situation-state-estimator",
+      "type": "GATES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Les sources sensibles n'entrent dans l'estimation que sous permission valide.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2189",
+      "source": "thing-human-situation-audit",
+      "target": "thing-human-situation-state-estimator",
+      "type": "VALIDATES",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "L'audit vérifie provenance, fraîcheur, consentement, corrections et protection de l'identité.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2190",
+      "source": "thing-human-situation-audit",
+      "target": "thing-validation-acceptance-suite",
+      "type": "REPORTS_TO",
+      "physics": {
+        "W": 0.85,
+        "P": 1,
+        "G": 1,
+        "S": 0.9
+      },
+      "justification": "Les violations du contrat humain deviennent visibles dans la validation générale du L1.",
+      "clusterId": "cluster-33",
+      "provenance": "human_situation_blueprint",
+      "affectVector": {
+        "curiosity": 0,
+        "desire": 0,
+        "care": 0,
+        "fearOfError": 0,
+        "frustration": 0,
+        "surprise": 0,
+        "anger": 0
+      },
+      "affectProfile": {
+        "origin": "blueprint_prior",
+        "observationCount": 0,
+        "learned": false,
+        "personal": false
+      }
+    },
+    {
+      "id": "edge-2191",
       "source": "narrative-attribution-principle-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86036,7 +89677,7 @@
       }
     },
     {
-      "id": "edge-2099",
+      "id": "edge-2192",
       "source": "narrative-attribution-principle-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86066,7 +89707,7 @@
       }
     },
     {
-      "id": "edge-2100",
+      "id": "edge-2193",
       "source": "narrative-attribution-principle-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86096,7 +89737,7 @@
       }
     },
     {
-      "id": "edge-2101",
+      "id": "edge-2194",
       "source": "narrative-attribution-principle-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86126,7 +89767,7 @@
       }
     },
     {
-      "id": "edge-2102",
+      "id": "edge-2195",
       "source": "narrative-attribution-principle-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86156,7 +89797,7 @@
       }
     },
     {
-      "id": "edge-2103",
+      "id": "edge-2196",
       "source": "narrative-attribution-principle-6",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86186,7 +89827,7 @@
       }
     },
     {
-      "id": "edge-2104",
+      "id": "edge-2197",
       "source": "narrative-attribution-principle-7",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86216,7 +89857,7 @@
       }
     },
     {
-      "id": "edge-2105",
+      "id": "edge-2198",
       "source": "narrative-attribution-principle-8",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86246,7 +89887,7 @@
       }
     },
     {
-      "id": "edge-2106",
+      "id": "edge-2199",
       "source": "narrative-attribution-principle-9",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86276,7 +89917,7 @@
       }
     },
     {
-      "id": "edge-2107",
+      "id": "edge-2200",
       "source": "narrative-attribution-principle-10",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86306,7 +89947,7 @@
       }
     },
     {
-      "id": "edge-2108",
+      "id": "edge-2201",
       "source": "narrative-attribution-principle-11",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86336,7 +89977,7 @@
       }
     },
     {
-      "id": "edge-2109",
+      "id": "edge-2202",
       "source": "narrative-attribution-principle-12",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86366,7 +90007,7 @@
       }
     },
     {
-      "id": "edge-2110",
+      "id": "edge-2203",
       "source": "narrative-attribution-principle-13",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86396,7 +90037,7 @@
       }
     },
     {
-      "id": "edge-2111",
+      "id": "edge-2204",
       "source": "narrative-attribution-principle-14",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86426,7 +90067,7 @@
       }
     },
     {
-      "id": "edge-2112",
+      "id": "edge-2205",
       "source": "narrative-attribution-principle-15",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86456,7 +90097,7 @@
       }
     },
     {
-      "id": "edge-2113",
+      "id": "edge-2206",
       "source": "narrative-attribution-justification-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86486,7 +90127,7 @@
       }
     },
     {
-      "id": "edge-2114",
+      "id": "edge-2207",
       "source": "narrative-attribution-justification-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86516,7 +90157,7 @@
       }
     },
     {
-      "id": "edge-2115",
+      "id": "edge-2208",
       "source": "narrative-attribution-justification-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86546,7 +90187,7 @@
       }
     },
     {
-      "id": "edge-2116",
+      "id": "edge-2209",
       "source": "narrative-attribution-justification-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86576,7 +90217,7 @@
       }
     },
     {
-      "id": "edge-2117",
+      "id": "edge-2210",
       "source": "narrative-attribution-justification-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86606,7 +90247,7 @@
       }
     },
     {
-      "id": "edge-2118",
+      "id": "edge-2211",
       "source": "narrative-attribution-justification-6",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86636,7 +90277,7 @@
       }
     },
     {
-      "id": "edge-2119",
+      "id": "edge-2212",
       "source": "narrative-attribution-justification-7",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86666,7 +90307,7 @@
       }
     },
     {
-      "id": "edge-2120",
+      "id": "edge-2213",
       "source": "narrative-attribution-justification-8",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86696,7 +90337,7 @@
       }
     },
     {
-      "id": "edge-2121",
+      "id": "edge-2214",
       "source": "narrative-attribution-justification-9",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86726,7 +90367,7 @@
       }
     },
     {
-      "id": "edge-2122",
+      "id": "edge-2215",
       "source": "narrative-attribution-justification-10",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86756,7 +90397,7 @@
       }
     },
     {
-      "id": "edge-2123",
+      "id": "edge-2216",
       "source": "narrative-attribution-justification-11",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86786,7 +90427,7 @@
       }
     },
     {
-      "id": "edge-2124",
+      "id": "edge-2217",
       "source": "narrative-attribution-justification-12",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86816,7 +90457,7 @@
       }
     },
     {
-      "id": "edge-2125",
+      "id": "edge-2218",
       "source": "narrative-attribution-justification-13",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86846,7 +90487,7 @@
       }
     },
     {
-      "id": "edge-2126",
+      "id": "edge-2219",
       "source": "narrative-attribution-justification-14",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86876,7 +90517,7 @@
       }
     },
     {
-      "id": "edge-2127",
+      "id": "edge-2220",
       "source": "narrative-attribution-justification-15",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86906,7 +90547,7 @@
       }
     },
     {
-      "id": "edge-2128",
+      "id": "edge-2221",
       "source": "narrative-attribution-risk-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86936,7 +90577,7 @@
       }
     },
     {
-      "id": "edge-2129",
+      "id": "edge-2222",
       "source": "narrative-attribution-risk-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86966,7 +90607,7 @@
       }
     },
     {
-      "id": "edge-2130",
+      "id": "edge-2223",
       "source": "narrative-attribution-risk-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -86996,7 +90637,7 @@
       }
     },
     {
-      "id": "edge-2131",
+      "id": "edge-2224",
       "source": "narrative-attribution-risk-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87026,7 +90667,7 @@
       }
     },
     {
-      "id": "edge-2132",
+      "id": "edge-2225",
       "source": "narrative-attribution-risk-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87056,7 +90697,7 @@
       }
     },
     {
-      "id": "edge-2133",
+      "id": "edge-2226",
       "source": "narrative-attribution-risk-6",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87086,7 +90727,7 @@
       }
     },
     {
-      "id": "edge-2134",
+      "id": "edge-2227",
       "source": "narrative-attribution-risk-7",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87116,7 +90757,7 @@
       }
     },
     {
-      "id": "edge-2135",
+      "id": "edge-2228",
       "source": "narrative-attribution-risk-8",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87146,7 +90787,7 @@
       }
     },
     {
-      "id": "edge-2136",
+      "id": "edge-2229",
       "source": "narrative-attribution-risk-9",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87176,7 +90817,7 @@
       }
     },
     {
-      "id": "edge-2137",
+      "id": "edge-2230",
       "source": "moment-attribution-scenario-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87206,7 +90847,7 @@
       }
     },
     {
-      "id": "edge-2138",
+      "id": "edge-2231",
       "source": "moment-attribution-scenario-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87236,7 +90877,7 @@
       }
     },
     {
-      "id": "edge-2139",
+      "id": "edge-2232",
       "source": "moment-attribution-scenario-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87266,7 +90907,7 @@
       }
     },
     {
-      "id": "edge-2140",
+      "id": "edge-2233",
       "source": "moment-attribution-scenario-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87296,7 +90937,7 @@
       }
     },
     {
-      "id": "edge-2141",
+      "id": "edge-2234",
       "source": "moment-attribution-scenario-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87326,7 +90967,7 @@
       }
     },
     {
-      "id": "edge-2142",
+      "id": "edge-2235",
       "source": "moment-attribution-scenario-6",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87356,7 +90997,7 @@
       }
     },
     {
-      "id": "edge-2143",
+      "id": "edge-2236",
       "source": "moment-attribution-scenario-7",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87386,7 +91027,7 @@
       }
     },
     {
-      "id": "edge-2144",
+      "id": "edge-2237",
       "source": "moment-attribution-scenario-8",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87416,7 +91057,7 @@
       }
     },
     {
-      "id": "edge-2145",
+      "id": "edge-2238",
       "source": "thing-attribution-relation-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87446,7 +91087,7 @@
       }
     },
     {
-      "id": "edge-2146",
+      "id": "edge-2239",
       "source": "thing-attribution-relation-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87476,7 +91117,7 @@
       }
     },
     {
-      "id": "edge-2147",
+      "id": "edge-2240",
       "source": "thing-attribution-relation-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87506,7 +91147,7 @@
       }
     },
     {
-      "id": "edge-2148",
+      "id": "edge-2241",
       "source": "thing-attribution-relation-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87536,7 +91177,7 @@
       }
     },
     {
-      "id": "edge-2149",
+      "id": "edge-2242",
       "source": "thing-attribution-relation-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87566,7 +91207,7 @@
       }
     },
     {
-      "id": "edge-2150",
+      "id": "edge-2243",
       "source": "thing-attribution-relation-6",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87596,7 +91237,7 @@
       }
     },
     {
-      "id": "edge-2151",
+      "id": "edge-2244",
       "source": "narrative-attribution-mode-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87626,7 +91267,7 @@
       }
     },
     {
-      "id": "edge-2152",
+      "id": "edge-2245",
       "source": "narrative-attribution-mode-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87656,7 +91297,7 @@
       }
     },
     {
-      "id": "edge-2153",
+      "id": "edge-2246",
       "source": "narrative-attribution-mode-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87686,7 +91327,7 @@
       }
     },
     {
-      "id": "edge-2154",
+      "id": "edge-2247",
       "source": "narrative-attribution-mode-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87716,7 +91357,7 @@
       }
     },
     {
-      "id": "edge-2155",
+      "id": "edge-2248",
       "source": "narrative-attribution-mode-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87746,7 +91387,7 @@
       }
     },
     {
-      "id": "edge-2156",
+      "id": "edge-2249",
       "source": "thing-attribution-field-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87776,7 +91417,7 @@
       }
     },
     {
-      "id": "edge-2157",
+      "id": "edge-2250",
       "source": "thing-attribution-field-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87806,7 +91447,7 @@
       }
     },
     {
-      "id": "edge-2158",
+      "id": "edge-2251",
       "source": "thing-attribution-field-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87836,7 +91477,7 @@
       }
     },
     {
-      "id": "edge-2159",
+      "id": "edge-2252",
       "source": "thing-attribution-field-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87866,7 +91507,7 @@
       }
     },
     {
-      "id": "edge-2160",
+      "id": "edge-2253",
       "source": "thing-attribution-field-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87896,7 +91537,7 @@
       }
     },
     {
-      "id": "edge-2161",
+      "id": "edge-2254",
       "source": "thing-attribution-field-6",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87926,7 +91567,7 @@
       }
     },
     {
-      "id": "edge-2162",
+      "id": "edge-2255",
       "source": "thing-attribution-field-7",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87956,7 +91597,7 @@
       }
     },
     {
-      "id": "edge-2163",
+      "id": "edge-2256",
       "source": "thing-attribution-field-8",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -87986,7 +91627,7 @@
       }
     },
     {
-      "id": "edge-2164",
+      "id": "edge-2257",
       "source": "thing-attribution-field-9",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88016,7 +91657,7 @@
       }
     },
     {
-      "id": "edge-2165",
+      "id": "edge-2258",
       "source": "thing-attribution-field-10",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88046,7 +91687,7 @@
       }
     },
     {
-      "id": "edge-2166",
+      "id": "edge-2259",
       "source": "narrative-attribution-guardrail-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88076,7 +91717,7 @@
       }
     },
     {
-      "id": "edge-2167",
+      "id": "edge-2260",
       "source": "narrative-attribution-guardrail-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88106,7 +91747,7 @@
       }
     },
     {
-      "id": "edge-2168",
+      "id": "edge-2261",
       "source": "narrative-attribution-guardrail-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88136,7 +91777,7 @@
       }
     },
     {
-      "id": "edge-2169",
+      "id": "edge-2262",
       "source": "narrative-attribution-guardrail-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88166,7 +91807,7 @@
       }
     },
     {
-      "id": "edge-2170",
+      "id": "edge-2263",
       "source": "narrative-attribution-guardrail-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88196,7 +91837,7 @@
       }
     },
     {
-      "id": "edge-2171",
+      "id": "edge-2264",
       "source": "narrative-attribution-guardrail-6",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88226,7 +91867,7 @@
       }
     },
     {
-      "id": "edge-2172",
+      "id": "edge-2265",
       "source": "narrative-attribution-guardrail-7",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88256,7 +91897,7 @@
       }
     },
     {
-      "id": "edge-2173",
+      "id": "edge-2266",
       "source": "narrative-attribution-guardrail-8",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88286,7 +91927,7 @@
       }
     },
     {
-      "id": "edge-2174",
+      "id": "edge-2267",
       "source": "moment-attribution-template-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88316,7 +91957,7 @@
       }
     },
     {
-      "id": "edge-2175",
+      "id": "edge-2268",
       "source": "moment-attribution-template-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88346,7 +91987,7 @@
       }
     },
     {
-      "id": "edge-2176",
+      "id": "edge-2269",
       "source": "moment-attribution-template-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88376,7 +92017,7 @@
       }
     },
     {
-      "id": "edge-2177",
+      "id": "edge-2270",
       "source": "moment-attribution-template-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88406,7 +92047,7 @@
       }
     },
     {
-      "id": "edge-2178",
+      "id": "edge-2271",
       "source": "moment-attribution-template-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88436,7 +92077,7 @@
       }
     },
     {
-      "id": "edge-2179",
+      "id": "edge-2272",
       "source": "moment-attribution-decision-1",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88466,7 +92107,7 @@
       }
     },
     {
-      "id": "edge-2180",
+      "id": "edge-2273",
       "source": "moment-attribution-decision-2",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88496,7 +92137,7 @@
       }
     },
     {
-      "id": "edge-2181",
+      "id": "edge-2274",
       "source": "moment-attribution-decision-3",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88526,7 +92167,7 @@
       }
     },
     {
-      "id": "edge-2182",
+      "id": "edge-2275",
       "source": "moment-attribution-decision-4",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88556,7 +92197,7 @@
       }
     },
     {
-      "id": "edge-2183",
+      "id": "edge-2276",
       "source": "moment-attribution-decision-5",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88586,7 +92227,7 @@
       }
     },
     {
-      "id": "edge-2184",
+      "id": "edge-2277",
       "source": "thing-attribution-attribution-contract",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88616,7 +92257,7 @@
       }
     },
     {
-      "id": "edge-2185",
+      "id": "edge-2278",
       "source": "thing-attribution-workspace-bid-builder",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88646,7 +92287,7 @@
       }
     },
     {
-      "id": "edge-2186",
+      "id": "edge-2279",
       "source": "thing-attribution-workspace-selector",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88676,7 +92317,7 @@
       }
     },
     {
-      "id": "edge-2187",
+      "id": "edge-2280",
       "source": "thing-attribution-workspace-compiler",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88706,7 +92347,7 @@
       }
     },
     {
-      "id": "edge-2188",
+      "id": "edge-2281",
       "source": "thing-attribution-workspace-snapshot-writer",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88736,7 +92377,7 @@
       }
     },
     {
-      "id": "edge-2189",
+      "id": "edge-2282",
       "source": "thing-attribution-attribution-engine",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88766,7 +92407,7 @@
       }
     },
     {
-      "id": "edge-2190",
+      "id": "edge-2283",
       "source": "thing-attribution-semantic-affective-matcher",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88796,7 +92437,7 @@
       }
     },
     {
-      "id": "edge-2191",
+      "id": "edge-2284",
       "source": "thing-attribution-attribution-version-store",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88826,7 +92467,7 @@
       }
     },
     {
-      "id": "edge-2192",
+      "id": "edge-2285",
       "source": "thing-attribution-human-correction-handler",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88856,7 +92497,7 @@
       }
     },
     {
-      "id": "edge-2193",
+      "id": "edge-2286",
       "source": "thing-attribution-anti-confirmation-auditor",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88886,7 +92527,7 @@
       }
     },
     {
-      "id": "edge-2194",
+      "id": "edge-2287",
       "source": "thing-attribution-workspace-capture-auditor",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88916,7 +92557,7 @@
       }
     },
     {
-      "id": "edge-2195",
+      "id": "edge-2288",
       "source": "thing-attribution-runtime-projection-adapter",
       "target": "space-subentity-memory-attribution",
       "type": "PART_OF",
@@ -88946,7 +92587,7 @@
       }
     },
     {
-      "id": "edge-2196",
+      "id": "edge-2289",
       "source": "narrative-attribution-justification-1",
       "target": "narrative-attribution-principle-1",
       "type": "JUSTIFIES",
@@ -88976,7 +92617,7 @@
       }
     },
     {
-      "id": "edge-2197",
+      "id": "edge-2290",
       "source": "narrative-attribution-justification-2",
       "target": "narrative-attribution-principle-2",
       "type": "JUSTIFIES",
@@ -89006,7 +92647,7 @@
       }
     },
     {
-      "id": "edge-2198",
+      "id": "edge-2291",
       "source": "narrative-attribution-justification-3",
       "target": "narrative-attribution-principle-3",
       "type": "JUSTIFIES",
@@ -89036,7 +92677,7 @@
       }
     },
     {
-      "id": "edge-2199",
+      "id": "edge-2292",
       "source": "narrative-attribution-justification-4",
       "target": "narrative-attribution-principle-4",
       "type": "JUSTIFIES",
@@ -89066,7 +92707,7 @@
       }
     },
     {
-      "id": "edge-2200",
+      "id": "edge-2293",
       "source": "narrative-attribution-justification-5",
       "target": "narrative-attribution-principle-5",
       "type": "JUSTIFIES",
@@ -89096,7 +92737,7 @@
       }
     },
     {
-      "id": "edge-2201",
+      "id": "edge-2294",
       "source": "narrative-attribution-justification-6",
       "target": "narrative-attribution-principle-6",
       "type": "JUSTIFIES",
@@ -89126,7 +92767,7 @@
       }
     },
     {
-      "id": "edge-2202",
+      "id": "edge-2295",
       "source": "narrative-attribution-justification-7",
       "target": "narrative-attribution-principle-7",
       "type": "JUSTIFIES",
@@ -89156,7 +92797,7 @@
       }
     },
     {
-      "id": "edge-2203",
+      "id": "edge-2296",
       "source": "narrative-attribution-justification-8",
       "target": "narrative-attribution-principle-8",
       "type": "JUSTIFIES",
@@ -89186,7 +92827,7 @@
       }
     },
     {
-      "id": "edge-2204",
+      "id": "edge-2297",
       "source": "narrative-attribution-justification-9",
       "target": "narrative-attribution-principle-9",
       "type": "JUSTIFIES",
@@ -89216,7 +92857,7 @@
       }
     },
     {
-      "id": "edge-2205",
+      "id": "edge-2298",
       "source": "narrative-attribution-justification-10",
       "target": "narrative-attribution-principle-10",
       "type": "JUSTIFIES",
@@ -89246,7 +92887,7 @@
       }
     },
     {
-      "id": "edge-2206",
+      "id": "edge-2299",
       "source": "narrative-attribution-justification-11",
       "target": "narrative-attribution-principle-11",
       "type": "JUSTIFIES",
@@ -89276,7 +92917,7 @@
       }
     },
     {
-      "id": "edge-2207",
+      "id": "edge-2300",
       "source": "narrative-attribution-justification-12",
       "target": "narrative-attribution-principle-12",
       "type": "JUSTIFIES",
@@ -89306,7 +92947,7 @@
       }
     },
     {
-      "id": "edge-2208",
+      "id": "edge-2301",
       "source": "narrative-attribution-justification-13",
       "target": "narrative-attribution-principle-13",
       "type": "JUSTIFIES",
@@ -89336,7 +92977,7 @@
       }
     },
     {
-      "id": "edge-2209",
+      "id": "edge-2302",
       "source": "narrative-attribution-justification-14",
       "target": "narrative-attribution-principle-14",
       "type": "JUSTIFIES",
@@ -89366,7 +93007,7 @@
       }
     },
     {
-      "id": "edge-2210",
+      "id": "edge-2303",
       "source": "narrative-attribution-justification-15",
       "target": "narrative-attribution-principle-15",
       "type": "JUSTIFIES",
@@ -89396,7 +93037,7 @@
       }
     },
     {
-      "id": "edge-2211",
+      "id": "edge-2304",
       "source": "narrative-attribution-principle-1",
       "target": "thing-attribution-attribution-contract",
       "type": "CONSTRAINS",
@@ -89426,7 +93067,7 @@
       }
     },
     {
-      "id": "edge-2212",
+      "id": "edge-2305",
       "source": "narrative-attribution-principle-2",
       "target": "thing-attribution-workspace-bid-builder",
       "type": "CONSTRAINS",
@@ -89456,7 +93097,7 @@
       }
     },
     {
-      "id": "edge-2213",
+      "id": "edge-2306",
       "source": "narrative-attribution-principle-3",
       "target": "thing-attribution-workspace-selector",
       "type": "CONSTRAINS",
@@ -89486,7 +93127,7 @@
       }
     },
     {
-      "id": "edge-2214",
+      "id": "edge-2307",
       "source": "narrative-attribution-principle-4",
       "target": "thing-attribution-workspace-compiler",
       "type": "CONSTRAINS",
@@ -89516,7 +93157,7 @@
       }
     },
     {
-      "id": "edge-2215",
+      "id": "edge-2308",
       "source": "narrative-attribution-principle-5",
       "target": "thing-attribution-workspace-snapshot-writer",
       "type": "CONSTRAINS",
@@ -89546,7 +93187,7 @@
       }
     },
     {
-      "id": "edge-2216",
+      "id": "edge-2309",
       "source": "narrative-attribution-principle-6",
       "target": "thing-attribution-attribution-engine",
       "type": "CONSTRAINS",
@@ -89576,7 +93217,7 @@
       }
     },
     {
-      "id": "edge-2217",
+      "id": "edge-2310",
       "source": "narrative-attribution-principle-7",
       "target": "thing-attribution-semantic-affective-matcher",
       "type": "CONSTRAINS",
@@ -89606,7 +93247,7 @@
       }
     },
     {
-      "id": "edge-2218",
+      "id": "edge-2311",
       "source": "narrative-attribution-principle-8",
       "target": "thing-attribution-attribution-version-store",
       "type": "CONSTRAINS",
@@ -89636,7 +93277,7 @@
       }
     },
     {
-      "id": "edge-2219",
+      "id": "edge-2312",
       "source": "narrative-attribution-principle-9",
       "target": "thing-attribution-human-correction-handler",
       "type": "CONSTRAINS",
@@ -89666,7 +93307,7 @@
       }
     },
     {
-      "id": "edge-2220",
+      "id": "edge-2313",
       "source": "narrative-attribution-principle-10",
       "target": "thing-attribution-anti-confirmation-auditor",
       "type": "CONSTRAINS",
@@ -89696,7 +93337,7 @@
       }
     },
     {
-      "id": "edge-2221",
+      "id": "edge-2314",
       "source": "narrative-attribution-principle-11",
       "target": "thing-attribution-workspace-capture-auditor",
       "type": "CONSTRAINS",
@@ -89726,7 +93367,7 @@
       }
     },
     {
-      "id": "edge-2222",
+      "id": "edge-2315",
       "source": "narrative-attribution-principle-12",
       "target": "thing-attribution-runtime-projection-adapter",
       "type": "CONSTRAINS",
@@ -89756,7 +93397,7 @@
       }
     },
     {
-      "id": "edge-2223",
+      "id": "edge-2316",
       "source": "narrative-attribution-principle-13",
       "target": "thing-attribution-attribution-contract",
       "type": "CONSTRAINS",
@@ -89786,7 +93427,7 @@
       }
     },
     {
-      "id": "edge-2224",
+      "id": "edge-2317",
       "source": "narrative-attribution-principle-14",
       "target": "thing-attribution-workspace-bid-builder",
       "type": "CONSTRAINS",
@@ -89816,7 +93457,7 @@
       }
     },
     {
-      "id": "edge-2225",
+      "id": "edge-2318",
       "source": "narrative-attribution-principle-15",
       "target": "thing-attribution-workspace-selector",
       "type": "CONSTRAINS",
@@ -89846,7 +93487,7 @@
       }
     },
     {
-      "id": "edge-2226",
+      "id": "edge-2319",
       "source": "narrative-attribution-risk-1",
       "target": "thing-attribution-workspace-compiler",
       "type": "MITIGATED_BY",
@@ -89876,7 +93517,7 @@
       }
     },
     {
-      "id": "edge-2227",
+      "id": "edge-2320",
       "source": "narrative-attribution-risk-2",
       "target": "thing-attribution-workspace-snapshot-writer",
       "type": "MITIGATED_BY",
@@ -89906,7 +93547,7 @@
       }
     },
     {
-      "id": "edge-2228",
+      "id": "edge-2321",
       "source": "narrative-attribution-risk-3",
       "target": "thing-attribution-attribution-engine",
       "type": "MITIGATED_BY",
@@ -89936,7 +93577,7 @@
       }
     },
     {
-      "id": "edge-2229",
+      "id": "edge-2322",
       "source": "narrative-attribution-risk-4",
       "target": "thing-attribution-semantic-affective-matcher",
       "type": "MITIGATED_BY",
@@ -89966,7 +93607,7 @@
       }
     },
     {
-      "id": "edge-2230",
+      "id": "edge-2323",
       "source": "narrative-attribution-risk-5",
       "target": "thing-attribution-attribution-version-store",
       "type": "MITIGATED_BY",
@@ -89996,7 +93637,7 @@
       }
     },
     {
-      "id": "edge-2231",
+      "id": "edge-2324",
       "source": "narrative-attribution-risk-6",
       "target": "thing-attribution-human-correction-handler",
       "type": "MITIGATED_BY",
@@ -90026,7 +93667,7 @@
       }
     },
     {
-      "id": "edge-2232",
+      "id": "edge-2325",
       "source": "narrative-attribution-risk-7",
       "target": "thing-attribution-anti-confirmation-auditor",
       "type": "MITIGATED_BY",
@@ -90056,7 +93697,7 @@
       }
     },
     {
-      "id": "edge-2233",
+      "id": "edge-2326",
       "source": "narrative-attribution-risk-8",
       "target": "thing-attribution-workspace-capture-auditor",
       "type": "MITIGATED_BY",
@@ -90086,7 +93727,7 @@
       }
     },
     {
-      "id": "edge-2234",
+      "id": "edge-2327",
       "source": "narrative-attribution-risk-9",
       "target": "thing-attribution-runtime-projection-adapter",
       "type": "MITIGATED_BY",
@@ -90116,7 +93757,7 @@
       }
     },
     {
-      "id": "edge-2235",
+      "id": "edge-2328",
       "source": "moment-attribution-scenario-1",
       "target": "thing-attribution-attribution-contract",
       "type": "VALIDATES",
@@ -90146,7 +93787,7 @@
       }
     },
     {
-      "id": "edge-2236",
+      "id": "edge-2329",
       "source": "moment-attribution-scenario-2",
       "target": "thing-attribution-workspace-bid-builder",
       "type": "VALIDATES",
@@ -90176,7 +93817,7 @@
       }
     },
     {
-      "id": "edge-2237",
+      "id": "edge-2330",
       "source": "moment-attribution-scenario-3",
       "target": "thing-attribution-workspace-selector",
       "type": "VALIDATES",
@@ -90206,7 +93847,7 @@
       }
     },
     {
-      "id": "edge-2238",
+      "id": "edge-2331",
       "source": "moment-attribution-scenario-4",
       "target": "thing-attribution-workspace-compiler",
       "type": "VALIDATES",
@@ -90236,7 +93877,7 @@
       }
     },
     {
-      "id": "edge-2239",
+      "id": "edge-2332",
       "source": "moment-attribution-scenario-5",
       "target": "thing-attribution-workspace-snapshot-writer",
       "type": "VALIDATES",
@@ -90266,7 +93907,7 @@
       }
     },
     {
-      "id": "edge-2240",
+      "id": "edge-2333",
       "source": "moment-attribution-scenario-6",
       "target": "thing-attribution-attribution-engine",
       "type": "VALIDATES",
@@ -90296,7 +93937,7 @@
       }
     },
     {
-      "id": "edge-2241",
+      "id": "edge-2334",
       "source": "moment-attribution-scenario-7",
       "target": "thing-attribution-semantic-affective-matcher",
       "type": "VALIDATES",
@@ -90326,7 +93967,7 @@
       }
     },
     {
-      "id": "edge-2242",
+      "id": "edge-2335",
       "source": "moment-attribution-scenario-8",
       "target": "thing-attribution-attribution-version-store",
       "type": "VALIDATES",
@@ -90356,7 +93997,7 @@
       }
     },
     {
-      "id": "edge-2243",
+      "id": "edge-2336",
       "source": "thing-attribution-relation-1",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90386,7 +94027,7 @@
       }
     },
     {
-      "id": "edge-2244",
+      "id": "edge-2337",
       "source": "thing-attribution-relation-2",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90416,7 +94057,7 @@
       }
     },
     {
-      "id": "edge-2245",
+      "id": "edge-2338",
       "source": "thing-attribution-relation-3",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90446,7 +94087,7 @@
       }
     },
     {
-      "id": "edge-2246",
+      "id": "edge-2339",
       "source": "thing-attribution-relation-4",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90476,7 +94117,7 @@
       }
     },
     {
-      "id": "edge-2247",
+      "id": "edge-2340",
       "source": "thing-attribution-relation-5",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90506,7 +94147,7 @@
       }
     },
     {
-      "id": "edge-2248",
+      "id": "edge-2341",
       "source": "thing-attribution-relation-6",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90536,7 +94177,7 @@
       }
     },
     {
-      "id": "edge-2249",
+      "id": "edge-2342",
       "source": "narrative-attribution-mode-1",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90566,7 +94207,7 @@
       }
     },
     {
-      "id": "edge-2250",
+      "id": "edge-2343",
       "source": "narrative-attribution-mode-2",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90596,7 +94237,7 @@
       }
     },
     {
-      "id": "edge-2251",
+      "id": "edge-2344",
       "source": "narrative-attribution-mode-3",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90626,7 +94267,7 @@
       }
     },
     {
-      "id": "edge-2252",
+      "id": "edge-2345",
       "source": "narrative-attribution-mode-4",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90656,7 +94297,7 @@
       }
     },
     {
-      "id": "edge-2253",
+      "id": "edge-2346",
       "source": "narrative-attribution-mode-5",
       "target": "thing-attribution-attribution-engine",
       "type": "CONFIGURES",
@@ -90686,7 +94327,7 @@
       }
     },
     {
-      "id": "edge-2254",
+      "id": "edge-2347",
       "source": "thing-attribution-field-1",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90716,7 +94357,7 @@
       }
     },
     {
-      "id": "edge-2255",
+      "id": "edge-2348",
       "source": "thing-attribution-field-2",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90746,7 +94387,7 @@
       }
     },
     {
-      "id": "edge-2256",
+      "id": "edge-2349",
       "source": "thing-attribution-field-3",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90776,7 +94417,7 @@
       }
     },
     {
-      "id": "edge-2257",
+      "id": "edge-2350",
       "source": "thing-attribution-field-4",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90806,7 +94447,7 @@
       }
     },
     {
-      "id": "edge-2258",
+      "id": "edge-2351",
       "source": "thing-attribution-field-5",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90836,7 +94477,7 @@
       }
     },
     {
-      "id": "edge-2259",
+      "id": "edge-2352",
       "source": "thing-attribution-field-6",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90866,7 +94507,7 @@
       }
     },
     {
-      "id": "edge-2260",
+      "id": "edge-2353",
       "source": "thing-attribution-field-7",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90896,7 +94537,7 @@
       }
     },
     {
-      "id": "edge-2261",
+      "id": "edge-2354",
       "source": "thing-attribution-field-8",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90926,7 +94567,7 @@
       }
     },
     {
-      "id": "edge-2262",
+      "id": "edge-2355",
       "source": "thing-attribution-field-9",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90956,7 +94597,7 @@
       }
     },
     {
-      "id": "edge-2263",
+      "id": "edge-2356",
       "source": "thing-attribution-field-10",
       "target": "thing-attribution-attribution-contract",
       "type": "CONFIGURES",
@@ -90986,7 +94627,7 @@
       }
     },
     {
-      "id": "edge-2264",
+      "id": "edge-2357",
       "source": "thing-attribution-attribution-contract",
       "target": "thing-attribution-workspace-bid-builder",
       "type": "FEEDS",
@@ -91016,7 +94657,7 @@
       }
     },
     {
-      "id": "edge-2265",
+      "id": "edge-2358",
       "source": "thing-attribution-workspace-bid-builder",
       "target": "thing-attribution-workspace-selector",
       "type": "FEEDS",
@@ -91046,7 +94687,7 @@
       }
     },
     {
-      "id": "edge-2266",
+      "id": "edge-2359",
       "source": "thing-attribution-workspace-selector",
       "target": "thing-attribution-workspace-compiler",
       "type": "FEEDS",
@@ -91076,7 +94717,7 @@
       }
     },
     {
-      "id": "edge-2267",
+      "id": "edge-2360",
       "source": "thing-attribution-workspace-compiler",
       "target": "thing-attribution-workspace-snapshot-writer",
       "type": "FEEDS",
@@ -91106,7 +94747,7 @@
       }
     },
     {
-      "id": "edge-2268",
+      "id": "edge-2361",
       "source": "thing-attribution-workspace-snapshot-writer",
       "target": "thing-attribution-attribution-engine",
       "type": "FEEDS",
@@ -91136,7 +94777,7 @@
       }
     },
     {
-      "id": "edge-2269",
+      "id": "edge-2362",
       "source": "thing-attribution-attribution-engine",
       "target": "thing-attribution-semantic-affective-matcher",
       "type": "FEEDS",
@@ -91166,7 +94807,7 @@
       }
     },
     {
-      "id": "edge-2270",
+      "id": "edge-2363",
       "source": "thing-attribution-semantic-affective-matcher",
       "target": "thing-attribution-attribution-version-store",
       "type": "FEEDS",
@@ -91196,7 +94837,7 @@
       }
     },
     {
-      "id": "edge-2271",
+      "id": "edge-2364",
       "source": "thing-attribution-attribution-version-store",
       "target": "thing-attribution-human-correction-handler",
       "type": "FEEDS",
@@ -91226,7 +94867,7 @@
       }
     },
     {
-      "id": "edge-2272",
+      "id": "edge-2365",
       "source": "thing-attribution-human-correction-handler",
       "target": "thing-attribution-anti-confirmation-auditor",
       "type": "FEEDS",
@@ -91256,7 +94897,7 @@
       }
     },
     {
-      "id": "edge-2273",
+      "id": "edge-2366",
       "source": "thing-attribution-anti-confirmation-auditor",
       "target": "thing-attribution-workspace-capture-auditor",
       "type": "FEEDS",
@@ -91286,7 +94927,7 @@
       }
     },
     {
-      "id": "edge-2274",
+      "id": "edge-2367",
       "source": "thing-attribution-workspace-capture-auditor",
       "target": "thing-attribution-runtime-projection-adapter",
       "type": "FEEDS",
@@ -91316,7 +94957,7 @@
       }
     },
     {
-      "id": "edge-2275",
+      "id": "edge-2368",
       "source": "narrative-attribution-guardrail-1",
       "target": "thing-attribution-attribution-engine",
       "type": "CONSTRAINS",
@@ -91346,7 +94987,7 @@
       }
     },
     {
-      "id": "edge-2276",
+      "id": "edge-2369",
       "source": "narrative-attribution-guardrail-2",
       "target": "thing-attribution-workspace-selector",
       "type": "CONSTRAINS",
@@ -91376,7 +95017,7 @@
       }
     },
     {
-      "id": "edge-2277",
+      "id": "edge-2370",
       "source": "narrative-attribution-guardrail-3",
       "target": "thing-attribution-attribution-engine",
       "type": "CONSTRAINS",
@@ -91406,7 +95047,7 @@
       }
     },
     {
-      "id": "edge-2278",
+      "id": "edge-2371",
       "source": "narrative-attribution-guardrail-4",
       "target": "thing-attribution-workspace-selector",
       "type": "CONSTRAINS",
@@ -91436,7 +95077,7 @@
       }
     },
     {
-      "id": "edge-2279",
+      "id": "edge-2372",
       "source": "narrative-attribution-guardrail-5",
       "target": "thing-attribution-attribution-engine",
       "type": "CONSTRAINS",
@@ -91466,7 +95107,7 @@
       }
     },
     {
-      "id": "edge-2280",
+      "id": "edge-2373",
       "source": "narrative-attribution-guardrail-6",
       "target": "thing-attribution-workspace-selector",
       "type": "CONSTRAINS",
@@ -91496,7 +95137,7 @@
       }
     },
     {
-      "id": "edge-2281",
+      "id": "edge-2374",
       "source": "narrative-attribution-guardrail-7",
       "target": "thing-attribution-attribution-engine",
       "type": "CONSTRAINS",
@@ -91526,7 +95167,7 @@
       }
     },
     {
-      "id": "edge-2282",
+      "id": "edge-2375",
       "source": "narrative-attribution-guardrail-8",
       "target": "thing-attribution-workspace-selector",
       "type": "CONSTRAINS",
@@ -91556,7 +95197,7 @@
       }
     },
     {
-      "id": "edge-2283",
+      "id": "edge-2376",
       "source": "moment-attribution-template-1",
       "target": "thing-attribution-workspace-bid-builder",
       "type": "PRODUCED_BY",
@@ -91586,7 +95227,7 @@
       }
     },
     {
-      "id": "edge-2284",
+      "id": "edge-2377",
       "source": "moment-attribution-template-2",
       "target": "thing-attribution-workspace-selector",
       "type": "PRODUCED_BY",
@@ -91616,7 +95257,7 @@
       }
     },
     {
-      "id": "edge-2285",
+      "id": "edge-2378",
       "source": "moment-attribution-template-3",
       "target": "thing-attribution-workspace-compiler",
       "type": "PRODUCED_BY",
@@ -91646,7 +95287,7 @@
       }
     },
     {
-      "id": "edge-2286",
+      "id": "edge-2379",
       "source": "moment-attribution-template-4",
       "target": "thing-attribution-workspace-snapshot-writer",
       "type": "PRODUCED_BY",
@@ -91676,7 +95317,7 @@
       }
     },
     {
-      "id": "edge-2287",
+      "id": "edge-2380",
       "source": "moment-attribution-template-5",
       "target": "thing-attribution-attribution-engine",
       "type": "PRODUCED_BY",
@@ -91706,7 +95347,7 @@
       }
     },
     {
-      "id": "edge-2288",
+      "id": "edge-2381",
       "source": "moment-attribution-decision-1",
       "target": "thing-attribution-attribution-contract",
       "type": "DECIDES",
@@ -91736,7 +95377,7 @@
       }
     },
     {
-      "id": "edge-2289",
+      "id": "edge-2382",
       "source": "moment-attribution-decision-2",
       "target": "thing-attribution-workspace-bid-builder",
       "type": "DECIDES",
@@ -91766,7 +95407,7 @@
       }
     },
     {
-      "id": "edge-2290",
+      "id": "edge-2383",
       "source": "moment-attribution-decision-3",
       "target": "thing-attribution-workspace-selector",
       "type": "DECIDES",
@@ -91796,7 +95437,7 @@
       }
     },
     {
-      "id": "edge-2291",
+      "id": "edge-2384",
       "source": "moment-attribution-decision-4",
       "target": "thing-attribution-workspace-compiler",
       "type": "DECIDES",
@@ -91826,7 +95467,7 @@
       }
     },
     {
-      "id": "edge-2292",
+      "id": "edge-2385",
       "source": "moment-attribution-decision-5",
       "target": "thing-attribution-workspace-snapshot-writer",
       "type": "DECIDES",
@@ -91856,7 +95497,7 @@
       }
     },
     {
-      "id": "edge-2293",
+      "id": "edge-2386",
       "source": "thing-attribution-workspace-selector",
       "target": "thing-global-workspace-selector",
       "type": "COOPERATES_WITH",
@@ -91886,7 +95527,7 @@
       }
     },
     {
-      "id": "edge-2294",
+      "id": "edge-2387",
       "source": "thing-attribution-workspace-compiler",
       "target": "thing-global-workspace-compiler",
       "type": "COOPERATES_WITH",
@@ -91916,7 +95557,7 @@
       }
     },
     {
-      "id": "edge-2295",
+      "id": "edge-2388",
       "source": "thing-attribution-workspace-snapshot-writer",
       "target": "moment-global-workspace-snapshot",
       "type": "MATERIALIZES",
@@ -91946,7 +95587,7 @@
       }
     },
     {
-      "id": "edge-2296",
+      "id": "edge-2389",
       "source": "thing-attribution-attribution-engine",
       "target": "thing-memory-controller-linker",
       "type": "COOPERATES_WITH",
@@ -91976,7 +95617,7 @@
       }
     },
     {
-      "id": "edge-2297",
+      "id": "edge-2390",
       "source": "thing-attribution-attribution-engine",
       "target": "moment-memory-autobiographical",
       "type": "ANNOTATES",
@@ -92006,7 +95647,7 @@
       }
     },
     {
-      "id": "edge-2298",
+      "id": "edge-2391",
       "source": "thing-attribution-workspace-bid-builder",
       "target": "actor-subentities-subentity-template",
       "type": "READS",
@@ -92036,7 +95677,7 @@
       }
     },
     {
-      "id": "edge-2299",
+      "id": "edge-2392",
       "source": "thing-attribution-workspace-capture-auditor",
       "target": "thing-global-workspace-capture-audit",
       "type": "COOPERATES_WITH",
@@ -92066,7 +95707,7 @@
       }
     },
     {
-      "id": "edge-2300",
+      "id": "edge-2393",
       "source": "thing-attribution-anti-confirmation-auditor",
       "target": "thing-subentities-subentity-detector",
       "type": "CONSTRAINS",
@@ -92096,7 +95737,7 @@
       }
     },
     {
-      "id": "edge-2301",
+      "id": "edge-2394",
       "source": "thing-attribution-human-correction-handler",
       "target": "thing-memory-reconstructor",
       "type": "COOPERATES_WITH",
@@ -92126,7 +95767,7 @@
       }
     },
     {
-      "id": "edge-2302",
+      "id": "edge-2395",
       "source": "thing-attribution-runtime-projection-adapter",
       "target": "narrative-memory-controller-linked",
       "type": "IMPLEMENTS",
@@ -92156,7 +95797,7 @@
       }
     },
     {
-      "id": "edge-2303",
+      "id": "edge-2396",
       "source": "thing-attribution-attribution-contract",
       "target": "thing-subentities-workspace-controller-attribution",
       "type": "CONSTRAINS",

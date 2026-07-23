@@ -878,6 +878,102 @@ addDerivedRelation({ source: "thing-ai-operational-requirement-monitor", type: "
 addDerivedRelation({ source: "thing-ai-operational-requirement-schema", type: "CONSTRAINS", target: "actor-blueprint-citizen-ai", justification: "Le Citizen AI est décrit par des exigences fonctionnelles observables et non par des besoins biologiques ou phénoménaux.", cluster: roleSystemCluster, provenance: "needs_blueprint" });
 
 const afterCitizenAIRoleCounts = { nodes: nodes.length, relations: relations.length, clusters: clusters.length };
+const humanSituation = JSON.parse(await fs.readFile(humanSituationSourcePath, "utf8"));
+const humanSituationCluster = {
+  id: humanSituation.cluster.id,
+  order: humanSituation.cluster.order,
+  title: humanSituation.cluster.title,
+  objective: humanSituation.cluster.objective,
+  nodeIds: [],
+  relationIds: []
+};
+if (clusters.some(existing => existing.id === humanSituationCluster.id || existing.order === humanSituationCluster.order)) {
+  throw new Error(`Cluster de situation humaine dupliqué: ${humanSituationCluster.id}`);
+}
+clusters.push(humanSituationCluster);
+
+const addHumanSituationNode = definition => {
+  addNode({
+    ...definition,
+    facets: ["blueprint", "human_situation_system", ...(definition.facets || [])],
+    epistemicStatus: definition.epistemicStatus || "design_proposal",
+    clusterId: humanSituationCluster.id,
+    citizen: false,
+    injectsEnergy: false,
+    initialEnergy: 0,
+    justifiedBy: undefined
+  });
+  if (!humanSituationCluster.nodeIds.includes(definition.id)) humanSituationCluster.nodeIds.push(definition.id);
+};
+
+for (const narrative of humanSituation.narratives) {
+  addHumanSituationNode({
+    id: narrative.id,
+    nodeType: "Narrative",
+    semanticType: narrative.semanticType,
+    name: narrative.name,
+    description: narrative.statement,
+    facets: ["justification"]
+  });
+  addDerivedRelation({
+    source: narrative.id,
+    type: "GROUNDS",
+    target: humanSituation.cluster.spaceId,
+    justification: narrative.statement,
+    cluster: humanSituationCluster,
+    provenance: "human_situation_blueprint"
+  });
+}
+
+for (const definition of humanSituation.nodes) {
+  addHumanSituationNode(definition);
+  if (definition.id !== humanSituation.cluster.spaceId) {
+    addDerivedRelation({
+      source: definition.id,
+      type: "PART_OF",
+      target: humanSituation.cluster.spaceId,
+      justification: `${definition.name} appartient au modèle de situation humaine et partagée.`,
+      cluster: humanSituationCluster,
+      provenance: "human_situation_blueprint"
+    });
+  }
+  for (const rationaleId of definition.justifiedBy || []) {
+    addDerivedRelation({
+      source: rationaleId,
+      type: "JUSTIFIES",
+      target: definition.id,
+      justification: `${nodes.find(node => node.id === rationaleId)?.description || rationaleId} Cette raison justifie directement ${definition.name}.`,
+      cluster: humanSituationCluster,
+      provenance: "human_situation_blueprint"
+    });
+    if (definition.nodeType === "Thing") {
+      addDerivedRelation({
+        source: definition.id,
+        type: "IMPLEMENTS",
+        target: rationaleId,
+        justification: `${definition.name} met en œuvre la règle portée par ${rationaleId}.`,
+        cluster: humanSituationCluster,
+        provenance: "human_situation_blueprint"
+      });
+    }
+  }
+}
+
+for (const link of humanSituation.links) {
+  if (!nodeIds.has(link.source) || !nodeIds.has(link.target)) {
+    throw new Error(`Lien de situation humaine orphelin: ${link.source} ${link.type} ${link.target}`);
+  }
+  addDerivedRelation({
+    source: link.source,
+    type: link.type,
+    target: link.target,
+    justification: link.justification,
+    cluster: humanSituationCluster,
+    provenance: "human_situation_blueprint"
+  });
+}
+const afterHumanSituationCounts = { nodes: nodes.length, relations: relations.length, clusters: clusters.length };
+
 const subentityAttribution = JSON.parse(await fs.readFile(subentityAttributionSourcePath, "utf8"));
 const attributionCluster = cortexCluster;
 const attributionSpaceId = "space-subentity-memory-attribution";

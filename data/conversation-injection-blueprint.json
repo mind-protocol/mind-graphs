@@ -880,6 +880,20 @@
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
+    {
+      "id": "metric-conversation-injection-verified-coverage",
+      "name": "Couverture vérifiée de la mission d'injection",
+      "nodeType": "thing",
+      "semanticType": "metric",
+      "phrase": "Quelle part des critères d'acceptation de la mission dispose d'une preuve exécutable qui passe sur la révision courante ?",
+      "family": "Injection conversations · mesure de progression",
+      "summary": "Mesure la progression par critères d'acceptation vérifiés, sans récompenser le volume de code ou de nœuds. Un critère vaut 1 seulement si une vérification déterministe qui le cite passe sur la révision courante ; sinon il vaut 0. Le score est 100 × critères vérifiés / critères applicables, accompagné du numérateur et du dénominateur.",
+      "unit": "pourcentage de critères d'acceptation vérifiés, avec compte vérifié/total",
+      "calculationMethod": "Pour chaque critère d'acceptation de task-conversation-injection, exécuter la vérification déterministe associée sur la révision courante. Compter uniquement les critères dont la preuve passe et reste reliée au critère. Calculer 100 × verifiedCriteria / applicableCriteria ; publier aussi la liste des critères non vérifiés et la commande npm run validate && npm test.",
+      "progressCondition": "Un progrès observable exige que verifiedCriteria augmente entre deux révisions comparables, qu'aucun critère auparavant vérifié ne régresse et que npm run validate && npm test réussisse. Un simple ajout de nœuds, de lignes ou de tests non passants ne compte pas.",
+      "epistemicStatus": "defined",
+      "clusterId": "conversation-injection"
+    },
 
     {
       "id": "task-conversation-injection",
@@ -1004,6 +1018,8 @@
     { "source": "oq-ci-missions-location", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Le lieu des missions est une décision que la tâche doit trancher." },
     { "source": "oq-ci-deletion-policy", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La politique de suppression est une décision que la tâche doit trancher avant d'effacer quoi que ce soit." },
     { "source": "oq-ci-cadence-budget", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "La cadence et le budget sont à calibrer par la tâche sur un prototype." }
-    ,{ "source": "oq-ci-quality-threshold-calibration", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Les seuils souples de suffisance doivent être calibrés sur plusieurs formes réelles de conversation avant activation." }
+    ,{ "source": "oq-ci-quality-threshold-calibration", "target": "task-conversation-injection", "type": "MOTIVATES", "justification": "Les seuils souples de suffisance doivent être calibrés sur plusieurs formes réelles de conversation avant activation." },
+    { "source": "task-conversation-injection", "target": "metric-conversation-injection-verified-coverage", "type": "MEASURED_BY", "justification": "La couverture des critères dotés d'une preuve exécutable indique une progression réelle de la mission sans confondre activité et résultat." },
+    { "source": "metric-conversation-injection-verified-coverage", "target": "task-conversation-injection", "type": "MEASURES", "justification": "La métrique mesure directement la part vérifiée du contrat d'acceptation de la tâche." }
   ]
 }

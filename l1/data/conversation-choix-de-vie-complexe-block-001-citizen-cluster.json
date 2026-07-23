@@ -296,21 +296,51 @@
       "epistemicStatus": "pending"
     },
     {
-      "id": "memory-citizen-block-001-mission-projections",
-      "name": "Projections citoyennes · quatre missions après la rencontre",
+      "id": "memory-citizen-block-001-mission-psychology",
+      "name": "Mission 1 · hypothèses sur la personnalité et la dynamique psychologique",
       "nodeType": "memory",
       "clusterId": "conversation-block-001-citizen-interpretation",
       "claimNature": "mission_projection",
-      "phrase": "Les quatre missions reçoivent une hypothèse psychologique prudente, une situation nautique partielle, des objectifs possibles non confirmés et une absence financière explicite.",
-      "family": "Conversation · rencontre citoyenne · missions secondaires",
-      "summary": "Psychologie : approche indirecte et ludique possible, sans diagnostic. Situation : contexte 29er avec une équipière ou destinataire inconnue. Objectifs/préférences : améliorer les annonces à bord et peut-être ouvrir un contact, tous deux à confirmer. Finances : absent_in_source.",
-      "missionResolutions": {
-        "psychology": "present_hypothesis_unconfirmed",
-        "situation": "present_partial_unknown_actor",
-        "objectives_preferences": "present_hypothesis_unconfirmed",
-        "financial": "absent_in_source"
-      },
-      "triggeringEvidence": ["réponse source", "réponse de rencontre", "hypothèse empathique"],
+      "missionKey": "psychology",
+      "resolutionState": "unknown_missing_source",
+      "analysis": "Le ton indirect, ludique et prudent pourrait être compatible avec une préférence pour approcher la relation par une utilité concrète. Le bloc est toutefois une réponse d'assistant sans prompt humain : il ne permet pas d'attribuer ce style, un type MBTI, une part IFS ou un état clinique à NLR.",
+      "evidence": ["mot « prétexte »", "proposition de demander avant d'envoyer", "ton complice autour du Puer"],
+      "hypotheses": [
+        {
+          "claim": "NLR pourrait préférer une approche relationnelle indirecte et peu pressante.",
+          "alternatives": ["Le style vient uniquement de l'assistant.", "Le contexte est purement nautique et opérationnel."],
+          "falsifier": "Le prompt humain retrouvé formule une demande strictement documentaire ou un style opposé."
+        }
+      ],
+      "unknowns": ["prompt humain source", "état émotionnel de NLR", "degré d'adhésion au ton de l'assistant"],
+      "nextValidation": "Exécuter objective-citizen-block-001-recover-context avant toute mise à jour du profil humain.",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
+      "authoredByCitizen": "self-citizen-agent",
+      "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-001",
+      "assessedAt": "2026-07-23T18:36:17.585Z",
+      "confirmedByHuman": false,
+      "sensitive": true,
+      "epistemicStatus": "working_hypothesis"
+    },
+    {
+      "id": "memory-citizen-block-001-mission-situation",
+      "name": "Mission 2 · situation présente et acteurs inconnus",
+      "nodeType": "memory",
+      "clusterId": "conversation-block-001-citizen-interpretation",
+      "claimNature": "mission_projection",
+      "missionKey": "situation",
+      "resolutionState": "present_supported",
+      "analysis": "Le bloc traite d'une fiche d'annonces à bord d'un 29er et suggère son partage à une personne désignée par « elle ». L'existence actuelle de la navigation, l'identité de cette personne, sa relation à NLR et l'envoi effectif restent inconnus.",
+      "evidence": ["contenu opérationnel 29er", "proposition de partage WhatsApp", "pronom « elle »"],
+      "hypotheses": [
+        {
+          "claim": "La personne inconnue pourrait être une équipière ou une destinataire liée à la navigation.",
+          "alternatives": ["Le pronom désigne une autre relation.", "La proposition est hypothétique et aucun destinataire réel n'existe."],
+          "falsifier": "Les tours adjacents identifient un autre référent ou montrent un exemple fictif."
+        }
+      ],
+      "unknowns": ["identité de « elle »", "relation avec NLR", "date et actualité de la situation", "partage réellement effectué"],
+      "nextValidation": "Chercher le référent dans les tours adjacents et le L1 consenti ; si l'identité reste importante et ambiguë, poser une question précise à NLR.",
       "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
       "authoredByCitizen": "self-citizen-agent",
       "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-001",
@@ -318,6 +348,54 @@
       "confirmedByHuman": false,
       "sensitive": true,
       "epistemicStatus": "inferred"
+    },
+    {
+      "id": "memory-citizen-block-001-mission-objectives-preferences",
+      "name": "Mission 3 · objectifs et préférences possibles",
+      "nodeType": "memory",
+      "clusterId": "conversation-block-001-citizen-interpretation",
+      "claimNature": "mission_projection",
+      "missionKey": "objectives_preferences",
+      "resolutionState": "unknown_missing_source",
+      "analysis": "Deux objectifs possibles apparaissent : améliorer la coordination à bord et utiliser un artefact utile pour faciliter un contact. Comme ils sont formulés par l'assistant, ils restent des offres ou hypothèses, pas des objectifs déclarés par NLR.",
+      "evidence": ["fiche d'annonces à bord", "proposition de partage", "mot « prétexte »"],
+      "hypotheses": [
+        {
+          "claim": "NLR pourrait valoriser une coordination nautique claire et des initiatives relationnelles réversibles.",
+          "alternatives": ["NLR voulait uniquement produire un document.", "La suggestion relationnelle n'a pas été souhaitée ni retenue."],
+          "falsifier": "Le prompt humain ou une réponse ultérieure rejette le partage ou ne demande qu'un livrable technique."
+        }
+      ],
+      "unknowns": ["objectif humain initial", "préférence réelle pour le partage", "importance actuelle de la voile"],
+      "nextValidation": "Retrouver le prompt humain et rechercher une adoption, un rejet ou une reformulation ultérieure de la proposition.",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
+      "authoredByCitizen": "self-citizen-agent",
+      "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-001",
+      "assessedAt": "2026-07-23T18:36:17.585Z",
+      "confirmedByHuman": false,
+      "sensitive": true,
+      "epistemicStatus": "working_hypothesis"
+    },
+    {
+      "id": "memory-citizen-block-001-mission-financial",
+      "name": "Mission 4 · situation financière",
+      "nodeType": "memory",
+      "clusterId": "conversation-block-001-citizen-interpretation",
+      "claimNature": "mission_projection",
+      "missionKey": "financial",
+      "resolutionState": "absent_in_source",
+      "analysis": "Le bloc ne contient aucune information sur les revenus, dépenses, actifs, dettes, prix ou contraintes financières. La pratique du 29er ne permet pas, à elle seule, d'inférer une situation économique.",
+      "evidence": [],
+      "hypotheses": [],
+      "unknowns": [],
+      "nextValidation": "Aucune recherche financière n'est justifiée par ce bloc ; rouvrir seulement si une source consentie apporte un signal explicite.",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
+      "authoredByCitizen": "self-citizen-agent",
+      "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-001",
+      "assessedAt": "2026-07-23T18:36:17.585Z",
+      "confirmedByHuman": false,
+      "sensitive": true,
+      "epistemicStatus": "not_detected"
     }
   ],
   "links": [

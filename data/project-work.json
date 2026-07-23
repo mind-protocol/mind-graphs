@@ -2759,7 +2759,7 @@
       "phrase": "Un maillon bloqué doit réveiller NLR, pas s'endormir : la chaîne reste prioritaire jusqu'à sa résolution.",
       "family": "Travail du projet · seed conversationnel L1",
       "summary": "Tâche transverse qui encode l'exigence directrice de la chaîne, sur le modèle du protocole AGENTS.md (report_l1_task_wake puis mcp.send Telegram). Dès qu'une étape bloque — export non fourni, fichier absent ou corrompu, parse ou chunk en échec — le runtime envoie à NLR une notification Telegram avec le message de blocage exact et garde la chaîne en priorité maximale. Un échec de livraison Telegram maintient l'étape bloquée et remonte l'échec au lieu de le traiter comme délivré. Une étape qui progresse déclare son prochain réveil ; aucune veille silencieuse n'est admise avant qu'anamnesis complete ne soit passé.",
-      "workStatus": "ready",
+      "workStatus": "done",
       "priority": 100,
       "autonomyMode": "autonomous",
       "acceptanceCriteria": [
@@ -2795,6 +2795,29 @@
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
       "semanticType": "task"
+    },
+    {
+      "id": "change-conversation-ingest-blocker-notify",
+      "name": "Changement · Blocages conversationnels réveillés et prioritaires",
+      "nodeType": "moment",
+      "phrase": "Un blocage garde désormais un prochain réveil, expose exactement sa cause à Telegram et demeure prioritaire jusqu'au quality gate final.",
+      "family": "Travail du projet · journal de changement",
+      "summary": "Le moteur report_l1_task_wake exige maintenant un prochain réveil aussi pour un résultat blocked, rend ce blocage de nouveau sélectionnable à l'échéance, ordonne les objectifs prêts par priorité avant l'échéance, et conserve séparément le message de blocage exact et l'état de livraison Telegram. Les tests couvrent la nouvelle veille non silencieuse, l'échec de livraison et la priorité 100 de toute la chaîne jusqu'à task-conversation-anamnesis-complete.",
+      "workStatus": "done",
+      "priority": 100,
+      "autonomyMode": "autonomous",
+      "completedAt": "2026-07-23T20:30:00.000Z",
+      "changedPaths": [
+        "src/l1-task-engine.js",
+        "src/mcp-server.js",
+        "test/l1-task-engine.test.js",
+        "test/conversation-ingest-blocker-notify.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "change"
     },
     {
       "id": "task-l1-human-situation-model",
@@ -3714,6 +3737,12 @@
       "target": "mech-l1-seed-import-pipeline",
       "type": "TARGETS",
       "justification": "La tâche transverse instrumente chaque étape du pipeline d'import pour qu'un blocage réveille NLR et maintienne la chaîne prioritaire, au lieu d'une veille silencieuse."
+    },
+    {
+      "source": "change-conversation-ingest-blocker-notify",
+      "target": "task-conversation-ingest-blocker-notify",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement consigne l'exécution vérifiée de la notification exacte, du prochain réveil obligatoire et du maintien de la chaîne en priorité maximale."
     },
     {
       "source": "task-l1-human-situation-model",

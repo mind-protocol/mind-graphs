@@ -3,7 +3,9 @@ import assert from "node:assert/strict";
 import {
   buildConversationStimulus,
   formatConversationStimulus,
-  stimulateConversationBlock
+  formatThought,
+  stimulateConversationBlock,
+  think
 } from "../src/l1-conversation-stimulus.js";
 import { createLocalEmbedder } from "../src/local-embedding.js";
 import { EMPTY_SUBENTITY_RUNTIME_STATE } from "../src/l1-subentity-runtime.js";
@@ -94,4 +96,42 @@ test("persistence requires explicit apply and still creates no semantic identity
   assert.equal(receivedInput.observationId, result.stimulus.id);
   assert.equal(result.safeguards.directSemanticLinksCreated, 0);
   assert.equal(result.safeguards.runtimeRelationsOnly, true);
+});
+
+test("think is self-addressed, persistent and idempotently identified from its message", async () => {
+  let applied = null;
+  const dependencies = {
+    now: () => "2026-07-23T20:30:00.000Z",
+    resolveGraph: async () => ({
+      config: { id: "l1-nlr-ai", falkorGraph: "nlr_ai" },
+      graph: { id: "fake" }
+    }),
+    readState: async () => ({ state: structuredClone(EMPTY_SUBENTITY_RUNTIME_STATE) }),
+    readNodes: async () => [{ id: "block-001", name: "Bloc 001 communication 29er" }],
+    applyStable: async args => {
+      applied = args;
+      return {
+        persisted: true,
+        workspace: {
+          id: "workspace-thought",
+          controllerId: "candidate-thought",
+          characterBudget: 1200,
+          characterUsed: 400,
+          slots: [{ nodeIds: ["block-001"], goalIds: [] }]
+        },
+        stabilization: { stopReason: "stable", history: [] },
+        report: { microTickCount: 2, stopReason: "stable" }
+      };
+    }
+  };
+  const first = await think("Réexaminer le bloc 001", {}, dependencies);
+  const replay = await think("Réexaminer le bloc 001", {}, dependencies);
+  assert.equal(first.stimulus.id, replay.stimulus.id);
+  assert.equal(first.stimulus.conversationId, "self-thought:self-nlr-ai");
+  assert.equal(first.stimulus.sourceArtifact, "mcp:think");
+  assert.equal(first.stimulus.speakerRole, "citizen_ai");
+  assert.equal(applied.input.sensory.citizenId, "self-nlr-ai");
+  assert.equal(first.persisted, true);
+  assert.match(formatThought(first), /Pensée auto-adressée/);
+  assert.equal(first.safeguards.directSemanticLinksCreated, 0);
 });

@@ -191,7 +191,8 @@
       "blueprintSync": {
         "enabled": true,
         "source": "l1/data/l1-brain-blueprint-v0.1.graph.json",
-        "mode": "structural_opt_in",
+        "mode": "automatic_on_seed",
+        "requiredOnSeed": true,
         "personalContentPolicy": "never_overwrite"
       },
       "datasets": [
@@ -214,6 +215,10 @@
         {
           "id": "l1-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
           "file": "conversation-choix-de-vie-complexe-blocks-001-003.json"
+        },
+        {
+          "id": "l1-nlr-conversation-block-001-citizen-interpretation",
+          "file": "conversation-choix-de-vie-complexe-block-001-citizen-cluster.json"
         }
       ],
       "frontier": {

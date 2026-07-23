@@ -27,7 +27,9 @@ import {
 import {
   CONVERSATION_STIMULUS_DEFAULTS,
   formatConversationStimulus,
-  stimulateConversationBlock
+  formatThought,
+  stimulateConversationBlock,
+  think
 } from "./l1-conversation-stimulus.js";
 
 const GRAPH_API_URL = process.env.GRAPH_API_URL || "http://localhost:4173/api/graph";
@@ -97,6 +99,34 @@ server.registerTool("ask_graph", graphQuestionSchema, answerGraphQuestion);
 
 // Alias conservé pour les clients MCP déjà configurés.
 server.registerTool("query_graph", graphQuestionSchema, answerGraphQuestion);
+
+server.registerTool(
+  "think",
+  {
+    title: "Remettre un sujet sous mon attention",
+    description:
+      "S'adresse automatiquement au Citizen AI courant : le message devient un stimulus personnel persisté, "
+      + "déclenche des micro-ticks bornés jusqu'à stabilité et retourne le Global Workspace. "
+      + "Cette opération modifie l'attention runtime, mais ne crée aucun lien sémantique durable.",
+    inputSchema: {
+      message: z.string().min(1).describe("Sujet ou contenu que le Citizen veut remettre sous sa propre attention.")
+    }
+  },
+  async ({ message }) => {
+    try {
+      const result = await think(message);
+      return {
+        content: [{ type: "text", text: formatThought(result) }],
+        structuredContent: result
+      };
+    } catch (err) {
+      return {
+        isError: true,
+        content: [{ type: "text", text: `Pensée impossible : ${err.message}` }]
+      };
+    }
+  }
+);
 
 server.registerTool(
   "stimulate_conversation_block",

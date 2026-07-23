@@ -40,11 +40,11 @@
       "dependencies": ["falkordb"],
       "observation": {
         "process": { "commandIncludes": ["src/server.js"] },
-        "http": { "url": "http://localhost:4173/api/health", "timeoutMs": 2000 }
+        "http": { "url": "http://localhost:4173/api/health", "timeoutMs": 10000 }
       },
       "repair": {
         "allowedActions": ["restart"],
-        "command": ["npm", "start"],
+        "command": ["node", "src/server.js"],
         "maxAttempts": 3,
         "windowSeconds": 900,
         "backoffSeconds": [5, 30, 120],
@@ -64,7 +64,7 @@
       },
       "repair": {
         "allowedActions": ["restart"],
-        "command": ["npm", "run", "autonomy:watch", "--", "--no-personal"],
+        "command": ["node", "scripts/autonomous-agent.js", "--no-personal"],
         "maxAttempts": 3,
         "windowSeconds": 900,
         "backoffSeconds": [5, 30, 120],
@@ -102,7 +102,7 @@
       },
       "repair": {
         "allowedActions": ["restart"],
-        "command": ["npm", "run", "health:watch"],
+        "command": ["node", "scripts/verify-continuously.js", "--watch"],
         "maxAttempts": 3,
         "windowSeconds": 900,
         "backoffSeconds": [5, 30, 120],
@@ -120,7 +120,7 @@
       },
       "repair": {
         "allowedActions": ["restart"],
-        "command": ["npm", "run", "repo:autocommit"],
+        "command": ["node", "scripts/repo-autocommit-watch.js"],
         "maxAttempts": 2,
         "windowSeconds": 900,
         "backoffSeconds": [30, 120],
@@ -138,7 +138,7 @@
       },
       "repair": {
         "allowedActions": ["restart"],
-        "command": ["npm", "run", "l1:shadow", "--", "--watch"],
+        "command": ["node", "scripts/l1-shadow-watch.js", "--watch"],
         "maxAttempts": 1,
         "windowSeconds": 900,
         "backoffSeconds": [60],

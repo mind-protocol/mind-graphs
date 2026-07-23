@@ -214,6 +214,41 @@ export async function stimulateConversationBlock(args, dependencies = {}) {
   };
 }
 
+/**
+ * Réveille le Citizen par un stimulus qu'il s'adresse à lui-même.
+ * Contrairement à stimulateConversationBlock, think n'accepte aucun destinataire
+ * ni mode dry-run : penser remet réellement le sujet sous attention dans le
+ * runtime personnel, sans créer pour autant un lien sémantique durable.
+ */
+export async function think(message, options = {}, dependencies = {}) {
+  const content = trimmed(message, "message");
+  const citizenId = options.citizenId || CONVERSATION_STIMULUS_DEFAULTS.citizenId;
+  const messageFingerprint = digest(content);
+  const recordedAt = options.recordedAt
+    || dependencies.now?.()
+    || new Date().toISOString();
+  return stimulateConversationBlock({
+    graphId: options.graphId || CONVERSATION_STIMULUS_DEFAULTS.graphId,
+    conversationId: `self-thought:${citizenId}`,
+    blockId: `thought-${messageFingerprint.slice(0, 24)}`,
+    content,
+    sourceArtifact: "mcp:think",
+    sourceLocator: "self-addressed",
+    speakerRole: "citizen_ai",
+    occurredAt: recordedAt,
+    timestampBasis: "source",
+    recordedAt,
+    citizenId,
+    sensoryEnergyBudget: options.sensoryEnergyBudget ?? CONVERSATION_STIMULUS_DEFAULTS.sensoryEnergyBudget,
+    minSimilarity: options.minSimilarity ?? CONVERSATION_STIMULUS_DEFAULTS.minSimilarity,
+    topK: options.topK ?? CONVERSATION_STIMULUS_DEFAULTS.topK,
+    characterBudget: options.characterBudget ?? CONVERSATION_STIMULUS_DEFAULTS.characterBudget,
+    maxMicroTicks: options.maxMicroTicks ?? CONVERSATION_STIMULUS_DEFAULTS.maxMicroTicks,
+    requiredQuietTicks: options.requiredQuietTicks ?? CONVERSATION_STIMULUS_DEFAULTS.requiredQuietTicks,
+    apply: true
+  }, dependencies);
+}
+
 export function formatConversationStimulus(result) {
   const routed = result.routing.transfers.length;
   const workspaceNodes = result.workspace.activeNodeIds.length;
@@ -225,5 +260,19 @@ export function formatConversationStimulus(result) {
       ? "Le tick cognitif a été persisté."
       : "Simulation seulement : aucun état runtime n'a été persisté.",
     "Aucun lien sémantique direct ni identité de personne n'a été créé par l'embedding."
+  ].join("\n");
+}
+
+export function formatThought(result) {
+  return [
+    `Pensée auto-adressée injectée dans ${result.graphId}.`,
+    `Stimulus : ${result.stimulus.id}.`,
+    `Global Workspace : ${result.workspace.id || "indisponible"}; contrôleur : ${result.workspace.controllerId || "inconnu"}.`,
+    `Nœuds actifs : ${result.workspace.activeNodeIds.join(", ") || "aucun"}.`,
+    `Micro-ticks : ${result.runtimeReport.microTickCount}; arrêt : ${result.runtimeReport.stopReason}.`,
+    result.persisted
+      ? "Le nouvel état d'attention a été persisté."
+      : "Le runtime n'a pas nécessité de nouvelle persistance (rejeu idempotent possible).",
+    "La pensée n'a créé aucun lien sémantique durable : une délibération séparée reste nécessaire."
   ].join("\n");
 }

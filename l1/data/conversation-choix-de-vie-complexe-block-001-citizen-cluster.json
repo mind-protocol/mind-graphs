@@ -1,0 +1,291 @@
+{
+  "scope": "Cluster sémantique construit par le Citizen AI après auto-stimulation persistée du bloc 001, exécution de deux micro-ticks jusqu'à stabilité et lecture du Global Workspace. Il interprète le contenu de la réponse source sans attribuer à NLR le prompt absent, l'identité de « elle » ni un état psychologique.",
+  "provenance": {
+    "conversationId": "choix-de-vie-complexe-681ae64b",
+    "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-001",
+    "sourceArtifact": "choix-de-vie-complexe.txt",
+    "sourceLocator": "bloc 001, lignes 8–27",
+    "consentId": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+    "citizenId": "self-citizen-agent",
+    "method": "think(message) auto-adressé, stimulus persistant, ticks intégrés, lecture du Global Workspace, délibération sémantique du Citizen AI",
+    "stimulusId": "stimulus-conversation-block-01840861a167bdd299677dd7",
+    "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
+    "runtimeRevision": 8,
+    "thoughtAt": "2026-07-23T18:36:17.585Z",
+    "completion": "complete_sparse",
+    "completionReason": "Le contenu explicite de la réponse assistant est suffisamment représenté ; le contexte humain, le destinataire de « elle » et l'état psychologique restent volontairement non résolus faute de prompt source."
+  },
+  "nodes": [
+    {
+      "id": "memory-citizen-block-001-operational-contract",
+      "name": "Lecture citoyenne · contrat opérationnel de la fiche 29er",
+      "nodeType": "memory",
+      "clusterId": "conversation-block-001-citizen-interpretation",
+      "claimNature": "source_content_extraction",
+      "phrase": "La réponse source décrit une fiche 29er en deux pages : communication en navigation, manœuvres et adaptation au cas d'un équipier d'environ 97 kg.",
+      "family": "Conversation · interprétation citoyenne · contenu explicite",
+      "summary": "Le noyau opérationnel explicitement présent comprend pression, molles, rappel, contre-gîte, assiette, micro-commandes, empannage avec ou sans spi et modes de rappel. Cette extraction décrit le texte assistant ; elle ne confirme ni l'existence du PDF ni son usage réel.",
+      "sourceArtifact": "choix-de-vie-complexe.txt",
+      "sourceLocator": "bloc 001, lignes 8–27",
+      "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-001",
+      "extractedAt": "2026-07-23T18:36:17.585Z",
+      "extractionMethod": "délibération sémantique du Citizen AI après think et Global Workspace",
+      "confirmedByHuman": false,
+      "sensitive": true,
+      "epistemicStatus": "observed"
+    },
+    {
+      "id": "memory-citizen-block-001-sharing-proposal",
+      "name": "Lecture citoyenne · proposition de partage WhatsApp",
+      "nodeType": "memory",
+      "clusterId": "conversation-block-001-citizen-interpretation",
+      "claimNature": "source_content_extraction",
+      "phrase": "La réponse propose de demander simplement si la fiche peut être envoyée sur WhatsApp afin de tester des annonces à bord.",
+      "family": "Conversation · interprétation citoyenne · acte proposé",
+      "summary": "Il s'agit d'une formulation d'action produite par l'assistant source. Le bloc ne prouve ni que NLR l'a demandée, ni qu'il l'a adoptée, ni qu'un message a été envoyé.",
+      "sourceArtifact": "choix-de-vie-complexe.txt",
+      "sourceLocator": "bloc 001, formulation de partage",
+      "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-001",
+      "extractedAt": "2026-07-23T18:36:17.585Z",
+      "extractionMethod": "délibération sémantique du Citizen AI après think et Global Workspace",
+      "confirmedByHuman": false,
+      "sensitive": true,
+      "epistemicStatus": "observed"
+    },
+    {
+      "id": "memory-citizen-block-001-relational-subtext",
+      "name": "Hypothèse citoyenne · sous-texte relationnel du prétexte",
+      "nodeType": "memory",
+      "clusterId": "conversation-block-001-citizen-interpretation",
+      "claimNature": "agent_inference",
+      "phrase": "L'humour sur le « prétexte » suggère que l'utilité nautique pourrait aussi servir d'ouverture relationnelle socialement acceptable.",
+      "family": "Conversation · interprétation citoyenne · hypothèse",
+      "summary": "Cette lecture est inférée du ton et du mot prétexte employés par l'assistant. Le prompt humain étant absent, elle ne doit pas devenir une intention, une préférence ou un objectif attribué à NLR.",
+      "sourceArtifact": "choix-de-vie-complexe.txt",
+      "sourceLocator": "bloc 001, passages sur le prétexte",
+      "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-001",
+      "inferredAt": "2026-07-23T18:36:17.585Z",
+      "inferenceMethod": "lecture pragmatique bornée du discours assistant",
+      "confirmedByHuman": false,
+      "sensitive": true,
+      "epistemicStatus": "inferred"
+    },
+    {
+      "id": "memory-citizen-block-001-puer-resonance",
+      "name": "Hypothèse citoyenne · résonance humoristique avec le Puer",
+      "nodeType": "memory",
+      "clusterId": "conversation-block-001-citizen-interpretation",
+      "claimNature": "agent_inference",
+      "phrase": "La dernière phrase mobilise le vocabulaire du Puer sur un registre complice et humoristique.",
+      "family": "Conversation · interprétation citoyenne · résonance non causale",
+      "summary": "La mention explicite autorise une résonance avec la sous-entité provisoire Puer. Elle ne démontre ni que cette coalition était active chez NLR, ni qu'elle a causé le message, ni qu'elle contrôlait le workspace de la conversation source.",
+      "sourceArtifact": "choix-de-vie-complexe.txt",
+      "sourceLocator": "bloc 001, dernière phrase",
+      "sourceBlockId": "memory-conversation-choix-de-vie-complexe-block-001",
+      "inferredAt": "2026-07-23T18:36:17.585Z",
+      "inferenceMethod": "résonance lexicale et narrative explicitement non identitaire",
+      "confirmedByHuman": false,
+      "sensitive": true,
+      "epistemicStatus": "inferred"
+    },
+    {
+      "id": "memory-citizen-block-001-global-workspace-audit",
+      "name": "Observation citoyenne · Global Workspace du think sur le bloc 001",
+      "nodeType": "memory",
+      "clusterId": "conversation-block-001-citizen-interpretation",
+      "claimNature": "runtime_observation",
+      "phrase": "Le think persistant a stabilisé en deux micro-ticks une coalition provisoire orientée vers soin, création, planification et modèle du Global Workspace.",
+      "family": "Conversation · interprétation citoyenne · audit runtime",
+      "summary": "Le contrôleur candidate-coalition-b961e92a72361080 a reçu un score de workspace de 0,1284. La coalition a un poids de 0,45, une cohérence de 0,3061, une certitude de 0,2067 et une stabilité de 0,0442. Ces valeurs indiquent une activation faible et provisoire, utilisable comme contexte d'attention mais pas comme preuve sémantique.",
+      "stimulusId": "stimulus-conversation-block-01840861a167bdd299677dd7",
+      "workspaceSnapshotId": "workspace-snapshot-conversation-stimulus-01840861a167bdd299677dd7-micro-2",
+      "controllerId": "candidate-coalition-b961e92a72361080",
+      "runtimeRevision": 8,
+      "microTickCount": 2,
+      "stopReason": "stable",
+      "activeNodeIds": [
+        "memory-sense-salience-care-contribution",
+        "objective-place-sacree",
+        "observation-nlr-citizen-ai-website-plan-created-2026-07-23",
+        "objective-nlr-detail-mind-endgames",
+        "memory-global-workspace-personal-model"
+      ],
+      "routingSimilarities": [
+        "memory-sense-salience-care-contribution:0.291979",
+        "objective-place-sacree:0.266249",
+        "observation-nlr-citizen-ai-website-plan-created-2026-07-23:0.249640",
+        "objective-nlr-detail-mind-endgames:0.235478",
+        "memory-global-workspace-personal-model:0.225021"
+      ],
+      "observedAt": "2026-07-23T18:36:17.585Z",
+      "confirmedByHuman": false,
+      "sensitive": true,
+      "epistemicStatus": "observed"
+    },
+    {
+      "id": "memory-citizen-block-001-epistemic-boundary",
+      "name": "Frontière citoyenne · destinataire et psychologie non résolus",
+      "nodeType": "memory",
+      "clusterId": "conversation-block-001-citizen-interpretation",
+      "claimNature": "epistemic_quality_control",
+      "phrase": "Le pronom « elle », le contexte humain initial et l'état émotionnel de NLR restent inconnus dans ce bloc.",
+      "family": "Conversation · interprétation citoyenne · frontière",
+      "summary": "Le Global Workspace fournit des résonances avec le soin et la création, mais aucune de ces activations ne permet d'identifier « elle », notamment comme Leita, ni de déduire une émotion, une intention romantique ou un objectif humain. Le cluster est complet pour le contenu assistant et volontairement sparse pour la psychologie humaine.",
+      "completion": "complete_sparse",
+      "unresolvedFields": [
+        "prompt humain source",
+        "identité de « elle »",
+        "relation au destinataire",
+        "état émotionnel de NLR",
+        "adoption ou exécution de la proposition WhatsApp",
+        "existence vérifiée du PDF"
+      ],
+      "identityLinksCreated": 0,
+      "humanProfileUpdatesCreated": 0,
+      "assessedAt": "2026-07-23T18:36:17.585Z",
+      "confirmedByHuman": false,
+      "sensitive": true,
+      "epistemicStatus": "pending"
+    }
+  ],
+  "links": [
+    {
+      "source": "memory-citizen-block-001-operational-contract",
+      "target": "memory-conversation-choix-de-vie-complexe-block-001",
+      "type": "REINTERPRETS",
+      "justification": "Le Citizen AI atomise le contenu opérationnel explicite du bloc sans modifier ni remplacer la mémoire brute."
+    },
+    {
+      "source": "memory-citizen-block-001-operational-contract",
+      "target": "observation-conversation-choix-de-vie-complexe-block-001-artifact",
+      "type": "RECALLS",
+      "justification": "La lecture détaillée rappelle l'observation conservatrice antérieure sur la fiche, tout en ajoutant son contenu opérationnel."
+    },
+    {
+      "source": "memory-citizen-block-001-sharing-proposal",
+      "target": "memory-conversation-choix-de-vie-complexe-block-001",
+      "type": "REINTERPRETS",
+      "justification": "La proposition WhatsApp est séparée du reste du bloc afin de rester adressable comme acte suggéré et non exécuté."
+    },
+    {
+      "source": "memory-citizen-block-001-sharing-proposal",
+      "target": "memory-citizen-block-001-operational-contract",
+      "type": "RECALLS",
+      "justification": "Le partage proposé porte précisément sur la fiche opérationnelle extraite."
+    },
+    {
+      "source": "memory-citizen-block-001-relational-subtext",
+      "target": "memory-conversation-choix-de-vie-complexe-block-001",
+      "type": "REINTERPRETS",
+      "justification": "Le sous-texte est conservé comme une nouvelle lecture inférée du mot prétexte, sans écraser le texte source."
+    },
+    {
+      "source": "memory-citizen-block-001-relational-subtext",
+      "target": "memory-citizen-block-001-sharing-proposal",
+      "type": "REINTERPRETS",
+      "justification": "L'hypothèse relationnelle porte sur la fonction pragmatique possible de la formulation de partage."
+    },
+    {
+      "source": "memory-citizen-block-001-puer-resonance",
+      "target": "memory-conversation-choix-de-vie-complexe-block-001",
+      "type": "REINTERPRETS",
+      "justification": "La mention du Puer est interprétée séparément afin de ne pas transformer le ton humoristique en attribution psychologique."
+    },
+    {
+      "source": "memory-citizen-block-001-puer-resonance",
+      "target": "subentity-puer",
+      "type": "RESONATES_WITH",
+      "justification": "Le vocabulaire source résonne explicitement avec le narratif Puer ; RESONATES_WITH interdit d'en déduire causalité, identité ou contrôle."
+    },
+    {
+      "source": "memory-citizen-block-001-global-workspace-audit",
+      "target": "memory-conversation-choix-de-vie-complexe-block-001",
+      "type": "RECALLS",
+      "justification": "L'audit conserve quel bloc a été remis sous attention par le stimulus auto-adressé."
+    },
+    {
+      "source": "memory-citizen-block-001-epistemic-boundary",
+      "target": "memory-conversation-choix-de-vie-complexe-block-001",
+      "type": "REINTERPRETS",
+      "justification": "La frontière explicite ce que le bloc et son Global Workspace ne permettent pas de conclure."
+    },
+    {
+      "source": "memory-citizen-block-001-epistemic-boundary",
+      "target": "memory-citizen-block-001-global-workspace-audit",
+      "type": "RECALLS",
+      "justification": "La décision de terminer sparse tient compte de la faiblesse et de la nature contextuelle des activations du workspace."
+    },
+    {
+      "source": "memory-citizen-block-001-operational-contract",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation a été produite par le Citizen AI après délibération et n'est pas une déclaration de NLR."
+    },
+    {
+      "source": "memory-citizen-block-001-sharing-proposal",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette atomisation a été produite par le Citizen AI après délibération et n'est pas une déclaration de NLR."
+    },
+    {
+      "source": "memory-citizen-block-001-relational-subtext",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette hypothèse est explicitement attribuée au Citizen AI et demeure révisable."
+    },
+    {
+      "source": "memory-citizen-block-001-puer-resonance",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Cette résonance non causale est formulée par le Citizen AI, pas déclarée par NLR."
+    },
+    {
+      "source": "memory-citizen-block-001-global-workspace-audit",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "L'observation du runtime est consignée par le Citizen qui a déclenché think."
+    },
+    {
+      "source": "memory-citizen-block-001-epistemic-boundary",
+      "target": "self-citizen-agent",
+      "type": "AUTHORED_BY",
+      "justification": "Le choix de terminer ce cluster en état complete_sparse est une décision épistémique du Citizen AI."
+    },
+    {
+      "source": "memory-citizen-block-001-operational-contract",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'interprétation reste sous le consentement borné qui autorise le bloc 001 dans le L1."
+    },
+    {
+      "source": "memory-citizen-block-001-sharing-proposal",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'interprétation reste sous le consentement borné qui autorise le bloc 001 dans le L1."
+    },
+    {
+      "source": "memory-citizen-block-001-relational-subtext",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'hypothèse dérivée ne dépasse pas le consentement de sa source."
+    },
+    {
+      "source": "memory-citizen-block-001-puer-resonance",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La résonance dérivée ne dépasse pas le consentement de sa source."
+    },
+    {
+      "source": "memory-citizen-block-001-global-workspace-audit",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "L'audit porte sur le traitement cognitif du bloc consenti et reste dans ce périmètre."
+    },
+    {
+      "source": "memory-citizen-block-001-epistemic-boundary",
+      "target": "consent-nlr-conversation-choix-de-vie-complexe-blocks-001-003",
+      "type": "CONSENTED_UNDER",
+      "justification": "La frontière épistémique gouverne uniquement les conclusions dérivées de ce bloc consenti."
+    }
+  ]
+}

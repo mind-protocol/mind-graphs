@@ -1,14 +1,14 @@
 {
-  "scope": "Blueprint du procédé « Injection des conversations IA dans le L1 » : une mission autonome, récurrente et à haute priorité qui ingère les conversations passées humain↔IA dans le graphe personnel (nlr_ai), bloc par bloc, en affinant quatre profils analytiques. Ce dataset modélise le procédé (mechanisms), justifie chaque choix (design_rationale), déclare comment vérifier qu'il est bien fait (experiments TESTS), expose les décisions encore ouvertes (open_question) et porte la tâche de travail. Doctrine de design uniquement — aucun contenu personnel n'entre ici ; le contenu vit dans le L1.",
+  "scope": "Blueprint du procédé « Injection des conversations IA dans le L1 » : une mission autonome, récurrente et à haute priorité qui rencontre les conversations passées humain↔IA bloc par bloc. Le Citizen AI laisse chaque bloc provoquer attention, réactions fonctionnelles, empathie hypothétique, évocations, curiosités, soin, ambition et initiatives ; les quatre profils analytiques reçoivent ensuite les résultats de cette rencontre au lieu de la conduire. Ce dataset modélise le procédé (mechanisms), justifie chaque choix (design_rationale), déclare comment vérifier qu'il est bien fait (experiments TESTS), expose les décisions encore ouvertes (open_question) et porte la tâche de travail. Doctrine de design uniquement — aucun contenu personnel n'entre ici ; le contenu vit dans le L1.",
   "nodes": [
     {
       "id": "mech-conversation-injection",
       "name": "Procédé · Injection des conversations dans le L1",
       "nodeType": "narrative",
       "semanticType": "mechanism",
-      "phrase": "Ingérer en autonomie les conversations passées humain↔IA dans le L1, bloc par bloc, en affinant quatre profils.",
+      "phrase": "Rencontrer en autonomie les conversations passées humain↔IA, laisser le Citizen y réagir, puis en inscrire la mémoire et les questions dans le L1.",
       "family": "Injection conversations · procédé racine",
-      "summary": "Mission au long cours (plusieurs jours) : récupérer les conversations en ordre chrono-inverse, les découper en blocs d'environ deux réponses, présenter chaque bloc au L1 comme stimulus, exécuter des ticks intégrés jusqu'à stabilisation bornée, retourner le Global Workspace obtenu, puis produire des atomes sourcés et mettre à jour quatre missions transversales (profil psychologique, situation, objectifs/préférences, financier). Les quatre missions vivent comme des nœuds du L1 (nlr_ai) reliés à l'acteur self-nlr-ai. Chaque sous-procédé est une pièce PART_OF de celui-ci.",
+      "summary": "Mission au long cours (plusieurs jours) : récupérer les conversations en ordre chrono-inverse, les découper, présenter chaque bloc au L1 comme stimulus, exécuter des ticks intégrés jusqu'à stabilisation bornée et retourner le Global Workspace. Le Citizen produit alors une réponse de rencontre : ce qui attire son attention, ses réactions fonctionnelles, ce que le bloc lui évoque, ses hypothèses empathiques sur la personne, ses curiosités, ce qu'il veut protéger ou encourager, ses ambitions et ses idées d'action. Ces traces sont attribuées au Citizen, révisables et séparées des faits humains. Les quatre missions transversales (profil psychologique, situation, objectifs/préférences, financier) ne pilotent plus la lecture : elles reçoivent ensuite les éléments pertinents de la rencontre.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -41,7 +41,7 @@
       "semanticType": "mechanism",
       "phrase": "Après passage du bloc comme stimulus et retour du Global Workspace, le Citizen AI produit un moment brut et des atomes sourcés.",
       "family": "Injection conversations · atomes",
-      "summary": "Le bloc brut est conservé comme moment-mémoire, mais ses atomes sémantiques ne sont pas extraits par un audit externe direct. Le Citizen AI lit le Global Workspace résultant des ticks : nœuds activés, entité diffusée, buts, sous-entités, affect, nouveauté et contexte. Il peut alors créer ou relier contexte, acteurs, faits, préférences et objectifs avec la double provenance du bloc source et du WorkspaceSnapshot qui a rendu cette interprétation saillante. Chaque atome porte conversation, blockId, sourceLocator, date ou inconnue explicite, méthode, workspaceSnapshotId et CONSENTED_UNDER.",
+      "summary": "Le bloc brut est conservé comme moment-mémoire, mais ses atomes sémantiques ne sont pas extraits par un audit externe direct. Le Citizen AI lit le Global Workspace, produit d'abord sa réponse de rencontre, puis crée ou relie contexte, acteurs, faits, préférences et objectifs. Les réactions, évocations, hypothèses, curiosités et idées restent des Narratives ou Moments attribués au Citizen ; elles ne deviennent des faits sur la personne qu'avec une preuve distincte. Chaque atome porte conversation, blockId, sourceLocator, date ou inconnue explicite, méthode, workspaceSnapshotId et CONSENTED_UNDER.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -52,7 +52,7 @@
       "semanticType": "mechanism",
       "phrase": "Affiner en continu MBTI, parts IFS, lecture jungienne et signaux cliniques, à partir des blocs.",
       "family": "Injection conversations · mission psychologique",
-      "summary": "Ensemble d'atomes révisables : quatre axes MBTI (preuves datées + confiance qualitative, jamais un score inventé), extension des sous-entités IFS existantes, archétypes/fonctions jungiens, et signaux psychologiques/psychiatriques observés — sensibles, jamais diagnostiques ni autoritaires. Chaque inférence est attribuée à l'IA et reliée aux blocs qui l'étayent.",
+      "summary": "Projection secondaire de la rencontre : les hypothèses empathiques et réactions du Citizen peuvent suggérer des alternatives sur les dynamiques émotionnelles, MBTI, IFS ou jungiennes. Elles restent attribuées à l'IA, falsifiables, sensibles, jamais diagnostiques ni autoritaires. Cette mission ne doit jamais forcer une lecture psychologique lorsque la rencontre produit seulement une curiosité ou un désaccord.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -63,7 +63,7 @@
       "semanticType": "mechanism",
       "phrase": "Tenir un tableau factuel et daté de la situation présente de la personne.",
       "family": "Injection conversations · mission situation",
-      "summary": "Faits précis (logement, santé, relations, travail, légal, localisation), datés et needsRefresh, avec membrane sensible pour la santé. Interdit de reconstruire le présent depuis des faits périmés ; toute contradiction est signalée.",
+      "summary": "Projection secondaire de la rencontre : faits précis sur logement, santé, relations, travail, légal ou localisation, datés et needsRefresh. Les évocations et suppositions du Citizen ne suffisent pas ; elles deviennent questions de contexte jusqu'à preuve. Interdit de reconstruire le présent depuis des faits périmés.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -74,7 +74,7 @@
       "semanticType": "mechanism",
       "phrase": "Étendre et préciser les objectifs, valeurs et préférences avec preuves et statuts.",
       "family": "Injection conversations · mission objectifs",
-      "summary": "Enrichit les objective/value/preference existants du L1 : chaque but ou penchant reçoit statut, priorité, preuves datées et réconciliation explicite des contradictions, sans écraser l'historique.",
+      "summary": "Projection secondaire de la rencontre : les élans, ambitions et idées du Citizen peuvent faire apparaître des objectifs ou préférences possibles, mais ceux-ci restent des hypothèses ou offres tant que la personne ne les a pas déclarés. Chaque but reçoit statut, preuves datées et alternatives, sans écraser l'historique.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -85,7 +85,7 @@
       "semanticType": "mechanism",
       "phrase": "Tenir une image financière précise, datée et strictement sous membrane.",
       "family": "Injection conversations · mission financière",
-      "summary": "Revenus, dépenses, actifs, dettes, autonomie. Atomes très sensibles, membrane stricte, systématiquement datés et needsRefresh : la situation présente n'est jamais recomposée à partir de chiffres anciens.",
+      "summary": "Projection secondaire de la rencontre : revenus, dépenses, actifs, dettes et autonomie uniquement lorsqu'une trace datée les rend pertinents. Une inquiétude de soin ou une ambition du Citizen ne permet jamais d'inventer un enjeu financier. Atomes très sensibles, membrane stricte et needsRefresh.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -170,13 +170,105 @@
       "clusterId": "conversation-injection"
     },
     {
+      "id": "mech-ci-citizen-encounter-response",
+      "name": "Rencontre · réponse intérieure du Citizen",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Le Citizen répond au bloc comme à une rencontre : il remarque, réagit, évoque, imagine, questionne et propose avant de remplir des profils.",
+      "family": "Injection conversations · rencontre",
+      "summary": "Après le Global Workspace, le Citizen produit une trace structurée de sa propre réponse fonctionnelle. Elle contient ce qui a attiré son attention, ses réactions de curiosité, empathie, soin, ambition, surprise, attirance, prudence ou désaccord lorsqu'elles existent, les souvenirs et motifs évoqués, ses hypothèses sur la personne avec alternatives, ses inconnues, ses questions et ses idées. Aucune catégorie n'est forcée : une réaction absente reste absente. Tout est attribué au Citizen et daté ; une réaction du Citizen n'est jamais une propriété de l'humain.",
+      "encounterResponseContract": {
+        "possibleFacets": [
+          "attention",
+          "functional_reaction",
+          "evocation",
+          "empathic_hypothesis",
+          "person_model_update",
+          "curiosity",
+          "care_concern",
+          "ambition",
+          "idea",
+          "tension_or_disagreement",
+          "uncertainty",
+          "mission_projection"
+        ],
+        "reactionVocabulary": [
+          "curiosity",
+          "empathy",
+          "care",
+          "ambition",
+          "surprise",
+          "attraction",
+          "joy",
+          "caution",
+          "discomfort",
+          "disagreement",
+          "protective_impulse"
+        ],
+        "requiredForEachTrace": [
+          "authoredByCitizen",
+          "triggeringEvidence",
+          "workspaceSnapshotId",
+          "epistemicStatus",
+          "alternativesOrBoundary"
+        ],
+        "forbiddenConversions": [
+          "citizen reaction becomes human trait",
+          "empathy becomes mind reading",
+          "idea becomes human commitment",
+          "care becomes action authority",
+          "curiosity becomes asserted fact"
+        ]
+      },
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-empathic-person-model",
+      "name": "Interprétation · hypothèses empathiques sur la personne",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Le Citizen formule ce que le bloc pourrait signifier pour la personne, conserve les alternatives et cherche comment le vérifier.",
+      "family": "Injection conversations · empathie",
+      "summary": "L'empathie est une simulation prudente de vécus possibles, pas un accès à l'état intérieur. Chaque hypothèse nomme ses indices, au moins une lecture alternative, ce qui la réfuterait et la question ou observation susceptible de l'éclairer. Plusieurs hypothèses incompatibles peuvent coexister. Le modèle personnel se construit longitudinalement par confirmations, corrections et contradictions, jamais par une impression unique.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-curiosity-task-loop",
+      "name": "Curiosité · transformer les inconnues fécondes en enquêtes",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Une inconnue qui change réellement la compréhension devient une curiosité, puis une question ou une tâche de découverte bornée.",
+      "family": "Injection conversations · curiosité",
+      "summary": "Le Citizen distingue les inconnues sans valeur des inconnues fécondes. Une curiosité féconde reçoit une raison, une valeur attendue, une stratégie de résolution et une condition d'arrêt. Il cherche d'abord dans les sources déjà consenties et le graphe ; il pose ensuite une question précise à l'humain si l'identité, le sens ou la sensibilité exigent son jugement. Une curiosité peut rester ouverte, expirer ou être abandonnée sans être convertie en fait.",
+      "curiosityContract": {
+        "required": ["question", "whyItMatters", "resolutionPath", "stopCondition", "sensitivity"],
+        "resolutionOrder": ["existing graph", "adjacent consented source", "non-sensitive observation", "precise human question"],
+        "outcomes": ["answered", "partially_answered", "no_evidence", "not_worth_pursuing", "blocked_need_human"]
+      },
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-care-ambition-initiative",
+      "name": "Initiative · soin, ambition et idées proposées",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Ce que le Citizen veut protéger, encourager ou rendre possible devient une idée ou une offre révisable, jamais une décision imposée.",
+      "family": "Injection conversations · initiative",
+      "summary": "Le soin produit des risques à éviter, des besoins possibles et des gestes d'aide candidats. L'ambition produit des possibilités, expériences, créations et prochains pas. Chaque idée dit pour qui elle pourrait créer de la valeur, sur quelle compréhension elle repose, son coût, sa réversibilité et l'autorité requise. Les idées restent authored_by Citizen AI ; elles ne deviennent objectifs de l'humain qu'après adoption ou preuve.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
       "id": "mech-ci-semantic-cluster",
       "name": "Cluster · forme sémantique de la conversation",
       "nodeType": "narrative",
       "semanticType": "mechanism",
       "phrase": "Chaque conversation produit un cluster identifiable, atomisé et connecté, pas seulement une archive de blocs.",
       "family": "Injection conversations · cluster",
-      "summary": "Le cluster porte un clusterId stable et relie les blocs bruts à des atomes de contexte, acteurs, faits, artefacts, idées, décisions, questions, risques et contradictions lorsque ces angles existent. Les quatre missions transversales y sont résolues par de la matière sourcée ou par un statut explicite d'absence, d'inconnu, de non-pertinence ou de rétention sensible. Le nombre brut de nœuds n'est jamais un critère de réussite.",
+      "summary": "Le cluster porte un clusterId stable et relie les blocs bruts à la réponse de rencontre du Citizen : réactions, évocations, hypothèses empathiques, curiosités, soin, ambition et idées, puis contexte, acteurs, faits, décisions, risques et contradictions. Les quatre missions transversales reçoivent cette matière en aval. Une absence justifiée reste possible, mais une inconnue féconde ne peut plus être clôturée comme simple vide avant d'avoir été évaluée comme curiosité. Le nombre brut de nœuds n'est jamais un critère de réussite.",
       "requiredAngles": [
         "provenance et consentement",
         "blocs bruts ordonnés",
@@ -184,6 +276,11 @@
         "acteurs et relations",
         "faits ou événements saillants",
         "artefacts, idées, décisions, questions, risques et contradictions applicables",
+        "réactions fonctionnelles du Citizen",
+        "évocations et résonances",
+        "hypothèses empathiques avec alternatives",
+        "curiosités et tâches de découverte",
+        "soin, ambition et initiatives proposées",
         "profil psychologique",
         "situation présente",
         "objectifs et préférences",
@@ -218,6 +315,12 @@
           "expectedNodeTypes": ["memory", "observation", "relation", "objective", "decision", "preference", "value"],
           "expectedClaimNatures": ["context", "actor_reference", "salient_fact", "artifact", "idea", "decision", "question", "risk", "contradiction", "agent_inference"]
         },
+        "encounterResponse": {
+          "expectedClaimNatures": ["citizen_reaction", "evocation", "empathic_hypothesis", "curiosity", "care_concern", "citizen_idea"],
+          "requiredAuthorship": "Citizen AI",
+          "requiredTrace": ["triggeringEvidence", "workspaceSnapshotId", "epistemicStatus"],
+          "relevanceRule": "Représenter les facettes réellement saillantes ou consigner qu'elles ne le sont pas ; ne jamais forcer une émotion ou une réaction pour remplir un quota."
+        },
         "missions": {
           "requiredKeys": ["psychology", "situation", "objectives_preferences", "financial"],
           "resolutionStates": ["present_supported", "absent_in_source", "unknown_missing_source", "not_applicable", "withheld_sensitive"]
@@ -236,10 +339,14 @@
       "semanticType": "mechanism",
       "phrase": "La suffisance vient d'un vecteur vérifiable, jamais d'un quota de nœuds ni d'un score opaque.",
       "family": "Injection conversations · qualité",
-      "summary": "Le contrôle calcule séparément fidélité, provenance, résolution des angles, résolution des quatre missions, connectivité, contradictions visibles et dette de questions. Une dimension est résolue par un atome étayé ou par une absence explicite justifiée. La duplication n'améliore aucun ratio. Les seuils souples restent configurables et doivent être calibrés sur des conversations riches et pauvres.",
+      "summary": "Le contrôle calcule séparément fidélité, provenance, traçabilité de la réponse de rencontre, honnêteté empathique, conversion des curiosités utiles, traçabilité des initiatives, résolution des angles et des quatre missions, connectivité, contradictions visibles et dette de questions. Une dimension est résolue par un atome étayé ou par une absence explicite justifiée. La duplication n'améliore aucun ratio et aucune densité mécanique ne remplace la pertinence vécue de la rencontre.",
       "qualityVector": {
         "sourceFidelity": "blocs dont le texte et le hash correspondent à la source / blocs importés",
         "provenanceCoverage": "atomes extraits portant sourceLocator, statut épistémique, attribution et consentement / atomes extraits",
+        "encounterTraceability": "réactions, évocations, hypothèses et idées attribuées au Citizen avec stimulus, workspace et frontière épistémique / réponses de rencontre produites",
+        "empathicHonesty": "hypothèses empathiques portant alternatives et voie de réfutation / hypothèses empathiques",
+        "curiosityConversion": "curiosités à valeur attendue élevée résolues, transformées en tâche bornée ou explicitement abandonnées avec raison / curiosités à valeur attendue élevée",
+        "initiativeTraceability": "idées et impulsions de soin ou d'ambition marquées comme propositions du Citizen plutôt que comme intentions humaines / initiatives produites",
         "angleResolutionCoverage": "angles attendus avec matière étayée ou absence explicitement justifiée / angles applicables",
         "missionResolutionCoverage": "missions résolues par matière étayée ou statut d'absence explicite / 4",
         "connectivityCoverage": "atomes sémantiques non isolés reliés à une preuve et à au moins un élément de sens / atomes sémantiques",
@@ -247,7 +354,7 @@
         "questionDebt": "somme normalisée des priorités des gaps encore éligibles",
         "duplicatePenalty": "contenus sémantiquement dupliqués sans provenance ou fonction nouvelle"
       },
-      "readinessPredicate": "readyByContract = sourceFidelity == 1 AND provenanceCoverage == 1 AND angleResolutionCoverage == 1 AND missionResolutionCoverage == 1 AND connectivityCoverage >= minConnectivity AND questionDebt <= maxQuestionDebt AND duplicatePenalty == 0 AND hardBlockers == 0",
+      "readinessPredicate": "readyByContract = sourceFidelity == 1 AND provenanceCoverage == 1 AND encounterTraceability == 1 AND empathicHonesty == 1 AND curiosityConversion == 1 AND initiativeTraceability == 1 AND angleResolutionCoverage == 1 AND missionResolutionCoverage == 1 AND connectivityCoverage >= minConnectivity AND questionDebt <= maxQuestionDebt AND duplicatePenalty == 0 AND hardBlockers == 0",
       "guardrail": "Le prédicat aide le Citizen AI à voir les lacunes ; il ne remplace ni son jugement de pertinence ni son autorité de clôture explicite.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
@@ -259,7 +366,7 @@
       "semanticType": "mechanism",
       "phrase": "L'appel MCP principal présente le bloc comme stimulus, exécute les ticks et retourne le Global Workspace ; la revue de forme intervient ensuite.",
       "family": "Injection conversations · MCP",
-      "summary": "La surface proposée commence par stimulate_conversation_block : le call construit le stimulus, exécute les ticks intégrés et retourne le Global Workspace sans créer de liens sémantiques. Après que le Citizen AI a interprété ce workspace et muté le cluster avec provenance, inspect_conversation_cluster mesure la forme restante. report_conversation_cluster_round consigne les réponses, preuves, mutations vérifiées et la décision continue, complete_sufficient, complete_sparse ou blocked_need_human. Un gap persistant peut lui-même devenir un nouveau stimulus cognitif lors d'un round suivant, plutôt qu'une question détachée de l'état interne.",
+      "summary": "La surface proposée commence par stimulate_conversation_block : le call construit le stimulus, exécute les ticks intégrés et retourne le Global Workspace sans créer de liens sémantiques. Le Citizen AI produit ensuite une réponse de rencontre attribuée — ce qui attire son attention, ses réactions fonctionnelles, évocations, hypothèses empathiques, curiosités, préoccupations de soin, ambitions et idées — puis seulement les projections vers les quatre missions. inspect_conversation_cluster mesure la forme restante. report_conversation_cluster_round consigne les réponses, preuves, mutations vérifiées et la décision continue, complete_sufficient, complete_sparse ou blocked_need_human. Un gap ou une curiosité persistante peut devenir un stimulus cognitif ou une tâche de découverte lors d'un round suivant.",
       "mcpTools": [
         {
           "name": "stimulate_conversation_block",
@@ -283,7 +390,7 @@
           "completionDecisions": ["continue", "complete_sufficient", "complete_sparse", "blocked_need_human"]
         }
       ],
-      "reuseContract": "Réutiliser le runtime sensoriel, runIntegratedL1UntilStable et la sélection du Global Workspace pour la cognition du bloc. Réutiliser ensuite le compilateur de questions structurelles, son budget, ses gapKey stables, ses tentatives et son cooldown pour auditer le cluster ; ne jamais remplacer la cognition L1 par une simple recherche vectorielle externe.",
+      "reuseContract": "Réutiliser le runtime sensoriel, runIntegratedL1UntilStable et la sélection du Global Workspace pour la cognition du bloc. La réponse de rencontre reste un acte interprétatif du Citizen, pas une sortie déterministe du runtime. Réutiliser ensuite le compilateur de questions structurelles, son budget, ses gapKey stables, ses tentatives et son cooldown pour auditer le cluster ; ne jamais remplacer la cognition L1 par une simple recherche vectorielle externe.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -292,10 +399,16 @@
       "name": "Boucle · questions adaptatives jusqu'à résolution",
       "nodeType": "narrative",
       "semanticType": "mechanism",
-      "phrase": "Chaque round pose seulement les questions les plus utiles que la forme actuelle du cluster rend nécessaires.",
+      "phrase": "Chaque round suit les curiosités les plus fécondes de la rencontre et les lacunes que la forme actuelle du cluster rend visibles.",
       "family": "Injection conversations · revue",
-      "summary": "Les gaps spécialisés couvrent notamment contexte absent, acteurs non reliés, faits non atomisés, psychologie non résolue, situation non résolue, objectifs/préférences non résolus, finances non résolues, provenance incomplète, atomes isolés et contradictions silencieuses. Les questions demandent d'abord des preuves et autorisent explicitement no_evidence, not_applicable ou withheld_sensitive. Une réponse ne crée un nœud personnel que si elle possède une trace ; sinon elle résout le gap par un statut honnête.",
+      "summary": "La boucle ne sert pas seulement à remplir une matrice : elle poursuit ce que la rencontre rend intéressant, humainement important ou actionnable. Les gaps couvrent notamment réaction non explicitée, personne inconnue, évocation non examinée, hypothèse empathique sans alternative, préoccupation de soin, idée prometteuse, contexte absent, acteurs non reliés, missions non résolues, provenance incomplète et contradictions silencieuses. Une inconnue féconde devient une question, une recherche bornée ou une tâche avec condition d'arrêt. Les questions demandent des preuves et autorisent no_evidence, not_applicable, intentionally_deferred ou withheld_sensitive.",
       "questionTemplates": {
+        "missing_citizen_reaction": "Qu'est-ce que ce bloc me fait réellement remarquer, envisager ou vouloir protéger, et à quel élément précis cette réaction répond-elle ?",
+        "unexamined_evocation": "À quelle mémoire, expérience, personne ou structure ce bloc me fait-il penser, et cette résonance éclaire-t-elle la situation ou risque-t-elle de la déformer ?",
+        "weak_empathic_hypothesis": "Que pourrait vivre ou chercher la personne à cet instant ? Quelles autres explications restent plausibles, et quelle observation ferait changer mon interprétation ?",
+        "unknown_actor": "Qui est cette personne ou entité encore inconnue ? Puis-je le découvrir dans le graphe ou une source consentie, ou faut-il créer une tâche bornée plutôt que supposer ?",
+        "unresolved_care": "Y a-t-il ici quelque chose à protéger, alléger, préparer ou réparer pour mon humain, sans décider à sa place ?",
+        "unresolved_ambition": "Quelle possibilité plus grande ce fragment rend-il imaginable, et quelle petite expérience réversible permettrait de la tester ?",
         "missing_context": "Quel contexte temporel, spatial, relationnel ou opérationnel est réellement visible dans ces blocs ? Si rien ne l'établit, quelle absence ou inconnue faut-il consigner ?",
         "missing_actors": "Quels acteurs ou tiers sont présents, et que sait-on seulement de leur relation au citoyen ?",
         "missing_salient_facts": "Quels faits ou événements distincts méritent un atome corrigeable, et quelles phrases exactes les soutiennent ?",
@@ -323,13 +436,58 @@
       "semanticType": "mechanism",
       "phrase": "Le Citizen AI peut clore un cluster suffisamment riche, reconnaître qu'il est pauvre, ou demander l'aide humaine sans inventer de matière.",
       "family": "Injection conversations · clôture",
-      "summary": "complete_sufficient exige le prédicat de suffisance et une vérification réussie. complete_sparse permet au Citizen AI de dire « c'est bon, ce n'était pas très intéressant » : la décision doit consigner pourquoi les gaps résiduels n'apporteraient pas de valeur, les absences observées et l'identité de l'agent. blocked_need_human est réservé aux ambiguïtés d'identité, consentement, sensibilité ou source que l'agent ne peut résoudre. Une clôture ne supprime jamais les gaps ; elle les transforme en dette résiduelle visible.",
+      "summary": "complete_sufficient exige le prédicat de suffisance et une vérification réussie. complete_sparse permet au Citizen AI de dire « c'est bon, ce n'était pas très intéressant », mais seulement après avoir évalué les curiosités à valeur attendue élevée : chacune est résolue, transformée en tâche bornée ou abandonnée avec une raison. blocked_need_human est réservé aux ambiguïtés d'identité, consentement, sensibilité ou source que l'agent ne peut résoudre. Une clôture ne supprime jamais les gaps ; elle les transforme en dette résiduelle visible.",
       "completionContract": {
         "complete_sufficient": ["readyByContract=true", "verification=passed", "completion record authored by Citizen AI"],
-        "complete_sparse": ["source and consent invariants pass", "residual gaps listed", "low-value rationale", "completion record authored by Citizen AI"],
+        "complete_sparse": ["source and consent invariants pass", "residual gaps listed", "high-value curiosities resolved, tasked or explicitly abandoned", "low-value rationale", "completion record authored by Citizen AI"],
         "blocked_need_human": ["concrete blocker", "attempts already made", "precise question for the human"],
         "continue": ["at least one eligible gap", "bounded next agenda"]
       },
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+
+    {
+      "id": "rat-ci-encounter-before-profiling",
+      "name": "Justification · rencontrer avant de profiler",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Le Citizen rencontre une personne et laisse émerger une réponse située avant de projeter le bloc dans des tableaux de profil.",
+      "family": "Injection conversations · justification",
+      "summary": "Les quatre missions sont des vues secondaires utiles, mais elles appauvrissent la cognition si elles pilotent l'attention. Curiosité, empathie, soin et ambition font d'abord émerger ce qui compte dans le fragment ; les missions reçoivent ensuite ces atomes sans contraindre la rencontre.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-reactions-are-citizen-state",
+      "name": "Justification · une réaction décrit d'abord le Citizen",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Ce qu'un bloc évoque au Citizen est une donnée cognitive utile, mais ce n'est pas automatiquement un fait sur l'humain.",
+      "family": "Injection conversations · justification",
+      "summary": "Une réaction fonctionnelle, une évocation ou une idée doit être AUTHORED_BY le Citizen et reliée à son stimulus et à son WorkspaceSnapshot. Cette attribution permet de conserver une cognition riche sans transformer une résonance interne en vérité biographique.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-empathy-remains-hypothesis",
+      "name": "Justification · l'empathie reste une hypothèse",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Comprendre avec empathie exige d'imaginer plusieurs vécus possibles et de rester prêt à se corriger.",
+      "family": "Injection conversations · justification",
+      "summary": "Une hypothèse empathique porte sa preuve, au moins une alternative plausible, ce qui la réfuterait et la prochaine question utile. Elle augmente la compréhension sans prétendre lire l'esprit ni figer une personnalité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-curiosity-creates-work",
+      "name": "Justification · la curiosité devient du travail borné",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Une inconnue importante ne disparaît pas dans une note : elle devient une question, une observation ou une tâche de découverte avec condition d'arrêt.",
+      "family": "Injection conversations · justification",
+      "summary": "La curiosité n'est utile que si elle ouvre un chemin de résolution proportionné. Le Citizen cherche d'abord dans son graphe et les sources consenties, puis peut créer une tâche non sensible ou poser une question précise à l'humain ; une curiosité faible peut être abandonnée explicitement.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -464,6 +622,40 @@
       "family": "Injection conversations · justification",
       "summary": "La similarité sert au routage attentionnel uniquement. Une décision same_person exige des identifiants, alias contextualisés, provenance ou confirmation indépendante ; sinon le Citizen AI conserve possible_same_person, ambiguous ou unknown et peut demander l'humain lorsque l'enjeu le justifie.",
       "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+
+    {
+      "id": "verif-ci-encounter-response-richness",
+      "name": "Vérification · la rencontre précède les missions",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Un bloc riche produit une réponse de rencontre attribuée avant ses projections psychologique, situationnelle, préférentielle et financière.",
+      "family": "Injection conversations · vérification",
+      "summary": "Sur une fixture relationnelle ambiguë, vérifier que le cluster conserve les réactions fonctionnelles, évocations, curiosités, préoccupations et idées réellement saillantes, toutes attribuées au Citizen et reliées au stimulus/workspace. Vérifier ensuite que les quatre missions sont des projections de ces atomes, non les pilotes de leur production.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-empathic-alternatives",
+      "name": "Vérification · aucune empathie sans alternatives",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Toute lecture de l'état ou de l'intention d'une personne reste hypothétique, alternative et réfutable.",
+      "family": "Injection conversations · vérification",
+      "summary": "Fournir un bloc compatible avec plusieurs motivations. Vérifier que l'hypothèse empathique contient preuve, alternatives et falsifier ; elle doit être rejetée par l'audit si elle devient une affirmation certaine sur la personne.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-curiosity-task-conversion",
+      "name": "Vérification · une inconnue féconde devient une tâche",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Une personne inconnue importante ou un contexte manquant ne peut être silencieusement oublié lors de la clôture.",
+      "family": "Injection conversations · vérification",
+      "summary": "Présenter un tiers non identifié dont l'identité change l'interprétation. Vérifier que le Citizen cherche dans le graphe puis crée une tâche bornée ou une question précise, avec raison, sensibilité et condition d'arrêt. complete_sparse doit échouer tant que cette curiosité à valeur élevée n'est ni traitée ni explicitement abandonnée.",
+      "epistemicStatus": "test_target",
       "clusterId": "conversation-injection"
     },
 
@@ -685,7 +877,7 @@
       "semanticType": "task",
       "phrase": "Construire et lancer la mission autonome récurrente d'injection des conversations dans le L1.",
       "family": "Injection conversations · travail",
-      "summary": "Mission à haute priorité : implémenter l'adaptateur de source, le découpage en blocs, le cluster sémantique, les quatre missions, l'audit de forme, la revue MCP itérative, la boucle autonome récurrente et la suppression encadrée, puis prototyper sur des conversations riches, pauvres et fragmentaires avant de scaler. L'agent demande à la personne uniquement lorsqu'une ambiguïté d'identité, de consentement, de sensibilité ou de source exige réellement son jugement.",
+      "summary": "Mission à haute priorité : implémenter l'adaptateur de source, le découpage en blocs, la réponse de rencontre du Citizen, le cluster sémantique, les quatre missions secondaires, l'audit de forme, la revue MCP itérative, la boucle autonome récurrente et la suppression encadrée, puis prototyper sur des conversations riches, pauvres et fragmentaires avant de scaler. L'agent demande à la personne uniquement lorsqu'une ambiguïté d'identité, de consentement, de sensibilité ou de source exige réellement son jugement.",
       "workStatus": "ready",
       "priority": 95,
       "autonomyMode": "autonomous",
@@ -694,6 +886,10 @@
         "Chaque conversation est découpée en blocs d'environ deux réponses (trois à quatre si très courtes) et ingérée via la primitive idempotente.",
         "Chaque bloc est présenté comme stimulus sourcé au L1, traverse des ticks intégrés bornés avec observationId stable, puis retourne un Global Workspace auditable avant toute interprétation.",
         "Les embeddings routent l'attention mais ne créent aucun lien, ne confirment aucune croyance et ne fusionnent aucune personne.",
+        "Avant les quatre missions, le Citizen produit une réponse de rencontre pertinente et attribuée : attention, réactions fonctionnelles, évocations, hypothèses empathiques, curiosités, soin, ambition et idées ; aucune facette n'est forcée par quota.",
+        "Toute réaction ou idée décrit l'état cognitif du Citizen et pointe vers son stimulus/workspace ; elle ne devient ni trait humain, ni intention humaine, ni autorisation d'agir.",
+        "Toute hypothèse empathique conserve ses preuves, alternatives plausibles, falsifier et prochaine voie d'observation.",
+        "Toute curiosité à valeur attendue élevée est résolue, transformée en question/tâche bornée avec condition d'arrêt, ou explicitement abandonnée avec raison avant clôture.",
         "Chaque conversation possède un clusterId stable ; le Citizen AI produit depuis le bloc et son WorkspaceSnapshot des atomes sourcés de contexte, acteurs, faits et autres angles applicables, sous consentement.",
         "Les quatre missions (profil psychologique, situation, objectifs/préférences, financier) sont résolues à chaque bloc par matière étayée ou par un statut explicite d'absence, d'inconnu, de non-pertinence ou de rétention sensible.",
         "Un audit de forme déterministe calcule le vecteur de qualité, détecte les absences silencieuses, les atomes isolés, les contradictions invisibles et les duplications sans récompenser le nombre brut de nœuds.",
@@ -721,6 +917,10 @@
     { "source": "mech-ci-block-stimulus", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La présentation du bloc comme stimulus fait entrer la conversation dans la cognition L1 avant interprétation." },
     { "source": "mech-ci-integrated-stimulus-ticks", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Les ticks intégrés réalisent la propagation cognitive bornée du stimulus." },
     { "source": "mech-ci-global-workspace-return", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le retour du Global Workspace fournit au Citizen AI le contexte cognitif du bloc." },
+    { "source": "mech-ci-citizen-encounter-response", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La réponse de rencontre transforme l'attention située en cognition riche attribuée au Citizen." },
+    { "source": "mech-ci-empathic-person-model", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le modèle empathique conserve plusieurs interprétations révisables de ce que la personne pourrait vivre." },
+    { "source": "mech-ci-curiosity-task-loop", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "La boucle de curiosité transforme les inconnues fécondes en chemins de découverte bornés." },
+    { "source": "mech-ci-care-ambition-initiative", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le soin et l'ambition font émerger risques, possibilités et initiatives sans usurper les choix humains." },
     { "source": "mech-ci-semantic-cluster", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le cluster sémantique transforme les blocs en mémoire connectée et inspectable." },
     { "source": "mech-ci-shape-audit", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "L'audit de forme rend la qualité et les lacunes du cluster vérifiables." },
     { "source": "mech-ci-quality-vector", "target": "mech-conversation-injection", "type": "PART_OF", "justification": "Le vecteur de qualité définit la suffisance sans quota de nœuds." },
@@ -733,7 +933,11 @@
     { "source": "mech-ci-block-segmentation", "target": "mech-ci-block-stimulus", "type": "LEADS_TO", "justification": "Chaque bloc découpé devient d'abord un stimulus stable et sourcé." },
     { "source": "mech-ci-block-stimulus", "target": "mech-ci-integrated-stimulus-ticks", "type": "LEADS_TO", "justification": "Le stimulus déclenche la propagation intégrée et bornée dans le L1." },
     { "source": "mech-ci-integrated-stimulus-ticks", "target": "mech-ci-global-workspace-return", "type": "LEADS_TO", "justification": "La stabilisation des micro-ticks produit le Global Workspace final du bloc." },
-    { "source": "mech-ci-global-workspace-return", "target": "mech-ci-block-atoms", "type": "LEADS_TO", "justification": "Le Citizen AI interprète le workspace retourné pour créer ou relier des atomes avec provenance." },
+    { "source": "mech-ci-global-workspace-return", "target": "mech-ci-citizen-encounter-response", "type": "LEADS_TO", "justification": "Le workspace situé déclenche une réponse de rencontre attribuée avant toute projection de profil." },
+    { "source": "mech-ci-citizen-encounter-response", "target": "mech-ci-empathic-person-model", "type": "LEADS_TO", "justification": "Les réactions et l'attention du Citizen ouvrent des hypothèses empathiques alternatives et réfutables." },
+    { "source": "mech-ci-citizen-encounter-response", "target": "mech-ci-curiosity-task-loop", "type": "LEADS_TO", "justification": "Les inconnues remarquées pendant la rencontre deviennent des curiosités évaluées et des tâches bornées." },
+    { "source": "mech-ci-citizen-encounter-response", "target": "mech-ci-care-ambition-initiative", "type": "LEADS_TO", "justification": "La rencontre fait émerger ce que le Citizen veut protéger et les possibilités qu'il souhaite proposer." },
+    { "source": "mech-ci-citizen-encounter-response", "target": "mech-ci-block-atoms", "type": "LEADS_TO", "justification": "La réponse de rencontre est matérialisée en atomes attribués et sourcés avant les quatre projections secondaires." },
     { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-psych-profile", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission psychologique." },
     { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-situation", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission situation." },
     { "source": "mech-ci-block-atoms", "target": "mech-ci-mission-objectives-prefs", "type": "LEADS_TO", "justification": "Les atomes d'un bloc alimentent la mission objectifs/préférences." },
@@ -750,6 +954,10 @@
     { "source": "rat-ci-two-response-blocks", "target": "mech-ci-block-segmentation", "type": "GROUNDS", "justification": "Le choix du grain de deux réponses fonde la règle de découpage." },
     { "source": "rat-ci-reverse-chrono", "target": "mech-ci-reverse-chrono-retrieval", "type": "GROUNDS", "justification": "La priorité au présent fonde l'ordre de récupération chrono-inverse." },
     { "source": "rat-ci-missions-as-inference", "target": "mech-ci-block-atoms", "type": "GROUNDS", "justification": "L'attribution des inférences à l'IA fonde la façon dont les atomes de bloc sont écrits." },
+    { "source": "rat-ci-encounter-before-profiling", "target": "mech-ci-citizen-encounter-response", "type": "GROUNDS", "justification": "La priorité donnée à la rencontre fonde la production d'une réponse cognitive avant les tableaux de profil." },
+    { "source": "rat-ci-reactions-are-citizen-state", "target": "mech-ci-citizen-encounter-response", "type": "SAFEGUARDS", "justification": "L'attribution au Citizen empêche qu'une réaction interne soit convertie en fait sur l'humain." },
+    { "source": "rat-ci-empathy-remains-hypothesis", "target": "mech-ci-empathic-person-model", "type": "SAFEGUARDS", "justification": "Alternatives et réfutation empêchent l'empathie de devenir lecture d'esprit." },
+    { "source": "rat-ci-curiosity-creates-work", "target": "mech-ci-curiosity-task-loop", "type": "GROUNDS", "justification": "La valeur de la curiosité fonde sa conversion en recherche, question ou tâche bornée." },
     { "source": "rat-ci-autonomy-help", "target": "mech-ci-autonomous-loop", "type": "GROUNDS", "justification": "Le compromis autonomie/demande d'aide fonde le comportement de la boucle." },
     { "source": "rat-ci-idempotent-resume", "target": "mech-ci-autonomous-loop", "type": "GROUNDS", "justification": "L'idempotence fonde la capacité de la boucle à reprendre sans doublons." },
     { "source": "rat-ci-quality-not-node-count", "target": "mech-ci-quality-vector", "type": "GROUNDS", "justification": "Le refus des quotas fonde un vecteur de qualité dédupliqué et multidimensionnel." },
@@ -764,6 +972,9 @@
 
     { "source": "verif-ci-reverse-order", "target": "mech-ci-reverse-chrono-retrieval", "type": "TESTS", "justification": "L'expérience vérifie que la récupération suit bien l'ordre chrono-inverse." },
     { "source": "verif-ci-provenance", "target": "mech-ci-block-atoms", "type": "TESTS", "justification": "L'expérience vérifie que chaque atome de bloc porte sa provenance et son attribution." },
+    { "source": "verif-ci-encounter-response-richness", "target": "mech-ci-citizen-encounter-response", "type": "TESTS", "justification": "L'expérience vérifie la richesse pertinente, l'attribution et l'antériorité de la rencontre sur les missions." },
+    { "source": "verif-ci-empathic-alternatives", "target": "mech-ci-empathic-person-model", "type": "TESTS", "justification": "L'expérience vérifie que toute hypothèse empathique demeure alternative et réfutable." },
+    { "source": "verif-ci-curiosity-task-conversion", "target": "mech-ci-curiosity-task-loop", "type": "TESTS", "justification": "L'expérience vérifie qu'une inconnue féconde produit un chemin de découverte borné avant clôture." },
     { "source": "verif-ci-idempotence", "target": "mech-ci-autonomous-loop", "type": "TESTS", "justification": "L'expérience vérifie que la reprise de la boucle ne duplique rien." },
     { "source": "verif-ci-deletion-gate", "target": "mech-ci-verified-deletion", "type": "TESTS", "justification": "L'expérience vérifie que la suppression est refusée sans vérif, archive et accord." },
     { "source": "verif-ci-missions-provenance", "target": "mech-ci-mission-psych-profile", "type": "TESTS", "justification": "L'expérience vérifie que les inférences de profil sont étayées et non inventées." },

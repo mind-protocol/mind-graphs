@@ -125,7 +125,7 @@ export function classifyService(service, observation, previous = {}, now = new D
 
   const checks = observation.checks || {};
   const values = Object.values(checks);
-  const unknown = values.length > 0 && values.every(check => check.unknown || check.error);
+  const unknown = values.length > 0 && values.every(check => check.unknown);
   if (unknown) return { state: "unknown", reason: "all measurements failed or were unavailable" };
 
   const processCheck = checks.process;
@@ -133,7 +133,7 @@ export function classifyService(service, observation, previous = {}, now = new D
   const httpCheck = checks.http;
   const artifactCheck = checks.artifact;
 
-  if (service.observation?.process && processCheck && !processCheck.ok) {
+  if (service.observation?.process && processCheck && !processCheck.ok && !processCheck.unknown) {
     const lastStartedAt = previous.lastStartedAt ? new Date(previous.lastStartedAt).getTime() : 0;
     const graceMs = Number(service.observation?.grace?.startupSeconds || service.grace?.startupSeconds || 0) * 1000;
     if (graceMs && lastStartedAt && now.getTime() - lastStartedAt < graceMs) return { state: "starting", reason: "inside startup grace period" };
@@ -172,6 +172,7 @@ function recentAttempts(previous, service, now) {
 export function repairDecision(service, status, previous = {}, now = new Date()) {
   const repair = service.repair || {};
   const allowed = new Set(repair.allowedActions || []);
+  if (status.state === "unknown") return { action: "none", reason: "measurement unknown; no autonomous restart" };
   if (!REPAIRABLE.has(status.state)) return { action: "none", reason: "state is not repairable" };
   if (!allowed.size) return { action: "none", reason: "no repair action allowed" };
   if (status.state === "blocked") return { action: "none", reason: status.reason || "blocked" };
@@ -196,14 +197,31 @@ export function repairDecision(service, status, previous = {}, now = new Date())
 
 export function spawnDetached(command, { cwd = projectDir } = {}) {
   if (!Array.isArray(command) || !command.length) throw new Error("repair command must be a non-empty argv array");
-  const child = spawn(command[0], command.slice(1), {
+  const executable = command[0] === "node" ? process.execPath : process.platform === "win32" && command[0] === "npm" ? "npm.cmd" : command[0];
+  const spawnCommand = process.platform === "win32" && executable.endsWith(".cmd")
+    ? ["cmd.exe", ["/d", "/s", "/c", executable, ...command.slice(1)]]
+    : [executable, command.slice(1)];
+  const child = spawn(spawnCommand[0], spawnCommand[1], {
     cwd,
     detached: true,
     stdio: "ignore",
     windowsHide: true
   });
+  child.once("error", error => {
+    console.error(JSON.stringify({
+      type: "runtime_detached_spawn_error",
+      command: [executable, ...command.slice(1)],
+      error: error.message
+    }));
+  });
   child.unref();
   return child.pid;
+}
+
+function repairCommandFor(service) {
+  const allowed = new Set(service?.repair?.allowedActions || []);
+  if (allowed.has("restart") || allowed.has("start")) return service.repair.command;
+  return null;
 }
 
 export function buildTransitionEvents(previousStatus, currentStatus, now = new Date()) {
@@ -266,13 +284,25 @@ export async function runtimeCycle(config, options = {}) {
       const status = statusesById.get(service.id);
       const decision = repairDecision(service, status, previousById.get(service.id), now);
       status.repairDecision = decision;
-      if (decision.action === "restart" || decision.action === "start") {
+      if (decision.action === "restart" || decision.action === "start" || decision.action === "restart-dependency") {
+        const targetService = decision.action === "restart-dependency"
+          ? services.find(candidate => candidate.id === decision.targetServiceId)
+          : service;
+        const command = decision.action === "restart-dependency" ? repairCommandFor(targetService) : decision.command;
         try {
-          const pid = (options.spawnDetached || spawnDetached)(decision.command, { cwd });
+          if (!command) throw new Error(`no restart command for target ${decision.targetServiceId || service.id}`);
+          const pid = (options.spawnDetached || spawnDetached)(command, { cwd });
           const attempt = { at: now.toISOString(), action: decision.action, pid };
           status.repairAttempts = [...recentAttempts(previousById.get(service.id) || {}, service, now), attempt];
           status.lastStartedAt = now.toISOString();
-          repairEvents.push({ type: "runtime_repair_attempt", serviceId: service.id, action: decision.action, pid, observedAt: now.toISOString() });
+          repairEvents.push({
+            type: "runtime_repair_attempt",
+            serviceId: service.id,
+            action: decision.action,
+            targetServiceId: targetService?.id || null,
+            pid,
+            observedAt: now.toISOString()
+          });
         } catch (error) {
           status.repairError = error.message;
           repairEvents.push({ type: "runtime_repair_failed", serviceId: service.id, action: decision.action, error: error.message, observedAt: now.toISOString() });

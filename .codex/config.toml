@@ -1,0 +1,20 @@
+[mcp_servers.mind]
+command = 'C:\Users\reyno\OneDrive\Documents\mind-mcp-v2\.venv\Scripts\python.exe'
+args = [
+    "-m",
+    "mcp.server",
+]
+
+[mcp_servers.mind.env]
+FALKORDB_HOST = "localhost"
+FALKORDB_PORT = "6379"
+L3_GRAPH = "universe"
+L4_GRAPH = "mind_protocol"
+PYTHONUTF8 = "1"
+PYTHONIOENCODING = "utf-8"
+
+[mcp_servers.mind.tools.change_context]
+approval_mode = "approve"
+
+[mcp_servers.mind.tools.graph_diff]
+approval_mode = "approve"

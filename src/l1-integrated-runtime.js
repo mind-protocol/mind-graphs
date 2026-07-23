@@ -1,4 +1,8 @@
 import { deriveSubentityCandidates } from "./l1-coalition-detector.js";
+import {
+  selectGlobalWorkspace,
+  workspaceCandidateFromSubentity
+} from "./l1-global-workspace.js";
 import { runSubentityLifecycleTick } from "./l1-subentity-runtime.js";
 import { runMetacognitiveStateTick } from "./l1-metacognitive-runtime.js";
 import {
@@ -22,15 +26,50 @@ export function buildIntegratedLifecycleInput(state, input, options = {}) {
     recordedAt,
     policy: options.coalitionPolicy
   });
+  const characterBudget = input.workspace?.characterBudget ?? options.workspacePolicy?.characterBudget;
+  let workspaceSnapshot = detection.workspaceSnapshot;
+  if (characterBudget !== undefined) {
+    const entities = new Map([
+      ...(state.subentities || []).filter(entity => entity.status !== "merged").map(entity => [entity.id, entity]),
+      ...detection.candidates.map(entity => [entity.id, entity])
+    ]);
+    const explicitCandidates = input.workspaceCandidates || [];
+    const derivedCandidates = [...entities.values()].map(entity => workspaceCandidateFromSubentity(entity, {
+      nodeIds: input.workspace?.activeNodeIds,
+      goalIds: input.workspace?.goalIds,
+      heat: entity.lastActivation ?? detection.observation?.activation ?? 0,
+      affect: input.affect?.dominant?.intensity ?? input.affect?.dominant?.score ?? 0,
+      unresolvedness: input.workspace?.unresolvedness ?? 0,
+      novelty: detection.observation?.novelObservation ? 1 : 0,
+      residenceTicks: input.workspace?.activeEntity?.id === entity.id
+        ? Number(input.workspace?.activeEntity?.residenceTicks || 0)
+        : 0,
+      monopolization: input.workspace?.activeEntity?.id === entity.id
+        ? Number(input.workspace?.activeEntity?.captureShare || 0)
+        : 0
+    }));
+    const candidateById = new Map(derivedCandidates.map(candidate => [candidate.id, candidate]));
+    for (const candidate of explicitCandidates) candidateById.set(candidate.id, candidate);
+    workspaceSnapshot = selectGlobalWorkspace({
+      tickId: input.tickId,
+      recordedAt,
+      candidates: [...candidateById.values()],
+      characterBudget,
+      previousSnapshot: input.workspace?.previousSnapshot || null,
+      policy: options.workspacePolicy
+    });
+  }
   return {
     detection,
+    workspaceSnapshot,
     lifecycleInput: {
       tickId: input.tickId,
       recordedAt,
       candidates: detection.candidates,
       perception: detection.perception,
-      workspaceSnapshot: detection.workspaceSnapshot,
+      workspaceSnapshot,
       memory: input.memory || null,
+      memoryAttribution: input.memoryAttribution || null,
       outcome: input.outcome || null,
       outcomeId: input.outcomeId || null,
       momentEligibility: input.momentEligibility || {}
@@ -44,7 +83,7 @@ export function runIntegratedL1Tick(state, input, options = {}) {
     policy: options.subentityPolicy,
     momentReinforcementPolicy: options.momentReinforcementPolicy
   });
-  if (!input.traversal) return { ...lifecycle, detection: built.detection, metacognition: null };
+  if (!input.traversal) return { ...lifecycle, detection: built.detection, workspace: built.workspaceSnapshot, metacognition: null };
   const metacognition = runMetacognitiveStateTick({
     previousState: state.metacognitive,
     traversal: input.traversal,
@@ -71,6 +110,7 @@ export function runIntegratedL1Tick(state, input, options = {}) {
       behavioralAdaptations: Object.keys(metacognition.adaptations).length
     },
     detection: built.detection,
+    workspace: built.workspaceSnapshot,
     metacognition
   };
 }
@@ -99,6 +139,7 @@ export function runIntegratedL1UntilStable(state, input, options = {}) {
   let quietTicks = 0;
   let stopReason = "max_micro_ticks";
   let representativeDetection = null;
+  let finalWorkspace = null;
   let finalMetacognition = null;
   const history = [];
   const merges = [];
@@ -117,6 +158,7 @@ export function runIntegratedL1UntilStable(state, input, options = {}) {
     const meaningfulChanged = meaningfulStateFingerprint(result.state) !== before;
     currentState = result.state;
     if (result.detection?.observation?.novelObservation && !representativeDetection) representativeDetection = result.detection;
+    finalWorkspace = result.workspace || finalWorkspace;
     finalMetacognition = result.metacognition || finalMetacognition;
     merges.push(...(result.report.merges || []));
     promotions.push(...(result.report.promotions || []));
@@ -160,6 +202,7 @@ export function runIntegratedL1UntilStable(state, input, options = {}) {
       stable: stopReason === "stable"
     },
     detection: representativeDetection,
+    workspace: finalWorkspace,
     metacognition: finalMetacognition,
     stabilization: { maxMicroTicks, requiredQuietTicks, quietTicks, stopReason, history }
   };
@@ -218,9 +261,13 @@ export function summarizeSubentityRuntime(state, { recentLimit = 20 } = {}) {
       merged: (state.subentities || []).filter(entity => entity.status === "merged").length,
       narratives: (state.narratives || []).length,
       moments: (state.moments || []).length
+      ,
+      workspaceSnapshots: (state.workspaceSnapshots || []).length,
+      memoryAttributions: (state.memoryAttributions || []).length
     },
     activeSubentities: active.sort((a, b) => Number(b.weight || 0) - Number(a.weight || 0)),
     latestMoment,
+    latestWorkspaceSnapshot: [...(state.workspaceSnapshots || [])].sort((a, b) => String(b.occurredAt || "").localeCompare(String(a.occurredAt || "")))[0] || null,
     controllers: controllerEdges.map(edge => ({ subentityId: edge.source, confidence: edge.confidence, attribution: edge.attribution })),
     recentEvents: (state.events || []).slice(-recentLimit).reverse(),
     narratives: state.narratives || []

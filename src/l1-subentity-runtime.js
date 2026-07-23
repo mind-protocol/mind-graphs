@@ -7,6 +7,7 @@ import {
   promoteSubentity,
   reconcileSubentities
 } from "./l1-subentities.js";
+import { attributeMemoryMoment } from "./l1-subentity-memory-attribution.js";
 import { reinforceMoments } from "./moment-reinforcement.js";
 
 export const EMPTY_SUBENTITY_RUNTIME_STATE = Object.freeze({
@@ -18,6 +19,8 @@ export const EMPTY_SUBENTITY_RUNTIME_STATE = Object.freeze({
   subentities: [],
   narratives: [],
   moments: [],
+  workspaceSnapshots: [],
+  memoryAttributions: [],
   relations: [],
   events: [],
   processedTickIds: []
@@ -41,6 +44,8 @@ function normalizeState(state = {}) {
     subentities: clone(state.subentities || []),
     narratives: clone(state.narratives || []),
     moments: clone(state.moments || []),
+    workspaceSnapshots: clone(state.workspaceSnapshots || []),
+    memoryAttributions: clone(state.memoryAttributions || []),
     relations: clone(state.relations || []),
     events: clone(state.events || []),
     processedTickIds: unique(state.processedTickIds)
@@ -99,9 +104,19 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
   }
 
   let memoryResult = null;
+  let attributionResult = null;
   if (input.memory) {
     memoryResult = createMemoryMoment({ ...input.memory, workspaceSnapshot: input.workspaceSnapshot || {} });
     newRelations.push(...memoryResult.relations);
+    attributionResult = attributeMemoryMoment({
+      moment: memoryResult.moment,
+      workspaceSnapshot: input.workspaceSnapshot || {},
+      subentities: active,
+      previousAttributions: state.memoryAttributions,
+      recordedAt: input.recordedAt || null,
+      ...(input.memoryAttribution || {})
+    });
+    newRelations.push(...attributionResult.relations);
   }
 
   const momentsBeforeReinforcement = memoryResult
@@ -150,6 +165,12 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
     subentities: [...active, ...reconciliation.retired],
     narratives: upsertById(state.narratives, newNarratives),
     moments: momentReinforcement?.moments || momentsBeforeReinforcement,
+    workspaceSnapshots: input.workspaceSnapshot?.semanticType === "WorkspaceSnapshot"
+      ? upsertById(state.workspaceSnapshots, [input.workspaceSnapshot])
+      : state.workspaceSnapshots,
+    memoryAttributions: attributionResult
+      ? upsertById(state.memoryAttributions, [attributionResult.attribution])
+      : state.memoryAttributions,
     relations: upsertById(state.relations, newRelations),
     events: [...state.events, ...lifecycleEvents],
     processedTickIds: [...state.processedTickIds, input.tickId]
@@ -167,6 +188,10 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
       perceptualSpaceId: perception?.space?.id || null,
       perceptualMomentId: perception?.moment?.id || null,
       memoryMomentId: memoryResult?.moment.id || null,
+      memoryAttributionId: attributionResult?.attribution.id || null,
+      workspaceSnapshotId: input.workspaceSnapshot?.semanticType === "WorkspaceSnapshot"
+        ? input.workspaceSnapshot.id
+        : null,
       reinforcedMomentCount: momentReinforcement?.updates.length || 0,
       reinforcementScore: momentReinforcement?.score.score ?? null,
       activeSubentityCount: active.length,

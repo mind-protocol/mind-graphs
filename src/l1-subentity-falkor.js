@@ -45,6 +45,20 @@ export function projectSubentityRuntimeState(state) {
       epistemicStatus: moment.epistemicStatus || "observed",
       runtimeKind: "stimulus_moment"
     })),
+    ...(state.workspaceSnapshots || []).map(moment => ({
+      ...moment,
+      nodeType: "moment",
+      semanticType: "workspace_snapshot",
+      epistemicStatus: moment.epistemicStatus || "observed",
+      runtimeKind: "workspace_snapshot"
+    })),
+    ...(state.memoryAttributions || []).map(moment => ({
+      ...moment,
+      nodeType: "moment",
+      semanticType: "memory_attribution",
+      epistemicStatus: moment.correctedByHuman ? "confirmed" : "inferred",
+      runtimeKind: "memory_attribution"
+    })),
     ...(state.subentities || []).map(entity => ({
       id: entity.id,
       nodeType: "actor",

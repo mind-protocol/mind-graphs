@@ -18,6 +18,9 @@ function lifecycleInput({ kind, conversationId, externalId, position, content, o
   const momentId = stableMomentId(kind, conversationId, externalId);
   const timestampIdentity = timestampBasis === "server_received_at" ? null : occurredAt;
   const canonical = JSON.stringify({ conversationId, externalId, position, content, occurredAt: timestampIdentity, speakerRole, previousMomentId, authorNodeId, channel, workspaceSnapshot });
+  const sourceKind = kind === "message"
+    ? String(channel || "").toLowerCase() === "telegram" ? "telegram_message" : "live_message"
+    : kind === "utterance" ? "conversation_import_utterance" : "conversation_import_block";
   return {
     tickId: `ingest-${momentId}-${hash(canonical).slice(0, 16)}`,
     recordedAt: ingestedAt,
@@ -30,7 +33,7 @@ function lifecycleInput({ kind, conversationId, externalId, position, content, o
       metadata: {
         claimNature: "message_moment",
         semanticType: "Utterance",
-        sourceKind: kind === "message" ? "live_message" : kind === "utterance" ? "conversation_import_utterance" : "conversation_import_block",
+        sourceKind,
         sourceMessageId: externalId,
         conversationId,
         conversationPosition: Number(position),

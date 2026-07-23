@@ -2795,6 +2795,53 @@
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
       "semanticType": "task"
+    },
+    {
+      "id": "task-l1-human-situation-model",
+      "name": "Tâche · Encoder la situation actuelle de l'humain dans L1",
+      "nodeType": "moment",
+      "phrase": "Le Citizen AI doit savoir ce qui semble arriver à son humain maintenant sans transformer une estimation temporaire en identité.",
+      "family": "Travail du projet · situation humaine L1",
+      "summary": "Ajouter un modèle persistant HumanSituationModel, des observations et snapshots temporels, trois frames séparées Citizen, Human et Relationship, un SharedSituationFrame et une projection bornée vers le Global Workspace. Chaque champ conserve source, statut épistémique, confiance, fraîcheur et inconnues ; localisation, biométrie et activité sensible restent sous consentement.",
+      "workStatus": "done",
+      "priority": 98,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "HumanSituationModel est un Thing persistant et HumanStateSnapshot un Moment temporel qui décrit l'Actor humain sans écrire son état sur son identité.",
+        "CitizenStateFrame, HumanStateFrame et RelationshipStateFrame restent séparés avant SharedSituationFrame.",
+        "Les statuts observed, reported, inferred, conflicting, not_measured, stale et unknown sont explicites par champ.",
+        "La fraîcheur décroît de fresh vers unknown selon une politique propre à la propriété et à la source, sans TTL arbitraire prérempli.",
+        "Le Global Workspace reçoit une projection compacte et non le modèle humain complet.",
+        "Le consentement gate les sources sensibles et le silence reste une issue d'aide valide.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-23-l1-human-situation-model",
+      "name": "Changement · Le L1 perçoit désormais la situation vivante de son humain",
+      "nodeType": "moment",
+      "phrase": "Le cerveau L1 réunit moi maintenant, mon humain maintenant et nous maintenant sans confondre les trois.",
+      "family": "Journal du projet · situation humaine L1",
+      "summary": "Nouveau cluster 33 : modèle humain probabiliste et corrigible, observation contractuelle, snapshots Human et Relationship, SharedSituationFrame, temporalité multi-couche, contradictions, consentement, projection bornée vers le workspace et politique d'interaction capable de choisir l'attente. L'Actor humain reste vide de tout état personnel.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "l1/data/l1-human-situation-blueprint-v0.1.json",
+        "scripts/build-l1-brain-blueprint.js",
+        "l1/data/l1-brain-blueprint-v0.1.graph.json",
+        "test/l1-brain-blueprint.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "change"
     }
   ],
   "links": [

@@ -173,6 +173,7 @@ export async function reportL1TaskWake({
   remainingOptions,
   needsFromCitizen,
   evidence = [],
+  deliverNotification = null,
   manifest = null,
   selectGraphByName = getGraphByName,
   now = new Date().toISOString()
@@ -199,6 +200,36 @@ export async function reportL1TaskWake({
   const taskStatus = report.outcome === "completed" ? "completed" : "active";
   const wakeStatus = report.outcome === "blocked" ? "blocked" : report.outcome === "completed" ? "completed" : "scheduled";
   const notification = report.outcome === "blocked" ? notificationFor(task, report) : null;
+  let notificationDelivery = null;
+  if (notification) {
+    if (typeof deliverNotification !== "function") {
+      notificationDelivery = {
+        attempted: false,
+        delivered: false,
+        status: "pending",
+        reason: "notification sender not configured"
+      };
+    } else {
+      try {
+        const delivery = await deliverNotification(notification);
+        const delivered = delivery?.delivered === true;
+        notificationDelivery = {
+          attempted: true,
+          delivered,
+          status: delivered ? "delivered" : "failed",
+          reason: String(delivery?.reason || (delivered ? "sent" : "delivery failed"))
+        };
+      } catch (error) {
+        notificationDelivery = {
+          attempted: true,
+          delivered: false,
+          status: "failed",
+          reason: String(error?.message || error)
+        };
+      }
+    }
+    notification.delivery = notificationDelivery;
+  }
   const observation = {
     id: observationId,
     name: `Réveil · ${task.name || objectiveId}`,
@@ -215,6 +246,8 @@ export async function reportL1TaskWake({
     attemptedActions: report.attemptedActions || [],
     remainingOptions: report.remainingOptions || [],
     needsFromCitizen: report.needsFromCitizen || null,
+    notificationDeliveryStatus: notificationDelivery?.status || null,
+    notificationDeliveryReason: notificationDelivery?.reason || null,
     epistemicStatus: "observed",
     layer: "citizen_state"
   };
@@ -240,6 +273,9 @@ export async function reportL1TaskWake({
         task.lastWakeObservationId = $observationId,
         task.nextWakeAt = $nextWakeAt,
         task.blockerJson = $blockerJson,
+        task.notificationDeliveryStatus = $notificationDeliveryStatus,
+        task.notificationDeliveryReason = $notificationDeliveryReason,
+        task.lastNotificationAt = $lastNotificationAt,
         task.wakeCount = coalesce(task.wakeCount, 0) + 1
     RETURN task.id AS objectiveId
   `, { params: {
@@ -252,7 +288,10 @@ export async function reportL1TaskWake({
     reportedAt: report.reportedAt,
     outcome: report.outcome,
     nextWakeAt: report.nextWakeAt || null,
-    blockerJson
+    blockerJson,
+    notificationDeliveryStatus: notificationDelivery?.status || null,
+    notificationDeliveryReason: notificationDelivery?.reason || null,
+    lastNotificationAt: notificationDelivery?.attempted ? report.reportedAt : null
   } });
   return {
     graphId: config.id,
@@ -262,7 +301,8 @@ export async function reportL1TaskWake({
     taskStatus,
     wakeStatus,
     nextWakeAt: report.nextWakeAt || null,
-    notification
+    notification,
+    notificationDelivery
   };
 }
 

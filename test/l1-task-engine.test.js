@@ -80,10 +80,53 @@ test("blocked reports append an observation and return an MCP Telegram payload",
     selectGraphByName: async () => graph
   });
   assert.equal(result.notification.platform, "telegram");
+  assert.equal(result.notificationDelivery.status, "pending");
+  assert.equal(result.notificationDelivery.delivered, false);
   assert.match(result.notification.message, /Attendu de Nicolas/u);
   assert.equal(writes.length, 1);
   assert.match(writes[0].query, /wakeCount = coalesce/u);
   assert.equal(writes[0].options.params.wakeStatus, "blocked");
+  assert.equal(writes[0].options.params.notificationDeliveryStatus, "pending");
+});
+
+test("a failed Telegram delivery remains an explicit blocked delivery failure", async () => {
+  const writes = [];
+  const graph = {
+    roQuery: async () => ({ data: [{ task: {
+      id: "blocked-objective",
+      name: "Objectif bloqué",
+      nodeType: "objective",
+      status: "active"
+    } }] }),
+    query: async (query, options) => {
+      writes.push({ query, options });
+      return { data: [{ objectiveId: "blocked-objective" }] };
+    }
+  };
+  const result = await reportL1TaskWake({
+    objectiveId: "blocked-objective",
+    outcome: "blocked",
+    summary: "L'export manque.",
+    blockerCause: "Aucun fichier d'export n'est disponible.",
+    attemptedActions: ["Vérification du dossier privé"],
+    remainingOptions: ["Fournir un export ChatGPT", "Fournir un export Claude"],
+    needsFromCitizen: "Déposer au moins un export.",
+    deliverNotification: async () => ({ delivered: false, reason: "telegram http 503" }),
+    now: "2026-07-23T20:00:00Z",
+    manifest: { graphs: [{ id: "personal-graph", status: "active", falkorGraph: "personal_db", blueprintSync: { enabled: true } }] },
+    selectGraphByName: async () => graph
+  });
+
+  assert.equal(result.wakeStatus, "blocked");
+  assert.deepEqual(result.notificationDelivery, {
+    attempted: true,
+    delivered: false,
+    status: "failed",
+    reason: "telegram http 503"
+  });
+  assert.equal(writes[0].options.params.notificationDeliveryStatus, "failed");
+  assert.equal(writes[0].options.params.notificationDeliveryReason, "telegram http 503");
+  assert.equal(writes[0].options.params.lastNotificationAt, "2026-07-23T20:00:00.000Z");
 });
 
 test("L1 graph resolution follows manifest configuration instead of a fixed database", async () => {

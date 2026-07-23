@@ -947,9 +947,10 @@
       "phrase": "Construire et lancer la mission autonome récurrente d'injection des conversations dans le L1.",
       "family": "Injection conversations · travail",
       "summary": "Tâche historique de l'ancien chemin encounter-first. Ses critères sont conservés pour auditer les clusters déjà produits, mais elle ne gouverne plus les nouvelles ingestions. La décision latent-first et task-ci-autobiographical-recall-mvp portent désormais le travail actif.",
-      "workStatus": "superseded",
+      "workStatus": "cancelled",
       "priority": 0,
-      "autonomyMode": "disabled",
+      "autonomyMode": "review_required",
+      "lifecycleStatus": "superseded",
       "supersededBy": "task-ci-autobiographical-recall-mvp",
       "acceptanceCriteria": [
         "Un adaptateur de source liste, récupère et rend les conversations en ordre chrono-inverse.",

@@ -41,7 +41,8 @@ test("latent-first is the selected ingestion path and encounter-first remains hi
   assert.equal(encounter.supersededBy, decision.id);
   assert.equal(nodes.get("mech-ci-block-segmentation").lifecycleStatus, "superseded");
   assert.equal(nodes.get("mech-ci-block-atoms").lifecycleStatus, "superseded");
-  assert.equal(legacyTask.workStatus, "superseded");
+  assert.equal(legacyTask.workStatus, "cancelled");
+  assert.equal(legacyTask.lifecycleStatus, "superseded");
   assert.equal(legacyTask.supersededBy, recallTask.id);
   assert.equal(recallTask.workStatus, "ready");
   assert.ok(hasLink(

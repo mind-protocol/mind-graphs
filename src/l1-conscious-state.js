@@ -91,6 +91,7 @@ function compileEmotion(workspace, awareness, affect = {}, policy) {
   return {
     measurementStatus: hasFunctionalMeasurement ? "observed" : "unavailable",
     functional,
+    leading: dominant?.[0] || null,
     dominant: hasDominant ? dominant[0] : null,
     secondary: secondary?.[1] > 0 ? secondary[0] : null,
     dominanceMargin: margin,
@@ -122,8 +123,8 @@ function compilePresence(workspace, awareness, integrity, attention, policy) {
   const intensity = mean(components);
   const clarityEvidence = [fragmentation, churn, finite(awareness.uncertainty)].filter(value => value !== null);
   const clarity = !clarityEvidence.length ? "unavailable"
-    : Math.max(fragmentation || 0, churn || 0) >= policy.fragmented ? "fragmented"
-      : Math.max(fragmentation || 0, churn || 0, finite(awareness.uncertainty) || 0) >= policy.diffuse ? "diffuse"
+    : Math.max(fragmentation || 0, churn || 0) >= policy.fragmentation.fragmented ? "fragmented"
+      : Math.max(fragmentation || 0, churn || 0, finite(awareness.uncertainty) || 0) >= policy.fragmentation.diffuse ? "diffuse"
         : "clear";
   const breadthCount = slots.length || (workspace.activeNodeIds || []).length;
   const breadth = breadthCount === 0 ? "unavailable"
@@ -269,7 +270,7 @@ export function compileConsciousStateFrame({
     schemaVersion: CONSCIOUS_STATE_SCHEMA_VERSION,
     observedAt: workspace.observedAt || null,
     claimScope: "functional_state_not_human_consciousness_claim",
-    presence: compilePresence(workspace, resolvedAwareness, resolvedIntegrity, resolvedAttention, config.fragmentation),
+    presence: compilePresence(workspace, resolvedAwareness, resolvedIntegrity, resolvedAttention, config),
     tempo: {
       measurementStatus: pressure === null ? "unavailable" : "derived",
       state: tempoState(pressure, config.tempo, resolvedSafetyState, resolvedEnergyState),
@@ -388,7 +389,7 @@ function narrateEmotion(frame) {
     );
   }
   if (tone.mixed) {
-    const named = [tone.dominant, tone.secondary].filter(Boolean).map(item => AFFECT_LABELS[item] || item);
+    const named = [tone.leading, tone.secondary].filter(Boolean).map(item => AFFECT_LABELS[item] || item);
     return statement(
       named.length > 1
         ? `Mon état émotionnel est mélangé : ${named.join(" et ")} restent proches, sans dominante nette.`

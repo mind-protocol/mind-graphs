@@ -1,0 +1,792 @@
+{
+  "scope": "Modèle causal de travail pour l’économie Mind. Il décrit des choix de conception proposés, leurs raisons et leurs effets attendus ; il ne constitue ni une politique économique arrêtée ni une preuve que le bonheur peut être optimisé sans débat démocratique.",
+  "nodes": [
+    {
+      "id": "rationale-essential-access",
+      "name": "Les biens de vie ne peuvent dépendre du salaire",
+      "nodeType": "narrative",
+      "phrase": "Ce qui maintient en vie ne devrait pas disparaître avec l’emploi.",
+      "family": "Raison de design · accès vital",
+      "summary": "L’automatisation et la précarité rendent nécessaire un droit d’accès distinct du revenu du travail.",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-hoarding-power",
+      "name": "L’accumulation recrée la domination",
+      "nodeType": "narrative",
+      "phrase": "Si Mind peut devenir un stock, le besoin redevient pouvoir.",
+      "family": "Raison de design · anti-accumulation",
+      "summary": "Une monnaie destinée aux besoins vitaux perd sa fonction si elle peut être thésaurisée, spéculée ou capturée durablement.",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-luxury-scarcity",
+      "name": "La rareté luxueuse ne doit pas absorber Mind",
+      "nodeType": "narrative",
+      "phrase": "La villa rare reste dans l’argent ; la vie quotidienne entre dans Mind.",
+      "family": "Raison de design · périmètre",
+      "summary": "L’immobilier de luxe, les actifs spéculatifs et les biens positionnels restent dans l’économie monétaire classique afin de protéger le budget vital commun.",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-fixed-price-blindness",
+      "name": "Un prix fixe ignore le contexte",
+      "nodeType": "narrative",
+      "phrase": "La même chose n’a pas la même valeur pour chaque vie, à chaque instant.",
+      "family": "Raison de design · découverte",
+      "summary": "Un catalogue de prix permanent ne tient pas compte de l’urgence, de l’abondance locale, de la capacité disponible ni du contexte de la personne.",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-economy-without-senses",
+      "name": "L’économie ne ressent pas le bien-être",
+      "nodeType": "narrative",
+      "phrase": "Une économie qui ne perçoit que les transactions ne sait pas ce qu’elle répare.",
+      "family": "Raison de design · finalité",
+      "summary": "Les prix et volumes décrivent des échanges, mais pas directement la sécurité, la santé, l’autonomie ou la satisfaction vécue.",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "economy-dual-domain",
+      "name": "Deux domaines monétaires",
+      "nodeType": "narrative",
+      "phrase": "Mind achète les biens de vie ; l’argent reste le langage du luxe et de la rareté.",
+      "family": "Système Mind · périmètre économique",
+      "summary": "Une économie complémentaire réserve Mind aux besoins essentiels et laisse les biens rares, luxueux ou spéculatifs dans les monnaies classiques.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "economy-non-accumulable-mind",
+      "name": "Mind non accumulable",
+      "nodeType": "narrative",
+      "phrase": "Mind existe pour circuler : le protocole rend sa thésaurisation impossible.",
+      "family": "Système Mind · anti-stock",
+      "summary": "Le registre applique automatiquement redistribution, expiration ou plafond dynamique afin qu’un solde Mind ne puisse devenir une fortune durable.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "economy-wallet-levy",
+      "name": "Prélèvement continu sur tous les wallets",
+      "nodeType": "narrative",
+      "phrase": "Chaque wallet rend une fraction du flux au commun.",
+      "family": "Système Mind · redistribution",
+      "summary": "Une petite fraction des soldes ou du flux disponible est prélevée par le protocole pour financer l’émission quotidienne universelle.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "economy-universal-basic-compute",
+      "name": "Universal Basic Compute quotidien",
+      "nodeType": "narrative",
+      "phrase": "Chaque jour, chaque personne reçoit un nouveau pouvoir d’accès.",
+      "family": "Système Mind · émission universelle",
+      "summary": "Le protocole crédite quotidiennement chaque personne en Mind, à partir du flux redistribué entre les wallets, pour renouveler l’accès aux biens de vie.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "economy-swipe-intent",
+      "name": "Le swipe devient signal de besoin",
+      "nodeType": "narrative",
+      "phrase": "On ne choisit pas un prix : on exprime une intention.",
+      "family": "Système Mind · interface",
+      "summary": "Dans l’application, le swipe indique intérêt, besoin, urgence ou refus et déclenche une exploration locale des conditions d’échange.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "economy-local-price-exploration",
+      "name": "Prix exploratoire calculé à la volée",
+      "nodeType": "narrative",
+      "phrase": "Le prix apparaît au moment de la rencontre, puis disparaît.",
+      "family": "Système Mind · découverte locale",
+      "summary": "Un algorithme local propose une quantité de Mind selon le besoin, l’offre disponible, l’historique consenti et les contraintes collectives, sans prix universel permanent.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "economy-local-wellbeing-ai",
+      "name": "Algorithme local orienté bien-être",
+      "nodeType": "narrative",
+      "phrase": "L’intelligence explore ce qui aide, sans exporter la personne.",
+      "family": "Système Mind · IA locale",
+      "summary": "Une IA contrôlée par la personne peut aider à estimer l’utilité contextuelle et à apprendre de ses choix, sous consentement, audit et objectifs publiquement gouvernés.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "economy-monetary-nervous-system",
+      "name": "Système nerveux monétaire",
+      "nodeType": "narrative",
+      "phrase": "Mind fait circuler la valeur comme un système nerveux fait circuler la sensation.",
+      "family": "Système Mind · coordination",
+      "summary": "Les intentions locales, allocations, résultats et signaux de manque forment une boucle collective capable d’orienter les ressources vers ce qui augmente le bien-être.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "effect-universal-life-access",
+      "name": "Accès renouvelé aux biens de vie",
+      "nodeType": "narrative",
+      "phrase": "L’accès revient chaque jour, même quand le revenu disparaît.",
+      "family": "Effet recherché · sécurité matérielle",
+      "summary": "Nourriture, mobilité essentielle, soin, apprentissage et autres biens définis collectivement restent accessibles indépendamment de l’emploi.",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "effect-circulation-over-stock",
+      "name": "La circulation remplace le stock",
+      "nodeType": "narrative",
+      "phrase": "La puissance vient de l’accès au flux, pas de la taille du coffre.",
+      "family": "Effet recherché · égalité dynamique",
+      "summary": "L’impossibilité d’accumuler réduit l’avantage durable des grands soldes et maintient la monnaie en mouvement vers des usages présents.",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "effect-contextual-allocation",
+      "name": "Allocation contextuelle plutôt que prix unique",
+      "nodeType": "narrative",
+      "phrase": "La valeur s’ajuste à la situation sans devenir arbitraire.",
+      "family": "Effet recherché · adaptation",
+      "summary": "Le système explore localement une allocation qui tient compte des contraintes réelles tout en restant explicable, contestable et bornée.",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "effect-happiness-objective",
+      "name": "Le bonheur devient finalité gouvernée",
+      "nodeType": "narrative",
+      "phrase": "Les règles du jeu cherchent la vie meilleure, pas le solde maximal.",
+      "family": "Effet recherché · bien-être",
+      "summary": "Mind vise plusieurs dimensions de bien-être définies démocratiquement — sécurité, santé, autonomie, relations et capacité d’agir — plutôt qu’un score privé unique.",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "mind-purchase-scope",
+      "name": "Ombrelle · Périmètre des achats MIND",
+      "nodeType": "narrative",
+      "phrase": "MIND garantit ce qui permet de vivre, d’être autonome et de participer à la société.",
+      "family": "Politique MIND · éligibilité des achats",
+      "summary": "Politique de design proposée regroupant les biens et services achetables en MIND. Le périmètre couvre les besoins vitaux, l’autonomie et la participation sociale ; il reste public, révisable et contestable afin de ne pas devenir une liste paternaliste figée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "institution"
+    },
+    {
+      "id": "mind-purchase-ring-vital",
+      "name": "Achats MIND · Besoins vitaux",
+      "nodeType": "narrative",
+      "phrase": "La continuité de la vie ne dépend pas du revenu en euros.",
+      "family": "Périmètre MIND · vie",
+      "summary": "Cette branche rassemble les achats sans lesquels la sécurité physique, la santé ou le maintien dans un logement sont directement compromis.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-ring-autonomy",
+      "name": "Achats MIND · Autonomie",
+      "nodeType": "narrative",
+      "phrase": "Vivre suppose aussi pouvoir se déplacer, communiquer, apprendre et agir.",
+      "family": "Périmètre MIND · autonomie",
+      "summary": "Cette branche couvre les capacités matérielles et les services qui permettent de décider, travailler, prendre soin de proches et accomplir les démarches ordinaires sans dépendance évitable.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-ring-participation",
+      "name": "Achats MIND · Participation sociale",
+      "nodeType": "narrative",
+      "phrase": "MIND ne garantit pas seulement la survie, mais une place dans la vie commune.",
+      "family": "Périmètre MIND · participation",
+      "summary": "Cette branche protège un accès raisonnable à la culture, au sport, à la création, au repos et aux activités collectives, car l’exclusion sociale dégrade l’autonomie et le bien-être.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-food-water",
+      "name": "Achetable en MIND · Alimentation et eau",
+      "nodeType": "narrative",
+      "phrase": "Se nourrir et boire constituent le premier flux garanti.",
+      "family": "Périmètre MIND · vie",
+      "summary": "L’alimentation et l’eau entrent dans MIND parce qu’elles conditionnent immédiatement la survie et la santé ; leur accès ne doit pas disparaître avec le salaire.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-primary-housing",
+      "name": "Achetable en MIND · Logement principal",
+      "nodeType": "narrative",
+      "phrase": "Un lieu stable où vivre protège toutes les autres capacités.",
+      "family": "Périmètre MIND · vie",
+      "summary": "Le logement principal est éligible car la stabilité résidentielle conditionne la sécurité, la santé, la vie familiale et l’accès effectif aux autres services.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-basic-energy",
+      "name": "Achetable en MIND · Énergie domestique essentielle",
+      "nodeType": "narrative",
+      "phrase": "Chauffage, cuisson et électricité minimale rendent le logement habitable.",
+      "family": "Périmètre MIND · vie",
+      "summary": "L’énergie essentielle entre dans MIND pour maintenir des conditions de vie sûres, tout en restant bornée par un usage domestique raisonnable plutôt que par une consommation illimitée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-hygiene-clothing",
+      "name": "Achetable en MIND · Hygiène et vêtements essentiels",
+      "nodeType": "narrative",
+      "phrase": "La dignité corporelle et la protection climatique font partie du socle vital.",
+      "family": "Périmètre MIND · vie",
+      "summary": "Les produits d’hygiène et vêtements essentiels sont inclus parce qu’ils préviennent des risques sanitaires et permettent une présence digne dans la vie sociale.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-healthcare",
+      "name": "Achetable en MIND · Soins physiques et psychologiques",
+      "nodeType": "narrative",
+      "phrase": "Prévenir, soigner et retrouver sa capacité d’agir relèvent du même droit.",
+      "family": "Périmètre MIND · vie",
+      "summary": "Les consultations, médicaments et dispositifs de santé sont inclus parce qu’une maladie ou une souffrance psychique non prise en charge détruit directement l’autonomie.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-emergency-protection",
+      "name": "Achetable en MIND · Protection d’urgence",
+      "nodeType": "narrative",
+      "phrase": "Une crise ne doit pas suspendre l’accès à la sécurité immédiate.",
+      "family": "Périmètre MIND · vie",
+      "summary": "L’hébergement d’urgence, la mise à l’abri et les fournitures critiques sont éligibles afin de répondre aux ruptures soudaines avant qu’elles ne deviennent irréversibles.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-mobility",
+      "name": "Achetable en MIND · Mobilité quotidienne",
+      "nodeType": "narrative",
+      "phrase": "L’accès aux lieux de soin, de travail et de lien exige de pouvoir se déplacer.",
+      "family": "Périmètre MIND · autonomie",
+      "summary": "Les transports publics, la mobilité partagée, le vélo et les adaptations nécessaires sont inclus car l’immobilité subie coupe l’accès aux droits et aux relations.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-digital-access",
+      "name": "Achetable en MIND · Téléphone, internet et ordinateur",
+      "nodeType": "narrative",
+      "phrase": "Communiquer et accéder aux services numériques sont devenus des conditions d’autonomie.",
+      "family": "Périmètre MIND · autonomie",
+      "summary": "Une connectivité et des équipements numériques standards sont inclus parce que démarches, apprentissage, emploi et relations passent largement par ces infrastructures.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-essential-durables",
+      "name": "Achetable en MIND · Mobilier et équipements essentiels",
+      "nodeType": "narrative",
+      "phrase": "Un logement devient vivable grâce à un petit nombre de biens durables fonctionnels.",
+      "family": "Périmètre MIND · autonomie",
+      "summary": "Lit, réfrigérateur, cuisson, lavage et mobilier de base sont inclus car ils transforment un abri en environnement réellement habitable et soutenable.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-care-services",
+      "name": "Achetable en MIND · Garde et aide aux proches",
+      "nodeType": "narrative",
+      "phrase": "Prendre soin ne doit pas condamner l’aidant à perdre toute autonomie.",
+      "family": "Périmètre MIND · autonomie",
+      "summary": "Garde d’enfants, aide à domicile et soutien aux personnes dépendantes sont inclus parce qu’ils protègent simultanément la personne aidée et la capacité d’agir de l’aidant.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-learning",
+      "name": "Achetable en MIND · Éducation, formation et reconversion",
+      "nodeType": "narrative",
+      "phrase": "L’autonomie future dépend de la possibilité continue d’apprendre.",
+      "family": "Périmètre MIND · autonomie",
+      "summary": "L’éducation et la reconversion sont incluses afin que les transformations économiques ou technologiques ne ferment pas durablement les capacités de contribution choisie.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-work-tools",
+      "name": "Achetable en MIND · Outils d’activité",
+      "nodeType": "narrative",
+      "phrase": "Pouvoir contribuer suppose de disposer des outils adaptés à son activité.",
+      "family": "Périmètre MIND · autonomie",
+      "summary": "Les outils raisonnablement nécessaires à une activité professionnelle, civique ou créative sont inclus parce qu’ils permettent de produire, réparer et participer.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-legal-admin",
+      "name": "Achetable en MIND · Assistance juridique et administrative",
+      "nodeType": "narrative",
+      "phrase": "Un droit incompréhensible ou inaccessible n’est pas un droit effectif.",
+      "family": "Périmètre MIND · autonomie",
+      "summary": "L’accompagnement juridique et administratif est inclus pour rendre les droits utilisables, prévenir les abus et réduire les exclusions produites par la complexité institutionnelle.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-repair",
+      "name": "Achetable en MIND · Réparation et entretien",
+      "nodeType": "narrative",
+      "phrase": "Réparer préserve l’usage sans exiger une nouvelle extraction matérielle.",
+      "family": "Périmètre MIND · autonomie",
+      "summary": "La réparation et l’entretien sont inclus pour prolonger les droits d’usage, réduire les déchets et éviter que la panne réintroduise une barrière financière.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-culture-information",
+      "name": "Achetable en MIND · Culture et information",
+      "nodeType": "narrative",
+      "phrase": "Comprendre le monde et accéder aux œuvres font partie de la citoyenneté.",
+      "family": "Périmètre MIND · participation",
+      "summary": "Livres, presse, cinéma, musique et musées sont inclus dans une enveloppe raisonnable parce que l’information et la culture soutiennent l’esprit critique et l’appartenance sociale.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-sport",
+      "name": "Achetable en MIND · Sport et activité physique",
+      "nodeType": "narrative",
+      "phrase": "Bouger, jouer et entretenir son corps ne sont pas des luxes accessoires.",
+      "family": "Périmètre MIND · participation",
+      "summary": "Les pratiques sportives accessibles sont incluses pour leurs fonctions de santé, de lien social, de prévention et de confiance corporelle.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-creative-collective",
+      "name": "Achetable en MIND · Création et activités collectives",
+      "nodeType": "narrative",
+      "phrase": "Créer et faire avec d’autres entretiennent la capacité de se projeter.",
+      "family": "Périmètre MIND · participation",
+      "summary": "Les pratiques artistiques, associatives et collectives sont incluses parce qu’elles développent expression, relations, coopération et capacité d’initiative.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    },
+    {
+      "id": "mind-purchase-rest",
+      "name": "Achetable en MIND · Repos et mobilité de ressourcement",
+      "nodeType": "narrative",
+      "phrase": "Le repos réel protège la santé et la disponibilité aux autres.",
+      "family": "Périmètre MIND · participation",
+      "summary": "Un accès borné aux loisirs, au repos hors domicile et à la mobilité de ressourcement est inclus pour éviter que la récupération et la découverte deviennent réservées aux revenus élevés.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "mind-purchasing-scope",
+      "semanticType": "claim"
+    }
+  ],
+  "links": [
+    {
+      "source": "rationale-essential-access",
+      "target": "mind-purchase-scope",
+      "type": "MOTIVATES",
+      "justification": "L’indépendance des biens de vie vis-à-vis du salaire motive la définition explicite d’un périmètre d’achats garanti par MIND."
+    },
+    {
+      "source": "rationale-luxury-scarcity",
+      "target": "mind-purchase-scope",
+      "type": "SAFEGUARDS",
+      "justification": "La séparation avec la rareté luxueuse protège l’ombrelle contre la capture de la capacité commune par des biens positionnels ou spéculatifs."
+    },
+    {
+      "source": "mind-purchase-scope",
+      "target": "economy-dual-domain",
+      "type": "IMPLEMENTS",
+      "justification": "La politique d’éligibilité rend opérationnelle la séparation entre les achats MIND orientés vers les besoins et les achats discrétionnaires restant en euros."
+    },
+    {
+      "source": "mind-purchase-ring-vital",
+      "target": "mind-purchase-scope",
+      "type": "PART_OF",
+      "justification": "Les besoins vitaux forment le premier cercle de l’ombrelle parce que leur interruption menace directement la vie, la santé ou la sécurité."
+    },
+    {
+      "source": "mind-purchase-ring-autonomy",
+      "target": "mind-purchase-scope",
+      "type": "PART_OF",
+      "justification": "L’autonomie forme le deuxième cercle car survivre sans pouvoir communiquer, se déplacer, apprendre ou agir maintient une dépendance structurelle."
+    },
+    {
+      "source": "mind-purchase-ring-participation",
+      "target": "mind-purchase-scope",
+      "type": "PART_OF",
+      "justification": "La participation sociale forme le troisième cercle afin que MIND protège une vie relationnelle et citoyenne plutôt qu’un minimum de subsistance isolé."
+    },
+    {
+      "source": "mind-purchase-food-water",
+      "target": "mind-purchase-ring-vital",
+      "type": "PART_OF",
+      "justification": "L’alimentation et l’eau appartiennent au cercle vital parce que leur privation produit un dommage physique immédiat."
+    },
+    {
+      "source": "mind-purchase-primary-housing",
+      "target": "mind-purchase-ring-vital",
+      "type": "PART_OF",
+      "justification": "Le logement principal appartient au cercle vital parce qu’il fournit sécurité, stabilité et continuité d’accès aux autres droits."
+    },
+    {
+      "source": "mind-purchase-basic-energy",
+      "target": "mind-purchase-ring-vital",
+      "type": "PART_OF",
+      "justification": "L’énergie domestique essentielle appartient au cercle vital car elle rend le logement habitable et permet chauffage, cuisson et conservation."
+    },
+    {
+      "source": "mind-purchase-hygiene-clothing",
+      "target": "mind-purchase-ring-vital",
+      "type": "PART_OF",
+      "justification": "Hygiène et vêtements essentiels appartiennent au cercle vital pour protéger la santé, le corps et la dignité quotidienne."
+    },
+    {
+      "source": "mind-purchase-healthcare",
+      "target": "mind-purchase-ring-vital",
+      "type": "PART_OF",
+      "justification": "Les soins physiques et psychologiques appartiennent au cercle vital parce qu’ils préviennent la perte durable de santé et de capacité d’agir."
+    },
+    {
+      "source": "mind-purchase-emergency-protection",
+      "target": "mind-purchase-ring-vital",
+      "type": "PART_OF",
+      "justification": "La protection d’urgence appartient au cercle vital afin de répondre immédiatement aux crises avant leur aggravation."
+    },
+    {
+      "source": "mind-purchase-mobility",
+      "target": "mind-purchase-ring-autonomy",
+      "type": "PART_OF",
+      "justification": "La mobilité appartient au cercle d’autonomie parce qu’elle conditionne l’accès concret au soin, au travail, aux proches et aux institutions."
+    },
+    {
+      "source": "mind-purchase-digital-access",
+      "target": "mind-purchase-ring-autonomy",
+      "type": "PART_OF",
+      "justification": "L’accès numérique appartient au cercle d’autonomie car communication, démarches, apprentissage et activité passent par ces infrastructures."
+    },
+    {
+      "source": "mind-purchase-essential-durables",
+      "target": "mind-purchase-ring-autonomy",
+      "type": "PART_OF",
+      "justification": "Les équipements domestiques essentiels appartiennent au cercle d’autonomie parce qu’ils rendent possible une vie quotidienne stable dans le logement."
+    },
+    {
+      "source": "mind-purchase-care-services",
+      "target": "mind-purchase-ring-autonomy",
+      "type": "PART_OF",
+      "justification": "La garde et l’aide aux proches appartiennent au cercle d’autonomie car elles soutiennent à la fois la personne aidée et l’aidant."
+    },
+    {
+      "source": "mind-purchase-learning",
+      "target": "mind-purchase-ring-autonomy",
+      "type": "PART_OF",
+      "justification": "Éducation, formation et reconversion appartiennent au cercle d’autonomie parce qu’elles renouvellent les capacités dans un environnement changeant."
+    },
+    {
+      "source": "mind-purchase-work-tools",
+      "target": "mind-purchase-ring-autonomy",
+      "type": "PART_OF",
+      "justification": "Les outils d’activité appartiennent au cercle d’autonomie car une capacité sans moyens matériels reste difficilement exerçable."
+    },
+    {
+      "source": "mind-purchase-legal-admin",
+      "target": "mind-purchase-ring-autonomy",
+      "type": "PART_OF",
+      "justification": "L’assistance juridique et administrative appartient au cercle d’autonomie pour rendre les droits compréhensibles, opposables et utilisables."
+    },
+    {
+      "source": "mind-purchase-repair",
+      "target": "mind-purchase-ring-autonomy",
+      "type": "PART_OF",
+      "justification": "Réparation et entretien appartiennent au cercle d’autonomie parce qu’ils maintiennent les usages essentiels sans imposer un nouvel achat."
+    },
+    {
+      "source": "mind-purchase-culture-information",
+      "target": "mind-purchase-ring-participation",
+      "type": "PART_OF",
+      "justification": "Culture et information appartiennent au cercle de participation car elles soutiennent compréhension, expression et citoyenneté."
+    },
+    {
+      "source": "mind-purchase-sport",
+      "target": "mind-purchase-ring-participation",
+      "type": "PART_OF",
+      "justification": "Le sport appartient au cercle de participation pour ses effets de prévention, de lien social et de confiance corporelle."
+    },
+    {
+      "source": "mind-purchase-creative-collective",
+      "target": "mind-purchase-ring-participation",
+      "type": "PART_OF",
+      "justification": "La création et les activités collectives appartiennent au cercle de participation parce qu’elles entretiennent expression, coopération et projection."
+    },
+    {
+      "source": "mind-purchase-rest",
+      "target": "mind-purchase-ring-participation",
+      "type": "PART_OF",
+      "justification": "Le repos et la mobilité de ressourcement appartiennent au cercle de participation car la récupération et la découverte contribuent à une vie soutenable."
+    },
+    {
+      "source": "rationale-essential-access",
+      "target": "economy-dual-domain",
+      "type": "MOTIVATES",
+      "story": "Séparer l’accès vital du revenu motive la création d’un domaine Mind réservé aux biens de vie.",
+      "logic": "problème → périmètre économique",
+      "condition": "définition collective et révisable des biens de vie",
+      "risk": "une frontière trop rigide peut exclure des besoins émergents",
+      "justification": "Séparer l’accès vital du revenu motive la création d’un domaine Mind réservé aux biens de vie."
+    },
+    {
+      "source": "rationale-luxury-scarcity",
+      "target": "economy-dual-domain",
+      "type": "MOTIVATES",
+      "story": "Maintenir le luxe et les actifs rares dans l’argent empêche qu’ils aspirent le flux Mind destiné à la vie quotidienne.",
+      "logic": "protection du commun par séparation des domaines",
+      "condition": "classification transparente et contestable",
+      "risk": "arbitrage et contournement entre les deux monnaies",
+      "justification": "Maintenir le luxe et les actifs rares dans l’argent empêche qu’ils aspirent le flux Mind destiné à la vie quotidienne."
+    },
+    {
+      "source": "rationale-hoarding-power",
+      "target": "economy-non-accumulable-mind",
+      "type": "MOTIVATES",
+      "story": "Le risque de capture transforme l’anti-accumulation en propriété technique du protocole, pas en simple recommandation morale.",
+      "logic": "risque de pouvoir → contrainte protocolaire",
+      "condition": "règles vérifiables on-chain et résistantes aux comptes multiples",
+      "risk": "la richesse peut se déplacer vers des actifs hors Mind",
+      "justification": "Le risque de capture transforme l’anti-accumulation en propriété technique du protocole, pas en simple recommandation morale."
+    },
+    {
+      "source": "rationale-hoarding-power",
+      "target": "economy-wallet-levy",
+      "type": "MOTIVATES",
+      "story": "Le prélèvement continu remet en circulation une fraction de ce qui resterait immobile dans les wallets.",
+      "logic": "stock dormant → retour au flux commun",
+      "condition": "taux lisible, prévisible et gouverné",
+      "risk": "un prélèvement mal calibré peut accélérer des dépenses artificielles",
+      "justification": "Le prélèvement continu remet en circulation une fraction de ce qui resterait immobile dans les wallets."
+    },
+    {
+      "source": "rationale-fixed-price-blindness",
+      "target": "economy-swipe-intent",
+      "type": "MOTIVATES",
+      "story": "Remplacer l’étiquette fixe par un geste d’intention permet au système de demander le contexte avant de proposer une allocation.",
+      "logic": "information insuffisante → nouveau signal",
+      "condition": "interface accessible et droit au refus",
+      "risk": "le swipe simplifie excessivement des besoins complexes",
+      "justification": "Remplacer l’étiquette fixe par un geste d’intention permet au système de demander le contexte avant de proposer une allocation."
+    },
+    {
+      "source": "rationale-fixed-price-blindness",
+      "target": "economy-local-price-exploration",
+      "type": "MOTIVATES",
+      "story": "La cécité du prix fixe motive une exploration locale au moment précis de la rencontre entre besoin et ressource.",
+      "logic": "prix statique → découverte contextuelle",
+      "condition": "bornes publiques, explication et recours",
+      "risk": "discrimination algorithmique ou instabilité des allocations",
+      "justification": "La cécité du prix fixe motive une exploration locale au moment précis de la rencontre entre besoin et ressource."
+    },
+    {
+      "source": "rationale-economy-without-senses",
+      "target": "economy-monetary-nervous-system",
+      "type": "MOTIVATES",
+      "story": "L’absence de sensation collective motive une boucle où chaque intention et chaque résultat peuvent devenir un signal de manque ou de réparation.",
+      "logic": "angle mort du marché → boucle sensorielle",
+      "condition": "signaux agrégés sans surveillance individuelle",
+      "risk": "confondre mesure, corrélation et bien-être réel",
+      "justification": "L’absence de sensation collective motive une boucle où chaque intention et chaque résultat peuvent devenir un signal de manque ou de réparation."
+    },
+    {
+      "source": "effect-universal-life-access",
+      "target": "economy-dual-domain",
+      "type": "MOTIVATES",
+      "story": "Le périmètre réservé empêche les usages de luxe de concurrencer directement l’accès aux ressources vitales en Mind.",
+      "logic": "séparation des domaines → capacité vitale protégée",
+      "condition": "offre réelle suffisante dans le domaine Mind",
+      "risk": "un droit monétaire sans biens disponibles reste nominal",
+      "justification": "Effet recherché, non effet affirmé : Le périmètre réservé empêche les usages de luxe de concurrencer directement l’accès aux ressources vitales en Mind.",
+      "migratedFrom": "CAUSES economy-dual-domain→effect-universal-life-access"
+    },
+    {
+      "source": "economy-wallet-levy",
+      "target": "economy-universal-basic-compute",
+      "type": "FEEDS",
+      "story": "Les fractions prélevées sur tous les wallets alimentent le crédit quotidien versé à chaque personne.",
+      "logic": "collecte distribuée → émission universelle",
+      "condition": "identité humaine résistante aux doublons et gouvernance du taux",
+      "risk": "attaques Sybil, fuite des wallets ou insuffisance du fonds",
+      "justification": "Les fractions prélevées sur tous les wallets alimentent le crédit quotidien versé à chaque personne."
+    },
+    {
+      "source": "economy-wallet-levy",
+      "target": "economy-non-accumulable-mind",
+      "type": "IMPLEMENTS",
+      "story": "La non-accumulation prend corps dans le retour automatique d’une partie du solde vers le flux commun.",
+      "logic": "règle anti-stock → mécanisme de redistribution",
+      "condition": "exécution blockchain cohérente sur tous les wallets",
+      "risk": "contournement par conversion ou fragmentation",
+      "justification": "Le prélèvement continu met en œuvre la règle de non-accumulation : celle-ci « prend corps dans le retour automatique d’une partie du solde vers le flux commun ».",
+      "migratedFrom": "CAUSES economy-non-accumulable-mind→economy-wallet-levy"
+    },
+    {
+      "source": "effect-circulation-over-stock",
+      "target": "economy-non-accumulable-mind",
+      "type": "MOTIVATES",
+      "story": "L’impossibilité technique de conserver indéfiniment Mind déplace la puissance économique du stock vers l’accès récurrent au flux.",
+      "logic": "impossibilité de thésauriser → circulation dominante",
+      "condition": "les besoins futurs légitimes disposent d’autres mécanismes de réservation",
+      "risk": "absence d’épargne de précaution dans le domaine Mind",
+      "justification": "Effet recherché, non effet affirmé : L’impossibilité technique de conserver indéfiniment Mind déplace la puissance économique du stock vers l’accès récurrent au flux.",
+      "migratedFrom": "CAUSES economy-non-accumulable-mind→effect-circulation-over-stock"
+    },
+    {
+      "source": "effect-universal-life-access",
+      "target": "economy-universal-basic-compute",
+      "type": "MOTIVATES",
+      "story": "Le renouvellement quotidien du solde restaure continuellement une capacité minimale d’accès aux biens de vie.",
+      "logic": "émission quotidienne → droit d’accès renouvelé",
+      "condition": "montant indexé sur les capacités réelles et les besoins",
+      "risk": "inflation d’allocation si l’offre vitale ne suit pas",
+      "justification": "Effet recherché, non effet affirmé : Le renouvellement quotidien du solde restaure continuellement une capacité minimale d’accès aux biens de vie.",
+      "migratedFrom": "CAUSES economy-universal-basic-compute→effect-universal-life-access"
+    },
+    {
+      "source": "economy-swipe-intent",
+      "target": "economy-local-price-exploration",
+      "type": "FEEDS",
+      "story": "Le geste fournit le signal initial à partir duquel l’algorithme explore une proposition locale.",
+      "logic": "intention exprimée → exploration",
+      "condition": "le geste encode au minimum besoin, refus et urgence",
+      "risk": "nudges ou design addictif de l’interface",
+      "justification": "Le geste fournit le signal initial à partir duquel l’algorithme explore une proposition locale."
+    },
+    {
+      "source": "economy-local-wellbeing-ai",
+      "target": "economy-local-price-exploration",
+      "type": "FEEDS",
+      "story": "L’IA locale peut enrichir l’exploration avec le contexte consenti de la personne sans envoyer sa mémoire brute au réseau.",
+      "logic": "contexte personnel local → proposition plus pertinente",
+      "condition": "modèle local, explicable, portable et révocable",
+      "risk": "profilage intime, biais appris ou dépendance au modèle",
+      "justification": "L’IA locale peut enrichir l’exploration avec le contexte consenti de la personne sans envoyer sa mémoire brute au réseau."
+    },
+    {
+      "source": "effect-contextual-allocation",
+      "target": "economy-local-price-exploration",
+      "type": "MOTIVATES",
+      "story": "Le calcul à la volée remplace le prix universel par une proposition bornée qui s’adapte à l’offre, au besoin et au contexte.",
+      "logic": "exploration locale → allocation contextuelle",
+      "condition": "contraintes d’équité vérifiables et possibilité d’appel",
+      "risk": "deux personnes pourraient recevoir des propositions injustement différentes",
+      "justification": "Effet recherché, non effet affirmé : Le calcul à la volée remplace le prix universel par une proposition bornée qui s’adapte à l’offre, au besoin et au contexte.",
+      "migratedFrom": "CAUSES economy-local-price-exploration→effect-contextual-allocation"
+    },
+    {
+      "source": "economy-local-price-exploration",
+      "target": "economy-monetary-nervous-system",
+      "type": "FEEDS",
+      "story": "Chaque proposition acceptée, refusée ou corrigée renvoie au système un signal sur l’état réel des besoins et des ressources.",
+      "logic": "micro-décisions → sensation collective agrégée",
+      "condition": "agrégation protectrice et minimisation des données",
+      "risk": "la boucle peut amplifier des comportements manipulés",
+      "justification": "Chaque proposition acceptée, refusée ou corrigée renvoie au système un signal sur l’état réel des besoins et des ressources."
+    },
+    {
+      "source": "effect-universal-life-access",
+      "target": "economy-monetary-nervous-system",
+      "type": "FEEDS",
+      "story": "Les résultats d’accès ou de manque indiquent au système nerveux où la circulation réussit et où elle doit être réparée.",
+      "logic": "résultat matériel → signal de correction",
+      "condition": "mesurer l’accès réel, pas seulement la dépense",
+      "risk": "optimiser l’indicateur au lieu de l’expérience vécue",
+      "justification": "Les résultats d’accès ou de manque indiquent au système nerveux où la circulation réussit et où elle doit être réparée."
+    },
+    {
+      "source": "effect-happiness-objective",
+      "target": "economy-monetary-nervous-system",
+      "type": "MOTIVATES",
+      "story": "La boucle sensorielle permet d’orienter progressivement les règles vers plusieurs dimensions de bien-être plutôt que vers l’accumulation.",
+      "logic": "sensation + gouvernance → optimisation du bien-être",
+      "condition": "objectifs pluralistes, publics et modifiables démocratiquement",
+      "risk": "paternalisme, surveillance ou réduction du bonheur à un score",
+      "justification": "Effet recherché, non effet affirmé : La boucle sensorielle permet d’orienter progressivement les règles vers plusieurs dimensions de bien-être plutôt que vers l’accumulation.",
+      "migratedFrom": "CAUSES economy-monetary-nervous-system→effect-happiness-objective"
+    },
+    {
+      "source": "axiom-needs-before-wealth",
+      "target": "economy-dual-domain",
+      "type": "GROUNDS",
+      "story": "Donner priorité aux besoins fonde la séparation entre le domaine vital de Mind et le domaine discrétionnaire de l’argent.",
+      "logic": "axiome → périmètre",
+      "condition": "débat collectif sur les besoins",
+      "risk": "capture politique de la définition de l’essentiel",
+      "justification": "Donner priorité aux besoins fonde la séparation entre le domaine vital de Mind et le domaine discrétionnaire de l’argent."
+    },
+    {
+      "source": "axiom-local-first",
+      "target": "economy-local-wellbeing-ai",
+      "type": "SAFEGUARDS",
+      "story": "Le principe local d’abord empêche que l’optimisation économique devienne une extraction centralisée de l’intimité.",
+      "logic": "souveraineté technique → limite de l’IA économique",
+      "condition": "calcul effectivement local et auditable",
+      "risk": "dépendances distantes cachées",
+      "justification": "Le principe local d’abord empêche que l’optimisation économique devienne une extraction centralisée de l’intimité."
+    },
+    {
+      "source": "axiom-human-sovereignty",
+      "target": "economy-swipe-intent",
+      "type": "SAFEGUARDS",
+      "story": "Le swipe doit rester une proposition humaine réversible, jamais un consentement global donné au système.",
+      "logic": "souveraineté → geste révocable",
+      "condition": "refus sans pénalité et historique contrôlé par la personne",
+      "risk": "consentement obscur ou fatigue décisionnelle",
+      "justification": "Le swipe doit rester une proposition humaine réversible, jamais un consentement global donné au système."
+    },
+    {
+      "source": "axiom-repair",
+      "target": "effect-happiness-objective",
+      "type": "GROUNDS",
+      "story": "Heaven is repair donne à l’objectif de bien-être sa direction : restaurer la capacité de vivre et d’agir.",
+      "logic": "finalité de réparation → objectif économique",
+      "condition": "aucune métrique unique ne remplace la délibération humaine",
+      "risk": "rhétorique du soin utilisée pour imposer des choix",
+      "justification": "Heaven is repair donne à l’objectif de bien-être sa direction : restaurer la capacité de vivre et d’agir."
+    },
+    {
+      "source": "effect-happiness-objective",
+      "target": "innovation-mind-protocol",
+      "type": "CONVERGES_IN",
+      "story": "L’économie Mind rejoint le protocole comme système de règles monétaires explicitement orientées vers une vie meilleure.",
+      "logic": "effet économique → finalité du protocole",
+      "condition": "gouvernance démocratique continue",
+      "risk": "promesse totale impossible à garantir",
+      "justification": "L’économie Mind rejoint le protocole comme système de règles monétaires explicitement orientées vers une vie meilleure."
+    },
+    {
+      "source": "economy-monetary-nervous-system",
+      "target": "innovation-mind-protocol",
+      "type": "CONVERGES_IN",
+      "story": "Le système nerveux monétaire apporte à Mind Protocol une boucle continue entre besoins, allocations, résultats et réparation.",
+      "logic": "coordination économique → architecture Mind",
+      "condition": "interopérabilité avec les Minds personnels et protection des données",
+      "risk": "centralisation de la coordination",
+      "justification": "Le système nerveux monétaire apporte à Mind Protocol une boucle continue entre besoins, allocations, résultats et réparation."
+    }
+  ]
+}

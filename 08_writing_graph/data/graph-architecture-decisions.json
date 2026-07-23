@@ -1,0 +1,544 @@
+{
+  "scope": "Arbitrages d'architecture de l'outil Mind Causal Graph lui-même, pris le 22 juillet 2026. Ces décisions portent sur la structure du graphe et de ses bases, pas sur la doctrine de Mind Protocol. Les raisons sont conservées avec les options rejetées, conformément au principe « toute décision à fort impact inscrit ses options rejetées ».",
+  "nodes": [
+    {
+      "id": "rationale-cluster-is-not-a-boundary",
+      "name": "Raison · Un clusterId n'est pas une frontière",
+      "nodeType": "narrative",
+      "phrase": "Le science graph n'existait que comme valeur de clusterId dans la base du graphe de design.",
+      "family": "Architecture du graphe · frontières",
+      "summary": "Une seule base FalkorDB, un seul label MindNode, une seule ontologie et un seul jeu d'algorithmes couvraient l'ensemble du corpus. Le cluster ne servait qu'au regroupement dans les rapports, jamais de frontière de calcul : l'indicateur de saturation causale mélangeait mécanismes du protocole, du science graph et du pilotage projet.",
+      "clusterId": "graph-architecture",
+      "documentSection": "constat d'inventaire",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-descriptors-are-not-content",
+      "name": "Raison · Décrire un système n'est pas être son contenu",
+      "nodeType": "narrative",
+      "phrase": "Les nœuds sci-* et csg-* décrivent le graphe scientifique ; ils ne sont pas la matière scientifique.",
+      "family": "Architecture du graphe · frontières",
+      "summary": "Déplacer ces nœuds vers une base scientifique produirait un second graphe de design plutôt qu'un graphe scientifique, et couperait les liens transverses qui rattachent la science aux autres endgames et à l'économie du projet.",
+      "clusterId": "graph-architecture",
+      "documentSection": "constat d'inventaire",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-action-rights-differ-by-layer",
+      "name": "Raison · « Agir » ne signifie pas la même chose selon la couche",
+      "nodeType": "narrative",
+      "phrase": "Filtrer une connaissance pour agir, alerter un humain et engager une dépense n'ont ni le même coût d'erreur ni la même réversibilité.",
+      "family": "Architecture du graphe · gouvernance de la preuve",
+      "summary": "Le graphe scientifique décrit une connaissance continue et dérivée ; il ne promeut pas les claims par paliers. Le seuil apparaît seulement lorsqu'un lecteur choisit quelles connaissances mobiliser pour ordonnancer une expérience, alerter une personne, engager une dépense ou prendre la parole publiquement. Ces actions n'ont ni le même coût d'erreur ni la même réversibilité : leur cadre doit donc choisir et justifier son propre seuil sans modifier le graphe.",
+      "clusterId": "graph-architecture",
+      "documentSection": "périmètre du pare-feu",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-quality-vector-versus-ladder",
+      "name": "Raison · Un seuil d'action n'est pas une mesure de qualité",
+      "nodeType": "narrative",
+      "phrase": "Le vecteur de qualité refuse le score unique ; un seuil d'action est une loupe choisie par un usage, pas un palier de connaissance.",
+      "family": "Architecture du graphe · gouvernance de la preuve",
+      "summary": "Le contrat de vecteur de qualité sépare identifiabilité, validité, mesure, robustesse, réplication et transportabilité, et interdit explicitement leur fusion en un score opaque. La certitude native reste continue et dérivée des justifications. Un usage peut appliquer un seuil au moment d'agir, selon son contexte et son coût d'erreur, mais ce filtre de lecture n'ajoute aucun palier au graphe et ne remplace jamais le vecteur de qualité.",
+      "clusterId": "graph-architecture",
+      "documentSection": "périmètre du pare-feu",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-one-declared-file-list",
+      "name": "Raison · Une seule liste de fichiers déclarée",
+      "nodeType": "narrative",
+      "phrase": "Le chargement du corpus était décrit trois fois, de trois façons divergentes.",
+      "family": "Architecture du graphe · chargement",
+      "summary": "Le seed énumérait ses fichiers en dur, le validateur maintenait une seconde liste qui omettait déjà la racine, et le calcul des statistiques balayait le répertoire entier. Un fichier ajouté pouvait donc être compté sans être validé, ou validé sans être chargé. Les particularités par fichier étaient de surcroît devinées depuis leur nom.",
+      "clusterId": "graph-architecture",
+      "documentSection": "constat d'inventaire",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "decision-science-graph-separation",
+      "name": "Décision · Base distincte pour la matière scientifique",
+      "nodeType": "moment",
+      "phrase": "Le graphe scientifique devient une base séparée ; les nœuds qui le décrivent restent dans le graphe de design.",
+      "family": "Décision d'architecture · frontières",
+      "summary": "Arbitrage sur la nature de la séparation entre le graphe de design de Mind Protocol et le graphe scientifique que ce design décrit.",
+      "decisionNeeded": "Choisir entre une base scientifique distincte accueillant la matière scientifique, le maintien d'un simple cluster, ou le déplacement des nœuds descripteurs.",
+      "verificationNeeded": "manifeste déclarant deux graphes, validateur et seed paramétrés par graphe, aucun lien inter-bases dans les données",
+      "questionCategory": "architecture",
+      "decisionStatus": "approved",
+      "responsibleRole": "Auteur du projet · architecture du graphe",
+      "decisionDue": "2026-07-22",
+      "chosenOptionId": "option-science-separate-database",
+      "decisionRationale": "Une base distincte n'a d'intérêt qu'avec une ontologie distincte, faute de quoi elle ne serait qu'un clusterId plus coûteux. Les nœuds sci-* et csg-* restent dans le graphe de design parce qu'ils décrivent le système au lieu d'en être le contenu ; les déplacer aurait coupé leurs liens vers les autres endgames et l'économie du projet.",
+      "reviewDate": "2026-10-22",
+      "closureEvidence": "graphs.json déclare les deux graphes ; seed et validate lisent le manifeste ; aucune arête ne traverse la frontière",
+      "optionCriteria": [
+        "isolation réelle des permissions",
+        "préservation des liens transverses",
+        "coût de migration",
+        "lisibilité de la frontière"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-science-separate-database",
+      "name": "Option A · Base et ontologie scientifiques distinctes",
+      "nodeType": "narrative",
+      "phrase": "La nouvelle base accueille études, claims, estimations et preuves ; les descripteurs restent côté design.",
+      "family": "Option d'architecture · frontières",
+      "summary": "Option retenue. Elle crée l'objet que le corpus décrit depuis la spécification CSG sans le confondre avec sa propre description.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "isolation réelle des droits d'écriture",
+        "ontologie scientifique enfin possible",
+        "indicateurs calculés par périmètre",
+        "liens transverses du design préservés"
+      ],
+      "optionRisks": [
+        "deux ontologies à maintenir",
+        "références inter-graphes sans arête native",
+        "chargement et API à paramétrer"
+      ],
+      "optionConditions": [
+        "manifeste unique de composition",
+        "aucune arête traversant la frontière",
+        "socle de preuve partagé et non dupliqué"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-science-cluster-only",
+      "name": "Option B · Conserver un simple cluster",
+      "nodeType": "narrative",
+      "phrase": "Le science graph reste une valeur de clusterId dans la base unique.",
+      "family": "Option d'architecture · frontières",
+      "summary": "Option écartée. Elle préserve la simplicité mais laisse les permissions, l'ontologie et les indicateurs indistincts entre design et science.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "aucun coût de migration",
+        "traversée directe entre tous les nœuds"
+      ],
+      "optionRisks": [
+        "aucune isolation des droits d'écriture",
+        "ontologie scientifique impossible",
+        "indicateurs causaux mélangeant les périmètres"
+      ],
+      "optionConditions": [
+        "renoncer explicitement à la chaîne Study → Estimate → Claim → Evidence"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-science-move-descriptors",
+      "name": "Option C · Déplacer les descripteurs sci-* et csg-*",
+      "nodeType": "narrative",
+      "phrase": "Les nœuds décrivant le graphe scientifique migrent vers la nouvelle base.",
+      "family": "Option d'architecture · frontières",
+      "summary": "Option écartée. Elle déplace de la documentation en croyant créer un système, et sacrifie les liens qui rattachent la science au reste du projet.",
+      "optionCode": "C",
+      "optionBenefits": [
+        "regroupement nominal de tout ce qui porte le mot science"
+      ],
+      "optionRisks": [
+        "création d'un second graphe de design",
+        "perte des liens vers les autres endgames et l'économie",
+        "confusion durable entre décrire et contenir"
+      ],
+      "optionConditions": [
+        "accepter de couper quatre relations transverses existantes"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "decision-science-ontology-separate",
+      "name": "Décision · Ontologie propre au graphe scientifique",
+      "nodeType": "moment",
+      "phrase": "Le graphe scientifique reçoit sa propre grammaire plutôt que celle du graphe de design.",
+      "family": "Décision d'architecture · ontologie",
+      "summary": "Arbitrage sur la grammaire du nouveau graphe : réutiliser l'ontologie de design ou en écrire une adaptée aux objets scientifiques.",
+      "decisionNeeded": "Décider si le graphe scientifique partage l'ontologie 1.9.0 ou reçoit une ontologie versionnée séparément.",
+      "verificationNeeded": "ontologie scientifique versionnée, validée par le même validateur paramétré, et couvrant les primitives du noyau CSG",
+      "questionCategory": "architecture",
+      "decisionStatus": "approved",
+      "responsibleRole": "Auteur du projet · architecture du graphe",
+      "decisionDue": "2026-07-22",
+      "chosenOptionId": "option-science-own-ontology",
+      "decisionRationale": "L'ontologie 1.9.0 ne porte ni variable, ni intervention, ni confondeur, ni médiateur, ni transportabilité, ni bitemporalité : elle décrit un graphe de design. La spécification CSG réclame ces primitives depuis l'origine et les décrit comme une cible non implémentée. Partager l'ontologie viderait la séparation des bases de son intérêt.",
+      "reviewDate": "2026-10-22",
+      "closureEvidence": "science/ontology.json versionnée, validée, et couvrant les cinq primitives du noyau",
+      "optionCriteria": [
+        "expressivité pour les objets scientifiques",
+        "coût de maintenance de deux grammaires",
+        "compatibilité du socle de preuve partagé"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-science-own-ontology",
+      "name": "Option A · Ontologie scientifique versionnée à part",
+      "nodeType": "narrative",
+      "phrase": "Variable, mécanisme, contexte, intervention et observation deviennent des types de première classe.",
+      "family": "Option d'architecture · ontologie",
+      "summary": "Option retenue. Elle rend enfin exprimables les objets que la spécification CSG décrit comme le noyau irréductible.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "primitives causales exprimables",
+        "contrats d'écriture et de provenance propres au scientifique",
+        "évolution indépendante des deux grammaires"
+      ],
+      "optionRisks": [
+        "deux ontologies à faire vivre",
+        "risque de divergence du socle de preuve partagé"
+      ],
+      "optionConditions": [
+        "socle de niveaux de preuve déclaré une seule fois et partagé",
+        "validateur unique paramétré par graphe"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-science-shared-ontology",
+      "name": "Option B · Réutiliser l'ontologie de design",
+      "nodeType": "narrative",
+      "phrase": "Les deux bases partagent les 29 types et 38 prédicats existants.",
+      "family": "Option d'architecture · ontologie",
+      "summary": "Option écartée. Deux bases avec la même grammaire ne se distinguent que par leur coût.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "une seule grammaire à maintenir",
+        "outillage inchangé"
+      ],
+      "optionRisks": [
+        "objets scientifiques inexprimables",
+        "séparation sans bénéfice réel"
+      ],
+      "optionConditions": [
+        "renoncer aux primitives du noyau CSG"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "decision-evidence-firewall-scope",
+      "name": "Décision · Certitude scientifique et seuils d'action",
+      "nodeType": "moment",
+      "phrase": "La certitude appartient au graphe scientifique ; chaque cadre choisit ensuite son seuil d'action sans modifier cette connaissance.",
+      "family": "Décision d'architecture · gouvernance de la preuve",
+      "summary": "La connaissance n'est soumise ni à une cérémonie de promotion ni à une matrice transverse. Le graphe scientifique calcule une certitude native depuis les justifications. Les communications restent hors de ce graphe pour l'instant et pourront plus tard en dériver par vulgarisation, avec un plafond hérité du claim source. Les seuils appartiennent exclusivement aux actions et au cadre qui les autorise.",
+      "decisionNeeded": "Séparer la certitude native du graphe, les dérivations de communication et les seuils contextuels appliqués au moment d'agir.",
+      "verificationNeeded": "certitude dérivée des justifications, aucune promotion de claim, seuils rattachés à des actions explicites, communication plafonnée par son claim source",
+      "questionCategory": "scientific governance",
+      "decisionStatus": "approved",
+      "responsibleRole": "Scientific governance lead · Clinical methodology lead",
+      "decisionDue": "2026-08-31",
+      "chosenOptionId": "option-firewall-science-only",
+      "decisionRationale": "Une politique transverse ou trois matrices fixes confondraient la connaissance avec les usages qui en sont faits. La certitude reste dans le graphe scientifique, continue et dérivée ; chaque acteur applique au moment d'agir le seuil justifié par son propre cadre. La communication n'est pas un domaine de certitude parallèle : elle reste hors du graphe pour l'instant et héritera plus tard du plafond de son claim source.",
+      "reviewDate": "2026-09-30",
+      "closureEvidence": "certainty-native-to-graph, rule-thresholds-only-at-action, rule-communication-inherits-certainty et leurs raisons de design sont encodés dans evidence-appraisal-method",
+      "optionCriteria": [
+        "respect des trois régimes d'action",
+        "non-duplication du socle",
+        "compatibilité avec le vecteur de qualité",
+        "lisibilité pour un lecteur externe"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-firewall-shared-core",
+      "name": "Option A · Socle commun et politiques par couche",
+      "nodeType": "narrative",
+      "phrase": "Un axe de certitude partagé alimente trois matrices de permissions fixes par couche.",
+      "family": "Option d'architecture · gouvernance de la preuve",
+      "summary": "Option écartée. Elle séparait déjà certitude et permission, mais figeait trois politiques là où le seuil doit appartenir au cadre précis de l'action et rester une lecture du graphe, pas une couche du graphe.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "vocabulaire comparable entre couches",
+        "sévérité adaptée au coût d'erreur",
+        "rattachement des règles existantes de même forme"
+      ],
+      "optionRisks": [
+        "trois matrices à tenir cohérentes",
+        "catégories trop grossières pour refléter le coût réel de chaque action",
+        "risque de réintroduire des paliers de connaissance sous forme de permissions"
+      ],
+      "optionConditions": [
+        "socle déclaré une seule fois",
+        "chaque action rattachée à une couche explicite"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-firewall-science-only",
+      "name": "Option B · Certitude scientifique, seuils au point d'action",
+      "nodeType": "narrative",
+      "phrase": "Le graphe scientifique dérive une certitude continue ; chaque usage choisit son seuil lorsqu'il agit.",
+      "family": "Option d'architecture · gouvernance de la preuve",
+      "summary": "Option retenue. Elle sépare le graphe, qui calcule ce que l'on sait, du lecteur, qui décide du niveau requis pour une action donnée. La communication reste hors du graphe pour l'instant puis s'y rattachera comme dérivation plafonnée, jamais comme politique de certitude concurrente.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "aucun palier arbitraire sur la connaissance",
+        "seuil justifié par le coût et le contexte de l'action",
+        "même graphe lisible à plusieurs seuils",
+        "vulgarisation bornée par la certitude de sa source"
+      ],
+      "optionRisks": [
+        "chaque cadre d'action doit expliciter son propre seuil",
+        "la fonction de calcul de la certitude native reste à écrire"
+      ],
+      "optionConditions": [
+        "toute action nomme son cadre et son seuil",
+        "toute communication référence son claim source",
+        "aucune télémétrie n'écrit directement sur le claim"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-firewall-single-policy",
+      "name": "Option C · Politique unique appliquée partout",
+      "nodeType": "narrative",
+      "phrase": "Une seule matrice de permissions couvre science, clinique, produit et pilotage.",
+      "family": "Option d'architecture · gouvernance de la preuve",
+      "summary": "Option écartée. Elle traite une connaissance scientifique, une intervention clinique et une prise de parole publique sous la même frontière, malgré des coûts d'erreur et des contextes incompatibles.",
+      "optionCode": "C",
+      "optionBenefits": [
+        "règle unique facile à énoncer"
+      ],
+      "optionRisks": [
+        "coût d'erreur ignoré",
+        "blocage inutile des travaux exploratoires ou permissivité dangereuse en clinique"
+      ],
+      "optionConditions": [
+        "accepter d'aligner la sévérité sur le domaine le plus critique"
+      ],
+      "clusterId": "graph-architecture",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "question-ladder-from-quality-vector",
+      "name": "Question · Comment dériver un palier depuis le vecteur de qualité ?",
+      "nodeType": "narrative",
+      "phrase": "Quelle fonction transforme six dimensions non fusionnables en un palier de permissions unique ?",
+      "family": "Architecture du graphe · gouvernance de la preuve",
+      "summary": "Tant que cette fonction n'est pas écrite, l'échelle de preuve et le vecteur de qualité restent deux objets juxtaposés, et rien n'empêche l'échelle de devenir en pratique le score unique que le vecteur refuse.",
+      "clusterId": "graph-architecture",
+      "documentSection": "tension à résoudre",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-cross-graph-reference",
+      "name": "Question · Comment référencer un objet de l'autre graphe ?",
+      "nodeType": "narrative",
+      "phrase": "Deux bases FalkorDB ne partagent aucune arête ; la référence doit donc être déclarée autrement.",
+      "family": "Architecture du graphe · frontières",
+      "summary": "Un claim scientifique devra pouvoir citer une décision de design, et une décision de design devra pouvoir invoquer un claim. La forme de cette référence, sa validation et son comportement lors d'une supersession restent à définir.",
+      "clusterId": "graph-architecture",
+      "documentSection": "tension à résoudre",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "doc-l4-main-link-predicates-specification",
+      "name": "Spécification · Nomenclature des types de liens du graphe principal L4",
+      "nodeType": "thing",
+      "semanticType": "source_document",
+      "family": "documented_source",
+      "phrase": "Document de spécification des prédicats et familles de liens du graphe principal de design L4, dont les noms sémantiques sont inférés depuis les prototypes numériques.",
+      "summary": "Artefact documentaire canonique décrivant les 41 prédicats et 12 familles de liens du graphe principal L4. En L4, le lien physique est unique (storedLinkType: link) et les verbes sémantiques sont inférés depuis les prototypes numériques (polarity, hierarchy, permanence).",
+      "context": "Graphe principal de design (mind_causal_graph)",
+      "epistemicStatus": "documented",
+      "clusterId": "graph-architecture",
+      "documentSection": "spécification_nomenclature_liens"
+    },
+    {
+      "id": "decision-l4-link-predicates-as-thing-doc",
+      "name": "Décision · Spécification des liens L4 comme document (Thing) interne",
+      "nodeType": "moment",
+      "semanticType": "decision",
+      "family": "Migration L4 · architecture",
+      "phrase": "La nomenclature des liens du graphe principal est un artefact Thing interne et les verbes sont inférés des valeurs numériques L4.",
+      "summary": "La liste des types de liens du graphe principal de design (L4) n'est pas un fichier meta-JSON externe : elle est spécifiée dans un document de provenance interne (rôle L4 Thing) et les noms de liens sémantiques sont décodés depuis les prototypes numériques (polarité, hiérarchie, permanence).",
+      "decisionNeeded": "Spécifier la nomenclature des liens du graphe principal L4 comme un document Thing interne dont les verbes sémantiques sont inférés des prototypes numériques.",
+      "verificationNeeded": "Artefact Thing documenté dans le graphe main L4 et dictionnaire de prototype d'inférence validé.",
+      "questionCategory": "architecture",
+      "decisionStatus": "approved",
+      "responsibleRole": "Auteur du projet · architecture du graphe",
+      "decisionDue": "2026-07-23",
+      "chosenOptionId": "option-l4-link-predicates-thing-doc-inferred",
+      "decisionRationale": "Traiter la liste des types de liens comme une méta-configuration JSON hors-graphe viole le principe fondamental de L4. La nomenclature est spécifiée dans un document Thing interne au graphe principal et les noms de liens sémantiques sont décodés depuis les prototypes numériques L4.",
+      "reviewDate": "2026-10-23",
+      "closureEvidence": "doc-l4-main-link-predicates-specification référencé comme Thing dans le graphe principal L4",
+      "optionCriteria": [
+        "conformité à la doctrine L4",
+        "suppression des méta-configurations hors-graphe",
+        "décodage déterministe des verbes depuis les prototypes numériques"
+      ],
+      "clusterId": "graph-architecture"
+    },
+    {
+      "id": "option-l4-link-predicates-thing-doc-inferred",
+      "name": "Option A · Document Thing interne et inférence numérique L4",
+      "nodeType": "narrative",
+      "semanticType": "decision_option",
+      "family": "Option d'architecture · nomenclature L4",
+      "phrase": "Liaison au rôle L4 Thing comme document source dans le graphe main, et inférence des verbes depuis les prototypes numériques.",
+      "summary": "Option retenue. Elle élimine la dépendance à une méta-configuration JSON hors-graphe en inscrivant le document de spécification des liens comme un artefact Thing dans le graphe principal, dont les verbes sémantiques sont décodés par inférence sur les prototypes numériques L4.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "conformité absolue au modèle L4",
+        "intégration native du document de provenance comme Thing dans le graphe",
+        "décodage unifié des noms de liens depuis les primitives numériques"
+      ],
+      "optionRisks": [
+        "nécessite un décodeur de prototypes de liens"
+      ],
+      "optionConditions": [
+        "document Thing inscrit dans le graphe principal L4"
+      ],
+      "clusterId": "graph-architecture"
+    }
+  ],
+  "links": [
+    {
+      "source": "rationale-cluster-is-not-a-boundary",
+      "target": "decision-science-graph-separation",
+      "type": "MOTIVATES",
+      "justification": "L'inventaire montre qu'un clusterId ne produit aucune isolation : même base, même label, même ontologie, mêmes algorithmes. Ce constat est la raison normative qui ouvre l'arbitrage sur une base distincte ; il n'affirme aucun effet causal."
+    },
+    {
+      "source": "rationale-descriptors-are-not-content",
+      "target": "decision-science-graph-separation",
+      "type": "MOTIVATES",
+      "justification": "La distinction entre décrire un système et être son contenu est la raison qui écarte le déplacement des nœuds sci-* et csg-*. Elle oriente le choix d'option sans prétendre mesurer un effet."
+    },
+    {
+      "source": "option-science-separate-database",
+      "target": "decision-science-graph-separation",
+      "type": "OPTION_FOR",
+      "justification": "Option A « est une option pour » la décision de séparation. Nature précise : option comparable → décision concernée. Portée : arbitrage d'architecture."
+    },
+    {
+      "source": "option-science-cluster-only",
+      "target": "decision-science-graph-separation",
+      "type": "OPTION_FOR",
+      "justification": "Option B « est une option pour » la décision de séparation. Conservée pour tracer ce qui a été écarté et pourquoi, conformément à l'exigence d'inscrire les options rejetées."
+    },
+    {
+      "source": "option-science-move-descriptors",
+      "target": "decision-science-graph-separation",
+      "type": "OPTION_FOR",
+      "justification": "Option C « est une option pour » la décision de séparation. Conservée comme option rejetée avec ses risques, notamment la coupure de quatre relations transverses."
+    },
+    {
+      "source": "option-science-own-ontology",
+      "target": "decision-science-ontology-separate",
+      "type": "OPTION_FOR",
+      "justification": "Option A « est une option pour » la décision d'ontologie. Nature précise : option comparable → décision concernée. Portée : arbitrage d'architecture."
+    },
+    {
+      "source": "option-science-shared-ontology",
+      "target": "decision-science-ontology-separate",
+      "type": "OPTION_FOR",
+      "justification": "Option B « est une option pour » la décision d'ontologie. Conservée comme option rejetée : deux bases partageant une grammaire ne se distinguent que par leur coût."
+    },
+    {
+      "source": "option-firewall-shared-core",
+      "target": "decision-evidence-firewall-scope",
+      "type": "OPTION_FOR",
+      "justification": "Option A « est une option pour » la décision de séparation entre certitude et action. Elle est conservée comme alternative écartée : trois matrices fixes préserveraient la distinction, mais resteraient trop grossières et risqueraient de réintroduire des paliers sur la connaissance."
+    },
+    {
+      "source": "option-firewall-science-only",
+      "target": "decision-evidence-firewall-scope",
+      "type": "OPTION_FOR",
+      "justification": "Option B « est une option pour » la décision de séparation entre certitude et action. Elle est retenue : la certitude reste une propriété continue du graphe, tandis que le seuil appartient au lecteur lorsqu'il agit dans un cadre déterminé."
+    },
+    {
+      "source": "option-firewall-single-policy",
+      "target": "decision-evidence-firewall-scope",
+      "type": "OPTION_FOR",
+      "justification": "Option C « est une option pour » la décision de séparation entre certitude et action. Elle reste rejetée parce qu'une politique unique écraserait les différences de coût d'erreur et de réversibilité entre usages."
+    },
+    {
+      "source": "rationale-action-rights-differ-by-layer",
+      "target": "decision-evidence-firewall-scope",
+      "type": "MOTIVATES",
+      "justification": "La différence de coût et de réversibilité entre actions est la raison qui place le seuil dans le cadre de l'acteur plutôt que dans une matrice du graphe. Raison normative, sans effet chiffré."
+    },
+    {
+      "source": "rationale-quality-vector-versus-ladder",
+      "target": "decision-evidence-firewall-scope",
+      "type": "MOTIVATES",
+      "justification": "L'impossibilité de réduire le vecteur de qualité à une échelle ordinale motive la séparation retenue : certitude continue dans le graphe, seuil seulement au point d'action."
+    },
+    {
+      "source": "rationale-one-declared-file-list",
+      "target": "decision-science-graph-separation",
+      "type": "MOTIVATES",
+      "justification": "La divergence des trois descriptions du chargement rendait toute séparation de bases ingérable. Corriger la composition était le préalable matériel à la frontière décidée."
+    },
+    {
+      "source": "decision-science-graph-separation",
+      "target": "csg-gap-current-implementation",
+      "type": "ADDRESSES",
+      "justification": "La décision traite explicitement la question du gap d'implémentation en désignant le premier contrat à migrer : la séparation des bases et des ontologies. Elle traite la question, elle ne prouve pas que la migration réussira."
+    },
+    {
+      "source": "decision-science-ontology-separate",
+      "target": "csg-gap-current-implementation",
+      "type": "ADDRESSES",
+      "justification": "La décision d'ontologie propre répond au second volet de la question du gap : quelle grammaire adopter sans casser le graphe de design existant. Elle engage une direction, non un résultat."
+    },
+    {
+      "source": "decision-science-graph-separation",
+      "target": "csg-production-isolation",
+      "type": "IMPLEMENTS",
+      "justification": "La séparation des bases met en œuvre, à l'échelle de l'outil actuel, le contrat d'isolation décrit par la spécification CSG. Elle en réalise le premier degré et non la totalité, qui comprend aussi staging, runtime et sandbox."
+    },
+    {
+      "source": "recommendation-realworld-evidence-firewall",
+      "target": "decision-evidence-firewall-scope",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation historique a ouvert l'arbitrage ; la décision approuvée en conserve l'exigence de rigueur mais remplace le calque de divergences par une certitude dérivée des justifications et des seuils placés au point d'action.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "recommendation-realworld-evidence-firewall",
+      "target": "question-ladder-from-quality-vector",
+      "type": "ADDRESSES",
+      "justification": "La recommandation est reformulée par l'arbitrage : aucun palier n'est dérivé du vecteur. La certitude reste continue, et le seuil n'apparaît que dans le cadre d'une action. La question historique est donc traitée sans fusionner les dimensions de qualité."
+    },
+    {
+      "source": "question-cross-graph-reference",
+      "target": "csg-production-isolation",
+      "type": "BLOCKS",
+      "justification": "L'isolation en bases séparées reste incomplète tant que la forme d'une référence inter-graphes, sa validation et son comportement lors d'une supersession ne sont pas définis. La question bloque la réalisation, non le principe."
+    },
+    {
+      "source": "rationale-quality-vector-versus-ladder",
+      "target": "csg-quality-vector",
+      "type": "SAFEGUARDS",
+      "justification": "Cette raison protège le contrat de vecteur de qualité contre sa réduction implicite : aucun palier de connaissance n'en est dérivé, et tout seuil reste un filtre d'action extérieur au graphe. Protection normative, sans affirmation causale."
+    },
+    {
+      "source": "option-l4-link-predicates-thing-doc-inferred",
+      "target": "decision-l4-link-predicates-as-thing-doc",
+      "type": "OPTION_FOR",
+      "justification": "Option A retenue pour la décision de spécification des liens L4."
+    },
+    {
+      "source": "decision-l4-link-predicates-as-thing-doc",
+      "target": "doc-l4-main-link-predicates-specification",
+      "type": "DERIVED_FROM",
+      "justification": "La décision d'architecture dérive directement du document de spécification Thing des liens L4."
+    }
+  ]
+}

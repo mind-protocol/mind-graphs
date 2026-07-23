@@ -1,0 +1,32 @@
+{
+  "tickId": "example-tick-001",
+  "recordedAt": "2026-07-23T12:00:00.000Z",
+  "candidates": [
+    {
+      "id": "candidate-prototyper",
+      "level": "low",
+      "status": "candidate",
+      "weight": 6,
+      "stability": 0.78,
+      "certainty": 0.74,
+      "coherence": 0.82,
+      "signature": { "creation": 1, "exploration": 0.8 },
+      "goals": [{ "key": "create", "score": 0.9 }],
+      "strategies": [{ "key": "prototype", "score": 0.85 }],
+      "preferences": [{ "key": "rapid-feedback", "score": 0.76, "evidenceMomentIds": ["example-moment-001"] }],
+      "beliefs": [],
+      "evidenceMomentIds": ["evidence-001", "evidence-002", "evidence-003", "evidence-004"]
+    }
+  ],
+  "workspaceSnapshot": {
+    "id": "workspace-example-001",
+    "controllers": [
+      { "subentityId": "candidate-prototyper", "confidence": 0.81, "active": true }
+    ]
+  },
+  "memory": {
+    "id": "example-moment-001",
+    "occurredAt": "2026-07-23T11:59:58.000Z",
+    "content": "Une voie de prototypage a ete choisie."
+  }
+}

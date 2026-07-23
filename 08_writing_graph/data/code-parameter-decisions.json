@@ -1,0 +1,316 @@
+{
+  "purpose": "Justifications des paramètres du code qui gouvernent une conclusion du projet. Le code conserve la valeur retenue mais détruit les alternatives ; ces décisions gardent les options écartées et le critère qui devra trancher. Voir `parameterContract` dans l'ontologie.",
+  "honesty": "Aucune de ces décisions n'invente de raison. Les paramètres décrits tournent en production sans qu'aucune justification n'ait jamais été enregistrée : evidenceRung vaut null et le statut est `in_review`. Écrire ici une assertion argumentée rétrospective fabriquerait la preuve que ce dispositif existe pour empêcher.",
+  "nodes": [
+    {
+      "id": "rationale-code-destroys-alternatives",
+      "name": "Raison · Le code conserve le choix et détruit les alternatives",
+      "nodeType": "narrative",
+      "phrase": "Une constante exécutée ne dit que la valeur retenue ; les options comparées et le critère qui a tranché ne survivent nulle part.",
+      "family": "Raison de design · justification du code",
+      "summary": "Un littéral comme 0.72 est muet : il n'énonce ni ce à quoi il a été comparé, ni ce qui l'a emporté. Un commentaire ne comble pas ce vide — il ne peut être ni contesté, ni daté, ni périmé. Git répond pourquoi une valeur a changé, jamais pourquoi elle est celle-ci aujourd'hui. Seul un objet qui garde les options écartées rend le choix rouvrable.",
+      "clusterId": "code-parameters",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-decisive-parameter-is-a-claim",
+      "name": "Raison · Un paramètre décisif est une affirmation comme une autre",
+      "nodeType": "narrative",
+      "phrase": "Un paramètre dont le changement changerait une conclusion sur laquelle le projet agit engage autant qu'une arête causale.",
+      "family": "Raison de design · justification du code",
+      "summary": "Le graphe exige d'une arête causale qu'elle déclare sur quoi elle tient. Les paramètres qui calculent ce graphe ne déclaraient rien. L'exigence n'est pas de prouver — le design ne doit pas le niveau de preuve de la science — mais d'étiqueter : l'échec est un « on pense que » relu plus tard comme un « on a mesuré ».",
+      "clusterId": "code-parameters",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "decision-query-lexical-vector-blend",
+      "name": "Décision · Mélange lexical / vectoriel du score sémantique",
+      "nodeType": "moment",
+      "phrase": "Le score sémantique combine 72 % de similarité lexicale et 28 % de similarité vectorielle, sans raison enregistrée.",
+      "family": "Décision de paramètre · moteur de questionnement",
+      "summary": "Le mélange gouverne quels nœuds deviennent ancrages, donc quel cluster remonte pour une question, donc quelles lacunes du corpus sont vues et traitées. Aucune trace n'explique le partage actuel ni ce à quoi il a été comparé.",
+      "decisionNeeded": "Fixer le partage entre appariement lexical exact et similarité vectorielle de hachage, ou établir qu'il ne mérite pas d'arbitrage.",
+      "verificationNeeded": "jeu de questions de référence avec les nœuds attendus, rejoué sur plusieurs partages",
+      "questionCategory": "algorithme",
+      "decisionStatus": "approved",
+      "responsibleRole": "Auteur du projet · moteur de questionnement",
+      "decisionDue": "2026-08-22",
+      "reviewDate": "2026-10-22",
+      "optionCriteria": [
+        "rappel sur les questions dont le vocabulaire est absent du corpus",
+        "précision sur les questions employant les termes exacts du corpus",
+        "stabilité du classement quand le corpus grossit",
+        "explicabilité du score pour un lecteur humain"
+      ],
+      "closureEvidence": "Jeu de référence query-reference-2026-07 (11 questions, attendus dérivés par traversée) exécuté sur cinq partages. Artefact : artifacts/benchmark/query-reference.json, régénérable par npm run bench:query.",
+      "chosenOptionId": "option-query-blend-lexical-dominant",
+      "decisionRationale": "Le partage courant est le meilleur des cinq testés : 75 % de rappel classé contre 69 % en lexical pur, 60 % à parts égales, 45 % en vectoriel pur. Il gagne sur les deux formulations, verbatim (85 % contre 75 %) comme paraphrasée (63 % contre 62 %), et la dégradation est monotone dès qu'on augmente la part vectorielle. Le lexical pur reste plus silencieux (11,4 nœuds hors sujet contre 15,0) : le mélange achète du rappel avec du bruit, arbitrage assumé puisque le moteur sert à ne pas rater un nœud, pas à en afficher peu. Limite explicite : cinq points testés seulement, 0,6 et 0,8 restent inconnus. La mesure établit que la valeur est défendable et que la direction « plus de vectoriel » est mauvaise, pas que 0,72 soit un optimum.",
+      "codeParameters": [
+        "graph-query.lexicalWeight",
+        "graph-query.vectorWeight"
+      ],
+      "evidenceRung": "simulation",
+      "evidenceRungNote": "Mesuré en monde clos : jeu de questions de référence rejoué sur cinq partages, attendus calculés par traversée du corpus et non recopiés. Le barreau s'auto-invalide — rejouer npm run bench:query sur un corpus modifié contredira ce chiffre si le mélange cesse de dominer.",
+      "clusterId": "code-parameters",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-query-blend-lexical-dominant",
+      "name": "Option A · Dominante lexicale 72 / 28",
+      "nodeType": "narrative",
+      "phrase": "Le partage actuellement exécuté par le moteur.",
+      "family": "Option de paramètre · moteur de questionnement",
+      "summary": "Option implémentée aujourd'hui — constat de lecture du code, pas trace d'un arbitrage. Le score reste dominé par l'appariement de mots et de bigrammes ; le vecteur de hachage n'intervient qu'en appoint.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "classement explicable terme à terme",
+        "robuste quand la question reprend le vocabulaire du corpus",
+        "aucun coût de calcul supplémentaire"
+      ],
+      "optionRisks": [
+        "rate les reformulations et les synonymes absents du corpus",
+        "la part vectorielle est peut-être trop faible pour servir à quoi que ce soit",
+        "partage non mesuré : la valeur exacte pourrait n'avoir aucune propriété particulière"
+      ],
+      "optionConditions": [
+        "questions posées avec le vocabulaire du graphe"
+      ],
+      "clusterId": "code-parameters",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-query-blend-balanced",
+      "name": "Option B · Partage équilibré 50 / 50",
+      "nodeType": "narrative",
+      "phrase": "Lexical et vectoriel pèsent autant.",
+      "family": "Option de paramètre · moteur de questionnement",
+      "summary": "Donne au vecteur de hachage un poids réel, au prix d'un classement moins traçable mot à mot.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "meilleure tolérance aux reformulations",
+        "partage sans valeur arbitraire à défendre"
+      ],
+      "optionRisks": [
+        "le hachage projette des termes non reliés dans la même dimension et le bruit remonte",
+        "score moins explicable pour un lecteur humain"
+      ],
+      "optionConditions": [
+        "vérifier d'abord que la similarité vectorielle apporte des nœuds que le lexical rate"
+      ],
+      "clusterId": "code-parameters",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-query-blend-lexical-only",
+      "name": "Option C · Lexical seul",
+      "nodeType": "narrative",
+      "phrase": "La part vectorielle est retirée du score sémantique.",
+      "family": "Option de paramètre · moteur de questionnement",
+      "summary": "Retire un mécanisme dont l'apport n'a jamais été mesuré, au lieu de le pondérer à l'aveugle.",
+      "optionCode": "C",
+      "optionBenefits": [
+        "supprime un paramètre décisif au lieu de le justifier",
+        "score entièrement explicable",
+        "moteur plus simple à décrire et à tester"
+      ],
+      "optionRisks": [
+        "perte sèche sur les questions reformulées si le vecteur apportait bien quelque chose",
+        "décision difficile à annuler une fois le code retiré"
+      ],
+      "optionConditions": [
+        "avoir constaté que retirer la part vectorielle ne dégrade pas le jeu de questions de référence"
+      ],
+      "clusterId": "code-parameters",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "decision-query-traversal-depth",
+      "name": "Décision · Profondeur de propagation depuis un ancrage",
+      "nodeType": "moment",
+      "phrase": "La propagation s'arrête à trois sauts, sans raison enregistrée.",
+      "family": "Décision de paramètre · moteur de questionnement",
+      "summary": "La profondeur fixe l'étendue du cluster rendu pour une question : trop courte, elle masque la chaîne causale qui répond ; trop longue, elle noie les ancrages sous des nœuds faiblement reliés. Aucune trace n'explique la valeur actuelle, choisie quand le corpus était bien plus petit qu'aujourd'hui.",
+      "decisionNeeded": "Fixer la profondeur maximale de propagation, ou établir qu'elle doit dépendre de la taille du corpus plutôt que rester constante.",
+      "verificationNeeded": "jeu de questions de référence avec les chemins explicatifs attendus, rejoué à plusieurs profondeurs",
+      "questionCategory": "algorithme",
+      "decisionStatus": "approved",
+      "responsibleRole": "Auteur du projet · moteur de questionnement",
+      "decisionDue": "2026-08-22",
+      "reviewDate": "2026-10-22",
+      "optionCriteria": [
+        "présence de la chaîne causale complète dans le cluster rendu",
+        "part de nœuds hors sujet ramenés par le dernier saut",
+        "sensibilité du résultat à la croissance du corpus",
+        "coût de parcours sur le corpus courant"
+      ],
+      "closureEvidence": "Jeu de référence query-reference-2026-07 exécuté à cinq profondeurs (1, 2, 3, 4, 6) puis à cinq seuils de propagation. Artefact : artifacts/benchmark/query-reference.json, régénérable par npm run bench:query.",
+      "chosenOptionId": "option-query-depth-three",
+      "decisionRationale": "La mesure déplace la question au lieu de la trancher dans les termes posés. Passer de 1 à 2 sauts change bien le résultat (73 % → 75 % de rappel) ; au-delà de 2, plus rien ne bouge, à profondeur 3, 4 ou 6. L'option D testait l'hypothèse que le plancher de propagation empêchait la profondeur d'agir : abaisser propagationFloor de 0,02 à 0,001 rend effectivement la profondeur 3 atteignable, mais laisse rappel, rappel de cluster et nœuds hors sujet strictement inchangés. Les sauts supplémentaires ne ramènent donc rien d'utile. La valeur 3 est conservée parce qu'elle est inerte mais sans coût, et que la ramener à 2 supprimerait une marge sans rien gagner de mesurable. Conclusion réelle de l'arbitrage : le paramètre liant de la traversée n'est pas maxDepth mais propagationFloor, dont la décisivité était mal déclarée dans le code et vient d'y être corrigée. Il reste sans justification propre.",
+      "codeParameters": [
+        "graph-query.maxDepth"
+      ],
+      "evidenceRung": "simulation",
+      "evidenceRungNote": "Mesuré en monde clos : jeu de référence rejoué à cinq profondeurs et cinq seuils de propagation, attendus dérivés par traversée. Le barreau s'auto-invalide — si des chaînes plus longues que deux sauts apparaissent dans le corpus, rejouer le jeu contredira ce chiffre.",
+      "clusterId": "code-parameters",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-query-depth-two",
+      "name": "Option A · Deux sauts",
+      "nodeType": "narrative",
+      "phrase": "La propagation s'arrête au voisinage immédiat des ancrages.",
+      "family": "Option de paramètre · moteur de questionnement",
+      "summary": "Cluster resserré autour des ancrages, au risque de couper la chaîne qui portait la réponse.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "presque aucun nœud hors sujet",
+        "chemins explicatifs courts et lisibles",
+        "insensible à la croissance du corpus"
+      ],
+      "optionRisks": [
+        "tronque les chaînes mécanisme → état → métrique, qui dépassent souvent deux sauts",
+        "rend le moteur inutile sur les questions structurelles"
+      ],
+      "optionConditions": [
+        "questions portant sur un objet nommé plutôt que sur une chaîne"
+      ],
+      "clusterId": "code-parameters",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-query-depth-three",
+      "name": "Option B · Trois sauts",
+      "nodeType": "narrative",
+      "phrase": "La profondeur actuellement exécutée par le moteur.",
+      "family": "Option de paramètre · moteur de questionnement",
+      "summary": "Option implémentée aujourd'hui — constat de lecture du code, pas trace d'un arbitrage. Trois sauts couvrent la chaîne mécanisme → état → métrique sans la dépasser.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "couvre la chaîne causale canonique du corpus",
+        "la décroissance par saut éteint déjà l'essentiel du score au troisième"
+      ],
+      "optionRisks": [
+        "valeur fixée sur un corpus bien plus petit et jamais réexaminée",
+        "coïncidence avec la longueur de la chaîne canonique jamais vérifiée"
+      ],
+      "optionConditions": [
+        "corpus dont les chaînes utiles restent courtes"
+      ],
+      "clusterId": "code-parameters",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-query-depth-adaptive",
+      "name": "Option C · Profondeur dérivée du corpus",
+      "nodeType": "narrative",
+      "phrase": "La profondeur n'est plus une constante mais une fonction de la taille ou du diamètre du graphe.",
+      "family": "Option de paramètre · moteur de questionnement",
+      "summary": "Supprime le paramètre décisif en le rendant dérivable, au prix d'un comportement moins prévisible.",
+      "optionCode": "C",
+      "optionBenefits": [
+        "plus de constante à défendre ni à réviser",
+        "suit la croissance du corpus sans intervention"
+      ],
+      "optionRisks": [
+        "résultat non reproductible d'une version du corpus à l'autre",
+        "déplace l'arbitraire dans la formule au lieu de le supprimer"
+      ],
+      "optionConditions": [
+        "disposer d'une mesure stable du diamètre utile du graphe"
+      ],
+      "clusterId": "code-parameters",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-query-depth-lower-floor",
+      "name": "Option D · Abaisser le plancher de propagation",
+      "nodeType": "narrative",
+      "phrase": "La profondeur reste à 3 mais le seuil qui éteint la propagation est abaissé pour qu'elle devienne effective.",
+      "family": "Option de paramètre · moteur de questionnement",
+      "summary": "Option apparue pendant la mesure, absente de la liste initiale : elle traite la cause plutôt que le symptôme, puisque c'est le plancher et non la profondeur qui arrête la traversée. Testée puis écartée — abaisser propagationFloor de 0,02 à 0,001 rend la profondeur 3 atteignable sans changer rappel, rappel de cluster ni nombre de nœuds hors sujet.",
+      "optionCode": "D",
+      "optionBenefits": [
+        "agit sur la contrainte réellement liante au lieu du paramètre inerte",
+        "rendrait la profondeur déclarée conforme à la profondeur atteinte"
+      ],
+      "optionRisks": [
+        "mesurée sans aucun gain : les sauts supplémentaires ne ramènent rien d'utile",
+        "élargit la traversée donc le coût, sans contrepartie constatée",
+        "déplacerait la dette sur un paramètre lui-même non justifié"
+      ],
+      "optionConditions": [
+        "constater d'abord qu'un saut supplémentaire ramène des nœuds attendus, ce que le jeu de référence infirme"
+      ],
+      "clusterId": "code-parameters",
+      "semanticType": "decision_option"
+    }
+  ],
+  "links": [
+    {
+      "source": "rationale-code-destroys-alternatives",
+      "target": "decision-query-lexical-vector-blend",
+      "type": "MOTIVATES",
+      "justification": "La raison ouvre l'arbitrage : puisque le code ne garde ni les partages comparés ni le critère, seule une décision peut les conserver. Nature précise : raison normative → décision qu'elle rend nécessaire. Elle n'affirme aucun effet mesuré."
+    },
+    {
+      "source": "rationale-code-destroys-alternatives",
+      "target": "decision-query-traversal-depth",
+      "type": "MOTIVATES",
+      "justification": "Même raison appliquée à la profondeur : la constante 3 ne dit pas à quelles autres profondeurs elle a été comparée. Nature précise : raison normative → décision qu'elle rend nécessaire."
+    },
+    {
+      "source": "rationale-decisive-parameter-is-a-claim",
+      "target": "decision-query-lexical-vector-blend",
+      "type": "MOTIVATES",
+      "justification": "Le partage gouverne quels nœuds remontent, donc quelles lacunes sont traitées : il engage une conclusion du projet et relève du même devoir de déclaration qu'une arête causale. Nature précise : raison normative → décision. Aucun effet chiffré n'est revendiqué."
+    },
+    {
+      "source": "rationale-decisive-parameter-is-a-claim",
+      "target": "decision-query-traversal-depth",
+      "type": "MOTIVATES",
+      "justification": "La profondeur décide de l'étendue du cluster rendu, donc de ce que le lecteur voit d'une question. Nature précise : raison normative → décision. Aucun effet chiffré n'est revendiqué."
+    },
+    {
+      "source": "option-query-blend-lexical-dominant",
+      "target": "decision-query-lexical-vector-blend",
+      "type": "OPTION_FOR",
+      "justification": "Option A « est une option pour » la décision de mélange. Nature précise : option comparable → décision concernée. Portée : paramètre du moteur de questionnement."
+    },
+    {
+      "source": "option-query-blend-balanced",
+      "target": "decision-query-lexical-vector-blend",
+      "type": "OPTION_FOR",
+      "justification": "Option B « est une option pour » la décision de mélange. Nature précise : option comparable → décision concernée. Portée : paramètre du moteur de questionnement."
+    },
+    {
+      "source": "option-query-blend-lexical-only",
+      "target": "decision-query-lexical-vector-blend",
+      "type": "OPTION_FOR",
+      "justification": "Option C « est une option pour » la décision de mélange. Nature précise : option comparable → décision concernée. Portée : paramètre du moteur de questionnement."
+    },
+    {
+      "source": "option-query-depth-two",
+      "target": "decision-query-traversal-depth",
+      "type": "OPTION_FOR",
+      "justification": "Option A « est une option pour » la décision de profondeur. Nature précise : option comparable → décision concernée. Portée : paramètre du moteur de questionnement."
+    },
+    {
+      "source": "option-query-depth-three",
+      "target": "decision-query-traversal-depth",
+      "type": "OPTION_FOR",
+      "justification": "Option B « est une option pour » la décision de profondeur. Nature précise : option comparable → décision concernée. Portée : paramètre du moteur de questionnement."
+    },
+    {
+      "source": "option-query-depth-adaptive",
+      "target": "decision-query-traversal-depth",
+      "type": "OPTION_FOR",
+      "justification": "Option C « est une option pour » la décision de profondeur. Nature précise : option comparable → décision concernée. Portée : paramètre du moteur de questionnement."
+    },
+    {
+      "source": "option-query-depth-lower-floor",
+      "target": "decision-query-traversal-depth",
+      "type": "OPTION_FOR",
+      "justification": "Option D « est une option pour » la décision de profondeur. Nature précise : option comparable → décision concernée. Elle a été produite par la mesure elle-même, puis écartée sur mesure ; elle est conservée parce qu'une option testée et rejetée vaut autant qu'une option retenue."
+    }
+  ]
+}

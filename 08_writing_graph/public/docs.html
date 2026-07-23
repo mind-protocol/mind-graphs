@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Protocol — Documentation</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/docs.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body class="docs-page">
+    <header class="docs-header">
+      <a href="/">← Retour au graphe</a>
+      <nav>
+        <a href="/analysis.html">Santé du graphe</a>
+        <a href="/ontology.html">Ontologie</a>
+        <a href="/decisions.html">Décisions</a>
+        <button data-theme-toggle class="theme-toggle" type="button" aria-pressed="false">Thème clair</button>
+      </nav>
+    </header>
+
+    <main class="docs-main">
+      <aside class="docs-sidebar" aria-label="Documents disponibles">
+        <p class="eyebrow">DOCUMENTATION</p>
+        <nav id="docs-nav" class="docs-nav" aria-label="Liste des documents"></nav>
+      </aside>
+
+      <section class="docs-content">
+        <section id="docs-corpus" class="docs-corpus" aria-label="État live du corpus" hidden>
+          <div class="docs-corpus-head">
+            <p class="eyebrow">VALEURS LIVE · SOURCE DE VÉRITÉ</p>
+            <span id="docs-corpus-stamp" class="docs-corpus-stamp"></span>
+          </div>
+          <div id="docs-corpus-stats" class="docs-corpus-stats"></div>
+          <p class="docs-corpus-note">Ces chiffres sont lus en direct depuis le graphe et l’ontologie à chaque affichage. Un document peut aussi insérer un jeton comme <code>{{stats.nodes}}</code>, résolu ici automatiquement.</p>
+        </section>
+
+        <article id="docs-article" class="docs-article" aria-live="polite">
+          <p class="docs-loading">Chargement de la documentation…</p>
+        </article>
+      </section>
+    </main>
+
+    <script src="/vendor/marked.min.js"></script>
+    <script type="module" src="/docs.js"></script>
+  </body>
+</html>

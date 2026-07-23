@@ -1,0 +1,1679 @@
+{
+  "scope": "Extraction structurée de cinq documents Endgame. Les mécanismes, ROI, calendriers et doctrines sont des propositions des documents, non des effets empiriquement établis.",
+  "sources": [
+    {
+      "title": "Democracy Endgame",
+      "path": "C:/Users/reyno/OneDrive/Documents/Democracy_Endgame_Mind_Protocol.pdf",
+      "pages": 4,
+      "clusterId": "democracy-endgame"
+    },
+    {
+      "title": "Education Endgame",
+      "path": "C:/Users/reyno/OneDrive/Documents/Education_Endgame_Mind_Protocol.pdf",
+      "pages": 5,
+      "clusterId": "education-endgame"
+    },
+    {
+      "title": "Mental Health Endgame",
+      "path": "C:/Users/reyno/OneDrive/Documents/Mental_Health_Endgame_Mind_Protocol.pdf",
+      "pages": 4,
+      "clusterId": "mental-health-endgame"
+    },
+    {
+      "title": "Financial Narrative Realignment",
+      "path": "C:/Users/reyno/OneDrive/Documents/Mind_Protocol_Financial_Narrative_Realignment.pdf",
+      "pages": 6,
+      "clusterId": "financial-realignment"
+    },
+    {
+      "title": "Science Endgame v2",
+      "path": "C:/Users/reyno/OneDrive/Documents/Science_Endgame_Mind_Protocol_v2.pdf",
+      "pages": 4,
+      "clusterId": "science-endgame"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "doc-democracy-endgame",
+      "name": "Document · Democracy Endgame",
+      "nodeType": "thing",
+      "phrase": "AI-mediated participatory governance at planetary scale.",
+      "family": "Source · stratégie Mind",
+      "summary": "Document de quatre pages proposant une délibération citoyenne continue, médiée par des IA souveraines et finalisée par décision humaine.",
+      "sourceTitle": "Democracy_Endgame_Mind_Protocol.pdf",
+      "sourcePage": "1-4",
+      "clusterId": "democracy-endgame",
+      "documentSection": "document source",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "dem-thesis-continuous",
+      "name": "Thèse · Démocratie continue représentée",
+      "nodeType": "narrative",
+      "phrase": "Chaque humain peut être représenté en continu sans céder sa souveraineté.",
+      "family": "Democracy Endgame · thèse",
+      "summary": "Une IA citoyenne modélise préférences, valeurs et contraintes, participe à une délibération machine et restitue les arbitrages à l'humain.",
+      "sourcePage": "1",
+      "clusterId": "democracy-endgame",
+      "documentSection": "executive thesis",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "dem-preference-model",
+      "name": "Mécanisme · Modèle de préférences incertain",
+      "nodeType": "narrative",
+      "phrase": "Les préférences sont datées, contextualisées et accompagnées d'incertitude.",
+      "family": "Democracy Endgame · architecture",
+      "summary": "Le modèle ne fige pas une idéologie : il conserve confiance, incertitude, contexte et droit de correction.",
+      "sourcePage": "1-2",
+      "clusterId": "democracy-endgame",
+      "documentSection": "core architecture",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "dem-agent-deliberation",
+      "name": "Mécanisme · Délibération IA-à-IA",
+      "nodeType": "narrative",
+      "phrase": "Les agents exposent arguments, concessions, trade-offs et consensus.",
+      "family": "Democracy Endgame · architecture",
+      "summary": "Un protocole structure les débats entre agents citoyens avant escalade vers les humains.",
+      "sourcePage": "2",
+      "clusterId": "democracy-endgame",
+      "documentSection": "main mechanisms",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "dem-rapid-drafting",
+      "name": "Mécanisme · Rédaction politique rapide",
+      "nodeType": "narrative",
+      "phrase": "Des propositions et amendements sont générés puis comparés en heures.",
+      "family": "Democracy Endgame · architecture",
+      "summary": "Le système produit rapidement plusieurs versions de propositions, budgets et politiques.",
+      "sourcePage": "2",
+      "clusterId": "democracy-endgame",
+      "documentSection": "main mechanisms",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "dem-consensus-certificate",
+      "name": "Artefact · Certificat de consensus",
+      "nodeType": "narrative",
+      "phrase": "Le consensus expose soutien, dissidence, confiance et provenance.",
+      "family": "Democracy Endgame · gouvernance",
+      "summary": "Le certificat rend visibles les minorités, le niveau d'accord et les sources ayant conduit à la proposition.",
+      "sourcePage": "1-2",
+      "clusterId": "democracy-endgame",
+      "documentSection": "core architecture",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "dem-human-escalation",
+      "name": "Garde-fou · Escalade et approbation humaines",
+      "nodeType": "narrative",
+      "phrase": "Les personnes approuvent, corrigent, délèguent ou retirent leur IA.",
+      "family": "Democracy Endgame · gouvernance",
+      "summary": "Les décisions à fort enjeu restent sous approbation humaine explicite.",
+      "sourcePage": "2-3",
+      "clusterId": "democracy-endgame",
+      "documentSection": "safeguards",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "dem-proof-personhood",
+      "name": "Garde-fou · Une personne, une voix vérifiée",
+      "nodeType": "narrative",
+      "phrase": "La voix politique de base ne s'achète pas.",
+      "family": "Democracy Endgame · gouvernance",
+      "summary": "La preuve de personne humaine limite les Sybil ; expertise et contexte peuvent informer sans convertir la richesse en voix de base.",
+      "sourcePage": "3",
+      "clusterId": "democracy-endgame",
+      "documentSection": "Mind integration",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "dem-institution-delivery",
+      "name": "Mécanisme · Livraison institutionnelle",
+      "nodeType": "narrative",
+      "phrase": "Les consensus deviennent lettres, consultations, APIs ou soumissions formelles.",
+      "family": "Democracy Endgame · déploiement",
+      "summary": "Le résultat de la délibération est empaqueté pour les procédures existantes plutôt que présenté comme autorité parallèle immédiate.",
+      "sourcePage": "2",
+      "clusterId": "democracy-endgame",
+      "documentSection": "deployment phases",
+      "semanticType": "institution"
+    },
+    {
+      "id": "dem-pilot-local-question",
+      "name": "Pilote · Question locale vérifiée",
+      "nodeType": "narrative",
+      "phrase": "100 à 1 000 participants testent un cycle complet de proposition.",
+      "family": "Democracy Endgame · pilote",
+      "summary": "Le pilote mesure latence, participation, légitimité perçue, qualité, représentation des minorités et réponse institutionnelle.",
+      "sourcePage": "4",
+      "clusterId": "democracy-endgame",
+      "documentSection": "pilot roadmap",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "dem-risk-manipulation",
+      "name": "Risque · Manipulation politique agentique",
+      "nodeType": "narrative",
+      "phrase": "Qui contrôle prompts, modèles, données et règles de délégation ?",
+      "family": "Democracy Endgame · risque",
+      "summary": "La transparence, l'audit et la résistance à la propagande sont requis mais leur gouvernance opérationnelle reste à spécifier.",
+      "sourcePage": "3",
+      "clusterId": "democracy-endgame",
+      "documentSection": "safeguards and failure modes",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "dem-target-legitimacy",
+      "name": "Cible · Légitimité participative mesurable",
+      "nodeType": "narrative",
+      "phrase": "La décision est plus participative sans effacer la dissidence.",
+      "family": "Democracy Endgame · résultat recherché",
+      "summary": "État cible mesuré par participation, confiance, qualité de décision, visibilité des minorités et réponse institutionnelle.",
+      "sourcePage": "3-4",
+      "clusterId": "democracy-endgame",
+      "documentSection": "ROI and pilot metrics",
+      "stateOrientation": "desirable",
+      "stateDimension": "democratic legitimacy",
+      "stateIndicator": "participation, trust, minority representation, institutional response",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "doc-education-endgame",
+      "name": "Document · Education Endgame",
+      "nodeType": "thing",
+      "phrase": "A personal AI learning layer for the world after standardized schooling.",
+      "family": "Source · stratégie Mind",
+      "summary": "Document de cinq pages proposant un graphe d'apprentissage persistant, des missions réelles, des mentors et des pods sociaux.",
+      "sourceTitle": "Education_Endgame_Mind_Protocol.pdf",
+      "sourcePage": "1-5",
+      "clusterId": "education-endgame",
+      "documentSection": "document source",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "edu-thesis-sovereign-layer",
+      "name": "Thèse · Couche d'apprentissage souveraine",
+      "nodeType": "narrative",
+      "phrase": "Former pour le monde qui arrive, pas pour celui qui disparaît.",
+      "family": "Education Endgame · thèse",
+      "summary": "Une IA personnelle persistante organise l'apprentissage tout au long de la vie sans attendre la réforme complète de l'école.",
+      "sourcePage": "1-2",
+      "clusterId": "education-endgame",
+      "documentSection": "thesis and adjacent layer",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "edu-learning-graph",
+      "name": "Mécanisme · Graphe personnel d'apprentissage",
+      "nodeType": "narrative",
+      "phrase": "Concepts, compétences, intérêts, lacunes et preuves restent reliés.",
+      "family": "Education Endgame · produit",
+      "summary": "Le graphe conserve les dépendances de maîtrise, les projets, les preuves et l'évolution de la personne.",
+      "sourcePage": "2",
+      "clusterId": "education-endgame",
+      "documentSection": "core product mechanisms",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "edu-future-curriculum",
+      "name": "Mécanisme · Curriculum du futur",
+      "nodeType": "narrative",
+      "phrase": "Le curriculum s'adapte aux capacités nécessaires dans un monde agentique.",
+      "family": "Education Endgame · produit",
+      "summary": "Le moteur combine fondamentaux, IA, systèmes, robotique, simulation, science et éthique.",
+      "sourcePage": "2",
+      "clusterId": "education-endgame",
+      "documentSection": "core product mechanisms",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "edu-adaptive-loop",
+      "name": "Mécanisme · Boucle d'entraînement adaptative",
+      "nodeType": "narrative",
+      "phrase": "Expliquer, pratiquer, tester, réfléchir et ajuster.",
+      "family": "Education Endgame · produit",
+      "summary": "La difficulté, les exemples, la répétition et la modalité changent selon les preuves d'apprentissage.",
+      "sourcePage": "2",
+      "clusterId": "education-endgame",
+      "documentSection": "core product mechanisms",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "edu-project-missions",
+      "name": "Mécanisme · Missions de projet réelles",
+      "nodeType": "narrative",
+      "phrase": "L'apprentissage produit, construit, recherche et contribue.",
+      "family": "Education Endgame · produit",
+      "summary": "Les apprenants résolvent des problèmes et produisent des artefacts plutôt que seulement consommer des leçons.",
+      "sourcePage": "2",
+      "clusterId": "education-endgame",
+      "documentSection": "core product mechanisms",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "edu-social-pods",
+      "name": "Institution · Pods sociaux d'apprentissage",
+      "nodeType": "narrative",
+      "phrase": "Petits groupes, mentors humains et coopération restent obligatoires.",
+      "family": "Education Endgame · modèle opératoire",
+      "summary": "Les pods fournissent collaboration, responsabilité, imitation, conflit et appartenance.",
+      "sourcePage": "2-3",
+      "clusterId": "education-endgame",
+      "documentSection": "operating model",
+      "semanticType": "institution"
+    },
+    {
+      "id": "edu-future-skills",
+      "name": "Cible · Compétences futures mesurables",
+      "nodeType": "narrative",
+      "phrase": "Vitesse d'apprentissage, transfert, agence et pensée systémique deviennent visibles.",
+      "family": "Education Endgame · résultats",
+      "summary": "Le modèle évalue transfert, cadrage de problème, collaboration IA, régulation, intelligence sociale, créativité, éthique et contribution.",
+      "sourcePage": "3",
+      "clusterId": "education-endgame",
+      "documentSection": "future-ready skill model",
+      "stateOrientation": "desirable",
+      "stateDimension": "human capability",
+      "stateIndicator": "transfer, agency, systems thinking, social intelligence, contribution",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "edu-human-stack",
+      "name": "Garde-fou · IA + mentor + pod + projet + parent",
+      "nodeType": "narrative",
+      "phrase": "L'IA accélère mais ne devient pas l'unique relation éducative.",
+      "family": "Education Endgame · gouvernance",
+      "summary": "Responsabilité adulte, interactions humaines, expérience réelle et consentement structurent le modèle.",
+      "sourcePage": "3-5",
+      "clusterId": "education-endgame",
+      "documentSection": "operating model and safeguards",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "edu-pilot-ten-families",
+      "name": "Pilote · Dix familles, quatre semaines",
+      "nodeType": "narrative",
+      "phrase": "Un pod court teste progression, motivation, autonomie et sécurité.",
+      "family": "Education Endgame · pilote",
+      "summary": "Le pilote part d'un individu, s'étend à dix familles puis à un pod ou micro-école.",
+      "sourcePage": "4",
+      "clusterId": "education-endgame",
+      "documentSection": "pilot design",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "edu-risk-child-optimization",
+      "name": "Risque · Enfant optimisé ou dépendant",
+      "nodeType": "narrative",
+      "phrase": "Comment personnaliser sans productivisme, surveillance ni dépendance ?",
+      "family": "Education Endgame · risque",
+      "summary": "La haute sensibilité des données d'enfants impose minimisation, contrôle local, pluralité, limites d'accès et anti-dépendance.",
+      "sourcePage": "5",
+      "clusterId": "education-endgame",
+      "documentSection": "governance and safeguards",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "edu-target-retention-transfer",
+      "name": "Cible · Rétention longue et transfert",
+      "nodeType": "narrative",
+      "phrase": "Le savoir reste disponible et se transfère à de nouveaux problèmes.",
+      "family": "Education Endgame · ROI",
+      "summary": "Le document vise moins de temps perdu, plus de vélocité, meilleure rétention et capacité à agir hors du contexte d'entraînement.",
+      "sourcePage": "4",
+      "clusterId": "education-endgame",
+      "documentSection": "ROI and USP",
+      "stateOrientation": "desirable",
+      "stateDimension": "learning outcomes",
+      "stateIndicator": "time efficiency, learning velocity, retention, transfer",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "doc-mental-health-endgame",
+      "name": "Document · Mental Health Endgame",
+      "nodeType": "thing",
+      "phrase": "A continuous, sovereign mental health layer for the post-work era.",
+      "family": "Source · stratégie Mind",
+      "summary": "Document de quatre pages décrivant une couche psychologique continue, non autonome cliniquement au départ, reliée aux institutions de soin.",
+      "sourceTitle": "Mental_Health_Endgame_Mind_Protocol.pdf",
+      "sourcePage": "1-4",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "document source",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "mh-thesis-continuous-care",
+      "name": "Thèse · Infrastructure psychologique continue",
+      "nodeType": "narrative",
+      "phrase": "La santé mentale passe de rendez-vous discontinus à un soutien quotidien souverain.",
+      "family": "Mental Health Endgame · thèse",
+      "summary": "Une IA personnelle accompagne, cartographie et détecte tôt, puis escalade vers des professionnels sous contrôle humain.",
+      "sourcePage": "1",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "executive summary",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "mh-companion-journal",
+      "name": "Couche · Compagnon et journal",
+      "nodeType": "narrative",
+      "phrase": "Mémoire, continuité émotionnelle et réflexion conversationnelle.",
+      "family": "Mental Health Endgame · couches",
+      "summary": "La couche non clinique soutient clarification, mémoire et continuité sans se présenter comme diagnostic.",
+      "sourcePage": "2",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "system layers",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mh-regulation-coach",
+      "name": "Couche · Coach de régulation",
+      "nodeType": "narrative",
+      "phrase": "Respiration, mouvement, sommeil, ancrage et routines deviennent actionnables.",
+      "family": "Mental Health Endgame · couches",
+      "summary": "Le système propose des pratiques de régulation adaptées au contexte et à la personne.",
+      "sourcePage": "2",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "system layers",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mh-living-map",
+      "name": "Couche · Cartographie psychologique vivante",
+      "nodeType": "narrative",
+      "phrase": "Les modèles restent des lentilles incertaines, corrigibles et plurielles.",
+      "family": "Mental Health Endgame · couches",
+      "summary": "Besoins, valeurs, peurs, défenses, symptômes, contextes et trajectoires sont reliés sans ontologie unique imposée.",
+      "sourcePage": "2",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "living psychological cartography",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mh-early-warning",
+      "name": "Couche · Détection précoce",
+      "nodeType": "narrative",
+      "phrase": "Les ruptures de sommeil, retrait, rumination et risques apparaissent avant la crise.",
+      "family": "Mental Health Endgame · couches",
+      "summary": "Les tendances longitudinales déclenchent suggestions, vérification ou escalade selon le niveau de risque.",
+      "sourcePage": "1-2",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "early-warning layer",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mh-relational-mirror",
+      "name": "Couche · Miroir relationnel agrégé",
+      "nodeType": "narrative",
+      "phrase": "Les IA révèlent des patterns de relation sans exposer les messages privés.",
+      "family": "Mental Health Endgame · couches",
+      "summary": "Les signaux interpersonnels sont agrégés, consentis, contextualisés et restent contestables.",
+      "sourcePage": "2",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "relational mirror",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mh-clinical-interface",
+      "name": "Couche · Interface clinique institutionnelle",
+      "nodeType": "narrative",
+      "phrase": "Le soutien quotidien rejoint urgences, hôpitaux, thérapeutes et services sociaux.",
+      "family": "Mental Health Endgame · intégration",
+      "summary": "La couche prépare des résumés, réduit la perte d'information et soutient continuité, triage et suivi.",
+      "sourcePage": "3",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "institutional integration",
+      "semanticType": "institution"
+    },
+    {
+      "id": "mh-supervised-therapy",
+      "name": "Couche · Thérapie et psychiatrie supervisées",
+      "nodeType": "narrative",
+      "phrase": "Le système aide le soin sans diagnostiquer ni modifier seul un traitement.",
+      "family": "Mental Health Endgame · clinique",
+      "summary": "Protocoles, synthèses et suivi restent sous responsabilité professionnelle et consentement du patient.",
+      "sourcePage": "2-4",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "clinical governance",
+      "semanticType": "institution"
+    },
+    {
+      "id": "mh-guardrail-clinical-restraint",
+      "name": "Garde-fou · Retenue médico-légale",
+      "nodeType": "narrative",
+      "phrase": "Pas de diagnostic autonome, pas de changement de médicament, escalade de crise obligatoire.",
+      "family": "Mental Health Endgame · gouvernance",
+      "summary": "Les décisions cliniques sensibles exigent supervision, explicabilité, consentement et protocoles prédéfinis.",
+      "sourcePage": "3",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "safeguards",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "mh-pilot-nonclinical",
+      "name": "Pilote · Compagnon non clinique",
+      "nodeType": "narrative",
+      "phrase": "Journal quotidien, patterns et préparation de session avant le soin autonome.",
+      "family": "Mental Health Endgame · roadmap",
+      "summary": "La roadmap progresse du compagnon et coach de régulation jusqu'aux intégrations institutionnelles puis au support psychiatrique.",
+      "sourcePage": "4",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "roadmap",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "mh-risk-postwork-transition",
+      "name": "Risque · Transition post-travail psychiatrique",
+      "nodeType": "narrative",
+      "phrase": "Comment soutenir perte de rôle, statut, routine et appartenance à grande échelle ?",
+      "family": "Mental Health Endgame · contexte",
+      "summary": "Le document traite la transition post-travail comme enjeu existentiel, relationnel et social, pas seulement clinique.",
+      "sourcePage": "1,4",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "why now and vision",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "mh-target-clinical-public-roi",
+      "name": "Cible · Résultats cliniques et valeur publique",
+      "nodeType": "narrative",
+      "phrase": "Moins de crises, meilleure continuité et moindre coût social évitable.",
+      "family": "Mental Health Endgame · ROI",
+      "summary": "Les métriques couvrent symptômes, fréquence des crises, continuité, efficacité du soin, autonomie, stabilité post-travail et ROI public.",
+      "sourcePage": "3",
+      "clusterId": "mental-health-endgame",
+      "documentSection": "success metrics",
+      "stateOrientation": "desirable",
+      "stateDimension": "mental health outcomes",
+      "stateIndicator": "crisis frequency, continuity, autonomy, care efficiency, public ROI",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "doc-financial-realignment",
+      "name": "Document · Financial Narrative Realignment",
+      "nodeType": "thing",
+      "phrase": "Capital appreciates. Usage circulates. Contribution is remembered.",
+      "family": "Source · stratégie Mind",
+      "summary": "Document de six pages séparant capital investisseur, trésorerie, usage, contribution et reward pool autour d'un seed envisagé de 5 M$.",
+      "sourceTitle": "Mind_Protocol_Financial_Narrative_Realignment.pdf",
+      "sourcePage": "1-6",
+      "clusterId": "financial-realignment",
+      "documentSection": "document source",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "fin-thesis-separation",
+      "name": "Doctrine · Séparer capital, usage et récompense",
+      "nodeType": "narrative",
+      "phrase": "L'investissement ne doit pas être confondu avec la monnaie d'usage.",
+      "family": "Financial Realignment · doctrine",
+      "summary": "L'upside investisseur est placé dans les droits du capital ou du protocole, tandis que l'unité Mind sert à circuler.",
+      "sourcePage": "1-2",
+      "clusterId": "financial-realignment",
+      "documentSection": "core correction",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "fin-capital-layer",
+      "name": "Couche · Capital investisseur",
+      "nodeType": "narrative",
+      "phrase": "Equity, SAFE ou droits de holding financent l'entreprise et portent l'upside.",
+      "family": "Financial Realignment · capital",
+      "summary": "Les investisseurs financent produit, IA, juridique, lancement et trésorerie via une structure opératoire ou holding.",
+      "sourcePage": "1-5",
+      "clusterId": "financial-realignment",
+      "documentSection": "capital layer",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "fin-treasury-layer",
+      "name": "Couche · Trésorerie gouvernée",
+      "nodeType": "narrative",
+      "phrase": "Cash, stablecoins et réserves financent développement, liquidité et écosystème.",
+      "family": "Financial Realignment · treasury",
+      "summary": "La trésorerie est un bilan stratégique, pas un compte bancaire dû aux détenteurs.",
+      "sourcePage": "1-2",
+      "clusterId": "financial-realignment",
+      "documentSection": "separation matrix",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "fin-usage-layer",
+      "name": "Couche · Unités Mind circulantes",
+      "nodeType": "narrative",
+      "phrase": "La valeur vient de l'usage quotidien, pas de la thésaurisation.",
+      "family": "Financial Realignment · usage",
+      "summary": "Les unités non accumulatives servent biens, services, coordination et flux locaux sans devenir action, dette ou rendement.",
+      "sourcePage": "1-2",
+      "clusterId": "financial-realignment",
+      "documentSection": "usage layer",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "fin-contribution-ledger",
+      "name": "Couche · Registre de contribution",
+      "nodeType": "narrative",
+      "phrase": "Le protocole se souvient de ceux qui ont créé une circulation utile.",
+      "family": "Financial Realignment · contribution",
+      "summary": "Bootstrap Credits ou Proof of Circulation peuvent informer réputation, allocation ou récompense sous définition juridique.",
+      "sourcePage": "2,5",
+      "clusterId": "financial-realignment",
+      "documentSection": "contribution layer",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "fin-reward-pool",
+      "name": "Couche · Reward Pool variable",
+      "nodeType": "narrative",
+      "phrase": "Le pool active le réseau sans promettre de remboursement.",
+      "family": "Financial Realignment · reward",
+      "summary": "Le pool peut croître avec frais, revenus, grants et décisions de trésorerie ; ses distributions restent variables, conditionnelles et gouvernées.",
+      "sourcePage": "2,4-5",
+      "clusterId": "financial-realignment",
+      "documentSection": "reward pool",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "fin-seed-5m",
+      "name": "Hypothèse · Seed initial de 5 M$",
+      "nodeType": "narrative",
+      "phrase": "Le seed finance l'OpCo et réserve une fraction au bootstrap opérationnel.",
+      "family": "Financial Realignment · financement",
+      "summary": "Allocation proposée : runway, IA et simulations, juridique/safety, GTM/pilotes et réserve bootstrap restreinte.",
+      "sourcePage": "2-4",
+      "clusterId": "financial-realignment",
+      "documentSection": "initial seed and capital stack",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "fin-bootstrap-reserve",
+      "name": "Mécanisme · Réserve bootstrap restreinte",
+      "nodeType": "narrative",
+      "phrase": "Une réserve prouve des boucles réelles avec utilisateurs et marchands.",
+      "family": "Financial Realignment · activation",
+      "summary": "Une part de 0,5 à 1 M$ est proposée pour onboarding, grants, marchands et circulation locale, sans être source légale de remboursement.",
+      "sourcePage": "3-4",
+      "clusterId": "financial-realignment",
+      "documentSection": "capital stack",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "fin-investor-upside",
+      "name": "Cible · Upside dans l'infrastructure",
+      "nodeType": "narrative",
+      "phrase": "Le multiple potentiel vient de la valeur de l'entreprise, pas du hoarding de Mind.",
+      "family": "Financial Realignment · investisseur",
+      "summary": "Le cas x100 est rattaché à la valeur de la couche Citizen AI et à des droits de capital légalement structurés.",
+      "sourcePage": "2,4-5",
+      "clusterId": "financial-realignment",
+      "documentSection": "investor narrative",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "fin-legal-boundary",
+      "name": "Garde-fou · Frontière juridique des instruments",
+      "nodeType": "narrative",
+      "phrase": "Éviter rendement garanti, dette implicite et droits financiers cachés dans l'usage.",
+      "family": "Financial Realignment · juridique",
+      "summary": "La structure finale exige conseil qualifié selon juridictions, MiCA, qualification d'instrument et communication publique.",
+      "sourcePage": "5",
+      "clusterId": "financial-realignment",
+      "documentSection": "legal and regulatory caution",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "fin-question-protocol-rights",
+      "name": "Question · Quels droits de protocole sont légalement viables ?",
+      "nodeType": "narrative",
+      "phrase": "Equity, warrant, gouvernance et token exposure doivent être séparés précisément.",
+      "family": "Financial Realignment · question ouverte",
+      "summary": "Le document laisse ouverte la combinaison exacte entre OpCo, holding, fondation, DAO, warrants et droits futurs.",
+      "sourcePage": "2-5",
+      "clusterId": "financial-realignment",
+      "documentSection": "possible status and investor rights",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "fin-target-healthy-circulation",
+      "name": "Cible · Circulation sans capture précoce",
+      "nodeType": "narrative",
+      "phrase": "Les utilisateurs accèdent aux besoins sans que le capital capture la monnaie d'usage.",
+      "family": "Financial Realignment · résultat",
+      "summary": "La séparation cherche une circulation large, une activation locale et une exposition capitalistique distincte.",
+      "sourcePage": "2,5-6",
+      "clusterId": "financial-realignment",
+      "documentSection": "final doctrine",
+      "stateOrientation": "desirable",
+      "stateDimension": "economic circulation",
+      "stateIndicator": "usage velocity, access, concentration, merchant loops",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "doc-science-endgame",
+      "name": "Document · Science Endgame v2",
+      "nodeType": "thing",
+      "phrase": "From scientific papers to a living, criticizable, computable graph of reality.",
+      "family": "Source · stratégie Mind",
+      "summary": "Document de quatre pages décrivant un graphe scientifique de claims évalués, méthodes, preuves, critiques et confirmations du réel.",
+      "sourceTitle": "Science_Endgame_Mind_Protocol_v2.pdf",
+      "sourcePage": "1-4",
+      "clusterId": "science-endgame",
+      "documentSection": "document source",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "sci-thesis-computable-knowledge",
+      "name": "Thèse · Connaissance scientifique calculable",
+      "nodeType": "narrative",
+      "phrase": "Le papier devient conteneur de provenance, le claim évalué devient unité de connaissance.",
+      "family": "Science Endgame · thèse",
+      "summary": "La mission est de rendre les connaissances pondérées, auditables, critiquables et reliées à l'action.",
+      "sourcePage": "1",
+      "clusterId": "science-endgame",
+      "documentSection": "core thesis",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "sci-atomic-claim",
+      "name": "Primitive · Claim atomique évalué",
+      "nodeType": "narrative",
+      "phrase": "Chaque proposition est scorée séparément selon méthode, portée et preuves.",
+      "family": "Science Endgame · architecture",
+      "summary": "Un même papier peut contenir résultat robuste, analyses fragiles, mécanismes spéculatifs et généralisations faibles.",
+      "sourcePage": "1-2",
+      "clusterId": "science-endgame",
+      "documentSection": "unit of truth",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "sci-methodology-layer",
+      "name": "Couche · Méthodologie de première classe",
+      "nodeType": "narrative",
+      "phrase": "Chaque méthode déclare ce qu'elle peut soutenir et où elle échoue.",
+      "family": "Science Endgame · meta-science",
+      "summary": "RCT, cohortes, préclinique, simulations, qualitatif et méta-analyses reçoivent des permissions inférentielles différentes.",
+      "sourcePage": "2",
+      "clusterId": "science-endgame",
+      "documentSection": "meta-science layer",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "sci-critical-appraisal",
+      "name": "Mécanisme · Critique multidimensionnelle",
+      "nodeType": "narrative",
+      "phrase": "Validité, biais, puissance, réplication et transportabilité restent séparés.",
+      "family": "Science Endgame · critique",
+      "summary": "L'évaluation ne réduit pas la confiance à un score unique et détecte les conclusions plus fortes que le design.",
+      "sourcePage": "2",
+      "clusterId": "science-endgame",
+      "documentSection": "critical appraisal",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "sci-causal-layer",
+      "name": "Couche · Graphe causal",
+      "nodeType": "narrative",
+      "phrase": "Variables, mécanismes, interventions, confondeurs et médiateurs deviennent navigables.",
+      "family": "Science Endgame · architecture",
+      "summary": "Les claims sont reliés à des objets causaux et à leurs contextes d'applicabilité.",
+      "sourcePage": "1",
+      "clusterId": "science-endgame",
+      "documentSection": "core architecture",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "sci-realworld-confirmation",
+      "name": "Couche · Confirmation par le réel",
+      "nodeType": "narrative",
+      "phrase": "Les observations consenties confirment, affaiblissent, contredisent ou raffinent les claims.",
+      "family": "Science Endgame · feedback",
+      "summary": "Citizen AI, clinique, capteurs, économie et opérations de terrain alimentent une boucle avec incertitude et gouvernance.",
+      "sourcePage": "2-3",
+      "clusterId": "science-endgame",
+      "documentSection": "real-world confirmations",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "sci-human-commentary",
+      "name": "Couche · Commentaire humain structuré",
+      "nodeType": "narrative",
+      "phrase": "Scientifiques, praticiens, patients et funders annotent nœuds, liens et gaps.",
+      "family": "Science Endgame · UX",
+      "summary": "Les commentaires typés peuvent déclencher recherche, réanalyse, réplication ou escalade de gouvernance.",
+      "sourcePage": "3",
+      "clusterId": "science-endgame",
+      "documentSection": "commentary and navigation",
+      "semanticType": "institution"
+    },
+    {
+      "id": "sci-claim-microscope",
+      "name": "Interface · Microscope de claim",
+      "nodeType": "narrative",
+      "phrase": "Un claim expose preuve, méthode, critique, portée et évolution de confiance.",
+      "family": "Science Endgame · UX",
+      "summary": "Le map view, evidence timeline, contradiction room, experiment queue et signal overlay rendent le graphe inspectable.",
+      "sourcePage": "3",
+      "clusterId": "science-endgame",
+      "documentSection": "human-native graph UX",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "sci-agent-fleet",
+      "name": "Mécanisme · Flotte d'agents scientifiques",
+      "nodeType": "narrative",
+      "phrase": "Ingestion, critique, pondération, contradiction et expérimentation deviennent des missions séparées.",
+      "family": "Science Endgame · agents",
+      "summary": "Neuf rôles spécialisés décomposent l'automatisation scientifique et rendent les responsabilités auditables.",
+      "sourcePage": "4",
+      "clusterId": "science-endgame",
+      "documentSection": "agent fleet",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "sci-fund-uncertainty",
+      "name": "Institution · Financer l'incertitude précise",
+      "nodeType": "narrative",
+      "phrase": "Le financement vise un nœud, un gap, une réplication ou une expérience.",
+      "family": "Science Endgame · financement",
+      "summary": "La ressource peut être dirigée vers le point exact où une information réduirait l'incertitude ou débloquerait l'action.",
+      "sourcePage": "4",
+      "clusterId": "science-endgame",
+      "documentSection": "funding and governance",
+      "semanticType": "institution"
+    },
+    {
+      "id": "sci-open-federated-governance",
+      "name": "Garde-fou · Science ouverte, fédérée et auditée",
+      "nodeType": "narrative",
+      "phrase": "L'ouverture ne doit pas exposer les données sensibles ni permettre la capture.",
+      "family": "Science Endgame · gouvernance",
+      "summary": "Mirrors, logs d'agents, ontologies versionnées, provenance et séparation des données sensibles protègent la pluralité.",
+      "sourcePage": "4",
+      "clusterId": "science-endgame",
+      "documentSection": "funding and governance",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "sci-pilot-vertical",
+      "name": "Pilote · 20 à 100 articles dans un domaine",
+      "nodeType": "narrative",
+      "phrase": "Une verticale teste extraction granulaire, critique, UX puis données réelles.",
+      "family": "Science Endgame · roadmap",
+      "summary": "Le pilote progresse de l'ingestion au scoring de claims, aux contradictions, à l'UX humaine puis à une source réelle consentie.",
+      "sourcePage": "4",
+      "clusterId": "science-endgame",
+      "documentSection": "practical roadmap",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "sci-risk-claim-accumulation",
+      "name": "Risque · Accumulation sans critique",
+      "nodeType": "narrative",
+      "phrase": "Un graphe de claims non évalués reproduit le problème documentaire à plus grande échelle.",
+      "family": "Science Endgame · risque",
+      "summary": "La critique méthodologique et la portée contextuelle sont nécessaires pour empêcher une fausse précision automatisée.",
+      "sourcePage": "2",
+      "clusterId": "science-endgame",
+      "documentSection": "critical appraisal principle",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "sci-target-next-experiment",
+      "name": "Cible · La connaissance organise son prochain test",
+      "nodeType": "narrative",
+      "phrase": "Le graphe détecte gaps, redondances et expériences à forte valeur d'information.",
+      "family": "Science Endgame · résultat",
+      "summary": "L'état cible relie savoir, simulation, laboratoire, financement et observation réelle.",
+      "sourcePage": "1,4",
+      "clusterId": "science-endgame",
+      "documentSection": "final thesis",
+      "stateOrientation": "desirable",
+      "stateDimension": "scientific acceleration",
+      "stateIndicator": "gap closure, contradiction resolution, experiment information gain, provenance coverage",
+      "semanticType": "system_state"
+    }
+  ],
+  "links": [
+    {
+      "source": "dem-preference-model",
+      "target": "dem-thesis-continuous",
+      "type": "IMPLEMENTS",
+      "justification": "Mécanisme · Modèle de préférences incertain « met en œuvre » Thèse · Démocratie continue représentée. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-agent-deliberation",
+      "target": "dem-thesis-continuous",
+      "type": "IMPLEMENTS",
+      "justification": "Mécanisme · Délibération IA-à-IA « met en œuvre » Thèse · Démocratie continue représentée. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-rapid-drafting",
+      "target": "dem-agent-deliberation",
+      "type": "FEEDS",
+      "justification": "Mécanisme · Rédaction politique rapide « alimente » Mécanisme · Délibération IA-à-IA. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-agent-deliberation",
+      "target": "dem-consensus-certificate",
+      "type": "LEADS_TO",
+      "justification": "Mécanisme · Délibération IA-à-IA « conduit potentiellement à » Artefact · Certificat de consensus. Nature précise : cause contributive proposée → effet. Portée : design_hypothesis. Elle porte une affirmation causale qui reste à justifier empiriquement."
+    },
+    {
+      "source": "dem-consensus-certificate",
+      "target": "dem-human-escalation",
+      "type": "FEEDS",
+      "justification": "Artefact · Certificat de consensus « alimente » Garde-fou · Escalade et approbation humaines. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-human-escalation",
+      "target": "dem-thesis-continuous",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Escalade et approbation humaines « protège » Thèse · Démocratie continue représentée. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-proof-personhood",
+      "target": "dem-thesis-continuous",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Une personne, une voix vérifiée « protège » Thèse · Démocratie continue représentée. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-consensus-certificate",
+      "target": "dem-institution-delivery",
+      "type": "FEEDS",
+      "justification": "Artefact · Certificat de consensus « alimente » Mécanisme · Livraison institutionnelle. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-pilot-local-question",
+      "target": "dem-thesis-continuous",
+      "type": "TESTS",
+      "justification": "Pilote · Question locale vérifiée « met à l’épreuve » Thèse · Démocratie continue représentée. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-pilot-local-question",
+      "target": "dem-target-legitimacy",
+      "type": "TESTS",
+      "justification": "Pilote · Question locale vérifiée « met à l’épreuve » Cible · Légitimité participative mesurable. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-risk-manipulation",
+      "target": "dem-thesis-continuous",
+      "type": "BLOCKS",
+      "justification": "Risque · Manipulation politique agentique « conditionne ou bloque » Thèse · Démocratie continue représentée. Nature précise : question ouverte → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "dem-thesis-continuous",
+      "target": "endgame-democracy",
+      "type": "IMPLEMENTS",
+      "justification": "Thèse · Démocratie continue représentée « met en œuvre » Endgame · Intelligence collective continue. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-agent-deliberation",
+      "target": "institution-machine-deliberation",
+      "type": "IMPLEMENTS",
+      "justification": "Mécanisme · Délibération IA-à-IA « met en œuvre » Délibération à vitesse machine. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-pilot-local-question",
+      "target": "pilot-civic-proposal",
+      "type": "IMPLEMENTS",
+      "justification": "Pilote · Question locale vérifiée « met en œuvre » Pilote · Proposition civique représentée. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-learning-graph",
+      "target": "edu-thesis-sovereign-layer",
+      "type": "IMPLEMENTS",
+      "justification": "Mécanisme · Graphe personnel d'apprentissage « met en œuvre » Thèse · Couche d'apprentissage souveraine. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-future-curriculum",
+      "target": "edu-thesis-sovereign-layer",
+      "type": "IMPLEMENTS",
+      "justification": "Mécanisme · Curriculum du futur « met en œuvre » Thèse · Couche d'apprentissage souveraine. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-adaptive-loop",
+      "target": "edu-learning-graph",
+      "type": "FEEDS",
+      "justification": "Mécanisme · Boucle d'entraînement adaptative « alimente » Mécanisme · Graphe personnel d'apprentissage. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-project-missions",
+      "target": "edu-adaptive-loop",
+      "type": "FEEDS",
+      "justification": "Mécanisme · Missions de projet réelles « alimente » Mécanisme · Boucle d'entraînement adaptative. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-social-pods",
+      "target": "edu-thesis-sovereign-layer",
+      "type": "IMPLEMENTS",
+      "justification": "Institution · Pods sociaux d'apprentissage « met en œuvre » Thèse · Couche d'apprentissage souveraine. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-human-stack",
+      "target": "edu-thesis-sovereign-layer",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · IA + mentor + pod + projet + parent « protège » Thèse · Couche d'apprentissage souveraine. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-future-skills",
+      "target": "edu-future-curriculum",
+      "type": "GROUNDS",
+      "justification": "Cible · Compétences futures mesurables « fonde » Mécanisme · Curriculum du futur. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-pilot-ten-families",
+      "target": "edu-thesis-sovereign-layer",
+      "type": "TESTS",
+      "justification": "Pilote · Dix familles, quatre semaines « met à l’épreuve » Thèse · Couche d'apprentissage souveraine. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-pilot-ten-families",
+      "target": "edu-target-retention-transfer",
+      "type": "TESTS",
+      "justification": "Pilote · Dix familles, quatre semaines « met à l’épreuve » Cible · Rétention longue et transfert. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-risk-child-optimization",
+      "target": "edu-thesis-sovereign-layer",
+      "type": "BLOCKS",
+      "justification": "Risque · Enfant optimisé ou dépendant « conditionne ou bloque » Thèse · Couche d'apprentissage souveraine. Nature précise : question ouverte → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "edu-thesis-sovereign-layer",
+      "target": "endgame-education",
+      "type": "IMPLEMENTS",
+      "justification": "Thèse · Couche d'apprentissage souveraine « met en œuvre » Endgame · Intelligence d'apprentissage personnelle. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-thesis-sovereign-layer",
+      "target": "unlock-lifelong-companion",
+      "type": "IMPLEMENTS",
+      "justification": "Thèse · Couche d'apprentissage souveraine « met en œuvre » Compagnon d’apprentissage à vie. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-pilot-ten-families",
+      "target": "pilot-education-pod",
+      "type": "IMPLEMENTS",
+      "justification": "Pilote · Dix familles, quatre semaines « met en œuvre » Pilote · Pod éducatif de quatre semaines. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-companion-journal",
+      "target": "mh-thesis-continuous-care",
+      "type": "IMPLEMENTS",
+      "justification": "Couche · Compagnon et journal « met en œuvre » Thèse · Infrastructure psychologique continue. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-regulation-coach",
+      "target": "mh-thesis-continuous-care",
+      "type": "IMPLEMENTS",
+      "justification": "Couche · Coach de régulation « met en œuvre » Thèse · Infrastructure psychologique continue. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-living-map",
+      "target": "mh-thesis-continuous-care",
+      "type": "IMPLEMENTS",
+      "justification": "Couche · Cartographie psychologique vivante « met en œuvre » Thèse · Infrastructure psychologique continue. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-early-warning",
+      "target": "mh-thesis-continuous-care",
+      "type": "IMPLEMENTS",
+      "justification": "Couche · Détection précoce « met en œuvre » Thèse · Infrastructure psychologique continue. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-relational-mirror",
+      "target": "mh-living-map",
+      "type": "FEEDS",
+      "justification": "Couche · Miroir relationnel agrégé « alimente » Couche · Cartographie psychologique vivante. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-clinical-interface",
+      "target": "mh-thesis-continuous-care",
+      "type": "IMPLEMENTS",
+      "justification": "Couche · Interface clinique institutionnelle « met en œuvre » Thèse · Infrastructure psychologique continue. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-supervised-therapy",
+      "target": "mh-clinical-interface",
+      "type": "PART_OF",
+      "justification": "Couche · Thérapie et psychiatrie supervisées « fait partie de » Couche · Interface clinique institutionnelle. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-guardrail-clinical-restraint",
+      "target": "mh-supervised-therapy",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Retenue médico-légale « protège » Couche · Thérapie et psychiatrie supervisées. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-pilot-nonclinical",
+      "target": "mh-thesis-continuous-care",
+      "type": "TESTS",
+      "justification": "Pilote · Compagnon non clinique « met à l’épreuve » Thèse · Infrastructure psychologique continue. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-pilot-nonclinical",
+      "target": "mh-target-clinical-public-roi",
+      "type": "TESTS",
+      "justification": "Pilote · Compagnon non clinique « met à l’épreuve » Cible · Résultats cliniques et valeur publique. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-risk-postwork-transition",
+      "target": "mh-thesis-continuous-care",
+      "type": "MOTIVATES",
+      "justification": "Risque · Transition post-travail psychiatrique « motive ce choix » Thèse · Infrastructure psychologique continue. Nature précise : problème ou raison → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-thesis-continuous-care",
+      "target": "endgame-mental-health",
+      "type": "IMPLEMENTS",
+      "justification": "Thèse · Infrastructure psychologique continue « met en œuvre » Endgame · Soutien psychologique souverain continu. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-early-warning",
+      "target": "unlock-early-warning",
+      "type": "IMPLEMENTS",
+      "justification": "Couche · Détection précoce « met en œuvre » Alerte avant l’effondrement. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-pilot-nonclinical",
+      "target": "pilot-mental-health-companion",
+      "type": "IMPLEMENTS",
+      "justification": "Pilote · Compagnon non clinique « met en œuvre » Pilote · Companion santé mentale supervisé. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-thesis-continuous-care",
+      "target": "forecast-continuous-health-companion",
+      "type": "MAKES_PLAUSIBLE",
+      "justification": "Thèse · Infrastructure psychologique continue « rend plausible » Compagnons de santé continus. Nature précise : condition observée → scénario rendu plus plausible. Portée : scenario. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-thesis-separation",
+      "target": "fin-capital-layer",
+      "type": "GROUNDS",
+      "justification": "Doctrine · Séparer capital, usage et récompense « fonde » Couche · Capital investisseur. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-thesis-separation",
+      "target": "fin-usage-layer",
+      "type": "GROUNDS",
+      "justification": "Doctrine · Séparer capital, usage et récompense « fonde » Couche · Unités Mind circulantes. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-treasury-layer",
+      "target": "fin-reward-pool",
+      "type": "FEEDS",
+      "justification": "Couche · Trésorerie gouvernée « alimente » Couche · Reward Pool variable. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-contribution-ledger",
+      "target": "fin-reward-pool",
+      "type": "FEEDS",
+      "justification": "Couche · Registre de contribution « alimente » Couche · Reward Pool variable. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-seed-5m",
+      "target": "fin-capital-layer",
+      "type": "FEEDS",
+      "justification": "Hypothèse · Seed initial de 5 M$ « alimente » Couche · Capital investisseur. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-seed-5m",
+      "target": "fin-bootstrap-reserve",
+      "type": "FEEDS",
+      "justification": "Hypothèse · Seed initial de 5 M$ « alimente » Mécanisme · Réserve bootstrap restreinte. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-bootstrap-reserve",
+      "target": "fin-target-healthy-circulation",
+      "type": "LEADS_TO",
+      "justification": "Mécanisme · Réserve bootstrap restreinte « conduit potentiellement à » Cible · Circulation sans capture précoce. Nature précise : cause contributive proposée → effet. Portée : design_hypothesis. Elle porte une affirmation causale qui reste à justifier empiriquement."
+    },
+    {
+      "source": "fin-usage-layer",
+      "target": "fin-target-healthy-circulation",
+      "type": "LEADS_TO",
+      "justification": "Couche · Unités Mind circulantes « conduit potentiellement à » Cible · Circulation sans capture précoce. Nature précise : cause contributive proposée → effet. Portée : design_hypothesis. Elle porte une affirmation causale qui reste à justifier empiriquement."
+    },
+    {
+      "source": "fin-investor-upside",
+      "target": "fin-capital-layer",
+      "type": "MOTIVATES",
+      "justification": "Effet recherché, non effet affirmé : Couche · Capital investisseur « conduit potentiellement à » Cible · Upside dans l'infrastructure. Nature précise : cause contributive proposée → effet. Portée : design_hypothesis. Elle porte une affirmation causale qui reste à justifier empiriquement.",
+      "migratedFrom": "LEADS_TO fin-capital-layer→fin-investor-upside"
+    },
+    {
+      "source": "fin-legal-boundary",
+      "target": "fin-capital-layer",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Frontière juridique des instruments « protège » Couche · Capital investisseur. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-legal-boundary",
+      "target": "fin-reward-pool",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Frontière juridique des instruments « protège » Couche · Reward Pool variable. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-question-protocol-rights",
+      "target": "fin-investor-upside",
+      "type": "BLOCKS",
+      "justification": "Question · Quels droits de protocole sont légalement viables ? « conditionne ou bloque » Cible · Upside dans l'infrastructure. Nature précise : question ouverte → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "fin-usage-layer",
+      "target": "endgame-money",
+      "type": "IMPLEMENTS",
+      "justification": "Couche · Unités Mind circulantes « met en œuvre » Endgame · Seconde monnaie pour les besoins de vie. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-target-healthy-circulation",
+      "target": "horizon-second-currency",
+      "type": "IMPLEMENTS",
+      "justification": "Cible · Circulation sans capture précoce « met en œuvre » Deuxième monnaie. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-atomic-claim",
+      "target": "sci-thesis-computable-knowledge",
+      "type": "IMPLEMENTS",
+      "justification": "Primitive · Claim atomique évalué « met en œuvre » Thèse · Connaissance scientifique calculable. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-methodology-layer",
+      "target": "sci-critical-appraisal",
+      "type": "GROUNDS",
+      "justification": "Couche · Méthodologie de première classe « fonde » Mécanisme · Critique multidimensionnelle. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-critical-appraisal",
+      "target": "sci-atomic-claim",
+      "type": "SAFEGUARDS",
+      "justification": "Mécanisme · Critique multidimensionnelle « protège » Primitive · Claim atomique évalué. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-causal-layer",
+      "target": "sci-thesis-computable-knowledge",
+      "type": "IMPLEMENTS",
+      "justification": "Couche · Graphe causal « met en œuvre » Thèse · Connaissance scientifique calculable. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-realworld-confirmation",
+      "target": "sci-atomic-claim",
+      "type": "FEEDS",
+      "justification": "Couche · Confirmation par le réel « alimente » Primitive · Claim atomique évalué. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-human-commentary",
+      "target": "sci-thesis-computable-knowledge",
+      "type": "IMPLEMENTS",
+      "justification": "Couche · Commentaire humain structuré « met en œuvre » Thèse · Connaissance scientifique calculable. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-claim-microscope",
+      "target": "sci-human-commentary",
+      "type": "IMPLEMENTS",
+      "justification": "Interface · Microscope de claim « met en œuvre » Couche · Commentaire humain structuré. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-agent-fleet",
+      "target": "sci-thesis-computable-knowledge",
+      "type": "IMPLEMENTS",
+      "justification": "Mécanisme · Flotte d'agents scientifiques « met en œuvre » Thèse · Connaissance scientifique calculable. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-fund-uncertainty",
+      "target": "sci-target-next-experiment",
+      "type": "FEEDS",
+      "justification": "Institution · Financer l'incertitude précise « alimente » Cible · La connaissance organise son prochain test. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-open-federated-governance",
+      "target": "sci-thesis-computable-knowledge",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Science ouverte, fédérée et auditée « protège » Thèse · Connaissance scientifique calculable. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-pilot-vertical",
+      "target": "sci-thesis-computable-knowledge",
+      "type": "TESTS",
+      "justification": "Pilote · 20 à 100 articles dans un domaine « met à l’épreuve » Thèse · Connaissance scientifique calculable. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-pilot-vertical",
+      "target": "sci-target-next-experiment",
+      "type": "TESTS",
+      "justification": "Pilote · 20 à 100 articles dans un domaine « met à l’épreuve » Cible · La connaissance organise son prochain test. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-risk-claim-accumulation",
+      "target": "sci-thesis-computable-knowledge",
+      "type": "BLOCKS",
+      "justification": "Risque · Accumulation sans critique « conditionne ou bloque » Thèse · Connaissance scientifique calculable. Nature précise : question ouverte → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "sci-thesis-computable-knowledge",
+      "target": "endgame-science",
+      "type": "IMPLEMENTS",
+      "justification": "Thèse · Connaissance scientifique calculable « met en œuvre » Endgame · Science comme graphe causal vivant. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-pilot-vertical",
+      "target": "pilot-science-clauses",
+      "type": "IMPLEMENTS",
+      "justification": "Pilote · 20 à 100 articles dans un domaine « met en œuvre » Pilote · 20-100 articles en clauses causales. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-living-map",
+      "target": "edu-learning-graph",
+      "type": "SUBCASE_OF",
+      "hierarchyKind": "subcase_of",
+      "hierarchyWeight": 0.55,
+      "justification": "Couche · Cartographie psychologique vivante « est un sous-cas de » Mécanisme · Graphe personnel d'apprentissage. Nature précise : cas spécifique → cas général. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-preference-model",
+      "target": "mh-living-map",
+      "type": "SUBCASE_OF",
+      "hierarchyKind": "subcase_of",
+      "hierarchyWeight": 0.4,
+      "justification": "Mécanisme · Modèle de préférences incertain « est un sous-cas de » Couche · Cartographie psychologique vivante. Nature précise : cas spécifique → cas général. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-realworld-confirmation",
+      "target": "mh-early-warning",
+      "type": "FEEDS",
+      "justification": "Couche · Confirmation par le réel « alimente » Couche · Détection précoce. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-bootstrap-reserve",
+      "target": "dem-pilot-local-question",
+      "type": "FEEDS",
+      "justification": "Mécanisme · Réserve bootstrap restreinte « alimente » Pilote · Question locale vérifiée. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-bootstrap-reserve",
+      "target": "edu-pilot-ten-families",
+      "type": "FEEDS",
+      "justification": "Mécanisme · Réserve bootstrap restreinte « alimente » Pilote · Dix familles, quatre semaines. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-bootstrap-reserve",
+      "target": "mh-pilot-nonclinical",
+      "type": "FEEDS",
+      "justification": "Mécanisme · Réserve bootstrap restreinte « alimente » Pilote · Compagnon non clinique. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-bootstrap-reserve",
+      "target": "sci-pilot-vertical",
+      "type": "FEEDS",
+      "justification": "Mécanisme · Réserve bootstrap restreinte « alimente » Pilote · 20 à 100 articles dans un domaine. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-thesis-continuous",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Thèse · Démocratie continue représentée « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-preference-model",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Modèle de préférences incertain « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-agent-deliberation",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Délibération IA-à-IA « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-rapid-drafting",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Rédaction politique rapide « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-consensus-certificate",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Artefact · Certificat de consensus « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-human-escalation",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · Escalade et approbation humaines « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-proof-personhood",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · Une personne, une voix vérifiée « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-institution-delivery",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Livraison institutionnelle « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-pilot-local-question",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Question locale vérifiée « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-risk-manipulation",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Risque · Manipulation politique agentique « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "dem-target-legitimacy",
+      "target": "doc-democracy-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Cible · Légitimité participative mesurable « dérive du document » Document · Democracy Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-thesis-sovereign-layer",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Thèse · Couche d'apprentissage souveraine « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-learning-graph",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Graphe personnel d'apprentissage « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-future-curriculum",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Curriculum du futur « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-adaptive-loop",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Boucle d'entraînement adaptative « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-project-missions",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Missions de projet réelles « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-social-pods",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Institution · Pods sociaux d'apprentissage « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-future-skills",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Cible · Compétences futures mesurables « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-human-stack",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · IA + mentor + pod + projet + parent « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-pilot-ten-families",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Dix familles, quatre semaines « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-risk-child-optimization",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Risque · Enfant optimisé ou dépendant « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "edu-target-retention-transfer",
+      "target": "doc-education-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Cible · Rétention longue et transfert « dérive du document » Document · Education Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-thesis-continuous-care",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Thèse · Infrastructure psychologique continue « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-companion-journal",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Compagnon et journal « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-regulation-coach",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Coach de régulation « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-living-map",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Cartographie psychologique vivante « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-early-warning",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Détection précoce « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-relational-mirror",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Miroir relationnel agrégé « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-clinical-interface",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Interface clinique institutionnelle « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-supervised-therapy",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Thérapie et psychiatrie supervisées « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-guardrail-clinical-restraint",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · Retenue médico-légale « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-pilot-nonclinical",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Compagnon non clinique « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-risk-postwork-transition",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Risque · Transition post-travail psychiatrique « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "mh-target-clinical-public-roi",
+      "target": "doc-mental-health-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Cible · Résultats cliniques et valeur publique « dérive du document » Document · Mental Health Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-thesis-separation",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Doctrine · Séparer capital, usage et récompense « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-capital-layer",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Capital investisseur « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-treasury-layer",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Trésorerie gouvernée « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-usage-layer",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Unités Mind circulantes « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-contribution-ledger",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Registre de contribution « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-reward-pool",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Reward Pool variable « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-seed-5m",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Hypothèse · Seed initial de 5 M$ « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-bootstrap-reserve",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Réserve bootstrap restreinte « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-investor-upside",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Cible · Upside dans l'infrastructure « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-legal-boundary",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · Frontière juridique des instruments « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-question-protocol-rights",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Question · Quels droits de protocole sont légalement viables ? « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "fin-target-healthy-circulation",
+      "target": "doc-financial-realignment",
+      "type": "DERIVED_FROM",
+      "justification": "Cible · Circulation sans capture précoce « dérive du document » Document · Financial Narrative Realignment. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-thesis-computable-knowledge",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Thèse · Connaissance scientifique calculable « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-atomic-claim",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Primitive · Claim atomique évalué « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-methodology-layer",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Méthodologie de première classe « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-critical-appraisal",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Critique multidimensionnelle « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-causal-layer",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Graphe causal « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-realworld-confirmation",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Confirmation par le réel « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-human-commentary",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Couche · Commentaire humain structuré « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-claim-microscope",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Interface · Microscope de claim « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-agent-fleet",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Flotte d'agents scientifiques « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-fund-uncertainty",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Institution · Financer l'incertitude précise « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-open-federated-governance",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · Science ouverte, fédérée et auditée « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-pilot-vertical",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · 20 à 100 articles dans un domaine « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-risk-claim-accumulation",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Risque · Accumulation sans critique « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "sci-target-next-experiment",
+      "target": "doc-science-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Cible · La connaissance organise son prochain test « dérive du document » Document · Science Endgame v2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    }
+  ]
+}

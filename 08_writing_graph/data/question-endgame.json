@@ -1,0 +1,1311 @@
+{
+  "scope": "Architecture proposée du runtime de question. Elle articule le Science Endgame, CSG v0.2 et l architecture L1–L4 du dépôt Mind Protocol. Les mécanismes décrivent un design à débattre ; ils ne prétendent ni que le runtime existe ni que les tensions d ontologie sont résolues.",
+  "nodes": [
+    {
+      "id": "query-endgame-contextual-answer",
+      "name": "Endgame · Réponse située et auditable",
+      "nodeType": "narrative",
+      "phrase": "Une question située devient un noyau de réponse minimal, traçable et adapté au graphe interrogé.",
+      "family": "Endgame de la question · cible",
+      "summary": "Le système ne cherche pas seulement des nœuds proches : il résout le contexte, choisit un graphe et une intention, assemble la configuration qui répond, recherche ce qui la contredit puis produit une Answer versionnée.",
+      "stateIndicator": "part des réponses dont chaque phrase remonte à un noyau contextualisé, ses preuves, ses limites et son snapshot",
+      "stateOrientation": "desirable",
+      "clusterId": "question-endgame",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "query-context-envelope",
+      "name": "Contrat · Enveloppe de contexte de question",
+      "nodeType": "narrative",
+      "phrase": "Identité, activité récente, objectif, temps et cadre d action deviennent des contraintes sourcées.",
+      "family": "Endgame de la question · contexte",
+      "summary": "Le L1 fournit des éléments déclarés, observés ou inférés. Chacun garde sa provenance, sa fraîcheur et son incertitude ; les contraintes dures restent distinctes des indices qui ne font que réordonner.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-intent-profile",
+      "name": "Contrat · Profil d intention",
+      "nodeType": "narrative",
+      "phrase": "L intention fixe la forme de la réponse recherchée, jamais le sens des objets du graphe.",
+      "family": "Endgame de la question · interprétation",
+      "summary": "Descriptif, causal, mécaniste, comparatif, prédictif, contrefactuel, transportabilité, décision et gap sélectionnent des motifs, des contre-recherches et un test de complétude différents.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-graph-profile",
+      "name": "Contrat · Profil de graphe",
+      "nodeType": "narrative",
+      "phrase": "Chaque graphe déclare ses identités, ses portées, ses motifs de réponse et ses permissions inférentielles.",
+      "family": "Endgame de la question · routage",
+      "summary": "Le noyau de runtime reste générique, mais il ne devine pas la sémantique locale : l ontologie, les relations de scope, les index, les preuves attendues et les réponses admissibles viennent du graphe ciblé.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-profile-l1",
+      "name": "Profil · Graphe personnel L1",
+      "nodeType": "narrative",
+      "phrase": "Le L1 répond qui demande, ce qui vient de se passer et ce que le citoyen poursuit.",
+      "family": "Endgame de la question · profils de graphe",
+      "summary": "Il sert la mémoire, l identité, les relations et l activité récente sous permissions personnelles. Ses inférences enrichissent la question mais ne deviennent pas des faits scientifiques canoniques.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-profile-design",
+      "name": "Profil · Graphe de design",
+      "nodeType": "narrative",
+      "phrase": "Le graphe de design répond par décisions, raisons, options, dépendances, changements et questions ouvertes.",
+      "family": "Endgame de la question · profils de graphe",
+      "summary": "Une bonne réponse y décrit ce que Mind propose, pourquoi, avec quel statut et quel travail restant ; elle ne transforme jamais une proposition de design en vérité sur le monde.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-profile-science",
+      "name": "Profil · Graphe scientifique",
+      "nodeType": "narrative",
+      "phrase": "Le graphe scientifique répond par claims contextualisés, estimations, méthodes, preuves, contradictions et gaps.",
+      "family": "Endgame de la question · profils de graphe",
+      "summary": "L identité de l objet, la population, la souche, la mesure, le temps et la transportabilité bornent la réponse avant toute proximité sémantique.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-formal-plan",
+      "name": "Mécanisme · Compilation en plan de question",
+      "nodeType": "narrative",
+      "phrase": "Profil de graphe, profil d intention et contexte compilent une FormalQuery exécutable.",
+      "family": "Endgame de la question · planification",
+      "summary": "Le plan nomme les ancres, contraintes, motifs, retrievers, contre-recherches, permissions et critères de sortie ; plusieurs interprétations restent branchées tant que leur ambiguïté compte.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-hierarchical-scope-gate",
+      "name": "Mécanisme · Porte de scope hiérarchique",
+      "nodeType": "narrative",
+      "phrase": "L identité et l appartenance construisent l univers admissible avant le classement sémantique.",
+      "family": "Endgame de la question · retrieval",
+      "summary": "Pour « mon microbe », espèce, souche, isolat, hôte, prélèvement et contexte forment une clôture de scope. Une entité voisine peut devenir piste secondaire, jamais réponse principale par seule ressemblance lexicale.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-hybrid-candidate-retrieval",
+      "name": "Mécanisme · Génération hybride de candidats",
+      "nodeType": "narrative",
+      "phrase": "Exact, full-text, embeddings et parcours proposent des candidats à l intérieur du scope admissible.",
+      "family": "Endgame de la question · retrieval",
+      "summary": "Les embeddings augmentent le rappel mais ne créent ni identité, ni causalité, ni permission. Les différents retrievers produisent des candidats concurrents dont la provenance reste visible.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-answer-pattern-library",
+      "name": "Mécanisme · Bibliothèque de motifs de réponse",
+      "nodeType": "narrative",
+      "phrase": "Chaque intention recherche une configuration typée plutôt qu un nœud isolé.",
+      "family": "Endgame de la question · raisonnement",
+      "summary": "Attribut contextualisé, chaîne causale, mécanisme, comparaison alignée, contradiction, transport et gap sont des formes distinctes. Le profil de graphe traduit chaque forme dans sa propre grammaire.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-answer-kernel",
+      "name": "Objet · Noyau minimal de réponse",
+      "nodeType": "narrative",
+      "phrase": "La matière de la réponse est le plus petit sous-graphe qui couvre conclusion, portée, justification et objections sérieuses.",
+      "family": "Endgame de la question · réponse",
+      "summary": "Le noyau relie les ancres contextuelles, les propositions ou dérivations qui répondent, les preuves nécessaires, les limites, les contradictions pertinentes et les gaps empêchant une conclusion plus forte.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-countersearch",
+      "name": "Garde-fou · Contre-recherche obligatoire",
+      "nodeType": "narrative",
+      "phrase": "Trouver une réponse déclenche la recherche de ce qui la borne, la contredit ou la rend inapplicable.",
+      "family": "Endgame de la question · garde-fous",
+      "summary": "Le runtime cherche explicitement les claims incompatibles, contextes exclus, méthodes trop faibles et alternatives plausibles au lieu de laisser le premier chemin trouvé devenir la réponse.",
+      "clusterId": "question-endgame",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "query-membrane-orchestrator",
+      "name": "Mécanisme · Orchestrateur par membranes",
+      "nodeType": "narrative",
+      "phrase": "Une question multi-graphe devient plusieurs plans souverains réunis après validation de chaque destinataire.",
+      "family": "Endgame de la question · fédération",
+      "summary": "Aucune requête globale ne lit directement toutes les bases. L orchestrateur route des demandes par membrane, reçoit des bundles autorisés puis les compose sans effacer leur graphe, leur snapshot ni leur statut épistémique d origine.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-versioned-answer",
+      "name": "Objet · Answer versionnée",
+      "nodeType": "narrative",
+      "phrase": "Le texte rendu est une projection datée du noyau, révocable quand ses dépendances changent.",
+      "family": "Endgame de la question · réponse",
+      "summary": "Chaque phrase référence sa matière, son interprétation de question et son snapshot. Une prémisse supersédée invalide la dérivation au lieu de laisser une réponse ancienne paraître actuelle.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "query-explicit-truncation",
+      "name": "Garde-fou · Troncature explicite",
+      "nodeType": "narrative",
+      "phrase": "Une limite de calcul déclare une réponse incomplète ; elle ne se déguise jamais en seuil de pertinence.",
+      "family": "Endgame de la question · garde-fous",
+      "summary": "Temps, mémoire, nœuds développés et appels de membrane sont des budgets opérationnels. Les atteindre produit un statut truncated avec la frontière non explorée, jamais une affirmation que cette frontière était hors sujet.",
+      "clusterId": "question-endgame",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "query-llm-proposes-runtime-validates",
+      "name": "Garde-fou · L IA propose, le runtime valide",
+      "nodeType": "narrative",
+      "phrase": "L IA interprète, planifie et formule ; les identités, scopes, motifs et permissions sont contrôlés par des contrats.",
+      "family": "Endgame de la question · garde-fous",
+      "summary": "Une proximité de langage peut suggérer une entité ou un chemin. Seules les règles déterministes du profil de graphe peuvent les admettre dans le noyau final.",
+      "clusterId": "question-endgame",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "rationale-query-similarity-not-identity",
+      "name": "Raison · La similarité ne constitue pas l identité",
+      "nodeType": "narrative",
+      "phrase": "Deux objets peuvent employer les mêmes mots tout en appartenant à des souches, personnes ou projets incompatibles.",
+      "family": "Raison de design · endgame de la question",
+      "summary": "Le coût d un faux rapprochement est structurel : le classement ne peut réparer une erreur d identité déjà admise. Le scope hiérarchique doit donc précéder le score sémantique.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-query-answer-is-subgraph",
+      "name": "Raison · Une réponse est une configuration",
+      "nodeType": "narrative",
+      "phrase": "Un claim sans contexte, preuve ou contradiction ne suffit pas à formuler ce que le graphe sait.",
+      "family": "Raison de design · endgame de la question",
+      "summary": "Les intentions causale, comparative ou de transportabilité ne sont satisfaites que par des relations entre plusieurs objets. Classer les nœuds séparément détruit précisément la structure qui répond.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-query-context-is-runtime",
+      "name": "Raison · Le contexte de session n est pas la connaissance canonique",
+      "nodeType": "narrative",
+      "phrase": "Ce que l utilisateur vient de faire peut orienter la recherche sans devenir une vérité durable sur le monde.",
+      "family": "Raison de design · endgame de la question",
+      "summary": "Séparer l enveloppe runtime du graphe scientifique protège la provenance, la vie privée et la distinction entre observation, déclaration et inférence personnelle.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-query-graph-defines-answer",
+      "name": "Raison · Le graphe définit ce qu une réponse signifie",
+      "nodeType": "narrative",
+      "phrase": "Une décision de design et un claim scientifique peuvent partager des mots sans avoir le même régime de vérité.",
+      "family": "Raison de design · endgame de la question",
+      "summary": "Le runtime peut partager ses étapes de compilation et d exécution, mais les objets admissibles, la preuve requise et les limites de la réponse doivent rester fournis par le graphe interrogé.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-query-sovereign-federation",
+      "name": "Raison · Une fédération n est pas une base globale",
+      "nodeType": "narrative",
+      "phrase": "Interroger plusieurs graphes ne retire à aucun d eux son droit de filtrer, valider et refuser.",
+      "family": "Raison de design · endgame de la question",
+      "summary": "Les lois L3, L4 et L6 de Mind imposent une composition de réponses autorisées, non un accès transversal aux stockages. La membrane appartient donc au chemin de connaissance, pas seulement au transport réseau.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-query-coverage-not-volume",
+      "name": "Raison · Le maximum utile est une couverture, pas un volume",
+      "nodeType": "narrative",
+      "phrase": "Accumuler tous les nœuds proches reproduit le problème documentaire que le Science Endgame veut dépasser.",
+      "family": "Raison de design · endgame de la question",
+      "summary": "Le critère de sortie doit couvrir la conclusion, ses qualifications et les objections capables de la changer. Davantage de nœuds sans fonction épistémique ajoute du bruit, pas de la connaissance.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "decision-query-runtime-architecture",
+      "name": "Décision à débattre · Architecture du runtime de question",
+      "nodeType": "moment",
+      "phrase": "Faut-il composer un noyau générique avec des profils, spécialiser un moteur par graphe ou laisser un modèle universel tout router ?",
+      "family": "Décision d architecture · endgame de la question",
+      "summary": "Le design encode l option hybride comme candidate principale, sans l approuver. L arbitrage doit mesurer exactitude contextuelle, auditabilité, capacité d extension et coût de maintenance sur plusieurs graphes et intentions.",
+      "decisionNeeded": "Choisir la frontière entre runtime commun, profils de graphe, profils d intention et planification apprise.",
+      "verificationNeeded": "mêmes questions exécutées sur L1, design et science avec ambiguïtés, contradictions et demandes multi-graphes",
+      "questionCategory": "architecture de recherche",
+      "decisionStatus": "in_review",
+      "responsibleRole": "Architecture Mind · Runtime de question · Gouvernance des graphes",
+      "decisionDue": "2026-08-22",
+      "reviewDate": "2026-09-22",
+      "closureEvidence": "Prototype vertical comparant les trois options sur identité, rappel des motifs, contradictions, provenance, troncature et coût",
+      "optionCriteria": [
+        "identité et scope jamais remplacés par la similarité",
+        "réponse reproductible et auditable",
+        "extension à un nouveau graphe sans réécrire tout le runtime",
+        "respect des membranes et permissions",
+        "capacité à reconnaître des motifs nouveaux"
+      ],
+      "clusterId": "question-endgame",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-query-runtime-profiles",
+      "name": "Option A · Noyau générique et profils composables",
+      "nodeType": "narrative",
+      "phrase": "Un runtime commun compile GraphProfile, IntentProfile et QuestionContext.",
+      "family": "Option d architecture · endgame de la question",
+      "summary": "Option proposée. Les étapes de routage, plan, exécution, bundle et versionnement sont communes ; chaque graphe fournit sa sémantique et chaque intention ses motifs.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "séparation explicite des trois sources de variation",
+        "auditabilité des plans",
+        "ajout d un graphe ou d une intention par contrat"
+      ],
+      "optionRisks": [
+        "contrats potentiellement lourds",
+        "intersection profil de graphe × intention à tester",
+        "faux sentiment d universalité si le noyau contient des hypothèses de domaine"
+      ],
+      "optionConditions": [
+        "profils versionnés et validables",
+        "fallback explicite quand un graphe ne sait pas répondre à une intention"
+      ],
+      "clusterId": "question-endgame",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-query-runtime-per-graph",
+      "name": "Option B · Moteur spécialisé par graphe",
+      "nodeType": "narrative",
+      "phrase": "Chaque graphe possède son interprétation, ses parcours, son classement et son format de réponse.",
+      "family": "Option d architecture · endgame de la question",
+      "summary": "La spécialisation maximise l adéquation locale mais duplique le runtime et rend les questions multi-graphes difficiles à composer.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "aucune abstraction prématurée",
+        "optimisation propre à chaque ontologie",
+        "responsabilité locale claire"
+      ],
+      "optionRisks": [
+        "duplication des invariants",
+        "réponses et statuts incompatibles",
+        "orchestration inter-graphes ad hoc"
+      ],
+      "optionConditions": [
+        "très peu de graphes",
+        "aucun besoin fort de composition transverse"
+      ],
+      "clusterId": "question-endgame",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-query-runtime-universal-model",
+      "name": "Option C · Routage universel appris",
+      "nodeType": "narrative",
+      "phrase": "Un modèle choisit directement graphes, chemins et réponses depuis la question enrichie.",
+      "family": "Option d architecture · endgame de la question",
+      "summary": "L option maximise la flexibilité et la découverte de motifs, mais rend les frontières d identité, de permission et de preuve difficiles à garantir.",
+      "optionCode": "C",
+      "optionBenefits": [
+        "adaptation aux formulations et motifs inconnus",
+        "moins de patrons écrits à la main",
+        "planification potentiellement plus efficace"
+      ],
+      "optionRisks": [
+        "décisions de scope opaques",
+        "reproductibilité faible",
+        "possibilité de franchir une frontière sémantique ou de permission"
+      ],
+      "optionConditions": [
+        "validation déterministe après chaque étape",
+        "journal complet des choix et alternatives"
+      ],
+      "clusterId": "question-endgame",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "question-query-l4-science-ontology-bridge",
+      "name": "Question · Comment les graphes de domaine respectent-ils L4 ?",
+      "nodeType": "narrative",
+      "phrase": "Les ontologies riches du design et de la science coexistent avec la loi L4 des cinq formes et du lien unique.",
+      "family": "Endgame de la question · tension d architecture",
+      "summary": "Le graphe de design actif possède déjà 30 types et 41 prédicats, et le graphe scientifique prévoit sa propre ontologie. Il faut définir une projection vers le substrat L4, distinguer schéma physique et ontologie sémantique, ou réviser explicitement la portée de la loi.",
+      "clusterId": "question-endgame",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-query-hard-soft-context",
+      "name": "Question · Quelles inférences contextuelles peuvent exclure ?",
+      "nodeType": "narrative",
+      "phrase": "Une information inférée du L1 peut-elle devenir contrainte dure ou seulement réordonner les candidats ?",
+      "family": "Endgame de la question · tension d architecture",
+      "summary": "Une exclusion erronée peut rendre invisible la bonne réponse ; une absence d exclusion peut mélanger des identités. Le contrat doit dépendre de la provenance, de l incertitude et du coût d erreur.",
+      "clusterId": "question-endgame",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-query-kernel-completeness",
+      "name": "Question · Quand un noyau de réponse est-il complet ?",
+      "nodeType": "narrative",
+      "phrase": "Quel invariant autorise l arrêt sans confondre budget de calcul et absence d information pertinente ?",
+      "family": "Endgame de la question · tension d algorithme",
+      "summary": "La complétude doit être définie par intention et profil de graphe : couverture des rôles obligatoires, recherche de contradictions et frontière non explorée, plutôt que par un seuil global de score.",
+      "clusterId": "question-endgame",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-query-traversal-learning-location",
+      "name": "Question · Où apprendre des parcours réussis ?",
+      "nodeType": "narrative",
+      "phrase": "La coloration des liens améliore la mémoire d un citoyen mais ne doit pas réécrire silencieusement la science canonique.",
+      "family": "Endgame de la question · tension d architecture",
+      "summary": "Il faut situer les traces de recherche dans le L1 ou le runtime, puis décider sous quelles conditions un signal agrégé peut proposer une modification à un autre graphe sans y écrire directement.",
+      "clusterId": "question-endgame",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "decision-query-domain-encoding",
+      "name": "Décision à débattre · Encodage sémantique des domaines",
+      "nodeType": "moment",
+      "phrase": "Faut-il exprimer un domaine directement avec les cinq formes L4 ou ajouter une ontologie logique riche projetée sur ce substrat ?",
+      "family": "Décision d architecture · endgame de la question",
+      "summary": "Les deux méthodes restent ouvertes. L exercice du microbe doit établir non seulement si chacune peut représenter les faits, mais aussi si elle permet de retrouver la bonne identité, composer le bon motif, expliquer la réponse et évoluer à grande échelle.",
+      "decisionNeeded": "Choisir où vit la précision sémantique requise par les graphes de domaine.",
+      "verificationNeeded": "double encodage du même cas microbien et exécution des mêmes questions, contre-recherches et mutations de schéma",
+      "questionCategory": "architecture d ontologie et de recherche",
+      "decisionStatus": "in_review",
+      "responsibleRole": "Architecture Mind · L4 · Graphes de domaine",
+      "decisionDue": "2026-09-01",
+      "reviewDate": "2026-10-01",
+      "closureEvidence": "Prototype comparatif mesurant identité, scope, rappel des motifs, contradictions, explicabilité, interopérabilité, coût de versionnement et latence",
+      "optionCriteria": [
+        "exprimer sans perte l identité du microbe, son contexte et les relations scientifiques pertinentes",
+        "retrouver le bon sous-graphe sans dépendre seulement de la proximité sémantique",
+        "rendre les erreurs de type, de portée et de preuve détectables",
+        "rester interopérable entre graphes et stable lors des évolutions de domaine",
+        "supporter des centaines de millions de nœuds avec un plan explicable"
+      ],
+      "clusterId": "question-endgame",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-query-domain-l4-native",
+      "name": "Option A · Domaine exprimé directement en L4",
+      "nodeType": "narrative",
+      "phrase": "Actor, Moment, Narrative, Space et Thing portent le domaine ; le lien unique reçoit sa sémantique dans ses propriétés et ses axes.",
+      "family": "Option d ontologie · endgame de la question",
+      "summary": "Cette méthode prend la loi L4 au sens fort : les sous-types, synthèses, embeddings, propriétés et axes du lien suffisent à exprimer le microbe et son contexte, sans seconde grammaire de types et prédicats.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "forme physique identique dans tous les graphes",
+        "interopérabilité et transport par membrane simplifiés",
+        "évolution du domaine sans migration constante du schéma de base",
+        "recherche associative naturelle par synthèse et embedding"
+      ],
+      "optionRisks": [
+        "la signification exacte peut se disperser dans des propriétés libres",
+        "deux producteurs peuvent encoder différemment le même concept",
+        "les invariants scientifiques deviennent difficiles à valider sans conventions supplémentaires",
+        "la possibilité de représenter un fait ne garantit pas son retrieval fiable à grande échelle"
+      ],
+      "optionConditions": [
+        "bon choix pour mémoire personnelle, exploration associative et domaines encore mouvants",
+        "applicable aux domaines précis si sous-types, propriétés et patrons de liens sont versionnés et validés",
+        "mauvais choix si les propriétés restent libres alors que l identité, les unités ou les relations causales doivent être déterministes"
+      ],
+      "clusterId": "question-endgame",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-query-domain-rich-overlay",
+      "name": "Option B · Ontologie logique riche projetée sur L4",
+      "nodeType": "narrative",
+      "phrase": "Le stockage reste compatible avec L4, mais un contrat logique ajoute types de domaine, prédicats, contraintes et patrons de réponse explicites.",
+      "family": "Option d ontologie · endgame de la question",
+      "summary": "Cette méthode distingue la physique commune du graphe et sa grammaire sémantique. Microbe, souche, hôte, colonisation, mesure et claim deviennent des concepts validables, puis sont compilés vers les cinq formes et le lien L4.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "identité, cardinalités, unités et relations admissibles vérifiables",
+        "patrons scientifiques et contre-recherche exprimables sans ambiguïté",
+        "plans et réponses plus auditables",
+        "erreurs de modélisation détectables avant le retrieval"
+      ],
+      "optionRisks": [
+        "coût de conception, mapping et migration de l ontologie",
+        "fragmentation possible entre graphes de domaine",
+        "fausse précision si la grammaire fige trop tôt une science mouvante",
+        "le compilateur vers L4 devient une pièce critique à gouverner"
+      ],
+      "optionConditions": [
+        "bon choix quand identité, preuve, causalité, unités ou permissions ont un coût d erreur élevé",
+        "applicable si chaque concept riche possède une projection L4 réversible et versionnée",
+        "mauvais choix pour un domaine exploratoire si le coût de formalisation dépasse la valeur des invariants obtenus"
+      ],
+      "clusterId": "question-endgame",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "rationale-query-l4-uniform-physics",
+      "name": "Raison · L4 a été pensé comme une physique uniforme",
+      "nodeType": "narrative",
+      "phrase": "Cinq formes stables et un lien évitent qu une fédération dépende des schémas internes de chaque organisation.",
+      "family": "Raison de design · comparaison des ontologies",
+      "summary": "Le choix L4 privilégie un langage minimal transportable, la souveraineté locale et une découverte par synthèse. Il répond d abord au problème d interopérabilité entre graphes, pas à la validation complète de chaque discipline.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-query-rich-domain-contracts",
+      "name": "Raison · L ontologie riche a été pensée comme contrat",
+      "nodeType": "narrative",
+      "phrase": "Une réponse scientifique exacte exige des distinctions que la ressemblance textuelle ne peut pas garantir.",
+      "family": "Raison de design · comparaison des ontologies",
+      "summary": "Le choix riche répond au besoin de distinguer espèce, souche, instance, partie, contexte, mesure, preuve et causalité, puis de refuser les compositions invalides avant qu elles deviennent une réponse convaincante.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "hypothesis-query-l4-can-represent-microbe",
+      "name": "Hypothèse · Les cinq formes peuvent représenter le cas microbien",
+      "nodeType": "narrative",
+      "phrase": "Le microbe, le contexte intestinal, l événement, le claim et l assay occupent chacun une forme L4 sans créer un sixième type.",
+      "family": "Hypothèse de comparaison · microbe",
+      "summary": "Plausibilité forte et démontrable par construction pour la représentation. Cette démonstration ne prouve ni l unicité de l encodage entre producteurs ni la qualité du retrieval sur un graphe massif.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "question-endgame",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "hypothesis-query-l4-improves-interoperability",
+      "name": "Hypothèse · L4 natif réduit le coût d interopérabilité",
+      "nodeType": "narrative",
+      "phrase": "Une structure commune devrait réduire les adaptations nécessaires aux membranes et outils génériques.",
+      "family": "Hypothèse de comparaison · effets attendus",
+      "summary": "Effet probable si les propriétés et axes ont eux aussi des conventions partagées ; effet faible ou nul si chaque graphe remplit le lien unique avec une sémantique incompatible.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "question-endgame",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "hypothesis-query-rich-improves-precision",
+      "name": "Hypothèse · Une ontologie riche améliore la précision contrôlable",
+      "nodeType": "narrative",
+      "phrase": "Des types, prédicats et contraintes explicites devraient réduire les confusions d identité et les chemins scientifiquement invalides.",
+      "family": "Hypothèse de comparaison · effets attendus",
+      "summary": "Effet probable pour les erreurs couvertes par le contrat ; il reste peu probable qu une ontologie, seule, résolve les lacunes de données, les synonymes inconnus ou les claims contradictoires.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "question-endgame",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "hypothesis-query-rich-increases-governance-cost",
+      "name": "Hypothèse · Une ontologie riche augmente le coût de gouvernance",
+      "nodeType": "narrative",
+      "phrase": "Chaque nouvelle distinction utile crée aussi une définition, une migration et une compatibilité à maintenir.",
+      "family": "Hypothèse de comparaison · effets attendus",
+      "summary": "Effet très probable par construction, mais son ampleur est inconnue. Il peut être compensé si les validations évitent davantage d erreurs coûteuses que le contrat n exige de maintenance.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "question-endgame",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "example-microbe-l4-actor",
+      "name": "Exemple L4 · Actor · le microbe",
+      "nodeType": "narrative",
+      "phrase": "Une souche microbienne identifiée est l entité active dont on cherche l effet.",
+      "family": "Exercice microbe · encodage L4",
+      "summary": "Actor porte l identifiant stable de la souche, ses synonymes et sa synthèse. Une propriété de sous-type peut préciser microbial_strain sans modifier les cinq formes.",
+      "l4NodeType": "actor",
+      "l4Subtype": "microbial_strain",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "example-microbe-l4-space",
+      "name": "Exemple L4 · Space · le contexte intestinal",
+      "nodeType": "narrative",
+      "phrase": "L intestin de l hôte, avec cohorte, régime et conditions, borne le contexte pertinent.",
+      "family": "Exercice microbe · encodage L4",
+      "summary": "Space empêche de confondre un effet observé dans un environnement avec un effet universel du microbe.",
+      "l4NodeType": "space",
+      "l4Subtype": "biological_context",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "example-microbe-l4-moment",
+      "name": "Exemple L4 · Moment · la colonisation observée",
+      "nodeType": "narrative",
+      "phrase": "L exposition, la colonisation et la mesure sont situées dans un événement daté.",
+      "family": "Exercice microbe · encodage L4",
+      "summary": "Moment porte la temporalité et permet de distinguer une intervention, une observation antérieure et un résultat ultérieur.",
+      "l4NodeType": "moment",
+      "l4Subtype": "colonization_observation",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "example-microbe-l4-narrative",
+      "name": "Exemple L4 · Narrative · le claim inflammatoire",
+      "nodeType": "narrative",
+      "phrase": "Le claim affirme que cette souche, dans ce contexte, modifie un marqueur inflammatoire.",
+      "family": "Exercice microbe · encodage L4",
+      "summary": "Narrative porte l énoncé contestable, ses qualifications et sa synthèse ; il ne doit pas être confondu avec le microbe lui-même.",
+      "l4NodeType": "narrative",
+      "l4Subtype": "scientific_claim",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "example-microbe-l4-thing",
+      "name": "Exemple L4 · Thing · l assay et ses données",
+      "nodeType": "narrative",
+      "phrase": "Le fichier de données, le protocole d assay ou l artefact source matérialise ce qui a été mesuré.",
+      "family": "Exercice microbe · encodage L4",
+      "summary": "Thing porte la source vérifiable et son hash ; le lien vers Narrative exprime qu elle fournit de l evidence, sans transformer l artefact en claim.",
+      "l4NodeType": "thing",
+      "l4Subtype": "assay_artifact",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "protocol-query-microbe-dual-encoding",
+      "name": "Protocole · Double encodage du cas microbien",
+      "nodeType": "narrative",
+      "phrase": "Construire le même sous-graphe en L4 natif et avec overlay riche, puis poser exactement les mêmes questions et mutations.",
+      "family": "Protocole comparatif · endgame de la question",
+      "summary": "Le test mesure identité correcte, respect du contexte, couverture du motif, contre-evidence, explication, coût d ajout d un nouveau sous-type, interopérabilité et latence. Un résultat doit pouvoir soutenir ou réfuter séparément chaque effet attendu.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "question-endgame",
+      "semanticType": "protocol"
+    },
+    {
+      "id": "axiom-query-schema-is-physics",
+      "name": "Axiome · Le schéma décrit une physique, pas le dictionnaire du monde",
+      "nodeType": "narrative",
+      "phrase": "Les catégories universelles de L4 sélectionnent un comportement dynamique ; elles ne cherchent pas à nommer chaque espèce de chose.",
+      "family": "Endgame du graphe · doctrine L4",
+      "summary": "Actor, Moment, Narrative, Space et Thing sont des rôles de circulation, branchement, attraction, contexte et passage. Microbe, humain, étude ou décision restent des contenus et sous-types : leur apparition ne doit pas modifier la loi physique commune.",
+      "clusterId": "question-endgame",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "rationale-query-vocabulary-is-open-content",
+      "name": "Raison · Le vocabulaire est infini, le schéma doit rester fini",
+      "nodeType": "narrative",
+      "phrase": "Les domaines, cultures et langues peuvent produire une infinité de termes sans produire une infinité de migrations de protocole.",
+      "family": "Endgame du graphe · raison de design",
+      "summary": "Une grammaire logique canonique devrait gouverner synonymes, traductions, nouveaux concepts et désaccords de définition. L4 place plutôt cette diversité dans type, synthesis, content et embedding ; l infinité sémantique subsiste, mais elle ne change plus la physique.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-query-node-type-selects-role",
+      "name": "Raison · Un type de nœud sélectionne un rôle dynamique",
+      "nodeType": "narrative",
+      "phrase": "Deux acteurs de domaines différents obéissent à la même fonction physique lorsqu ils injectent de l énergie dans le graphe.",
+      "family": "Endgame du graphe · raison de design",
+      "summary": "La distinction utile au protocole est fonctionnelle : pompe, routeur, attracteur, conteneur ou passage. Une souche microbienne peut être Actor lorsqu elle agit dans le motif étudié sans que microbial_strain devienne un nouveau type de stockage.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-query-one-link-emergent-grammar",
+      "name": "Raison · La grammaire du lien doit émerger de degrés continus",
+      "nodeType": "narrative",
+      "phrase": "La relation n est pas choisie dans une liste de verbes ; elle résulte de sa direction, sa hiérarchie, sa permanence, son activation et sa mémoire sémantique.",
+      "family": "Endgame du graphe · raison de design",
+      "summary": "Le lien unique évite de traduire SUPPORTS, soutient ou apoya comme trois lois différentes. Weight, energy, les deux directions de polarity, hierarchy, permanence, synthesis, embedding et temporalité composent une signature physique dont les motifs doivent devenir reconnaissables.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "mechanism-query-open-semantic-fields",
+      "name": "Mécanisme · Champs sémantiques ouverts",
+      "nodeType": "narrative",
+      "phrase": "Type libre, synthèse, contenu et embedding portent les distinctions de domaine et de langue sans étendre les labels physiques.",
+      "family": "Endgame du graphe · mécanisme L4",
+      "summary": "Le champ type aide agents et interfaces ; synthesis fournit la représentation courte cherchable ; content conserve la matière complète ; embedding situe cette matière dans l espace sémantique. Aucun de ces champs ne crée une nouvelle loi de propagation.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mechanism-query-universal-link-state",
+      "name": "Mécanisme · État physique du lien universel",
+      "nodeType": "narrative",
+      "phrase": "Chaque lien transporte activation, importance, direction, structure, stabilité, mémoire sémantique et historique de traversée.",
+      "family": "Endgame du graphe · mécanisme L4",
+      "summary": "La combinaison des degrés physiques doit déterminer comment l énergie circule, comment un contexte contient ou élabore, ce qui absorbe une intention et ce qu un parcours réussi renforce. La grammaire recherchée est une dynamique de configurations, non un nom de relation.",
+      "physicalDegrees": [
+        "weight",
+        "energy",
+        "polarity_a_to_b",
+        "polarity_b_to_a",
+        "hierarchy",
+        "permanence",
+        "semantic_embedding",
+        "traversal_history"
+      ],
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mechanism-query-domain-pattern-contracts",
+      "name": "Mécanisme · Patrons de domaine sans nouvelle physique",
+      "nodeType": "narrative",
+      "phrase": "La science peut reconnaître et valider des configurations microbe, contexte, moment, claim et artefact sans créer cinq nouveaux types canoniques.",
+      "family": "Endgame du graphe · mécanisme de validation",
+      "summary": "Les patrons sont des recettes versionnées de recherche et de validation. Ils peuvent exiger identité, unité, provenance ou contre-recherche, mais restent des programmes lisant la physique L4 ; ils ne deviennent ni labels FalkorDB ni nouveaux prédicats universels.",
+      "clusterId": "question-endgame",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "effect-query-schema-stability",
+      "name": "Effet recherché · Stabilité du protocole malgré l expansion du savoir",
+      "nodeType": "narrative",
+      "phrase": "Ajouter un organisme, une langue ou une discipline ne déclenche pas une migration du schéma partagé.",
+      "family": "Endgame du graphe · effet attendu",
+      "summary": "Si les champs ouverts et la physique suffisent, outils, membranes et validateurs de base continuent de fonctionner pendant que le contenu et les patrons locaux évoluent.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "effect-query-multilingual-portability",
+      "name": "Effet recherché · Portabilité multilingue sans dictionnaire central",
+      "nodeType": "narrative",
+      "phrase": "Deux graphes peuvent partager une configuration même lorsque leurs synthèses emploient des langues ou taxonomies différentes.",
+      "family": "Endgame du graphe · effet attendu",
+      "summary": "L embedding, les identifiants et la signature physique réduisent la dépendance à une traduction exhaustive des prédicats. Cet effet reste à mesurer sur synonymes, homonymes et concepts culturellement non équivalents.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "effect-query-emergent-relation-learning",
+      "name": "Effet recherché · Les parcours réussis rendent les relations trouvables",
+      "nodeType": "narrative",
+      "phrase": "La grammaire utile se renforce par usage au lieu d être entièrement écrite avant que le graphe vive.",
+      "family": "Endgame du graphe · effet attendu",
+      "summary": "La coloration avant absorbe l intention dans les liens malléables ; la coloration arrière renforce les chemins ayant produit une bonne réponse. Des configurations fonctionnelles peuvent ainsi devenir attractrices sans recevoir un prédicat logique supplémentaire.",
+      "clusterId": "question-endgame",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "hypothesis-query-physical-grammar-suffices",
+      "name": "Hypothèse · La grammaire physique suffit aux distinctions utiles",
+      "nodeType": "narrative",
+      "phrase": "Des signatures de configuration peuvent distinguer identité, contexte, soutien, contradiction et causalité sans prédicats canoniques dédiés.",
+      "family": "Endgame du graphe · hypothèse centrale",
+      "summary": "Cette proposition est plausible mais non démontrée. Elle échoue si deux relations opérationnellement différentes restent indiscernables pour le runtime, si leurs signatures dérivent entre graphes ou si l explication exige de réinventer une ontologie cachée.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "question-endgame",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "axiom-query-universal-computation-required",
+      "name": "Exigence · La dynamique doit permettre le calcul universel",
+      "nodeType": "narrative",
+      "phrase": "Le système de transition retenu pour la logique du graphe doit être Turing-complet.",
+      "family": "Endgame du graphe · exigence de calcul",
+      "summary": "Cette exigence de design ne vaut pas preuve. Elle vise la capacité d encoder toute procédure effective, donc les règles de logique nécessaires aux patrons futurs, dans la dynamique du graphe et de son tick explicitement délimité.",
+      "clusterId": "question-endgame",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "question-query-computation-boundary",
+      "name": "Question · Quel système prétend être Turing-complet ?",
+      "nodeType": "narrative",
+      "phrase": "Le graphe statique ne calcule pas ; il faut nommer exactement l état, la règle de transition, l ordonnanceur et la mémoire dont porte la preuve.",
+      "family": "Endgame du graphe · gap formel",
+      "summary": "La revendication peut concerner la physique seule, la physique plus le tick, ou le runtime complet. Inclure un LLM ou un orchestrateur général rendrait la preuve triviale et n établirait rien sur l expressivité propre du graphe.",
+      "clusterId": "question-endgame",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "hypothesis-query-graph-dynamics-turing-complete",
+      "name": "Hypothèse · La physique L4 peut simuler une machine universelle",
+      "nodeType": "narrative",
+      "phrase": "Les rôles de nœuds, la propagation, le branchement sur Moment, la coloration et la cristallisation pourraient encoder état, mémoire et transitions universelles.",
+      "family": "Endgame du graphe · hypothèse de calcul",
+      "summary": "Aucune preuve n est actuellement encodée. La présence de nombres réels ou d embeddings ne suffit pas et ne doit pas servir d oracle à précision infinie ; une construction valide doit fonctionner avec des états finis et des opérations effectivement exécutables.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "question-endgame",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "method-query-universal-machine-reduction",
+      "name": "Méthode · Réduction depuis une machine universelle connue",
+      "nodeType": "narrative",
+      "phrase": "Encoder une machine à deux compteurs ou Rule 110, puis démontrer que chaque transition et l arrêt sont préservés.",
+      "family": "Endgame du graphe · méthode de preuve",
+      "summary": "La preuve doit fournir une fonction d encodage E, un état initial fini, une simulation pas-à-pas ou à ralentissement borné, une mémoire non bornée constructible, et l équivalence entre arrêt du modèle source et état terminal du graphe.",
+      "clusterId": "question-endgame",
+      "semanticType": "method"
+    },
+    {
+      "id": "protocol-query-turing-completeness-proof",
+      "name": "Protocole · Preuve et test de complétude de Turing",
+      "nodeType": "narrative",
+      "phrase": "Spécifier la transition L4, construire la réduction, vérifier des programmes témoins et faire auditer la preuve indépendamment.",
+      "family": "Endgame du graphe · protocole formel",
+      "summary": "Le protocole interdit de déléguer une étape au LLM, à la compréhension de synthesis, à du code général caché ou à une précision réelle infinie. Il exige déterminisme de l ordonnanceur, conservation des invariants, traces reproductibles et cas négatifs montrant ce qui n est pas simulé.",
+      "proofObligations": [
+        "définir formellement l état du graphe et une règle de tick exécutable",
+        "définir E entre configurations de la machine source et états L4",
+        "prouver la correspondance de chaque transition avec un nombre fini de ticks",
+        "prouver une mémoire extensible sans oracle externe",
+        "prouver la correspondance des conditions d arrêt",
+        "reproduire l exécution avec précision finie et ordonnanceur déclaré",
+        "faire relire la preuve et les tests par un tiers"
+      ],
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "question-endgame",
+      "semanticType": "protocol"
+    }
+  ],
+  "links": [
+    {
+      "source": "query-context-envelope",
+      "target": "query-formal-plan",
+      "type": "FEEDS",
+      "justification": "L enveloppe fournit au plan les entités, contraintes et indices de session. Flux de contexte, sans prétendre qu une inférence personnelle est vraie."
+    },
+    {
+      "source": "query-intent-profile",
+      "target": "query-formal-plan",
+      "type": "FEEDS",
+      "justification": "Le profil d intention fournit la forme de réponse, les motifs et les tests de couverture attendus."
+    },
+    {
+      "source": "query-graph-profile",
+      "target": "query-formal-plan",
+      "type": "FEEDS",
+      "justification": "Le profil de graphe fournit la grammaire locale, les scopes, les permissions et les capacités exécutables."
+    },
+    {
+      "source": "query-profile-l1",
+      "target": "query-graph-profile",
+      "type": "SUBCASE_OF",
+      "hierarchyKind": "subcase_of",
+      "hierarchyWeight": 0.9,
+      "justification": "Le profil L1 spécialise le contrat générique pour mémoire, identité et activité personnelles."
+    },
+    {
+      "source": "query-profile-design",
+      "target": "query-graph-profile",
+      "type": "SUBCASE_OF",
+      "hierarchyKind": "subcase_of",
+      "hierarchyWeight": 0.9,
+      "justification": "Le profil de design spécialise le contrat pour décisions, raisons et travail du projet."
+    },
+    {
+      "source": "query-profile-science",
+      "target": "query-graph-profile",
+      "type": "SUBCASE_OF",
+      "hierarchyKind": "subcase_of",
+      "hierarchyWeight": 0.9,
+      "justification": "Le profil scientifique spécialise le contrat pour claims, preuves, méthodes, contexte et contradictions."
+    },
+    {
+      "source": "repo-layer-l1",
+      "target": "query-context-envelope",
+      "type": "FEEDS",
+      "justification": "La mémoire personnelle L1 est la source naturelle du contexte récent et relationnel ; elle alimente le runtime sans devenir connaissance canonique."
+    },
+    {
+      "source": "query-formal-plan",
+      "target": "query-hierarchical-scope-gate",
+      "type": "IMPLEMENTS",
+      "justification": "Le plan exécute d abord les contraintes d identité et de portée qu il a compilées."
+    },
+    {
+      "source": "query-hierarchical-scope-gate",
+      "target": "query-hybrid-candidate-retrieval",
+      "type": "SAFEGUARDS",
+      "justification": "La porte empêche le retrieval sémantique d admettre comme réponse principale une entité seulement ressemblante."
+    },
+    {
+      "source": "query-hybrid-candidate-retrieval",
+      "target": "query-answer-pattern-library",
+      "type": "FEEDS",
+      "justification": "Les retrievers alimentent les motifs en candidats ; ils ne déterminent pas seuls la forme répondante."
+    },
+    {
+      "source": "query-answer-pattern-library",
+      "target": "query-answer-kernel",
+      "type": "IMPLEMENTS",
+      "justification": "Les motifs assemblent les candidats dans la configuration minimale exigée par l intention."
+    },
+    {
+      "source": "query-countersearch",
+      "target": "query-answer-kernel",
+      "type": "SAFEGUARDS",
+      "justification": "La contre-recherche protège le noyau contre la sélection du premier chemin confirmatoire."
+    },
+    {
+      "source": "query-explicit-truncation",
+      "target": "query-answer-kernel",
+      "type": "SAFEGUARDS",
+      "justification": "Le garde-fou conserve la différence entre noyau complet et noyau arrêté par une limite de ressources."
+    },
+    {
+      "source": "query-llm-proposes-runtime-validates",
+      "target": "query-formal-plan",
+      "type": "SAFEGUARDS",
+      "justification": "Le runtime valide les interprétations et parcours proposés par l IA avant leur admission dans le plan."
+    },
+    {
+      "source": "query-answer-kernel",
+      "target": "query-versioned-answer",
+      "type": "FEEDS",
+      "justification": "Le noyau fournit la matière traçable dont l Answer est une projection datée."
+    },
+    {
+      "source": "query-versioned-answer",
+      "target": "query-endgame-contextual-answer",
+      "type": "LEADS_TO",
+      "justification": "L Answer versionnée est proposée comme mécanisme contributif vers l état cible ; le lien formule une hypothèse de design, pas un effet déjà observé."
+    },
+    {
+      "source": "query-formal-plan",
+      "target": "csg-question-runtime",
+      "type": "IMPLEMENTS",
+      "justification": "La compilation précise la chaîne Session, interprétation, FormalQuery et plan déjà décrite par CSG v0.2."
+    },
+    {
+      "source": "query-answer-kernel",
+      "target": "csg-answer-scientific-object",
+      "type": "IMPLEMENTS",
+      "justification": "Le noyau donne la matière structurée à l Answer scientifique versionnée décrite par CSG."
+    },
+    {
+      "source": "query-hybrid-candidate-retrieval",
+      "target": "csg-hybrid-retrieval",
+      "type": "IMPLEMENTS",
+      "justification": "Le mécanisme conserve l exact, le texte, les vecteurs et les parcours tout en précisant leur subordination au scope."
+    },
+    {
+      "source": "query-endgame-contextual-answer",
+      "target": "endgame-science",
+      "type": "IMPLEMENTS",
+      "justification": "Une réponse qui expose contexte, preuve, contradiction et gap rend interrogeable la science comme graphe causal vivant."
+    },
+    {
+      "source": "repo-law-no-direct-db",
+      "target": "query-membrane-orchestrator",
+      "type": "GROUNDS",
+      "justification": "L interdiction d accès direct fonde le choix d une orchestration par demandes plutôt que par requête fédérée sur les bases."
+    },
+    {
+      "source": "repo-law-membrane",
+      "target": "query-membrane-orchestrator",
+      "type": "GROUNDS",
+      "justification": "La loi de membrane impose le canal de toute composition inter-organisation."
+    },
+    {
+      "source": "repo-law-receiver-validates",
+      "target": "query-membrane-orchestrator",
+      "type": "SAFEGUARDS",
+      "justification": "La validation locale protège le graphe destinataire contre un plan externe qui outrepasserait ses contrats."
+    },
+    {
+      "source": "repo-membrane-executor",
+      "target": "query-membrane-orchestrator",
+      "type": "GROUNDS",
+      "justification": "Le pattern Skill, Protocol, Membrane fournit le précédent opérationnel d enrichissement, de branchement et de validation du dialogue."
+    },
+    {
+      "source": "query-membrane-orchestrator",
+      "target": "query-versioned-answer",
+      "type": "FEEDS",
+      "justification": "L orchestrateur fournit des bundles autorisés dont l Answer conserve les origines séparées."
+    },
+    {
+      "source": "rationale-query-similarity-not-identity",
+      "target": "query-hierarchical-scope-gate",
+      "type": "MOTIVATES",
+      "justification": "Le risque de mélanger des identités proches motive le scope avant similarité."
+    },
+    {
+      "source": "rationale-query-answer-is-subgraph",
+      "target": "query-answer-kernel",
+      "type": "MOTIVATES",
+      "justification": "La réponse dépendant de relations, cette raison motive le noyau de sous-graphe plutôt qu un classement de nœuds isolés."
+    },
+    {
+      "source": "rationale-query-context-is-runtime",
+      "target": "query-context-envelope",
+      "type": "MOTIVATES",
+      "justification": "La différence entre situation personnelle et connaissance canonique motive leur séparation explicite."
+    },
+    {
+      "source": "rationale-query-graph-defines-answer",
+      "target": "query-graph-profile",
+      "type": "MOTIVATES",
+      "justification": "La différence de régime de vérité entre graphes motive un contrat sémantique local."
+    },
+    {
+      "source": "rationale-query-sovereign-federation",
+      "target": "query-membrane-orchestrator",
+      "type": "MOTIVATES",
+      "justification": "La souveraineté des graphes motive une composition par bundles validés."
+    },
+    {
+      "source": "rationale-query-coverage-not-volume",
+      "target": "query-answer-kernel",
+      "type": "MOTIVATES",
+      "justification": "La couverture des rôles épistémiques motive un noyau minimal plutôt qu une collecte maximale."
+    },
+    {
+      "source": "option-query-runtime-profiles",
+      "target": "decision-query-runtime-architecture",
+      "type": "OPTION_FOR",
+      "justification": "Option A propose un noyau commun qui compose les trois contrats."
+    },
+    {
+      "source": "option-query-runtime-per-graph",
+      "target": "decision-query-runtime-architecture",
+      "type": "OPTION_FOR",
+      "justification": "Option B conserve un moteur complet par graphe comme alternative spécialisée."
+    },
+    {
+      "source": "option-query-runtime-universal-model",
+      "target": "decision-query-runtime-architecture",
+      "type": "OPTION_FOR",
+      "justification": "Option C délègue le routage et la recherche à un modèle universel, sous réserve de validation."
+    },
+    {
+      "source": "rationale-query-graph-defines-answer",
+      "target": "decision-query-runtime-architecture",
+      "type": "MOTIVATES",
+      "justification": "La sémantique locale est le principal critère qui interdit de choisir un moteur universel sans contrat."
+    },
+    {
+      "source": "question-query-l4-science-ontology-bridge",
+      "target": "query-profile-science",
+      "type": "BLOCKS",
+      "justification": "Le profil scientifique ne peut être canonique tant que sa grammaire propre et la loi L4 ne disposent pas d une articulation explicite."
+    },
+    {
+      "source": "question-query-l4-science-ontology-bridge",
+      "target": "query-profile-design",
+      "type": "BLOCKS",
+      "justification": "Le profil du graphe de design exécute déjà une ontologie plus riche que le substrat L4 ; sa traduction doit être déclarée au lieu d être supposée."
+    },
+    {
+      "source": "question-query-l4-science-ontology-bridge",
+      "target": "decision-science-ontology-separate",
+      "type": "BLOCKS",
+      "justification": "La décision locale d ontologie propre ne peut être réalisée comme graphe Mind canonique tant que sa compatibilité avec la loi du schéma commun n est pas définie."
+    },
+    {
+      "source": "question-query-hard-soft-context",
+      "target": "query-context-envelope",
+      "type": "BLOCKS",
+      "justification": "La frontière entre exclusion et réordonnancement conditionne le contrat opérationnel du contexte."
+    },
+    {
+      "source": "question-query-kernel-completeness",
+      "target": "query-answer-kernel",
+      "type": "BLOCKS",
+      "justification": "Sans invariant de complétude par intention, le noyau reste une forme descriptive sans condition d arrêt exécutable."
+    },
+    {
+      "source": "question-query-traversal-learning-location",
+      "target": "query-hybrid-candidate-retrieval",
+      "type": "BLOCKS",
+      "justification": "La recherche peut lire les poids actuels, mais ne doit pas apprendre dans le canonical avant que le lieu et la gouvernance de cette mémoire soient définis."
+    },
+    {
+      "source": "question-cross-graph-reference",
+      "target": "query-membrane-orchestrator",
+      "type": "BLOCKS",
+      "justification": "La membrane transporte des bundles, mais leurs références stables et leur comportement lors d une supersession restent à définir."
+    },
+    {
+      "source": "option-query-domain-l4-native",
+      "target": "decision-query-domain-encoding",
+      "type": "OPTION_FOR",
+      "justification": "L option A teste l interprétation forte de L4 : toute sémantique de domaine demeure dans les cinq formes, leurs propriétés et le lien unique."
+    },
+    {
+      "source": "option-query-domain-rich-overlay",
+      "target": "decision-query-domain-encoding",
+      "type": "OPTION_FOR",
+      "justification": "L option B teste une ontologie logique explicite compilée vers le substrat L4, sans remplacer sa physique commune."
+    },
+    {
+      "source": "rationale-query-l4-uniform-physics",
+      "target": "decision-query-domain-encoding",
+      "type": "MOTIVATES",
+      "justification": "Le besoin d une physique commune explique pourquoi l option L4 native mérite d être testée au lieu d être rejetée pour manque apparent de types."
+    },
+    {
+      "source": "rationale-query-rich-domain-contracts",
+      "target": "decision-query-domain-encoding",
+      "type": "MOTIVATES",
+      "justification": "Le besoin d invariants scientifiques explique pourquoi une couche logique riche reste une alternative sérieuse."
+    },
+    {
+      "source": "question-query-l4-science-ontology-bridge",
+      "target": "decision-query-domain-encoding",
+      "type": "BLOCKS",
+      "justification": "La tension L4 contre ontologie de domaine devient l arbitrage explicite que le double encodage doit instruire."
+    },
+    {
+      "source": "repo-fixed-graph-schema",
+      "target": "rationale-query-l4-uniform-physics",
+      "type": "GROUNDS",
+      "justification": "Le schéma canonique à cinq nœuds et un lien est la source de la raison d interopérabilité attribuée à L4."
+    },
+    {
+      "source": "rationale-query-l4-uniform-physics",
+      "target": "hypothesis-query-l4-improves-interoperability",
+      "type": "MOTIVATES",
+      "justification": "La physique uniforme rend plausible une réduction du coût d adaptation, sans constituer encore une mesure de cet effet."
+    },
+    {
+      "source": "rationale-query-rich-domain-contracts",
+      "target": "hypothesis-query-rich-improves-precision",
+      "type": "MOTIVATES",
+      "justification": "Des contrats de domaine explicites rendent plausible la détection déterministe de certaines confusions."
+    },
+    {
+      "source": "rationale-query-rich-domain-contracts",
+      "target": "hypothesis-query-rich-increases-governance-cost",
+      "type": "MOTIVATES",
+      "justification": "Formaliser et versionner davantage de distinctions implique aussi davantage de gouvernance à mesurer."
+    },
+    {
+      "source": "example-microbe-l4-actor",
+      "target": "example-microbe-l4-space",
+      "type": "FEEDS",
+      "justification": "Dans l encodage L4, un lien unique porte ici semanticRole=observed_in : il borne la souche au contexte intestinal au lieu de généraliser par similarité."
+    },
+    {
+      "source": "example-microbe-l4-actor",
+      "target": "example-microbe-l4-moment",
+      "type": "FEEDS",
+      "justification": "Dans l encodage L4, un lien unique porte semanticRole=participant_in : la souche participe à l événement de colonisation daté."
+    },
+    {
+      "source": "example-microbe-l4-space",
+      "target": "example-microbe-l4-moment",
+      "type": "FEEDS",
+      "justification": "Dans l encodage L4, un lien unique porte semanticRole=context_of : les conditions du Space qualifient l observation."
+    },
+    {
+      "source": "example-microbe-l4-moment",
+      "target": "example-microbe-l4-narrative",
+      "type": "GROUNDS",
+      "justification": "Dans l encodage L4, un lien unique porte semanticRole=observation_for : l événement fournit le contexte temporel du claim, sans suffire à le prouver."
+    },
+    {
+      "source": "example-microbe-l4-thing",
+      "target": "example-microbe-l4-narrative",
+      "type": "GROUNDS",
+      "justification": "Dans l encodage L4, un lien unique porte semanticRole=evidence_for : l artefact source rend le claim vérifiable tout en restant un objet distinct."
+    },
+    {
+      "source": "example-microbe-l4-actor",
+      "target": "hypothesis-query-l4-can-represent-microbe",
+      "type": "GROUNDS",
+      "justification": "L Actor instancie sans extension la première des cinq formes nécessaires au cas."
+    },
+    {
+      "source": "example-microbe-l4-space",
+      "target": "hypothesis-query-l4-can-represent-microbe",
+      "type": "GROUNDS",
+      "justification": "Le Space instancie le contexte biologique sans créer un type physique supplémentaire."
+    },
+    {
+      "source": "example-microbe-l4-moment",
+      "target": "hypothesis-query-l4-can-represent-microbe",
+      "type": "GROUNDS",
+      "justification": "Le Moment instancie l événement temporel nécessaire au cas."
+    },
+    {
+      "source": "example-microbe-l4-narrative",
+      "target": "hypothesis-query-l4-can-represent-microbe",
+      "type": "GROUNDS",
+      "justification": "Narrative instancie le claim contestable séparément des entités et des données."
+    },
+    {
+      "source": "example-microbe-l4-thing",
+      "target": "hypothesis-query-l4-can-represent-microbe",
+      "type": "GROUNDS",
+      "justification": "Thing instancie l artefact d assay et complète la démonstration des cinq formes."
+    },
+    {
+      "source": "protocol-query-microbe-dual-encoding",
+      "target": "hypothesis-query-l4-can-represent-microbe",
+      "type": "TESTS",
+      "justification": "Le premier passage vérifie que le cas complet peut être encodé sans sixième forme ni perte descriptive observée."
+    },
+    {
+      "source": "protocol-query-microbe-dual-encoding",
+      "target": "hypothesis-query-l4-improves-interoperability",
+      "type": "TESTS",
+      "justification": "Le transfert du cas entre deux profils mesure les adaptations réellement évitées par le substrat commun."
+    },
+    {
+      "source": "protocol-query-microbe-dual-encoding",
+      "target": "hypothesis-query-rich-improves-precision",
+      "type": "TESTS",
+      "justification": "Des leurres portant sur une autre souche, un autre hôte et un autre contexte mesurent les erreurs que la couche logique sait refuser."
+    },
+    {
+      "source": "protocol-query-microbe-dual-encoding",
+      "target": "hypothesis-query-rich-increases-governance-cost",
+      "type": "TESTS",
+      "justification": "L ajout d un nouveau sous-type et la modification d une relation mesurent le coût de versionnement, migration et compatibilité des deux encodages."
+    },
+    {
+      "source": "repo-fixed-graph-schema",
+      "target": "axiom-query-schema-is-physics",
+      "type": "GROUNDS",
+      "justification": "Le schéma canonique du repository fixe cinq rôles et un lien ; il fonde la lecture du type comme choix de physique plutôt que comme terme de domaine."
+    },
+    {
+      "source": "mechanism-query-universal-link-state",
+      "target": "repo-doc-schema",
+      "type": "DERIVED_FROM",
+      "justification": "La spécification L4 documente weight, energy, polarity, hierarchy, permanence, synthesis, embedding et temporalité comme état du lien universel."
+    },
+    {
+      "source": "axiom-query-schema-is-physics",
+      "target": "rationale-query-vocabulary-is-open-content",
+      "type": "GROUNDS",
+      "justification": "Une fois le schéma réservé aux comportements physiques, les distinctions infinies de langue et de domaine doivent vivre dans le contenu plutôt que devenir des types canoniques."
+    },
+    {
+      "source": "axiom-query-schema-is-physics",
+      "target": "rationale-query-node-type-selects-role",
+      "type": "GROUNDS",
+      "justification": "L axiome explique pourquoi Actor, Moment, Narrative, Space et Thing se distinguent par leur fonction dynamique."
+    },
+    {
+      "source": "rationale-query-vocabulary-is-open-content",
+      "target": "mechanism-query-open-semantic-fields",
+      "type": "MOTIVATES",
+      "justification": "Le coût d une taxonomie universelle multilingue motive le déplacement des distinctions vers les champs libres et l embedding."
+    },
+    {
+      "source": "rationale-query-node-type-selects-role",
+      "target": "mechanism-query-domain-pattern-contracts",
+      "type": "MOTIVATES",
+      "justification": "Les concepts de domaine doivent être reconnus comme configurations de rôles physiques plutôt que promus en nouveaux labels structurels."
+    },
+    {
+      "source": "rationale-query-one-link-emergent-grammar",
+      "target": "mechanism-query-universal-link-state",
+      "type": "MOTIVATES",
+      "justification": "La recherche d une grammaire émergente motive la conservation de plusieurs degrés et mémoires sur un seul type de lien."
+    },
+    {
+      "source": "rationale-query-vocabulary-is-open-content",
+      "target": "effect-query-schema-stability",
+      "type": "MOTIVATES",
+      "justification": "Ne pas incorporer chaque nouveau terme dans le schéma vise directement la stabilité du protocole."
+    },
+    {
+      "source": "rationale-query-vocabulary-is-open-content",
+      "target": "effect-query-multilingual-portability",
+      "type": "MOTIVATES",
+      "justification": "La séparation entre langue et physique vise une circulation entre graphes sans dictionnaire exhaustif de prédicats."
+    },
+    {
+      "source": "effect-query-schema-stability",
+      "target": "mechanism-query-open-semantic-fields",
+      "type": "MOTIVATES",
+      "justification": "La stabilité recherchée motive l usage de type, synthesis, content et embedding pour absorber les nouveaux domaines sans modification structurelle."
+    },
+    {
+      "source": "effect-query-multilingual-portability",
+      "target": "mechanism-query-open-semantic-fields",
+      "type": "MOTIVATES",
+      "justification": "La portabilité recherchée motive les représentations textuelles et vectorielles, sous réserve des tests de non-équivalence culturelle et d homonymie."
+    },
+    {
+      "source": "effect-query-emergent-relation-learning",
+      "target": "mechanism-query-universal-link-state",
+      "type": "MOTIVATES",
+      "justification": "L apprentissage recherché motive la mémoire et les degrés du lien nécessaires à la coloration des parcours, sans affirmer que les motifs appris seront corrects."
+    },
+    {
+      "source": "hypothesis-query-physical-grammar-suffices",
+      "target": "option-query-domain-l4-native",
+      "type": "LEADS_TO",
+      "justification": "Si les distinctions utiles sont récupérables dans les signatures physiques, l encodage L4 natif devient une solution complète plutôt qu une simple couche de transport."
+    },
+    {
+      "source": "rationale-query-vocabulary-is-open-content",
+      "target": "option-query-domain-l4-native",
+      "type": "MOTIVATES",
+      "justification": "Le risque d une ontologie canonique infinie fournit la raison principale de préférer les cinq formes et les champs ouverts."
+    },
+    {
+      "source": "mechanism-query-domain-pattern-contracts",
+      "target": "query-answer-pattern-library",
+      "type": "IMPLEMENTS",
+      "justification": "La bibliothèque d intentions peut compiler des patrons de domaine sans transformer leurs termes en nouveaux types de stockage."
+    },
+    {
+      "source": "mechanism-query-domain-pattern-contracts",
+      "target": "query-hierarchical-scope-gate",
+      "type": "SAFEGUARDS",
+      "justification": "Des exigences locales d identité, unité et provenance protègent le scope même lorsque le schéma physique reste minimal."
+    },
+    {
+      "source": "protocol-query-microbe-dual-encoding",
+      "target": "hypothesis-query-physical-grammar-suffices",
+      "type": "TESTS",
+      "justification": "Les leurres de souche, contexte, temporalité, soutien et contradiction testent si le motif physique distingue réellement les fonctions attendues."
+    },
+    {
+      "source": "axiom-query-universal-computation-required",
+      "target": "protocol-query-turing-completeness-proof",
+      "type": "MOTIVATES",
+      "justification": "L universalité exigée doit produire une obligation de preuve explicite plutôt qu une analogie avec une machine universelle."
+    },
+    {
+      "source": "question-query-computation-boundary",
+      "target": "hypothesis-query-graph-dynamics-turing-complete",
+      "type": "BLOCKS",
+      "justification": "On ne peut évaluer la complétude tant que la frontière entre graphe, tick, LLM et orchestrateur n est pas formellement fixée."
+    },
+    {
+      "source": "question-query-computation-boundary",
+      "target": "query-endgame-contextual-answer",
+      "type": "BLOCKS",
+      "justification": "Dans l endgame retenu, la logique générale est une capacité obligatoire ; son support computationnel non défini empêche de déclarer la cible atteinte."
+    },
+    {
+      "source": "protocol-query-turing-completeness-proof",
+      "target": "hypothesis-query-graph-dynamics-turing-complete",
+      "type": "TESTS",
+      "justification": "La réduction formelle est le test susceptible de soutenir ou de réfuter l universalité propre de la dynamique L4."
+    },
+    {
+      "source": "method-query-universal-machine-reduction",
+      "target": "protocol-query-turing-completeness-proof",
+      "type": "PART_OF",
+      "justification": "Le protocole utilise une réduction constructive plutôt qu une accumulation d exemples de calcul réussis."
+    },
+    {
+      "source": "hypothesis-query-graph-dynamics-turing-complete",
+      "target": "hypothesis-query-physical-grammar-suffices",
+      "type": "LEADS_TO",
+      "justification": "Une dynamique universelle rend plausible l exécution de patrons logiques arbitraires, sans démontrer à elle seule qu ils sont faciles à apprendre, sûrs ou efficaces."
+    }
+  ]
+}

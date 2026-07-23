@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "sourceId": "source-satopaa-1406.2148-v5",
+  "sourceHash": "7d5c672c5402d78f610a3f5c27f4d1a843b2297dd80ad7b9634205561b2cb2c1",
+  "extractionMethod": "pypdf 6.10.0 extract_text, page order preserved",
+  "pageCount": 32,
+  "pageCharacterCounts": [2629, 2171, 2195, 2198, 2011, 1871, 1826, 2150, 1940, 1980, 2012, 2196, 2112, 1607, 1046, 1896, 1692, 2138, 1850, 1949, 1287, 1889, 1791, 1962, 1992, 1791, 2206, 2319, 1401, 1622, 1703, 459],
+  "extractedCharacterCount": 59891,
+  "extractedWordCount": 9340,
+  "expectedConcepts": [
+    { "id": "information_overlap", "variants": ["recouvrement d'information", "ensembles d'information", "information overlap"] },
+    { "id": "extremization", "variants": ["extrémisation", "extremization", "extremizing"] },
+    { "id": "probability_forecast", "variants": ["prévision probabiliste", "probability forecast"] },
+    { "id": "partial_information", "variants": ["information partielle", "partial information"] },
+    { "id": "gaussian_model", "variants": ["gaussien", "gaussian"] },
+    { "id": "calibration", "variants": ["calibration", "calibré"] },
+    { "id": "brier_score", "variants": ["score de brier", "brier score"] },
+    { "id": "covariance", "variants": ["covariance"] },
+    { "id": "oracular_aggregator", "variants": ["agrégat oraculaire", "oracular aggregator"] },
+    { "id": "revealed_aggregator", "variants": ["agrégat révélé", "agrégateur révélé", "revealed aggregator"] },
+    { "id": "good_judgment_project", "variants": ["good judgment project"] },
+    { "id": "noise_reduction", "variants": ["réduction du bruit", "noise reduction"] }
+  ]
+}

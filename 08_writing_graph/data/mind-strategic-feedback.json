@@ -1,0 +1,1069 @@
+{
+  "scope": "Synthèse structurée de deux retours critiques fournis en juillet 2026. Les constats sont attribués aux sources ; les choix proposés restent des recommandations à arbitrer, et non des décisions déjà approuvées.",
+  "sources": [
+    {
+      "title": "Feedback stratégique · focus seed, boucle clinique et financement hybride",
+      "path": "data/sources/feedback-seed-focus.txt",
+      "sha256": "1E6DACB532DD657AD321CE1E65ECD343446B6434C1916731E47EBCAABC18CE63"
+    },
+    {
+      "title": "Feedback stratégique · financement, consentement et hiérarchie des preuves",
+      "path": "data/sources/feedback-trust-boundaries.txt",
+      "sha256": "98D8CD93C4FC759125F11BEF801B88017355245D3E07414FD9EB8FF520D5B659"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "doc-feedback-seed-focus",
+      "name": "Feedback · Focus seed et première boucle économique",
+      "nodeType": "thing",
+      "phrase": "Le pitch doit prouver un wedge simple, une première circulation utile et un financement compréhensible.",
+      "family": "Source · feedback stratégique",
+      "summary": "Transcription critique portant sur la surcharge narrative du deck, le fossé entre compagnon de santé mentale et économie locale, et la possibilité d’un financement hybride.",
+      "sourceTitle": "Ce document détaille la vision stratégique et la feuille de route pour la mise en place du projet Mind",
+      "sourcePath": "data/sources/feedback-seed-focus.txt",
+      "sourceHash": "1E6DACB532DD657AD321CE1E65ECD343446B6434C1916731E47EBCAABC18CE63",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "transcription complète",
+      "observedAt": "2026-07-21",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "doc-feedback-trust-boundaries",
+      "name": "Feedback · Frontières de confiance du protocole",
+      "nodeType": "thing",
+      "phrase": "La confiance exige des frontières explicites pour le capital, les tiers non consentants et les preuves scientifiques.",
+      "family": "Source · feedback stratégique",
+      "summary": "Transcription critique portant sur la séparation OpCo-économie d’usage, le shadow profiling et la hiérarchie entre télémétrie citoyenne et preuve clinique.",
+      "sourceTitle": "Aujourd’hui, on plonge directement dans les documents du Mind Protocol",
+      "sourcePath": "data/sources/feedback-trust-boundaries.txt",
+      "sourceHash": "98D8CD93C4FC759125F11BEF801B88017355245D3E07414FD9EB8FF520D5B659",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "transcription complète",
+      "observedAt": "2026-07-21",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "feedback-pitch-cognitive-overload",
+      "name": "Constat · Le pitch seed surcharge la vision",
+      "nodeType": "narrative",
+      "phrase": "Présenter simultanément le wedge clinique et tous les Endgames brouille la faisabilité immédiate.",
+      "family": "Feedback stratégique · narration",
+      "summary": "La vision civilisationnelle soutient l’ambition, mais sa place centrale dans le deck détourne l’attention de la preuve produit, clinique et technique attendue au seed.",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "focus du pitch seed",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "feedback-product-economy-gap",
+      "name": "Constat · La première boucle économique manque",
+      "nodeType": "narrative",
+      "phrase": "Le passage du journal intime à une circulation économique locale n’est pas encore modélisé.",
+      "family": "Feedback stratégique · activation économique",
+      "summary": "Le compagnon de santé mentale produit des signaux et des orientations, tandis que le bootstrap pool vise des transactions ; aucun parcours ne relie encore précisément ces deux moments.",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "première boucle microéconomique",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "feedback-seed-rights-ambiguity",
+      "name": "Constat · Les droits du seed restent ambigus",
+      "nodeType": "narrative",
+      "phrase": "Equity OpCo, SAFE, warrant et bootstrap credits ne doivent pas être confondus.",
+      "family": "Feedback stratégique · financement",
+      "summary": "Les deux retours convergent sur la nécessité de séparer juridiquement l’infrastructure financée et la monnaie d’usage, mais proposent deux instruments de transition différents.",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "droits investisseurs et économie d’usage",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "feedback-shadow-profiling-risk",
+      "name": "Risque · Profilage indirect des tiers",
+      "nodeType": "narrative",
+      "phrase": "Un bénéfice thérapeutique pour l’utilisateur ne justifie pas l’identification d’un tiers non consentant.",
+      "family": "Feedback stratégique · consentement",
+      "summary": "Le miroir relationnel peut reconstruire ou conserver l’identité d’une personne absente du protocole, ou d’un utilisateur qui refuse le partage, créant un risque de shadow profiling.",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "asymétrie de consentement",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "feedback-evidence-level-collapse",
+      "name": "Risque · Les niveaux de preuve peuvent se confondre",
+      "nodeType": "narrative",
+      "phrase": "Le volume de télémétrie citoyenne ne doit pas annuler la force méthodologique d’une étude contrôlée.",
+      "family": "Feedback stratégique · science",
+      "summary": "La confirmation par le réel devient dangereuse si les signaux de capteurs ou auto-rapports modifient directement la confiance d’un claim clinique sans validation indépendante.",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "hiérarchie des preuves",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "decision-seed-pitch-scope",
+      "name": "Décision requise · Périmètre du pitch seed",
+      "nodeType": "moment",
+      "phrase": "Quelle part du deck principal doit expliquer le wedge et quelle part doit seulement montrer l’horizon ?",
+      "family": "Décision stratégique · narration",
+      "summary": "Arbitrer le contenu principal, l’annexe et le visuel de transition afin de préserver ambition et lisibilité.",
+      "decisionNeeded": "Valider un deck principal centré sur le compagnon de santé mentale, avec les Endgames détaillés en annexe.",
+      "verificationNeeded": "test de compréhension auprès de 5 à 8 investisseurs cibles, rappel du wedge, du jalon seed et de l’usage des fonds",
+      "questionCategory": "go-to-market",
+      "decisionStatus": "proposed",
+      "responsibleRole": "CEO · stratégie et fundraising",
+      "decisionDue": "2026-08-01",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-09-01",
+      "closureEvidence": "deck approuvé et test de compréhension documenté",
+      "optionCriteria": [
+        "compréhension du wedge",
+        "crédibilité du jalon seed",
+        "ambition perçue",
+        "charge cognitive"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision"
+    },
+    {
+      "id": "decision-first-economic-loop",
+      "name": "Décision requise · Première boucle économique",
+      "nodeType": "moment",
+      "phrase": "Quel acte du compagnon déclenche quelle dépense, vers quel professionnel et avec quel financement ?",
+      "family": "Décision stratégique · activation",
+      "summary": "Définir un parcours fermé, mesurable et compatible avec la supervision clinique avant d’étendre la circulation aux marchands généralistes.",
+      "decisionNeeded": "Choisir le professionnel initial, le taux de subvention, les critères d’éligibilité, les plafonds et les métriques de réussite.",
+      "verificationNeeded": "coût par orientation aboutie, taux d’acceptation, continuité de soin, sécurité, fraude et circulation réelle",
+      "questionCategory": "pilot design",
+      "decisionStatus": "proposed",
+      "responsibleRole": "Product lead · Clinical safety lead",
+      "decisionDue": "2026-08-15",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-09-15",
+      "closureEvidence": "protocole de pilote approuvé avec budget, population et critères d’arrêt",
+      "optionCriteria": [
+        "proximité avec le wedge",
+        "sécurité clinique",
+        "délai d’activation",
+        "mesurabilité",
+        "coût"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision"
+    },
+    {
+      "id": "decision-seed-instrument",
+      "name": "Décision requise · Instrument du seed",
+      "nodeType": "moment",
+      "phrase": "Quel instrument finance l’OpCo sans transformer Mind en actif spéculatif ni rendre le tour infaisable ?",
+      "family": "Décision stratégique · financement",
+      "summary": "Comparer une structure equity ou SAFE avec allocation distincte de crédits à un instrument hybride conditionné par un jalon City Loop.",
+      "decisionNeeded": "Mandater le conseil juridique pour recommander une structure par juridiction à partir d’une matrice de droits, risques et scénarios.",
+      "verificationNeeded": "term sheets comparables, qualification réglementaire, cap table, droits de gouvernance, downside et upside de chaque branche",
+      "questionCategory": "legal and finance",
+      "jurisdiction": "à déterminer avec conseil qualifié",
+      "decisionStatus": "proposed",
+      "responsibleRole": "CEO · Finance lead · conseil juridique externe",
+      "decisionDue": "2026-08-15",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-09-15",
+      "closureEvidence": "avis juridique, term sheet comparable et décision du board documentés",
+      "optionCriteria": [
+        "faisabilité juridique",
+        "attractivité investisseur",
+        "dilution",
+        "risque réglementaire",
+        "compatibilité anti-spéculation"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision"
+    },
+    {
+      "id": "decision-nonparticipant-boundary",
+      "name": "Décision requise · Frontière des non-participants",
+      "nodeType": "moment",
+      "phrase": "Quelles informations sur un tiers peuvent être traitées lorsque son consentement est absent ou refusé ?",
+      "family": "Décision stratégique · vie privée",
+      "summary": "Fixer une règle technique opposable pour les non-utilisateurs et pour les utilisateurs qui refusent le partage de métadonnées.",
+      "decisionNeeded": "Interdire la résolution d’identité réseau et traiter le refus comme un signal complet, non comme une donnée manquante à inférer.",
+      "verificationNeeded": "modèle de menace, tests de ré-identification, audit des logs et preuve de suppression des identifiants locaux",
+      "questionCategory": "privacy and safety",
+      "decisionStatus": "proposed",
+      "responsibleRole": "Privacy lead · Security lead · Clinical safety lead",
+      "decisionDue": "2026-08-15",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-09-15",
+      "closureEvidence": "modèle de menace et tests de ré-identification revus indépendamment",
+      "optionCriteria": [
+        "non-réidentification",
+        "utilité clinique",
+        "minimisation",
+        "auditabilité",
+        "révocabilité"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision"
+    },
+    {
+      "id": "decision-realworld-evidence-policy",
+      "name": "Décision requise · Pouvoir de la télémétrie réelle",
+      "nodeType": "moment",
+      "phrase": "La télémétrie citoyenne peut-elle modifier un claim clinique, ou seulement déclencher une nouvelle investigation ?",
+      "family": "Décision stratégique · science",
+      "summary": "Définir les permissions inférentielles de chaque niveau de preuve avant d’intégrer les confirmations du monde réel.",
+      "decisionNeeded": "Limiter la télémétrie non contrôlée à la détection de divergences et à la génération d’hypothèses jusqu’à validation clinique tierce.",
+      "verificationNeeded": "politique de pondération versionnée, cas adversariaux, revue scientifique indépendante et tests de non-régression des scores",
+      "questionCategory": "scientific governance",
+      "decisionStatus": "proposed",
+      "responsibleRole": "Scientific governance lead · Clinical methodology lead",
+      "decisionDue": "2026-08-31",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-09-30",
+      "closureEvidence": "politique d’inférence versionnée et revue scientifique indépendante",
+      "optionCriteria": [
+        "validité méthodologique",
+        "détection de signaux",
+        "résistance au volume",
+        "traçabilité",
+        "réversibilité"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-pitch-wedge-first",
+      "name": "Option A · Deck centré sur le wedge",
+      "nodeType": "narrative",
+      "phrase": "Le deck principal détaille le compagnon et conserve les Endgames en horizon visuel et en annexe.",
+      "family": "Option de décision · narration",
+      "summary": "Option recommandée pour réduire la charge cognitive tout en préservant l’ambition d’infrastructure.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "preuve seed lisible",
+        "jalons mesurables",
+        "narration courte"
+      ],
+      "optionRisks": [
+        "valorisation d’infrastructure moins évidente si l’horizon est trop discret"
+      ],
+      "optionConditions": [
+        "un visuel d’expansion",
+        "annexe Endgames",
+        "test investisseur"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-pitch-multi-endgame",
+      "name": "Option B · Deck multi-Endgames",
+      "nodeType": "narrative",
+      "phrase": "Le deck principal expose le wedge et les huit domaines comme proposition intégrée.",
+      "family": "Option de décision · narration",
+      "summary": "Option ambitieuse mais plus difficile à comprendre et à rattacher aux jalons du seed.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "ambition systémique immédiatement visible"
+      ],
+      "optionRisks": [
+        "surcharge cognitive",
+        "dilution du wedge",
+        "faisabilité perçue plus faible"
+      ],
+      "optionConditions": [
+        "temps de pitch long",
+        "preuves distinctes par domaine"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-loop-clinician-first",
+      "name": "Option A · Boucle clinicien-first",
+      "nodeType": "narrative",
+      "phrase": "Le bootstrap pool subventionne d’abord une consultation reliée au signal du compagnon.",
+      "family": "Option de décision · activation",
+      "summary": "Option recommandée car elle relie directement le wedge, la sécurité humaine et une circulation mesurable.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "continuité produit-économie",
+        "partenaire naturel",
+        "résultat observable"
+      ],
+      "optionRisks": [
+        "réglementation clinique",
+        "coût par parcours",
+        "offre professionnelle limitée"
+      ],
+      "optionConditions": [
+        "supervision clinique",
+        "consentement explicite",
+        "plafond de subvention expérimental"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-loop-merchants-first",
+      "name": "Option B · Boucle marchands-first",
+      "nodeType": "narrative",
+      "phrase": "Le bootstrap pool active immédiatement des marchands de biens essentiels.",
+      "family": "Option de décision · activation",
+      "summary": "Option plus proche de l’économie cible mais éloignée de l’usage initial du compagnon.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "preuve de circulation locale large",
+        "diversité des usages"
+      ],
+      "optionRisks": [
+        "fossé avec le produit initial",
+        "onboarding marchand lourd",
+        "signal d’usage ambigu"
+      ],
+      "optionConditions": [
+        "densité locale suffisante",
+        "intégration marchands",
+        "cas d’usage non clinique"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-finance-separated-rights",
+      "name": "Option A · Capital et crédits séparés",
+      "nodeType": "narrative",
+      "phrase": "L’investisseur reçoit equity ou SAFE OpCo et une allocation de crédits juridiquement distincte.",
+      "family": "Option de décision · financement",
+      "summary": "Structure lisible qui sépare la propriété de l’entreprise de l’expérimentation de circulation.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "lisibilité VC",
+        "séparation capital-usage",
+        "cap table conventionnelle"
+      ],
+      "optionRisks": [
+        "complexité de l’allocation de crédits",
+        "capture indirecte à prévenir"
+      ],
+      "optionConditions": [
+        "avis juridique par juridiction",
+        "droits des crédits explicitement non équivoques"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-finance-city-loop-hybrid",
+      "name": "Option B · SAFE hybride conditionnel",
+      "nodeType": "narrative",
+      "phrase": "Le résultat de l’instrument change selon l’atteinte d’un jalon City Loop défini à l’avance.",
+      "family": "Option de décision · financement",
+      "summary": "Structure de transition potentiellement alignée, mais plus complexe à qualifier et négocier.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "partage du risque de transition",
+        "alignement avec l’activation réseau"
+      ],
+      "optionRisks": [
+        "ambiguïté réglementaire",
+        "term sheet complexe",
+        "jalon manipulable ou mal défini"
+      ],
+      "optionConditions": [
+        "définition auditée de City Loop",
+        "scénarios de conversion complets",
+        "avis juridique écrit"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-privacy-local-boundary",
+      "name": "Option A · Référence locale non résoluble",
+      "nodeType": "narrative",
+      "phrase": "Le tiers reste une variable locale minimisée, sans résolution vers une identité réseau.",
+      "family": "Option de décision · confidentialité",
+      "summary": "Option recommandée pour préserver l’utilité contextuelle sans créer un profil transversal du tiers.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "minimisation",
+        "réduction du shadow profiling",
+        "frontière technique vérifiable"
+      ],
+      "optionRisks": [
+        "personnalisation relationnelle limitée",
+        "corrélations locales résiduelles"
+      ],
+      "optionConditions": [
+        "rotation des identifiants",
+        "absence de lookup global",
+        "suppression contrôlable"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-privacy-consent-registry",
+      "name": "Option B · Résolution via registre de consentement",
+      "nodeType": "narrative",
+      "phrase": "Une identité peut être reliée au réseau seulement après vérification d’un consentement partageable.",
+      "family": "Option de décision · confidentialité",
+      "summary": "Option plus riche fonctionnellement mais exposée aux erreurs de consentement, à la centralisation et aux inférences sur le refus.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "coordination entre agents consentants",
+        "contexte relationnel plus précis"
+      ],
+      "optionRisks": [
+        "registre sensible",
+        "fuite de graphe social",
+        "inférence à partir du refus"
+      ],
+      "optionConditions": [
+        "consentement réciproque",
+        "révocation immédiate",
+        "absence d’inférence sur le silence"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-evidence-divergence-only",
+      "name": "Option A · Divergence sans révision directe",
+      "nodeType": "narrative",
+      "phrase": "La télémétrie ouvre une divergence et une hypothèse, mais ne modifie pas directement le claim clinique.",
+      "family": "Option de décision · science",
+      "summary": "Option recommandée pour préserver les permissions inférentielles tout en exploitant les signaux du réel.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "intégrité méthodologique",
+        "auditabilité",
+        "signal utile pour financer un test"
+      ],
+      "optionRisks": [
+        "mise à jour plus lente",
+        "file de divergences à gouverner"
+      ],
+      "optionConditions": [
+        "validation tierce avant révision",
+        "tableau séparé",
+        "provenance complète"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-evidence-weighted-update",
+      "name": "Option B · Mise à jour pondérée directe",
+      "nodeType": "narrative",
+      "phrase": "La télémétrie ajuste automatiquement la confiance d’un claim selon un poids méthodologique.",
+      "family": "Option de décision · science",
+      "summary": "Option réactive mais vulnérable aux biais de sélection, au volume et à la confusion entre observation et preuve causale.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "réactivité",
+        "apprentissage continu"
+      ],
+      "optionRisks": [
+        "populisme des données",
+        "biais de capteur",
+        "contamination de la confiance clinique"
+      ],
+      "optionConditions": [
+        "modèle validé",
+        "bornes strictes",
+        "audit humain systématique"
+      ],
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "recommendation-wedge-first-deck",
+      "name": "Recommandation · Deck wedge-first",
+      "nodeType": "narrative",
+      "phrase": "Le deck principal prouve le compagnon ; l’annexe porte la civilisation.",
+      "family": "Recommandation Codex · narration",
+      "summary": "Consacrer l’essentiel du récit au problème, au produit, à la sécurité clinique, aux preuves attendues et au jalon seed ; conserver un seul visuel d’expansion progressive vers les Endgames.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "recommandation de décision",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "recommendation-clinician-first-loop",
+      "name": "Recommandation · Boucle clinicien-first",
+      "nodeType": "narrative",
+      "phrase": "La première circulation finance un soin directement relié au signal du compagnon.",
+      "family": "Recommandation Codex · activation",
+      "summary": "Commencer par des thérapeutes ou professionnels partenaires plutôt que des marchands généralistes ; le taux de subvention évoqué dans le feedback reste une variable de pilote, pas une valeur décidée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "recommandation de décision",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "recommendation-financing-decision-gate",
+      "name": "Recommandation · Gate juridique à deux options",
+      "nodeType": "narrative",
+      "phrase": "Décider d’abord la séparation des fonctions, puis choisir l’instrument avec un conseil qualifié.",
+      "family": "Recommandation Codex · financement",
+      "summary": "Acter le principe OpCo-capital versus réseau-usage, puis comparer deux options : equity ou SAFE plus crédits distincts ; ou hybride conditionnel au jalon City Loop. Aucun montage n’est présenté comme validé juridiquement.",
+      "epistemicStatus": "design_proposal",
+      "jurisdiction": "à déterminer avec conseil qualifié",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "recommandation de décision",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "recommendation-local-third-party-boundary",
+      "name": "Recommandation · Frontière locale des tiers",
+      "nodeType": "narrative",
+      "phrase": "Le système apprend un contexte utile sans créer de profil réseau du tiers.",
+      "family": "Recommandation Codex · confidentialité",
+      "summary": "Utiliser une référence locale non résoluble, minimiser les attributs, interdire l’identité globale et traiter l’absence de partage comme une valeur neutre complète.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "recommandation de décision",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "recommendation-realworld-evidence-firewall",
+      "name": "Recommandation · Pare-feu des niveaux de preuve",
+      "nodeType": "narrative",
+      "phrase": "Le réel signale une divergence ; seule une validation appropriée révise le claim clinique.",
+      "family": "Recommandation Codex · science",
+      "summary": "Séparer un tableau de divergences du graphe principal ; la télémétrie génère hypothèses et priorités d’expérience sans modifier directement la confiance d’une preuve contrôlée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "recommandation de décision",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "recommendation-decision-register",
+      "name": "Recommandation · Registre de décisions",
+      "nodeType": "narrative",
+      "phrase": "Chaque arbitrage expose options, responsable, échéance, critères, statut et preuve de clôture.",
+      "family": "Recommandation Codex · gouvernance",
+      "summary": "Les cinq questions restent ouvertes jusqu’à une revue explicite ; une recommandation ne devient une décision qu’avec un responsable, une date, des critères et un statut approuvé.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "strategic-feedback-decisions",
+      "documentSection": "recommandation transversale",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "pilot-clinician-circulation-loop",
+      "name": "Pilote proposé · Orientation clinique subventionnée",
+      "nodeType": "narrative",
+      "phrase": "Un signal consenti conduit à une orientation, une consultation partenaire et une dépense bootstrap traçable.",
+      "family": "Feedback stratégique · test d’activation",
+      "summary": "Tester sur un périmètre borné la sécurité, l’acceptation, le coût, la continuité de soin et la réalité de la circulation avant extension économique.",
+      "verificationNeeded": "protocole clinique, critères d’inclusion, consentement, plafond budgétaire, métriques et arrêt de sécurité",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "protocol"
+    },
+    {
+      "id": "pilot-realworld-divergence-layer",
+      "name": "Pilote proposé · Calque de divergences du réel",
+      "nodeType": "narrative",
+      "phrase": "Les signaux citoyens ouvrent une alerte et une proposition d’expérience sans réécrire le claim source.",
+      "family": "Feedback stratégique · test scientifique",
+      "summary": "Vérifier que la séparation UX et méthodologique préserve les claims établis tout en capturant des anomalies dignes d’investigation.",
+      "verificationNeeded": "jeu de cas contradictoires, permissions d’écriture, journal d’audit et revue par méthodologistes",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "protocol"
+    },
+    {
+      "id": "context-clinician-loop-pilot",
+      "name": "Contexte · Pilote clinique borné",
+      "nodeType": "space",
+      "phrase": "Population consentante, professionnels partenaires, budget plafonné et protocole d’arrêt explicite.",
+      "family": "Contexte de décision · activation clinique",
+      "summary": "Le résultat ne se généralise pas hors de la population, du territoire, de la durée et du réseau professionnel déclarés.",
+      "populationOrSystem": "participants adultes consentants et professionnels partenaires",
+      "validFrom": "2026-09-01",
+      "validTo": "2026-12-31",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "context"
+    },
+    {
+      "id": "metric-clinical-orientation-acceptance",
+      "name": "Métrique · Acceptation de l’orientation",
+      "nodeType": "narrative",
+      "phrase": "Part des orientations proposées que l’utilisateur accepte explicitement.",
+      "family": "Métrique de pilote · activation clinique",
+      "summary": "Numérateur : orientations acceptées ; dénominateur : orientations éligibles proposées.",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-clinical-consultation-completion",
+      "name": "Métrique · Consultation aboutie",
+      "nodeType": "narrative",
+      "phrase": "Part des orientations acceptées qui aboutissent à une consultation partenaire réalisée.",
+      "family": "Métrique de pilote · continuité",
+      "summary": "Mesure la fermeture effective de la boucle plutôt qu’un simple clic d’intention.",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-clinical-cost-per-completion",
+      "name": "Métrique · Coût par parcours abouti",
+      "nodeType": "narrative",
+      "phrase": "Dépense bootstrap totale divisée par le nombre de consultations réalisées.",
+      "family": "Métrique de pilote · économie",
+      "summary": "Rend comparables taux de subvention, coûts d’onboarding et efficacité de circulation.",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-clinical-safety-incidents",
+      "name": "Métrique · Incidents de sécurité clinique",
+      "nodeType": "narrative",
+      "phrase": "Nombre et gravité des orientations inappropriées, retards d’escalade et défauts de consentement.",
+      "family": "Métrique de pilote · sécurité",
+      "summary": "Métrique d’arrêt prioritaire, interprétée avant toute métrique de croissance ou de circulation.",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "metric"
+    },
+    {
+      "id": "context-realworld-divergence-pilot",
+      "name": "Contexte · Divergences observationnelles",
+      "nodeType": "space",
+      "phrase": "Télémétrie citoyenne consentie confrontée à des claims cliniques versionnés sans droit d’écriture direct.",
+      "family": "Contexte de décision · science",
+      "summary": "Le pilote évalue une couche d’alerte séparée ; il ne teste pas la validité clinique finale des signaux citoyens.",
+      "populationOrSystem": "données synthétiques puis télémétrie consentie sous revue",
+      "validFrom": "2026-09-01",
+      "validTo": "2026-12-31",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "context"
+    },
+    {
+      "id": "metric-divergence-review-precision",
+      "name": "Métrique · Pertinence des divergences revues",
+      "nodeType": "narrative",
+      "phrase": "Part des alertes jugées dignes d’une investigation par une revue méthodologique indépendante.",
+      "family": "Métrique de pilote · science",
+      "summary": "Mesure l’utilité de la détection sans prétendre que l’alerte réfute le claim source.",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-direct-claim-mutations",
+      "name": "Métrique · Mutations directes de claims",
+      "nodeType": "narrative",
+      "phrase": "Nombre de claims cliniques modifiés automatiquement par la télémétrie citoyenne.",
+      "family": "Métrique de pilote · invariant scientifique",
+      "summary": "La valeur attendue est strictement zéro tant qu’aucune validation clinique tierce n’a autorisé une révision.",
+      "clusterId": "strategic-feedback-decisions",
+      "semanticType": "metric"
+    }
+  ],
+  "links": [
+    {
+      "source": "feedback-pitch-cognitive-overload",
+      "target": "doc-feedback-seed-focus",
+      "type": "DERIVED_FROM",
+      "justification": "Constat · Le pitch seed surcharge la vision « dérive du document » Feedback · Focus seed et première boucle économique. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-product-economy-gap",
+      "target": "doc-feedback-seed-focus",
+      "type": "DERIVED_FROM",
+      "justification": "Constat · La première boucle économique manque « dérive du document » Feedback · Focus seed et première boucle économique. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-seed-rights-ambiguity",
+      "target": "doc-feedback-seed-focus",
+      "type": "DERIVED_FROM",
+      "justification": "Constat · Les droits du seed restent ambigus « dérive du document » Feedback · Focus seed et première boucle économique. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-seed-rights-ambiguity",
+      "target": "doc-feedback-trust-boundaries",
+      "type": "DERIVED_FROM",
+      "justification": "Constat · Les droits du seed restent ambigus « dérive du document » Feedback · Frontières de confiance du protocole. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-shadow-profiling-risk",
+      "target": "doc-feedback-trust-boundaries",
+      "type": "DERIVED_FROM",
+      "justification": "Risque · Profilage indirect des tiers « dérive du document » Feedback · Frontières de confiance du protocole. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-evidence-level-collapse",
+      "target": "doc-feedback-trust-boundaries",
+      "type": "DERIVED_FROM",
+      "justification": "Risque · Les niveaux de preuve peuvent se confondre « dérive du document » Feedback · Frontières de confiance du protocole. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-seed-pitch-scope",
+      "target": "doc-feedback-seed-focus",
+      "type": "DERIVED_FROM",
+      "justification": "Décision requise · Périmètre du pitch seed « dérive du document » Feedback · Focus seed et première boucle économique. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-first-economic-loop",
+      "target": "doc-feedback-seed-focus",
+      "type": "DERIVED_FROM",
+      "justification": "Décision requise · Première boucle économique « dérive du document » Feedback · Focus seed et première boucle économique. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-seed-instrument",
+      "target": "doc-feedback-seed-focus",
+      "type": "DERIVED_FROM",
+      "justification": "Décision requise · Instrument du seed « dérive du document » Feedback · Focus seed et première boucle économique. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-seed-instrument",
+      "target": "doc-feedback-trust-boundaries",
+      "type": "DERIVED_FROM",
+      "justification": "Décision requise · Instrument du seed « dérive du document » Feedback · Frontières de confiance du protocole. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-nonparticipant-boundary",
+      "target": "doc-feedback-trust-boundaries",
+      "type": "DERIVED_FROM",
+      "justification": "Décision requise · Frontière des non-participants « dérive du document » Feedback · Frontières de confiance du protocole. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-realworld-evidence-policy",
+      "target": "doc-feedback-trust-boundaries",
+      "type": "DERIVED_FROM",
+      "justification": "Décision requise · Pouvoir de la télémétrie réelle « dérive du document » Feedback · Frontières de confiance du protocole. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-wedge-first-deck",
+      "target": "decision-seed-pitch-scope",
+      "type": "RECOMMENDS",
+      "justification": "Recommandation · Deck wedge-first « recommande » Décision requise · Périmètre du pitch seed. Nature précise : proposition argumentée → décision concernée. Portée : recommendation. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-clinician-first-loop",
+      "target": "decision-first-economic-loop",
+      "type": "RECOMMENDS",
+      "justification": "Recommandation · Boucle clinicien-first « recommande » Décision requise · Première boucle économique. Nature précise : proposition argumentée → décision concernée. Portée : recommendation. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-financing-decision-gate",
+      "target": "decision-seed-instrument",
+      "type": "RECOMMENDS",
+      "justification": "Recommandation · Gate juridique à deux options « recommande » Décision requise · Instrument du seed. Nature précise : proposition argumentée → décision concernée. Portée : recommendation. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-local-third-party-boundary",
+      "target": "decision-nonparticipant-boundary",
+      "type": "RECOMMENDS",
+      "justification": "Recommandation · Frontière locale des tiers « recommande » Décision requise · Frontière des non-participants. Nature précise : proposition argumentée → décision concernée. Portée : recommendation. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-realworld-evidence-firewall",
+      "target": "decision-realworld-evidence-policy",
+      "type": "RECOMMENDS",
+      "justification": "Recommandation · Pare-feu des niveaux de preuve « recommande » Décision requise · Pouvoir de la télémétrie réelle. Nature précise : proposition argumentée → décision concernée. Portée : recommendation. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-pitch-wedge-first",
+      "target": "decision-seed-pitch-scope",
+      "type": "OPTION_FOR",
+      "justification": "Option A · Deck centré sur le wedge « est une option pour » Décision requise · Périmètre du pitch seed. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-pitch-multi-endgame",
+      "target": "decision-seed-pitch-scope",
+      "type": "OPTION_FOR",
+      "justification": "Option B · Deck multi-Endgames « est une option pour » Décision requise · Périmètre du pitch seed. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-loop-clinician-first",
+      "target": "decision-first-economic-loop",
+      "type": "OPTION_FOR",
+      "justification": "Option A · Boucle clinicien-first « est une option pour » Décision requise · Première boucle économique. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-loop-merchants-first",
+      "target": "decision-first-economic-loop",
+      "type": "OPTION_FOR",
+      "justification": "Option B · Boucle marchands-first « est une option pour » Décision requise · Première boucle économique. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-finance-separated-rights",
+      "target": "decision-seed-instrument",
+      "type": "OPTION_FOR",
+      "justification": "Option A · Capital et crédits séparés « est une option pour » Décision requise · Instrument du seed. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-finance-city-loop-hybrid",
+      "target": "decision-seed-instrument",
+      "type": "OPTION_FOR",
+      "justification": "Option B · SAFE hybride conditionnel « est une option pour » Décision requise · Instrument du seed. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-privacy-local-boundary",
+      "target": "decision-nonparticipant-boundary",
+      "type": "OPTION_FOR",
+      "justification": "Option A · Référence locale non résoluble « est une option pour » Décision requise · Frontière des non-participants. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-privacy-consent-registry",
+      "target": "decision-nonparticipant-boundary",
+      "type": "OPTION_FOR",
+      "justification": "Option B · Résolution via registre de consentement « est une option pour » Décision requise · Frontière des non-participants. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-evidence-divergence-only",
+      "target": "decision-realworld-evidence-policy",
+      "type": "OPTION_FOR",
+      "justification": "Option A · Divergence sans révision directe « est une option pour » Décision requise · Pouvoir de la télémétrie réelle. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "option-evidence-weighted-update",
+      "target": "decision-realworld-evidence-policy",
+      "type": "OPTION_FOR",
+      "justification": "Option B · Mise à jour pondérée directe « est une option pour » Décision requise · Pouvoir de la télémétrie réelle. Nature précise : option explicite → décision à prendre. Portée : decision_option. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-wedge-first-deck",
+      "target": "option-pitch-wedge-first",
+      "type": "IMPLEMENTS",
+      "justification": "Recommandation · Deck wedge-first « met en œuvre » Option A · Deck centré sur le wedge. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-clinician-first-loop",
+      "target": "option-loop-clinician-first",
+      "type": "IMPLEMENTS",
+      "justification": "Recommandation · Boucle clinicien-first « met en œuvre » Option A · Boucle clinicien-first. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-local-third-party-boundary",
+      "target": "option-privacy-local-boundary",
+      "type": "IMPLEMENTS",
+      "justification": "Recommandation · Frontière locale des tiers « met en œuvre » Option A · Référence locale non résoluble. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-realworld-evidence-firewall",
+      "target": "option-evidence-divergence-only",
+      "type": "IMPLEMENTS",
+      "justification": "Recommandation · Pare-feu des niveaux de preuve « met en œuvre » Option A · Divergence sans révision directe. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-pitch-cognitive-overload",
+      "target": "recommendation-wedge-first-deck",
+      "type": "MOTIVATES",
+      "justification": "Constat · Le pitch seed surcharge la vision « motive ce choix » Recommandation · Deck wedge-first. Nature précise : problème ou raison → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-product-economy-gap",
+      "target": "recommendation-clinician-first-loop",
+      "type": "MOTIVATES",
+      "justification": "Constat · La première boucle économique manque « motive ce choix » Recommandation · Boucle clinicien-first. Nature précise : problème ou raison → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-seed-rights-ambiguity",
+      "target": "recommendation-financing-decision-gate",
+      "type": "MOTIVATES",
+      "justification": "Constat · Les droits du seed restent ambigus « motive ce choix » Recommandation · Gate juridique à deux options. Nature précise : problème ou raison → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-shadow-profiling-risk",
+      "target": "recommendation-local-third-party-boundary",
+      "type": "MOTIVATES",
+      "justification": "Risque · Profilage indirect des tiers « motive ce choix » Recommandation · Frontière locale des tiers. Nature précise : problème ou raison → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "feedback-evidence-level-collapse",
+      "target": "recommendation-realworld-evidence-firewall",
+      "type": "MOTIVATES",
+      "justification": "Risque · Les niveaux de preuve peuvent se confondre « motive ce choix » Recommandation · Pare-feu des niveaux de preuve. Nature précise : problème ou raison → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-wedge-first-deck",
+      "target": "roadmap-endgame-90d",
+      "type": "IMPLEMENTS",
+      "justification": "Recommandation · Deck wedge-first « met en œuvre » Roadmap · 0-90 jours : prouver la doctrine. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-clinician-first-loop",
+      "target": "fin-bootstrap-reserve",
+      "type": "IMPLEMENTS",
+      "justification": "Recommandation · Boucle clinicien-first « met en œuvre » Mécanisme · Réserve bootstrap restreinte. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-clinician-first-loop",
+      "target": "pilot-mental-health-companion",
+      "type": "IMPLEMENTS",
+      "justification": "Recommandation · Boucle clinicien-first « met en œuvre » Pilote · Companion santé mentale supervisé. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-financing-decision-gate",
+      "target": "fin-seed-5m",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Gate juridique à deux options « protège » Hypothèse · Seed initial de 5 M$. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-local-third-party-boundary",
+      "target": "mh-relational-mirror",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Frontière locale des tiers « protège » Couche · Miroir relationnel agrégé. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-local-third-party-boundary",
+      "target": "mechanism-consent-delegation",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Frontière locale des tiers « protège » Mandat et consentement révocables. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-realworld-evidence-firewall",
+      "target": "sci-realworld-confirmation",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Pare-feu des niveaux de preuve « protège » Couche · Confirmation par le réel. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-realworld-evidence-firewall",
+      "target": "sci-methodology-layer",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Pare-feu des niveaux de preuve « protège » Couche · Méthodologie de première classe. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-realworld-evidence-firewall",
+      "target": "csg-quality-vector",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Pare-feu des niveaux de preuve « protège » Contrat · Vecteur de qualité. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-seed-pitch-scope",
+      "target": "question-series-evidence",
+      "type": "SUBCASE_OF",
+      "justification": "Décision requise · Périmètre du pitch seed « est un sous-cas de » La série vient-elle avant ou après les preuves ?. Nature précise : cas spécifique → cas général. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-first-economic-loop",
+      "target": "question-merchant-incentive",
+      "type": "SUBCASE_OF",
+      "justification": "Décision requise · Première boucle économique « est un sous-cas de » Pourquoi un producteur accepterait-il Mind ?. Nature précise : cas spécifique → cas général. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-seed-instrument",
+      "target": "fin-question-protocol-rights",
+      "type": "SUBCASE_OF",
+      "justification": "Décision requise · Instrument du seed « est un sous-cas de » Question · Quels droits de protocole sont légalement viables ?. Nature précise : cas spécifique → cas général. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-nonparticipant-boundary",
+      "target": "question-app-privacy",
+      "type": "SUBCASE_OF",
+      "justification": "Décision requise · Frontière des non-participants « est un sous-cas de » Quelles données quittent le téléphone ?. Nature précise : cas spécifique → cas général. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "decision-realworld-evidence-policy",
+      "target": "sci-risk-claim-accumulation",
+      "type": "SUBCASE_OF",
+      "justification": "Décision requise · Pouvoir de la télémétrie réelle « est un sous-cas de » Risque · Accumulation sans critique. Nature précise : cas spécifique → cas général. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-clinician-circulation-loop",
+      "target": "recommendation-clinician-first-loop",
+      "type": "TESTS",
+      "justification": "Pilote proposé · Orientation clinique subventionnée « met à l’épreuve » Recommandation · Boucle clinicien-first. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-realworld-divergence-layer",
+      "target": "recommendation-realworld-evidence-firewall",
+      "type": "TESTS",
+      "justification": "Pilote proposé · Calque de divergences du réel « met à l’épreuve » Recommandation · Pare-feu des niveaux de preuve. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-clinician-circulation-loop",
+      "target": "context-clinician-loop-pilot",
+      "type": "APPLIES_IN",
+      "justification": "Pilote proposé · Orientation clinique subventionnée « s’applique dans » Contexte · Pilote clinique borné. Nature précise : affirmation, estimation ou mécanisme → contexte. Portée : context. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-clinician-circulation-loop",
+      "target": "metric-clinical-orientation-acceptance",
+      "type": "MEASURES",
+      "justification": "Pilote proposé · Orientation clinique subventionnée « mesure selon » Métrique · Acceptation de l’orientation. Nature précise : observation ou estimation → métrique. Portée : measurement. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-clinician-circulation-loop",
+      "target": "metric-clinical-consultation-completion",
+      "type": "MEASURES",
+      "justification": "Pilote proposé · Orientation clinique subventionnée « mesure selon » Métrique · Consultation aboutie. Nature précise : observation ou estimation → métrique. Portée : measurement. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-clinician-circulation-loop",
+      "target": "metric-clinical-cost-per-completion",
+      "type": "MEASURES",
+      "justification": "Pilote proposé · Orientation clinique subventionnée « mesure selon » Métrique · Coût par parcours abouti. Nature précise : observation ou estimation → métrique. Portée : measurement. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-clinician-circulation-loop",
+      "target": "metric-clinical-safety-incidents",
+      "type": "MEASURES",
+      "justification": "Pilote proposé · Orientation clinique subventionnée « mesure selon » Métrique · Incidents de sécurité clinique. Nature précise : observation ou estimation → métrique. Portée : measurement. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-realworld-divergence-layer",
+      "target": "context-realworld-divergence-pilot",
+      "type": "APPLIES_IN",
+      "justification": "Pilote proposé · Calque de divergences du réel « s’applique dans » Contexte · Divergences observationnelles. Nature précise : affirmation, estimation ou mécanisme → contexte. Portée : context. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-realworld-divergence-layer",
+      "target": "metric-divergence-review-precision",
+      "type": "MEASURES",
+      "justification": "Pilote proposé · Calque de divergences du réel « mesure selon » Métrique · Pertinence des divergences revues. Nature précise : observation ou estimation → métrique. Portée : measurement. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-realworld-divergence-layer",
+      "target": "metric-direct-claim-mutations",
+      "type": "MEASURES",
+      "justification": "Pilote proposé · Calque de divergences du réel « mesure selon » Métrique · Mutations directes de claims. Nature précise : observation ou estimation → métrique. Portée : measurement. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-decision-register",
+      "target": "recommendation-wedge-first-deck",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Registre de décisions « protège » Recommandation · Deck wedge-first. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-decision-register",
+      "target": "recommendation-clinician-first-loop",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Registre de décisions « protège » Recommandation · Boucle clinicien-first. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-decision-register",
+      "target": "recommendation-financing-decision-gate",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Registre de décisions « protège » Recommandation · Gate juridique à deux options. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-decision-register",
+      "target": "recommendation-local-third-party-boundary",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Registre de décisions « protège » Recommandation · Frontière locale des tiers. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-decision-register",
+      "target": "recommendation-realworld-evidence-firewall",
+      "type": "SAFEGUARDS",
+      "justification": "Recommandation · Registre de décisions « protège » Recommandation · Pare-feu des niveaux de preuve. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-decision-register",
+      "target": "doc-feedback-seed-focus",
+      "type": "DERIVED_FROM",
+      "justification": "Recommandation · Registre de décisions « dérive du document » Feedback · Focus seed et première boucle économique. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-decision-register",
+      "target": "doc-feedback-trust-boundaries",
+      "type": "DERIVED_FROM",
+      "justification": "Recommandation · Registre de décisions « dérive du document » Feedback · Frontières de confiance du protocole. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    }
+  ]
+}

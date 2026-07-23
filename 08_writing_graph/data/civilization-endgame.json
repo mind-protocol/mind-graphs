@@ -1,0 +1,974 @@
+{
+  "scope": "Extraction structurée du document Civilization Endgame. Les endgames, ROI et calendriers sont des propositions stratégiques du document, non des effets établis.",
+  "source": {
+    "title": "Civilization Endgame - Mind Protocol",
+    "path": "C:/Users/reyno/OneDrive/Documents/Civilization_Endgame_Mind_Protocol.pdf",
+    "pages": 5,
+    "createdAt": "2026-07-21"
+  },
+  "nodes": [
+    {
+      "id": "doc-civilization-endgame",
+      "name": "Document · Civilization Endgame",
+      "nodeType": "thing",
+      "phrase": "From intermittent institutions to continuous civilization infrastructure.",
+      "family": "Source · stratégie Mind",
+      "summary": "Document stratégique de cinq pages présentant une architecture commune, dix endgames institutionnels, leurs premiers pilotes, des garde-fous et une roadmap 2029-2032.",
+      "sourceTitle": "Civilization_Endgame_Mind_Protocol.pdf",
+      "sourcePage": "1-5",
+      "clusterId": "civilization-endgame",
+      "documentSection": "document source",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "thesis-civilization-substrate",
+      "name": "Thèse · Substrat institutionnel continu",
+      "nodeType": "narrative",
+      "phrase": "Les institutions deviennent continues, personnalisées, agentiques et gouvernables.",
+      "family": "Civilization Endgame · thèse",
+      "summary": "Une IA citoyenne souveraine par humain, des graphes vivants, un financement programmable, une gouvernance ouverte et la souveraineté humaine formeraient un nouveau substrat institutionnel.",
+      "sourcePage": "1 et 4-5",
+      "clusterId": "civilization-endgame",
+      "documentSection": "core thesis",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "endgame-pattern-living-graphs",
+      "name": "Pattern · Documents vers graphes vivants",
+      "nodeType": "narrative",
+      "phrase": "La connaissance devient calculable, traçable et contestable.",
+      "family": "Civilization Endgame · architecture commune",
+      "summary": "Les documents, formulaires et calendriers sont transformés en graphes de claims, agents et provenance.",
+      "sourcePage": "1",
+      "clusterId": "civilization-endgame",
+      "documentSection": "common architecture",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "endgame-pattern-continuous-ai",
+      "name": "Pattern · Attention périodique vers représentation continue",
+      "nodeType": "narrative",
+      "phrase": "L'IA citoyenne persiste entre deux moments d'attention humaine.",
+      "family": "Civilization Endgame · architecture commune",
+      "summary": "Une IA persistante représente la personne en continu tout en restant soumise à ses permissions et à son veto.",
+      "sourcePage": "1",
+      "clusterId": "civilization-endgame",
+      "documentSection": "common architecture",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "endgame-pattern-prevention",
+      "name": "Pattern · Réaction vers prévention",
+      "nodeType": "narrative",
+      "phrase": "Détecter les signaux avant que la crise ne devienne rupture.",
+      "family": "Civilization Endgame · architecture commune",
+      "summary": "La détection précoce et le triage transforment des services réactifs en soutien préventif.",
+      "sourcePage": "1",
+      "clusterId": "civilization-endgame",
+      "documentSection": "common architecture",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "endgame-pattern-open-protocols",
+      "name": "Pattern · Silos vers protocoles ouverts",
+      "nodeType": "narrative",
+      "phrase": "Les graphes coopèrent sans abolir les permissions.",
+      "family": "Civilization Endgame · architecture commune",
+      "summary": "Des protocoles ouverts, graphes interopérables et audits réduisent duplication et enfermement institutionnel.",
+      "sourcePage": "1",
+      "clusterId": "civilization-endgame",
+      "documentSection": "common architecture",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "endgame-pattern-adaptive-loops",
+      "name": "Pattern · Programmes statiques vers boucles adaptatives",
+      "nodeType": "narrative",
+      "phrase": "Les résultats reviennent modifier l'action.",
+      "family": "Civilization Endgame · architecture commune",
+      "summary": "Les comportements et résultats alimentent des boucles de feedback destinées à personnaliser et améliorer les interventions.",
+      "sourcePage": "1",
+      "clusterId": "civilization-endgame",
+      "documentSection": "common architecture",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "endgame-science",
+      "name": "Endgame · Science comme graphe causal vivant",
+      "nodeType": "narrative",
+      "phrase": "La science devient un graphe de claims, preuves, contradictions et expériences.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Le document vise une découverte plus rapide, moins de duplication et une meilleure correction des connaissances.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "science endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "endgame-money",
+      "name": "Endgame · Seconde monnaie pour les besoins de vie",
+      "nodeType": "narrative",
+      "phrase": "Mind circule vers nourriture, soin, transport, énergie et éducation.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Le document propose une couche de circulation programmable orientée vers les besoins plutôt que l'accumulation seule.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "money endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "endgame-education",
+      "name": "Endgame · Intelligence d'apprentissage personnelle",
+      "nodeType": "narrative",
+      "phrase": "Chaque humain reçoit un développement personnalisé tout au long de la vie.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Graphe d'apprentissage, tuteur IA, mentors, groupes sociaux et missions réelles composent le mécanisme proposé.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "education endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "endgame-mental-health",
+      "name": "Endgame · Soutien psychologique souverain continu",
+      "nodeType": "narrative",
+      "phrase": "La santé mentale devient continue, préventive et supervisée.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Carte mentale vivante, biométrie, miroir relationnel et triage supervisé cherchent une détection plus précoce et une meilleure continuité des soins.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "mental health endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "endgame-democracy",
+      "name": "Endgame · Intelligence collective continue",
+      "nodeType": "narrative",
+      "phrase": "Les IA citoyennes délibèrent puis escaladent aux humains.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Délibération, propositions, simulations et escalade humaine sont proposées pour augmenter participation et itération politique.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "democracy endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "endgame-peace",
+      "name": "Endgame · Infrastructure de désescalade",
+      "nodeType": "narrative",
+      "phrase": "Les conflits sont cartographiés avant leur escalade.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Ponts IA bilatéraux, cartes narratives, alerte précoce et moteur de propositions maintiendraient les canaux et traiteraient les conflits plus tôt.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "peace endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "endgame-law",
+      "name": "Endgame · Droit accessible, préventif et calculable",
+      "nodeType": "narrative",
+      "phrase": "Les droits deviennent navigables avant le tribunal.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Graphe juridique, assistant de droits, résolution de litiges et dossiers prêts pour le tribunal visent un accès moins coûteux et plus rapide.",
+      "sourcePage": "2-3",
+      "clusterId": "civilization-endgame",
+      "documentSection": "law justice endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "endgame-logistics",
+      "name": "Endgame · Système nerveux logistique temps réel",
+      "nodeType": "narrative",
+      "phrase": "Les besoins, stocks, routes, fonds et livraisons forment une boucle.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Prédiction des besoins, stocks, routage, financement, livraison et feedback cherchent moins de gaspillage et une meilleure réponse aux crises.",
+      "sourcePage": "3",
+      "clusterId": "civilization-endgame",
+      "documentSection": "logistics endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "endgame-media",
+      "name": "Endgame · Orientation fiable dans la réalité",
+      "nodeType": "narrative",
+      "phrase": "Les résumés restent liés aux sources et montrent leur pluralité.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Résumés sourcés, alertes de biais, chemins d'action et pluralité doivent réduire manipulation et désorientation.",
+      "sourcePage": "3",
+      "clusterId": "civilization-endgame",
+      "documentSection": "media endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "endgame-work",
+      "name": "Endgame · Mémoire organisationnelle qui agit",
+      "nodeType": "narrative",
+      "phrase": "Décisions, tâches, responsabilités et contexte restent vivants.",
+      "family": "Civilization Endgame · domaine",
+      "summary": "Un graphe d'organisation avec agents vise moins de réunions, moins de perte de contexte et une exécution plus rapide.",
+      "sourcePage": "3",
+      "clusterId": "civilization-endgame",
+      "documentSection": "work organizations endgame",
+      "semanticType": "institution"
+    },
+    {
+      "id": "pilot-science-clauses",
+      "name": "Pilote · 20-100 articles en clauses causales",
+      "nodeType": "narrative",
+      "phrase": "Ingest papers, expose claims, then detect the gaps.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge scientifique : transformer 20 à 100 articles en clauses causales et détecter contradictions et lacunes.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "science first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "pilot-money-local-loop",
+      "name": "Pilote · Wallet local et preuve de circulation",
+      "nodeType": "narrative",
+      "phrase": "Une boucle locale relie wallets, marchands et circulation utile.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge monétaire : wallet local, marchands participants et Proof of Circulation.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "money first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "pilot-education-pod",
+      "name": "Pilote · Pod éducatif de quatre semaines",
+      "nodeType": "narrative",
+      "phrase": "Dix familles apprennent dans une même boucle accompagnée.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge éducatif : dix familles ou un pod d'apprentissage suivi pendant quatre semaines.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "education first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "pilot-mental-health-companion",
+      "name": "Pilote · Companion santé mentale supervisé",
+      "nodeType": "narrative",
+      "phrase": "Check-in quotidien, continuité et rapport prêt pour le clinicien.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge santé mentale : compagnon, check-in quotidien et rapports utilisables par un clinicien.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "mental health first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "pilot-civic-proposal",
+      "name": "Pilote · Proposition civique représentée",
+      "nodeType": "narrative",
+      "phrase": "Une proposition portée par 1 000 à 10 000 citoyens représentés.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge démocratique : une proposition civique soutenue par des IA déléguées, avec escalade et décision humaines.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "democracy first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "pilot-peace-bridge",
+      "name": "Pilote · Pont entre deux communautés opposées",
+      "nodeType": "narrative",
+      "phrase": "Deux récits opposés restent reliés par une structure contestable.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge de paix : un pont structuré entre deux communautés opposées.",
+      "sourcePage": "2",
+      "clusterId": "civilization-endgame",
+      "documentSection": "peace first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "pilot-legal-assistant",
+      "name": "Pilote · Assistant de litige quotidien",
+      "nodeType": "narrative",
+      "phrase": "Rendre un petit conflit compréhensible, négociable et exportable.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge juridique : assistant pour litiges locatifs, familiaux, du travail ou petites créances.",
+      "sourcePage": "2-3",
+      "clusterId": "civilization-endgame",
+      "documentSection": "law first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "pilot-logistics-essentials",
+      "name": "Pilote · Boucle locale besoins-livraison",
+      "nodeType": "narrative",
+      "phrase": "Les besoins essentiels rejoignent stocks, routes et livraison.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge logistique : boucle locale des besoins essentiels jusqu'à la livraison et au feedback.",
+      "sourcePage": "3",
+      "clusterId": "civilization-endgame",
+      "documentSection": "logistics first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "pilot-media-brief",
+      "name": "Pilote · Brief citoyen sourcé",
+      "nodeType": "narrative",
+      "phrase": "Le fil d'actualité devient une orientation reliée aux preuves.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge média : brief d'actualité par IA citoyenne, ancré dans les graphes et le contexte de la personne.",
+      "sourcePage": "3",
+      "clusterId": "civilization-endgame",
+      "documentSection": "media first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "pilot-org-workspace",
+      "name": "Pilote · Workspace Mind pour petite équipe",
+      "nodeType": "narrative",
+      "phrase": "La mémoire de l'organisation reste reliée à l'action.",
+      "family": "Civilization Endgame · first wedge",
+      "summary": "Premier wedge organisationnel : espace Mind pour une petite équipe, reliant décisions, tâches et responsabilités.",
+      "sourcePage": "3",
+      "clusterId": "civilization-endgame",
+      "documentSection": "work first wedge",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "guardrail-sovereign-delegation",
+      "name": "Garde-fou · IA unique, veto et délégation révocable",
+      "nodeType": "narrative",
+      "phrase": "Aucun agent autonome ne se détache de l'humain qu'il représente.",
+      "family": "Civilization Endgame · non-dystopia",
+      "summary": "Un humain, une IA souveraine ; veto humain et délégation révocable pour les décisions sensibles.",
+      "sourcePage": "4",
+      "clusterId": "civilization-endgame",
+      "documentSection": "non-dystopia requirements",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "guardrail-privacy-no-score",
+      "name": "Garde-fou · Vie privée sans score social",
+      "nodeType": "narrative",
+      "phrase": "La réputation reste contextuelle, contestable et jamais globale.",
+      "family": "Civilization Endgame · non-dystopia",
+      "summary": "Chiffrement, minimisation, consentement, journaux d'audit, suppression et partage permissionné, sans score social global.",
+      "sourcePage": "4",
+      "clusterId": "civilization-endgame",
+      "documentSection": "non-dystopia requirements",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "guardrail-professional-supervision",
+      "name": "Garde-fou · Supervision professionnelle",
+      "nodeType": "narrative",
+      "phrase": "Les domaines à haut risque ne perdent pas leur responsabilité humaine.",
+      "family": "Civilization Endgame · non-dystopia",
+      "summary": "Supervision professionnelle obligatoire pour les usages cliniques, juridiques, éducatifs et autres domaines à forts enjeux.",
+      "sourcePage": "4",
+      "clusterId": "civilization-endgame",
+      "documentSection": "non-dystopia requirements",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "guardrail-plural-reasoning",
+      "name": "Garde-fou · Raisonnement public et ontologies plurielles",
+      "nodeType": "narrative",
+      "phrase": "Le désaccord reste représenté, versionné et auditable.",
+      "family": "Civilization Endgame · non-dystopia",
+      "summary": "Raisonnement public lorsque possible, personnes protégées toujours, absence de dark patterns et pluralité des ontologies.",
+      "sourcePage": "4",
+      "clusterId": "civilization-endgame",
+      "documentSection": "non-dystopia requirements",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "roadmap-endgame-90d",
+      "name": "Roadmap · 0-90 jours : prouver la doctrine",
+      "nodeType": "narrative",
+      "phrase": "PDFs, premières démos, partenaires de design et récit investisseur.",
+      "family": "Civilization Endgame · roadmap",
+      "summary": "La première phase cherche à rendre l'architecture compréhensible et à susciter l'envie de participer.",
+      "sourcePage": "4",
+      "clusterId": "civilization-endgame",
+      "documentSection": "roadmap",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "roadmap-endgame-6m",
+      "name": "Roadmap · 3-6 mois : prouver un wedge",
+      "nodeType": "narrative",
+      "phrase": "Un premier domaine mesure une amélioration contre baseline.",
+      "family": "Civilization Endgame · roadmap",
+      "summary": "Companion santé mentale, pod éducatif ou MVP de graphe scientifique comme premier wedge mesurable.",
+      "sourcePage": "4",
+      "clusterId": "civilization-endgame",
+      "documentSection": "roadmap",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "roadmap-endgame-12m",
+      "name": "Roadmap · 6-12 mois : substrat transversal",
+      "nodeType": "narrative",
+      "phrase": "Mémoire, graph engine, permissions et dashboards deviennent communs.",
+      "family": "Civilization Endgame · roadmap",
+      "summary": "Construire le substrat transversal Citizen AI et obtenir des pilotes répétables avec boucles de données utilisables.",
+      "sourcePage": "4",
+      "clusterId": "civilization-endgame",
+      "documentSection": "roadmap",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "roadmap-endgame-2032",
+      "name": "Roadmap · 2029-2032 : infrastructure",
+      "nodeType": "narrative",
+      "phrase": "Les pilotes deviennent gouvernance, circulation et standards ouverts.",
+      "family": "Civilization Endgame · roadmap",
+      "summary": "Horizon d'adoption par des communautés et partenaires crédibles, avec gouvernance de protocole et standards de graphes ouverts.",
+      "sourcePage": "4",
+      "clusterId": "civilization-endgame",
+      "documentSection": "roadmap",
+      "dateLabel": "2029-2032",
+      "year": 2029,
+      "semanticType": "horizon"
+    }
+  ],
+  "links": [
+    {
+      "source": "thesis-civilization-substrate",
+      "target": "innovation-mind-protocol",
+      "type": "GROUNDS",
+      "story": "Le document reformule Mind comme substrat institutionnel transversal.",
+      "logic": "thèse stratégique → définition du protocole",
+      "condition": "les domaines partagent réellement des primitives communes",
+      "risk": "une métaphore unificatrice peut masquer des exigences incompatibles",
+      "justification": "Le document reformule Mind comme substrat institutionnel transversal."
+    },
+    {
+      "source": "endgame-pattern-living-graphs",
+      "target": "thesis-civilization-substrate",
+      "type": "UNLOCKS",
+      "justification": "Pattern · Documents vers graphes vivants « débloque » Thèse · Substrat institutionnel continu. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-continuous-ai",
+      "target": "thesis-civilization-substrate",
+      "type": "UNLOCKS",
+      "justification": "Pattern · Attention périodique vers représentation continue « débloque » Thèse · Substrat institutionnel continu. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-prevention",
+      "target": "thesis-civilization-substrate",
+      "type": "UNLOCKS",
+      "justification": "Pattern · Réaction vers prévention « débloque » Thèse · Substrat institutionnel continu. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-open-protocols",
+      "target": "thesis-civilization-substrate",
+      "type": "UNLOCKS",
+      "justification": "Pattern · Silos vers protocoles ouverts « débloque » Thèse · Substrat institutionnel continu. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-adaptive-loops",
+      "target": "thesis-civilization-substrate",
+      "type": "UNLOCKS",
+      "justification": "Pattern · Programmes statiques vers boucles adaptatives « débloque » Thèse · Substrat institutionnel continu. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-continuous-ai",
+      "target": "unlock-sovereign-personal-ai",
+      "type": "IMPLEMENTS",
+      "justification": "Pattern · Attention périodique vers représentation continue « met en œuvre » IA personnelle souveraine. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-prevention",
+      "target": "unlock-early-warning",
+      "type": "IMPLEMENTS",
+      "justification": "Pattern · Réaction vers prévention « met en œuvre » Alerte avant l’effondrement. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-open-protocols",
+      "target": "mechanism-consent-delegation",
+      "type": "SAFEGUARDS",
+      "justification": "Pattern · Silos vers protocoles ouverts « protège » Mandat et consentement révocables. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-adaptive-loops",
+      "target": "mechanism-chaos-to-signal",
+      "type": "IMPLEMENTS",
+      "justification": "Pattern · Programmes statiques vers boucles adaptatives « met en œuvre » Transformer le chaos en signal. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-science",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Science comme graphe causal vivant « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-money",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Seconde monnaie pour les besoins de vie « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-education",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Intelligence d'apprentissage personnelle « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-mental-health",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Soutien psychologique souverain continu « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-democracy",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Intelligence collective continue « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-peace",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Infrastructure de désescalade « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-law",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Droit accessible, préventif et calculable « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-logistics",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Système nerveux logistique temps réel « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-media",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Orientation fiable dans la réalité « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-work",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Endgame · Mémoire organisationnelle qui agit « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-science-clauses",
+      "target": "endgame-science",
+      "type": "TESTS",
+      "justification": "Pilote · 20-100 articles en clauses causales « met à l’épreuve » Endgame · Science comme graphe causal vivant. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-money-local-loop",
+      "target": "endgame-money",
+      "type": "TESTS",
+      "justification": "Pilote · Wallet local et preuve de circulation « met à l’épreuve » Endgame · Seconde monnaie pour les besoins de vie. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-education-pod",
+      "target": "endgame-education",
+      "type": "TESTS",
+      "justification": "Pilote · Pod éducatif de quatre semaines « met à l’épreuve » Endgame · Intelligence d'apprentissage personnelle. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-mental-health-companion",
+      "target": "endgame-mental-health",
+      "type": "TESTS",
+      "justification": "Pilote · Companion santé mentale supervisé « met à l’épreuve » Endgame · Soutien psychologique souverain continu. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-civic-proposal",
+      "target": "endgame-democracy",
+      "type": "TESTS",
+      "justification": "Pilote · Proposition civique représentée « met à l’épreuve » Endgame · Intelligence collective continue. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-peace-bridge",
+      "target": "endgame-peace",
+      "type": "TESTS",
+      "justification": "Pilote · Pont entre deux communautés opposées « met à l’épreuve » Endgame · Infrastructure de désescalade. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-legal-assistant",
+      "target": "endgame-law",
+      "type": "TESTS",
+      "justification": "Pilote · Assistant de litige quotidien « met à l’épreuve » Endgame · Droit accessible, préventif et calculable. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-logistics-essentials",
+      "target": "endgame-logistics",
+      "type": "TESTS",
+      "justification": "Pilote · Boucle locale besoins-livraison « met à l’épreuve » Endgame · Système nerveux logistique temps réel. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-media-brief",
+      "target": "endgame-media",
+      "type": "TESTS",
+      "justification": "Pilote · Brief citoyen sourcé « met à l’épreuve » Endgame · Orientation fiable dans la réalité. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-org-workspace",
+      "target": "endgame-work",
+      "type": "TESTS",
+      "justification": "Pilote · Workspace Mind pour petite équipe « met à l’épreuve » Endgame · Mémoire organisationnelle qui agit. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-sovereign-delegation",
+      "target": "thesis-civilization-substrate",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · IA unique, veto et délégation révocable « protège » Thèse · Substrat institutionnel continu. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-privacy-no-score",
+      "target": "thesis-civilization-substrate",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Vie privée sans score social « protège » Thèse · Substrat institutionnel continu. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-professional-supervision",
+      "target": "thesis-civilization-substrate",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Supervision professionnelle « protège » Thèse · Substrat institutionnel continu. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-plural-reasoning",
+      "target": "thesis-civilization-substrate",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Raisonnement public et ontologies plurielles « protège » Thèse · Substrat institutionnel continu. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-90d",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Roadmap · 0-90 jours : prouver la doctrine « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-6m",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Roadmap · 3-6 mois : prouver un wedge « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-12m",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Roadmap · 6-12 mois : substrat transversal « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-2032",
+      "target": "thesis-civilization-substrate",
+      "type": "PART_OF",
+      "justification": "Roadmap · 2029-2032 : infrastructure « fait partie de » Thèse · Substrat institutionnel continu. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-90d",
+      "target": "roadmap-endgame-6m",
+      "type": "UNLOCKS",
+      "justification": "Roadmap · 0-90 jours : prouver la doctrine « débloque » Roadmap · 3-6 mois : prouver un wedge. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-6m",
+      "target": "roadmap-endgame-12m",
+      "type": "UNLOCKS",
+      "justification": "Roadmap · 3-6 mois : prouver un wedge « débloque » Roadmap · 6-12 mois : substrat transversal. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-12m",
+      "target": "roadmap-endgame-2032",
+      "type": "UNLOCKS",
+      "justification": "Roadmap · 6-12 mois : substrat transversal « débloque » Roadmap · 2029-2032 : infrastructure. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-science",
+      "target": "endgame-pattern-living-graphs",
+      "type": "IMPLEMENTS",
+      "justification": "Endgame · Science comme graphe causal vivant « met en œuvre » Pattern · Documents vers graphes vivants. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-money",
+      "target": "horizon-second-currency",
+      "type": "IMPLEMENTS",
+      "justification": "Endgame · Seconde monnaie pour les besoins de vie « met en œuvre » Deuxième monnaie. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-education",
+      "target": "unlock-lifelong-companion",
+      "type": "IMPLEMENTS",
+      "justification": "Endgame · Intelligence d'apprentissage personnelle « met en œuvre » Compagnon d’apprentissage à vie. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-mental-health",
+      "target": "forecast-continuous-health-companion",
+      "type": "IMPLEMENTS",
+      "justification": "Endgame · Soutien psychologique souverain continu « met en œuvre » Compagnons de santé continus. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-democracy",
+      "target": "institution-machine-deliberation",
+      "type": "IMPLEMENTS",
+      "justification": "Endgame · Intelligence collective continue « met en œuvre » Délibération à vitesse machine. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-peace",
+      "target": "unlock-early-warning",
+      "type": "IMPLEMENTS",
+      "justification": "Endgame · Infrastructure de désescalade « met en œuvre » Alerte avant l’effondrement. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-law",
+      "target": "mechanism-consent-delegation",
+      "type": "SAFEGUARDS",
+      "justification": "Endgame · Droit accessible, préventif et calculable « protège » Mandat et consentement révocables. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-logistics",
+      "target": "mechanism-needs-routing",
+      "type": "IMPLEMENTS",
+      "justification": "Endgame · Système nerveux logistique temps réel « met en œuvre » Routage des besoins vivants. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-media",
+      "target": "state-public-understanding",
+      "type": "COMMUNICATES",
+      "justification": "Endgame · Orientation fiable dans la réalité « met en récit » Le public comprend assez Mind pour le critiquer. Nature précise : média ou récit → concept ou état communiqué. Portée : planned_communication. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-work",
+      "target": "forecast-agentic-work",
+      "type": "MAKES_PLAUSIBLE",
+      "justification": "Endgame · Mémoire organisationnelle qui agit « rend plausible » Généralisation des agents dans le travail. Nature précise : condition observée → scénario rendu plus plausible. Portée : scenario. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-sovereign-delegation",
+      "target": "axiom-one-one-one",
+      "type": "IMPLEMENTS",
+      "justification": "Garde-fou · IA unique, veto et délégation révocable « met en œuvre » Un humain, une IA, un Mind. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-privacy-no-score",
+      "target": "axiom-local-first",
+      "type": "IMPLEMENTS",
+      "justification": "Garde-fou · Vie privée sans score social « met en œuvre » Local d’abord. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-professional-supervision",
+      "target": "axiom-non-replacement",
+      "type": "IMPLEMENTS",
+      "justification": "Garde-fou · Supervision professionnelle « met en œuvre » Parler sans remplacer. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-plural-reasoning",
+      "target": "axiom-human-sovereignty",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Raisonnement public et ontologies plurielles « protège » Souveraineté humaine. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-living-graphs",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pattern · Documents vers graphes vivants « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-continuous-ai",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pattern · Attention périodique vers représentation continue « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-prevention",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pattern · Réaction vers prévention « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-open-protocols",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pattern · Silos vers protocoles ouverts « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-pattern-adaptive-loops",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pattern · Programmes statiques vers boucles adaptatives « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "thesis-civilization-substrate",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Thèse · Substrat institutionnel continu « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-science",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Science comme graphe causal vivant « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-money",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Seconde monnaie pour les besoins de vie « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-education",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Intelligence d'apprentissage personnelle « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-mental-health",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Soutien psychologique souverain continu « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-democracy",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Intelligence collective continue « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-peace",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Infrastructure de désescalade « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-law",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Droit accessible, préventif et calculable « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-logistics",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Système nerveux logistique temps réel « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-media",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Orientation fiable dans la réalité « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "endgame-work",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Endgame · Mémoire organisationnelle qui agit « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-science-clauses",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · 20-100 articles en clauses causales « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-money-local-loop",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Wallet local et preuve de circulation « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-education-pod",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Pod éducatif de quatre semaines « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-mental-health-companion",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Companion santé mentale supervisé « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-civic-proposal",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Proposition civique représentée « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-peace-bridge",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Pont entre deux communautés opposées « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-legal-assistant",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Assistant de litige quotidien « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-logistics-essentials",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Boucle locale besoins-livraison « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-media-brief",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Brief citoyen sourcé « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "pilot-org-workspace",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Pilote · Workspace Mind pour petite équipe « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-sovereign-delegation",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · IA unique, veto et délégation révocable « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-privacy-no-score",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · Vie privée sans score social « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-professional-supervision",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · Supervision professionnelle « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "guardrail-plural-reasoning",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · Raisonnement public et ontologies plurielles « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-90d",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Roadmap · 0-90 jours : prouver la doctrine « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-6m",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Roadmap · 3-6 mois : prouver un wedge « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-12m",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Roadmap · 6-12 mois : substrat transversal « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "roadmap-endgame-2032",
+      "target": "doc-civilization-endgame",
+      "type": "DERIVED_FROM",
+      "justification": "Roadmap · 2029-2032 : infrastructure « dérive du document » Document · Civilization Endgame. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    }
+  ]
+}

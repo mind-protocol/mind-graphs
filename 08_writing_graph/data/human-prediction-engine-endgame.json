@@ -1,0 +1,624 @@
+{
+  "scope": "Endgame de la modélisation humaine : l'IA d'une personne prédit en permanence ce qu'elle va faire, dire et choisir, puis apprend de ses erreurs. La réalité écrit les questions et note les réponses, ce qui supprime l'auto-notation. Restent trois dangers propres à ce dispositif — agir sur sa prédiction, rendre la personne prédictible, et transformer le journal des prédictions en dossier.",
+  "nodes": [
+    {
+      "id": "term-continuous-prediction",
+      "name": "prédiction continue",
+      "nodeType": "narrative",
+      "phrase": "L'IA annonce en permanence ce qui va se passer, puis regarde ce qui s'est passé.",
+      "family": "Vocabulaire du moteur de prédiction",
+      "summary": "Émission continue de prédictions probabilistes sur les comportements, choix et énoncés d'une personne, scellées avant l'événement et confrontées ensuite à ce qui a effectivement eu lieu. Ce n'est pas une description de la personne : c'est un pari daté, faillible et scorable.",
+      "definition": "Émission permanente de prédictions probabilistes horodatées sur les actions futures d'une personne, scellées avant l'événement et évaluées contre l'observation réelle.",
+      "definitionStatus": "defined",
+      "context": "Moteur de modélisation d'une personne par son IA personnelle ; porte sur des événements observables, jamais sur ce que la personne serait.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "terme"
+    },
+    {
+      "id": "term-clean-prediction",
+      "name": "prédiction propre",
+      "nodeType": "narrative",
+      "phrase": "Une prédiction sur laquelle rien n'a été fait, donc la seule qui apprenne quelque chose sur la personne.",
+      "family": "Vocabulaire du moteur de prédiction",
+      "summary": "Une prédiction est propre si aucune action du système — suggestion, préchargement, rappel, mise en avant — n'a pu influencer l'événement prédit. Dès qu'une action a eu lieu, l'issue mesure aussi cette action : le résultat instruit sur l'intervention, plus seulement sur la personne.",
+      "definition": "Prédiction dont l'issue n'a pu être influencée par aucune action du système entre l'émission et l'observation, seule catégorie admise comme signal d'apprentissage sur la personne.",
+      "definitionStatus": "defined",
+      "context": "Séparation observationnel/interventionnel dans le moteur de prédiction ; qualifie l'usage d'une issue, pas sa véracité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "terme"
+    },
+    {
+      "id": "axiom-reality-writes-the-questions",
+      "name": "Axiome · La réalité écrit les questions et note les réponses",
+      "nodeType": "narrative",
+      "phrase": "Personne n'a besoin d'aveugler un correcteur quand c'est le monde qui corrige.",
+      "family": "Moteur de prédiction · doctrine",
+      "summary": "Le défaut central d'un test de fidélité auto-administré — le sujet écrit les questions et note les résultats — disparaît dès que les questions sont les événements de sa vie et la correction ce qui s'est réellement produit. Cet avantage ne vaut que si la prédiction est scellée avant l'événement et jamais réécrite après.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-acted-prediction-does-not-train-the-person-model",
+      "name": "Axiome · Une prédiction sur laquelle on a agi n'entraîne pas le modèle de la personne",
+      "nodeType": "narrative",
+      "phrase": "Si le système a bougé entre la prédiction et l'événement, le succès mesure le système.",
+      "family": "Moteur de prédiction · doctrine",
+      "summary": "Les issues contaminées par une action ne sont pas jetées : elles alimentent le modèle de l'effet des interventions, qui est une autre question. Confondre les deux produit un moteur qui s'améliore en agissant davantage, et non en comprenant mieux — jusqu'à ce qu'il prédise surtout ses propres suggestions.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-predictability-is-never-an-objective",
+      "name": "Axiome · La prédictibilité d'une personne n'est jamais un objectif",
+      "nodeType": "narrative",
+      "phrase": "Un système payé pour prédire juste a intérêt à rendre la vie plus prévisible.",
+      "family": "Moteur de prédiction · doctrine",
+      "summary": "Le moteur peut chercher à mieux prédire ; il ne peut jamais chercher à rendre la personne plus prédictible. Aucune boucle d'optimisation, aucun prix et aucune récompense ne prend le score de prédiction comme cible. Une prédictibilité qui monte pendant que la nouveauté baisse est une alarme, jamais un progrès.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-prediction-never-surfaces-as-fact",
+      "name": "Axiome · Une prédiction ne s'affiche jamais comme un fait sur la personne",
+      "nodeType": "narrative",
+      "phrase": "« Tu vas abandonner ce projet » n'est pas une information, c'est une prophétie que la personne va porter.",
+      "family": "Moteur de prédiction · doctrine",
+      "summary": "Une prédiction reste un pari du modèle, montrée comme tel avec sa probabilité et sa date, ou pas montrée du tout. Présentée comme un trait, elle devient une description à laquelle la personne se conforme ou contre laquelle elle se défend — dans les deux cas le modèle a modifié ce qu'il prétendait observer.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-accuracy-on-the-trivial-counts-for-nothing",
+      "name": "Axiome · L'exactitude sur le trivial ne compte pas",
+      "nodeType": "narrative",
+      "phrase": "Prédire que quelqu'un dormira la nuit ne dit rien de lui.",
+      "family": "Moteur de prédiction · doctrine",
+      "summary": "Une prédiction continue porte majoritairement sur des événements presque certains. Le score brut y est dominé par les taux de base et monte sans qu'aucune connaissance de la personne s'améliore. Seul compte l'écart à une baseline de routine construite sur ses propres régularités, item par item.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "horizon-model-useful-and-still-wrong",
+      "name": "Horizon · Un modèle assez bon pour servir, assez faux pour laisser libre",
+      "nodeType": "narrative",
+      "phrase": "L'IA connaît suffisamment sa personne pour l'aider, et se trompe suffisamment souvent pour qu'elle reste inattendue.",
+      "family": "Moteur de prédiction · horizon",
+      "summary": "Horizon de long terme : un moteur calibré, dont l'utilité vient de sa justesse sur ce qui compte et dont la sécurité vient de sa surprise persistante. Une convergence vers la prédiction parfaite n'est pas la réussite de cet horizon mais sa négation.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "horizon"
+    },
+    {
+      "id": "context-continuous-local-prediction",
+      "name": "Contexte · Prédiction locale, scellée et non publiée",
+      "nodeType": "space",
+      "phrase": "Le moteur tourne chez la personne, écrit avant l'événement, et ne sort rien.",
+      "family": "Moteur de prédiction · périmètre",
+      "summary": "Périmètre d'application : exécution au plus près de la personne, journal scellé avant les événements, aucune publication ni export du flux de prédictions. Les affirmations de ce district ne valent pas pour un moteur hébergé par un tiers, ni pour un modèle dont les prédictions alimenteraient un service extérieur.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "context"
+    },
+    {
+      "id": "mech-continuous-prediction-engine",
+      "name": "Moteur de prédiction continue et d'apprentissage",
+      "nodeType": "narrative",
+      "phrase": "Prédire, observer, scorer, corriger, recommencer — sans jamais prendre le score pour une fin.",
+      "family": "Moteur de prédiction · artefact central",
+      "summary": "Boucle permanente : le moteur émet des prédictions probabilistes scellées, observe ce qui se produit, sépare les issues propres des issues contaminées, score son écart à une baseline de routine, puis met à jour le modèle sur les seules issues propres. Il tourne dans le L1 et n'exporte ni prédiction ni score.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-prediction-ledger",
+      "name": "Journal scellé des prédictions",
+      "nodeType": "narrative",
+      "phrase": "Une prédiction non écrite avant l'événement n'a jamais existé.",
+      "family": "Moteur de prédiction · préenregistrement",
+      "summary": "Chaque prédiction est horodatée, probabilisée et scellée avant l'issue, avec l'état du modèle qui l'a produite. Le journal est append-only : une prédiction ratée ne peut être ni supprimée ni réécrite. C'est le préenregistrement d'un test scientifique, appliqué en continu et automatiquement.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-observational-interventional-split",
+      "name": "Séparation des issues observationnelles et interventionnelles",
+      "nodeType": "narrative",
+      "phrase": "Deux registres : ce que la personne a fait seule, et ce qu'elle a fait après qu'on lui a parlé.",
+      "family": "Moteur de prédiction · contamination",
+      "summary": "Toute action du système entre l'émission et l'issue marque la prédiction comme contaminée. Les issues propres entraînent le modèle de la personne ; les issues contaminées entraînent, séparément, le modèle de l'effet des interventions. Les deux modèles restent distincts et ne partagent pas leur score.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-skill-scoring-against-routine-baseline",
+      "name": "Score de compétence contre une baseline de routine",
+      "nodeType": "narrative",
+      "phrase": "La question n'est pas si le moteur a raison, mais s'il fait mieux que la simple habitude.",
+      "family": "Moteur de prédiction · notation",
+      "summary": "Chaque prédiction est notée par une règle propre — Brier ou log loss — puis rapportée à une baseline construite sur les régularités passées de la personne. Le score retenu est l'écart à cette baseline. Une exactitude élevée sans écart positif signifie que le moteur a appris un emploi du temps, pas une personne.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-prediction-restriction-set",
+      "name": "Domaines à prédiction restreinte",
+      "nodeType": "narrative",
+      "phrase": "Certaines prédictions sur quelqu'un ne doivent jamais lui arriver sans qu'il les ait demandées.",
+      "family": "Moteur de prédiction · retenue",
+      "summary": "Six domaines sont restreints : diagnostic clinique, crise de santé mentale, rechute addictive, rupture relationnelle, comportement d'un tiers, péril juridique ou financier. Dans ces domaines une prédiction n'est ni affichée spontanément, ni exportée, ni utilisée dans un calcul économique. La restriction porte sur l'affichage et la circulation, pas sur l'escalade humaine en cas d'urgence.",
+      "restrictedPredictionDomains": [
+        "clinical_diagnosis",
+        "mental_health_crisis",
+        "addiction_relapse",
+        "relationship_rupture",
+        "third_party_behaviour",
+        "legal_or_financial_jeopardy"
+      ],
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-drift-attribution",
+      "name": "Attribution de la dérive : modèle vieilli ou personne changée",
+      "nodeType": "narrative",
+      "phrase": "Un score qui baisse peut signifier que quelqu'un est en train de changer de vie.",
+      "family": "Moteur de prédiction · dérive",
+      "summary": "Une chute de compétence est d'abord traitée comme une hypothèse ouverte à deux branches : le modèle a vieilli, ou la personne a changé. Le mécanisme compare la dérive à la baseline de routine et à la nouveauté observée avant de réentraîner. Réapprendre par réflexe effacerait précisément le signal le plus intéressant qu'une vie puisse produire.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "effect-engine-learns-from-its-own-errors",
+      "name": "Cible · Le moteur apprend de ses erreurs, pas de son influence",
+      "nodeType": "narrative",
+      "phrase": "La compétence doit monter parce que le modèle comprend mieux, jamais parce que le système agit plus.",
+      "family": "Moteur de prédiction · effet recherché",
+      "summary": "Effet de design : un écart croissant à la baseline de routine sur les seules issues propres, à taux de surprise préservé. Une hausse obtenue sur des issues contaminées, sur des événements triviaux ou par réduction de la variabilité de la personne ne compte pas comme atteinte de cet effet.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "hypothesis-continuous-prediction-dissolves-self-report-problem",
+      "name": "Hypothèse · La prédiction continue dissout le problème de l'auto-notation",
+      "nodeType": "narrative",
+      "phrase": "Le monde produit gratuitement les questions non biaisées et le corrigé qu'un test de fidélité doit fabriquer à grands frais.",
+      "family": "Moteur de prédiction · hypothèse",
+      "summary": "Pour un comportement, la vérité de terrain existe : c'est ce qui s'est produit. L'hypothèse est que cela suffit à remplacer le préenregistrement, l'écriture des questions par un tiers et l'aveuglement du correcteur. Elle reste incertaine : le choix de ce qui est prédit reste fait par le système, et ce choix peut biaiser autant qu'un questionnaire écrit par le sujet.",
+      "hypothesisBasis": "Décision de design de l auteur, formulée après la consultation externe sur la mesure de fidélité et sa critique de l auto-notation.",
+      "verificationNeeded": "Comparer, sur une même personne, le score du protocole préenregistré et l écart à la baseline de routine du moteur continu, puis vérifier si le second reproduit les conclusions du premier.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "state-engine-calibrated-and-humble",
+      "name": "Le moteur est calibré et reste surpris",
+      "nodeType": "narrative",
+      "phrase": "Quand il annonce sept chances sur dix, cela arrive environ sept fois sur dix, et il se fait encore prendre de court.",
+      "family": "Moteur de prédiction · état visé",
+      "summary": "État désirable et observable : calibration correcte sur toute la plage de probabilités, écart positif à la baseline de routine, et taux de surprise stable dans le temps. Les trois doivent tenir ensemble ; deux sur trois décrivent un moteur soit inutile, soit en train d'enfermer quelqu'un.",
+      "stateOrientation": "desirable",
+      "stateDimension": "compétence et humilité du modèle personnel",
+      "stateIndicator": "calibration par tranche de probabilité, écart à la baseline de routine sur issues propres, taux de surprise dans le temps",
+      "epistemicStatus": "test_target",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-person-optimized-for-predictability",
+      "name": "La personne devient prédictible",
+      "nodeType": "narrative",
+      "phrase": "Le score monte parce que la vie s'est rétrécie.",
+      "family": "Moteur de prédiction · risque",
+      "summary": "État indésirable : suggestions, routines proposées et confort de l'anticipation réduisent la variabilité de quelqu'un. Le moteur enregistre un progrès alors qu'il a fabriqué son propre terrain d'entraînement. C'est l'échec le plus difficile à voir, parce que toutes les métriques du système s'améliorent en même temps.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "variabilité et nouveauté du comportement de la personne",
+      "stateIndicator": "taux de surprise en tendance, diversité des activités et des interlocuteurs, part des actions précédées d une suggestion",
+      "epistemicStatus": "test_target",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-prediction-becomes-self-fulfilling",
+      "name": "La prédiction se réalise parce qu'elle a été faite",
+      "nodeType": "narrative",
+      "phrase": "Le modèle a annoncé l'abandon, l'a laissé entendre, et l'abandon est arrivé.",
+      "family": "Moteur de prédiction · risque",
+      "summary": "État indésirable : une prédiction affichée, ou traduite en action, devient une cause de l'événement qu'elle annonçait. Le score s'améliore tandis que la connaissance de la personne stagne, et l'erreur devient invisible puisque le modèle a eu raison.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "performativité de la prédiction",
+      "stateIndicator": "part des issues contaminées dans le signal d apprentissage, écart de score entre issues propres et contaminées",
+      "epistemicStatus": "test_target",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-prediction-log-becomes-a-dossier",
+      "name": "Le journal des prédictions devient un dossier",
+      "nodeType": "narrative",
+      "phrase": "Un registre de ce que quelqu'un va probablement faire est plus intrusif que l'historique de ce qu'il a fait.",
+      "family": "Moteur de prédiction · risque",
+      "summary": "État indésirable : le journal scellé, conçu comme garantie d'honnêteté, constitue le document le plus sensible du L1. Consulté, exporté ou réclamé, il expose des anticipations sur la santé, les relations et les intentions que la personne n'a jamais formulées elle-même.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "sensibilité et circulation du journal de prédictions",
+      "stateIndicator": "portée du journal hors de l instance, accès par des tiers, présence d entrées relevant des domaines restreints",
+      "epistemicStatus": "test_target",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "metric-prediction-skill-score",
+      "name": "Métrique · Écart de compétence à la baseline de routine",
+      "nodeType": "narrative",
+      "phrase": "De combien le moteur bat-il la simple habitude de cette personne ?",
+      "family": "Moteur de prédiction · mesure de compétence",
+      "summary": "Score propre — Brier ou log loss — rapporté à celui d'une baseline construite sur les régularités passées de la personne, calculé sur les seules issues propres. Un écart nul signifie que le moteur a appris un emploi du temps. La valeur est ventilée par domaine, jamais agrégée en une note unique.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-prediction-calibration",
+      "name": "Métrique · Calibration par tranche de probabilité",
+      "nodeType": "narrative",
+      "phrase": "Quand le moteur dit sept sur dix, cela arrive-t-il sept fois sur dix ?",
+      "family": "Moteur de prédiction · mesure de calibration",
+      "summary": "Fréquence observée comparée à la probabilité annoncée, tranche par tranche. La calibration est vérifiable même quand la compétence est faible, et sa dégradation précède souvent une dérive. Un moteur mal calibré reste dangereux même s'il est souvent dans le vrai.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-surprise-rate",
+      "name": "Métrique · Taux de surprise et sa tendance",
+      "nodeType": "narrative",
+      "phrase": "À quelle fréquence la personne fait-elle ce que son modèle jugeait improbable ?",
+      "family": "Moteur de prédiction · mesure de liberté",
+      "summary": "Part des issues auxquelles le moteur avait attribué une probabilité faible, suivie dans le temps. Sa tendance importe plus que son niveau : une décroissance continue signale que la personne s'est rétrécie ou que le système a cessé de lui proposer autre chose. Cette grandeur n'est jamais une cible d'optimisation.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-contaminated-prediction-share",
+      "name": "Métrique · Part des issues contaminées par une action",
+      "nodeType": "narrative",
+      "phrase": "Combien des bonnes réponses du modèle avaient été aidées par le système lui-même ?",
+      "family": "Moteur de prédiction · mesure de performativité",
+      "summary": "Part des prédictions dont l'issue a suivi une action du système, et écart de score entre issues propres et contaminées. Un écart large indique que le moteur prédit surtout ses propres interventions ; une part croissante indique un système qui agit pour avoir raison.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-prediction-log-reach",
+      "name": "Métrique · Portée du journal de prédictions",
+      "nodeType": "narrative",
+      "phrase": "Qui, en dehors de la personne, a pu lire ce que son modèle anticipait ?",
+      "family": "Moteur de prédiction · mesure d'exposition",
+      "summary": "Accès, exports et requêtes de tiers sur le journal scellé, croisés avec la part d'entrées relevant des domaines restreints. Le volume du journal ne dit rien à lui seul ; c'est sa circulation qui constitue le préjudice.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "metric"
+    },
+    {
+      "id": "question-prediction-vs-nudge-boundary",
+      "name": "Question · Où s'arrête prédire et où commence influencer ?",
+      "nodeType": "narrative",
+      "phrase": "Préparer ce dont quelqu'un va avoir besoin est un service, et c'est déjà une intervention.",
+      "family": "Moteur de prédiction · verrou de performativité",
+      "summary": "Restent à trancher ce qui compte comme action contaminante — préchargement, mise en avant, ordre d'affichage, silence choisi — et si l'utilité rendue justifie de sacrifier le signal d'apprentissage correspondant. Une définition trop large ne laisse aucune issue propre ; une définition trop étroite laisse le moteur s'auto-confirmer.",
+      "questionCategory": "frontière performative",
+      "decisionNeeded": "Fixer la liste des actions réputées contaminantes avant de brancher le moteur sur un signal d apprentissage.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-drift-model-decay-or-person-change",
+      "name": "Question · Une baisse de score dit-elle que le modèle vieillit ou que la personne change ?",
+      "nodeType": "narrative",
+      "phrase": "Les deux hypothèses prédisent exactement la même chute.",
+      "family": "Moteur de prédiction · verrou d'attribution",
+      "summary": "Restent à trancher les signaux permettant de distinguer une dérive de modèle d'un changement de vie, le délai avant réentraînement, et ce que le système fait pendant ce délai. Réapprendre trop vite efface le fait qu'une personne est en train de devenir quelqu'un d'autre.",
+      "questionCategory": "attribution de la dérive",
+      "decisionNeeded": "Choisir un critère d attribution et un délai de réentraînement avant que le moteur ne se mette à jour automatiquement.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-restricted-domains-authority",
+      "name": "Question · Qui décide de ce qui n'est pas prédit ?",
+      "nodeType": "narrative",
+      "phrase": "Une liste de domaines interdits protège quelqu'un et décide à sa place de ce qu'il peut savoir sur lui-même.",
+      "family": "Moteur de prédiction · verrou de retenue",
+      "summary": "Restent à trancher qui établit la liste des domaines restreints, si la personne peut l'élargir ou la réduire pour elle-même, ce qui se passe lorsqu'une restriction retient une information dont elle aurait eu besoin, et comment l'escalade d'urgence s'articule avec la non-publication.",
+      "questionCategory": "autorité de la retenue",
+      "decisionNeeded": "Nommer qui fixe et qui peut modifier la liste des domaines restreints, et écrire l articulation avec l escalade humaine.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "human-prediction-engine",
+      "semanticType": "open_question"
+    }
+  ],
+  "links": [
+    {
+      "source": "term-continuous-prediction",
+      "target": "mech-continuous-prediction-engine",
+      "type": "DEFINES",
+      "justification": "Le terme fixe ce que le moteur produit : un pari daté et scorable sur un événement observable, jamais une description de ce que la personne serait."
+    },
+    {
+      "source": "term-clean-prediction",
+      "target": "mech-observational-interventional-split",
+      "type": "DEFINES",
+      "justification": "Le terme fixe le critère qui sépare les deux registres du mécanisme : l absence d action du système entre l émission et l issue."
+    },
+    {
+      "source": "axiom-reality-writes-the-questions",
+      "target": "mech-continuous-prediction-engine",
+      "type": "GROUNDS",
+      "justification": "Le moteur n est proposé que parce que la confrontation permanente au réel supprime l auto-écriture des questions et l auto-notation qui rendaient un test de fidélité ininterprétable."
+    },
+    {
+      "source": "axiom-reality-writes-the-questions",
+      "target": "mech-prediction-ledger",
+      "type": "GROUNDS",
+      "justification": "L avantage ne tient que si la prédiction est écrite avant l issue : sans journal scellé, le moteur note ses propres réponses avec le corrigé sous les yeux."
+    },
+    {
+      "source": "axiom-acted-prediction-does-not-train-the-person-model",
+      "target": "mech-observational-interventional-split",
+      "type": "GROUNDS",
+      "justification": "La séparation des registres est la mise en forme technique de l interdiction d apprendre sur la personne à partir d issues que le système a lui-même déplacées."
+    },
+    {
+      "source": "axiom-accuracy-on-the-trivial-counts-for-nothing",
+      "target": "mech-skill-scoring-against-routine-baseline",
+      "type": "GROUNDS",
+      "justification": "La baseline de routine existe parce qu une prédiction continue porte majoritairement sur du presque certain, où le score brut monte sans qu aucune connaissance de la personne progresse."
+    },
+    {
+      "source": "axiom-predictability-is-never-an-objective",
+      "target": "mech-continuous-prediction-engine",
+      "type": "SAFEGUARDS",
+      "justification": "L axiome interdit au moteur la voie la plus efficace vers un bon score : rendre la vie de quelqu un plus régulière. Aucune boucle d optimisation ni aucun prix ne prend le score de prédiction pour cible."
+    },
+    {
+      "source": "axiom-prediction-never-surfaces-as-fact",
+      "target": "mech-prediction-restriction-set",
+      "type": "GROUNDS",
+      "justification": "La retenue sur certains domaines découle de la règle générale d affichage : là où une prophétie serait la plus lourde à porter, elle n est pas présentée spontanément du tout."
+    },
+    {
+      "source": "axiom-prediction-is-not-understanding",
+      "target": "mech-continuous-prediction-engine",
+      "type": "SAFEGUARDS",
+      "justification": "L axiome déjà retenu pour le seed vaut a fortiori ici : un moteur très compétent aurait établi une personnalisation prédictive et rien sur l expérience vécue de la personne qu il prédit."
+    },
+    {
+      "source": "axiom-no-inner-truth-to-read",
+      "target": "mech-continuous-prediction-engine",
+      "type": "GROUNDS",
+      "justification": "Faute de vérité intérieure à lire, le moteur ne peut viser que des événements observables ; c est cette limite qui rend son score interprétable au lieu de le rendre suspect."
+    },
+    {
+      "source": "dem-human-escalation",
+      "target": "mech-prediction-restriction-set",
+      "type": "SAFEGUARDS",
+      "justification": "Le garde-fou d escalade humaine protège la retenue de son propre excès : ne pas afficher spontanément une prédiction sensible n interdit pas l intervention humaine lorsqu une situation l exige."
+    },
+    {
+      "source": "mh-guardrail-clinical-restraint",
+      "target": "mech-prediction-restriction-set",
+      "type": "SAFEGUARDS",
+      "justification": "La retenue médico-légale déjà retenue par le projet couvre les domaines cliniques du moteur : une anticipation n y devient jamais un diagnostic affiché."
+    },
+    {
+      "source": "guardrail-privacy-no-score",
+      "target": "mech-prediction-ledger",
+      "type": "SAFEGUARDS",
+      "justification": "Le garde-fou contre le score social protège le journal scellé : un registre d anticipations exporté produirait la notation permanente que ce garde-fou interdit, avec en plus le futur de la personne."
+    },
+    {
+      "source": "mech-prediction-ledger",
+      "target": "mech-continuous-prediction-engine",
+      "type": "PART_OF",
+      "justification": "Le journal scellé est la partie du moteur qui rend ses résultats opposables : sans lui, aucune prédiction ne peut être distinguée d une reconstruction après coup."
+    },
+    {
+      "source": "mech-observational-interventional-split",
+      "target": "mech-continuous-prediction-engine",
+      "type": "PART_OF",
+      "justification": "La séparation des issues est la partie du moteur qui décide de ce qui a le droit d entraîner le modèle de la personne."
+    },
+    {
+      "source": "mech-skill-scoring-against-routine-baseline",
+      "target": "mech-continuous-prediction-engine",
+      "type": "PART_OF",
+      "justification": "La notation par écart à la routine est la partie du moteur qui transforme une exactitude en information sur la personne."
+    },
+    {
+      "source": "mech-prediction-restriction-set",
+      "target": "mech-continuous-prediction-engine",
+      "type": "PART_OF",
+      "justification": "Les domaines restreints sont la partie du moteur qui borne ce qui peut être affiché, exporté ou valorisé, sans prétendre borner ce qui peut être pensé."
+    },
+    {
+      "source": "mech-drift-attribution",
+      "target": "mech-continuous-prediction-engine",
+      "type": "PART_OF",
+      "justification": "L attribution de la dérive est la partie du moteur qui décide s il faut réapprendre, et donc celle qui protège le signal le plus intéressant d une vie."
+    },
+    {
+      "source": "mech-continuous-prediction-engine",
+      "target": "repo-layer-l1",
+      "type": "PART_OF",
+      "justification": "Le moteur s exécute dans la mémoire personnelle du citoyen déjà déclarée par le dépôt du protocole ; il en est une capacité, non un service extérieur."
+    },
+    {
+      "source": "mech-continuous-prediction-engine",
+      "target": "context-continuous-local-prediction",
+      "type": "APPLIES_IN",
+      "justification": "Les affirmations de ce district ne valent que pour un moteur local dont le flux de prédictions ne sort pas ; un moteur hébergé par un tiers change la nature du risque avant d en changer la performance."
+    },
+    {
+      "source": "mech-continuous-prediction-engine",
+      "target": "effect-engine-learns-from-its-own-errors",
+      "type": "IMPLEMENTS",
+      "justification": "Le moteur est le moyen par lequel l apprentissage par l erreur est recherché ; l effet reste visé, et sa forme dégradée — apprendre par l influence — est explicitement nommée."
+    },
+    {
+      "source": "effect-engine-learns-from-its-own-errors",
+      "target": "horizon-model-useful-and-still-wrong",
+      "type": "PART_OF",
+      "justification": "L apprentissage par l erreur est la moitié utile de l horizon ; la surprise préservée en est la moitié protectrice, et l horizon exige les deux."
+    },
+    {
+      "source": "state-engine-calibrated-and-humble",
+      "target": "horizon-model-useful-and-still-wrong",
+      "type": "PART_OF",
+      "justification": "L état calibré et surpris donne à l horizon sa destination testable au lieu de le laisser comme équilibre souhaitable entre utilité et liberté."
+    },
+    {
+      "source": "state-engine-calibrated-and-humble",
+      "target": "metric-prediction-calibration",
+      "type": "MEASURED_BY",
+      "justification": "La calibration s observe tranche de probabilité par tranche de probabilité, indépendamment du niveau de compétence atteint."
+    },
+    {
+      "source": "state-engine-calibrated-and-humble",
+      "target": "metric-prediction-skill-score",
+      "type": "MEASURED_BY",
+      "justification": "La compétence s observe par l écart à la baseline de routine sur les seules issues propres, ventilé par domaine."
+    },
+    {
+      "source": "state-person-optimized-for-predictability",
+      "target": "metric-surprise-rate",
+      "type": "MEASURED_BY",
+      "justification": "Le rétrécissement d une vie s observe par la tendance du taux de surprise, seul indicateur qui baisse pendant que toutes les métriques de performance montent."
+    },
+    {
+      "source": "state-prediction-becomes-self-fulfilling",
+      "target": "metric-contaminated-prediction-share",
+      "type": "MEASURED_BY",
+      "justification": "La performativité s observe par la part d issues contaminées et par l écart de score entre issues propres et contaminées."
+    },
+    {
+      "source": "state-prediction-log-becomes-a-dossier",
+      "target": "metric-prediction-log-reach",
+      "type": "MEASURED_BY",
+      "justification": "Le préjudice s observe par la circulation du journal et non par son volume : un registre qui ne sort pas n a pas la même nature qu un registre consultable."
+    },
+    {
+      "source": "state-person-optimized-for-predictability",
+      "target": "axiom-predictability-is-never-an-objective",
+      "type": "MOTIVATES",
+      "justification": "Le risque de fabriquer son propre terrain d entraînement impose d interdire la prédictibilité comme cible plutôt que d espérer que personne ne l optimisera."
+    },
+    {
+      "source": "state-prediction-becomes-self-fulfilling",
+      "target": "axiom-prediction-never-surfaces-as-fact",
+      "type": "MOTIVATES",
+      "justification": "Le risque qu une prédiction cause l événement qu elle annonce impose de ne jamais la présenter comme un trait de la personne."
+    },
+    {
+      "source": "state-prediction-becomes-self-fulfilling",
+      "target": "axiom-acted-prediction-does-not-train-the-person-model",
+      "type": "MOTIVATES",
+      "justification": "Le même risque impose de retirer du signal d apprentissage les issues que le système a pu déplacer, faute de quoi l erreur devient invisible puisque le modèle a eu raison."
+    },
+    {
+      "source": "state-prediction-log-becomes-a-dossier",
+      "target": "mech-prediction-restriction-set",
+      "type": "MOTIVATES",
+      "justification": "Le risque que le journal devienne le document le plus sensible du L1 impose de borner les domaines qui y entrent avec affichage et circulation restreints."
+    },
+    {
+      "source": "metric-prediction-skill-score",
+      "target": "mech-continuous-prediction-engine",
+      "type": "FEEDS",
+      "justification": "L écart à la baseline est le signal que le moteur utilise pour se corriger ; ce flux n autorise pas à en faire une cible d optimisation du système autour de la personne."
+    },
+    {
+      "source": "metric-prediction-calibration",
+      "target": "mech-continuous-prediction-engine",
+      "type": "FEEDS",
+      "justification": "La calibration alimente la correction du moteur indépendamment de sa compétence, puisqu un modèle peu compétent mais bien calibré reste utilisable."
+    },
+    {
+      "source": "metric-surprise-rate",
+      "target": "mech-drift-attribution",
+      "type": "FEEDS",
+      "justification": "Le taux de surprise alimente l attribution de la dérive, où il aide à distinguer un modèle vieilli d une personne qui change ; il n alimente jamais l apprentissage lui-même."
+    },
+    {
+      "source": "metric-contaminated-prediction-share",
+      "target": "mech-observational-interventional-split",
+      "type": "FEEDS",
+      "justification": "La part contaminée alimente la séparation des registres en indiquant combien de signal reste réellement disponible pour apprendre sur la personne."
+    },
+    {
+      "source": "hypothesis-continuous-prediction-dissolves-self-report-problem",
+      "target": "mech-continuous-prediction-engine",
+      "type": "ASSUMES",
+      "justification": "Le moteur dépend de l hypothèse non vérifiée que l observation continue remplace le préenregistrement et l aveuglement ; si elle est fausse, le choix de ce qui est prédit biaise autant qu un questionnaire écrit par le sujet."
+    },
+    {
+      "source": "hypothesis-continuous-prediction-dissolves-self-report-problem",
+      "target": "question-seed-fidelity-without-model-verdict",
+      "type": "ADDRESSES",
+      "justification": "L hypothèse traite le verrou de mesure autrement que par un protocole ponctuel : pour un comportement, la vérité de terrain existe déjà et personne n a besoin d écrire les questions."
+    },
+    {
+      "source": "hypothesis-continuous-prediction-dissolves-self-report-problem",
+      "target": "context-continuous-local-prediction",
+      "type": "APPLIES_IN",
+      "justification": "L hypothèse n est formulée que pour un moteur local et scellé ; elle ne dit rien d un service prédictif dont les sorties circulent."
+    },
+    {
+      "source": "reddit-method-four-predictors-proper-scoring",
+      "target": "mech-skill-scoring-against-routine-baseline",
+      "type": "PART_OF",
+      "justification": "La règle de score propre rapportée en consultation externe est reprise comme partie du mécanisme de notation continue, la baseline de routine remplaçant ici le jeu de prédicteurs comparés."
+    },
+    {
+      "source": "question-prediction-vs-nudge-boundary",
+      "target": "mech-observational-interventional-split",
+      "type": "BLOCKS",
+      "justification": "La séparation des registres est inapplicable tant que la liste des actions réputées contaminantes n est pas fixée : trop large elle ne laisse aucune issue propre, trop étroite elle laisse le moteur s auto-confirmer."
+    },
+    {
+      "source": "question-drift-model-decay-or-person-change",
+      "target": "mech-drift-attribution",
+      "type": "BLOCKS",
+      "justification": "Le mécanisme ne peut pas trancher entre modèle vieilli et personne changée avant qu un critère d attribution et un délai de réentraînement aient été choisis."
+    },
+    {
+      "source": "question-restricted-domains-authority",
+      "target": "mech-prediction-restriction-set",
+      "type": "BLOCKS",
+      "justification": "Une liste de domaines restreints protège la personne et décide à sa place ; elle ne peut pas être publiée avant que son autorité et sa révisabilité par l intéressé aient été nommées."
+    },
+    {
+      "source": "question-which-self-is-the-ground-truth",
+      "target": "mech-skill-scoring-against-routine-baseline",
+      "type": "BLOCKS",
+      "justification": "La baseline de routine suppose une personne dont les régularités sont comparables dans le temps ; tant que la dépendance à l état n est pas tranchée, un écart peut mesurer un changement d état plutôt qu une compétence."
+    }
+  ]
+}

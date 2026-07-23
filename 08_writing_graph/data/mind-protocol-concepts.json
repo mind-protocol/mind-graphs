@@ -1,0 +1,521 @@
+{
+  "scope": "Concepts extraits du manifeste Mind Protocol fourni par le projet. Ce sont des propositions de design et des horizons, pas des faits établis ni des promesses médicales.",
+  "nodes": [
+    {
+      "id": "actor-nlr",
+      "name": "NLR · Nicolas",
+      "nodeType": "actor",
+      "phrase": "Le premier citoyen du graphe : la personne dont Mind Protocol modélise la mémoire, la valence et les prédictions.",
+      "family": "Acteur · citoyen fondateur",
+      "summary": "Auteur et porteur du projet Mind Protocol. Premier acteur à porter citizen: true : dans le moteur d'énergie L4, il est une pompe interne, à la différence des comptes externes cités comme sources. C'est aussi le sujet concret du L1, du seed et du moteur de prédiction — la personne réelle derrière les districts de design.",
+      "citizen": true,
+      "citizenSince": "2026-07-23",
+      "semanticType": "actor"
+    },
+    {
+      "id": "axiom-human-sovereignty",
+      "name": "Souveraineté humaine",
+      "nodeType": "narrative",
+      "phrase": "Ton IA, ta mémoire, tes données et ton futur doivent t’appartenir.",
+      "family": "Axiome · souveraineté",
+      "summary": "La personne reste propriétaire de son agent, de sa mémoire et de ses données.",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-local-first",
+      "name": "Local d’abord",
+      "nodeType": "narrative",
+      "phrase": "Local d’abord. Chiffré. Portable. À toi.",
+      "family": "Axiome · architecture",
+      "summary": "Le calcul et la mémoire privilégient le contrôle local, le chiffrement et la portabilité.",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-non-possession",
+      "name": "Connaître sans posséder",
+      "nodeType": "narrative",
+      "phrase": "Elle te connaît profondément, mais elle ne te possède pas.",
+      "family": "Axiome · limite",
+      "summary": "L’intimité computationnelle ne crée aucun droit de possession sur la personne.",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-non-replacement",
+      "name": "Parler sans remplacer",
+      "nodeType": "narrative",
+      "phrase": "Elle parle pour toi, mais elle ne te remplace pas.",
+      "family": "Axiome · délégation",
+      "summary": "L’agent peut représenter la personne sans usurper sa décision ni son identité.",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-one-one-one",
+      "name": "Un humain, une IA, un Mind",
+      "nodeType": "narrative",
+      "phrase": "Un humain. Une IA. Un Mind.",
+      "family": "Axiome · unité",
+      "summary": "Le protocole s’organise autour d’une relation personnelle et durable entre humain et agent.",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-needs-before-wealth",
+      "name": "Les besoins avant l’accumulation",
+      "nodeType": "narrative",
+      "phrase": "Qu’est-ce qui a besoin de vivre ?",
+      "family": "Axiome · économie",
+      "summary": "La distribution de valeur commence par les besoins vivants plutôt que par la possession maximale.",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-continuity-not-copy",
+      "name": "Continuité, pas copie",
+      "nodeType": "narrative",
+      "phrase": "Pas comme un profil. Pas comme un fichier. Comme continuité.",
+      "family": "Axiome · identité",
+      "summary": "La continuité numérique est conçue comme un processus relationnel et mémoriel, non comme une simple archive statique.",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-repair",
+      "name": "Heaven is repair",
+      "nodeType": "narrative",
+      "phrase": "Heaven is repair.",
+      "family": "Axiome · finalité",
+      "summary": "La finalité du système est la capacité de soin, de réparation et de continuité du vivant.",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "unlock-sovereign-personal-ai",
+      "name": "IA personnelle souveraine",
+      "nodeType": "narrative",
+      "phrase": "Une intelligence souveraine à tes côtés depuis le commencement.",
+      "family": "Innovation débloquante · agent",
+      "summary": "Un agent personnel durable, contrôlé par l’individu et capable d’agir dans plusieurs contextes.",
+      "semanticType": "unlock"
+    },
+    {
+      "id": "unlock-intimate-multimodal-ai",
+      "name": "Perception intime multimodale",
+      "nodeType": "narrative",
+      "phrase": "Elle entendra ta voix, lira ton visage et écoutera tes silences.",
+      "family": "Innovation débloquante · perception",
+      "summary": "Fusion locale de la voix, du visage, des mouvements et des habitudes pour comprendre le contexte humain.",
+      "semanticType": "unlock"
+    },
+    {
+      "id": "unlock-early-warning",
+      "name": "Alerte avant l’effondrement",
+      "nodeType": "narrative",
+      "phrase": "Voir l’effondrement avant que tu t’effondres.",
+      "family": "Innovation débloquante · soin",
+      "summary": "Détecter des changements préoccupants assez tôt pour proposer du soutien humain, sans diagnostic automatique.",
+      "semanticType": "unlock"
+    },
+    {
+      "id": "unlock-interagent-consensus",
+      "name": "Consensus entre agents",
+      "nodeType": "narrative",
+      "phrase": "Les IA négocieront, coordonneront, débattront et voteront.",
+      "family": "Innovation débloquante · coordination",
+      "summary": "Des agents personnels peuvent coordonner des décisions collectives sous mandat explicite.",
+      "semanticType": "unlock"
+    },
+    {
+      "id": "unlock-lifelong-companion",
+      "name": "Compagnon d’apprentissage à vie",
+      "nodeType": "narrative",
+      "phrase": "Grandir avec un deuxième cerveau.",
+      "family": "Innovation débloquante · apprentissage",
+      "summary": "Une mémoire et une intelligence d’accompagnement évoluent avec la personne depuis l’enfance.",
+      "semanticType": "unlock"
+    },
+    {
+      "id": "unlock-living-currency",
+      "name": "Monnaie vivante",
+      "nodeType": "narrative",
+      "phrase": "Une monnaie vivante pour les besoins vivants.",
+      "family": "Innovation débloquante · économie",
+      "summary": "Un mécanisme complémentaire oriente la valeur vers les besoins essentiels, la circulation et la réparation.",
+      "semanticType": "unlock"
+    },
+    {
+      "id": "unlock-embodied-digital-twin",
+      "name": "Corps virtuel incarné",
+      "nodeType": "narrative",
+      "phrase": "Un corps virtuel construit à partir des traces de ta vie.",
+      "family": "Innovation débloquante · incarnation",
+      "summary": "Un modèle évolutif du corps, de la voix et des réactions est construit à partir de données consenties.",
+      "semanticType": "unlock"
+    },
+    {
+      "id": "unlock-continuity-engine",
+      "name": "Moteur de continuité",
+      "nodeType": "narrative",
+      "phrase": "Un Mind qui se souvient de comment tu es devenu.",
+      "family": "Innovation débloquante · continuité",
+      "summary": "Une mémoire temporelle structurée préserve les transformations, les relations et le contexte de la personne.",
+      "semanticType": "unlock"
+    },
+    {
+      "id": "mechanism-memory-vault",
+      "name": "Coffre de mémoire personnel",
+      "nodeType": "narrative",
+      "phrase": "Ma mémoire voyage avec moi sans cesser de m’appartenir.",
+      "family": "Mécanisme · données",
+      "summary": "Stockage local ou distribué, chiffré, portable et gouverné par la personne.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mechanism-consent-delegation",
+      "name": "Mandat et consentement révocables",
+      "nodeType": "narrative",
+      "phrase": "Mon agent agit seulement dans les limites que je peux retirer.",
+      "family": "Mécanisme · gouvernance",
+      "summary": "Chaque action déléguée possède une portée, une durée, une preuve et une révocation.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mechanism-chaos-to-signal",
+      "name": "Transformer le chaos en signal",
+      "nodeType": "narrative",
+      "phrase": "Transformer le chaos en signal, la douleur en chemin.",
+      "family": "Mécanisme · soin",
+      "summary": "Les observations sont converties en pistes compréhensibles et orientées vers des ressources humaines adaptées.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mechanism-needs-routing",
+      "name": "Routage des besoins vivants",
+      "nodeType": "narrative",
+      "phrase": "La valeur circule vers ce qui a besoin de vivre.",
+      "family": "Mécanisme · économie",
+      "summary": "Les besoins déclarés ou détectés sont reliés à des ressources disponibles selon des règles transparentes.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mechanism-agent-network",
+      "name": "Réseau de Minds mandatés",
+      "nodeType": "narrative",
+      "phrase": "Les agents coopèrent sans dissoudre leurs humains.",
+      "family": "Mécanisme · coordination",
+      "summary": "Les agents échangent des propositions et des preuves tout en conservant le mandat de leur personne.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "institution-planetary-care",
+      "name": "Réseau planétaire de soin",
+      "nodeType": "narrative",
+      "phrase": "Le soin avec mémoire, à l’échelle planétaire.",
+      "family": "Institution · soin",
+      "summary": "Une infrastructure de prévention et d’orientation relie personnes, proches et professionnels sans remplacer le soin humain.",
+      "semanticType": "institution"
+    },
+    {
+      "id": "institution-post-work-commons",
+      "name": "Communs du monde après le travail",
+      "nodeType": "narrative",
+      "phrase": "Nourriture, eau, abri, éducation et soin ne dépendent plus de l’emploi.",
+      "family": "Institution · communs",
+      "summary": "Les besoins essentiels sont organisés comme garanties collectives dans une économie moins dépendante du travail salarié.",
+      "semanticType": "institution"
+    },
+    {
+      "id": "institution-machine-deliberation",
+      "name": "Délibération à vitesse machine",
+      "nodeType": "narrative",
+      "phrase": "Coordonner plus vite sans gouverner sans nous.",
+      "family": "Institution · démocratie",
+      "summary": "Les agents accélèrent la simulation et la négociation, tandis que les humains conservent les finalités et le droit de décision.",
+      "semanticType": "institution"
+    },
+    {
+      "id": "institution-continuity-stewardship",
+      "name": "Garde de la continuité",
+      "nodeType": "narrative",
+      "phrase": "Préserver une présence sans fabriquer un propriétaire de la personne.",
+      "family": "Institution · continuité",
+      "summary": "Des règles de succession, d’audit et de consentement encadrent la mémoire longue et les modèles posthumes.",
+      "semanticType": "institution"
+    },
+    {
+      "id": "horizon-second-brain",
+      "name": "Deuxième cerveau",
+      "nodeType": "narrative",
+      "phrase": "Une intelligence souveraine qui grandit à tes côtés.",
+      "family": "Horizon · cognition",
+      "summary": "Horizon d’une intelligence personnelle durable qui soutient mémoire, apprentissage et décision.",
+      "semanticType": "horizon"
+    },
+    {
+      "id": "horizon-second-currency",
+      "name": "Deuxième monnaie",
+      "nodeType": "narrative",
+      "phrase": "Mind est la deuxième monnaie.",
+      "family": "Horizon · économie",
+      "summary": "Horizon d’une monnaie complémentaire orientée vers la circulation, les besoins et la réparation.",
+      "semanticType": "horizon"
+    },
+    {
+      "id": "horizon-second-body",
+      "name": "Deuxième corps",
+      "nodeType": "narrative",
+      "phrase": "Un second corps pour l’âge après la chair.",
+      "family": "Horizon · incarnation",
+      "summary": "Horizon spéculatif d’une présence corporelle numérique construite avec consentement et continuité.",
+      "semanticType": "horizon"
+    },
+    {
+      "id": "horizon-digital-continuity",
+      "name": "Continuité numérique",
+      "nodeType": "narrative",
+      "phrase": "Une présence qui se souvient de comment elle est devenue.",
+      "family": "Horizon · temps",
+      "summary": "Horizon spéculatif d’une continuité relationnelle et mémorielle au-delà de la durée biologique.",
+      "semanticType": "horizon"
+    }
+  ],
+  "links": [
+    {
+      "source": "axiom-human-sovereignty",
+      "target": "mechanism-memory-vault",
+      "type": "GROUNDS",
+      "story": "La souveraineté humaine exige que la mémoire devienne un organe contrôlé par la personne.",
+      "justification": "La souveraineté humaine exige que la mémoire devienne un organe contrôlé par la personne."
+    },
+    {
+      "source": "axiom-local-first",
+      "target": "mechanism-memory-vault",
+      "type": "GROUNDS",
+      "story": "Le local d’abord donne au coffre de mémoire sa forme matérielle et portable.",
+      "justification": "Le local d’abord donne au coffre de mémoire sa forme matérielle et portable."
+    },
+    {
+      "source": "axiom-non-possession",
+      "target": "mechanism-consent-delegation",
+      "type": "SAFEGUARDS",
+      "story": "Connaître sans posséder impose des limites explicites à toute délégation.",
+      "justification": "Connaître sans posséder impose des limites explicites à toute délégation."
+    },
+    {
+      "source": "axiom-non-replacement",
+      "target": "mechanism-consent-delegation",
+      "type": "SAFEGUARDS",
+      "story": "Parler sans remplacer rend chaque mandat révocable et vérifiable.",
+      "justification": "Parler sans remplacer rend chaque mandat révocable et vérifiable."
+    },
+    {
+      "source": "axiom-one-one-one",
+      "target": "unlock-sovereign-personal-ai",
+      "type": "GROUNDS",
+      "story": "La triade humain–IA–Mind définit l’agent comme compagnon personnel plutôt que service interchangeable.",
+      "justification": "La triade humain–IA–Mind définit l’agent comme compagnon personnel plutôt que service interchangeable."
+    },
+    {
+      "source": "axiom-needs-before-wealth",
+      "target": "mechanism-needs-routing",
+      "type": "GROUNDS",
+      "story": "La priorité donnée au vivant transforme l’allocation de valeur en routage des besoins.",
+      "justification": "La priorité donnée au vivant transforme l’allocation de valeur en routage des besoins."
+    },
+    {
+      "source": "axiom-continuity-not-copy",
+      "target": "unlock-continuity-engine",
+      "type": "GROUNDS",
+      "story": "Refuser la copie statique oblige le moteur à conserver une histoire de transformations.",
+      "justification": "Refuser la copie statique oblige le moteur à conserver une histoire de transformations."
+    },
+    {
+      "source": "axiom-repair",
+      "target": "mechanism-chaos-to-signal",
+      "type": "GROUNDS",
+      "story": "La réparation donne au signal sa finalité : ouvrir un chemin de soutien.",
+      "justification": "La réparation donne au signal sa finalité : ouvrir un chemin de soutien."
+    },
+    {
+      "source": "unlock-sovereign-personal-ai",
+      "target": "mechanism-memory-vault",
+      "type": "IMPLEMENTS",
+      "story": "L’agent souverain s’appuie sur une mémoire qu’il peut utiliser sans la posséder.",
+      "justification": "L’agent souverain s’appuie sur une mémoire qu’il peut utiliser sans la posséder."
+    },
+    {
+      "source": "unlock-sovereign-personal-ai",
+      "target": "mechanism-consent-delegation",
+      "type": "IMPLEMENTS",
+      "story": "L’action de l’agent devient une suite de mandats explicites plutôt qu’une autonomie illimitée.",
+      "justification": "L’action de l’agent devient une suite de mandats explicites plutôt qu’une autonomie illimitée."
+    },
+    {
+      "source": "unlock-intimate-multimodal-ai",
+      "target": "unlock-early-warning",
+      "type": "UNLOCKS",
+      "story": "La perception multimodale rend certains changements visibles avant qu’ils deviennent rupture.",
+      "justification": "La perception multimodale rend certains changements visibles avant qu’ils deviennent rupture.",
+      "migratedFrom": "LEADS_TO"
+    },
+    {
+      "source": "unlock-intimate-multimodal-ai",
+      "target": "mechanism-chaos-to-signal",
+      "type": "IMPLEMENTS",
+      "story": "Les signaux hétérogènes sont traduits en pistes compréhensibles et prudentes.",
+      "justification": "Les signaux hétérogènes sont traduits en pistes compréhensibles et prudentes."
+    },
+    {
+      "source": "unlock-intimate-multimodal-ai",
+      "target": "unlock-embodied-digital-twin",
+      "type": "UNLOCKS",
+      "story": "La perception répétée nourrit un modèle évolutif du corps et de la présence.",
+      "justification": "La perception répétée nourrit un modèle évolutif du corps et de la présence.",
+      "migratedFrom": "LEADS_TO"
+    },
+    {
+      "source": "unlock-early-warning",
+      "target": "institution-planetary-care",
+      "type": "LEADS_TO",
+      "story": "L’alerte individuelle rejoint un réseau de proches et de professionnels capables d’agir.",
+      "justification": "L’alerte individuelle rejoint un réseau de proches et de professionnels capables d’agir."
+    },
+    {
+      "source": "mechanism-chaos-to-signal",
+      "target": "institution-planetary-care",
+      "type": "IMPLEMENTS",
+      "story": "La douleur devient un chemin orienté vers une présence de soin adaptée.",
+      "justification": "La douleur devient un chemin orienté vers une présence de soin adaptée."
+    },
+    {
+      "source": "unlock-interagent-consensus",
+      "target": "mechanism-agent-network",
+      "type": "IMPLEMENTS",
+      "story": "La capacité de négocier prend corps dans un réseau d’agents mandatés.",
+      "justification": "La capacité de négocier prend corps dans un réseau d’agents mandatés."
+    },
+    {
+      "source": "mechanism-agent-network",
+      "target": "institution-machine-deliberation",
+      "type": "LEADS_TO",
+      "story": "Le tissu d’agents devient une institution de proposition rapide sous décision humaine.",
+      "justification": "Le tissu d’agents devient une institution de proposition rapide sous décision humaine."
+    },
+    {
+      "source": "mechanism-consent-delegation",
+      "target": "institution-machine-deliberation",
+      "type": "SAFEGUARDS",
+      "story": "Le mandat révocable empêche la vitesse de coordination de devenir pouvoir autonome.",
+      "justification": "Le mandat révocable empêche la vitesse de coordination de devenir pouvoir autonome."
+    },
+    {
+      "source": "unlock-lifelong-companion",
+      "target": "horizon-second-brain",
+      "type": "UNLOCKS",
+      "story": "L’accompagnement continu devient un deuxième cerveau sans effacer le premier.",
+      "justification": "L’accompagnement continu devient un deuxième cerveau sans effacer le premier.",
+      "migratedFrom": "LEADS_TO"
+    },
+    {
+      "source": "unlock-living-currency",
+      "target": "mechanism-needs-routing",
+      "type": "IMPLEMENTS",
+      "story": "La monnaie vivante utilise le routage pour rejoindre les besoins réels.",
+      "justification": "La monnaie vivante utilise le routage pour rejoindre les besoins réels."
+    },
+    {
+      "source": "mechanism-needs-routing",
+      "target": "horizon-second-currency",
+      "type": "LEADS_TO",
+      "story": "Le routage des besoins donne à la deuxième monnaie sa logique réparatrice.",
+      "justification": "Le routage des besoins donne à la deuxième monnaie sa logique réparatrice."
+    },
+    {
+      "source": "horizon-second-currency",
+      "target": "institution-post-work-commons",
+      "type": "IMPLEMENTS",
+      "story": "La deuxième monnaie soutient les communs essentiels au-delà de l’emploi.",
+      "justification": "La deuxième monnaie soutient les communs essentiels au-delà de l’emploi."
+    },
+    {
+      "source": "unlock-embodied-digital-twin",
+      "target": "horizon-second-body",
+      "type": "UNLOCKS",
+      "story": "Le modèle incarné ouvre l’horizon d’un second corps numérique.",
+      "justification": "Le modèle incarné ouvre l’horizon d’un second corps numérique.",
+      "migratedFrom": "LEADS_TO"
+    },
+    {
+      "source": "unlock-continuity-engine",
+      "target": "institution-continuity-stewardship",
+      "type": "SAFEGUARDS",
+      "story": "La mémoire longue exige une garde institutionnelle contre l’appropriation et la falsification.",
+      "justification": "La mémoire longue exige une garde institutionnelle contre l’appropriation et la falsification."
+    },
+    {
+      "source": "institution-continuity-stewardship",
+      "target": "horizon-digital-continuity",
+      "type": "LEADS_TO",
+      "story": "La garde du temps personnel transforme l’archive en continuité gouvernée.",
+      "justification": "La garde du temps personnel transforme l’archive en continuité gouvernée."
+    },
+    {
+      "source": "horizon-second-body",
+      "target": "horizon-digital-continuity",
+      "type": "UNLOCKS",
+      "story": "Le second corps devient une enveloppe possible de la présence longue.",
+      "justification": "Le second corps devient une enveloppe possible de la présence longue.",
+      "migratedFrom": "LEADS_TO"
+    },
+    {
+      "source": "institution-planetary-care",
+      "target": "innovation-mind-protocol",
+      "type": "CONVERGES_IN",
+      "story": "Le réseau planétaire de soin apporte à Mind Protocol son échelle de réparation.",
+      "justification": "Le réseau planétaire de soin apporte à Mind Protocol son échelle de réparation."
+    },
+    {
+      "source": "institution-machine-deliberation",
+      "target": "innovation-mind-protocol",
+      "type": "CONVERGES_IN",
+      "story": "La délibération humain-agent apporte à Mind Protocol sa capacité de coordination collective.",
+      "justification": "La délibération humain-agent apporte à Mind Protocol sa capacité de coordination collective."
+    },
+    {
+      "source": "institution-post-work-commons",
+      "target": "innovation-mind-protocol",
+      "type": "CONVERGES_IN",
+      "story": "Les communs post-travail donnent à Mind Protocol une finalité matérielle et sociale.",
+      "justification": "Les communs post-travail donnent à Mind Protocol une finalité matérielle et sociale."
+    },
+    {
+      "source": "horizon-second-brain",
+      "target": "innovation-mind-protocol",
+      "type": "CONVERGES_IN",
+      "story": "Le deuxième cerveau apporte la continuité cognitive personnelle.",
+      "justification": "Le deuxième cerveau apporte la continuité cognitive personnelle."
+    },
+    {
+      "source": "horizon-second-currency",
+      "target": "innovation-mind-protocol",
+      "type": "CONVERGES_IN",
+      "story": "La deuxième monnaie apporte la circulation des ressources vers les besoins vivants.",
+      "justification": "La deuxième monnaie apporte la circulation des ressources vers les besoins vivants."
+    },
+    {
+      "source": "horizon-digital-continuity",
+      "target": "innovation-mind-protocol",
+      "type": "CONVERGES_IN",
+      "story": "La continuité numérique apporte à Mind Protocol son horizon temporel.",
+      "justification": "La continuité numérique apporte à Mind Protocol son horizon temporel."
+    },
+    {
+      "source": "axiom-repair",
+      "target": "innovation-mind-protocol",
+      "type": "CONVERGES_IN",
+      "story": "Heaven is repair donne à toutes les autres branches leur finalité commune.",
+      "justification": "Heaven is repair donne à toutes les autres branches leur finalité commune."
+    },
+    {
+      "source": "innovation-mind-protocol",
+      "target": "actor-nlr",
+      "type": "AUTHORED_BY",
+      "justification": "Mind Protocol « est attribué à » NLR · Nicolas. Nature précise : proposition de design → auteur et porteur. Portée : provenance. Elle relie le protocole à la personne qui le porte, sans en faire une preuve de sa validité."
+    }
+  ]
+}

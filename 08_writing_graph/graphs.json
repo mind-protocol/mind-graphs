@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "Source de vérité unique de la composition des graphes. Chaque graphe déclare sa base FalkorDB, son ontologie et ses jeux de données ordonnés. Aucun script ne doit plus contenir de liste de fichiers en dur.",
+  "principles": [
+    "Un graphe = une base FalkorDB + une ontologie + une liste ordonnée de jeux de données.",
+    "L'ordre des jeux de données fixe l'ordre de chargement et donc l'ordre des rapports d'erreur.",
+    "Les particularités d'un jeu de données sont déclarées ici, jamais devinées depuis son nom de fichier.",
+    "Un graphe déclaré mais inactif rend une frontière visible sans prétendre qu'elle est déjà implémentée."
+  ],
+  "graphs": [
+    {
+      "id": "design",
+      "status": "active",
+      "label": "Graphe causal de design · Mind Protocol",
+      "falkorGraph": "mind_causal_graph",
+      "purpose": "Décrit ce que Mind Protocol propose et décide : axiomes, mécanismes, institutions, questions ouvertes, décisions, prospective et pilotage du projet. Il documente une architecture, il n'héberge pas de matière scientifique.",
+      "ontology": "data/graph-ontology.json",
+      "ontologyMirror": "public/graph-ontology.json",
+      "dataDir": "data",
+      "datasets": [
+        {
+          "id": "mind-root",
+          "file": "mind-root.json",
+          "shape": "root"
+        },
+        {
+          "id": "mind-protocol-concepts",
+          "file": "mind-protocol-concepts.json"
+        },
+        {
+          "id": "mind-economic-causality",
+          "file": "mind-economic-causality.json"
+        },
+        {
+          "id": "economy-price-formation",
+          "file": "economy-price-formation.json"
+        },
+        {
+          "id": "human-valence-endgame",
+          "file": "human-valence-endgame.json"
+        },
+        {
+          "id": "l1-blueprint",
+          "file": "l1-blueprint.json"
+        },
+        {
+          "id": "l1-design",
+          "file": "l1-design.json"
+        },
+        {
+          "id": "l1-seed-import-endgame",
+          "file": "l1-seed-import-endgame.json"
+        },
+        {
+          "id": "human-prediction-engine-endgame",
+          "file": "human-prediction-engine-endgame.json"
+        },
+        {
+          "id": "autonomous-improvement-endgame",
+          "file": "autonomous-improvement-endgame.json"
+        },
+        {
+          "id": "continuous-verification",
+          "file": "continuous-verification.json"
+        },
+        {
+          "id": "mind-validation-roadmap",
+          "file": "mind-validation-roadmap.json"
+        },
+        {
+          "id": "forecast-events",
+          "file": "forecast-events.json",
+          "defaultNodeType": "forecast_event"
+        },
+        {
+          "id": "forecast-influences",
+          "file": "forecast-influences.json",
+          "forcedLinkType": "AFFECTS_SCENARIO"
+        },
+        {
+          "id": "civilization-endgame",
+          "file": "civilization-endgame.json"
+        },
+        {
+          "id": "endgame-domains",
+          "file": "endgame-domains.json"
+        },
+        {
+          "id": "causal-science-implementation",
+          "file": "causal-science-implementation.json"
+        },
+        {
+          "id": "question-endgame",
+          "file": "question-endgame.json"
+        },
+        {
+          "id": "l4-ontology-mapping",
+          "file": "l4-ontology-mapping.json"
+        },
+        {
+          "id": "mind-protocol-repository",
+          "file": "mind-protocol-repository.json",
+          "requires": "github-provenance"
+        },
+        {
+          "id": "mind-strategic-feedback",
+          "file": "mind-strategic-feedback.json"
+        },
+        {
+          "id": "analysis-remediation",
+          "file": "analysis-remediation.json"
+        },
+        {
+          "id": "analysis-validation-contracts",
+          "file": "analysis-validation-contracts.json"
+        },
+        {
+          "id": "evidence-leverage-programs",
+          "file": "evidence-leverage-programs.json"
+        },
+        {
+          "id": "reddit-ai-democracy",
+          "file": "reddit-ai-democracy.json"
+        },
+        {
+          "id": "consultations",
+          "file": "consultations.json"
+        },
+        {
+          "id": "evidence-appraisal-method",
+          "file": "evidence-appraisal-method.json"
+        },
+        {
+          "id": "graph-architecture-decisions",
+          "file": "graph-architecture-decisions.json"
+        },
+        {
+          "id": "code-parameter-decisions",
+          "file": "code-parameter-decisions.json"
+        },
+        {
+          "id": "project-work",
+          "file": "project-work.json"
+        },
+        {
+          "id": "ontology-vocabulary",
+          "file": "ontology-vocabulary.json"
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "status": "active",
+      "label": "Graphe scientifique · matière évaluée",
+      "falkorGraph": "mind_science_graph",
+      "purpose": "Accueillera la matière scientifique elle-même — études, claims atomiques, estimations, preuves, appraisals — sous une ontologie propre. Les nœuds sci-* et csg-* restent dans le graphe de design : ils décrivent ce système, ils n'en sont pas le contenu.",
+      "ontology": "science/ontology.json",
+      "dataDir": "science/data",
+      "datasets": [
+        {
+          "id": "satopaa-information-diversity",
+          "file": "satopaa-2014-information-diversity.json"
+        }
+      ],
+      "frontier": {
+        "rule": "Aucune arête ne traverse les deux graphes. Une référence inter-graphes se fait par identifiant stable déclaré, jamais par une relation FalkorDB.",
+        "sharedGovernance": "governance/evidence-firewall.json",
+        "note": "Statut actif : l'ontologie scientifique et le premier cluster sourcé sont validés séparément du graphe de design."
+      }
+    },
+    {
+      "id": "l1-nlr",
+      "status": "active",
+      "label": "L1 · Mémoire personnelle de NLR",
+      "falkorGraph": "l1_nlr_graph",
+      "purpose": "Instance concrète du blueprint L1 pour le citoyen NLR. Contenu souverain : identité, mémoire, relations, valeurs, préférences, apportés par la personne et jamais installés par le blueprint. La doctrine de design reste dans le graphe de design ; ce graphe en est un sujet, pas une copie.",
+      "ontology": "l1/ontology.json",
+      "dataDir": "l1/data",
+      "blueprintSync": {
+        "enabled": true,
+        "source": "l1/data/l1-brain-blueprint-v0.1.graph.json",
+        "mode": "structural_opt_in",
+        "personalContentPolicy": "never_overwrite"
+      },
+      "datasets": [
+        {
+          "id": "l1-nlr-identity",
+          "file": "identity.json"
+        },
+        {
+          "id": "l1-nlr-cognitive-seed-v0.1",
+          "file": "nlr-cognitive-seed-v0.1.json"
+        },
+        {
+          "id": "l1-nlr-personal-goals",
+          "file": "personal-goals.json"
+        }
+      ],
+      "frontier": {
+        "rule": "Aucune arête ne traverse ce graphe et les autres. self-nlr référence actor-nlr du graphe de design par identifiant stable (champ correspondsTo), jamais par une relation FalkorDB.",
+        "note": "Statut actif : premier graphe personnel matérialisé. Il naît avec une ancre d'identité et un fait déclaré donnant le nom du citoyen ; le seed l'enrichira depuis le corpus consenti."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1339 @@
+{
+  "scope": "Méthode d'évaluation critique d'une étude et de synthèse des preuves (SciSense v2.1), extraite dans le graphe de design, plus les règles de certitude que le projet en a tirées. Distinction structurante : le graphe possède une certitude native, dérivée des nœuds de justification ; GRADE et les autres instruments sont des méthodes de domaine qui l'alimentent pour les types d'études qu'elles savent évaluer. On n'encode pas une discipline dans le schéma. Les nœuds de règles et de raisons ne dérivent pas du document source : ils viennent d'arbitrages de projet du 22 juillet 2026 et sont marqués comme tels par l'absence de provenance documentaire.",
+  "sources": [
+    {
+      "title": "Analyser une étude scientifique — méthode pas à pas (v2.1)",
+      "path": "data/sources/scisense-appraisal-method-v2.1.md",
+      "sha256": "DED0EBB22DD7ACA7811215A28F957517A5709871B6CF4C571A84B28263A3CA4A"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "doc-scisense-appraisal-v21",
+      "name": "Méthode · Analyse critique d'une étude (SciSense v2.1)",
+      "nodeType": "thing",
+      "phrase": "Trois couches à ne jamais confondre : complétude du rapport, risque de biais, certitude d'un corps de preuves.",
+      "family": "Source · méthode d'évaluation",
+      "summary": "Méthode en onze étapes, du cadrage PICO au Summary of Findings. La v2.1 restaure six contrôles concrets perdus en v2, remonte le contrôle de rétractation en préalable, et articule explicitement la méthode avec l'échelle de preuve du projet.",
+      "sourceTitle": "Analyser une étude scientifique — méthode pas à pas (v2.1)",
+      "sourcePath": "data/sources/scisense-appraisal-method-v2.1.md",
+      "sourceHash": "DED0EBB22DD7ACA7811215A28F957517A5709871B6CF4C571A84B28263A3CA4A",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "document complet",
+      "observedAt": "2026-07-22",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "appraisal-three-layers",
+      "name": "Axiome · Trois couches, trois outils, jamais fusionnées",
+      "nodeType": "narrative",
+      "phrase": "Complétude du rapport, risque de biais et certitude d'un corpus répondent à trois questions distinctes.",
+      "family": "Méthode d'évaluation · principe",
+      "summary": "Une étude peut être parfaitement rapportée et profondément biaisée. Un corpus peut réunir des études solides et rester de faible certitude. Confondre ces trois couches est l'erreur la plus fréquente, y compris dans des articles publiés.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "introduction",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "appraisal-machine-assembles-human-signs",
+      "name": "Axiome · La machine assemble le dossier, l'humain signe le jugement",
+      "nodeType": "narrative",
+      "phrase": "L'instruction du dossier s'automatise ; le verdict ne s'automatise pas.",
+      "family": "Méthode d'évaluation · principe",
+      "summary": "La complétude du reporting se vérifie mécaniquement. Le risque de biais ne le peut pas : juger si une déviation était « cohérente avec l'intention » demande une appréciation. Ce qui s'automatise, ce sont les faits qui alimentent le jugement — registre, outcome switching, attrition, rétractation, conflits d'intérêts, cohérence statistique.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "introduction",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "appraisal-study-is-not-proof",
+      "name": "Axiome · Une étude n'est pas une preuve",
+      "nodeType": "narrative",
+      "phrase": "Une étude apporte une pièce à un corpus ; la certitude se juge sur le corpus.",
+      "family": "Méthode d'évaluation · principe",
+      "summary": "Aucune étude ne prouve seule. La question utile n'est jamais « que montre cette étude ? » mais « que sait-on de cet outcome une fois toutes les études rassemblées ? ».",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "introduction",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "appraisal-certainty-is-not-permission",
+      "name": "Axiome · La certitude n'est pas une permission",
+      "nodeType": "narrative",
+      "phrase": "« Certitude modérée » ne dit pas quelle action est autorisée.",
+      "family": "Méthode d'évaluation · principe",
+      "summary": "GRADE qualifie ce que l'on sait. Le passage de ce savoir aux droits d'action — afficher, alerter, orienter, intervenir, communiquer — est un choix de gouvernance qui ne se déduit d'aucun instrument méthodologique et doit être arbitré séparément.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 9",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "appraisal-rung-is-not-certainty",
+      "name": "Axiome · Barreau de preuve, certitude et permission sont trois échelles",
+      "nodeType": "narrative",
+      "phrase": "Sur quoi une affirmation tient, à quel point elle est sûre, et ce qu'elle autorise sont trois questions différentes.",
+      "family": "Méthode d'évaluation · articulation",
+      "summary": "Le barreau de l'evidenceLadder déclare la nature du support : assertion, jugement attribué, simulation, monde réel. Il ne dit rien de la solidité. Le barreau « monde réel » recouvre indistinctement une observation isolée et une méta-analyse d'essais randomisés — c'est la certitude native, dérivée des justifications, qui les sépare, et les instruments de domaine qui la renseignent. Les droits d'action forment une troisième échelle encore, découpée au point de décision et non sur la connaissance.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 9",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "appraisal-design-follows-question",
+      "name": "Axiome · Le design se choisit selon la question",
+      "nodeType": "narrative",
+      "phrase": "Pour un risque rare, un pronostic ou un usage en vie réelle, l'observationnel est le bon design, pas un pis-aller.",
+      "family": "Méthode d'évaluation · principe",
+      "summary": "La hiérarchie des preuves se corrige de deux façons : par l'exécution, et par la question posée. Un essai randomisé n'a ni la taille ni la durée pour capter un effet indésirable à 1/10 000, et il exclut souvent la population réellement traitée.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 1",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "appraisal-method-is-perishable",
+      "name": "Axiome · La méthode d'évaluation est elle-même périssable",
+      "nodeType": "narrative",
+      "phrase": "Les instruments datent ; la méthode se soumet à sa propre règle de révision.",
+      "family": "Méthode d'évaluation · principe",
+      "summary": "RoB 2 date de 2019, AMSTAR-2 de 2017, QUADAS-2 de 2011. La méthode porte une date de version et une date de revue, et se réexamine à la première échéance atteinte : le terme temporel, ou la révision d'un des instruments qu'elle cite.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "péremption",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "method-scisense-appraisal",
+      "name": "Méthode · Évaluation critique et synthèse (v2.1)",
+      "nodeType": "narrative",
+      "phrase": "Onze étapes, du cadrage PICO au Summary of Findings par outcome.",
+      "family": "Méthode d'évaluation · procédure",
+      "summary": "Procédure complète : contrôle de rétractation et cadrage, identification du design, ordre de lecture, risque de biais avec l'instrument adapté, méthodes, résultats, effets indésirables, applicabilité et hétérogénéité, biais hors étude, certitude GRADE par outcome, puis tableau de synthèse.",
+      "methodSummary": "Cadrer (PICO, outcomes critiques fixés d'avance, statut de rétractation) → situer le design → lire méthodes avant résultats → risque de biais avec l'instrument du design, direction comprise → décortiquer méthodes → lire les résultats en absolu → lire les harms séparément → juger applicabilité et hétérogénéité → biais hors étude → GRADE par outcome → Summary of Findings.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "document complet",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-grade",
+      "name": "Instrument · GRADE",
+      "nodeType": "narrative",
+      "phrase": "Certitude d'un corps de preuves pour un outcome donné, sur quatre niveaux.",
+      "family": "Instrument · certitude du corpus",
+      "summary": "Le niveau de départ suit le design — élevé pour les essais randomisés, faible pour l'observationnel — puis s'ajuste. Cinq motifs de rétrogradation : risque de biais, incohérence, caractère indirect, imprécision, biais de publication. Trois motifs de rehaussement, surtout pour l'observationnel : effet de grande ampleur, gradient dose-réponse, confusion plausible qui aurait dû atténuer l'effet. Résultat : certitude élevée, modérée, faible ou très faible.",
+      "methodSummary": "Certitude par outcome, jamais par étude. Produit une certitude, jamais une permission.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 9",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-rob2",
+      "name": "Instrument · RoB 2",
+      "nodeType": "narrative",
+      "phrase": "Risque de biais d'un essai contrôlé randomisé, en cinq domaines.",
+      "family": "Instrument · risque de biais",
+      "summary": "Processus de randomisation, déviations par rapport aux interventions prévues, données d'outcome manquantes, mesure de l'outcome, sélection du résultat rapporté. Ses signalling questions demandent une appréciation et ne sont pas automatisables. Guide de reporting associé : CONSORT.",
+      "methodSummary": "Design couvert : essai contrôlé randomisé. Publié en 2019.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-robins-i",
+      "name": "Instrument · ROBINS-I",
+      "nodeType": "narrative",
+      "phrase": "Risque de biais d'une étude d'intervention non randomisée, en sept domaines.",
+      "family": "Instrument · risque de biais",
+      "summary": "Le domaine décisif est la confusion : sans randomisation, l'effet observé peut refléter le fait que les groupes différaient déjà. S'y ajoute le biais de sélection des participants. Guides de reporting associés : TREND, STROBE.",
+      "methodSummary": "Design couvert : intervention non randomisée. Publié en 2016.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-robins-e",
+      "name": "Instrument · ROBINS-E",
+      "nodeType": "narrative",
+      "phrase": "Risque de biais d'une étude observationnelle d'exposition.",
+      "family": "Instrument · risque de biais",
+      "summary": "Destiné aux études étiologiques d'exposition, là où Newcastle-Ottawa reste l'alternative plus ancienne et plus sommaire. Guide de reporting associé : STROBE.",
+      "methodSummary": "Design couvert : observationnelle étiologique. Outil récent ayant connu plusieurs versions de travail.",
+      "verificationNeeded": "identifier la version de ROBINS-E qui fait foi avant application ; le millésime n'est pas fixé dans ce corpus",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-amstar2",
+      "name": "Instrument · AMSTAR-2",
+      "nodeType": "narrative",
+      "phrase": "Confiance dans une revue systématique, sur seize items dont sept critiques.",
+      "family": "Instrument · risque de biais",
+      "summary": "Items critiques : protocole a priori, exhaustivité de la recherche, justification des exclusions, évaluation du risque de biais des études incluses, méthodes méta-analytiques appropriées, prise en compte du risque de biais dans l'interprétation, évaluation du biais de publication. Quatre niveaux : élevée, modérée, faible (une faille critique), critiquement basse (plus d'une). Guide de reporting associé : PRISMA.",
+      "methodSummary": "Design couvert : revue systématique et méta-analyse. Publié en 2017.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-quadas2",
+      "name": "Instrument · QUADAS-2",
+      "nodeType": "narrative",
+      "phrase": "Risque de biais d'une étude de précision diagnostique.",
+      "family": "Instrument · risque de biais",
+      "summary": "Couvre notamment la sélection des patients — donc le biais de spectre — le test index, le standard de référence et son indépendance, ainsi que le flux et le calendrier. Guide de reporting associé : STARD.",
+      "methodSummary": "Design couvert : précision diagnostique. Publié en 2011.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-quips",
+      "name": "Instrument · QUIPS",
+      "nodeType": "narrative",
+      "phrase": "Risque de biais d'une étude de facteur pronostique.",
+      "family": "Instrument · risque de biais",
+      "summary": "Évalue participation, attrition, mesure du facteur pronostique, mesure de l'outcome, prise en compte des facteurs confondants et analyse statistique. Guide de reporting associé : REMARK.",
+      "methodSummary": "Design couvert : facteur pronostique.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-probast",
+      "name": "Instrument · PROBAST",
+      "nodeType": "narrative",
+      "phrase": "Risque de biais d'un modèle prédictif clinique.",
+      "family": "Instrument · risque de biais",
+      "summary": "Couvre participants, prédicteurs, outcome et analyse, pour le développement comme pour la validation d'un modèle. Guide de reporting associé : TRIPOD.",
+      "methodSummary": "Design couvert : modèle pronostique ou prédictif. Publié en 2019.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-syrcle",
+      "name": "Instrument · SYRCLE",
+      "nodeType": "narrative",
+      "phrase": "Risque de biais d'une étude animale préclinique.",
+      "family": "Instrument · risque de biais",
+      "summary": "Adaptation de l'outil Cochrane aux protocoles animaux, avec ses propres domaines de séquence, logement et aveuglement. Guide de reporting associé : ARRIVE.",
+      "methodSummary": "Design couvert : étude animale préclinique. Publié en 2014.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "method"
+    },
+    {
+      "id": "rule-instrument-matches-design",
+      "name": "Règle · L'instrument suit le design, sous peine d'erreur de catégorie",
+      "nodeType": "narrative",
+      "phrase": "Appliquer RoB 2 à une étude observationnelle n'est pas une maladresse, c'est une erreur de catégorie.",
+      "family": "Règle d'évaluation · appariement",
+      "summary": "Chaque design a son instrument de risque de biais et son guide de reporting. La correspondance est un contrat vérifiable : une évaluation produite par le mauvais instrument ne mesure pas ce qu'elle prétend mesurer, et son verdict n'est pas récupérable.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-bias-direction",
+      "name": "Règle · Juger la direction du biais, pas seulement sa présence",
+      "nodeType": "narrative",
+      "phrase": "Un biais qui atténue un effet déjà significatif renforce la conclusion au lieu de l'affaiblir.",
+      "family": "Règle d'évaluation · risque de biais",
+      "summary": "Pour chaque domaine à risque, se demander si le biais gonfle ou atténue l'effet observé. Un biais qui gonfle un effet marginal le détruit ; un biais qui l'atténue le consolide. Un risque de biais « élevé » sans direction est une information à moitié inutilisable.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 3",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-harms-read-backwards",
+      "name": "Règle · Les effets indésirables se lisent à l'envers",
+      "nodeType": "narrative",
+      "phrase": "Une conclusion de sécurité tirée d'un essai d'efficacité est une conclusion sur l'ignorance de cet essai.",
+      "family": "Règle d'évaluation · effets indésirables",
+      "summary": "Les harms sont rarement l'outcome primaire, donc jamais dimensionnés pour être détectés ; le recueil passif les sous-estime massivement ; patients touchés et nombre d'événements ne se comparent pas ; les arrêts pour effet indésirable sont l'indicateur le plus honnête car ils résistent mal à la sous-déclaration ; et pour les événements rares, l'observationnel est supérieur à l'essai randomisé.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 6",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-prevalence-commands-diagnosis",
+      "name": "Règle · En diagnostic, la prévalence commande",
+      "nodeType": "narrative",
+      "phrase": "Un test à 95 % de sensibilité et 95 % de spécificité sur une condition à 1 % donne une VPP de 16 %.",
+      "family": "Règle d'évaluation · diagnostic",
+      "summary": "Sensibilité et spécificité décrivent le test ; les valeurs prédictives dépendent du taux de base dans la population testée. Sur 10 000 personnes à 1 % de prévalence : 95 vrais positifs et 495 faux positifs, soit cinq fausses alertes pour une vraie. C'est la mécanique de la fatigue d'alarme, et la raison pour laquelle un test validé en population clinique s'effondre en dépistage de masse. S'y ajoutent le biais de spectre, l'indépendance du standard de référence et le caractère asymétrique du coût des deux erreurs.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 5",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-prediction-interval-transportability",
+      "name": "Règle · La transportabilité se lit sur l'intervalle de prédiction",
+      "nodeType": "narrative",
+      "phrase": "L'IC décrit l'effet moyen des études incluses ; l'intervalle de prédiction décrit l'effet attendu ailleurs.",
+      "family": "Règle d'évaluation · hétérogénéité",
+      "summary": "Un effet poolé « significatif » dont l'intervalle de prédiction traverse le nul signale que le résultat n'est pas transportable en l'état. I² donne la part de variabilité due à l'hétérogénéité, τ² son ampleur dans l'unité de l'effet. Mesurer ne suffit pas : il faut ensuite expliquer l'hétérogénéité par la population, la dose, la durée ou le risque de base, faute de quoi elle reste un aveu d'ignorance.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 7",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-summary-of-findings",
+      "name": "Règle · Le livrable est un tableau par outcome, pas un verdict",
+      "nodeType": "narrative",
+      "phrase": "Une ligne par outcome critique, bénéfices et risques, chacun avec sa certitude propre.",
+      "family": "Règle d'évaluation · synthèse",
+      "summary": "Le tableau porte effet absolu, intervalle, effectif et certitude, plus le motif dominant de rétrogradation. La colonne des effectifs rend l'imprécision visible : un intervalle serré sur 40 événements ne se lit pas comme le même intervalle sur 4 000. Une certitude élevée sur le bénéfice n'autorise rien si celle sur les risques est très faible.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 10",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-outcomes-fixed-before-reading",
+      "name": "Règle · Les outcomes critiques se fixent avant la lecture",
+      "nodeType": "narrative",
+      "phrase": "Choisir les outcomes après lecture revient à sélectionner ceux qui donnent de belles lignes.",
+      "family": "Règle d'évaluation · cadrage",
+      "summary": "La liste des outcomes qui comptent, bénéfices et risques, se décide à l'étape de cadrage avec le PICO. C'est la protection de l'évaluateur contre son propre outcome switching : sans elle, le tableau de synthèse peut être composé après coup.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 0",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-pico-gap-indirectness",
+      "name": "Règle · L'écart PICO est le motif calculable de caractère indirect",
+      "nodeType": "narrative",
+      "phrase": "Population, intervention, comparateur ou outcome divergents entre l'étude et la question : candidat à rétrogradation.",
+      "family": "Règle d'évaluation · mécanisable",
+      "summary": "Si le PICO de l'étude et celui de la question diffèrent sur l'un des quatre créneaux, le graphe peut proposer une rétrogradation pour caractère indirect. C'est l'un des rares intrants GRADE réellement calculables — la proposition reste candidate, la décision reste humaine.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étapes 0 et 9",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "check-retraction-status",
+      "name": "Contrôle · Statut de rétractation ou de correction",
+      "nodeType": "narrative",
+      "phrase": "Une minute de vérification qui peut invalider tout le reste.",
+      "family": "Contrôle mécanisable · intégrité",
+      "summary": "Article rétracté, corrigé, ou objet d'un expression of concern. Contrôle préalable à toute lecture. Pour une revue systématique, il porte aussi sur les études incluses : une revue publiée avant la rétractation d'une de ses sources doit être réévaluée même si elle n'a jamais été touchée.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 0",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "check-registry-concordance",
+      "name": "Contrôle · Enregistrement au registre et antériorité",
+      "nodeType": "narrative",
+      "phrase": "L'étude était-elle enregistrée, et avant l'inclusion du premier participant ?",
+      "family": "Contrôle mécanisable · intégrité",
+      "summary": "L'existence et la date de l'enregistrement se vérifient automatiquement. Un enregistrement postérieur au recrutement vide de sens la notion de pré-spécification.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étapes 4 et 8",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "check-outcome-switching",
+      "name": "Contrôle · Concordance des outcomes protocole et article",
+      "nodeType": "narrative",
+      "phrase": "Un critère secondaire promu primaire après coup parce qu'il est devenu significatif.",
+      "family": "Contrôle mécanisable · intégrité",
+      "summary": "La comparaison entre les outcomes déclarés au registre et ceux rapportés dans l'article est mécanisable et constitue l'un des signaux d'intégrité les plus informatifs, précisément parce qu'un lecteur humain ne va presque jamais consulter le protocole.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 4",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "check-attrition-balance",
+      "name": "Contrôle · Attrition et son déséquilibre entre bras",
+      "nodeType": "narrative",
+      "phrase": "Combien de participants recrutés, randomisés, analysés, perdus — et de quel côté ?",
+      "family": "Contrôle mécanisable · intégrité",
+      "summary": "Les effectifs du flow diagram s'extraient et se recoupent automatiquement. Une attrition élevée, ou déséquilibrée entre bras, est un signal fort que l'interprétation doit affronter explicitement.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 4",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "check-statistical-consistency",
+      "name": "Contrôle · Cohérence statistique interne",
+      "nodeType": "narrative",
+      "phrase": "Ces outils détectent l'incohérence, jamais la justesse.",
+      "family": "Contrôle mécanisable · intégrité",
+      "summary": "Concordance entre statistiques de test, degrés de liberté et p-values rapportées ; plausibilité des moyennes au regard des tailles d'échantillon et du caractère entier des données. Une incohérence détectée n'invalide pas mécaniquement l'étude, mais une étude cohérente n'est pas pour autant juste.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 5",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "check-conflicts-and-funding",
+      "name": "Contrôle · Financement et conflits d'intérêts déclarés",
+      "nodeType": "narrative",
+      "phrase": "Qui finance, et le sponsor a-t-il eu un rôle dans le design, l'analyse ou la décision de publier ?",
+      "family": "Contrôle mécanisable · intégrité",
+      "summary": "La présence et la nature des déclarations s'extraient automatiquement. Leur interprétation ne l'est pas : une déclaration complète n'annule pas le conflit, elle le rend visible.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 8",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "check-data-availability",
+      "name": "Contrôle · Disponibilité effective des données et du code",
+      "nodeType": "narrative",
+      "phrase": "Annoncées comme disponibles ne veut pas dire disponibles.",
+      "family": "Contrôle mécanisable · intégrité",
+      "summary": "La présence d'une déclaration de disponibilité et l'accessibilité réelle du dépôt sont deux choses distinctes, toutes deux vérifiables automatiquement. L'écart entre les deux est un signal en soi.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "étape 8",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "terme-completude-du-reporting",
+      "name": "complétude du reporting",
+      "nodeType": "narrative",
+      "phrase": "Ce que l'étude a dit avoir fait, indépendamment de ce qu'elle a bien fait.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Première des trois couches d'évaluation, et la seule pleinement automatisable.",
+      "context": "Évaluation d'une étude scientifique ; mesurée par les guides de reporting CONSORT, STROBE, PRISMA, STARD, TRIPOD, ARRIVE.",
+      "definition": "Degré auquel un article rapporte les éléments nécessaires pour comprendre et reproduire ce qui a été fait. Une étude parfaitement rapportée peut être profondément biaisée : la complétude mesure ce qui est dit, jamais ce qui est bien fait.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-risque-de-biais",
+      "name": "risque de biais",
+      "nodeType": "narrative",
+      "phrase": "Crédibilité de ce que l'étude a fait, jugée domaine par domaine.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Deuxième couche d'évaluation. S'évalue avec l'instrument correspondant au design, et se juge aussi en direction.",
+      "context": "Évaluation d'une étude individuelle ; instruments RoB 2, ROBINS-I, ROBINS-E, AMSTAR-2, QUADAS-2, QUIPS, PROBAST, SYRCLE selon le design.",
+      "definition": "Probabilité que les choix de conception, de conduite ou d'analyse d'une étude aient produit un écart systématique entre l'effet estimé et l'effet vrai. Distinct de l'imprécision, qui relève du hasard, et de la complétude du reporting, qui relève de ce qui est dit.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-certitude-du-corpus",
+      "name": "certitude d'un corps de preuves",
+      "nodeType": "narrative",
+      "phrase": "Ce que l'on sait d'un outcome une fois toutes les études rassemblées.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Troisième couche d'évaluation, celle que GRADE mesure et qu'aucune extraction automatique ne produit.",
+      "context": "Synthèse de preuves ; évaluée par GRADE, toujours pour un outcome donné et jamais pour une étude isolée.",
+      "definition": "Degré de confiance dans le fait que l'effet estimé est suffisamment proche de l'effet vrai pour soutenir une décision, pour un outcome donné. Quatre niveaux : élevée, modérée, faible, très faible. Ce n'est ni la taille de l'effet, ni la qualité d'une étude, ni une permission d'agir.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-summary-of-findings",
+      "name": "Summary of Findings",
+      "nodeType": "narrative",
+      "phrase": "Le livrable d'une évaluation : une ligne par outcome, pas un verdict unique.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Tableau de synthèse GRADE, structuré par outcome et incluant les risques au même titre que les bénéfices.",
+      "context": "Synthèse de preuves ; sortie standard d'une évaluation GRADE.",
+      "definition": "Tableau présentant, pour chaque outcome critique fixé avant lecture, l'effet absolu avec son intervalle de confiance, l'effectif qui le porte, la certitude GRADE et le motif dominant de rétrogradation. Sa structure par outcome empêche qu'une certitude élevée sur un bénéfice masque une certitude très faible sur un risque.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-pico",
+      "name": "PICO",
+      "nodeType": "narrative",
+      "phrase": "Population, Intervention, Comparateur, Outcome — la question avant l'article.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Cadre de formulation d'une question évaluable, et grille de détection du caractère indirect.",
+      "context": "Cadrage d'une question clinique ou de recherche avant lecture ; variante PECO lorsque l'on étudie une exposition plutôt qu'une intervention.",
+      "definition": "Décomposition d'une question en quatre créneaux : population concernée, intervention ou exposition étudiée, comparateur retenu, outcome mesuré. L'écart entre le PICO d'une étude et celui de la question posée est le motif candidat de rétrogradation pour caractère indirect.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-outcome-switching",
+      "name": "outcome switching",
+      "nodeType": "narrative",
+      "phrase": "Un critère secondaire promu primaire après coup parce qu'il est devenu significatif.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Atteinte à la pré-spécification, détectable automatiquement par comparaison au registre.",
+      "context": "Analyse d'un essai clinique ; détecté en comparant les outcomes du protocole enregistré à ceux rapportés dans l'article publié.",
+      "definition": "Modification, entre le protocole et la publication, du statut ou de la définition des critères de jugement — promotion d'un critère secondaire, abandon du critère primaire annoncé, changement de fenêtre de mesure. Elle invalide la protection contre le hasard qu'apportait la pré-spécification.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-outcome-de-substitution",
+      "name": "outcome de substitution",
+      "nodeType": "narrative",
+      "phrase": "Un marqueur mesuré à la place du bénéfice qui intéresse réellement le patient.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Valide seulement si le lien avec le bénéfice clinique est lui-même établi.",
+      "context": "Choix des critères de jugement d'une étude d'intervention ; motif fréquent de rétrogradation GRADE pour caractère indirect.",
+      "definition": "Critère de jugement intermédiaire — biomarqueur, imagerie, mesure physiologique — utilisé comme substitut d'un critère cliniquement dur tel que la mortalité ou la survenue d'un événement. Sa validité suppose que l'effet sur le substitut prédise l'effet sur le critère dur, ce qui doit être démontré et non postulé.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-mcid",
+      "name": "MCID",
+      "nodeType": "narrative",
+      "phrase": "Le plus petit écart qu'un patient perçoit comme une amélioration réelle.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Seuil de pertinence clinique, lui-même estimé, contesté et dépendant de la population.",
+      "context": "Interprétation d'une taille d'effet sur une échelle continue ; sert à distinguer significativité statistique et pertinence clinique.",
+      "definition": "Différence minimale cliniquement importante : plus petite variation d'une mesure qu'un patient percevrait comme bénéfique et qui justifierait un changement de prise en charge. Ce n'est pas une constante : un MCID a une méthode d'estimation, une population de référence et souvent des valeurs concurrentes. Il doit être cité avec sa source.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-intervalle-de-prediction",
+      "name": "intervalle de prédiction",
+      "nodeType": "narrative",
+      "phrase": "La fourchette de l'effet attendu dans un nouveau contexte, pas autour de la moyenne passée.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Statistique décisive pour la transportabilité d'une méta-analyse, souvent absente des publications.",
+      "context": "Méta-analyse à effets aléatoires ; à distinguer de l'intervalle de confiance de l'effet poolé.",
+      "definition": "Intervalle dans lequel se situerait l'effet vrai d'une nouvelle étude comparable, compte tenu de l'hétérogénéité observée. L'intervalle de confiance décrit l'incertitude autour de l'effet moyen des études incluses ; l'intervalle de prédiction décrit ce qui est attendu ailleurs, et il est généralement plus large.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-valeur-predictive",
+      "name": "valeur prédictive",
+      "nodeType": "narrative",
+      "phrase": "La probabilité qu'un résultat de test soit vrai — elle dépend de la prévalence.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Ce que sensibilité et spécificité ne disent pas, et ce dont dépend la fatigue d'alarme.",
+      "context": "Interprétation d'un test diagnostique ou d'un détecteur appliqué à une population donnée.",
+      "definition": "Valeur prédictive positive : proportion de véritables malades parmi les personnes testées positives. Valeur prédictive négative : proportion de véritables non-malades parmi les négatives. Contrairement à la sensibilité et à la spécificité, qui décrivent le test, les valeurs prédictives dépendent du taux de base de la condition dans la population testée.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-biais-de-spectre",
+      "name": "biais de spectre",
+      "nodeType": "narrative",
+      "phrase": "Évaluer un test sur des cas typiques contre des témoins sains surestime sa performance.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Mécanisme par lequel un test excellent en étude se dégrade en conditions réelles.",
+      "context": "Études de précision diagnostique ; domaine de sélection des patients de QUADAS-2.",
+      "definition": "Distorsion de la sensibilité et de la spécificité mesurées lorsque la population d'évaluation ne couvre pas le spectre clinique réel — cas trop avancés, témoins trop sains, formes intermédiaires absentes. Le test paraît discriminer parfaitement une frontière que la pratique ne présente jamais aussi nette.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-estimand",
+      "name": "estimand",
+      "nodeType": "narrative",
+      "phrase": "Ce que l'analyse estime exactement, événements intercurrents compris.",
+      "family": "Vocabulaire · évaluation des preuves",
+      "summary": "Formulation qui dissout la plupart des faux débats entre intention de traiter et per-protocole.",
+      "context": "Conception et analyse d'un essai clinique ; cadre défini par l'addendum ICH E9(R1).",
+      "definition": "Description précise de la quantité que l'essai vise à estimer : population, variable, traitement comparé, résumé statistique, et surtout stratégie retenue face aux événements intercurrents — arrêt de traitement, traitement de secours, décès. Deux analyses qui diffèrent sur ces stratégies n'estiment pas la même chose, ce que l'opposition intention de traiter contre per-protocole exprime mal.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "certainty-native-to-graph",
+      "name": "Mécanisme · Certitude native du graphe",
+      "nodeType": "narrative",
+      "phrase": "La certitude d'un claim est dérivée de ses nœuds de justification, jamais saisie à la main ni franchie par paliers.",
+      "family": "Certitude · mécanisme du graphe",
+      "summary": "La certitude n'est pas une étiquette posée sur un claim : c'est une valeur qui résulte des nœuds qui le justifient et des attributs qu'ils portent. Elle est continue et se recalcule dès qu'une justification est ajoutée, corrigée ou contredite. Le graphe possède ainsi une seule notion de certitude, indépendante du domaine, que chaque discipline alimente avec ses propres instruments.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "articulation graphe et domaine",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-domain-method-implements-certainty",
+      "name": "Règle · Une méthode de domaine implémente la certitude, elle ne la définit pas",
+      "nodeType": "narrative",
+      "phrase": "GRADE n'est pas le schéma du graphe : c'est un cluster de justification pour les études qu'il sait évaluer.",
+      "family": "Certitude · articulation graphe et domaine",
+      "summary": "Une évaluation GRADE produit des nœuds de justification dont les attributs alimentent la certitude native ; pour d'autres types d'études, l'instrument sera autre. Les échelles sont emboîtées : « ce claim tient parce que son évaluation donne tel score » — le score est la justification, la certitude est la résultante. Ce qui appartient au graphe et ce qui appartient au domaine restent donc séparés.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "articulation graphe et domaine",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-telemetry-writes-justification",
+      "name": "Règle · La télémétrie écrit la justification, jamais le claim",
+      "nodeType": "narrative",
+      "phrase": "Aucune source ne réécrit un claim ; chacune écrit un nœud de justification au poids qui est le sien.",
+      "family": "Certitude · écriture",
+      "summary": "La télémétrie citoyenne peut ajouter ou modifier la valeur portée par un nœud de preuve, et la certitude du claim bouge parce qu'elle en dérive. Le claim lui-même reste intact. Ce n'est donc pas un mur entre le réel et la connaissance, mais un bras de levier : une observation isolée pèse ce que pèse son appraisal, un essai contrôlé aussi, et la certitude est la résultante des deux.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "écriture et pondération",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-thresholds-only-at-action",
+      "name": "Règle · Aucun seuil sur ce qu'on sait, des seuils sur ce qu'on fait",
+      "nodeType": "narrative",
+      "phrase": "Le seuil est une loupe choisie par celui qui agit, pas une marque apposée sur la connaissance.",
+      "family": "Certitude · droits d'action",
+      "summary": "La certitude reste continue et dérivée ; aucun palier ne la découpe. Le découpage n'apparaît qu'au point de décision, parce qu'alerter ou ne pas alerter est binaire. Et il appartient à celui qui agit : selon le cadre où il se trouve, il choisit de ne se fonder que sur les connaissances au-dessus d'un certain niveau. Le même graphe se lit ainsi à plusieurs seuils sans être modifié, et le seuil se justifie devant l'action qu'il autorise plutôt que devant la preuve qu'il classe.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "droits d'action",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rule-communication-inherits-certainty",
+      "name": "Règle · Une vulgarisation n'affirme pas plus que son claim source",
+      "nodeType": "narrative",
+      "phrase": "La communication est une dérivation plafonnée, pas un domaine autonome.",
+      "family": "Certitude · communication",
+      "summary": "Marketing et vulgarisation restent hors du graphe scientifique pour l'instant, mais ils y seront rattachés comme dérivations : un texte de vulgarisation est relié à son claim source et hérite de son plafond de certitude. Aucune matrice de permissions séparée n'est donc nécessaire pour la communication — le plafond hérité suffit, et il rend l'exagération détectable au lieu d'en faire une affaire de bonne foi.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "communication",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "rationale-graph-layer-versus-domain-layer",
+      "name": "Raison · Séparer la couche du graphe de la couche du domaine",
+      "nodeType": "narrative",
+      "phrase": "Une discipline gravée dans le schéma rend inexprimable tout ce qu'elle ne couvre pas.",
+      "family": "Certitude · raison de conception",
+      "summary": "L'alternative écartée était d'encoder GRADE comme la notion de certitude du graphe. Elle paraissait économique — un standard reconnu, déjà spécifié, immédiatement défendable devant un chercheur. Elle contraint pourtant le graphe à une discipline et à ses types d'études : préclinique, qualitatif, ingénierie, sciences sociales et paramètre de code seraient tombés hors schéma ou auraient été tordus pour y entrer. Avec une certitude native, chaque domaine apporte son instrument sans imposer son vocabulaire au graphe.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "alternative écartée",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-no-promotion-ceremony",
+      "name": "Raison · Pas de promotion, donc pas de seuil à franchir",
+      "nodeType": "narrative",
+      "phrase": "Un palier de promotion fabrique une discontinuité que rien dans la preuve ne justifie.",
+      "family": "Certitude · raison de conception",
+      "summary": "L'alternative écartée était un circuit de promotion par paliers, avec un approbateur désigné à chaque franchissement. Elle a deux défauts : elle crée une frontière arbitraire dans un continuum de justification, et elle déplace le débat sur le franchissement du seuil plutôt que sur la qualité de la justification. Ce que cette gouvernance protégeait — producteur distinct d'approbateur — ne disparaît pas pour autant : l'exigence se déplace sur la signature des appraisals, où elle porte sur un objet réel.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "alternative écartée",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "rationale-lever-not-wall",
+      "name": "Raison · Un bras de levier plutôt qu'un mur",
+      "nodeType": "narrative",
+      "phrase": "Isoler la télémétrie dans un calque séparé protégeait les claims en gaspillant l'information.",
+      "family": "Certitude · raison de conception",
+      "summary": "L'alternative écartée était un calque de divergences tenu à l'écart du graphe principal, où les signaux du réel s'accumulaient sans jamais toucher la connaissance. Elle protégeait la rigueur par la mise en quarantaine, au prix d'une file d'attente à gouverner et d'un signal qui n'agissait sur rien. La pondération atteint le même but sans la quarantaine : une source de faible poids déplace peu, une source de fort poids déplace beaucoup, et rien n'est jeté.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "alternative écartée",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "terme-certitude-native",
+      "name": "certitude native",
+      "nodeType": "narrative",
+      "phrase": "La certitude que le graphe calcule lui-même, distincte de celle qu'un instrument de domaine mesure.",
+      "family": "Vocabulaire · certitude",
+      "summary": "Notion de certitude propre au graphe, alimentée par les instruments de chaque discipline sans être définie par aucun d'eux.",
+      "context": "Graphe causal Mind ; à distinguer de la certitude d'un corps de preuves au sens de GRADE, qui en est une justification possible pour les études que cet instrument couvre.",
+      "definition": "Degré de certitude porté par un claim du graphe, dérivé des nœuds qui le justifient et des attributs qu'ils portent. Elle est continue, se recalcule à chaque modification de ses justifications, et reste indépendante du domaine. Elle n'est jamais saisie directement, ne se franchit pas par paliers, et ne porte par elle-même aucun droit d'action.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "terme"
+    },
+    {
+      "id": "question-native-certainty-computation",
+      "name": "Question · Comment la certitude native se calcule-t-elle ?",
+      "nodeType": "narrative",
+      "phrase": "Quels attributs des nœuds de justification entrent dans le calcul, et comment se composent-ils ?",
+      "family": "Certitude · calcul à définir",
+      "summary": "Le principe est posé — la certitude dérive des justifications — mais sa fonction ne l'est pas. Restent à décider : quels attributs comptent, comment se composent plusieurs justifications concordantes, ce que produit une justification contradictoire, comment le poids d'un appraisal entre dans la formule, et ce que devient la certitude quand une justification est marquée contestée. Tant que cette fonction n'est pas écrite, la certitude native est une intention, pas une valeur.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "à définir",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-real-world-rung-is-too-coarse",
+      "name": "Question · Le barreau « monde réel » est trop grossier",
+      "nodeType": "narrative",
+      "phrase": "Une observation isolée et une méta-analyse d'essais randomisés occupent le même barreau.",
+      "family": "Méthode d'évaluation · articulation",
+      "summary": "Question posée le 22 juillet 2026 et tranchée le même jour : la distinction ne se fait ni par un sous-barreau ni par un champ ajouté à l'échelle, mais par la certitude native, qui dérive des justifications. Le barreau continue de déclarer sur quoi une affirmation tient ; la certitude dit à quel point elle tient. Conservée pour la traçabilité du raisonnement.",
+      "epistemicStatus": "superseded",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "articulation tranchée",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-causal-and-synthesis-traditions",
+      "name": "Question · Deux traditions à articuler, inférence causale et synthèse de preuves",
+      "nodeType": "narrative",
+      "phrase": "L'identifiabilité n'a pas d'équivalent GRADE ; GRADE n'a pas de notion de graphe causal.",
+      "family": "Méthode d'évaluation · articulation",
+      "summary": "Le vecteur de qualité du corpus vient de l'inférence causale : identifiabilité, confusion, médiateurs, transportabilité. Cette méthode vient de la synthèse de preuves : risque de biais, réplication, certitude d'un corpus. Les recouvrements sont partiels — la transportabilité correspond assez bien au caractère indirect — mais la composition des deux vocabulaires n'est pas écrite.",
+      "clusterId": "evidence-appraisal-method",
+      "documentSection": "articulation à trancher",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "experiment-appraisal-satopaa-2014",
+      "name": "Appraisal · Satopää 2014 n'entre dans aucun instrument du répertoire",
+      "nodeType": "moment",
+      "phrase": "Les huit instruments de risque de biais ont été confrontés au design de l'étude ; aucun ne s'applique, et c'est le résultat.",
+      "family": "Évaluation critique · cas d'application",
+      "summary": "L'étape 3 de SciSense v2.1 a été exécutée sur le cluster satopaa-information-diversity du graphe scientifique. Le design est un travail de modélisation statistique — un agrégateur de prévisions sous information partielle — accompagné d'une illustration rétrospective sur 123 événements du Good Judgment Project. RoB 2, ROBINS-I et ROBINS-E supposent une intervention ou une exposition assignée, AMSTAR-2 une revue systématique, QUADAS-2 un test diagnostique, QUIPS un facteur pronostique et SYRCLE un protocole animal : l'étude n'instancie aucun de ces designs. PROBAST est le moins éloigné parce qu'un agrégateur est formellement un modèle de prédiction, mais ses quatre domaines — participants, prédicteurs, outcome, analyse — présupposent une cohorte clinique et un outcome mesuré sur des personnes, et trois d'entre eux restent sans objet ici. Retenir le moins éloigné produirait exactement ce que la règle d'appariement qualifie d'erreur de catégorie, dont le verdict n'est pas récupérable. L'appraisal se conclut donc sur une absence consignée, qui n'est ni une note basse ni une note haute.",
+      "clusterId": "evidence-appraisal-method",
+      "status": "exécuté, résultat négatif",
+      "testObjective": "Déterminer lequel des huit instruments de risque de biais du répertoire s'applique au design de Satopää 2014.",
+      "methodSummary": "Confrontation du design déclaré de l'étude au domaine d'application de chaque instrument, puis application de la règle d'appariement instrument/design.",
+      "responseStatus": "run_no_applicable_instrument",
+      "appraisedDesign": "modélisation statistique avec illustration empirique rétrospective",
+      "instrumentsConsidered": [
+        "method-rob2",
+        "method-robins-i",
+        "method-robins-e",
+        "method-amstar2",
+        "method-quadas2",
+        "method-quips",
+        "method-probast",
+        "method-syrcle"
+      ],
+      "instrumentSelected": null,
+      "nearestRejectedInstrument": "method-probast",
+      "certaintyImpact": "aucun : une absence d'instrument ne dégrade ni ne rehausse la certitude du claim, elle laisse la dimension methodological_fit non renseignée.",
+      "scienceGraphRef": {
+        "graph": "mind_science_graph",
+        "clusterId": "satopaa-information-diversity",
+        "studyNodeId": "study-satopaa-information-diversity",
+        "sourceNodeId": "source-satopaa-1406.2148-v5",
+        "rule": "Référence par identifiant stable déclaré. Aucune arête ne traverse la frontière des deux graphes, conformément à graphs.json."
+      },
+      "appraisedAt": "2026-07-22",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "question-appraisal-instrument-for-method-papers",
+      "name": "Question · Quel instrument évalue un papier qui propose une méthode ?",
+      "nodeType": "narrative",
+      "phrase": "Les huit instruments du répertoire évaluent des designs cliniques ou épidémiologiques ; aucun n'évalue un papier dont le produit est un estimateur.",
+      "family": "Évaluation critique · lacune du répertoire",
+      "summary": "Le répertoire hérité de la tradition de synthèse des preuves couvre l'essai, l'étude d'intervention non randomisée, l'étude d'exposition, la revue systématique, le test diagnostique, le facteur pronostique, le modèle de prédiction clinique et l'expérimentation animale. Un papier de méthode statistique ne se juge pas sur l'assignation, l'attrition ou le masquage : il se juge sur la clarté de ses hypothèses, la validité de ses preuves, la portée de ses propositions, la fidélité de son estimation et l'honnêteté de son illustration empirique. Tant qu'aucun instrument ne couvre cette classe, la dimension methodological_fit de la certitude native reste non renseignée pour toute étude méthodologique du corpus, et pas seulement pour Satopää. La question porte donc sur le répertoire, pas sur une étude.",
+      "clusterId": "evidence-appraisal-method",
+      "blocksWhat": "l'attribution d'un methodological_fit à toute étude méthodologique du graphe scientifique",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "rationale-absent-instrument-is-a-result",
+      "name": "Raison · Une absence d'instrument est un résultat, jamais un échec d'évaluation",
+      "nodeType": "narrative",
+      "phrase": "Le geste correct devant un design non couvert est de consigner l'absence, pas de retenir l'instrument le moins éloigné.",
+      "family": "Évaluation critique · appariement",
+      "summary": "La règle d'appariement dit qu'un verdict produit par le mauvais instrument n'est pas récupérable, mais elle ne dit pas ce qu'il faut faire quand aucun instrument ne convient. Le silence de la règle crée une pression vers le moins éloigné, qui est la manière la plus discrète de fabriquer un verdict irrécupérable : le rapport porte alors un nom d'instrument reconnu, et plus rien n'indique que ses domaines étaient sans objet. Consigner l'absence coûte une case vide dans le vecteur de qualité et préserve la possibilité de l'évaluer plus tard ; retenir le moins éloigné remplit la case avec une valeur qu'aucune relecture ne saura distinguer d'une évaluation valide. Une case vide se voit, une case fausse ne se voit pas.",
+      "clusterId": "evidence-appraisal-method",
+      "semanticType": "design_rationale"
+    }
+  ],
+  "links": [
+    {
+      "source": "method-scisense-appraisal",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "La procédure d'évaluation est extraite du document SciSense v2.1 daté et haché. Provenance documentaire : le document formule cette méthode, il ne prouve pas qu'elle soit la bonne."
+    },
+    {
+      "source": "appraisal-three-layers",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Principe énoncé en introduction du document source. Provenance, non validation empirique."
+    },
+    {
+      "source": "appraisal-machine-assembles-human-signs",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Principe énoncé en introduction du document source, avec sa table de partage machine/humain. Provenance documentaire."
+    },
+    {
+      "source": "appraisal-study-is-not-proof",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Principe de clôture de l'introduction du document source. Provenance documentaire."
+    },
+    {
+      "source": "appraisal-certainty-is-not-permission",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Énoncé en fin d'étape 9 du document source. Provenance documentaire."
+    },
+    {
+      "source": "appraisal-rung-is-not-certainty",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Table des trois échelles, étape 9 du document source. Provenance documentaire."
+    },
+    {
+      "source": "appraisal-design-follows-question",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Second mode de correction de la hiérarchie, étape 1 du document source. Provenance documentaire."
+    },
+    {
+      "source": "appraisal-method-is-perishable",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Section de péremption du document source. Provenance documentaire."
+    },
+    {
+      "source": "method-grade",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Étape 9 du document source. La description de GRADE est reprise du document, elle n'en est pas une validation."
+    },
+    {
+      "source": "method-rob2",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Table des instruments, étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "method-robins-i",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Table des instruments, étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "method-robins-e",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Table des instruments, étape 3 du document source. Le document signale lui-même que le millésime de cet outil reste à confirmer."
+    },
+    {
+      "source": "method-amstar2",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Table des instruments et gradation en quatre niveaux, étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "method-quadas2",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Table des instruments, étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "method-quips",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Table des instruments, étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "method-probast",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Table des instruments, étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "method-syrcle",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Table des instruments, étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "rule-instrument-matches-design",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Règle d'appariement énoncée en tête de l'étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "rule-bias-direction",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Règle restaurée en v2.1, étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "rule-harms-read-backwards",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Étape 6 du document source, consacrée aux effets indésirables. Provenance documentaire."
+    },
+    {
+      "source": "rule-prevalence-commands-diagnosis",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Section diagnostique de l'étape 5 du document source, avec son calcul de valeur prédictive. Provenance documentaire."
+    },
+    {
+      "source": "rule-prediction-interval-transportability",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Étape 7 du document source, sur l'hétérogénéité et la transportabilité. Provenance documentaire."
+    },
+    {
+      "source": "rule-summary-of-findings",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Étape 10 du document source. Provenance documentaire."
+    },
+    {
+      "source": "rule-outcomes-fixed-before-reading",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Règle restaurée en v2.1, étape 0 du document source. Provenance documentaire."
+    },
+    {
+      "source": "rule-pico-gap-indirectness",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Règle énoncée aux étapes 0 et 9 du document source. Provenance documentaire."
+    },
+    {
+      "source": "check-retraction-status",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Contrôle préalable de l'étape 0, remonté depuis l'étape 8 en v2.1. Provenance documentaire."
+    },
+    {
+      "source": "check-registry-concordance",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Contrôle mécanisable listé en introduction et à l'étape 4 du document source. Provenance documentaire."
+    },
+    {
+      "source": "check-outcome-switching",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Contrôle mécanisable listé en introduction et à l'étape 4 du document source. Provenance documentaire."
+    },
+    {
+      "source": "check-attrition-balance",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Contrôle mécanisable listé en introduction et à l'étape 4 du document source. Provenance documentaire."
+    },
+    {
+      "source": "check-statistical-consistency",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Contrôle mécanisable listé en introduction et à l'étape 5 du document source. Provenance documentaire."
+    },
+    {
+      "source": "check-conflicts-and-funding",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Contrôle mécanisable listé en introduction et à l'étape 8 du document source. Provenance documentaire."
+    },
+    {
+      "source": "check-data-availability",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Contrôle mécanisable listé en introduction et à l'étape 8 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-completude-du-reporting",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par l'introduction du document source. Provenance documentaire d'une définition, non validation d'un usage."
+    },
+    {
+      "source": "terme-risque-de-biais",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par l'introduction et l'étape 3 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-certitude-du-corpus",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par l'introduction et l'étape 9 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-summary-of-findings",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par l'étape 10 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-pico",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par l'étape 0 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-outcome-switching",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par l'étape 4 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-outcome-de-substitution",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par l'étape 4 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-mcid",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par l'étape 5 du document source, avec l'exigence de citer sa source. Provenance documentaire."
+    },
+    {
+      "source": "terme-intervalle-de-prediction",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par l'étape 7 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-valeur-predictive",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme fixé par la section diagnostique de l'étape 5 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-biais-de-spectre",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme restauré en v2.1, section diagnostique de l'étape 5 du document source. Provenance documentaire."
+    },
+    {
+      "source": "terme-estimand",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Terme ajouté en v2.1, étape 4 du document source. Provenance documentaire."
+    },
+    {
+      "source": "question-real-world-rung-is-too-coarse",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Question soulevée par la table des trois échelles, étape 9 du document source. Provenance documentaire de la question, qui reste ouverte."
+    },
+    {
+      "source": "question-causal-and-synthesis-traditions",
+      "target": "doc-scisense-appraisal-v21",
+      "type": "DERIVED_FROM",
+      "justification": "Question laissée explicitement hors périmètre par le document source. Provenance documentaire."
+    },
+    {
+      "source": "appraisal-three-layers",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "Le principe de séparation des trois couches est une partie constitutive de la méthode : il en fixe la structure d'ensemble plutôt qu'une de ses étapes."
+    },
+    {
+      "source": "appraisal-machine-assembles-human-signs",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "Le partage entre instruction mécanisée et jugement humain est une partie constitutive de la méthode, applicable à chacune de ses étapes."
+    },
+    {
+      "source": "appraisal-study-is-not-proof",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "Le principe selon lequel une étude n'est qu'une pièce d'un corpus est une partie constitutive de la méthode et justifie son étape finale."
+    },
+    {
+      "source": "appraisal-certainty-is-not-permission",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "La limite de ce que la méthode produit — une certitude, jamais une permission — appartient à la méthode elle-même et en délimite la portée."
+    },
+    {
+      "source": "appraisal-rung-is-not-certainty",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "La distinction entre barreau, certitude et permission appartient à la méthode et fixe son point d'articulation avec l'échelle de preuve du projet."
+    },
+    {
+      "source": "appraisal-design-follows-question",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "Le principe de choix du design selon la question est une partie constitutive de la méthode, mobilisée à l'étape de situation du design et à celle des effets indésirables."
+    },
+    {
+      "source": "appraisal-method-is-perishable",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "La clause de péremption appartient à la méthode et lui applique sa propre exigence de révision."
+    },
+    {
+      "source": "method-grade",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "GRADE est l'instrument de la troisième couche et constitue l'avant-dernière étape de la méthode."
+    },
+    {
+      "source": "method-rob2",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "RoB 2 est l'un des instruments mobilisés par l'étape de risque de biais de la méthode, pour le design qu'il couvre."
+    },
+    {
+      "source": "method-robins-i",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "ROBINS-I est l'un des instruments mobilisés par l'étape de risque de biais de la méthode, pour le design qu'il couvre."
+    },
+    {
+      "source": "method-robins-e",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "ROBINS-E est l'un des instruments mobilisés par l'étape de risque de biais de la méthode, pour le design qu'il couvre."
+    },
+    {
+      "source": "method-amstar2",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "AMSTAR-2 est l'un des instruments mobilisés par l'étape de risque de biais de la méthode, pour le design qu'il couvre."
+    },
+    {
+      "source": "method-quadas2",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "QUADAS-2 est l'un des instruments mobilisés par l'étape de risque de biais de la méthode, pour le design qu'il couvre."
+    },
+    {
+      "source": "method-quips",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "QUIPS est l'un des instruments mobilisés par l'étape de risque de biais de la méthode, pour le design qu'il couvre."
+    },
+    {
+      "source": "method-probast",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "PROBAST est l'un des instruments mobilisés par l'étape de risque de biais de la méthode, pour le design qu'il couvre."
+    },
+    {
+      "source": "method-syrcle",
+      "target": "method-scisense-appraisal",
+      "type": "PART_OF",
+      "justification": "SYRCLE est l'un des instruments mobilisés par l'étape de risque de biais de la méthode, pour le design qu'il couvre."
+    },
+    {
+      "source": "rule-instrument-matches-design",
+      "target": "appraisal-three-layers",
+      "type": "IMPLEMENTS",
+      "justification": "L'appariement strict instrument/design met en œuvre la séparation des trois couches : c'est par lui qu'un jugement de risque de biais reste distinct d'un jugement de reporting ou de certitude."
+    },
+    {
+      "source": "rule-bias-direction",
+      "target": "appraisal-three-layers",
+      "type": "IMPLEMENTS",
+      "justification": "Juger la direction du biais met en œuvre la couche de risque de biais dans ce qu'elle a d'utilisable en aval, au lieu de s'arrêter à un verdict de présence."
+    },
+    {
+      "source": "rule-harms-read-backwards",
+      "target": "appraisal-design-follows-question",
+      "type": "IMPLEMENTS",
+      "justification": "La lecture inversée des effets indésirables est l'application la plus nette du principe de choix du design selon la question : pour un événement rare, l'observationnel devient supérieur à l'essai randomisé."
+    },
+    {
+      "source": "rule-summary-of-findings",
+      "target": "appraisal-study-is-not-proof",
+      "type": "IMPLEMENTS",
+      "justification": "Le tableau par outcome met en œuvre le principe qu'une étude n'est pas une preuve : il oblige à conclure sur un corpus et par outcome, jamais sur une étude en bloc."
+    },
+    {
+      "source": "rule-outcomes-fixed-before-reading",
+      "target": "appraisal-study-is-not-proof",
+      "type": "IMPLEMENTS",
+      "justification": "Fixer les outcomes avant lecture met en œuvre l'exigence d'une conclusion par outcome, en empêchant que la liste des outcomes soit composée d'après les résultats."
+    },
+    {
+      "source": "rule-pico-gap-indirectness",
+      "target": "appraisal-machine-assembles-human-signs",
+      "type": "IMPLEMENTS",
+      "justification": "L'écart PICO met en œuvre le partage machine/humain sur un cas précis : le calcul propose une rétrogradation candidate, l'appréciation de sa portée reste humaine."
+    },
+    {
+      "source": "check-retraction-status",
+      "target": "appraisal-machine-assembles-human-signs",
+      "type": "IMPLEMENTS",
+      "justification": "Le contrôle de rétractation met en œuvre la part instruisible du dossier : le fait est vérifiable automatiquement, sa conséquence sur la lecture ne l'est pas."
+    },
+    {
+      "source": "check-registry-concordance",
+      "target": "appraisal-machine-assembles-human-signs",
+      "type": "IMPLEMENTS",
+      "justification": "La vérification d'enregistrement et de son antériorité met en œuvre la part instruisible du dossier ; l'interprétation d'un enregistrement tardif reste humaine."
+    },
+    {
+      "source": "check-outcome-switching",
+      "target": "appraisal-machine-assembles-human-signs",
+      "type": "IMPLEMENTS",
+      "justification": "La comparaison protocole/article met en œuvre la part instruisible du dossier ; juger si le changement était légitime reste humain."
+    },
+    {
+      "source": "check-attrition-balance",
+      "target": "appraisal-machine-assembles-human-signs",
+      "type": "IMPLEMENTS",
+      "justification": "L'extraction des effectifs et de leur déséquilibre met en œuvre la part instruisible du dossier ; juger si l'attrition menace la conclusion reste humain."
+    },
+    {
+      "source": "check-statistical-consistency",
+      "target": "appraisal-machine-assembles-human-signs",
+      "type": "IMPLEMENTS",
+      "justification": "Les contrôles de cohérence interne mettent en œuvre la part instruisible du dossier, avec leur limite explicite : ils détectent l'incohérence, jamais la justesse."
+    },
+    {
+      "source": "check-conflicts-and-funding",
+      "target": "appraisal-machine-assembles-human-signs",
+      "type": "IMPLEMENTS",
+      "justification": "L'extraction des déclarations de financement met en œuvre la part instruisible du dossier ; apprécier la portée d'un conflit reste humain."
+    },
+    {
+      "source": "check-data-availability",
+      "target": "appraisal-machine-assembles-human-signs",
+      "type": "IMPLEMENTS",
+      "justification": "La vérification de disponibilité réelle met en œuvre la part instruisible du dossier ; l'écart entre annonce et accessibilité est un signal que l'humain interprète."
+    },
+    {
+      "source": "method-scisense-appraisal",
+      "target": "sci-critical-appraisal",
+      "type": "IMPLEMENTS",
+      "justification": "La méthode fournit les instruments concrets du mécanisme de critique multidimensionnelle décrit par le Science Endgame, qui posait la séparation des dimensions sans nommer les outils qui la réalisent."
+    },
+    {
+      "source": "rule-instrument-matches-design",
+      "target": "sci-methodology-layer",
+      "type": "IMPLEMENTS",
+      "justification": "La couche de méthodologie du Science Endgame demande que chaque méthode déclare ce qu'elle peut soutenir ; l'appariement instrument/design en est la réalisation opérationnelle."
+    },
+    {
+      "source": "appraisal-rung-is-not-certainty",
+      "target": "csg-quality-vector",
+      "type": "SAFEGUARDS",
+      "justification": "Le principe protège le vecteur de qualité contre sa réduction implicite à un score unique, en séparant explicitement ce sur quoi une affirmation tient, à quel point elle est sûre, et ce qu'elle autorise."
+    },
+    {
+      "source": "appraisal-certainty-is-not-permission",
+      "target": "recommendation-realworld-evidence-firewall",
+      "type": "SAFEGUARDS",
+      "justification": "Le principe protège le pare-feu contre la confusion la plus probable lors de son implémentation : traiter un niveau de certitude comme s'il portait en lui-même un droit d'action."
+    },
+    {
+      "source": "rule-prevalence-commands-diagnosis",
+      "target": "mh-early-warning",
+      "type": "SAFEGUARDS",
+      "justification": "Le mécanisme d'alerte précoce en santé mentale est exactement le cas où un détecteur performant appliqué à un événement rare produit surtout des fausses alertes ; la règle de prévalence en est le garde-fou."
+    },
+    {
+      "source": "rule-harms-read-backwards",
+      "target": "sci-realworld-confirmation",
+      "type": "SAFEGUARDS",
+      "justification": "La confirmation par le réel porte sur des signaux souvent interprétés comme rassurants faute de puissance ; la lecture inversée des effets indésirables protège cette couche d'une conclusion de sécurité tirée de son propre aveuglement."
+    },
+    {
+      "source": "question-real-world-rung-is-too-coarse",
+      "target": "appraisal-rung-is-not-certainty",
+      "type": "MOTIVATES",
+      "justification": "Le caractère indistinct du barreau « monde réel » est la raison pour laquelle la distinction entre barreau, certitude et permission doit être posée explicitement plutôt que laissée implicite."
+    },
+    {
+      "source": "certainty-native-to-graph",
+      "target": "question-ladder-from-quality-vector",
+      "type": "ADDRESSES",
+      "justification": "La question demandait comment dériver un palier de permissions depuis un vecteur de qualité non fusionnable. La réponse retenue est qu'on n'en dérive aucun : la certitude reste continue et dérivée des justifications, et le découpage n'intervient qu'au point de décision. La question est traitée, la fonction de calcul reste à écrire."
+    },
+    {
+      "source": "certainty-native-to-graph",
+      "target": "question-real-world-rung-is-too-coarse",
+      "type": "ADDRESSES",
+      "justification": "La distinction entre une observation isolée et une méta-analyse ne se fait ni par un sous-barreau ni par un champ ajouté à l'échelle, mais par la certitude native dérivée des justifications. Le barreau déclare sur quoi l'affirmation tient, la certitude dit à quel point."
+    },
+    {
+      "source": "method-grade",
+      "target": "certainty-native-to-graph",
+      "type": "IMPLEMENTS",
+      "justification": "GRADE met en œuvre la certitude native pour les types d'études qu'il sait évaluer : son verdict devient un nœud de justification dont les attributs alimentent le calcul. Il n'est pas la définition de la certitude du graphe, seulement l'un de ses fournisseurs."
+    },
+    {
+      "source": "method-scisense-appraisal",
+      "target": "certainty-native-to-graph",
+      "type": "IMPLEMENTS",
+      "justification": "La méthode complète met en œuvre la certitude native en produisant les justifications qui l'alimentent — risque de biais par instrument, certitude par outcome, contrôles d'intégrité. Elle instruit la certitude, elle ne la constitue pas."
+    },
+    {
+      "source": "rule-domain-method-implements-certainty",
+      "target": "certainty-native-to-graph",
+      "type": "IMPLEMENTS",
+      "justification": "La règle d'emboîtement met en œuvre la certitude native en fixant comment un instrument de domaine s'y raccorde : par un cluster de justification, jamais par une extension du schéma."
+    },
+    {
+      "source": "rule-telemetry-writes-justification",
+      "target": "certainty-native-to-graph",
+      "type": "IMPLEMENTS",
+      "justification": "La règle d'écriture met en œuvre la certitude native en fixant le seul point d'entrée admis : la couche de justification, avec le poids probant de la source. Le claim n'est jamais réécrit."
+    },
+    {
+      "source": "rule-communication-inherits-certainty",
+      "target": "certainty-native-to-graph",
+      "type": "IMPLEMENTS",
+      "justification": "Le plafond hérité met en œuvre la certitude native du côté sortant : une dérivation de communication ne peut pas affirmer au-delà de ce que le calcul accorde à son claim source."
+    },
+    {
+      "source": "rule-thresholds-only-at-action",
+      "target": "certainty-native-to-graph",
+      "type": "SAFEGUARDS",
+      "justification": "La règle protège la certitude native de sa dégradation la plus probable : voir réapparaître des paliers sur la connaissance parce qu'un usage avait besoin d'une frontière. Le seuil est déporté sur l'action, où il se justifie devant ce qu'il autorise."
+    },
+    {
+      "source": "rule-telemetry-writes-justification",
+      "target": "sci-realworld-confirmation",
+      "type": "IMPLEMENTS",
+      "justification": "La couche de confirmation par le réel du Science Endgame trouve ici sa règle d'écriture : les signaux consentis alimentent la justification à leur propre poids, sans droit d'écriture sur le claim."
+    },
+    {
+      "source": "rationale-graph-layer-versus-domain-layer",
+      "target": "rule-domain-method-implements-certainty",
+      "type": "MOTIVATES",
+      "justification": "Le risque de graver une discipline dans le schéma est la raison qui impose l'emboîtement plutôt que l'adoption directe de GRADE comme notion de certitude. Raison normative, sans effet chiffré."
+    },
+    {
+      "source": "rationale-no-promotion-ceremony",
+      "target": "certainty-native-to-graph",
+      "type": "MOTIVATES",
+      "justification": "Le refus d'une discontinuité arbitraire dans un continuum de justification est la raison qui fonde une certitude dérivée et continue plutôt qu'un circuit de promotion par paliers."
+    },
+    {
+      "source": "rationale-lever-not-wall",
+      "target": "rule-telemetry-writes-justification",
+      "type": "MOTIVATES",
+      "justification": "Le coût de la mise en quarantaine — une file à gouverner et un signal qui n'agit sur rien — est la raison qui fait préférer la pondération à la séparation. Raison normative."
+    },
+    {
+      "source": "question-native-certainty-computation",
+      "target": "certainty-native-to-graph",
+      "type": "BLOCKS",
+      "justification": "Sans fonction de composition des attributs de justification, la certitude native reste une intention et non une valeur : rien ne peut être calculé, donc rien ne peut être lu ni contesté. La question bloque la réalisation, non le principe."
+    },
+    {
+      "source": "question-causal-and-synthesis-traditions",
+      "target": "csg-quality-vector",
+      "type": "BLOCKS",
+      "justification": "Tant que la correspondance entre vocabulaire d'inférence causale et vocabulaire de synthèse de preuves n'est pas écrite, le vecteur de qualité ne peut pas être opérationnalisé sans arbitrer implicitement une tradition contre l'autre."
+    },
+    {
+      "source": "experiment-appraisal-satopaa-2014",
+      "type": "USES_METHOD",
+      "target": "method-scisense-appraisal",
+      "justification": "L'appraisal n'improvise pas sa procédure : il exécute l'étape 3 de SciSense v2.1, qui est précisément l'appariement d'un design à son instrument. Le résultat négatif est donc un résultat de la méthode, pas un contournement de la méthode."
+    },
+    {
+      "source": "experiment-appraisal-satopaa-2014",
+      "type": "TESTS",
+      "target": "rule-instrument-matches-design",
+      "justification": "Ce cas est le premier emploi réel de la règle d'appariement sur une étude du graphe scientifique. Il la met à l'épreuve et la trouve incomplète : elle interdit le mauvais instrument sans prescrire la conduite quand aucun instrument ne convient."
+    },
+    {
+      "source": "experiment-appraisal-satopaa-2014",
+      "type": "ADDRESSES",
+      "target": "question-appraisal-instrument-for-method-papers",
+      "justification": "L'appraisal ne répond pas à la question mais la rend concrète et datée : la lacune du répertoire cesse d'être une remarque générale pour devenir un constat attaché à une étude ingérée."
+    },
+    {
+      "source": "question-appraisal-instrument-for-method-papers",
+      "type": "BLOCKS",
+      "target": "rule-instrument-matches-design",
+      "justification": "Tant que le répertoire ne couvre pas les papiers de méthode, la règle d'appariement n'a pas de sortie valide pour cette classe d'études : elle sait refuser un instrument, elle ne sait pas en proposer un. Le blocage porte sur l'applicabilité de la règle, pas sur sa justesse."
+    },
+    {
+      "source": "rationale-absent-instrument-is-a-result",
+      "type": "GROUNDS",
+      "target": "rule-instrument-matches-design",
+      "justification": "La raison complète la règle sur son angle mort. La règle défend contre le mauvais instrument ; la raison défend contre le geste que ce refus laisse ouvert, qui est de retenir le moins éloigné faute de mieux."
+    },
+    {
+      "source": "terme-certitude-native",
+      "type": "DEFINES",
+      "target": "certainty-native-to-graph",
+      "justification": "Le terme donne son sens explicite au mécanisme de certitude propre au graphe et le distingue d’une mesure produite par un instrument de domaine."
+    }
+  ]
+}

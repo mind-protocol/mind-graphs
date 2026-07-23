@@ -1,0 +1,2915 @@
+{
+  "scope": "Backlog opérationnel et journal d’avancement de Mind Causal Graph. Une tâche prête et autonome peut être exécutée sans arbitrage doctrinal ; une tâche review_required exige une décision humaine.",
+  "nodes": [
+    {
+      "id": "idea-graph-native-autonomy",
+      "name": "Idée · Autonomie pilotée par le graphe",
+      "nodeType": "narrative",
+      "phrase": "Le graphe décrit non seulement le projet, mais aussi le prochain travail sûr à réaliser.",
+      "family": "Travail du projet · autonomie",
+      "summary": "Transformer les recommandations, questions et lacunes du graphe en tâches bornées, puis conserver les changements livrés comme des nœuds reliés.",
+      "workStatus": "accepted",
+      "priority": 95,
+      "autonomyMode": "review_required",
+      "updatedAt": "2026-07-21",
+      "clusterId": "project-work",
+      "semanticType": "idea"
+    },
+    {
+      "id": "task-graph-native-workflow",
+      "name": "Tâche · Installer le workflow autonome dans le graphe",
+      "nodeType": "moment",
+      "phrase": "Créer les types idea, task et change, leur vue, leurs relations et leur contrat d’autonomie.",
+      "family": "Travail du projet · infrastructure",
+      "summary": "Le backlog et le journal doivent être lisibles par l’application et par un agent, sans registre Markdown concurrent.",
+      "workStatus": "done",
+      "priority": 100,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Les types idea, task et change sont validés par l’ontologie.",
+        "Les tâches exposent statut, priorité, autonomie, critères et vérification dans l’inspecteur.",
+        "Un changement livré est relié à la tâche avec DOCUMENTS_PROGRESS.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-21",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-simulation-sensitivity",
+      "name": "Tâche · Ajouter l’analyse de sensibilité P2",
+      "nodeType": "moment",
+      "phrase": "Mesurer quelles hypothèses changent le classement des trois bras simulés.",
+      "family": "Travail du projet · simulation",
+      "summary": "Faire varier explicitement les paramètres structurants, produire un artefact reproductible et identifier ceux qui inversent le classement.",
+      "workStatus": "done",
+      "priority": 90,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Une commande dédiée exécute une matrice de sensibilité reproductible.",
+        "Le rapport identifie les paramètres qui changent le classement des bras.",
+        "Les tests couvrent déterminisme, bornes et format de sortie.",
+        "P1_AGENT_MODEL.md documente l’usage et les limites."
+      ],
+      "verificationCommand": "npm test && npm run simulate:smoke",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-21",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-simulation-behavior-models",
+      "name": "Tâche · Comparer des comportements alternatifs",
+      "nodeType": "moment",
+      "phrase": "Tester plusieurs règles plausibles de demande, substitution et conformité plutôt qu’un comportement unique.",
+      "family": "Travail du projet · simulation",
+      "summary": "Réduire le risque que le modèle récite un seul comportement arbitraire, après disponibilité du cadre d’analyse de sensibilité.",
+      "workStatus": "done",
+      "priority": 80,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Au moins trois profils comportementaux documentés sont configurables.",
+        "Chaque profil s’exécute sur les mêmes seeds et chocs.",
+        "Le rapport compare la stabilité des conclusions entre profils."
+      ],
+      "verificationCommand": "npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-21",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-realworld-evidence-policy",
+      "name": "Tâche · Formaliser le pare-feu des niveaux de preuve",
+      "nodeType": "moment",
+      "phrase": "Définir les permissions de la télémétrie réelle avant toute modification des claims cliniques.",
+      "family": "Travail du projet · gouvernance scientifique",
+      "summary": "Cette tâche vient de la recommandation stratégique correspondante, mais reste soumise à revue scientifique et clinique.",
+      "workStatus": "ready",
+      "priority": 85,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Les niveaux de preuve et leurs permissions sont explicités.",
+        "Les cas adversariaux et règles de non-régression sont définis.",
+        "Une revue scientifique indépendante est consignée."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "idea-evidence-social-contract-pressure",
+      "name": "Idée · Campagne de preuve sur la pression du contrat social",
+      "nodeType": "narrative",
+      "phrase": "Une preuve commune pourrait tester plusieurs affirmations qui convergent vers la pression sur le contrat social.",
+      "family": "Travail du projet · recommandation d’analyse",
+      "summary": "L’audit 1.2 classe cette cible comme preuve à fort levier avec une priorité heuristique de 100. Ce score ordonne le travail ; il ne valide ni le diagnostic ni une causalité.",
+      "workStatus": "proposed",
+      "priority": 100,
+      "autonomyMode": "review_required",
+      "updatedAt": "2026-07-21",
+      "clusterId": "project-work",
+      "semanticType": "idea"
+    },
+    {
+      "id": "task-evidence-social-contract-pressure",
+      "name": "Tâche proposée · Préenregistrer la preuve sur le contrat social",
+      "nodeType": "moment",
+      "phrase": "Définir une métrique falsifiable, une baseline et un protocole commun avant toute collecte.",
+      "family": "Travail du projet · validation prospective",
+      "summary": "Préparer une campagne capable de distinguer les hypothèses qui relient emploi automatisé, économie d’agents et pression institutionnelle, sous revue humaine avant exécution.",
+      "workStatus": "ready",
+      "priority": 100,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "La population, l’horizon, la baseline et la métrique primaire sont définis.",
+        "Les résultats capables de réfuter chaque hypothèse sont préenregistrés.",
+        "Les sources de données, limites et risques éthiques sont revus.",
+        "Une décision humaine autorise ou refuse l’exécution."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "idea-offline-autonomy-diagnostics",
+      "name": "Idée · Diagnostic autonome hors base",
+      "nodeType": "narrative",
+      "phrase": "Le workflow autonome devrait rester capable de proposer le prochain travail même quand FalkorDB est éteinte.",
+      "family": "Travail du projet · résilience",
+      "summary": "Le 22 juillet 2026, aucune tâche autonome n'était prête et npm run analyze ne pouvait pas produire de recommandation parce que l'API dépendait d'une base locale indisponible. Une voie de secours éviterait de bloquer le pilotage par le graphe.",
+      "workStatus": "proposed",
+      "priority": 72,
+      "autonomyMode": "review_required",
+      "updatedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "idea"
+    },
+    {
+      "id": "task-offline-autonomy-diagnostics",
+      "name": "Tâche proposée · Ajouter un fallback d'analyse hors DB",
+      "nodeType": "moment",
+      "phrase": "Permettre à npm run analyze de produire un rapport minimal depuis les fichiers JSON quand FalkorDB est indisponible.",
+      "family": "Travail du projet · résilience",
+      "summary": "Ajouter un chemin de lecture statique pour les diagnostics de backlog et de santé du graphe, sans remplacer l'analyse complète via l'API quand la base est disponible.",
+      "workStatus": "done",
+      "priority": 72,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "npm run analyze détecte explicitement l'indisponibilité de l'API ou de FalkorDB.",
+        "Un rapport minimal liste les tâches autonomes prêtes, bloquées et proposées depuis data/project-work.json.",
+        "Le rapport indique clairement qu'il s'agit d'un fallback incomplet, sans findings causaux complets.",
+        "Les tests couvrent le cas API indisponible et le cas API disponible."
+      ],
+      "verificationCommand": "npm test && npm run validate",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "idea-resolve-mind-deployment-date",
+      "name": "Idée · Lever l’ambiguïté Token-2022 et date de déploiement",
+      "nodeType": "narrative",
+      "phrase": "Le nom du standard SPL Token-2022 ne doit pas être interprété comme l’année de déploiement de $MIND.",
+      "family": "Travail du projet · cohérence factuelle",
+      "summary": "L’analyse 1.2 détecte une contradiction de priorité 90 entre une clarification sourcée qui situe le déploiement en janvier 2025 et une ancienne affirmation qui annonce une présence sur Solana depuis 2022. Le constat signale un conflit à instruire ; il ne choisit pas lui-même la version correcte.",
+      "workStatus": "proposed",
+      "priority": 90,
+      "autonomyMode": "review_required",
+      "updatedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "idea"
+    },
+    {
+      "id": "task-resolve-mind-deployment-date",
+      "name": "Tâche proposée · Vérifier la date de déploiement de $MIND",
+      "nodeType": "moment",
+      "phrase": "Établir une chronologie vérifiable qui sépare le standard Token-2022, la création du mint et les éventuels déploiements antérieurs.",
+      "family": "Travail du projet · validation factuelle",
+      "summary": "Résoudre le conflit uniquement à partir de preuves primaires identifiables, puis corriger ou qualifier les affirmations incompatibles après revue humaine.",
+      "workStatus": "ready",
+      "priority": 90,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "L’adresse du mint et les transactions pertinentes sont identifiées par des sources primaires vérifiables.",
+        "La chronologie distingue explicitement le standard Token-2022, la création du mint et tout déploiement antérieur revendiqué.",
+        "Chaque affirmation incompatible est confirmée, corrigée ou marquée non établie avec sa justification.",
+        "Une revue humaine valide la formulation avant modification des claims du corpus."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-offline-autonomy-diagnostics",
+      "name": "Changement · Fallback d'analyse hors DB",
+      "nodeType": "moment",
+      "phrase": "L'analyse du graphe produit désormais un diagnostic minimal même si l'API ou FalkorDB est indisponible.",
+      "family": "Journal du projet · résilience",
+      "summary": "Extraction d'un runner testable pour npm run analyze, maintien du rapport complet via API quand elle répond, et fallback explicite sur data/project-work.json listant tâches prêtes, bloquées, proposées et en cours.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "README.md",
+        "scripts/analyze-graph.js",
+        "src/analysis-runner.js",
+        "test/analysis-runner.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm test && npm run validate",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "idea-needs-routing-causal-contract",
+      "name": "Idée · Contrat causal du routage des besoins vivants",
+      "nodeType": "narrative",
+      "phrase": "Le lien entre routage des besoins vivants et deuxième monnaie doit devenir une hypothèse testable plutôt qu'une intuition centrale.",
+      "family": "Travail du projet · validation économique",
+      "summary": "L'analyse classe cette relation comme finding prioritaire. Le prochain travail utile consiste à préciser population, mécanisme intermédiaire, baseline, métrique et seuil de réfutation avant de prétendre qu'elle stabilise l'accès aux biens de vie.",
+      "workStatus": "proposed",
+      "priority": 95,
+      "autonomyMode": "review_required",
+      "updatedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "idea"
+    },
+    {
+      "id": "task-needs-routing-causal-contract",
+      "name": "Tâche proposée · Spécifier le contrat causal du routage des besoins",
+      "nodeType": "moment",
+      "phrase": "Définir comment tester si le routage des besoins vivants rend réellement possible une deuxième monnaie utile.",
+      "family": "Travail du projet · validation économique",
+      "summary": "Préparer un protocole de qualification du top finding sans trancher doctrinalement la forme finale de la monnaie.",
+      "workStatus": "ready",
+      "priority": 95,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "La population ou le système simulé est défini.",
+        "La baseline monétaire et logistique est explicitée.",
+        "Au moins une métrique primaire et une condition de réfutation sont définies.",
+        "Les risques de captation, pénurie et arbitrage avec l'argent classique sont listés.",
+        "Une décision humaine valide ou refuse le protocole avant exécution."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "method-needs-routing-qualification-protocol",
+      "name": "Protocole proposé · Qualification causale du routage des besoins",
+      "nodeType": "thing",
+      "phrase": "Comparer à ressources, chocs et logistique constants une seconde monnaie avec et sans routage des besoins avant toute conclusion doctrinale.",
+      "family": "Travail du projet · validation économique",
+      "summary": "Protocole pré-enregistrable pour une population synthétique de 100 000 personnes, stratifiée par âge, revenu, handicap, accès numérique et besoins futurs. Trois bras partagent ressources, producteurs, stocks, coûts, chocs et règles logistiques : A, argent classique seul ; B, argent classique plus seconde monnaie sans routage ; C, même système que B avec routage des besoins. La comparaison causale primaire B–C teste le routage plutôt que la forme finale de la monnaie.",
+      "protocolStatus": "proposed_pending_human_decision",
+      "populationOrSystem": "Population synthétique de 100 000 personnes et son réseau local de producteurs, marchands, stocks, transport et services essentiels, avec sous-groupes pré-enregistrés d'âge, revenu, handicap, accès numérique et exposition aux urgences.",
+      "baseline": {
+        "monetary": "Bras A : argent classique seul. Bras B : argent classique plus une seconde unité d'usage sans routage des besoins. Bras C : règles monétaires identiques au bras B avec routage des besoins activé.",
+        "logistical": "Même population, offre initiale, producteurs, stocks, coûts, capacités de transport, délais, chocs et seeds dans les trois bras.",
+        "causalContrast": "B contre C isole l'apport du routage ; A situe les deux systèmes hybrides par rapport au statu quo."
+      },
+      "intervention": "Le bras C priorise et apparie les besoins déclarés ou détectés avec l'offre disponible, y compris réservations finalisées non transférables et mutualisation des urgences ; aucune autre règle monétaire ou logistique ne change entre B et C.",
+      "primaryMetric": {
+        "name": "taux de besoins vitaux satisfaits dans le délai pré-enregistré",
+        "unit": "proportion de demandes vitales satisfaites intégralement sous 48 heures",
+        "comparison": "différence C moins B, rapportée globalement et pour chaque sous-groupe pré-enregistré"
+      },
+      "refutationCondition": "Le mécanisme de routage est réfuté pour ce protocole si l'amélioration C–B est inférieure à 2 points de pourcentage, si son intervalle d'incertitude inclut zéro, ou si un sous-groupe pré-enregistré perd au moins 2 points, à offre et chocs identiques.",
+      "riskTests": [
+        {
+          "risk": "captation",
+          "test": "Mesurer concentration des allocations, contournement Sybil, pouvoir de priorité et taux de recours aboutis ; réfuter si un acteur ou groupe peut détourner durablement le flux."
+        },
+        {
+          "risk": "pénurie",
+          "test": "Appliquer des chocs identiques de stock, production et transport ; suivre besoins non satisfaits, files d'attente et temps de récupération."
+        },
+        {
+          "risk": "arbitrage avec l'argent classique",
+          "test": "Autoriser stratégies d'échange, revente et substitution dans les bras hybrides ; suivre fuite de valeur, spéculation, double tarification et exclusion."
+        },
+        {
+          "risk": "prévoyance transformée en thésaurisation",
+          "test": "Comparer réservations finalisées non transférables et mutualisation des urgences à l'accumulation libre ; suivre couverture des urgences, concentration et marchés secondaires."
+        }
+      ],
+      "humanDecisionGate": {
+        "status": "pending",
+        "requiredDecision": "approve_or_reject_before_execution",
+        "rule": "Aucune simulation de qualification ni interprétation doctrinale ne peut commencer avant validation ou refus explicite par NLR des bras, seuils, risques et règles d'arrêt."
+      },
+      "epistemicStatus": "design_proposal",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "change-2026-07-21-graph-native-workflow",
+      "name": "Changement · Workflow autonome natif du graphe",
+      "nodeType": "moment",
+      "phrase": "Le graphe contient désormais ses idées, ses tâches et son journal de changements.",
+      "family": "Journal du projet · infrastructure",
+      "summary": "Ajout du schéma workflow, d’un backlog initial issu du graphe et des recommandations, de champs opérationnels visibles et d’un protocole d’exécution autonome.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "AGENTS.md",
+        "data/graph-ontology.json",
+        "data/project-work.json",
+        "scripts/next-task.js",
+        "scripts/seed.js",
+        "scripts/validate-data.js",
+        "src/server.js",
+        "src/work-queue.js",
+        "public/index.html",
+        "public/app.js"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-21",
+      "completedAt": "2026-07-21",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-21-p2-sensitivity",
+      "name": "Changement · Analyse de sensibilité P2",
+      "nodeType": "moment",
+      "phrase": "Le modèle expose désormais les hypothèses capables d’inverser le classement des bras.",
+      "family": "Journal du projet · simulation",
+      "summary": "Ajout d’une matrice reproductible un-paramètre-à-la-fois, d’un rapport de classement, de tests et de la documentation des limites. Le run 5 000 × 120 identifie cinq paramètres sensibles dans les plages testées.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "P1_AGENT_MODEL.md",
+        "README.md",
+        "simulation/sensitivity-config.json",
+        "scripts/run-sensitivity.js",
+        "src/simulation/sensitivity.js",
+        "test/sensitivity.test.js",
+        "package.json",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm test && npm run simulate:smoke && npm run validate",
+      "updatedAt": "2026-07-21",
+      "completedAt": "2026-07-21",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-21-p3-behavior-profiles",
+      "name": "Changement · Profils comportementaux P3",
+      "nodeType": "moment",
+      "phrase": "Trois comportements plausibles éprouvent désormais la stabilité des conclusions simulées.",
+      "family": "Journal du projet · simulation",
+      "summary": "Ajout de profils référence, ménages prudents et adaptatif/adversarial, appliqués aux mêmes seeds et chocs. La couverture change de classement selon le profil ; l’exclusion reste stable et la survie marchande est à égalité.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "P1_AGENT_MODEL.md",
+        "README.md",
+        "simulation/behavior-profiles.json",
+        "simulation/config.schema.json",
+        "simulation/default-config.json",
+        "scripts/run-behavior-comparison.js",
+        "src/simulation/behavior-comparison.js",
+        "src/simulation/model.js",
+        "test/behavior-comparison.test.js",
+        "package.json",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm test && npm run validate",
+      "updatedAt": "2026-07-21",
+      "completedAt": "2026-07-21",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "idea-garden-causal-materiality",
+      "name": "Idée · Rendre le déficit causal perceptible dans la cité-jardin",
+      "nodeType": "narrative",
+      "phrase": "Une affirmation causale non chiffrée doit se voir comme une corde qui pend, pas comme une route de pierre.",
+      "family": "Travail du projet · UX du graphe",
+      "summary": "CITY_GARDEN_UX place le dégradé corde/pierre des liens CAUSES hors v1, alors que la saturation causale est déjà mesurée par l analyse. La cité-jardin peut porter ce déficit comme une affordance au lieu d un indicateur à lire.",
+      "workStatus": "accepted",
+      "priority": 88,
+      "autonomyMode": "autonomous",
+      "updatedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "idea"
+    },
+    {
+      "id": "task-garden-causal-materiality",
+      "name": "Tâche · Matière des franchissements causaux dans la cité-jardin",
+      "nodeType": "moment",
+      "phrase": "Câbler la quantification d arête de bout en bout, puis la rendre en corde, planches ou pierre.",
+      "family": "Travail du projet · UX du graphe",
+      "summary": "Les champs effectSizePct, confidenceScore et evidenceBasis étaient déclarés par linkQuantification en 1.9.0 mais implémentés nulle part : ni validation, ni seed, ni API, ni rendu. La cité-jardin les traduit en matière du franchissement, sans jamais promouvoir une arête que la donnée ne soutient pas.",
+      "workStatus": "done",
+      "priority": 88,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "validate-data.js contrôle le format des champs de quantification d arête sans les rendre obligatoires.",
+        "seed.js persiste les trois champs et /api/graph les projette.",
+        "Une arête CAUSES sans effectSizePct est rendue en pont de corde, quelle que soit la base de preuve revendiquée.",
+        "La matière est aussi énoncée en texte dans l inspecteur et la liste accessible.",
+        "La page cité-jardin est atteignable depuis la navigation des autres pages.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-garden-causal-materiality",
+      "name": "Changement · Franchissements causaux corde ↔ pierre",
+      "nodeType": "moment",
+      "phrase": "La cité-jardin affiche désormais 0 sur 21 franchissements causaux chiffrés dans le cœur Mind Protocol.",
+      "family": "Journal du projet · UX du graphe",
+      "summary": "Chaîne de quantification d arête câblée de la validation au rendu, module pur garden-affordance.js testé, cité-jardin raccordée à la navigation, et cœur Mind Protocol rendu atteignable comme district à part entière.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "public/garden-affordance.js",
+        "public/garden.js",
+        "public/garden.css",
+        "public/garden.html",
+        "public/index.html",
+        "public/analysis.html",
+        "public/ontology.html",
+        "public/decisions.html",
+        "scripts/validate-data.js",
+        "scripts/seed.js",
+        "src/server.js",
+        "test/garden-affordance.test.js",
+        "CITY_GARDEN_UX.md",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-22-garden-tangible-materials",
+      "name": "Changement · Matières tangibles et layout sans recouvrement",
+      "nodeType": "moment",
+      "phrase": "Les parcelles sont des objets posés dont la solidité porte le statut, et plus aucune n en recouvre une autre.",
+      "family": "Journal du projet · UX du graphe",
+      "summary": "Layout refait en deux étages avec séparation rectangulaire (0 recouvrement sur 179 parcelles), tailles de cartes dérivées du texte mesuré, pointillé réservé au seul ouvrage non achevé, et matières manquantes ajoutées : mirage pour les scénarios, ruine pour refuted et superseded, dalle pour les cibles de test. La table de vitalité couvre désormais exactement les statuts de l ontologie.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "public/garden.js",
+        "public/garden.css",
+        "public/garden.html",
+        "public/garden-affordance.js",
+        "test/garden-affordance.test.js",
+        "CITY_GARDEN_UX.md",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && node --test test/garden-affordance.test.js",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-graph-composition-manifest",
+      "name": "Tâche · Déclarer la composition des graphes dans un manifeste",
+      "nodeType": "moment",
+      "phrase": "Une seule liste de fichiers déclarée, lue par le seed, le validateur et les statistiques.",
+      "family": "Travail du projet · architecture du graphe",
+      "summary": "Préalable matériel à toute séparation de bases : tant que la composition du corpus était décrite trois fois de trois façons divergentes, aucune frontière n'était tenable.",
+      "workStatus": "done",
+      "priority": 90,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Un manifeste unique déclare les graphes, leurs bases, leurs ontologies et leurs jeux de données ordonnés.",
+        "Le seed, le validateur et les statistiques lisent ce manifeste au lieu de leurs listes propres.",
+        "Les particularités d'un jeu de données sont déclarées, jamais déduites de son nom de fichier.",
+        "Le corpus normalisé reste identique nœud par nœud et relation par relation."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-science-graph-ontology",
+      "name": "Tâche · Écrire l'ontologie du graphe scientifique",
+      "nodeType": "moment",
+      "phrase": "Le graphe scientifique possède une grammaire propre, validée sans assouplir celle du graphe de design.",
+      "family": "Travail du projet · architecture du graphe",
+      "summary": "L'ontologie 0.1.0 exprime les cinq primitives CSG, sépare étude, estimation, claim et preuve localisée, et référence un contrat de certitude continue partagé. L'autorisation humaine du 22 juillet 2026 a levé la revue requise pour cette implémentation.",
+      "workStatus": "done",
+      "priority": 88,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Les primitives du noyau CSG sont exprimables : variable, mécanisme, contexte, intervention, observation.",
+        "La chaîne Study → Estimate → Claim → Evidence possède ses types et ses contraintes de relation.",
+        "Le socle de certitude et de provenance est déclaré une seule fois et partagé ; conformément à la décision approuvée, il ne contient aucun palier de promotion.",
+        "Le validateur paramétré accepte le graphe scientifique sans assouplir le graphe de design."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-ingest-satopaa-science-cluster",
+      "name": "Tâche · Ingérer le premier cluster scientifique Satopää",
+      "nodeType": "moment",
+      "phrase": "Exercer la pipeline d'ingestion sur une publication réelle, de la source figée au commit canonique validé.",
+      "family": "Travail du projet · ingestion scientifique",
+      "summary": "Créer un cluster scientifique minimal pour arXiv:1406.2148 en distinguant la publication, l'étude, ses variables, son contexte, son mécanisme, ses estimations, son claim et les preuves textuelles localisables.",
+      "workStatus": "done",
+      "priority": 88,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Le PDF primaire est conservé comme artefact durable avec une empreinte SHA-256 vérifiée.",
+        "L'ingestion produit un cluster conforme à l'ontologie scientifique et conserve des localisateurs vers les passages sources.",
+        "La chaîne Study → Estimate → Claim → Evidence est matérialisée sans transformer la provenance en certitude.",
+        "La validation refuse une mutation canonique qui contourne les invariants de provenance ou de structure.",
+        "npm run validate, npm test et un dry-run du seed scientifique réussissent."
+      ],
+      "verificationCommand": "npm run science:ingest:satopaa -- --check && npm run seed -- --graph=science --dry-run=artifacts/science/satopaa-dry-run.json && npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-science-ontology-active",
+      "name": "Changement · Ontologie scientifique 0.1.0 activée",
+      "nodeType": "moment",
+      "phrase": "mind_science_graph devient un graphe actif avec sa propre grammaire et une gouvernance de certitude continue.",
+      "family": "Journal du projet · architecture scientifique",
+      "summary": "Les primitives CSG et la chaîne Study vers Evidence sont contraintes dans science/ontology.json. Le validateur parcourt désormais les deux graphes actifs sans relâcher les invariants du graphe de design.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "graphs.json",
+        "science/ontology.json",
+        "governance/evidence-firewall.json",
+        "scripts/seed.js",
+        "test/science-ingestion.test.js",
+        "README.md",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-22-satopaa-first-science-cluster",
+      "name": "Changement · Premier cluster scientifique Satopää",
+      "nodeType": "moment",
+      "phrase": "La pipeline transforme un PDF primaire hashé en un cluster canonique de 12 nœuds et 19 relations.",
+      "family": "Journal du projet · ingestion scientifique",
+      "summary": "La staging conserve le contrat d'écriture, les huit étapes préalables au commit, les localisateurs et la limite de transfert. Le commit atomique produit la source, l'étude, le contexte, deux variables, le mécanisme, l'observation, l'estimation, le claim et trois preuves localisées.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "science/sources/satopaa-2014-arxiv-1406.2148.pdf",
+        "science/staging/satopaa-2014-information-diversity.json",
+        "science/data/satopaa-2014-information-diversity.json",
+        "scripts/science-ingest.js",
+        "scripts/seed.js",
+        "package.json",
+        "test/science-ingestion.test.js",
+        "artifacts/science/satopaa-dry-run.json",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run science:ingest:satopaa -- --check && npm run seed -- --graph=science --dry-run=artifacts/science/satopaa-dry-run.json && npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-science-ingestion-quality-audit",
+      "name": "Tâche · Scorer la qualité opérationnelle d'une ingestion scientifique",
+      "nodeType": "moment",
+      "phrase": "Mesurer la couverture et la structure d'un cluster avant de le déclarer complet.",
+      "family": "Travail du projet · qualité d'ingestion",
+      "summary": "Implémenter un vecteur explicable couvrant volume textuel, concepts attendus, rôles structurels, connectivité typée, provenance localisée et revue IA. Un score de readiness peut agréger ces dimensions avec des poids visibles, sans devenir un score de vérité scientifique.",
+      "workStatus": "done",
+      "priority": 92,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Le rapport expose les mesures brutes, les seuils, les scores par dimension et la formule d'agrégation.",
+        "La couverture textuelle compare la représentation au texte extractible de la source et ne peut pas être remplacée par le seul nombre de nœuds.",
+        "La couverture conceptuelle accepte des variantes multilingues d'une liste de concepts attendus versionnée.",
+        "La structure mesure types applicables, chaîne Study vers Evidence, orphelins, diversité de relations et localisation des preuves.",
+        "Une revue IA attribuée et versionnée peut contribuer au vecteur sans se prétendre indépendante ni remplacer les invariants déterministes.",
+        "Une ingestion sous les planchers reste canonique comme partial mais ne peut pas se déclarer complete.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run science:quality:satopaa && npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-science-ingestion-quality-audit",
+      "name": "Changement · Audit de readiness des ingestions scientifiques",
+      "nodeType": "moment",
+      "phrase": "Une ingestion ne peut plus se dire complete sans franchir six dimensions explicables de couverture et de structure.",
+      "family": "Journal du projet · qualité d'ingestion",
+      "summary": "Le contrat versionné mesure volume textuel, concepts attendus, rôles et chaîne scientifique, connectivité typée, provenance et revue IA. Satopää obtient 0,7015 pour un minimum de 0,8 et reste partial : ses planchers textuel et conceptuel ne sont pas franchis.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "science/quality-contract.json",
+        "science/source-metrics/satopaa-2014-information-diversity.json",
+        "science/reviews/satopaa-2014-codex-review.json",
+        "science/staging/satopaa-2014-information-diversity.json",
+        "science/data/satopaa-2014-information-diversity.json",
+        "src/science-ingestion-quality.js",
+        "scripts/science-quality.js",
+        "scripts/science-ingest.js",
+        "artifacts/science/satopaa-ingestion-quality.json",
+        "data/causal-science-implementation.json",
+        "data/project-work.json",
+        "test/science-ingestion.test.js",
+        "package.json",
+        "README.md"
+      ],
+      "verificationCommand": "npm run science:quality:satopaa && npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-complete-satopaa-science-ingestion",
+      "name": "Tâche · Compléter l'ingestion scientifique Satopää",
+      "nodeType": "moment",
+      "phrase": "Enrichir la représentation jusqu'aux planchers de readiness sans abaisser le contrat de qualité.",
+      "family": "Travail du projet · ingestion scientifique",
+      "summary": "Reprendre le papier section par section pour encoder hypothèses, variables, modèles, propositions, estimations, résultats empiriques et limites avec preuves localisées, puis faire franchir les seuils textuel et conceptuel.",
+      "workStatus": "done",
+      "priority": 94,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "La couverture textuelle atteint la cible de 25 % sans modifier le seuil.",
+        "Les douze concepts attendus sont représentés.",
+        "Les sections théoriques, l'estimation, l'application GJP, les résultats et les limites possèdent des objets et des preuves localisées.",
+        "Le rapport de readiness atteint au moins 0,8 et aucun plancher dimensionnel n'échoue.",
+        "La staging et le canon portent canonicalStatus complete uniquement après franchissement des gates.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run science:quality:satopaa -- --require-ready && npm run science:ingest:satopaa -- --check && npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-satopaa-ingestion-complete",
+      "name": "Changement · Ingestion Satopää complète selon le contrat de readiness",
+      "nodeType": "moment",
+      "phrase": "Le cluster passe de 12 à 69 nœuds, de 19 à 103 relations et franchit tous les planchers sans abaisser les seuils.",
+      "family": "Journal du projet · ingestion scientifique",
+      "summary": "L'enrichissement couvre les pages 1 à 29, les cadres théoriques, les paramètres, les propositions 3.3, 4.1, 4.2 et 5.1, l'estimation symétrique, la population GJP, la table de Brier et les limites. Le volume représenté atteint 46,9 %, les 12 concepts attendus sont présents et la readiness vaut 0,9598.",
+      "workStatus": "delivered",
+      "changeKind": "content",
+      "changedPaths": [
+        "science/staging/satopaa-2014-section-enrichment.json",
+        "science/staging/satopaa-2014-information-diversity.json",
+        "science/data/satopaa-2014-information-diversity.json",
+        "science/source-metrics/satopaa-2014-information-diversity.json",
+        "science/reviews/satopaa-2014-codex-review.json",
+        "src/science-candidate.js",
+        "scripts/science-ingest.js",
+        "scripts/science-quality.js",
+        "artifacts/science/satopaa-ingestion-quality.json",
+        "artifacts/science/satopaa-dry-run.json",
+        "test/science-ingestion.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run science:quality:satopaa -- --require-ready && npm run science:ingest:satopaa -- --check && npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-22-graph-composition-manifest",
+      "name": "Changement · Manifeste de composition et frontière scientifique déclarée",
+      "nodeType": "moment",
+      "phrase": "graphs.json devient la source unique de la composition ; la base scientifique est déclarée sans être peuplée.",
+      "family": "Journal du projet · architecture du graphe",
+      "summary": "Le seed, le validateur et les statistiques lisent désormais le même manifeste. Les particularités par fichier (forme racine, type par défaut, prédicat forcé, provenance GitHub) sont déclarées au lieu d'être devinées depuis les noms de fichiers. Équivalence vérifiée par comparaison du corpus normalisé avant et après : 457 nœuds et 840 relations identiques, position par position. Le graphe scientifique est déclaré au statut inactif et signalé comme tel par le validateur.",
+      "workStatus": "delivered",
+      "changeKind": "refactor",
+      "changedPaths": [
+        "graphs.json",
+        "src/graph-manifest.js",
+        "scripts/seed.js",
+        "scripts/validate-data.js",
+        "scripts/docs-stats.js",
+        "data/graph-architecture-decisions.json",
+        "data/project-work.json",
+        "DOCUMENTATION.md",
+        "README.md"
+      ],
+      "verificationCommand": "npm run validate && npm run seed && npm run analyze",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "idea-garden-level-narrative",
+      "name": "Idée · La cité-jardin doit crier sa direction",
+      "nodeType": "narrative",
+      "phrase": "Une carte sans quête ne se lit pas : la ville doit dire où ça va, par où passer et ce qui barre.",
+      "family": "Travail du projet · UX du graphe",
+      "summary": "La vue rendait fidèlement l ontologie sans répondre à aucune question. Les system_state portent tous une stateValence inutilisée, et l anneau de districts ne donnait aucun ordre de lecture.",
+      "workStatus": "accepted",
+      "priority": 86,
+      "autonomyMode": "autonomous",
+      "updatedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "idea"
+    },
+    {
+      "id": "task-garden-level-narrative",
+      "name": "Tâche · Mise en scène narrative de la cité-jardin",
+      "nodeType": "moment",
+      "phrase": "Donner un axe, une avenue, des verrous en travers, des silhouettes de rôle et un briefing au district.",
+      "family": "Travail du projet · UX du graphe",
+      "summary": "Remplacer l anneau de districts par un axe de distance à la cible, calculer l avenue principale et les verrous, distinguer la silhouette (rôle narratif) de la matière (statut épistémique), et exposer un briefing qui ne surestime jamais l état du graphe.",
+      "workStatus": "done",
+      "priority": 86,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "L axe est strictement monotone : toute parcelle d une voie précède celles de la voie suivante.",
+        "Un état indésirable n est jamais présenté comme la destination d un district qui vise autre chose.",
+        "Un district sans état observable affiche une zone de vide nommée au lieu d un bord de page.",
+        "Le briefing distingue verrou ouvert et verrou traité par une réponse non validée.",
+        "Aucun remplissage partiel ne code une catégorie ; seule la lanterne d un phare mesure une quantité réelle.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-garden-level-narrative",
+      "name": "Changement · Axe, avenue, verrous et briefing",
+      "nodeType": "moment",
+      "phrase": "Le cœur Mind Protocol affiche désormais sa cible, son chemin en quatre étapes et ses 61 parcelles sans destination.",
+      "family": "Journal du projet · UX du graphe",
+      "summary": "Module garden-narrative.js (cible, voies, avenue, verrous, vide nommé) couvert par 16 tests ; layout en cinq voies vers la cible ; silhouettes phare, grille, bâtiment et assise ; lanterne allumée au prorata des CAUSES chiffrées ; briefing d entrée ; fonds opaques.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "public/garden-narrative.js",
+        "test/garden-narrative.test.js",
+        "public/garden.js",
+        "public/garden.css",
+        "public/garden.html",
+        "public/garden-affordance.js",
+        "CITY_GARDEN_UX.md",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "idea-garden-object-vocabulary",
+      "name": "Idée · Un objet par type, un raccord par prédicat",
+      "nodeType": "narrative",
+      "phrase": "Un objet doit montrer la fonction que l ontologie lui attribue, et s il la remplit.",
+      "family": "Travail du projet · UX du graphe",
+      "summary": "Quatre silhouettes de rôle pour 30 types laissaient tout se ressembler. Un mécanisme est un moyen de transformer : donc une machine avec entrée et sortie, dont les ports bouchés révèlent le déficit causal objet par objet.",
+      "workStatus": "accepted",
+      "priority": 84,
+      "autonomyMode": "autonomous",
+      "updatedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "idea"
+    },
+    {
+      "id": "task-garden-object-vocabulary",
+      "name": "Tâche · Vocabulaire d objets et de raccords de la cité-jardin",
+      "nodeType": "moment",
+      "phrase": "Donner un objet à chacun des 30 types et un raccord à chacun des 41 prédicats, avec un système de ports.",
+      "family": "Travail du projet · UX du graphe",
+      "summary": "Table traçable type→objet et prédicat→raccord, ports déclarés par type, port non raccordé dessiné bouché, et séquence de blocage en quatre temps qui distingue barrière, choc et bouclier.",
+      "workStatus": "done",
+      "priority": 84,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque type de nœud de l ontologie possède exactement un objet, et aucun objet n est inventé.",
+        "Chaque prédicat actif possède exactement un raccord, et aucun raccord n est inventé.",
+        "Deux types de nœuds ne partagent jamais la même silhouette.",
+        "Un effet recherché ne porte jamais la silhouette d un état observable.",
+        "Un port déclaré non raccordé est rendu bouché, sans dramatisation.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-garden-object-vocabulary",
+      "name": "Changement · Vocabulaire d objets, ports et blocage",
+      "nodeType": "moment",
+      "phrase": "Le corpus affiche 103 machines scellées et 16 qui avalent sans rien produire, objet par objet.",
+      "family": "Journal du projet · UX du graphe",
+      "summary": "Module garden-objects.js couvert par 21 tests : 30 objets, 41 raccords, cinq ports, quatre régimes de machine et la séquence de blocage. Rendu des 30 silhouettes, des ports raccordés ou bouchés, et du blocage en quatre temps avec accumulation du flux, amorce vers le bloqueur et planche d échafaudage pour un ADDRESSES.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "public/garden-objects.js",
+        "test/garden-objects.test.js",
+        "public/garden.js",
+        "public/garden.css",
+        "CITY_GARDEN_UX.md",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-22-garden-endgame-clearing",
+      "name": "Changement · Le jardin-endgame et le trafic des ponts",
+      "nodeType": "moment",
+      "phrase": "Le district Science désigne enfin sa vraie destination : la thèse sur laquelle cinq ouvrages convergent.",
+      "family": "Journal du projet · UX du graphe",
+      "summary": "Point de convergence détecté quel que soit son type et rendu en clairière avec les ouvrages qui le définissent plantés sur son pourtour ; état observable devenu le fruit posé à la sortie ; briefing, avenue, distance et compte des parcelles orphelines alignés sur le jardin ; trafic de porteurs sur les ponts au débit de ce que l arête ose affirmer ; fin de toute troncature des noms.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "public/garden-narrative.js",
+        "test/garden-narrative.test.js",
+        "public/garden.js",
+        "public/garden.css",
+        "CITY_GARDEN_UX.md",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-evidence-appraisal-method",
+      "name": "Tâche · Encoder la méthode d'évaluation des preuves",
+      "nodeType": "moment",
+      "phrase": "La méthode qui juge une preuve entre dans le graphe comme objet versionné, pas comme document annexe.",
+      "family": "Travail du projet · gouvernance scientifique",
+      "summary": "Extraire la méthode SciSense v2.1 en instruments, règles, contrôles mécanisables et vocabulaire, puis l'articuler explicitement avec l'echelle de preuve du projet dont elle raffine le dernier barreau.",
+      "workStatus": "done",
+      "priority": 84,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "La source est datée, hachée et vérifiée par le validateur.",
+        "Les instruments de risque de biais sont rattachés à leur design.",
+        "Les contrôles mécanisables sont séparés de ce qui reste un jugement humain.",
+        "La distinction barreau / certitude / permission est encodée et reliée au pare-feu.",
+        "Les termes du vocabulaire portent context et definition."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-evidence-appraisal-method",
+      "name": "Changement · Méthode d'évaluation des preuves encodée",
+      "nodeType": "moment",
+      "phrase": "Quarante-six nœuds d'évaluation entrent dans le graphe, dont la distinction entre barreau, certitude et permission.",
+      "family": "Journal du projet · gouvernance scientifique",
+      "summary": "Cluster evidence-appraisal-method : source v2.1 hachée, sept axiomes, dix instruments dont GRADE, quatorze règles et contrôles, douze termes définis, deux questions ouvertes. La v2.1 restaure six contrôles perdus en v2 — outcomes fixés avant lecture, direction du biais, biais de spectre et standard de référence, patients contre événements, tau carré et explication de l'hétérogénéité, réévaluation des revues touchées par une rétractation — remonte le contrôle de rétractation en préalable, et ajoute le calcul de valeur prédictive qui rend la fatigue d'alarme concrète.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "data/sources/scisense-appraisal-method-v2.1.md",
+        "data/evidence-appraisal-method.json",
+        "graphs.json",
+        "scripts/seed.js",
+        "data/project-work.json",
+        "SCISENSE_METHOD_REVIEW.md",
+        "DOCUMENTATION.md",
+        "README.md"
+      ],
+      "verificationCommand": "npm run validate && npm run seed && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-22-garden-node-phrase",
+      "name": "Changement · La phrase du nœud rendue lisible sur la ville",
+      "nodeType": "moment",
+      "phrase": "La précision existait déjà dans la donnée : chaque nœud porte une phrase obligatoire que la vue jetait.",
+      "family": "Journal du projet · UX du graphe",
+      "summary": "Le nom d un nœud est une poignée, sa phrase est l énoncé. Les 578 nœuds en portent une, et la carte n affichait que le nom. La phrase est désormais rendue là où l œil s arrête — jardin, pourtour, fruit et avenue — avec l indicateur d état dans la clairière. Le placement de l arc tient compte de l encombrement tangentiel des cartes, sinon les porter les faisait se recouvrir.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "public/garden.js",
+        "public/garden.css",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "clusterId": "project-work",
+      "updatedAt": "2026-07-22",
+      "id": "idea-external-method-intake",
+      "nodeType": "narrative",
+      "name": "Idée · Faire descendre une méthode externe jusqu'à la simulation",
+      "phrase": "Une consultation qui rapporte une méthode ne vaut que si cette méthode devient calculable.",
+      "family": "Travail du projet · consultation externe",
+      "summary": "La première consultation publiée a ramené une métrique nommée et un protocole opérationnel. Tant qu'ils restent du texte attribué à leur auteur, la boucle n'a produit que de la lecture. La piste est de leur faire traverser le graphe jusqu'à la simulation, qui compare déjà trois bras et pourrait porter la mesure.",
+      "workStatus": "proposed",
+      "priority": 72,
+      "autonomyMode": "review_required",
+      "semanticType": "idea"
+    },
+    {
+      "clusterId": "project-work",
+      "updatedAt": "2026-07-23",
+      "id": "task-verify-satopaa-reference",
+      "nodeType": "moment",
+      "name": "Tâche · Vérifier la référence Satopää sur l'extrémisation",
+      "phrase": "Lire la source avant de lui donner le statut de source.",
+      "family": "Travail du projet · provenance",
+      "summary": "Le commentaire de u/ocean_protocol cite les travaux d'extrémisation de Satopää et al. pour la pondération sensible à la corrélation. La référence est consignée comme rapportée, sans nœud de provenance : créer un source_document pour un travail non lu fabriquerait une traçabilité fausse. La tâche consiste à retrouver la publication, la lire, puis décider si elle soutient réellement l'usage qui en est fait.",
+      "workStatus": "done",
+      "priority": 58,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "La publication est identifiée sans ambiguïté : auteurs, titre, année, lieu de publication.",
+        "Un nœud source_document n'est créé que si la publication a été lue et qu'elle traite bien de la pondération sensible à la corrélation.",
+        "Si elle ne soutient pas l'usage rapporté, le résumé de la méthode est corrigé et l'écart est consigné.",
+        "Aucun DERIVED_FROM n'est créé vers une référence non vérifiée."
+      ],
+      "verificationCommand": "npm run validate",
+      "completedAt": "2026-07-22",
+      "semanticType": "task"
+    },
+    {
+      "clusterId": "project-work",
+      "updatedAt": "2026-07-23",
+      "id": "task-double-fault-on-simulation",
+      "nodeType": "moment",
+      "name": "Tâche · Calculer la double faute sur une délibération simulée",
+      "phrase": "Rendre la métrique calculable avant de discuter de son seuil.",
+      "family": "Travail du projet · complétude causale",
+      "summary": "La mesure de double faute et le protocole de permutation des modèles décrivent tous deux une grandeur que la simulation pourrait produire : elle compare déjà trois bras sur une population synthétique commune. La tâche implémente la mesure et fait tourner la permutation à préférences fixées, sans conclure sur le seuil tant que la variance d'auto-cohérence n'est pas mesurée elle aussi.",
+      "workStatus": "done",
+      "priority": 70,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "La double faute est calculée entre bras de simulation et exposée comme métrique nommée, avec son unité et sa méthode de calcul.",
+        "La permutation à préférences fixées produit une variance comparable entre bras.",
+        "La variance d'auto-cohérence d'un bras unique entre graines est mesurée : sans elle le seuil relatif proposé n'est pas évaluable.",
+        "Aucun effectSizePct n'est écrit sur une arête à partir de ces runs sans passer par evidenceBasis simulation.",
+        "Les sorties restent marquées exploratoires tant que la population synthétique n'est pas calibrée."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "completedAt": "2026-07-23",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-23-deliberation-variance-metrics",
+      "nodeType": "moment",
+      "name": "Changement · Mesures de double faute et de variance simulées",
+      "phrase": "La pluralité simulée devient mesurable sans devenir une preuve empirique.",
+      "family": "Travail du projet · simulation",
+      "summary": "Le comparateur comportemental calcule désormais, sur les mêmes personnes synthétiques, le taux de double faute pour chaque paire de bras et la variance de couverture obtenue en permutant les trois bras à préférences fixées. Il mesure aussi, pour chaque bras, la variance d'auto-cohérence du taux de couverture entre trois graines. Le smoke run de 500 personnes sur 30 jours produit des valeurs finies pour les trois mesures ; elles restent exploratoires, portent evidenceBasis simulation, ne génèrent aucun effectSizePct et ne rendent aucun seuil décisionnel évaluable avant calibration et préenregistrement.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "src/simulation/model.js",
+        "src/simulation/behavior-comparison.js",
+        "scripts/run-behavior-comparison.js",
+        "simulation/behavior-profiles.json",
+        "test/behavior-comparison.test.js",
+        "artifacts/simulation/behavior-comparison-smoke.json",
+        "data/project-work.json"
+      ],
+      "completedAt": "2026-07-23",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-satopaa-reference-verified",
+      "nodeType": "moment",
+      "name": "Changement · Référence Satopää vérifiée et consignée",
+      "phrase": "La citation tient : l'extrémisation optimale dépend bien du recouvrement d'information.",
+      "family": "Travail du projet · provenance",
+      "summary": "Vérification faite sur la fiche arXiv 1406.2148, consultée directement. Auteurs, titre, date et résumé confirmés ; le résultat central soutient l'usage qu'en faisait le commentaire. Aucun source_document n'a été créé dans le graphe de design : la publication est destinée au graphe scientifique, et le PDF téléchargé n'a pas pu être identifié avec certitude, donc il ne sert pas de provenance hachée.",
+      "changeKind": "verification",
+      "completedAt": "2026-07-22",
+      "updatedAt": "2026-07-22",
+      "changedPaths": [
+        "data/consultations.json",
+        "data/project-work.json"
+      ],
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-22-vocabulary-gap-detector",
+      "name": "Changement · Détecteur de flou du vocabulaire et de la portée",
+      "nodeType": "moment",
+      "phrase": "Le graphe mesure désormais ce qu il emploie sans l avoir défini et ce qu il affirme sans dire où.",
+      "family": "Journal du projet · complétude",
+      "summary": "Module public/vocabulary-gaps.js couvert par 10 tests : mots employés sans nœud terme, classés par portée inter-clusters, et affirmations sans APPLIES_IN ni périmètre. Constat sur le corpus : 3% de saturation de portée (100 affirmations sur 103 sans périmètre) et graphe premier mot non défini, employé dans 32 nœuds sur 10 clusters. Cité-jardin : liens de termes branchés sur l inspecteur et note de contexte du district affichée en tête du briefing.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "public/vocabulary-gaps.js",
+        "test/vocabulary-gaps.test.js",
+        "public/garden.js",
+        "public/garden.css",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-define-core-vocabulary",
+      "name": "Tâche proposée · Définir le vocabulaire noyau du projet",
+      "nodeType": "moment",
+      "phrase": "Fixer le sens de graphe, mind, preuve, cible et mécanisme par des nœuds terme.",
+      "family": "Travail du projet · vocabulaire",
+      "summary": "Le détecteur classe les mots employés sans définition par portée inter-clusters. Écrire ces définitions fixe le sens des mots du projet : c est un arbitrage doctrinal, il revient à l auteur et ne peut pas être exécuté en autonomie.",
+      "workStatus": "ready",
+      "priority": 82,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chacun des mots de tête porte un nœud terme avec definition et context.",
+        "Les affirmations concernées sont reliées à un nœud context par APPLIES_IN.",
+        "La saturation de portée mesurée par vocabulary-gaps.js progresse."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-native-certainty",
+      "name": "Changement · Certitude native séparée des méthodes de domaine",
+      "nodeType": "moment",
+      "phrase": "Le graphe calcule sa propre certitude ; GRADE devient un instrument qui l alimente, pas le schéma.",
+      "family": "Journal du projet · gouvernance scientifique",
+      "summary": "Correction du cluster evidence-appraisal-method après arbitrage, puis mise en cohérence du cluster graph-architecture. Ajout de la certitude native dérivée des justifications, de la règle d emboîtement des méthodes de domaine, de la règle d écriture de la télémétrie (justification jamais claim), du déport des seuils sur l action, et du plafond hérité par la vulgarisation. Trois raisons conservent les alternatives écartées : encoder GRADE dans le schéma, un circuit de promotion par paliers, un calque de divergences en quarantaine. Le lien qui faisait de GRADE la réponse à la dérivation du palier est retiré ; la question du barreau trop grossier passe en superseded, une nouvelle question porte le calcul restant à écrire. Les formulations résiduelles sur la promotion des claims, E0-E5 et les matrices de permissions sont remplacées par la séparation entre certitude continue et seuil contextuel au point d action.",
+      "workStatus": "delivered",
+      "changeKind": "refactor",
+      "changedPaths": [
+        "data/evidence-appraisal-method.json",
+        "data/graph-architecture-decisions.json",
+        "scripts/seed.js",
+        "DOCUMENTATION.md",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm run seed && npm run analyze",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-22-ontology-in-the-graph",
+      "name": "Changement · L ontologie entre dans le graphe",
+      "nodeType": "moment",
+      "phrase": "Le schéma reste exécutable, mais sa doctrine vit désormais dans le graphe, contestable et justifiée.",
+      "family": "Journal du projet · ontologie",
+      "summary": "Prédicat DEFINES ajouté ; cluster ontology-vocabulary avec 94 termes — un par type, prédicat, statut et famille — dont 54 relocalisent la prose déjà écrite dans l ontologie et 40 déclarent explicitement que leur sens reste à fixer. Le validateur accepte definitionStatus to_define sans inventer de définition. Dix tests cousent le miroir au schéma : couverture exacte, aucune définition reformulée, un terme non défini est une question ouverte et non un fait.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "data/graph-ontology.json",
+        "public/graph-ontology.json",
+        "data/ontology-vocabulary.json",
+        "graphs.json",
+        "scripts/validate-data.js",
+        "scripts/seed.js",
+        "src/server.js",
+        "public/garden-objects.js",
+        "public/iconography.js",
+        "public/garden.html",
+        "public/garden.js",
+        "test/ontology-vocabulary.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-encode-value-sensor-and-loop-transition",
+      "name": "Tâche · Encoder le capteur de valeur et la transition de boucle",
+      "nodeType": "moment",
+      "phrase": "Conserver la proposition économique sans transformer le désaccord sur l'achat de Mind en doctrine.",
+      "family": "Travail du projet · économie Mind",
+      "summary": "Encoder le capteur comportemental, l'attestation typée et coûteuse, les échecs Goodhart et soin invisible, le phasage de fermeture de boucle et la séparation des flux du pont ; représenter l'entrée d'euros comme décision ouverte à trois branches.",
+      "workStatus": "done",
+      "priority": 88,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Les signaux bruts restent séparés de la conclusion signée et reliés à la contrainte de calcul local.",
+        "L'attestation typée porte une question bloquante sur son budget.",
+        "Le phasage subvention, pont plafonné et récursion est représenté sans choisir un seuil non fourni.",
+        "Les conversions producteur et particulier deviennent deux métriques distinctes.",
+        "L'achat investisseur de Mind reste une option non approuvée face aux deux alternatives.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-value-sensor-loop-transition",
+      "name": "Changement · Capteur de valeur et boucle économique phasée",
+      "nodeType": "moment",
+      "phrase": "Le graphe distingue désormais ce qui a été proposé, ce qui peut être mesuré et ce qui reste à arbitrer.",
+      "family": "Journal du projet · économie Mind",
+      "summary": "Ajout du capteur comportemental local comme hypothèse, de l'award typé et coûteux avec budget ouvert, des risques Goodhart et soin invisible, du phasage subvention vers récursion, de deux métriques de sortie euro, et d'une décision à trois options sur l'entrée d'euros.",
+      "workStatus": "delivered",
+      "changeKind": "content",
+      "changedPaths": [
+        "data/economy-price-formation.json",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-define-ontology-predicates",
+      "name": "Tâche · Définir les prédicats de l ontologie",
+      "nodeType": "moment",
+      "phrase": "Écrire dans le graphe le sens et les frontières d usage des 40 prédicats restés à définir.",
+      "family": "Travail du projet · ontologie",
+      "summary": "Après arbitrage explicite de l auteur, les prédicats actifs reçoivent une définition doctrinale qui distingue leur portée, leurs exclusions et les prédicats voisins avec lesquels ils pourraient être confondus.",
+      "workStatus": "done",
+      "priority": 82,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque terme de prédicat actif porte une définition non vide et le statut defined.",
+        "FEEDS, LEADS_TO et CAUSES distinguent explicitement canal, transition causale proposée et effet observable.",
+        "Aucune copie des définitions n est conservée dans le code ou dans le schéma exécutable."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-predicate-definitions",
+      "name": "Changement · Les prédicats reçoivent leur doctrine",
+      "nodeType": "moment",
+      "phrase": "Les mots portés par les arêtes ont désormais un sens explicite, situé et testable dans le graphe lui-même.",
+      "family": "Journal du projet · ontologie",
+      "summary": "Les 40 termes de prédicats auparavant marqués to_define portent désormais leur définition, leur frontière d usage et les distinctions nécessaires avec les relations voisines. Les 41 prédicats actifs, DEFINES compris, sont documented. Un test ferme le trou de couverture et un second protège la séparation FEEDS, LEADS_TO et CAUSES.",
+      "workStatus": "delivered",
+      "changeKind": "content",
+      "changedPaths": [
+        "data/ontology-vocabulary.json",
+        "test/ontology-vocabulary.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-question-endgame-architecture",
+      "name": "Tâche · Encoder l endgame de la question",
+      "nodeType": "moment",
+      "phrase": "Transformer une question située en noyau de réponse auditable à travers des graphes souverains.",
+      "family": "Travail du projet · runtime de question",
+      "summary": "Intégrer le design issu du Science Endgame, du CSG et de l architecture L1–L4 : contexte personnel, profil de graphe, profil d intention, scope hiérarchique, noyau de réponse, membrane inter-graphes et tensions non résolues.",
+      "workStatus": "done",
+      "priority": 91,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Le graphe distingue contexte de question, intention, profil de graphe, plan, noyau de réponse et Answer versionnée.",
+        "Les recherches inter-graphes respectent l absence d accès direct, la membrane et la validation du destinataire.",
+        "Les raisons de design et les alternatives sont encodées séparément de l architecture proposée.",
+        "La tension entre ontologie scientifique propre et schéma L4 canonique reste une question explicite.",
+        "npm run validate et npm test réussissent hors erreurs préexistantes documentées."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-living-study-cluster-endgame",
+      "name": "Changement · L ingestion vise un cluster scientifique vivant",
+      "nodeType": "moment",
+      "phrase": "La réussite de l ingestion se juge par la qualité, la complétude, la fiabilité, l enrichissement et la connectivité du cluster produit.",
+      "family": "Journal du projet · graphe scientifique",
+      "summary": "Le main graph encode l endgame de l ingestion, l immuabilité de la source et le caractère vivant de sa représentation, un vecteur multidimensionnel de qualité, l enrichissement collectif, une bibliothèque versionnée de patterns et des sorties contestables. La revue humaine cesse d être la réponse par défaut à l ambiguïté, l écriture est gouvernée par son contrat plutôt que par l identité de son auteur, et la séparation canonical/staging/runtime/sandbox redevient une option d architecture à comparer.",
+      "workStatus": "delivered",
+      "changeKind": "design_clarification",
+      "changedPaths": [
+        "data/causal-science-implementation.json",
+        "data/project-work.json",
+        "DOCUMENTATION.md"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-22-question-endgame",
+      "name": "Changement · Endgame de la question contextualisée",
+      "nodeType": "moment",
+      "phrase": "Le graphe conserve désormais la question comme composition de contexte, intention, grammaire locale et noyau de réponse.",
+      "family": "Journal du projet · runtime de question",
+      "summary": "Nouveau cluster question-endgame : trois profils de graphe, profils d intention, scope hiérarchique avant similarité, retrieval hybride, motifs et noyau minimal, contre-recherche, Answer versionnée, troncature explicite et orchestration par membranes. Six raisons gardent le pourquoi, trois options maintiennent l architecture en débat et quatre questions bloquantes exposent les tensions. Validation et seed réussis sur 782 nœuds et 1 216 relations ; 182 tests passent.",
+      "workStatus": "delivered",
+      "changeKind": "design_clarification",
+      "changedPaths": [
+        "data/question-endgame.json",
+        "graphs.json",
+        "scripts/seed.js",
+        "public/index.html",
+        "public/garden.html",
+        "public/garden.js",
+        "README.md",
+        "DOCUMENTATION.md",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run seed",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-structure-seven-economic-arbitrations",
+      "name": "Tâche · Structurer les sept arbitrages économiques",
+      "nodeType": "moment",
+      "phrase": "Présenter chaque choix avec son problème, ses options et une recommandation sans le déclarer approuvé.",
+      "family": "Travail du projet · économie Mind",
+      "summary": "Transformer le raisonnement narratif en décisions gouvernées sur la nature de Mind, la frontière productive, le capteur, le budget d'attestation, le soin invisible, l'entrée des euros et le règlement transitoire.",
+      "workStatus": "done",
+      "priority": 89,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque arbitrage expose contexte et problème dans la décision.",
+        "Chaque solution possible est une option non approuvée avec bénéfices, risques et conditions.",
+        "Chaque recommandation est distincte de la décision et reliée par RECOMMENDS.",
+        "Les combinaisons recommandées relient explicitement toutes les options concernées.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-seven-economic-arbitrations",
+      "name": "Changement · Sept arbitrages économiques comparables",
+      "nodeType": "moment",
+      "phrase": "Le cluster permet désormais de lire les compromis et la recommandation avant de décider.",
+      "family": "Journal du projet · économie Mind",
+      "summary": "Ajout des décisions et options sur nature monétaire, frontière récursive, capteur local, budget égal et soin multicanal ; enrichissement de l'entrée des euros et de la transition producteur ; recommandations liées sans approbation implicite.",
+      "workStatus": "delivered",
+      "changeKind": "content",
+      "changedPaths": [
+        "data/economy-price-formation.json",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-human-valence-endgame",
+      "name": "Tâche · Encoder l endgame de la valence humaine",
+      "nodeType": "moment",
+      "phrase": "Faire du bien-être humain continu la finalité mesurable dont la création de valeur et les prix Mind cherchent à dériver.",
+      "family": "Travail du projet · endgame de la valeur",
+      "summary": "Décision doctrinale de l auteur : la valence est un score humain continu de -1 à +1, approximé par des capteurs progressivement enrichis — temporalité des messages à l IA personnelle, biométrie, comportements et interprétation sémantique — puis utilisé pour estimer la valeur créée et informer les prix Mind.",
+      "workStatus": "done",
+      "priority": 94,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "La valence humaine est un float borné de -1 à +1 ; zéro reste distinct d une valeur inconnue.",
+        "L ancien enum desirable, undesirable, mixed est renommé orientation de l état et n est plus appelé valence.",
+        "Les quatre familles de capteurs sont ordonnées comme approximations révisables, jamais comme définitions du bonheur.",
+        "Le delta de valence attribuable alimente le mécanisme de prix Mind sans masquer incertitude, consentement, vie privée ni risque de Goodhart.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-compare-l4-domain-ontology-microbe",
+      "name": "Tâche · Comparer L4 natif et ontologie de domaine sur le microbe",
+      "nodeType": "moment",
+      "phrase": "Encoder les raisons, effets, risques et domaines d application des deux méthodes, puis les éprouver sur le même cas microbien.",
+      "family": "Travail du projet · endgame de la question",
+      "summary": "La comparaison oppose une représentation directe par les cinq formes L4 à une ontologie logique de domaine projetée sur L4. Elle distingue conséquences garanties, effets plausibles et inconnues expérimentales sans choisir prématurément une méthode.",
+      "workStatus": "done",
+      "priority": 93,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Les deux méthodes sont représentées comme options d une décision encore ouverte.",
+        "Chaque option expose son origine, ses bénéfices, ses risques, ses effets attendus et ses conditions d application ou de non-application.",
+        "Le cas du microbe est encodé avec les cinq types L4 et sert de protocole comparatif.",
+        "Les conséquences garanties par construction sont séparées des effets plausibles à tester, sans pourcentage inventé.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-microbe-ontology-comparison",
+      "name": "Changement · L4 natif et ontologie riche comparés sur le microbe",
+      "nodeType": "moment",
+      "phrase": "Le graphe distingue désormais représentabilité, précision de retrieval, interopérabilité et coût de gouvernance avant de choisir une ontologie.",
+      "family": "Journal du projet · endgame de la question",
+      "summary": "Ajout d une décision à deux options non tranchée, de leurs raisons d origine, bénéfices, risques, conditions d application et effets attendus. Le cas microbien instancie Actor, Space, Moment, Narrative et Thing ; un protocole de double encodage doit départager les effets plausibles sans inventer de probabilités.",
+      "workStatus": "delivered",
+      "changeKind": "content",
+      "changedPaths": [
+        "data/question-endgame.json",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run seed",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-encode-physical-grammar-and-universality-proof",
+      "name": "Tâche · Encoder la grammaire physique et son obligation d universalité",
+      "nodeType": "moment",
+      "phrase": "Documenter pourquoi L4 fixe la physique plutôt que les termes, quels effets sont attendus et comment prouver que sa dynamique permet une logique universelle.",
+      "family": "Travail du projet · endgame du graphe",
+      "summary": "La doctrine sépare vocabulaire multilingue ouvert, schéma physique fini et calcul dynamique. La complétude de Turing devient une exigence explicite mais non acquise, assortie d un périmètre de preuve et d une réduction formelle à exécuter.",
+      "workStatus": "done",
+      "priority": 95,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Le graphe explique pourquoi les cinq types sont des rôles physiques et non une taxonomie du monde.",
+        "Le lien unique est justifié par ses degrés physiques, sa mémoire sémantique et les effets attendus de leur composition.",
+        "Les bénéfices, risques et conditions de succès du vocabulaire ouvert dans les champs sont explicites.",
+        "La complétude de Turing est une obligation non prouvée portant sur un système de transition précisément délimité.",
+        "Un protocole exige une réduction depuis un modèle universel connu sans déléguer le calcul au LLM, au texte ou à l orchestrateur.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-physical-grammar-universality-gap",
+      "name": "Changement · La grammaire physique expose son obligation de preuve",
+      "nodeType": "moment",
+      "phrase": "Le graphe explique désormais pourquoi L4 garde une physique finie face à un vocabulaire infini et refuse de confondre analogie computationnelle avec complétude de Turing prouvée.",
+      "family": "Journal du projet · endgame du graphe",
+      "summary": "Ajout de la doctrine schéma physique contre taxonomie, des rôles dynamiques des cinq formes, de l état du lien universel, des patrons de domaine non canoniques, des effets attendus et du gap formel. Une preuve par réduction depuis une machine universelle doit délimiter graphe, tick, ordonnanceur et mémoire, avec précision finie et sans oracle LLM.",
+      "workStatus": "delivered",
+      "changeKind": "content",
+      "changedPaths": [
+        "data/question-endgame.json",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run seed",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-map-current-ontology-to-l4",
+      "name": "Tâche · Mapper l ontologie actuelle vers L4",
+      "nodeType": "moment",
+      "phrase": "Traduire exhaustivement les types et prédicats actuels vers les cinq rôles et le lien universel, sans masquer les pertes d information.",
+      "family": "Travail du projet · migration L4",
+      "summary": "Le livrable associe les 30 types actuels à un rôle L4 par défaut avec overrides, puis donne aux 41 prédicats une signature physique initiale, un patron de synthèse et un statut de réversibilité. BLOCKS sert de cas révélateur du manque d un axe d opposition signé.",
+      "workStatus": "done",
+      "priority": 96,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Les 30 types actifs possèdent exactement un rôle L4 par défaut et une justification.",
+        "Les 41 prédicats actifs possèdent exactement un profil de traduction vers link.",
+        "Les profils séparent valeurs dynamiques et prototypes sémantiques d initialisation.",
+        "Le décodage refuse l égalité naïve et expose les traductions sémantiquement lossy.",
+        "BLOCKS est illustré avec sa signature proposée et le gap d opposition signé.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-l4-ontology-mapping",
+      "name": "Changement · Mapping exhaustif de l ontologie vers L4",
+      "nodeType": "moment",
+      "phrase": "Les 30 types et 41 prédicats actuels disposent désormais d une traduction L4 explicite, testée et honnête sur ses pertes.",
+      "family": "Journal du projet · migration L4",
+      "summary": "Nouveau cluster l4-ontology-mapping : rôles physiques par défaut et overrides pour chaque type ; prototypes polarity, hierarchy, permanence et synthèses pour chaque prédicat ; politique de décodage ambigu ; cas BLOCKS révélant l absence d opposition signée. Quatre tests garantissent couverture et invariants du dictionnaire.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "data/l4-ontology-mapping.json",
+        "graphs.json",
+        "scripts/seed.js",
+        "test/l4-ontology-mapping.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && node --test test/l4-ontology-mapping.test.js && npm run seed -- --graph=design",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-birth-l1-nlr",
+      "name": "Tâche · Faire naître le L1 de NLR",
+      "nodeType": "moment",
+      "phrase": "Passer du blueprint abstrait à une instance concrète : un graphe personnel pour NLR, avec son nom comme premier contenu.",
+      "family": "Travail du projet · instance L1",
+      "summary": "Le blueprint L1 décrit une structure universelle et le seed reste une question ouverte ; cette tâche matérialise la première instance. Un graphe FalkorDB séparé, sa propre ontologie minimale (les onze types du blueprint), une frontière stricte sans arête inter-graphes, et un premier thing : un fait déclaré donnant le nom du citoyen, relié à son ancre d identité.",
+      "workStatus": "done",
+      "priority": 88,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Un graphe l1-nlr distinct est déclaré, actif, avec sa propre ontologie et sa base FalkorDB.",
+        "L ontologie L1 porte les onze types du blueprint et ne contient aucune doctrine de design.",
+        "La frontière est stricte : self-nlr référence actor-nlr par identifiant stable, jamais par une arête.",
+        "Le premier contenu est un fait déclaré donnant le nom, portant sa provenance et sa nature.",
+        "npm run validate passe sur les trois graphes actifs."
+      ],
+      "verificationCommand": "npm run validate && npm run l1:seed",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-23-birth-l1-nlr",
+      "name": "Changement · Le premier graphe personnel L1 naît",
+      "nodeType": "moment",
+      "phrase": "NLR reçoit son L1 : un graphe séparé, une ontologie minimale, et son nom comme premier atome déclaré.",
+      "family": "Journal du projet · instance L1",
+      "summary": "Le graphe l1-nlr est déclaré et actif avec l ontologie l1/ontology.json (onze types du blueprint, familles, contraintes, quantification, hiérarchie) et le dataset identity.json. Il naît avec l ancre d identité self-nlr et l atome memory-name-nlr donnant le nom Nicolas / NLR comme fait déclaré sourcé. Writer dédié l1-seed.js, sur le modèle de l ingestion scientifique, car le seed de design est taillé pour son ontologie. Frontière stricte : référence par correspondsTo, aucune arête inter-graphes.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "l1/ontology.json",
+        "l1/data/identity.json",
+        "graphs.json",
+        "scripts/l1-seed.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm run l1:seed",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-instantiate-prediction-ledger",
+      "name": "Tâche · Démarrer le journal scellé de prédictions",
+      "nodeType": "moment",
+      "phrase": "Passer du district de design à un appareil qui produit des chiffres falsifiables : sceller ce soir, noter demain.",
+      "family": "Travail du projet · moteur de prédiction",
+      "summary": "Le corpus n a que deux jours d histoire et aucun commit : rien à rétrodire. La décision est donc de démarrer l accumulation. Un module de journal append-only avec sceau par hash, un observateur déterministe qui lit l état du dépôt et les traces de session, un calcul de baseline de routine honnête sur sa propre pauvreté, l émission scellée du soir et la notation du matin. En parallèle, le questionnaire de plafond d auto-cohérence à remplir en deux passages espacés de trois semaines.",
+      "workStatus": "done",
+      "priority": 89,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque prédiction est scellée par un hash avant l issue ; toute altération est détectée et le journal refuse d écraser un jour déjà scellé.",
+        "La vérité de terrain est produite par un observateur déterministe, jamais par une notation humaine.",
+        "Le score rend Brier, log loss et surtout l écart à la baseline de routine, en séparant issues propres et contaminées.",
+        "La baseline déclare sa dégénérescence tant que l histoire tient sur moins de sept jours, au lieu d inventer un taux.",
+        "La première période, non contaminée, est datée avant qu un moteur agissant n existe.",
+        "npm run validate et npm test réussissent sur le périmètre du journal."
+      ],
+      "verificationCommand": "node --test test/prediction-ledger.test.js",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-23-prediction-ledger",
+      "name": "Changement · Le moteur de prédiction quitte le design et commence à mesurer",
+      "nodeType": "moment",
+      "phrase": "Un journal scellé émet des prédictions datées et les note contre la réalité, sans notation humaine ni chiffre inventé.",
+      "family": "Journal du projet · moteur de prédiction",
+      "summary": "Première implémentation de mech-prediction-ledger et mech-skill-scoring-against-routine-baseline : module de journal, observateur déterministe, baseline de routine, scripts predict:day et score:day, questionnaire de plafond d auto-cohérence. Engine v0 a scellé ses prédictions pour le 2026-07-24 sur période propre. La baseline est déclarée dégénérée : deux jours d histoire, donc aucune compétence encore interprétable.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "src/prediction-ledger.js",
+        "src/prediction-observer.js",
+        "scripts/prediction-baseline.js",
+        "scripts/predict-day.js",
+        "scripts/score-day.js",
+        "scripts/self-consistency.js",
+        "artifacts/prediction/self-consistency-questions.json",
+        "artifacts/prediction/engine-v0.json",
+        "package.json",
+        "test/prediction-ledger.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "node --test test/prediction-ledger.test.js",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-human-prediction-engine-endgame",
+      "name": "Tâche · Encoder l endgame du moteur de prédiction humaine",
+      "nodeType": "moment",
+      "phrase": "Prédire en permanence ce que la personne va faire, observer, scorer, corriger — sans que le score devienne une fin.",
+      "family": "Travail du projet · moteur de prédiction",
+      "summary": "Intuition de l auteur : la modélisation correcte d un humain par son IA passe par une prédiction continue de ses comportements, confrontée au réel, avec un moteur d apprentissage. Le district encode cette boucle et les trois dangers qui lui sont propres : agir sur sa prédiction, rendre la personne prédictible, et transformer le journal des prédictions en dossier.",
+      "workStatus": "done",
+      "priority": 91,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Toute prédiction est scellée avant l issue dans un journal append-only.",
+        "Le score est un écart à une baseline de routine, jamais une exactitude brute.",
+        "Une issue précédée d une action du système n entraîne pas le modèle de la personne.",
+        "La prédictibilité n est jamais une cible, et le taux de surprise n alimente pas la boucle d apprentissage.",
+        "Une prédiction ne s affiche jamais comme un fait, et six domaines restent à affichage et circulation restreints.",
+        "Une baisse de score reste une hypothèse à deux branches avant d être un motif de réentraînement.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-human-prediction-engine-endgame",
+      "name": "Changement · Le moteur de prédiction continue entre dans le graphe",
+      "nodeType": "moment",
+      "phrase": "La réalité écrit les questions et note les réponses, ce qui supprime l auto-notation et ouvre trois dangers nouveaux.",
+      "family": "Journal du projet · moteur de prédiction",
+      "summary": "Nouveau cluster human-prediction-engine : cinq axiomes de doctrine, une boucle en six mécanismes, quatre états mesurés dont trois risques, cinq métriques et trois verrous ouverts. L ontologie 1.17.0 ajoute predictionContract et le validateur contrôle que les six domaines à prédiction restreinte sont énumérés à l identique dans le schéma et sur le nœud de retenue. L hypothèse centrale traite le verrou de fidélité laissé ouvert par la consultation externe.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "data/human-prediction-engine-endgame.json",
+        "data/graph-ontology.json",
+        "public/graph-ontology.json",
+        "data/ontology-vocabulary.json",
+        "graphs.json",
+        "scripts/validate-data.js",
+        "scripts/seed.js",
+        "src/server.js",
+        "public/index.html",
+        "GRAPH_NOMENCLATURE.md",
+        "test/human-prediction-engine-endgame.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run seed",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-harvest-preference-prediction-consultation",
+      "name": "Tâche · Récolter la consultation sur la mesure de fidélité",
+      "nodeType": "moment",
+      "phrase": "Transformer un fil Reddit sur un auto-test raté en protocole capable d échouer, sans en tirer le moindre chiffre.",
+      "family": "Travail du projet · consultation externe",
+      "summary": "Le post du 22 juillet 2026 soumet un auto-test de prédiction des préférences déclarées, avec ses défauts nommés par son auteur. La récolte encode l échange comme consultation, atomise les positions rapportées, les attribue à leurs auteurs, puis en dérive un protocole préenregistré et deux limites de portée. Le score 31/50 n entre pas dans le graphe.",
+      "workStatus": "done",
+      "priority": 90,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Les cinq positions rapportées sont attribuées à leur auteur et reliées à la consultation par ANSWERS.",
+        "Aucune réponse ne porte de probabilité, de confiance ou de taille d effet, et aucune ne soutient d estimation.",
+        "Le rejet sans argument est conservé tel quel plutôt qu écarté.",
+        "Le protocole dérivé traite la question sans la refermer : elle reste unresolved.",
+        "Prédiction et compréhension deviennent deux revendications séparées par un axiome, pas par une remarque.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-preference-prediction-consultation",
+      "name": "Changement · La consultation externe durcit le verrou de fidélité",
+      "nodeType": "moment",
+      "phrase": "Un protocole préenregistré, un plafond d auto-cohérence et deux limites de portée entrent dans le district du seed.",
+      "family": "Journal du projet · consultation externe",
+      "summary": "Récolte du fil r/artificial du 22 juillet 2026 : un acteur, une consultation récoltée, trois méthodes et deux affirmations rapportées. Le district l1-seed-import gagne un protocole de réfutation, une métrique de plafond d auto-cohérence, un verrou de dépendance à l état qui atteint aussi l estimation de valence, et deux axiomes de portée — absence de vérité intérieure à lire, et prédiction distincte de compréhension.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "data/consultations.json",
+        "data/l1-seed-import-endgame.json",
+        "test/l1-seed-import-endgame.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run seed",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-l1-seed-import-endgame",
+      "name": "Tâche · Encoder l endgame du seed et de l import",
+      "nodeType": "moment",
+      "phrase": "Utiliser tout le corpus déjà disponible d une personne pour que son graphe démarre au plus près de sa vie déjà vécue.",
+      "family": "Travail du projet · seed et import",
+      "summary": "Décision de l auteur : le seed est différent pour chaque utilisateur là où le blueprint est commun. Documents, photos, vidéos et espaces de stockage sont importés de manière atomisée et non comme fichiers, chaque atome portant sa source, sa méthode, sa confiance et la nature de son affirmation.",
+      "workStatus": "done",
+      "priority": 93,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Rien n entre entier : l unité mémorisée, corrigeable et oubliable est l atome, relié à son origine exacte.",
+        "Fait déclaré, observation, inférence et préférence restent distincts quel que soit le volume de données.",
+        "Un seed plein ne contredit pas l interdit de préremplissage : la matière vient de la personne, pas de l éditeur.",
+        "La révocation d une source remonte jusqu aux atomes dérivés et aux inférences.",
+        "Les atomes concernant un tiers identifiable sont marqués, locaux et sans portée externe.",
+        "La fidélité se constate auprès de la personne décrite, jamais auprès du modèle qui a produit le seed.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-l1-seed-import-endgame",
+      "name": "Changement · Le seed reconstitue une vie à partir du corpus de la personne",
+      "nodeType": "moment",
+      "phrase": "L import atomise documents, photos, vidéos et drive en faits sourcés, corrigeables et oubliables un par un.",
+      "family": "Journal du projet · seed et import",
+      "summary": "Nouveau cluster l1-seed-import : trois axiomes de doctrine d import, un pipeline en six étapes, une échelle de quatre sources, quatre états mesurés dont trois risques et trois verrous ouverts — consentement des tiers, révocation des atomes dérivés, mesure de fidélité. L ontologie 1.16.0 ajoute importContract et sa règle de frontière avec l interdit de préremplissage ; le validateur contrôle que chaque catégorie de source déclarée est portée par exactement une méthode du graphe.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "data/l1-seed-import-endgame.json",
+        "data/graph-ontology.json",
+        "public/graph-ontology.json",
+        "data/ontology-vocabulary.json",
+        "graphs.json",
+        "scripts/validate-data.js",
+        "scripts/seed.js",
+        "src/server.js",
+        "public/index.html",
+        "GRAPH_NOMENCLATURE.md",
+        "test/l1-seed-import-endgame.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run seed",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-l1-blueprint",
+      "name": "Tâche · Encoder le contrat de naissance du L1",
+      "nodeType": "moment",
+      "phrase": "Décrire ce que tout citoyen reçoit à la création de son graphe personnel, sans décrire ce qu il croit.",
+      "family": "Travail du projet · blueprint L1",
+      "summary": "Décision de l auteur : encoder d abord le blueprint — structure universelle, capacités, patterns, permissions et invariants — et laisser le seed concret comme question ouverte déclarée. La règle universalité de la structure, souveraineté du contenu est posée comme axiome constitutionnel plutôt que comme décision de design révisable.",
+      "workStatus": "done",
+      "priority": 92,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Le blueprint décrit une structure et jamais un contenu ; sept catégories de préremplissage sont interdites nommément.",
+        "Les trois couches constitution, seed et état citoyen portent des droits d écriture distincts.",
+        "Le savoir partagé entre par référence versionnée et annotation, jamais par copie présentée comme vérité locale.",
+        "Le seed concret reste une question ouverte, non une spécification anticipée.",
+        "Le contrat est ancré des deux côtés : le schéma et l axiome de prohibition énumèrent les mêmes catégories.",
+        "npm run validate et npm test réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-l1-blueprint",
+      "name": "Changement · Le L1 reçoit un contrat de naissance explicite",
+      "nodeType": "moment",
+      "phrase": "Le graphe dit désormais avec quelle structure naît un citoyen, et refuse de dire ce qu il pense.",
+      "family": "Journal du projet · blueprint L1",
+      "summary": "Nouveau cluster l1-blueprint : deux axiomes constitutionnels, huit pièces de structure, trois couches de droits d écriture, deux risques mesurés et trois verrous ouverts dont la spécification du seed. L ontologie 1.15.0 ajoute blueprintContract et le validateur contrôle la réciprocité entre les catégories interdites du schéma et celles portées par l axiome de prohibition.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "data/l1-blueprint.json",
+        "data/graph-ontology.json",
+        "public/graph-ontology.json",
+        "data/ontology-vocabulary.json",
+        "graphs.json",
+        "scripts/validate-data.js",
+        "scripts/seed.js",
+        "src/server.js",
+        "public/index.html",
+        "GRAPH_NOMENCLATURE.md",
+        "test/l1-blueprint.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run seed",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "change-2026-07-22-human-valence-endgame",
+      "name": "Changement · Le bien-être humain devient le signal terminal de valeur",
+      "nodeType": "moment",
+      "phrase": "Mind distingue désormais l orientation normative des états et la valence humaine continue dont le delta attribuable informe les prix.",
+      "family": "Journal du projet · endgame de la valeur",
+      "summary": "Nouveau cluster human-valence-endgame : axiome terminal, score valenceScore [-1,+1], delta attribuable, protocole cumulatif en quatre capteurs, mécanisme de prix et verrous d attribution et d agrégation. L ancien enum stateValence est renommé stateOrientation dans tout le corpus actif et l ontologie 1.14.0 valide séparément orientation, score continu et delta.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "data/human-valence-endgame.json",
+        "data/graph-ontology.json",
+        "public/graph-ontology.json",
+        "data/ontology-vocabulary.json",
+        "graphs.json",
+        "scripts/validate-data.js",
+        "scripts/seed.js",
+        "src/server.js",
+        "src/gap-proposals.js",
+        "public/app.js",
+        "public/copy-content.js",
+        "public/garden.js",
+        "public/garden.css",
+        "public/garden.html",
+        "public/garden-narrative.js",
+        "public/graph-analysis.js",
+        "public/index.html",
+        "GRAPH_NOMENCLATURE.md",
+        "DOCUMENTATION.md",
+        "README.md",
+        "test/human-valence-endgame.test.js",
+        "test/causal-contract.test.js",
+        "test/gap-proposals.test.js",
+        "test/graph-analysis.test.js",
+        "test/garden-narrative.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run seed",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-extend-l4-signed-conditional-temporal-physics",
+      "name": "Tâche · Étendre L4 avec une physique signée, conditionnelle et temporelle",
+      "nodeType": "moment",
+      "phrase": "Remplacer la force directionnelle uniquement positive par une influence signée et expliciter portes, délais, durées et états temporels.",
+      "family": "Travail du projet · migration L4",
+      "summary": "La décision de design conserve les deux sens de polarity mais étend chacun à [-1,1]. Elle ajoute une conditionalité calculée par sous-graphe et sépare temporalité primitive, dynamique et dérivée, sans déclarer prématurément la complétude de Turing.",
+      "workStatus": "done",
+      "priority": 98,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Polarity est une paire directionnelle dont chaque composante est bornée dans [-1,1].",
+        "BLOCKS, CONTRADICTS, PRESSURES et MITIGATES possèdent une influence négative justifiée.",
+        "Gate est calculé par un sous-graphe et aucune expression logique libre n est stockée sur le lien.",
+        "Delay, duration, recency, stability et friction ont des rôles non redondants documentés.",
+        "Une loi de propagation explique la composition et ses limites.",
+        "La complétude de Turing reste une question formelle bloquante.",
+        "npm run validate et les tests du mapping réussissent."
+      ],
+      "verificationCommand": "npm run validate && node --test test/l4-ontology-mapping.test.js && npm run seed -- --graph=design",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-l4-signed-conditional-temporal-physics",
+      "name": "Changement · L4 porte inhibition, conditions et temps",
+      "nodeType": "moment",
+      "phrase": "Le lien universel distingue désormais direction et signe, peut être ouvert par une condition graphe et possède une dynamique temporelle explicite.",
+      "family": "Journal du projet · migration L4",
+      "summary": "Le cluster l4-ontology-mapping définit onze dimensions, leurs catégories et invariants, une loi de propagation, la conditionalité comme sous-graphe et le reste à prouver pour la complétude de Turing. BLOCKS passe à [-0.8,0.0] et les relations adverses reçoivent des prototypes négatifs.",
+      "workStatus": "delivered",
+      "changeKind": "content",
+      "changedPaths": [
+        "data/l4-ontology-mapping.json",
+        "test/l4-ontology-mapping.test.js",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && node --test test/l4-ontology-mapping.test.js && npm run seed -- --graph=design",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-justify-every-l4-dimension",
+      "name": "Tâche · Justifier chaque dimension du noyau ou la supprimer",
+      "nodeType": "moment",
+      "phrase": "Soumettre les onze dimensions à un critère d admission unique et retirer celles qui n y survivent pas.",
+      "family": "Travail du projet · migration L4",
+      "summary": "Le critère retenu est qu un attribut n est admis que si l on peut nommer deux situations réelles qui deviennent indiscernables sans lui. Chaque dimension survivante reçoit un terme, une note d emploi, son test de séparation et un exemple pris dans le graphe. La revue précédente avait accepté friction sur la seule affirmation que son rôle était non redondant, sans jamais produire la paire qu elle sépare.",
+      "workStatus": "done",
+      "priority": 97,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque dimension conservée possède un terme, une définition, une note d emploi, un test de séparation et un exemple.",
+        "Toute dimension qui ne sépare aucune paire est supprimée ou rétrogradée, et la raison est consignée.",
+        "La suppression conserve la question de fond qu elle masquait au lieu de la faire disparaître.",
+        "npm run validate et la suite de tests réussissent."
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run seed",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-project-graph-into-l4-form",
+      "name": "Tâche · Passer le graphe dans la forme L4 et mesurer la perte",
+      "nodeType": "moment",
+      "phrase": "Traduire tout le corpus en rôles physiques et liens universels, puis tenter de retrouver les prédicats sans leurs étiquettes.",
+      "family": "Travail du projet · migration L4",
+      "summary": "La traduction n est pas jugée sur sa faisabilité mais sur sa réversibilité. Le décodeur ne dispose que des quatre nombres et des types des extrémités ; tout lien qu il ne sait pas trancher doit être déclaré ambigu et non attribué au plus proche voisin. La projection reste un artefact et ne remplace aucune donnée.",
+      "workStatus": "done",
+      "priority": 96,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Tous les nœuds reçoivent un rôle physique et tous les liens une signature.",
+        "Le rapport chiffre le taux de retour arrière et la perte par mode de décodage.",
+        "Aucun lien n est décodé vers un prédicat faux.",
+        "Les collisions résiduelles sont nommées dans le graphe plutôt que laissées dans un rapport.",
+        "Les overrides de type sont signalés et jamais appliqués automatiquement."
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run project:l4",
+      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "change-2026-07-22-l4-dimensions-and-projection",
+      "name": "Changement · Le noyau perd friction, gagne ses termes, et le graphe est projeté",
+      "nodeType": "moment",
+      "phrase": "Onze dimensions passent au critère d admission : dix survivent avec terme et justification, friction est supprimée et recency rétrogradée.",
+      "family": "Journal du projet · migration L4",
+      "summary": "Mapping 0.3.0. Friction est retirée du noyau parce qu elle multipliait comme weight sans loi d evolution distincte : aucune observation ne la séparait de lui. La non-linéarité qu elle masquait devient une question ouverte qui bloque la loi de propagation, laquelle reste un produit de facteurs positifs donc incapable de porte AND. Recency est rétrogradée en cache dérivé de last_traversed_at_s. Les dix dimensions restantes reçoivent chacune un terme, une note d emploi, un test de séparation et un exemple pris dans le graphe, rattachés au noyau par DEFINES. La projection npm run project:l4 traduit 901 nœuds et 1368 liens et retrouve 96,1 pour cent des prédicats sans leur étiquette ; toute la perte tombe dans le mode semantic_required et se concentre sur la famille scénario, désormais consignée comme collision mesurée.",
+      "workStatus": "delivered",
+      "changeKind": "feature",
+      "changedPaths": [
+        "data/l4-ontology-mapping.json",
+        "src/l4-projection.js",
+        "scripts/project-l4.js",
+        "test/l4-ontology-mapping.test.js",
+        "test/l4-projection.test.js",
+        "package.json",
+        "data/project-work.json"
+      ],
+      "verificationCommand": "npm run validate && npm test && npm run project:l4 && npm run seed",
+      "updatedAt": "2026-07-22",
+      "completedAt": "2026-07-22",
+      "clusterId": "project-work",
+      "semanticType": "change"
+    },
+    {
+      "id": "task-role-review-actor",
+      "name": "Tâche · Confirmer le rôle des 13 nœuds actor",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 13 nœuds actor ; une règle d'override peut en faire des autre rôle.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 13 nœuds de type actor ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud actor porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-unlock",
+      "name": "Tâche · Confirmer le rôle des 8 nœuds unlock",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 8 nœuds unlock ; une règle d'override peut en faire des thing.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 8 nœuds de type unlock ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud unlock porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-mechanism",
+      "name": "Tâche · Confirmer le rôle des 157 nœuds mechanism",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 157 nœuds mechanism ; une règle d'override peut en faire des thing/moment.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 157 nœuds de type mechanism ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud mechanism porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-institution",
+      "name": "Tâche · Confirmer le rôle des 31 nœuds institution",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 31 nœuds institution ; une règle d'override peut en faire des actor/space.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 31 nœuds de type institution ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud institution porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-economic-mechanism",
+      "name": "Tâche · Confirmer le rôle des 32 nœuds economic_mechanism",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 32 nœuds economic_mechanism ; une règle d'override peut en faire des thing/moment.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 32 nœuds de type economic_mechanism ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud economic_mechanism porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-decision",
+      "name": "Tâche · Confirmer le rôle des 23 nœuds decision",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 23 nœuds decision ; une règle d'override peut en faire des autre rôle.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 23 nœuds de type decision ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud decision porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-system-state",
+      "name": "Tâche · Confirmer le rôle des 38 nœuds system_state",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 38 nœuds system_state ; une règle d'override peut en faire des moment.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 38 nœuds de type system_state ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud system_state porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-metric",
+      "name": "Tâche · Confirmer le rôle des 55 nœuds metric",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 55 nœuds metric ; une règle d'override peut en faire des thing.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 55 nœuds de type metric ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud metric porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-context",
+      "name": "Tâche · Confirmer le rôle des 6 nœuds context",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 6 nœuds context ; une règle d'override peut en faire des autre rôle.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 6 nœuds de type context ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud context porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-protocol",
+      "name": "Tâche · Confirmer le rôle des 8 nœuds protocol",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 8 nœuds protocol ; une règle d'override peut en faire des moment.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 8 nœuds de type protocol ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud protocol porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-method",
+      "name": "Tâche · Confirmer le rôle des 45 nœuds method",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 45 nœuds method ; une règle d'override peut en faire des thing/moment.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 45 nœuds de type method ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud method porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-observation",
+      "name": "Tâche · Confirmer le rôle des 6 nœuds observation",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 6 nœuds observation ; une règle d'override peut en faire des thing.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 6 nœuds de type observation ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud observation porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-experiment",
+      "name": "Tâche · Confirmer le rôle des 14 nœuds experiment",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 14 nœuds experiment ; une règle d'override peut en faire des narrative.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 14 nœuds de type experiment ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud experiment porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "task-role-review-change",
+      "name": "Tâche · Confirmer le rôle des 37 nœuds change",
+      "nodeType": "moment",
+      "phrase": "Le rôle par défaut a été écrit sur 37 nœuds change ; une règle d'override peut en faire des thing.",
+      "family": "Migration L4 · revue des rôles",
+      "summary": "Les 37 nœuds de type change ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
+      "workStatus": "ready",
+      "priority": 40,
+      "autonomyMode": "autonomous",
+      "acceptanceCriteria": [
+        "Chaque nœud change porte roleArbitration=confirmed après relecture.",
+        "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
+        "La facette nodeType reste inchangée.",
+        "npm run validate réussit."
+      ],
+      "verificationCommand": "npm run validate",
+      "updatedAt": "2026-07-23",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    }
+  ],
+  "links": [
+    {
+      "source": "idea-resolve-mind-deployment-date",
+      "target": "task-resolve-mind-deployment-date",
+      "type": "PROMOTES_TO",
+      "justification": "Le conflit détecté par l’analyse devient une tâche de vérification bornée, sans décider implicitement quelle chronologie est correcte."
+    },
+    {
+      "source": "task-resolve-mind-deployment-date",
+      "target": "repo-claim-token-year",
+      "type": "TARGETS",
+      "justification": "La tâche doit vérifier la clarification qui distingue le nom du standard SPL de l’année de déploiement."
+    },
+    {
+      "source": "task-resolve-mind-deployment-date",
+      "target": "hypothesis-mind-solana-2022",
+      "type": "TARGETS",
+      "justification": "La tâche doit instruire l’ancienne affirmation de présence sur Solana depuis 2022 au lieu de la supprimer sans preuve."
+    },
+    {
+      "source": "idea-evidence-social-contract-pressure",
+      "target": "task-evidence-social-contract-pressure",
+      "type": "PROMOTES_TO",
+      "justification": "La recommandation heuristique devient une tâche bornée de préenregistrement, sans autoriser implicitement l’expérience."
+    },
+    {
+      "source": "task-evidence-social-contract-pressure",
+      "target": "forecast-social-contract-pressure",
+      "type": "TARGETS",
+      "justification": "La tâche vise explicitement la cible causale identifiée comme preuve à fort levier par l’analyse."
+    },
+    {
+      "source": "idea-offline-autonomy-diagnostics",
+      "target": "task-offline-autonomy-diagnostics",
+      "type": "PROMOTES_TO",
+      "justification": "L'idée de résilience du workflow autonome devient une tâche proposée bornée, à valider avant exécution."
+    },
+    {
+      "source": "task-offline-autonomy-diagnostics",
+      "target": "idea-graph-native-autonomy",
+      "type": "TARGETS",
+      "justification": "La tâche cible la capacité du graphe à piloter le prochain travail sûr même lorsque la base locale n'est pas disponible."
+    },
+    {
+      "source": "change-2026-07-22-offline-autonomy-diagnostics",
+      "target": "task-offline-autonomy-diagnostics",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement consigne la livraison vérifiée du fallback d'analyse hors DB."
+    },
+    {
+      "source": "idea-needs-routing-causal-contract",
+      "target": "task-needs-routing-causal-contract",
+      "type": "PROMOTES_TO",
+      "justification": "L'idée issue du top finding devient une tâche proposée bornée de spécification causale."
+    },
+    {
+      "source": "task-needs-routing-causal-contract",
+      "target": "mechanism-needs-routing",
+      "type": "TARGETS",
+      "justification": "La tâche cible le mécanisme actuellement au départ du finding prioritaire."
+    },
+    {
+      "source": "task-needs-routing-causal-contract",
+      "target": "horizon-second-currency",
+      "type": "TARGETS",
+      "justification": "La tâche cible l'horizon actuellement à l'arrivée du finding prioritaire."
+    },
+    {
+      "source": "method-needs-routing-qualification-protocol",
+      "target": "hypothesis-city-simulation-100k",
+      "type": "UNLOCKS",
+      "justification": "Blocage observé : question-sim-metrics exige des résultats capables de valider ou réfuter le modèle. Changement attendu : la comparaison B–C pré-enregistre le taux de besoins vitaux satisfaits sous 48 heures et ses seuils distributifs. Test invalidant : absence d'un gain d'au moins 2 points, intervalle incluant zéro ou perte d'au moins 2 points pour un sous-groupe."
+    },
+    {
+      "source": "method-needs-routing-qualification-protocol",
+      "target": "economy-non-accumulable-mind",
+      "type": "UNLOCKS",
+      "justification": "Blocage observé : question-savings-emergencies demande comment couvrir besoins futurs et urgences sans réintroduire la thésaurisation. Changement attendu : tester réservations finalisées non transférables et mutualisation des urgences contre accumulation libre. Test invalidant : couverture des urgences non améliorée, concentration accrue ou apparition d'un marché secondaire."
+    },
+    {
+      "source": "change-2026-07-21-p3-behavior-profiles",
+      "target": "task-simulation-behavior-models",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement P3 consigne la livraison vérifiée des trois profils comportementaux et de leur comparaison."
+    },
+    {
+      "source": "change-2026-07-21-p2-sensitivity",
+      "target": "task-simulation-sensitivity",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement P2 consigne la livraison vérifiée de la tâche d’analyse de sensibilité."
+    },
+    {
+      "source": "idea-graph-native-autonomy",
+      "target": "task-graph-native-workflow",
+      "type": "PROMOTES_TO",
+      "justification": "Idée · Autonomie pilotée par le graphe « est promue en » Tâche · Installer le workflow autonome dans le graphe. Nature précise : idée → tâche exécutable. Portée : project_work. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "idea-graph-native-autonomy",
+      "target": "task-simulation-sensitivity",
+      "type": "PROMOTES_TO",
+      "justification": "Idée · Autonomie pilotée par le graphe « est promue en » Tâche · Ajouter l’analyse de sensibilité P2. Nature précise : idée → tâche exécutable. Portée : project_work. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-decision-register",
+      "target": "task-graph-native-workflow",
+      "type": "MOTIVATES",
+      "justification": "Recommandation · Registre de décisions « motive ce choix » Tâche · Installer le workflow autonome dans le graphe. Nature précise : problème ou raison → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "recommendation-realworld-evidence-firewall",
+      "target": "task-realworld-evidence-policy",
+      "type": "MOTIVATES",
+      "justification": "Recommandation · Pare-feu des niveaux de preuve « motive ce choix » Tâche · Formaliser le pare-feu des niveaux de preuve. Nature précise : problème ou raison → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "task-simulation-sensitivity",
+      "target": "hypothesis-city-simulation-100k",
+      "type": "TARGETS",
+      "justification": "Tâche · Ajouter l’analyse de sensibilité P2 « cible le travail sur » Simulation économique d’une ville de 100 000 personnes. Nature précise : tâche → nœud concerné. Portée : project_work. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "task-simulation-sensitivity",
+      "target": "question-sim-behavior",
+      "type": "TARGETS",
+      "justification": "Tâche · Ajouter l’analyse de sensibilité P2 « cible le travail sur » Comment modéliser les comportements sans inventer les résultats ?. Nature précise : tâche → nœud concerné. Portée : project_work. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "task-simulation-behavior-models",
+      "target": "hypothesis-city-simulation-100k",
+      "type": "TARGETS",
+      "justification": "Tâche · Comparer des comportements alternatifs « cible le travail sur » Simulation économique d’une ville de 100 000 personnes. Nature précise : tâche → nœud concerné. Portée : project_work. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "task-simulation-behavior-models",
+      "target": "task-simulation-sensitivity",
+      "type": "DEPENDS_ON",
+      "justification": "Tâche · Comparer des comportements alternatifs « dépend de » Tâche · Ajouter l’analyse de sensibilité P2. Nature précise : tâche bloquée → tâche prérequise. Portée : project_work. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "task-realworld-evidence-policy",
+      "target": "decision-realworld-evidence-policy",
+      "type": "TARGETS",
+      "justification": "Tâche · Formaliser le pare-feu des niveaux de preuve « cible le travail sur » Décision requise · Pouvoir de la télémétrie réelle. Nature précise : tâche → nœud concerné. Portée : project_work. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "change-2026-07-21-graph-native-workflow",
+      "target": "task-graph-native-workflow",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Changement · Workflow autonome natif du graphe « documente l’avancement de » Tâche · Installer le workflow autonome dans le graphe. Nature précise : changement livré → tâche concernée. Portée : project_work. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "idea-garden-causal-materiality",
+      "target": "task-garden-causal-materiality",
+      "type": "PROMOTES_TO",
+      "justification": "L idée d une affordance du déficit causal devient une tâche bornée : câbler les champs déjà déclarés par l ontologie et les rendre, sans décider à la place de l humain quelle valeur porte une arête."
+    },
+    {
+      "source": "task-garden-causal-materiality",
+      "target": "method-structured-causal-review",
+      "type": "TARGETS",
+      "justification": "La tâche sert la revue causale structurée : elle rend visible le statut de quantification de chaque lien causal au lieu de le laisser dans un rapport à lire."
+    },
+    {
+      "source": "change-2026-07-22-garden-causal-materiality",
+      "target": "task-garden-causal-materiality",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement livré journalise l achèvement de la tâche : la matière du franchissement est câblée, testée et atteignable depuis la navigation."
+    },
+    {
+      "source": "change-2026-07-22-garden-tangible-materials",
+      "target": "task-garden-causal-materiality",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Second passage sur la même tâche : la matière causale n était lisible qu une fois les parcelles rendues tangibles et le plan débarrassé de ses recouvrements."
+    },
+    {
+      "source": "change-2026-07-22-graph-composition-manifest",
+      "target": "task-graph-composition-manifest",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement livré journalise l achèvement de la tâche : la composition est déclarée une seule fois, les trois consommateurs la lisent, et l équivalence du corpus normalisé a été vérifiée avant et après."
+    },
+    {
+      "source": "change-2026-07-22-science-ontology-active",
+      "target": "task-science-graph-ontology",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise l'activation vérifiée de l'ontologie propre au graphe scientifique."
+    },
+    {
+      "source": "change-2026-07-22-satopaa-first-science-cluster",
+      "target": "task-ingest-satopaa-science-cluster",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise le premier commit canonique produit et vérifié par la pipeline d'ingestion scientifique."
+    },
+    {
+      "source": "change-2026-07-22-science-ingestion-quality-audit",
+      "target": "task-science-ingestion-quality-audit",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise l'implémentation et la validation du vecteur de readiness, ainsi que son premier diagnostic sur le cluster Satopää."
+    },
+    {
+      "source": "change-2026-07-22-satopaa-ingestion-complete",
+      "target": "task-complete-satopaa-science-ingestion",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise l'enrichissement section par section, le franchissement de tous les planchers et la promotion vérifiée du canon au statut complete."
+    },
+    {
+      "source": "task-ingest-satopaa-science-cluster",
+      "target": "task-science-graph-ontology",
+      "type": "DEPENDS_ON",
+      "justification": "Le premier cluster canonique ne peut être validé qu'après activation de la grammaire scientifique qui contraint ses types et relations."
+    },
+    {
+      "source": "task-science-graph-ontology",
+      "target": "task-graph-composition-manifest",
+      "type": "DEPENDS_ON",
+      "justification": "L ontologie scientifique ne peut être écrite qu une fois la composition déclarée : c est le manifeste qui donne au second graphe une base, une ontologie et un jeu de données propres."
+    },
+    {
+      "source": "task-graph-composition-manifest",
+      "target": "decision-science-graph-separation",
+      "type": "TARGETS",
+      "justification": "La tâche met en œuvre le premier degré de la décision de séparation : la frontière est déclarée et outillée, sans qu aucune donnée n ait encore changé de base."
+    },
+    {
+      "source": "task-science-graph-ontology",
+      "target": "decision-science-ontology-separate",
+      "type": "TARGETS",
+      "justification": "La tâche exécute la décision d ontologie propre : elle en produit l objet, dont la décision faisait de la version validée sa preuve de clôture."
+    },
+    {
+      "source": "change-2026-07-22-living-study-cluster-endgame",
+      "target": "task-science-graph-ontology",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement précise ce que l ontologie scientifique devra rendre exprimable : une source immuable entourée d une représentation vivante, des appraisals multidimensionnels, des contributions attribuées, des ambiguïtés conservées et une bibliothèque de patterns versionnés. Il documente un progrès de conception sans prétendre que l ontologie est déjà implémentée."
+    },
+    {
+      "source": "idea-garden-level-narrative",
+      "target": "task-garden-level-narrative",
+      "type": "PROMOTES_TO",
+      "justification": "L idée de rendre la direction perceptible devient une tâche bornée de mise en scène, sans décider à la place de l auteur quelle est la cible d un district."
+    },
+    {
+      "source": "change-2026-07-22-garden-level-narrative",
+      "target": "task-garden-level-narrative",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement livré journalise l achèvement : axe monotone, avenue calculée, verrous en travers, briefing honnête sur l état réel du graphe."
+    },
+    {
+      "source": "idea-garden-object-vocabulary",
+      "target": "task-garden-object-vocabulary",
+      "type": "PROMOTES_TO",
+      "justification": "L idée d un objet par fonction devient une tâche bornée : établir la table traçable et le système de ports, sans décider à la place de l auteur ce que chaque type affirme."
+    },
+    {
+      "source": "change-2026-07-22-garden-object-vocabulary",
+      "target": "task-garden-object-vocabulary",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement livré journalise l achèvement : vocabulaire complet, ports bouchés visibles et blocage lisible en quatre temps."
+    },
+    {
+      "source": "change-2026-07-22-garden-endgame-clearing",
+      "target": "task-garden-level-narrative",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Troisième passage sur la mise en scène : la destination affichée était l état observable alors que le district converge ailleurs, et le briefing contredisait le dessin."
+    },
+    {
+      "source": "change-2026-07-22-evidence-appraisal-method",
+      "target": "task-evidence-appraisal-method",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement livré journalise l achèvement de la tâche : la méthode est encodée, sa source hachée est vérifiée par le validateur, et son articulation avec l echelle de preuve est explicite."
+    },
+    {
+      "source": "task-evidence-appraisal-method",
+      "target": "method-scisense-appraisal",
+      "type": "TARGETS",
+      "justification": "La tâche désigne la méthode d evaluation comme l objet qu elle introduit dans le graphe ; elle en produit la représentation, elle n en valide pas le contenu scientifique."
+    },
+    {
+      "source": "change-2026-07-22-garden-node-phrase",
+      "target": "task-garden-level-narrative",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "La mise en scène restait muette sur le sens des nœuds : le titre seul ne dit pas ce qu un nœud affirme, alors que la donnée le porte déjà."
+    },
+    {
+      "source": "idea-external-method-intake",
+      "target": "task-verify-satopaa-reference",
+      "type": "PROMOTES_TO",
+      "justification": "La vérification de la source est le premier bornage concret de l'idée : sans elle, la méthode repose sur une référence non lue."
+    },
+    {
+      "source": "idea-external-method-intake",
+      "target": "task-double-fault-on-simulation",
+      "type": "PROMOTES_TO",
+      "justification": "Le calcul de la métrique est le second bornage : c'est lui qui fait descendre la méthode externe jusqu'à la simulation."
+    },
+    {
+      "source": "task-verify-satopaa-reference",
+      "target": "reddit-method-double-fault-diversity",
+      "type": "TARGETS",
+      "justification": "La tâche étudie la méthode rapportée et corrige son résumé si la référence ne la soutient pas."
+    },
+    {
+      "source": "task-double-fault-on-simulation",
+      "target": "reddit-method-double-fault-diversity",
+      "type": "TARGETS",
+      "justification": "La tâche implémente la grandeur décrite par cette méthode."
+    },
+    {
+      "source": "task-double-fault-on-simulation",
+      "target": "reddit-method-base-model-swap-variance",
+      "type": "TARGETS",
+      "justification": "La tâche exécute le protocole de permutation décrit par cette méthode."
+    },
+    {
+      "source": "task-double-fault-on-simulation",
+      "target": "reddit-claim-diversity-threshold-self-consistency",
+      "type": "TARGETS",
+      "justification": "La tâche produit la variance d'auto-cohérence sans laquelle le seuil affirmé reste inévaluable."
+    },
+    {
+      "source": "change-satopaa-reference-verified",
+      "target": "task-verify-satopaa-reference",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise l'achèvement de la vérification : la référence est identifiée et son usage confirmé."
+    },
+    {
+      "source": "change-2026-07-22-vocabulary-gap-detector",
+      "target": "task-garden-level-narrative",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "La mise en scène butait sur un flou de fond : les énoncés emploient des mots que le graphe ne définit pas et n applique à aucun périmètre."
+    },
+    {
+      "source": "change-2026-07-22-native-certainty",
+      "target": "task-evidence-appraisal-method",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Second passage sur la même tâche : la première version faisait de GRADE la machinerie de certitude du graphe, ce qui gravait une discipline dans le schéma. La correction sépare la couche du graphe de celle du domaine."
+    },
+    {
+      "source": "change-2026-07-22-ontology-in-the-graph",
+      "target": "task-define-core-vocabulary",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le miroir livre la structure et rend le déficit chiffrable ; écrire les 40 définitions de prédicats reste un arbitrage doctrinal ouvert."
+    },
+    {
+      "source": "task-encode-value-sensor-and-loop-transition",
+      "target": "decision-euro-entry-into-mind",
+      "type": "TARGETS",
+      "justification": "La tâche rend le désaccord sur l'entrée d'euros explicite et comparable sans choisir une branche à la place de l'auteur."
+    },
+    {
+      "source": "task-encode-value-sensor-and-loop-transition",
+      "target": "hypothesis-phased-loop-closure",
+      "type": "TARGETS",
+      "justification": "La tâche encode le phasage proposé et laisse les seuils de transition à mesurer."
+    },
+    {
+      "source": "change-2026-07-22-value-sensor-loop-transition",
+      "target": "task-encode-value-sensor-and-loop-transition",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise l'encodage vérifié des mécanismes, risques, métriques et options issus de la discussion."
+    },
+    {
+      "source": "change-2026-07-22-predicate-definitions",
+      "target": "task-define-ontology-predicates",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement consigne l arbitrage doctrinal autorisé par l auteur : les 40 définitions manquantes vivent désormais dans les termes du graphe et leurs frontières critiques sont couvertes par les tests."
+    },
+    {
+      "source": "task-structure-seven-economic-arbitrations",
+      "target": "decision-mind-settlement-nature",
+      "type": "TARGETS",
+      "justification": "La tâche structure le premier arbitrage et sa recommandation sans choisir l'option à la place de l'auteur."
+    },
+    {
+      "source": "task-structure-seven-economic-arbitrations",
+      "target": "decision-euro-entry-into-mind",
+      "type": "TARGETS",
+      "justification": "La tâche enrichit la décision existante avec une recommandation combinant capital séparé et pool commun."
+    },
+    {
+      "source": "task-structure-seven-economic-arbitrations",
+      "target": "decision-merchant-adoption",
+      "type": "TARGETS",
+      "justification": "La tâche complète les solutions transitoires par l'alternative explicite du marché libre et la recommandation de règlement producteur décroissant."
+    },
+    {
+      "source": "change-2026-07-22-seven-economic-arbitrations",
+      "target": "task-structure-seven-economic-arbitrations",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la seconde passe qui rend les sept arbitrages comparables dans le cluster."
+    },
+    {
+      "source": "change-2026-07-22-question-endgame",
+      "target": "task-question-endgame-architecture",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise l intégration sourcée et testée du design de question, tout en conservant l arbitrage du runtime et les tensions d architecture comme ouverts."
+    },
+    {
+      "source": "task-human-prediction-engine-endgame",
+      "target": "mech-continuous-prediction-engine",
+      "type": "TARGETS",
+      "justification": "La tâche porte sur la boucle de prédiction continue : elle en fixe la doctrine et les garde-fous sans trancher la frontière entre prédire et influencer."
+    },
+    {
+      "source": "change-2026-07-22-human-prediction-engine-endgame",
+      "target": "task-human-prediction-engine-endgame",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la boucle livrée et vérifiée, ses cinq axiomes, ses trois risques mesurés et les trois verrous laissés ouverts avant tout branchement."
+    },
+    {
+      "source": "task-birth-l1-nlr",
+      "target": "mech-l1-blueprint",
+      "type": "TARGETS",
+      "justification": "La tâche matérialise le blueprint en une instance concrète : elle instancie la structure décrite, elle ne la redéfinit pas."
+    },
+    {
+      "source": "change-2026-07-23-birth-l1-nlr",
+      "target": "task-birth-l1-nlr",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la naissance du premier graphe personnel : ontologie L1, frontière stricte, ancre d identité et nom déclaré."
+    },
+    {
+      "source": "task-birth-l1-nlr",
+      "target": "question-l1-seed-contents",
+      "type": "TARGETS",
+      "justification": "La naissance concrète commence à répondre à la question ouverte du seed : elle fixe ce qu un L1 contient au minimum à l instanciation — une ancre d identité et un nom déclaré — sans clore la spécification complète."
+    },
+    {
+      "source": "task-instantiate-prediction-ledger",
+      "target": "mech-prediction-ledger",
+      "type": "TARGETS",
+      "justification": "La tâche implémente le journal scellé décrit par le design : elle en fait un appareil qui tourne, avec sceau, observateur et notation, sans en changer la doctrine."
+    },
+    {
+      "source": "change-2026-07-23-prediction-ledger",
+      "target": "task-instantiate-prediction-ledger",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la première implémentation du journal et de sa notation, ainsi que le scellement effectif des prédictions d engine v0 pour le lendemain."
+    },
+    {
+      "source": "task-instantiate-prediction-ledger",
+      "target": "task-human-prediction-engine-endgame",
+      "type": "DEPENDS_ON",
+      "justification": "Le journal ne fait qu instancier la doctrine déjà écrite du moteur : sceller, observer, scorer par écart à la routine, séparer le propre du contaminé."
+    },
+    {
+      "source": "task-human-prediction-engine-endgame",
+      "target": "task-harvest-preference-prediction-consultation",
+      "type": "DEPENDS_ON",
+      "justification": "Le moteur continu répond au verrou de mesure identifié par la consultation externe : il fallait d abord savoir pourquoi un test ponctuel auto-administré ne pouvait pas fonctionner."
+    },
+    {
+      "source": "task-harvest-preference-prediction-consultation",
+      "target": "question-seed-fidelity-without-model-verdict",
+      "type": "TARGETS",
+      "justification": "La tâche porte sur le verrou de mesure de fidélité : elle en rapporte les positions externes et en dérive un protocole, sans le refermer."
+    },
+    {
+      "source": "change-2026-07-22-preference-prediction-consultation",
+      "target": "task-harvest-preference-prediction-consultation",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la récolte attribuée, le protocole dérivé et les deux limites de portée, sans qu aucun chiffre de la consultation n entre dans le corpus."
+    },
+    {
+      "source": "task-harvest-preference-prediction-consultation",
+      "target": "task-l1-seed-import-endgame",
+      "type": "DEPENDS_ON",
+      "justification": "La récolte vient durcir un district déjà écrit : elle ajoute un protocole et des limites aux nœuds de fidélité existants plutôt qu elle ne les fonde."
+    },
+    {
+      "source": "task-l1-seed-import-endgame",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "TARGETS",
+      "justification": "La tâche porte sur la chaîne d import atomisant : elle fixe la doctrine d entrée du corpus personnel sans trancher le consentement des tiers ni la propagation des révocations."
+    },
+    {
+      "source": "change-2026-07-22-l1-seed-import-endgame",
+      "target": "task-l1-seed-import-endgame",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la doctrine d import livrée et vérifiée, ainsi que les trois verrous laissés explicitement ouverts avant tout import réel."
+    },
+    {
+      "source": "task-l1-seed-import-endgame",
+      "target": "task-l1-blueprint",
+      "type": "DEPENDS_ON",
+      "justification": "L import ne peut remplir que des emplacements déjà définis : la structure universelle du blueprint précède la matière personnelle qui viendra l occuper."
+    },
+    {
+      "source": "task-l1-blueprint",
+      "target": "mech-l1-blueprint",
+      "type": "TARGETS",
+      "justification": "La tâche porte sur l artefact central du contrat de naissance ; elle encode la structure commune sans trancher ce que chaque instance possède au démarrage."
+    },
+    {
+      "source": "change-2026-07-22-l1-blueprint",
+      "target": "task-l1-blueprint",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise le blueprint livré et vérifié, ainsi que le report explicite du seed, de la procédure de migration et de l autorité d amendement."
+    },
+    {
+      "source": "change-2026-07-22-human-valence-endgame",
+      "target": "task-human-valence-endgame",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la décision doctrinale et sa mise en œuvre vérifiée : finalité humaine, échelle continue, capteurs progressifs, traduction économique et verrous explicites."
+    },
+    {
+      "source": "change-2026-07-22-microbe-ontology-comparison",
+      "target": "task-compare-l4-domain-ontology-microbe",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement consigne la comparaison vérifiée des deux méthodes et l exercice L4 complet, tout en laissant la décision d architecture en revue."
+    },
+    {
+      "source": "change-2026-07-22-physical-grammar-universality-gap",
+      "target": "task-encode-physical-grammar-and-universality-proof",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la doctrine de grammaire physique et transforme la complétude de Turing en obligation formelle vérifiable plutôt qu en propriété supposée."
+    },
+    {
+      "source": "change-2026-07-22-l4-ontology-mapping",
+      "target": "task-map-current-ontology-to-l4",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement consigne le mapping exhaustif, ses tests de couverture et le gap physique révélé par BLOCKS."
+    },
+    {
+      "source": "task-extend-l4-signed-conditional-temporal-physics",
+      "target": "l4-signed-conditional-temporal-physics",
+      "type": "TARGETS",
+      "justification": "La tâche porte précisément sur le noyau physique signé, conditionnel et temporel adopté dans le cluster de mapping."
+    },
+    {
+      "source": "change-2026-07-22-l4-signed-conditional-temporal-physics",
+      "target": "task-extend-l4-signed-conditional-temporal-physics",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise l intégration des dimensions, invariants, signatures adverses, loi de propagation et obligation de preuve formelle."
+    },
+    {
+      "source": "task-justify-every-l4-dimension",
+      "target": "axiom-attribute-separates-a-pair",
+      "type": "TARGETS",
+      "justification": "La tâche porte sur le critère d admission lui-même : c est lui qui décide quelles dimensions restent dans le noyau."
+    },
+    {
+      "source": "task-justify-every-l4-dimension",
+      "target": "task-extend-l4-signed-conditional-temporal-physics",
+      "type": "DEPENDS_ON",
+      "justification": "On ne peut soumettre les dimensions à un critère qu une fois qu elles existent : la revue reprend exactement la liste que la tâche précédente avait posée sans la questionner."
+    },
+    {
+      "source": "task-project-graph-into-l4-form",
+      "target": "task-justify-every-l4-dimension",
+      "type": "DEPENDS_ON",
+      "justification": "Projeter le corpus avec une dimension redondante aurait chiffré la perte d un noyau qu on savait déjà faux."
+    },
+    {
+      "source": "task-project-graph-into-l4-form",
+      "target": "l4-graph-projection",
+      "type": "TARGETS",
+      "justification": "La tâche produit exactement l expérience de projection et son rapport de retour arrière."
+    },
+    {
+      "source": "change-2026-07-22-l4-dimensions-and-projection",
+      "target": "task-justify-every-l4-dimension",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la suppression de friction, la rétrogradation de recency et la justification nominative des dix dimensions restantes."
+    },
+    {
+      "source": "change-2026-07-22-l4-dimensions-and-projection",
+      "target": "task-project-graph-into-l4-form",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise la projection du corpus entier et le taux de retour arrière qui la juge."
+    },
+    {
+      "source": "task-role-review-actor",
+      "target": "terme-type-actor",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est actor ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-unlock",
+      "target": "terme-type-unlock",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est unlock ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-mechanism",
+      "target": "terme-type-mechanism",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est mechanism ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-institution",
+      "target": "terme-type-institution",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est institution ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-economic-mechanism",
+      "target": "terme-type-economic_mechanism",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est economic_mechanism ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-decision",
+      "target": "terme-type-decision",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est decision ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-system-state",
+      "target": "terme-type-system_state",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est system_state ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-metric",
+      "target": "terme-type-metric",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est metric ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-context",
+      "target": "terme-type-context",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est context ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-protocol",
+      "target": "terme-type-protocol",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est protocol ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-method",
+      "target": "terme-type-method",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est method ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-observation",
+      "target": "terme-type-observation",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est observation ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "task-role-review-experiment",
+      "target": "terme-type-experiment",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est experiment ; le terme en représente le périmètre canonique."
+    },
+    {
+      "source": "change-2026-07-23-deliberation-variance-metrics",
+      "target": "task-double-fault-on-simulation",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise l'achèvement vérifié de la tâche : double faute entre bras, permutation à préférences fixées et variance d'auto-cohérence entre graines sont calculées et exposées sans seuil ni effet causal."
+    },
+    {
+      "source": "task-role-review-change",
+      "target": "terme-type-change",
+      "type": "TARGETS",
+      "justification": "La tâche arbitre le rôle physique des nœuds dont le type sémantique est change ; le terme en représente le périmètre canonique."
+    }
+  ]
+}

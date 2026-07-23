@@ -1,0 +1,23 @@
+{
+  "workspace": { "activeEntity": { "id": "NLR", "energyAvailability": 0.8, "arousal": 0.25 } },
+  "subentities": [
+    { "id": "explorer", "name": "Explorateur", "behavioralState": { "gate": 0.5 } },
+    { "id": "guardian", "name": "Gardien", "behavioralState": { "gate": 0.5 } }
+  ],
+  "traversals": [
+    { "tickId": "crossing-01-ambiguous", "scenarios": [
+      { "id": "route-familiar", "subentityId": "explorer", "prior": 0.5, "support": 0.5, "evidence": 0.45, "novelty": 0.2, "threat": 0.1, "controllability": 0.8, "reversibility": 0.9, "goalAlignment": 0.7, "expectedValence": 0.5 },
+      { "id": "route-new", "subentityId": "guardian", "prior": 0.5, "support": 0.5, "evidence": 0.45, "novelty": 0.8, "threat": 0.2, "controllability": 0.7, "reversibility": 0.9, "goalAlignment": 0.7, "expectedValence": 0.4 }
+    ]},
+    { "tickId": "crossing-02-evidence", "scenarios": [{ "id": "route-familiar", "subentityId": "explorer", "prior": 0.7, "support": 0.85, "evidence": 0.8, "threat": 0.05, "controllability": 0.9, "reversibility": 0.95, "goalAlignment": 0.8, "expectedValence": 0.6, "proposedStrategy": "PROBE_SAFE_STEP" }] },
+    { "tickId": "crossing-03-engage", "scenarios": [{ "id": "route-familiar", "subentityId": "explorer", "prior": 0.8, "support": 0.9, "evidence": 0.9, "threat": 0.05, "controllability": 0.9, "reversibility": 0.95, "goalAlignment": 0.8, "expectedValence": 0.7, "proposedStrategy": "PROBE_SAFE_STEP" }] },
+    { "tickId": "crossing-03b-engage", "scenarios": [{ "id": "route-familiar", "subentityId": "explorer", "prior": 0.8, "support": 0.9, "evidence": 0.9, "threat": 0.05, "controllability": 0.9, "reversibility": 0.95, "goalAlignment": 0.8, "expectedValence": 0.7, "proposedStrategy": "PROBE_SAFE_STEP" }] },
+    { "tickId": "crossing-04-threat-1", "scenarios": [{ "id": "obstacle-verified", "subentityId": "guardian", "prior": 0.9, "support": 0.95, "evidence": 0.95, "threat": 0.95, "controllability": 0.05, "reversibility": 0.7, "goalAlignment": -0.8, "expectedValence": -0.9 }] },
+    { "tickId": "crossing-05-threat-2", "scenarios": [{ "id": "obstacle-verified", "subentityId": "guardian", "prior": 0.9, "support": 0.95, "evidence": 0.95, "threat": 0.95, "controllability": 0.05, "reversibility": 0.7, "goalAlignment": -0.8, "expectedValence": -0.9 }] },
+    { "tickId": "crossing-06-threat-3", "scenarios": [{ "id": "obstacle-verified", "subentityId": "guardian", "prior": 0.9, "support": 0.95, "evidence": 0.95, "threat": 0.95, "controllability": 0.05, "reversibility": 0.7, "goalAlignment": -0.8, "expectedValence": -0.9 }] },
+    { "tickId": "crossing-07-safe-1", "scenarios": [{ "id": "support-arrived", "subentityId": "guardian", "prior": 0.9, "support": 0.95, "evidence": 0.9, "threat": 0.05, "controllability": 0.9, "reversibility": 0.95, "goalAlignment": 0.8, "expectedValence": 0.7 }] },
+    { "tickId": "crossing-08-safe-2", "scenarios": [{ "id": "support-arrived", "subentityId": "guardian", "prior": 0.9, "support": 0.95, "evidence": 0.9, "threat": 0.05, "controllability": 0.9, "reversibility": 0.95, "goalAlignment": 0.8, "expectedValence": 0.7 }] },
+    { "tickId": "crossing-09-safe-3", "scenarios": [{ "id": "support-arrived", "subentityId": "guardian", "prior": 0.9, "support": 0.95, "evidence": 0.9, "threat": 0.05, "controllability": 0.9, "reversibility": 0.95, "goalAlignment": 0.8, "expectedValence": 0.7 }] },
+    { "tickId": "crossing-10-recover", "scenarios": [{ "id": "support-arrived", "subentityId": "guardian", "prior": 0.9, "support": 0.95, "evidence": 0.9, "threat": 0.05, "controllability": 0.9, "reversibility": 0.95, "goalAlignment": 0.8, "expectedValence": 0.7 }] }
+  ]
+}

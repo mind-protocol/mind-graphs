@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "0.1.0",
+  "language": "fr",
+  "purpose": "Ontologie minimale d'un graphe personnel L1 — la matérialisation du blueprint L1 pour un citoyen concret. Les identifiants de types et de prédicats sont en anglais ; les libellés français appartiennent à l'interface. Ce graphe contient du contenu souverain (faits, valeurs, relations) et jamais de la doctrine de design : celle-ci reste dans le graphe de design, référencée par identifiant stable, jamais par une arête.",
+  "principles": [
+    "Universalité de la structure, souveraineté du contenu : la forme vient du blueprint, le contenu appartient à la personne.",
+    "Tout contenu porte sa nature : fait déclaré, observation, inférence ou préférence ne se confondent jamais.",
+    "Tout contenu porte sa provenance : d'où il vient, quand et par quelle méthode il est entré.",
+    "Rien n'entre entier comme vérité opaque : l'unité de mémoire, de correction et d'oubli est l'atome."
+  ],
+  "nodeTypes": [
+    { "id": "subentity", "label": "sous-entite", "family": "cognition_runtime", "epistemicStatus": "inferred", "description": "Modele runtime d'une coalition cognitive recurrente. Son identite, son niveau et sa stabilite restent revisables et traces." },
+    { "id": "subentity_narrative", "label": "narratif de sous-entite", "family": "cognition_runtime", "epistemicStatus": "inferred", "description": "Nom, personnalite observee ou preference inferee d'une sous-entite, toujours relie aux souvenirs qui l'etayent." },
+    { "id": "lifecycle_event", "label": "evenement de cycle de vie", "family": "runtime", "epistemicStatus": "observed", "description": "Trace immutable d'une fusion, promotion ou autre transition appliquee par le moteur de sous-entites." },
+    { "id": "person", "label": "personne", "family": "identite", "epistemicStatus": "declared", "description": "La personne dont ce graphe est la mémoire, ou un tiers présent dans son corpus. Ancre d'identité, initialement un emplacement vide." },
+    { "id": "citizen_ai", "label": "IA citoyenne", "family": "identite", "epistemicStatus": "declared", "description": "L'agent personnel qui porte, interroge et met à jour ce L1 pour le compte de la personne." },
+    { "id": "memory", "label": "mémoire", "family": "contenu", "epistemicStatus": "declared", "description": "Atome de mémoire : un fait, une observation ou une inférence séparément adressable, corrigeable et oubliable, portant sa provenance et sa nature." },
+    { "id": "relation", "label": "relation", "family": "contenu", "epistemicStatus": "declared", "description": "Lien vécu entre la personne et un tiers, tel que la personne le décrit, jamais tel que le tiers le serait." },
+    { "id": "objective", "label": "objectif", "family": "volition", "epistemicStatus": "declared", "description": "But que la personne poursuit, révisable et daté." },
+    { "id": "obligation", "label": "obligation", "family": "volition", "epistemicStatus": "declared", "description": "Engagement ou devoir que la personne reconnaît." },
+    { "id": "decision", "label": "décision", "family": "volition", "epistemicStatus": "declared", "description": "Choix arrêté par la personne, avec ce qu'il tranche." },
+    { "id": "value", "label": "valeur", "family": "volition", "epistemicStatus": "declared", "description": "Valeur que la personne tient pour sienne ; jamais installée par défaut à la naissance." },
+    { "id": "preference", "label": "préférence", "family": "volition", "epistemicStatus": "declared", "description": "Penchant déclaré ou observé, distinct d'une valeur et révisable." },
+    { "id": "observation", "label": "observation", "family": "contenu", "epistemicStatus": "observed", "description": "Constat capté sur la personne ou son contexte, distinct d'une déclaration et d'une inférence." },
+    { "id": "consent", "label": "consentement", "family": "gouvernance", "epistemicStatus": "declared", "description": "Autorisation donnée source par source, bornée dans le temps et l'usage, et retirable, sous laquelle un contenu a le droit d'exister." }
+  ],
+  "epistemicStatuses": [
+    { "id": "declared", "label": "déclaré", "description": "Affirmé par la personne elle-même. La forme la plus proche d'un fait dans un L1." },
+    { "id": "observed", "label": "observé", "description": "Capté par un capteur ou une trace, distinct d'une déclaration." },
+    { "id": "inferred", "label": "inféré", "description": "Déduit par l'IA ; révisable, jamais présenté comme une déclaration de la personne." },
+    { "id": "pending", "label": "à confirmer", "description": "Contenu entré mais non encore validé par la personne." }
+  ],
+  "relationFamilies": [
+    { "id": "cognition_runtime", "label": "cognition runtime", "description": "Relations revisees entre sous-entites, narratifs et preuves personnelles." },
+    { "id": "runtime", "label": "runtime", "description": "Traces techniques du cycle d'execution, distinctes des declarations souveraines de la personne." },
+    { "id": "identite", "label": "identité", "description": "Ce qui ancre ou décrit qui est la personne." },
+    { "id": "provenance", "label": "provenance", "description": "D'où vient un contenu ; jamais une preuve de sa vérité." },
+    { "id": "gouvernance", "label": "gouvernance", "description": "Sous quel consentement un contenu existe et circule." }
+  ],
+  "relationTypes": [
+    { "id": "CONTROLLED_WORKSPACE_DURING", "label": "controlait le workspace durant", "family": "cognition_runtime", "status": "active", "description": "Relie un souvenir a la sous-entite attribuee comme controleur au moment de sa creation, avec confiance et alternatives." },
+    { "id": "DESCRIBES_SUBENTITY", "label": "decrit la sous-entite", "family": "cognition_runtime", "status": "active", "description": "Un narratif infere decrit une sous-entite sans transformer cette inference en declaration de la personne." },
+    { "id": "SUPPORTS", "label": "etaye", "family": "cognition_runtime", "status": "active", "description": "Un souvenir ou une observation fournit la provenance d'un narratif de sous-entite." },
+    { "id": "SUPERSEDES", "label": "remplace", "family": "runtime", "status": "active", "description": "Une sous-entite survivante remplace une sous-entite fusionnee tout en conservant sa trace." },
+    { "id": "DESCRIBES", "label": "décrit", "family": "identite", "status": "active", "description": "Un atome de mémoire ou une observation décrit une personne, une relation ou un élément de volition." },
+    { "id": "CONCERNS", "label": "concerne", "family": "identite", "status": "active", "description": "Une relation concerne un tiers ; elle dit le lien vu par la personne, jamais le tiers lui-même." },
+    { "id": "AUTHORED_BY", "label": "écrit par", "family": "provenance", "status": "active", "description": "Relie un Moment-message à son auteur déclaré sans attribuer le contenu à une autre personne." },
+    { "id": "FOLLOWS_IN_CONVERSATION", "label": "suit dans la conversation", "family": "provenance", "status": "active", "description": "Place un Moment-message après le bloc précédent dans une conversation identifiée et ordonnée." },
+    { "id": "CONSENTED_UNDER", "label": "consenti sous", "family": "gouvernance", "status": "active", "description": "Un contenu existe sous un consentement identifié, borné et retirable." }
+  ],
+  "typeGroups": {
+    "runtime_evidence": ["memory", "observation"],
+    "subentity_runtime": ["subentity", "subentity_narrative", "lifecycle_event"],
+    "content_atoms": ["memory", "observation"],
+    "volition": ["objective", "obligation", "decision", "value", "preference"],
+    "entities": ["person", "citizen_ai", "relation"]
+  },
+  "relationConstraints": {
+    "CONTROLLED_WORKSPACE_DURING": { "sourceTypes": ["subentity"], "targetTypes": ["memory"] },
+    "DESCRIBES_SUBENTITY": { "sourceTypes": ["subentity_narrative"], "targetTypes": ["subentity"] },
+    "SUPPORTS": { "sourceGroups": ["runtime_evidence"], "targetTypes": ["subentity_narrative", "subentity"] },
+    "SUPERSEDES": { "sourceTypes": ["subentity"], "targetTypes": ["subentity"] },
+    "DESCRIBES": { "sourceGroups": ["content_atoms"], "targetGroups": ["entities", "volition"] },
+    "CONCERNS": { "sourceTypes": ["relation"], "targetTypes": ["person"] },
+    "AUTHORED_BY": { "sourceTypes": ["memory"], "targetTypes": ["person", "citizen_ai"] },
+    "FOLLOWS_IN_CONVERSATION": { "sourceTypes": ["memory"], "targetTypes": ["memory"] },
+    "CONSENTED_UNDER": { "sourceGroups": ["content_atoms"], "targetTypes": ["consent"] }
+  },
+  "quantification": {
+    "probabilityPct": { "definition": "Non employé dans un L1 : un graphe personnel n'affirme pas de probabilités d'événements.", "requires": ["supportingNodes"] },
+    "confidenceScore": { "definition": "Confiance d'un atome dans [0,1], portée par sa provenance ; jamais inventée à l'entrée.", "requires": ["supportingNodes"] },
+    "effectSizePct": { "definition": "Non employé dans un L1 : la matière personnelle ne rapporte pas de tailles d'effet.", "requires": ["supportingNodes"] }
+  },
+  "hierarchy": { "kinds": ["none", "part_of", "subcase_of"] },
+  "traversal": { "familyDefaults": { "identite": 0.9, "provenance": 0.5, "gouvernance": 0.6 } }
+}

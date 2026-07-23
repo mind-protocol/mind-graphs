@@ -1,0 +1,372 @@
+{
+  "scope": "Endgame de la valeur Mind : faire du bien-être humain vécu la finalité, l'estimer continûment de -1 à +1 par des capteurs révisables, puis dériver la valeur créée d'un delta attribuable sans confondre signal, personne et vérité.",
+  "nodes": [
+    {
+      "id": "term-human-valence",
+      "name": "valence humaine",
+      "nodeType": "narrative",
+      "phrase": "Le bien-être physique et affectif effectivement vécu par une personne, estimé sur un continuum de souffrance à bonheur.",
+      "family": "Vocabulaire de la valeur Mind",
+      "summary": "Score continu borné de -1 à +1 : -1 ancre une souffrance extrême, 0 un état neutre mesuré et +1 un bonheur ou bien-être extrême. Une valeur absente signifie inconnue. Le score décrit un état vécu situé, jamais la valeur morale d'une personne.",
+      "definition": "Estimation continue, contextualisée et incertaine du bien-être physique et affectif vécu par une personne, bornée de -1 à +1. Zéro désigne un état neutre mesuré ; l'absence de score désigne l'inconnu.",
+      "definitionStatus": "defined",
+      "context": "Endgame de la valeur Mind ; mesure personnelle et temporelle, jamais identité ni rang social.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "terme"
+    },
+    {
+      "id": "term-mind-created-value",
+      "name": "valeur créée dans Mind",
+      "nodeType": "narrative",
+      "phrase": "Une contribution crée de la valeur lorsqu'elle augmente de façon attribuable la valence humaine d'une personne.",
+      "family": "Vocabulaire de la valeur Mind",
+      "summary": "La valeur créée est le delta positif de valence humaine attribuable à une contribution, accompagné de son contexte et de son incertitude. Elle ne vaut ni mérite personnel, ni droit absolu, ni preuve qu'un signal isolé a causé le bien-être.",
+      "definition": "Part positive du changement de valence humaine raisonnablement attribuable à une contribution ou une interaction, avec méthode, contexte, incertitude et justifications explicites.",
+      "definitionStatus": "defined",
+      "context": "Formation des prix et reconnaissance des contributions dans Mind.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "terme"
+    },
+    {
+      "id": "axiom-human-wellbeing-terminal-value",
+      "name": "Axiome · Le bien-être humain est la valeur terminale",
+      "nodeType": "narrative",
+      "phrase": "Au bout de la chaîne, créer de la valeur signifie rendre un humain physiquement ou affectivement plus heureux.",
+      "family": "Endgame de la valeur · finalité",
+      "summary": "Décision normative : les prix, scores et mécanismes de Mind ne sont que des instruments. Leur justification terminale est l'amélioration du bien-être vécu, jamais la maximisation de l'activité, de l'engagement ou du volume monétaire pour eux-mêmes.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "horizon-human-valence-endgame",
+      "name": "Endgame · La valeur économique suit la valence humaine",
+      "nodeType": "narrative",
+      "phrase": "Mind devient un système où la valeur économique converge vers le bien-être humain effectivement créé.",
+      "family": "Endgame de la valeur · horizon",
+      "summary": "Horizon de long terme : des estimateurs de plus en plus précis relient les contributions à leurs effets vécus, afin que les prix Mind reflètent mieux la valeur humaine créée sans prétendre mesurer parfaitement le bonheur.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "horizon"
+    },
+    {
+      "id": "context-local-consensual-valence",
+      "name": "Contexte · Mesure personnelle, locale et consentie",
+      "nodeType": "space",
+      "phrase": "La valence est estimée pour une personne, à un moment et dans un contexte ; les signaux intimes restent sous son contrôle.",
+      "family": "Endgame de la valeur · périmètre",
+      "summary": "Le calcul s'exécute au plus près de la personne. Une conclusion minimale et incertaine peut être partagée avec son consentement ; messages, verbatim, biométrie et traces comportementales brutes ne deviennent pas un dossier public.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "context"
+    },
+    {
+      "id": "state-human-wellbeing-lived",
+      "name": "Le bien-être humain vécu augmente",
+      "nodeType": "narrative",
+      "phrase": "Après une contribution, une personne se trouve réellement dans un meilleur état physique ou affectif.",
+      "family": "Endgame de la valeur · état terminal",
+      "summary": "État terminal visé. Il ne se déduit ni de l'intention du contributeur ni de l'activité observée : il doit être estimé avant et après, dans le même contexte, avec une incertitude explicite.",
+      "stateOrientation": "desirable",
+      "stateDimension": "bien-être physique et affectif humain",
+      "stateIndicator": "valenceScore personnel avant et après l'interaction, accompagné de confidenceScore",
+      "epistemicStatus": "test_target",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "metric-human-valence-score",
+      "name": "Métrique · Valence humaine continue [-1,+1]",
+      "nodeType": "narrative",
+      "phrase": "Combien de souffrance ou de bonheur cette personne vit-elle maintenant ?",
+      "family": "Endgame de la valeur · métrique terminale",
+      "summary": "Float continu valenceScore borné de -1 à +1. -1 et +1 sont des ancres extrêmes, pas des classes. Zéro est une mesure neutre ; null ou champ absent signifie inconnu. Toute estimation porte méthode, contexte, confiance et justifications.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-attributable-human-valence-delta",
+      "name": "Métrique · Delta de valence humaine attribuable",
+      "nodeType": "narrative",
+      "phrase": "De combien cette contribution a-t-elle déplacé la valence humaine, toutes choses raisonnablement comparables ?",
+      "family": "Endgame de la valeur · métrique économique",
+      "summary": "humanValenceDelta = valence après - valence avant, borné de -2 à +2. Seule sa partie positive, corrigée par l'incertitude et la qualité d'attribution, peut informer la valeur créée et le prix Mind.",
+      "epistemicStatus": "documented",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "metric"
+    },
+    {
+      "id": "protocol-progressive-human-valence-estimation",
+      "name": "Protocole · Estimation progressive de la valence humaine",
+      "nodeType": "narrative",
+      "phrase": "Commencer par un signal frugal, puis enrichir l'estimation sans confondre aucun capteur avec le bonheur lui-même.",
+      "family": "Endgame de la valeur · protocole",
+      "summary": "Architecture cumulative en quatre étapes : temporalité des messages à l'IA personnelle, biométrie, comportements, puis interprétation sémantique par l'IA. Chaque étape doit être calibrée contre les précédentes, annoncer son incertitude et pouvoir être désactivée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "protocol"
+    },
+    {
+      "id": "method-valence-stage-1-message-time",
+      "name": "Capteur 1 · Temporalité des messages à l'IA personnelle",
+      "nodeType": "narrative",
+      "phrase": "Le premier proxy observe quand, combien de temps et à quel rythme une personne écrit à son IA.",
+      "family": "Endgame de la valeur · capteur progressif 1",
+      "summary": "Signal initial peu coûteux : durée, fréquence, latence, continuité et variation temporelle des messages. Il ne lit pas encore leur sens. Une durée longue peut indiquer engagement, confusion, solitude ou détresse ; elle n'est donc jamais convertie directement en bonheur.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-valence-stage-2-biometrics",
+      "name": "Capteur 2 · Biométrie personnelle",
+      "nodeType": "narrative",
+      "phrase": "L'estimation ajoute des signaux physiologiques locaux pour distinguer activation, apaisement, fatigue et détresse.",
+      "family": "Endgame de la valeur · capteur progressif 2",
+      "summary": "Fréquence et variabilité cardiaques, sommeil, activité ou autres signaux consentis peuvent raffiner l'estimation. Aucun signal physiologique n'a une valence universelle ; calibration individuelle, minimisation et traitement local sont requis.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-valence-stage-3-behavior",
+      "name": "Capteur 3 · Analyse des comportements",
+      "nodeType": "narrative",
+      "phrase": "L'estimation observe les changements de comportement qui suivent une interaction ou une contribution.",
+      "family": "Endgame de la valeur · capteur progressif 3",
+      "summary": "Usages répétés, évitement, retour volontaire, activité, sommeil, choix et autres changements contextualisés peuvent renforcer ou contredire les proxys précédents. Le comportement reste ambigu et exposé à Goodhart lorsqu'il influence un prix.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-valence-stage-4-semantic-ai",
+      "name": "Capteur 4 · Interprétation sémantique par l'IA",
+      "nodeType": "narrative",
+      "phrase": "L'IA interprète ce que la personne exprime et le replace dans son histoire et son contexte.",
+      "family": "Endgame de la valeur · capteur progressif 4",
+      "summary": "Le contenu sémantique, les formulations, contradictions, récits et évaluations explicites peuvent préciser la valence. Cette interprétation reste une estimation contestable : elle doit exposer ses raisons, accepter la correction de la personne et ne publier ni verbatim ni profil intime.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "method"
+    },
+    {
+      "id": "hypothesis-multimodal-valence-convergence",
+      "name": "Hypothèse · Les capteurs convergent vers une meilleure estimation",
+      "nodeType": "narrative",
+      "phrase": "Croiser temporalité, biométrie, comportements et sens réduit l'erreur sans rendre le bonheur parfaitement observable.",
+      "family": "Endgame de la valeur · hypothèse",
+      "summary": "Les modalités peuvent se corroborer ou se contredire. Leur combinaison doit améliorer la calibration hors échantillon et l'incertitude, non produire artificiellement un score plus certain parce que davantage de données sont disponibles.",
+      "hypothesisBasis": "Intuition de design explicitement décidée ; aucune fonction de fusion ni calibration empirique n'est encore fournie.",
+      "verificationNeeded": "Comparer chaque étape à des évaluations longitudinales consenties et vérifier erreur, calibration, biais interpersonnels et robustesse au changement de comportement.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "mechanism-mind-price-from-valence-delta",
+      "name": "Mécanisme économique · Prix informé par le delta de valence",
+      "nodeType": "narrative",
+      "phrase": "Une contribution pèse dans les prix Mind à proportion du bien-être humain positif qu'elle semble avoir créé.",
+      "family": "Endgame de la valeur · formation des prix",
+      "summary": "Le mécanisme reçoit une estimation de humanValenceDelta, sa confiance, son contexte et sa qualité d'attribution. Il n'utilise jamais une donnée brute isolée, ne donne aucun prix négatif à une personne et ne transforme pas la souffrance d'un bénéficiaire en dette.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "effect-mind-prices-track-human-value",
+      "name": "Cible · Les prix Mind reflètent la valeur humaine créée",
+      "nodeType": "narrative",
+      "phrase": "Créer plus de bien-être humain attribuable augmente la reconnaissance économique de la contribution.",
+      "family": "Endgame de la valeur · effet recherché",
+      "summary": "Effet de design : aligner progressivement le signal de prix sur le delta positif de valence humaine, sans confondre reconnaissance économique, accès vital inconditionnel et valeur intrinsèque des personnes.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "state-valence-surveillance-and-goodhart",
+      "name": "La mesure du bonheur devient surveillance et performance",
+      "nodeType": "narrative",
+      "phrase": "Les personnes modifient leur intimité et leur comportement pour produire le score qui influence les prix.",
+      "family": "Endgame de la valeur · risque",
+      "summary": "État indésirable : collecte excessive, inférence non consentie, optimisation du signal et pouvoir asymétrique du modèle remplacent le bien-être vécu par sa mise en scène mesurable.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "autonomie, intimité et authenticité",
+      "stateIndicator": "taux de refus et de désactivation, écart score-déclaration, variation du comportement quand le score affecte le prix, incidents d'accès aux données brutes",
+      "epistemicStatus": "test_target",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "question-causal-attribution-of-valence",
+      "name": "Question · Quelle part du delta est réellement attribuable ?",
+      "nodeType": "narrative",
+      "phrase": "Une personne peut aller mieux après une contribution sans aller mieux à cause d'elle.",
+      "family": "Endgame de la valeur · verrou causal",
+      "summary": "Le prix exige une attribution contrefactuelle ou au moins une estimation prudente : fenêtre temporelle, causes concurrentes, baseline personnelle, répétition et possibilité que la contribution ait déplacé le signal sans déplacer le bien-être.",
+      "questionCategory": "causalité et prix",
+      "decisionNeeded": "Choisir une méthode d'attribution et une décote d'incertitude avant tout effet réel sur les prix.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-interpersonal-valence-aggregation",
+      "name": "Question · Comment agréger sans comparer la valeur des personnes ?",
+      "nodeType": "narrative",
+      "phrase": "Un même score n'a pas nécessairement la même calibration entre deux personnes ni au cours du temps.",
+      "family": "Endgame de la valeur · verrou normatif",
+      "summary": "Restent à trancher la comparabilité interpersonnelle, la durée du bénéfice, la distribution entre bénéficiaires et le traitement des gains faibles nombreux face aux gains vitaux rares. Aucun agrégat ne doit devenir une note de valeur personnelle.",
+      "questionCategory": "agrégation normative",
+      "decisionNeeded": "Définir une règle d'agrégation après calibration et débat de gouvernance, pas dans le capteur lui-même.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "human-valence-endgame",
+      "semanticType": "open_question"
+    }
+  ],
+  "links": [
+    {
+      "source": "term-mind-created-value",
+      "target": "term-human-valence",
+      "type": "SUBCASE_OF",
+      "justification": "La valeur créée dans Mind est une opération économique particulière construite sur le delta positif du concept plus général de valence humaine."
+    },
+    {
+      "source": "axiom-human-wellbeing-terminal-value",
+      "target": "horizon-human-valence-endgame",
+      "type": "GROUNDS",
+      "justification": "L horizon économique n est recherché que parce que le projet choisit le bien-être vécu comme valeur terminale plutôt que l activité ou le volume monétaire."
+    },
+    {
+      "source": "state-human-wellbeing-lived",
+      "target": "horizon-human-valence-endgame",
+      "type": "PART_OF",
+      "justification": "L état observable de bien-être accru donne à l horizon sa destination testable au lieu de le laisser comme simple idéal économique."
+    },
+    {
+      "source": "effect-mind-prices-track-human-value",
+      "target": "horizon-human-valence-endgame",
+      "type": "PART_OF",
+      "justification": "L alignement recherché des prix est la traduction économique de l horizon, non sa finalité humaine."
+    },
+    {
+      "source": "state-human-wellbeing-lived",
+      "target": "metric-human-valence-score",
+      "type": "MEASURED_BY",
+      "justification": "L état terminal devient observable par une estimation continue de valence plutôt que par une étiquette désirable ou indésirable."
+    },
+    {
+      "source": "effect-mind-prices-track-human-value",
+      "target": "metric-attributable-human-valence-delta",
+      "type": "MEASURED_BY",
+      "justification": "L alignement du prix doit être évalué contre le changement attribuable de valence, pas contre le volume de messages, de biométrie ou de transactions."
+    },
+    {
+      "source": "protocol-progressive-human-valence-estimation",
+      "target": "metric-human-valence-score",
+      "type": "MEASURES",
+      "justification": "Le protocole organise les méthodes qui produiront une estimation contextualisée du score continu."
+    },
+    {
+      "source": "protocol-progressive-human-valence-estimation",
+      "target": "metric-attributable-human-valence-delta",
+      "type": "MEASURES",
+      "justification": "Comparer les estimations avant et après permet de former le delta, à condition de traiter séparément son attribution causale."
+    },
+    {
+      "source": "method-valence-stage-1-message-time",
+      "target": "protocol-progressive-human-valence-estimation",
+      "type": "PART_OF",
+      "justification": "La temporalité des messages est le premier proxy frugal du protocole cumulatif et non une définition autonome du bonheur."
+    },
+    {
+      "source": "method-valence-stage-2-biometrics",
+      "target": "protocol-progressive-human-valence-estimation",
+      "type": "PART_OF",
+      "justification": "La biométrie constitue la deuxième modalité, calibrée personnellement et croisée avec le signal initial."
+    },
+    {
+      "source": "method-valence-stage-3-behavior",
+      "target": "protocol-progressive-human-valence-estimation",
+      "type": "PART_OF",
+      "justification": "Les changements comportementaux forment la troisième modalité et peuvent corroborer ou contredire les deux premières."
+    },
+    {
+      "source": "method-valence-stage-4-semantic-ai",
+      "target": "protocol-progressive-human-valence-estimation",
+      "type": "PART_OF",
+      "justification": "L interprétation sémantique est la quatrième modalité ; elle ajoute le sens exprimé sans devenir un verdict souverain sur la personne."
+    },
+    {
+      "source": "hypothesis-multimodal-valence-convergence",
+      "target": "protocol-progressive-human-valence-estimation",
+      "type": "ASSUMES",
+      "justification": "Le protocole cumulatif dépend de l hypothèse encore non vérifiée que croiser les modalités améliore réellement calibration et précision."
+    },
+    {
+      "source": "hypothesis-multimodal-valence-convergence",
+      "target": "context-local-consensual-valence",
+      "type": "APPLIES_IN",
+      "justification": "La convergence n est affirmée que pour une estimation personnelle, locale, consentie et longitudinalement contextualisée."
+    },
+    {
+      "source": "protocol-progressive-human-valence-estimation",
+      "target": "context-local-consensual-valence",
+      "type": "APPLIES_IN",
+      "justification": "Les capteurs ne sont acceptables dans ce design qu à l intérieur de la frontière personnelle et consentie."
+    },
+    {
+      "source": "metric-human-valence-score",
+      "target": "mechanism-mind-price-from-valence-delta",
+      "type": "FEEDS",
+      "justification": "Les estimations avant et après alimentent le calcul économique comme données dérivées ; ce flux n affirme pas à lui seul qu elles causent le prix juste."
+    },
+    {
+      "source": "metric-attributable-human-valence-delta",
+      "target": "mechanism-mind-price-from-valence-delta",
+      "type": "FEEDS",
+      "justification": "Le delta attribuable, accompagné de sa confiance, est le signal économique que le mécanisme de prix reçoit."
+    },
+    {
+      "source": "mechanism-mind-price-from-valence-delta",
+      "target": "effect-mind-prices-track-human-value",
+      "type": "IMPLEMENTS",
+      "justification": "Le mécanisme traduit le signal terminal de valeur en reconnaissance économique, sans prétendre que l effet recherché est déjà observé."
+    },
+    {
+      "source": "question-causal-attribution-of-valence",
+      "target": "mechanism-mind-price-from-valence-delta",
+      "type": "BLOCKS",
+      "justification": "Sans méthode d attribution, une variation après contribution ne peut pas gouverner un prix comme si elle avait été causée par cette contribution."
+    },
+    {
+      "source": "question-interpersonal-valence-aggregation",
+      "target": "mechanism-mind-price-from-valence-delta",
+      "type": "BLOCKS",
+      "justification": "Le mécanisme ne peut agréger des deltas entre personnes avant d avoir fixé comparabilité, distribution, durée et règle de gouvernance."
+    },
+    {
+      "source": "state-valence-surveillance-and-goodhart",
+      "target": "protocol-progressive-human-valence-estimation",
+      "type": "MOTIVATES",
+      "justification": "Le risque que la mesure transforme l intimité en performance impose localité, consentement, minimisation et droit de correction dans le protocole."
+    },
+    {
+      "source": "state-intimacy-goodhart",
+      "target": "hypothesis-multimodal-valence-convergence",
+      "type": "MOTIVATES",
+      "justification": "Le risque déjà documenté dans la formation des prix exige de tester si ajouter des modalités réduit l erreur ou multiplie seulement les surfaces de manipulation."
+    },
+    {
+      "source": "hypothesis-behavioral-value-sensor",
+      "target": "protocol-progressive-human-valence-estimation",
+      "type": "ASSUMES",
+      "justification": "L hypothèse économique antérieure devient un protocole ordonné qui sépare quatre modalités, un score terminal et un delta attribuable."
+    }
+  ]
+}

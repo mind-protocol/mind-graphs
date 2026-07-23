@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Protocol — Décisions</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/decisions.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body class="decisions-page">
+    <header class="decisions-header">
+      <a href="/">← Retour au graphe</a>
+      <nav><a href="/garden.html">Cité-jardin</a><a href="/analysis.html">Santé du graphe</a><a href="/ontology.html">Ontologie</a><a href="/docs.html">Doc</a><button data-theme-toggle class="theme-toggle" type="button" aria-pressed="false">Thème clair</button><span id="schema-version">chargement…</span></nav>
+    </header>
+    <main class="decisions-main">
+      <section class="decisions-hero">
+        <div>
+          <p class="eyebrow">REGISTRE DE GOUVERNANCE</p>
+          <h1>Qu’avons-nous décidé&nbsp;?</h1>
+          <p class="decisions-intro">Le récapitulatif distingue les règles de travail déjà actées des choix stratégiques encore ouverts. Une recommandation n’est pas une approbation.</p>
+        </div>
+        <div id="decision-state" class="decision-state" aria-live="polite"></div>
+      </section>
+
+      <section id="decision-totals" class="decision-totals" aria-label="Résumé des statuts"></section>
+
+      <section class="decisions-section" aria-labelledby="framework-title">
+        <div class="decisions-heading">
+          <div><p class="eyebrow">ACTÉ DANS LE GRAPHE</p><h2 id="framework-title">Le cadre de décision</h2></div>
+          <p>Ces choix concernent la manière de documenter et d’auditer les arbitrages. Ils ne préjugent pas des options produit, financières, cliniques ou scientifiques.</p>
+        </div>
+        <div id="governance-decisions" class="governance-grid"></div>
+      </section>
+
+      <section class="decisions-section" aria-labelledby="strategic-title">
+        <div class="decisions-heading">
+          <div><p class="eyebrow">EN ATTENTE D’ARBITRAGE</p><h2 id="strategic-title">Les décisions stratégiques</h2></div>
+          <p>Chaque carte présente la recommandation actuelle, les options disponibles et ce qui manque encore pour pouvoir dire « nous avons décidé ».</p>
+        </div>
+        <div id="strategic-decisions" class="strategic-list"></div>
+      </section>
+
+      <section class="decisions-section approval-rule" aria-labelledby="approval-title">
+        <div class="decisions-heading">
+          <div><p class="eyebrow">RÈGLE DE CLÔTURE</p><h2 id="approval-title">Quand une décision devient-elle actée&nbsp;?</h2></div>
+        </div>
+        <div class="approval-flow">
+          <article><span>01</span><strong>Options explicites</strong><p>Au moins deux choix et leurs compromis sont enregistrés.</p></article>
+          <article><span>02</span><strong>Revue responsable</strong><p>Le responsable examine les critères et les preuves disponibles.</p></article>
+          <article><span>03</span><strong>Choix justifié</strong><p>L’option retenue, la justification et les objections sont consignées.</p></article>
+          <article><span>04</span><strong>Statut approuvé</strong><p>Le statut passe explicitement à <code>approved</code> avec date et preuve de clôture.</p></article>
+        </div>
+      </section>
+
+      <p id="decisions-error" class="ontology-error" role="alert"></p>
+    </main>
+    <script type="module" src="/decisions-page.js"></script>
+  </body>
+</html>

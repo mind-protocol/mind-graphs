@@ -1,0 +1,110 @@
+{
+  "id": "query-reference-2026-07",
+  "purpose": "Jeu de questions de référence du moteur de questionnement local. Il sert de closureEvidence aux décisions decision-query-traversal-depth et decision-query-lexical-vector-blend : sans lui, aucun de ces deux paramètres ne peut être comparé à une alternative, donc justifié.",
+  "groundTruthPrinciple": "Aucun attendu n'est écrit à la main. Chaque question déclare un nœud d'ancrage et un chemin de prédicats ; l'ensemble attendu est calculé par traversée du corpus à l'exécution. Une liste recopiée serait une photographie de ce que le moteur retourne déjà, et le jeu deviendrait incapable de le mettre en défaut.",
+  "limits": [
+    "Le rappel se mesure contre une attente structurelle, pas contre la pertinence perçue : un nœud utile mais hors du chemin déclaré compte comme hors sujet à tort. Une précision basse ne condamne donc rien à elle seule ; un rappel bas, si.",
+    "Les questions sont rédigées par une seule personne et reprennent le vocabulaire du corpus. Elles mesurent la traversée, pas la compréhension de la langue.",
+    "Le champ `phrasing` sépare les questions qui citent le vocabulaire exact du nœud de celles qui le contournent. Sans cette séparation, le jeu favoriserait mécaniquement l'appariement lexical.",
+    "Onze questions ne font pas un échantillon : ce jeu détecte une rupture franche, pas un écart de quelques pourcents."
+  ],
+  "questions": [
+    {
+      "id": "q-options-science-separation",
+      "question": "Quelles options ont été comparées pour séparer la matière scientifique du graphe de design ?",
+      "anchor": "decision-science-graph-separation",
+      "path": [{ "direction": "incoming", "predicate": "OPTION_FOR" }],
+      "phrasing": "verbatim",
+      "note": "Cas le plus simple : trois options à un saut de leur décision."
+    },
+    {
+      "id": "q-raisons-science-separation",
+      "question": "Pourquoi le graphe scientifique a-t-il été mis dans une base distincte ?",
+      "anchor": "decision-science-graph-separation",
+      "path": [{ "direction": "incoming", "predicate": "MOTIVATES" }],
+      "phrasing": "paraphrase",
+      "note": "Demande les raisons, pas les options : deux voisinages différents du même ancrage."
+    },
+    {
+      "id": "q-options-adoption-marchande",
+      "question": "Comment rendre l'adoption marchande soutenable ?",
+      "anchor": "decision-merchant-adoption",
+      "path": [{ "direction": "incoming", "predicate": "OPTION_FOR" }],
+      "phrasing": "verbatim",
+      "note": "Quatre options : la plus large fanout d'options du corpus."
+    },
+    {
+      "id": "q-options-pare-feu-preuve",
+      "question": "Quel périmètre donner au pare-feu des niveaux de preuve ?",
+      "anchor": "decision-evidence-firewall-scope",
+      "path": [{ "direction": "incoming", "predicate": "OPTION_FOR" }],
+      "phrasing": "verbatim",
+      "note": "Trois options."
+    },
+    {
+      "id": "q-raisons-pare-feu-preuve",
+      "question": "Qu'est-ce qui rend nécessaire d'arbitrer le périmètre du pare-feu de preuve ?",
+      "anchor": "decision-evidence-firewall-scope",
+      "path": [{ "direction": "incoming", "predicate": "MOTIVATES" }],
+      "phrasing": "paraphrase",
+      "note": "Deux raisons."
+    },
+    {
+      "id": "q-chaine-panier-vital",
+      "question": "Qu'est-ce que la masse critique sectorielle du panier vital est censée produire, et comment le mesure-t-on ?",
+      "anchor": "option-adoption-basket-threshold",
+      "path": [
+        { "direction": "outgoing", "predicate": "CAUSES" },
+        { "direction": "outgoing", "predicate": "MEASURED_BY" }
+      ],
+      "phrasing": "verbatim",
+      "note": "Chaîne à deux sauts : l'état causé puis la métrique qui l'observe. C'est ce type de question qui exige réellement une profondeur supérieure à 1."
+    },
+    {
+      "id": "q-chaine-subvention-datee",
+      "question": "Quels états la subvention de démarrage datée déplace-t-elle, et sur quels indicateurs ?",
+      "anchor": "option-adoption-dated-subsidy",
+      "path": [
+        { "direction": "outgoing", "predicate": "CAUSES" },
+        { "direction": "outgoing", "predicate": "MEASURED_BY" }
+      ],
+      "phrasing": "verbatim",
+      "note": "Deuxième chaîne à deux sauts, deux états causés."
+    },
+    {
+      "id": "q-chaine-pont-producteur",
+      "question": "Que déclenche le pont producteur plafonné et par quoi le suit-on ?",
+      "anchor": "option-adoption-sunset-bridge",
+      "path": [
+        { "direction": "outgoing", "predicate": "CAUSES" },
+        { "direction": "outgoing", "predicate": "MEASURED_BY" }
+      ],
+      "phrasing": "paraphrase",
+      "note": "Chaîne à deux sauts posée sans reprendre les termes exacts des cibles."
+    },
+    {
+      "id": "q-blocages-prix-contextuel",
+      "question": "Que bloque la question du prix contextuel ?",
+      "anchor": "question-price-function-unspecified",
+      "path": [{ "direction": "outgoing", "predicate": "BLOCKS" }],
+      "phrasing": "paraphrase",
+      "note": "Impact aval d'une question ouverte : le sens de traversée est inversé par rapport aux options."
+    },
+    {
+      "id": "q-options-melange-moteur",
+      "question": "Quelles alternatives au partage entre similarité lexicale et vectorielle ont été envisagées ?",
+      "anchor": "decision-query-lexical-vector-blend",
+      "path": [{ "direction": "incoming", "predicate": "OPTION_FOR" }],
+      "phrasing": "verbatim",
+      "note": "Le moteur doit pouvoir retrouver la décision qui le gouverne lui-même."
+    },
+    {
+      "id": "q-options-profondeur-moteur",
+      "question": "Jusqu'où le moteur devrait-il propager depuis un ancrage ?",
+      "anchor": "decision-query-traversal-depth",
+      "path": [{ "direction": "incoming", "predicate": "OPTION_FOR" }],
+      "phrasing": "paraphrase",
+      "note": "Idem, formulé sans citer le nom de la décision."
+    }
+  ]
+}

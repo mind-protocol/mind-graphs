@@ -1,0 +1,525 @@
+{
+  "scope": "Modèle L1 Design : Spécification du fonctionnement interne du L1, incluant la machine à états des sous-entités, les pulsions (objectifs) et les primitives de manipulation du graphe.",
+  "nodes": [
+    {
+      "id": "space-l1-design-cortex",
+      "name": "Espace d'exécution cognitif",
+      "nodeType": "space",
+      "phrase": "Le sous-graphe qui définit le modèle exécutif et les sous-entités du L1.",
+      "family": "L1 Architecture",
+      "summary": "Espace racine regroupant toutes les mécaniques, états, et objectifs gérés par la couche Cortex de la machine L1.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "context"
+    },
+    {
+      "id": "goal-realization",
+      "name": "M1 : Atteinte de Buts",
+      "nodeType": "narrative",
+      "phrase": "Pulsion M1 : La sous-entité cherche à résoudre un objectif explicite ou une obligation.",
+      "family": "Motivations",
+      "summary": "Cible : nœuds d'objectif (goal) ou obligation. Objectif atteint lorsque la tâche correspondante est complétée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_goal"
+    },
+    {
+      "id": "goal-valence-boost",
+      "name": "M2 : Maximisation de Valence",
+      "nodeType": "narrative",
+      "phrase": "Pulsion M2 : Recherche d'états à valence positive.",
+      "family": "Motivations",
+      "summary": "Cible : nœuds dont le humanValenceDelta est positif. Concerne le bien-être et la préservation homéostatique positive.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_goal"
+    },
+    {
+      "id": "goal-threat-avoidance",
+      "name": "M3 : Évitement de Menace",
+      "nodeType": "narrative",
+      "phrase": "Pulsion M3 : Atténuation des états indésirables.",
+      "family": "Motivations",
+      "summary": "Cible : system_state avec stateOrientation='undesirable'. Évitement des risques et réduction de la douleur/frustration.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_goal"
+    },
+    {
+      "id": "goal-information-completeness",
+      "name": "M4 : Curiosité / Complétude",
+      "nodeType": "narrative",
+      "phrase": "Pulsion M4 : Réduction de l'incertitude.",
+      "family": "Motivations",
+      "summary": "Cible : open_question qui bloque l'action. Résoudre l'inconnu avant de s'engager.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_goal"
+    },
+    {
+      "id": "state-monitoring",
+      "name": "State 1 : MONITORING",
+      "nodeType": "thing",
+      "phrase": "Veille passive et écoute contextuelle à bas coût.",
+      "family": "State Machine",
+      "summary": "La sous-entité reçoit l'énergie de base et scanne son voisinage sémantique pour détecter des Percepts ou Narratives en lien avec ses Motivations.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_state_machine"
+    },
+    {
+      "id": "narrative-monitoring",
+      "name": "Justification de la Veille Passive",
+      "nodeType": "narrative",
+      "phrase": "Le traitement pré-attentif analyse le flux sans consommer l'Espace de Travail Global.",
+      "family": "Justifications",
+      "summary": "Évite la surcharge computationnelle. Seules les résonances sémantiques (poids W forts) réchauffent la sous-entité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "state-activation-evaluation",
+      "name": "State 2 : ACTIVATION_EVALUATION",
+      "nodeType": "thing",
+      "phrase": "Évaluation du rapport coût/bénéfice avant de s'engager.",
+      "family": "State Machine",
+      "summary": "Calcul de la pertinence d'une opportunité ou menace. L'énergie franchit un seuil de déclenchement.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_state_machine"
+    },
+    {
+      "id": "narrative-evaluation",
+      "name": "Justification du Filtre d'Évaluation",
+      "nodeType": "narrative",
+      "phrase": "Agit comme le réseau inhibiteur du cortex préfrontal pour éviter l'impulsivité pure.",
+      "family": "Justifications",
+      "summary": "Stoppe les changements de contexte inutiles face à des stimuli mineurs.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "state-workspace-bidding",
+      "name": "State 3 : WORKSPACE_BIDDING",
+      "nodeType": "thing",
+      "phrase": "Compétition méritocratique pour l'attention globale.",
+      "family": "State Machine",
+      "summary": "Émission d'une enchère énergétique (E_bid) pour capter le Global Workspace et devenir la sous-entité active.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_state_machine"
+    },
+    {
+      "id": "narrative-workspace-bidding",
+      "name": "Justification de la Compétition Attentionnelle",
+      "nodeType": "narrative",
+      "phrase": "Implémente la Théorie de l'Espace de Travail Global (GWT). L'attention unifiée est un goulot d'étranglement qui sélectionne le réseau le plus résonnant.",
+      "family": "Justifications",
+      "summary": "Assure une cohérence sérielle d'action (le système ne peut résoudre qu'un seul problème complexe à la fois).",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "state-targeting-planning",
+      "name": "State 4 : TARGETING_AND_PLANNING",
+      "nodeType": "thing",
+      "phrase": "Ciblage et focalisation du chemin.",
+      "family": "State Machine",
+      "summary": "La sous-entité victorieuse sélectionne un SubentityGoal, simule l'action, et ferme les gates rivales.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_state_machine"
+    },
+    {
+      "id": "narrative-targeting",
+      "name": "Justification du Ciblage Exclusif",
+      "nodeType": "narrative",
+      "phrase": "L'action rationnelle nécessite l'inhibition des distracteurs sans altérer la mémoire structurelle.",
+      "family": "Justifications",
+      "summary": "Ajuster temporairement G isole le réseau utile.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "state-execution",
+      "name": "State 5 : EXECUTION",
+      "nodeType": "thing",
+      "phrase": "Exécution de primitives sur la topologie du graphe.",
+      "family": "State Machine",
+      "summary": "Déclenchement d'actions (ENFOLD, RELEASE, PULSE) pour modifier matériellement l'état mental.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_state_machine"
+    },
+    {
+      "id": "narrative-execution",
+      "name": "Justification de la Modification Topologique",
+      "nodeType": "narrative",
+      "phrase": "La pensée exécutive est l'assemblage temporaire de ressources éparses dans une 'mémoire de travail'.",
+      "family": "Justifications",
+      "summary": "Sans modifications L4, la sous-entité n'aurait aucun impact causal.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "state-feedback-monitoring",
+      "name": "State 6 : FEEDBACK_MONITORING",
+      "nodeType": "thing",
+      "phrase": "Boucle d'ajustement prédictif.",
+      "family": "State Machine",
+      "summary": "Évaluation du flux de retour. Si l'énergie est bloquée, émission d'une erreur de prédiction pour corriger.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_state_machine"
+    },
+    {
+      "id": "narrative-feedback",
+      "name": "Justification du Codage Prédictif",
+      "nodeType": "narrative",
+      "phrase": "Le cerveau opère par 'Predictive Coding' (Friston). Il n'agit jamais en boucle ouverte aveugle.",
+      "family": "Justifications",
+      "summary": "Permet un micro-ajustement continu plutôt qu'un échec catastrophique.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "state-closure-consolidation",
+      "name": "State 7 : CLOSURE_AND_CONSOLIDATION",
+      "nodeType": "thing",
+      "phrase": "Résolution de l'objectif et apprentissage.",
+      "family": "State Machine",
+      "summary": "Objectif atteint. L'énergie redescend. Les arêtes empruntées augmentent leur Poids W. Relâchement du Workspace.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_state_machine"
+    },
+    {
+      "id": "narrative-closure",
+      "name": "Justification de la Consolidation Hebbienne",
+      "nodeType": "narrative",
+      "phrase": "Apprentissage par renforcement : le succès grave la tactique dans la structure lente W.",
+      "family": "Justifications",
+      "summary": "Automatise la stratégie et diminue le coût cognitif futur.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "state-frustration-pivot",
+      "name": "State 8 : FRUSTRATION_AND_PIVOT",
+      "nodeType": "thing",
+      "phrase": "Abandon suite à un échec prolongé.",
+      "family": "State Machine",
+      "summary": "La résolution draine trop d'énergie. La sous-entité abandonne (RELEASE) et retourne en IDLE, ou appelle un niveau macro.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_state_machine"
+    },
+    {
+      "id": "narrative-frustration",
+      "name": "Justification du Repli Homéostatique",
+      "nodeType": "narrative",
+      "phrase": "L'acharnement infini est métaboliquement mortel. Le système doit pouvoir 'lâcher prise'.",
+      "family": "Justifications",
+      "summary": "Évite les boucles infinies. Pose les fondations pour la future couche d'accumulation de stress.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "action-enfold",
+      "name": "Action : ENFOLD (Capture)",
+      "nodeType": "thing",
+      "phrase": "Création dynamique d'un lien PART_OF (+0.95) vers un nœud.",
+      "family": "Graph Primitives",
+      "summary": "Aggrège une information ou méthode dans le cluster de la sous-entité pour usage immédiat (Mémoire de Travail).",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_action"
+    },
+    {
+      "id": "action-release",
+      "name": "Action : RELEASE (Détachement)",
+      "nodeType": "thing",
+      "phrase": "Suppression du lien PART_OF.",
+      "family": "Graph Primitives",
+      "summary": "Désallocation de la mémoire, abandon de stratégie.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_action"
+    },
+    {
+      "id": "action-gate-lock",
+      "name": "Action : GATE_LOCK (Modulation d'accès)",
+      "nodeType": "thing",
+      "phrase": "Réglage de G à 1.0 (cible) ou 0.0 (distracteurs).",
+      "family": "Graph Primitives",
+      "summary": "Permet de bloquer des chemins cognitifs rivaux sans altérer leur poids W structurel.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_action"
+    },
+    {
+      "id": "action-pulse",
+      "name": "Action : PULSE (Effort exécutif)",
+      "nodeType": "thing",
+      "phrase": "Injection d'énergie E ciblée.",
+      "family": "Graph Primitives",
+      "summary": "Transfert de la volition. Moteur de changement L4.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "subentity_action"
+    },
+    {
+      "id": "narrative-cortex-eight-state-functional-decomposition",
+      "name": "Justification · Huit états séparent huit responsabilités exécutives",
+      "nodeType": "narrative",
+      "phrase": "Le cycle distingue détecter, évaluer, concourir, planifier, agir, observer, consolider et abandonner afin qu aucune étape irréversible ne soit confondue avec une simple activation.",
+      "family": "Justifications",
+      "summary": "Le nombre huit est une décomposition d ingénierie, pas l affirmation que le cerveau biologique possède huit états discrets. MONITORING garde la veille hors du workspace ; ACTIVATION_EVALUATION filtre l impulsivité ; WORKSPACE_BIDDING arbitre l attention rare ; TARGETING_AND_PLANNING sépare intention et mutation ; EXECUTION borne l action ; FEEDBACK_MONITORING ferme la boucle prédictive ; CLOSURE_AND_CONSOLIDATION réserve l apprentissage lent au résultat ; FRUSTRATION_AND_PIVOT garantit une sortie lorsque l effort ne paie plus.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "narrative-cortex-transition-loop-branches",
+      "name": "Justification · Le cycle branche sur correction, succès ou abandon",
+      "nodeType": "narrative",
+      "phrase": "Après chaque action, le retour observable doit conduire soit à une correction bornée, soit à une consolidation, soit à un pivot.",
+      "family": "Justifications",
+      "summary": "La machine ne doit jamais boucler de EXECUTION vers EXECUTION sans observation. FEEDBACK_MONITORING est le point de décision : une erreur corrigeable avec budget restant retourne à l action ; un succès observé ouvre la consolidation ; un échec persistant ou un budget épuisé impose le pivot. Les deux sorties reviennent ensuite à MONITORING après avoir relâché les gates et historisé le résultat.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "narrative-cortex-state-count-remains-hypothesis",
+      "name": "Limite · Le nombre de huit états reste une hypothèse de design",
+      "nodeType": "narrative",
+      "phrase": "La machine à huit états doit être comparée à des décompositions plus simples ou hiérarchiques avant d être tenue pour nécessaire.",
+      "family": "Justifications",
+      "summary": "Le graphe justifie la responsabilité de chaque état, mais ne démontre pas que huit est le nombre minimal ni le plus fidèle à la cognition humaine. Une implémentation doit tester si certains états fusionnent sans perdre d observabilité, si l interruption de sécurité et l attente différée exigent des états supplémentaires, et si plusieurs régimes parallèles décrivent mieux le cerveau qu un automate unique.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    }
+  ],
+  "links": [
+    {
+      "source": "goal-realization",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Intègre cet objectif dans l'architecture L1."
+    },
+    {
+      "source": "goal-valence-boost",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Intègre cet objectif dans l'architecture L1."
+    },
+    {
+      "source": "goal-threat-avoidance",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Intègre cet objectif dans l'architecture L1."
+    },
+    {
+      "source": "goal-information-completeness",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Intègre cet objectif dans l'architecture L1."
+    },
+    {
+      "source": "state-monitoring",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Cet état fait partie du cycle du cortex."
+    },
+    {
+      "source": "narrative-monitoring",
+      "target": "state-monitoring",
+      "type": "MOTIVATES",
+      "justification": "Le pré-traitement attentif fonde la nécessité d'un état de veille passive à bas coût."
+    },
+    {
+      "source": "state-activation-evaluation",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Cet état fait partie du cycle du cortex."
+    },
+    {
+      "source": "narrative-evaluation",
+      "target": "state-activation-evaluation",
+      "type": "MOTIVATES",
+      "justification": "La prévention de l'impulsivité fonde l'existence d'une phase d'évaluation avant engagement."
+    },
+    {
+      "source": "state-workspace-bidding",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Cet état fait partie du cycle du cortex."
+    },
+    {
+      "source": "narrative-workspace-bidding",
+      "target": "state-workspace-bidding",
+      "type": "MOTIVATES",
+      "justification": "La théorie du GWT justifie le mécanisme de compétition pour l'attention globale unifiée."
+    },
+    {
+      "source": "state-targeting-planning",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Cet état fait partie du cycle du cortex."
+    },
+    {
+      "source": "narrative-targeting",
+      "target": "state-targeting-planning",
+      "type": "MOTIVATES",
+      "justification": "La suppression des interférences justifie la modulation des gates lors du ciblage."
+    },
+    {
+      "source": "state-execution",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Cet état fait partie du cycle du cortex."
+    },
+    {
+      "source": "narrative-execution",
+      "target": "state-execution",
+      "type": "MOTIVATES",
+      "justification": "La manipulation topo-causale fonde l'utilisation d'opérations comme ENFOLD pour construire la mémoire de travail."
+    },
+    {
+      "source": "state-feedback-monitoring",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Cet état fait partie du cycle du cortex."
+    },
+    {
+      "source": "narrative-feedback",
+      "target": "state-feedback-monitoring",
+      "type": "MOTIVATES",
+      "justification": "Le codage prédictif justifie la boucle d'erreur de prédiction pour les ajustements."
+    },
+    {
+      "source": "state-closure-consolidation",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Cet état fait partie du cycle du cortex."
+    },
+    {
+      "source": "narrative-closure",
+      "target": "state-closure-consolidation",
+      "type": "MOTIVATES",
+      "justification": "L'apprentissage hebbien par renforcement justifie la mise à jour structurelle après la résolution."
+    },
+    {
+      "source": "state-frustration-pivot",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Cet état fait partie du cycle du cortex."
+    },
+    {
+      "source": "narrative-frustration",
+      "target": "state-frustration-pivot",
+      "type": "MOTIVATES",
+      "justification": "La préservation allostatique justifie le mécanisme d'abandon avant épuisement fatal."
+    },
+    {
+      "source": "action-enfold",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Action intégrée au modèle L1."
+    },
+    {
+      "source": "action-release",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Action intégrée au modèle L1."
+    },
+    {
+      "source": "action-gate-lock",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Action intégrée au modèle L1."
+    },
+    {
+      "source": "action-pulse",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "Action intégrée au modèle L1."
+    },
+    {
+      "source": "narrative-cortex-eight-state-functional-decomposition",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "La justification du découpage exécutif appartient au cortex qu elle borne et ne prétend pas décrire une taxonomie biologique universelle."
+    },
+    {
+      "source": "narrative-cortex-transition-loop-branches",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "La règle de branchement correction, succès ou abandon appartient au contrat du cycle exécutif."
+    },
+    {
+      "source": "narrative-cortex-state-count-remains-hypothesis",
+      "target": "space-l1-design-cortex",
+      "type": "PART_OF",
+      "justification": "La limite sur le nombre d états reste visible dans le même cluster que la machine qu elle empêche de naturaliser."
+    },
+    {
+      "source": "narrative-cortex-eight-state-functional-decomposition",
+      "target": "state-activation-evaluation",
+      "type": "MOTIVATES",
+      "justification": "Séparer l évaluation de la détection empêche qu un stimulus mineur déclenche directement une compétition pour le workspace."
+    },
+    {
+      "source": "narrative-cortex-eight-state-functional-decomposition",
+      "target": "state-workspace-bidding",
+      "type": "MOTIVATES",
+      "justification": "Séparer l enchère de l évaluation rend visible le passage d une pertinence locale à une demande d attention globale."
+    },
+    {
+      "source": "narrative-cortex-eight-state-functional-decomposition",
+      "target": "state-targeting-planning",
+      "type": "MOTIVATES",
+      "justification": "Séparer planification et exécution permet de simuler et vérifier une action avant toute modification du graphe."
+    },
+    {
+      "source": "narrative-cortex-eight-state-functional-decomposition",
+      "target": "state-execution",
+      "type": "MOTIVATES",
+      "justification": "Un état d exécution distinct borne précisément le moment où une proposition produit un effet topologique."
+    },
+    {
+      "source": "narrative-cortex-eight-state-functional-decomposition",
+      "target": "state-feedback-monitoring",
+      "type": "MOTIVATES",
+      "justification": "Séparer le feedback de l action impose une observation avant correction, consolidation ou abandon."
+    },
+    {
+      "source": "narrative-cortex-transition-loop-branches",
+      "target": "state-feedback-monitoring",
+      "type": "MOTIVATES",
+      "justification": "Le feedback est le point unique où le résultat distribue le cycle entre nouvelle tentative, succès et pivot."
+    },
+    {
+      "source": "narrative-cortex-transition-loop-branches",
+      "target": "state-closure-consolidation",
+      "type": "MOTIVATES",
+      "justification": "La consolidation est une branche séparée afin qu un succès observé, et non la seule intensité de l activation, gouverne l apprentissage lent."
+    },
+    {
+      "source": "narrative-cortex-transition-loop-branches",
+      "target": "state-frustration-pivot",
+      "type": "MOTIVATES",
+      "justification": "Le pivot est une branche obligatoire afin que l échec persistant ou l épuisement du budget termine la stratégie en cours."
+    }
+  ]
+}

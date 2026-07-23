@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0.0",
+  "seed": 20260720,
+  "population": 100000,
+  "days": 120,
+  "economy": {
+    "merchantCount": 800,
+    "dailyNeedMean": 1,
+    "dailyIncomeMean": 1.35,
+    "supplyPerPerson": 1.08,
+    "unitPrice": 1,
+    "unitCost": 0.72,
+    "initialHouseholdBufferDays": 12,
+    "initialMerchantBufferDays": 18
+  },
+  "behavior": {
+    "id": "reference",
+    "priceElasticity": 0,
+    "spendPropensity": 1,
+    "shortageSubstitution": 0,
+    "sybilParticipationMultiplier": 1
+  },
+  "shocks": {
+    "unemployment": { "startDay": 20, "endDay": 80, "additionalRate": 0.22 },
+    "shortage": { "startDay": 35, "endDay": 52, "supplyMultiplier": 0.62 },
+    "networkOutage": { "startDay": 58, "endDay": 64, "serviceMultiplier": 0.65 },
+    "sybil": { "startDay": 45, "fakeIdentityShare": 0.12 },
+    "speculation": { "startDay": 70, "liquidityDrainRate": 0.08 },
+    "migration": { "startDay": 82, "demandMultiplier": 1.1 },
+    "governanceCapture": { "startDay": 92, "fairnessLoss": 0.35 }
+  },
+  "arms": {
+    "current": {
+      "dailyTransfer": 0.08,
+      "walletCapDays": 365,
+      "demurrageRate": 0,
+      "contextualPricing": 0,
+      "offlineContinuity": 1,
+      "dataFieldsRequired": 3,
+      "governanceConcentration": 0.72
+    },
+    "hybrid": {
+      "dailyTransfer": 0.38,
+      "walletCapDays": 365,
+      "demurrageRate": 0,
+      "contextualPricing": 0,
+      "offlineContinuity": 1,
+      "dataFieldsRequired": 4,
+      "governanceConcentration": 0.58
+    },
+    "mind": {
+      "dailyTransfer": 0.72,
+      "walletCapDays": 4,
+      "demurrageRate": 0.18,
+      "contextualPricing": 0.28,
+      "offlineContinuity": 0.82,
+      "dataFieldsRequired": 8,
+      "governanceConcentration": 0.46
+    }
+  },
+  "decisionThresholds": null,
+  "notes": [
+    "Tous les paramètres sont des hypothèses de pilote, pas des estimations empiriques.",
+    "Les seuils de décision restent vides jusqu'à l'étude de variance."
+  ]
+}

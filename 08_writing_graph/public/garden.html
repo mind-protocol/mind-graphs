@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Protocol — Explorer les idées</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/garden.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body>
+    <main class="app-shell garden-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">HEAVEN IS REPAIR · MIND PROTOCOL</p>
+          <h1>Explorer les idées de Mind <span class="garden-badge">cité-jardin</span></h1>
+          <p class="garden-deck">Choisis un sujet, découvre sa destination, puis suis le chemin qui y mène.</p>
+        </div>
+        <div class="topbar-actions">
+          <a class="page-link" href="/">Graphe moteur</a>
+          <a class="page-link" href="/analysis.html">Santé du graphe</a>
+          <a class="page-link" href="/ontology.html">Ontologie</a>
+          <a class="page-link" href="/docs.html">Doc</a>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" title="Basculer le thème clair / sombre">Thème clair</button>
+          <div class="stats" aria-live="polite">
+            <span id="node-count">— parcelles</span>
+            <span id="db-status" class="status">connexion…</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="toolbar garden-toolbar" aria-label="Contrôles de la cité-jardin">
+        <label class="cluster-picker" for="garden-cluster">
+          <span>Sujet à explorer</span>
+          <select id="garden-cluster"></select>
+          <small id="garden-cluster-summary">Choisis un sujet pour lire sa structure.</small>
+        </label>
+        <div class="garden-zoom-controls" role="group" aria-label="Navigation dans la carte">
+          <button id="garden-zoom-out" type="button" aria-label="Dézoomer">−</button>
+          <output id="garden-zoom-level" aria-live="polite">100 %</output>
+          <button id="garden-zoom-in" type="button" aria-label="Zoomer">+</button>
+          <button id="garden-fit" type="button">Cadrer tout le district</button>
+        </div>
+        <button id="legend-toggle" type="button" aria-pressed="false">Comprendre la carte</button>
+        <details class="garden-advanced">
+          <summary>Audit avancé</summary>
+          <div class="garden-advanced-panel">
+            <label class="garden-switch"><input type="checkbox" id="toggle-dimmed-context" checked /> Garder le district visible après une sélection</label>
+            <label class="garden-switch"><input type="checkbox" id="toggle-neighbors" /> Inclure les voisins externes</label>
+            <label class="garden-switch"><input type="checkbox" id="toggle-roots" /> Afficher la provenance</label>
+            <label class="garden-switch"><input type="checkbox" id="toggle-motion" checked /> Animer les flux</label>
+            <span id="causal-stat" class="garden-causal-stat"></span>
+            <button id="walk-toggle" type="button" aria-pressed="false" title="Teste la loi de propagation L4 sur le chemin principal">Tester la propagation L4</button>
+          </div>
+        </details>
+      </section>
+
+      <section class="workspace garden-workspace">
+        <div id="garden-wrap" class="garden-wrap">
+          <canvas id="garden-flow" class="garden-flow" aria-hidden="true"></canvas>
+          <svg id="garden-svg" class="garden-svg" role="group" aria-label="Cité-jardin : représentation spatiale du cluster">
+            <defs id="garden-defs"></defs>
+            <g id="garden-districts"></g>
+            <g id="garden-roots"></g>
+            <g id="garden-roads"></g>
+            <g id="garden-walls"></g>
+            <g id="garden-nodes"></g>
+            <!-- Le marcheur passe au-dessus de la ville : il n'en fait pas partie,
+                 il la traverse. C'est l'expérience L4, pas un décor. -->
+            <g id="garden-walk"></g>
+          </svg>
+
+          <section id="garden-a11y" class="visually-hidden" aria-label="Liste accessible des parcelles">
+            <h2>Parcelles visibles</h2>
+            <p id="garden-a11y-count" aria-live="polite"></p>
+            <ul id="garden-a11y-list"></ul>
+          </section>
+
+          <div id="garden-legend" class="garden-legend" hidden>
+            <div class="legend-block">
+              <strong>Vitalité (statut épistémique)</strong>
+              <span><i class="vk documented"></i>documenté — bâti achevé, il porte une ombre</span>
+              <span><i class="vk hypothesis"></i>hypothèse — pousse, la matière monte du sol</span>
+              <span><i class="vk proposal"></i>proposition — chantier, montants et traverses</span>
+              <span><i class="vk target"></i>cible de test — fondation, une dalle sans volume</span>
+              <span><i class="vk scenario"></i>scénario — mirage, il ne touche pas le sol</span>
+              <span><i class="vk unresolved"></i>question ouverte — faille creusée dans le sol</span>
+              <span><i class="vk ruin"></i>réfuté / remplacé — ruine, la crête a chuté</span>
+            </div>
+            <div class="legend-block">
+              <strong>Affordances</strong>
+              <span><i class="ak wall"></i>bloque / contredit — mur, faille</span>
+              <span><i class="ak rampart"></i>protège — rempart</span>
+              <span><i class="ak flow"></i>alimente — flux d'énergie</span>
+              <span><i class="ak road"></i>met en œuvre / fonde — route</span>
+              <span><i class="ak bridge"></i>répond à — pont sur la faille</span>
+              <span><i class="ak root"></i>provenance — racine souterraine</span>
+            </div>
+            <div class="legend-block">
+              <strong>Franchissement causal (matière de l'arête)</strong>
+              <span><i class="ak rope"></i>pont de corde — affirmation nue, le lien s'affaisse</span>
+              <span><i class="ak stone"></i>pont de pierre — effet chiffré, preuve du monde réel</span>
+              <span>entre les deux : corde tendue (assertion), planches (simulation)</span>
+            </div>
+          </div>
+
+          <p id="garden-empty" class="empty" hidden>Ce district est vide ou indisponible.</p>
+          <div id="garden-hint" class="garden-hint">glisse pour déplacer · molette pour zoomer · clique pour comprendre</div>
+        </div>
+
+        <aside id="garden-details" class="details garden-details" aria-live="polite">
+          <!-- Le briefing vit dans la colonne, pas sur la carte : en surimpression
+               il masquait jusqu'à quatre parcelles, dont l'étape ① qu'il désigne. -->
+          <section id="garden-briefing" class="garden-briefing" aria-label="Briefing du district"></section>
+          <!-- Ce que la loi a produit en marchant : un résultat d'expérience,
+               pas un commentaire de l'animation. -->
+          <section id="garden-walk-report" class="garden-walk-report" aria-label="Résultat de la marche L4" aria-live="polite" hidden></section>
+          <section class="node-inspector">
+            <p class="details-kicker" id="garden-detail-kicker">Cité-jardin · le sens est dans l'affordance</p>
+            <h2 id="garden-detail-name">Choisis une parcelle</h2>
+            <p id="garden-detail-vitality" class="garden-vitality-line"></p>
+            <p id="garden-detail-phrase" class="detail-phrase">Chaque parcelle porte la phrase-manifeste de son nœud. La matière (chantier, pousse, faille) traduit son statut épistémique, pas une vérité.</p>
+            <p id="garden-detail-summary" class="detail-summary"></p>
+            <div id="garden-detail-relations" class="detail-relations"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="/garden.js"></script>
+  </body>
+</html>

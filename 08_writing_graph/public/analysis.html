@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Protocol — Santé du graphe</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/analysis.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body class="health-page">
+    <header class="health-header">
+      <a href="/">← Retour au graphe</a>
+      <nav><a href="/garden.html">Cité-jardin</a><a href="/decisions.html">Décisions</a><a href="/ontology.html">Ontologie</a><a href="/docs.html">Doc</a><button data-theme-toggle class="theme-toggle" type="button" aria-pressed="false">Thème clair</button><span id="analysis-version">calcul…</span></nav>
+    </header>
+
+    <nav class="health-view-nav" aria-label="Vues de la santé du graphe">
+      <a href="/analysis.html?view=overview" data-health-view-link="overview">Synthèse</a>
+      <a href="/analysis.html?view=logs" data-health-view-link="logs">Journal</a>
+      <a href="/analysis.html?view=diagnostic" data-health-view-link="diagnostic">Diagnostic</a>
+      <a href="/analysis.html?view=recommendations" data-health-view-link="recommendations">Recommandations</a>
+      <a href="/decisions.html" class="health-view-external">Décisions ↗</a>
+    </nav>
+
+    <main class="health-main">
+      <section class="health-hero" data-health-section="overview">
+        <div>
+          <p id="schema-version" class="eyebrow">AUDIT ALGORITHMIQUE · SCHÉMA ACTIF</p>
+          <h1>Santé du graphe</h1>
+          <p class="health-intro">Un tableau de bord explicable de la structure, de la provenance et de la maturité causale du graphe.</p>
+          <p id="executive-diagnosis" class="executive-diagnosis">Calcul du diagnostic exécutif…</p>
+        </div>
+        <div id="health-score" class="health-score" aria-live="polite"><strong>—</strong><span>calcul en cours</span></div>
+      </section>
+
+      <section id="health-totals" class="health-totals" aria-label="Taille du graphe" data-health-section="overview"></section>
+
+      <section id="health-trend" class="health-trend" aria-label="Historique local du score de santé" data-health-section="overview" hidden>
+        <div class="health-trend-head">
+          <div><p class="eyebrow">TENDANCE · HISTORIQUE LOCAL</p><h2>Évolution du score</h2></div>
+          <button id="export-report" type="button">Exporter le rapport (Markdown)</button>
+        </div>
+        <p class="health-trend-note">Historique enregistré dans ce navigateur à chaque visite ; il n’est pas partagé et démarre à votre première consultation.</p>
+        <div id="health-trend-chart" class="health-trend-chart"></div>
+      </section>
+
+      <section class="score-explanation" aria-labelledby="score-drivers-title" data-health-section="overview">
+        <div><p class="eyebrow">POURQUOI CE SCORE</p><h2 id="score-drivers-title">Les principaux facteurs de fragilité</h2></div>
+        <div id="score-drivers" class="score-drivers"></div>
+      </section>
+
+      <section class="health-section" aria-labelledby="completeness-title" data-health-section="diagnostic">
+        <div class="health-heading">
+          <div><p class="eyebrow">COMPLÉTUDE CAUSALE</p><h2 id="completeness-title">Ce que le graphe peut encore affirmer</h2></div>
+          <p>Un mécanisme n’affirme un effet chiffré que si son périmètre contient une cible falsifiable. Ces indicateurs mesurent la chaîne d’ancrage <code>mécanisme → état → métrique</code> ; ils ne bloquent rien et n’imposent aucun quota.</p>
+        </div>
+        <div id="causal-completeness" class="completeness-grid"></div>
+        <div id="observability-blind" class="observability-blind"></div>
+        <div id="observability-table" class="observability-table"></div>
+      </section>
+
+      <section class="health-section" aria-labelledby="workstreams-title" data-health-section="overview">
+        <div class="health-heading">
+          <div><p class="eyebrow">PLAN DE TRAVAIL</p><h2 id="workstreams-title">Chantiers prioritaires</h2></div>
+          <p>Les recommandations sont regroupées en chantiers pour éviter que les cartes individuelles soient confondues avec un plan d’action.</p>
+        </div>
+        <div id="workstreams" class="workstream-grid"></div>
+      </section>
+
+      <section class="health-section health-logs-section" aria-labelledby="executions-title" data-health-section="logs">
+        <div class="health-heading">
+          <div><p class="eyebrow">JOURNAL D’EXÉCUTION</p><h2 id="executions-title">Traversées et réparations</h2></div>
+          <p>Les traversées analysent le graphe sans le modifier. Les réparations sont exécutées en simulation : elles produisent des candidats, mais aucune mutation n’est appliquée sans revue humaine.</p>
+        </div>
+        <div id="run-metadata" class="run-metadata"></div>
+        <div id="execution-summary" class="execution-summary"></div>
+        <div class="execution-controls" role="search">
+          <label for="execution-search">Rechercher</label>
+          <input id="execution-search" type="search" placeholder="Nom, périmètre ou limite…" />
+          <label for="execution-kind-filter">Type</label>
+          <select id="execution-kind-filter">
+            <option value="all">Tout le journal</option>
+            <option value="traversal">Traversées</option>
+            <option value="repair">Réparations simulées</option>
+          </select>
+          <span id="execution-count" aria-live="polite"></span>
+        </div>
+        <div id="algorithm-executions" class="execution-list"></div>
+      </section>
+
+      <section class="health-section" aria-labelledby="indicators-title" data-health-section="diagnostic">
+        <div class="health-heading">
+          <div><p class="eyebrow">INDICATEURS EXPLIQUÉS</p><h2 id="indicators-title">Ce que mesure la santé</h2></div>
+          <p>Le score global est une moyenne pondérée. Il sert à suivre les progrès éditoriaux et scientifiques ; ce n’est ni une probabilité de vérité, ni une certification.</p>
+        </div>
+        <div id="health-indicators" class="indicator-grid"></div>
+      </section>
+
+      <section class="health-section methodology" aria-labelledby="method-title" data-health-section="diagnostic">
+        <div class="health-heading">
+          <div><p class="eyebrow">MÉTHODE</p><h2 id="method-title">Comment lire les chiffres</h2></div>
+          <p id="analysis-disclaimer"></p>
+        </div>
+        <div class="method-grid">
+          <article><strong>Score d’indicateur</strong><code>éléments conformes ÷ éléments concernés × 100</code><p>Le dénominateur est toujours affiché. Un pourcentage élevé peut néanmoins masquer une mauvaise qualification sémantique.</p></article>
+          <article><strong>Score global</strong><code>Σ(score × poids) ÷ Σ(poids)</code><p>La provenance et la quantification pèsent davantage que la simple connectivité, car elles conditionnent l’auditabilité des conclusions.</p></article>
+          <article><strong>Priorité d’audit</strong><code>impact + centralité + risque + lacunes</code><p>Elle ordonne le travail à examiner. Elle ne mesure ni la probabilité d’une hypothèse ni la confiance scientifique.</p></article>
+        </div>
+      </section>
+
+      <section class="health-section" aria-labelledby="recommendations-title" data-health-section="recommendations">
+        <div class="health-heading">
+          <div><p class="eyebrow">RECOMMANDATIONS CONTEXTUALISÉES</p><h2 id="recommendations-title">Pourquoi agir, et comment</h2></div>
+          <p>Chaque recommandation distingue le constat calculé, les raisons de son importance, les causes possibles, le risque de ne rien faire et les étapes de revue.</p>
+        </div>
+        <div id="finding-summary" class="finding-summary"></div>
+        <div class="recommendation-controls">
+          <label for="category-filter">Catégorie</label>
+          <select id="category-filter"><option value="all">Toutes les catégories</option></select>
+          <button id="copy-all-recommendations" type="button">Copier toutes les recommandations</button>
+          <span id="recommendation-count"></span>
+        </div>
+        <p id="recommendation-copy-status" class="recommendation-copy-status" aria-live="polite"></p>
+        <div id="recommendations" class="recommendation-list"></div>
+      </section>
+
+      <p id="analysis-error" class="ontology-error" role="alert"></p>
+    </main>
+    <script type="module" src="/analysis-page.js"></script>
+  </body>
+</html>

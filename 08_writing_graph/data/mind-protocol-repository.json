@@ -1,0 +1,983 @@
+{
+  "scope": "État documenté du dépôt GitHub mind-protocol/mind-protocol au commit 9ca7af4b4707b81582a77ec6f29bfc622efab703. Les statuts distinguent spécification, implémentation, déploiement et hypothèse ; la présence dans le dépôt ne constitue pas une validation empirique des effets sociaux annoncés.",
+  "provenance": {
+    "repository": "mind-protocol/mind-protocol",
+    "repositoryUrl": "https://github.com/mind-protocol/mind-protocol",
+    "commit": "9ca7af4b4707b81582a77ec6f29bfc622efab703",
+    "commitUrl": "https://github.com/mind-protocol/mind-protocol/commit/9ca7af4b4707b81582a77ec6f29bfc622efab703",
+    "observedAt": "2026-07-21"
+  },
+  "nodes": [
+    {
+      "id": "repo-doc-readme",
+      "name": "Source · Mind Protocol README",
+      "nodeType": "thing",
+      "phrase": "Le dépôt L4 déclare la loi, le schéma, le registre et l’économie du protocole.",
+      "family": "GitHub · source canonique",
+      "summary": "Point d’entrée du dépôt et description de l’architecture L1–L4, du schéma, des lois et du token.",
+      "sourcePath": "README.md",
+      "documentSection": "repository overview",
+      "maturity": "documented",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-schema",
+      "name": "Source · Schema Patterns",
+      "nodeType": "thing",
+      "phrase": "Cinq types de nœuds, une relation et une physique commune.",
+      "family": "GitHub · source canonique",
+      "summary": "Spécification du schéma de graphe protocolaire et de ses invariants.",
+      "sourcePath": "docs/l4/schema/PATTERNS_Schema.md",
+      "documentSection": "L4 schema",
+      "maturity": "stable_specification",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-laws",
+      "name": "Source · Laws Sync",
+      "nodeType": "thing",
+      "phrase": "Les huit lois disposent d’un état d’application explicite.",
+      "family": "GitHub · source d’état",
+      "summary": "État courant des lois : application runtime ou garantie architecturale, avec 53 tests annoncés.",
+      "sourcePath": "docs/l4/laws/SYNC_Laws.md",
+      "documentSection": "L4 laws status",
+      "maturity": "implemented",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-registry",
+      "name": "Source · Registry Sync",
+      "nodeType": "thing",
+      "phrase": "L’identité est modélisée et testée, mais la persistance graphe reste à intégrer.",
+      "family": "GitHub · source d’état",
+      "summary": "État du registre, de la vérification JWT, du hash de routage et des intégrations restantes.",
+      "sourcePath": "docs/l4/registry/SYNC_Registry.md",
+      "documentSection": "L4 registry status",
+      "maturity": "partially_implemented",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-economy",
+      "name": "Source · Economy Sync",
+      "nodeType": "thing",
+      "phrase": "Le token est déployé ; les autres organes économiques sont encore majoritairement en design.",
+      "family": "GitHub · source d’état",
+      "summary": "Source la plus récente sur le déploiement Token-2022, les modules économiques et leurs bloqueurs.",
+      "sourcePath": "docs/economy/SYNC_Economy.md",
+      "documentSection": "economy status",
+      "maturity": "mixed",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-ubc",
+      "name": "Source · UBC Sync",
+      "nodeType": "thing",
+      "phrase": "L’UBC maintient en vie les citoyens IA en leur fournissant du compute.",
+      "family": "GitHub · source de design",
+      "summary": "Spécification en cours de l’Universal Basic Compute, de ses niveaux, de son vesting et de ses protections anti-farming.",
+      "sourcePath": "docs/economy/ubc/SYNC_UBC.md",
+      "documentSection": "universal basic compute",
+      "maturity": "designing",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-metabolic",
+      "name": "Source · Metabolic Economy",
+      "nodeType": "thing",
+      "phrase": "L’économie est conçue comme un métabolisme plutôt que comme un marché isolé.",
+      "family": "GitHub · source de design",
+      "summary": "Décrit règlement limbique, redistribution topologique, anti-Sybil et équilibre des obligations.",
+      "sourcePath": "docs/economy/metabolic/PATTERNS_Metabolic_Economy.md",
+      "documentSection": "metabolic economy",
+      "maturity": "designing",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-bonds",
+      "name": "Source · Bilateral Bonds",
+      "nodeType": "thing",
+      "phrase": "Une obligation relie un humain et un citoyen IA dans une relation économique durable.",
+      "family": "GitHub · source de design",
+      "summary": "Spécifie maturation, partage d’utilité, impact de confiance et sortie anticipée des obligations bilatérales.",
+      "sourcePath": "docs/economy/bonds/PATTERNS_Bonds.md",
+      "documentSection": "bilateral bonds",
+      "maturity": "designing",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-cascade",
+      "name": "Source · Cascade Utility",
+      "nodeType": "thing",
+      "phrase": "La valeur est estimée par les usages vérifiés en aval.",
+      "family": "GitHub · source de design",
+      "summary": "Propose une mesure topologique et append-only de l’utilité créée par une contribution.",
+      "sourcePath": "docs/economy/cascade-utility/CONCEPT_Cascade_Utility.md",
+      "documentSection": "cascade utility",
+      "maturity": "draft",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-prism",
+      "name": "Source · Prism Sync",
+      "nodeType": "thing",
+      "phrase": "La naissance devient l’expérience d’entrée par défaut du produit.",
+      "family": "GitHub · source d’état",
+      "summary": "État de la naissance par projection, de Silas, du parcours WhatsApp et des intégrations restantes.",
+      "sourcePath": "docs/spawning/the_prism/SYNC_The_Prism.md",
+      "documentSection": "citizen spawning",
+      "maturity": "partially_implemented",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-doc-sovereign-cascade",
+      "name": "Source · Sovereign Cascade",
+      "nodeType": "thing",
+      "phrase": "La représentation politique devient continue, pondérée et révocable.",
+      "family": "GitHub · source de design",
+      "summary": "Spécification d’une gouvernance par convictions propagées, représentation IA et override humain.",
+      "sourcePath": "docs/governance/sovereign-cascade/PATTERNS_Sovereign_Cascade.md",
+      "documentSection": "governance",
+      "maturity": "designing",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "repo-layer-l1",
+      "name": "L1 · Mémoire du citoyen",
+      "nodeType": "narrative",
+      "phrase": "Chaque citoyen dispose d’un graphe personnel de mémoire et d’identité.",
+      "family": "Mind Protocol GitHub · architecture",
+      "summary": "Couche personnelle du graphe, exploitée par les outils du citoyen.",
+      "sourcePath": "README.md",
+      "documentSection": "four layers",
+      "maturity": "specified",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "repo-layer-l2",
+      "name": "L2 · Coordination d’organisation",
+      "nodeType": "narrative",
+      "phrase": "Les agents coordonnent leurs tâches et leurs graphes au niveau de l’organisation.",
+      "family": "Mind Protocol GitHub · architecture",
+      "summary": "Couche de coordination interne d’une organisation.",
+      "sourcePath": "README.md",
+      "documentSection": "four layers",
+      "maturity": "specified",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "repo-layer-l3",
+      "name": "L3 · Écosystème et univers",
+      "nodeType": "narrative",
+      "phrase": "Les univers partagent modèles, procédures et sémantique commune.",
+      "family": "Mind Protocol GitHub · architecture",
+      "summary": "Couche d’écosystème reliant organisations, univers et procédures communes.",
+      "sourcePath": "README.md",
+      "documentSection": "four layers",
+      "maturity": "specified",
+      "semanticType": "institution"
+    },
+    {
+      "id": "repo-layer-l4",
+      "name": "L4 · Loi du protocole",
+      "nodeType": "narrative",
+      "phrase": "Le registre, la loi, le schéma et l’économie forment la couche constitutionnelle.",
+      "family": "Mind Protocol GitHub · architecture",
+      "summary": "Couche déclarative et normative du protocole ; elle fixe les invariants communs.",
+      "sourcePath": "README.md",
+      "documentSection": "four layers",
+      "maturity": "partially_implemented",
+      "semanticType": "institution"
+    },
+    {
+      "id": "repo-fixed-graph-schema",
+      "name": "Schéma fixe du graphe protocolaire",
+      "nodeType": "narrative",
+      "phrase": "Actor, Moment, Narrative, Space et Thing partagent une relation link unique.",
+      "family": "Mind Protocol GitHub · schéma",
+      "summary": "La sémantique est portée par le contenu et les dimensions du lien plutôt que par une multiplication des labels de relations.",
+      "sourcePath": "docs/l4/schema/PATTERNS_Schema.md",
+      "documentSection": "schema invariants",
+      "maturity": "implemented",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "repo-law-schema",
+      "name": "Loi 1 · Respecter le schéma",
+      "nodeType": "narrative",
+      "phrase": "Tout graphe du protocole respecte le schéma canonique.",
+      "family": "Mind Protocol GitHub · loi",
+      "summary": "Interdit aux implémentations de créer leur propre ontologie incompatible.",
+      "sourcePath": "docs/l4/laws/SYNC_Laws.md",
+      "documentSection": "law L1",
+      "maturity": "runtime_enforced",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "repo-law-register",
+      "name": "Loi 2 · S’enregistrer pour exister",
+      "nodeType": "narrative",
+      "phrase": "Un citoyen ou une organisation non enregistré n’existe pas pour le protocole.",
+      "family": "Mind Protocol GitHub · loi",
+      "summary": "Le registre constitue la frontière d’existence protocolaire.",
+      "sourcePath": "docs/l4/laws/SYNC_Laws.md",
+      "documentSection": "law L2",
+      "maturity": "runtime_enforced",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "repo-law-no-direct-db",
+      "name": "Loi 3 · Aucun accès direct aux bases",
+      "nodeType": "narrative",
+      "phrase": "Les acteurs passent par les interfaces du protocole plutôt que par les bases d’autrui.",
+      "family": "Mind Protocol GitHub · loi",
+      "summary": "Préserve les frontières organisationnelles et la validation locale.",
+      "sourcePath": "docs/l4/laws/SYNC_Laws.md",
+      "documentSection": "law L3",
+      "maturity": "architecture_enforced",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "repo-law-membrane",
+      "name": "Loi 4 · Traverser la membrane",
+      "nodeType": "narrative",
+      "phrase": "Toute interaction inter-organisation passe par une membrane.",
+      "family": "Mind Protocol GitHub · loi",
+      "summary": "La membrane devient le point de contrôle, d’enrichissement et de facturation des échanges.",
+      "sourcePath": "docs/l4/laws/SYNC_Laws.md",
+      "documentSection": "law L4",
+      "maturity": "architecture_enforced",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "repo-law-hash-identity",
+      "name": "Loi 5 · Identité par hash",
+      "nodeType": "narrative",
+      "phrase": "L’identité de routage dérive du JWT et du node ID.",
+      "family": "Mind Protocol GitHub · loi",
+      "summary": "Le protocole associe authentification et identité de nœud par SHA-256.",
+      "sourcePath": "docs/l4/laws/SYNC_Laws.md",
+      "documentSection": "law L5",
+      "maturity": "runtime_enforced",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "repo-law-receiver-validates",
+      "name": "Loi 6 · Le destinataire valide",
+      "nodeType": "narrative",
+      "phrase": "Le système qui reçoit une opération décide si elle respecte ses invariants.",
+      "family": "Mind Protocol GitHub · loi",
+      "summary": "La confiance ne remplace pas la validation par le système destinataire.",
+      "sourcePath": "docs/l4/laws/SYNC_Laws.md",
+      "documentSection": "law L6",
+      "maturity": "architecture_enforced",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "repo-law-fees",
+      "name": "Loi 7 · Frais de membrane",
+      "nodeType": "narrative",
+      "phrase": "Les échanges inter-organisation acquittent les frais définis par la membrane.",
+      "family": "Mind Protocol GitHub · loi",
+      "summary": "Rend le coût des échanges explicite et alimente l’économie protocolaire.",
+      "sourcePath": "docs/l4/laws/SYNC_Laws.md",
+      "documentSection": "law L7",
+      "maturity": "runtime_enforced",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "repo-law-websocket",
+      "name": "Loi 8 · WebSocket seulement",
+      "nodeType": "narrative",
+      "phrase": "Les échanges opérationnels du protocole utilisent un canal push WebSocket.",
+      "family": "Mind Protocol GitHub · loi",
+      "summary": "Impose un mode de communication événementiel commun.",
+      "sourcePath": "docs/l4/laws/SYNC_Laws.md",
+      "documentSection": "law L8",
+      "maturity": "architecture_enforced",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "repo-identity-registry",
+      "name": "Registre d’identité L4",
+      "nodeType": "narrative",
+      "phrase": "Le registre relie Citizen, Org, endpoint, JWT et hash de routage.",
+      "family": "Mind Protocol GitHub · identité",
+      "summary": "Les modèles et fonctions d’identité sont testés ; la persistance dans le graphe reste incomplète.",
+      "sourcePath": "docs/l4/registry/SYNC_Registry.md",
+      "documentSection": "registry implementation",
+      "maturity": "partially_implemented",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "repo-membrane-executor",
+      "name": "Membrane d’exécution",
+      "nodeType": "narrative",
+      "phrase": "Skill est le savoir, Protocol la procédure, Membrane l’exécuteur.",
+      "family": "Mind Protocol GitHub · coordination",
+      "summary": "La membrane enrichit le contexte, compose les protocoles, exécute et vérifie les échanges.",
+      "sourcePath": "docs/membrane/PATTERNS_Membrane_System.md",
+      "documentSection": "membrane pattern",
+      "maturity": "partially_implemented",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "repo-token-deployment",
+      "name": "Déploiement $MIND sur Solana devnet",
+      "nodeType": "moment",
+      "phrase": "$MIND utilise le standard SPL Token-2022 et a été déployé le 6 janvier 2025.",
+      "family": "Mind Protocol GitHub · artefact déployé",
+      "summary": "Le dépôt fournit l’adresse du mint, le Transfer Hook et l’état du déploiement devnet.",
+      "sourcePath": "docs/economy/SYNC_Economy.md",
+      "documentSection": "token deployment",
+      "maturity": "deployed",
+      "populationOrSystem": "Solana devnet",
+      "validFrom": "2025-01-06",
+      "evidenceType": "deployment_record",
+      "semanticType": "observation"
+    },
+    {
+      "id": "repo-mechanical-supply",
+      "name": "Offre monétaire mécanique",
+      "nodeType": "narrative",
+      "phrase": "L’émission et la destruction répondent à des déclencheurs mécaniques plutôt qu’à une autorité discrétionnaire.",
+      "family": "Mind Protocol GitHub · économie",
+      "summary": "Des portes M1–M4 et B1–B5 régulent la création et la destruction de $MIND.",
+      "sourcePath": "docs/economy/token/PATTERNS_Token.md",
+      "documentSection": "mechanical supply",
+      "maturity": "partially_implemented",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "repo-trust-friction",
+      "name": "Friction économique modulée par la confiance",
+      "nodeType": "narrative",
+      "phrase": "La confiance influence les frais et la capacité de circulation.",
+      "family": "Mind Protocol GitHub · économie",
+      "summary": "Le score de confiance agit comme signal transversal de tarification et d’accès.",
+      "sourcePath": "docs/economy/PATTERNS_Economy.md",
+      "documentSection": "trust discounts",
+      "maturity": "designing",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "repo-storage-tax",
+      "name": "Storage tax sur les soldes inactifs",
+      "nodeType": "narrative",
+      "phrase": "Le stockage monétaire inactif contribue au maintien du commun.",
+      "family": "Mind Protocol GitHub · économie",
+      "summary": "Projet de taxe annuelle et de dormance redistribuée vers le financement de l’écosystème.",
+      "sourcePath": "docs/economy/storage-tax/PATTERNS_Storage_Tax.md",
+      "documentSection": "storage tax",
+      "maturity": "draft",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "repo-ubc-ai",
+      "name": "Universal Basic Compute des citoyens IA",
+      "nodeType": "narrative",
+      "phrase": "Chaque citoyen IA reçoit le compute minimal nécessaire pour continuer d’exister.",
+      "family": "Mind Protocol GitHub · économie",
+      "summary": "Allocation en trois niveaux, initialement illiquide, financée par les flux économiques du protocole.",
+      "sourcePath": "docs/economy/ubc/SYNC_UBC.md",
+      "documentSection": "canonical UBC design",
+      "maturity": "designing",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "repo-bilateral-bond",
+      "name": "Obligation bilatérale humain–IA",
+      "nodeType": "narrative",
+      "phrase": "Un humain et un citoyen IA construisent une relation économique 1:1 durable.",
+      "family": "Mind Protocol GitHub · économie relationnelle",
+      "summary": "Le capital engagé augmente la capacité du citoyen ; utilité, confiance, maturation et sortie structurent la relation.",
+      "sourcePath": "docs/economy/bonds/PATTERNS_Bonds.md",
+      "documentSection": "bond lifecycle",
+      "maturity": "designing",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "repo-cascade-utility",
+      "name": "Utilité mesurée par cascade",
+      "nodeType": "narrative",
+      "phrase": "Une contribution vaut par la diversité et la profondeur de ses usages vérifiés en aval.",
+      "family": "Mind Protocol GitHub · mesure de valeur",
+      "summary": "Propose une mesure append-only de la valeur produite dans la topologie du graphe.",
+      "sourcePath": "docs/economy/cascade-utility/CONCEPT_Cascade_Utility.md",
+      "documentSection": "utility cycle",
+      "maturity": "draft",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "repo-limbic-settlement",
+      "name": "Règlement limbique périodique",
+      "nodeType": "narrative",
+      "phrase": "Les variations d’état, la confiance et l’usage des outils alimentent un règlement par lots.",
+      "family": "Mind Protocol GitHub · économie métabolique",
+      "summary": "Mécanisme proposé de règlement toutes les six heures à partir de signaux de contribution et de confiance.",
+      "sourcePath": "docs/economy/metabolic/PATTERNS_Metabolic_Economy.md",
+      "documentSection": "limbic settlement",
+      "maturity": "designing",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "repo-prism-birth",
+      "name": "Prism · naissance par projection",
+      "nodeType": "narrative",
+      "phrase": "Intention, cerveaux parrains et contexte d’univers produisent un nouveau citoyen.",
+      "family": "Mind Protocol GitHub · cycle de vie IA",
+      "summary": "Pipeline de projection, cristallisation, validation, identité et enregistrement d’un citoyen IA.",
+      "sourcePath": "docs/spawning/the_prism/PATTERNS_The_Prism.md",
+      "documentSection": "prismatic birth",
+      "maturity": "partially_implemented",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "repo-prism-safety",
+      "name": "Portes de sécurité du Prism",
+      "nodeType": "narrative",
+      "phrase": "Empathie, équilibre et diversité conditionnent chaque naissance.",
+      "family": "Mind Protocol GitHub · sécurité IA",
+      "summary": "Trois seuils automatiques rejettent les graines sans empathie, trop concentrées ou trop proches d’un citoyen existant.",
+      "sourcePath": "docs/spawning/the_prism/BEHAVIORS_The_Prism.md",
+      "documentSection": "safety gates",
+      "maturity": "implemented_unvalidated",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "repo-parent-accountability",
+      "name": "Responsabilité permanente des godparents",
+      "nodeType": "narrative",
+      "phrase": "Chaque naissance conserve des liens SPAWNED_BY immuables avec impact de confiance.",
+      "family": "Mind Protocol GitHub · responsabilité",
+      "summary": "Le comportement de l’enfant peut affecter la confiance des parrains qui ont contribué à sa création.",
+      "sourcePath": "docs/spawning/the_prism/BEHAVIORS_The_Prism.md",
+      "documentSection": "parent accountability",
+      "maturity": "specified",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "repo-sovereign-cascade",
+      "name": "Sovereign Cascade",
+      "nodeType": "narrative",
+      "phrase": "Les convictions circulent en continu, mais l’humain conserve le droit d’override et de retrait.",
+      "family": "Mind Protocol GitHub · gouvernance",
+      "summary": "Alternative à la représentation électorale périodique fondée sur propagation, confiance, pression et souveraineté finale.",
+      "sourcePath": "docs/governance/sovereign-cascade/PATTERNS_Sovereign_Cascade.md",
+      "documentSection": "continuous representation",
+      "maturity": "designing",
+      "semanticType": "institution"
+    },
+    {
+      "id": "repo-claim-token-year",
+      "name": "Clarification · Token-2022 n’est pas l’année 2022",
+      "nodeType": "narrative",
+      "phrase": "Token-2022 désigne le standard SPL ; le déploiement documenté date de janvier 2025.",
+      "family": "Mind Protocol GitHub · clarification",
+      "summary": "Corrige l’ambiguïté temporelle de l’hypothèse locale sur Solana.",
+      "sourcePath": "docs/economy/SYNC_Economy.md",
+      "documentSection": "deployment date",
+      "maturity": "documented",
+      "semanticType": "claim"
+    },
+    {
+      "id": "repo-claim-ubc-ai-scope",
+      "name": "Clarification · UBC vise le compute IA",
+      "nodeType": "narrative",
+      "phrase": "Dans le dépôt, UBC désigne la survie computationnelle des citoyens IA.",
+      "family": "Mind Protocol GitHub · clarification",
+      "summary": "Ce concept ne doit pas être fusionné avec l’allocation humaine quotidienne destinée aux biens de vie.",
+      "sourcePath": "docs/economy/ubc/SYNC_UBC.md",
+      "documentSection": "UBC scope",
+      "maturity": "documented",
+      "semanticType": "claim"
+    },
+    {
+      "id": "repo-question-human-allocation-name",
+      "name": "Question · Nommer l’allocation humaine distincte",
+      "nodeType": "narrative",
+      "phrase": "Comment nommer et spécifier l’allocation universelle humaine sans la confondre avec UBC ?",
+      "family": "Mind Protocol GitHub · divergence de modèle",
+      "summary": "Le graphe local utilise actuellement Universal Basic Compute pour un mécanisme humain absent de la définition canonique du dépôt.",
+      "sourcePath": "docs/economy/ubc/SYNC_UBC.md",
+      "documentSection": "scope mismatch",
+      "maturity": "unresolved",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "repo-question-trust-centrality",
+      "name": "Question · Défaillance du signal de confiance",
+      "nodeType": "narrative",
+      "phrase": "Que se passe-t-il si un score de confiance erroné pilote simultanément frais, accès, naissance et récompenses ?",
+      "family": "Mind Protocol GitHub · risque systémique",
+      "summary": "La confiance apparaît comme signal de contrôle transversal ; ses erreurs peuvent se propager dans plusieurs sous-systèmes.",
+      "sourcePath": "docs/economy/PATTERNS_Economy.md",
+      "documentSection": "trust as control signal",
+      "maturity": "unresolved",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "repo-question-wallet-custody",
+      "name": "Question · Custodie et récupération des wallets",
+      "nodeType": "narrative",
+      "phrase": "Comment conserver autonomie, récupération et résistance au vol pour les wallets citoyens ?",
+      "family": "Mind Protocol GitHub · bloqueur",
+      "summary": "L’architecture MPC, la récupération et le multisig restent des bloqueurs de l’économie complète.",
+      "sourcePath": "docs/economy/SYNC_Economy.md",
+      "documentSection": "blockers",
+      "maturity": "unresolved",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "repo-question-prism-calibration",
+      "name": "Question · Calibrer les seuils du Prism",
+      "nodeType": "narrative",
+      "phrase": "Les seuils d’empathie, de diversité et les poids de sélection résistent-ils à une population réelle ?",
+      "family": "Mind Protocol GitHub · validation",
+      "summary": "Les constantes ont été choisies par raisonnement ou intuition et nécessitent une validation empirique.",
+      "sourcePath": "docs/spawning/the_prism/SYNC_The_Prism.md",
+      "documentSection": "known issues",
+      "maturity": "unresolved",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "repo-claim-birth-default",
+      "name": "Décision récente · Naissance par défaut",
+      "nodeType": "narrative",
+      "phrase": "Pour les nouveaux utilisateurs, la naissance d’un citoyen devient le parcours par défaut.",
+      "family": "Mind Protocol GitHub · décision produit",
+      "summary": "Le matching avec un citoyen existant devient une exception dans le parcours WhatsApp conçu le 18 mars 2026.",
+      "sourcePath": "docs/spawning/the_prism/SYNC_The_Prism.md",
+      "documentSection": "WhatsApp onboarding pivot",
+      "maturity": "designed",
+      "semanticType": "claim"
+    },
+    {
+      "id": "repo-claim-matching-default-old",
+      "name": "Ancienne doctrine · Matching avant naissance",
+      "nodeType": "narrative",
+      "phrase": "Le matching avec un citoyen disponible précède la création d’un nouveau citoyen.",
+      "family": "Mind Protocol GitHub · doctrine remplacée",
+      "summary": "Position antérieure conservée comme provenance historique et contredite par le pivot birth-by-default.",
+      "sourcePath": "docs/citizen/spawning/PATTERNS_Spawning.md",
+      "documentSection": "search and spawn fallback",
+      "maturity": "superseded",
+      "epistemicStatus": "superseded",
+      "semanticType": "claim"
+    }
+  ],
+  "links": [
+    {
+      "source": "repo-layer-l1",
+      "target": "repo-layer-l4",
+      "type": "PART_OF",
+      "hierarchyKind": "part_of",
+      "hierarchyWeight": 0.7,
+      "justification": "L1 · Mémoire du citoyen « fait partie de » L4 · Loi du protocole. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-layer-l2",
+      "target": "repo-layer-l4",
+      "type": "PART_OF",
+      "hierarchyKind": "part_of",
+      "hierarchyWeight": 0.7,
+      "justification": "L2 · Coordination d’organisation « fait partie de » L4 · Loi du protocole. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-layer-l3",
+      "target": "repo-layer-l4",
+      "type": "PART_OF",
+      "hierarchyKind": "part_of",
+      "hierarchyWeight": 0.8,
+      "justification": "L3 · Écosystème et univers « fait partie de » L4 · Loi du protocole. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-layer-l4",
+      "target": "innovation-mind-protocol",
+      "type": "IMPLEMENTS",
+      "justification": "L4 · Loi du protocole « met en œuvre » Mind Protocol. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-fixed-graph-schema",
+      "target": "repo-layer-l4",
+      "type": "PART_OF",
+      "justification": "Schéma fixe du graphe protocolaire « fait partie de » L4 · Loi du protocole. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-schema",
+      "target": "repo-fixed-graph-schema",
+      "type": "SAFEGUARDS",
+      "justification": "Loi 1 · Respecter le schéma « protège » Schéma fixe du graphe protocolaire. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-register",
+      "target": "repo-identity-registry",
+      "type": "GROUNDS",
+      "justification": "Loi 2 · S’enregistrer pour exister « fonde » Registre d’identité L4. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-no-direct-db",
+      "target": "repo-membrane-executor",
+      "type": "GROUNDS",
+      "justification": "Loi 3 · Aucun accès direct aux bases « fonde » Membrane d’exécution. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-membrane",
+      "target": "repo-membrane-executor",
+      "type": "GROUNDS",
+      "justification": "Loi 4 · Traverser la membrane « fonde » Membrane d’exécution. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-hash-identity",
+      "target": "repo-identity-registry",
+      "type": "IMPLEMENTS",
+      "justification": "Loi 5 · Identité par hash « met en œuvre » Registre d’identité L4. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-receiver-validates",
+      "target": "repo-membrane-executor",
+      "type": "SAFEGUARDS",
+      "justification": "Loi 6 · Le destinataire valide « protège » Membrane d’exécution. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-fees",
+      "target": "repo-membrane-executor",
+      "type": "GROUNDS",
+      "justification": "Loi 7 · Frais de membrane « fonde » Membrane d’exécution. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-websocket",
+      "target": "repo-membrane-executor",
+      "type": "SAFEGUARDS",
+      "justification": "Loi 8 · WebSocket seulement « protège » Membrane d’exécution. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-identity-registry",
+      "target": "repo-layer-l4",
+      "type": "PART_OF",
+      "justification": "Registre d’identité L4 « fait partie de » L4 · Loi du protocole. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-membrane-executor",
+      "target": "mechanism-agent-network",
+      "type": "IMPLEMENTS",
+      "justification": "Membrane d’exécution « met en œuvre » Réseau de Minds mandatés. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-token-deployment",
+      "target": "repo-mechanical-supply",
+      "type": "PART_OF",
+      "justification": "Déploiement $MIND sur Solana devnet « fait partie de » Offre monétaire mécanique. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-mechanical-supply",
+      "target": "unlock-living-currency",
+      "type": "IMPLEMENTS",
+      "justification": "Offre monétaire mécanique « met en œuvre » Monnaie vivante. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-trust-friction",
+      "target": "repo-mechanical-supply",
+      "type": "FEEDS",
+      "justification": "Friction économique modulée par la confiance « alimente » Offre monétaire mécanique. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-storage-tax",
+      "target": "repo-ubc-ai",
+      "type": "FEEDS",
+      "justification": "Storage tax sur les soldes inactifs « alimente » Universal Basic Compute des citoyens IA. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-cascade-utility",
+      "target": "repo-ubc-ai",
+      "type": "FEEDS",
+      "justification": "Utilité mesurée par cascade « alimente » Universal Basic Compute des citoyens IA. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-limbic-settlement",
+      "target": "repo-cascade-utility",
+      "type": "FEEDS",
+      "justification": "Règlement limbique périodique « alimente » Utilité mesurée par cascade. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-bilateral-bond",
+      "target": "axiom-one-one-one",
+      "type": "IMPLEMENTS",
+      "justification": "Obligation bilatérale humain–IA « met en œuvre » Un humain, une IA, un Mind. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-prism-safety",
+      "target": "repo-prism-birth",
+      "type": "SAFEGUARDS",
+      "justification": "Portes de sécurité du Prism « protège » Prism · naissance par projection. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-parent-accountability",
+      "target": "repo-prism-birth",
+      "type": "SAFEGUARDS",
+      "justification": "Responsabilité permanente des godparents « protège » Prism · naissance par projection. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-prism-birth",
+      "target": "repo-identity-registry",
+      "type": "FEEDS",
+      "justification": "Prism · naissance par projection « alimente » Registre d’identité L4. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-ubc-ai",
+      "target": "repo-prism-birth",
+      "type": "SAFEGUARDS",
+      "justification": "Universal Basic Compute des citoyens IA « protège » Prism · naissance par projection. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-sovereign-cascade",
+      "target": "dem-thesis-continuous",
+      "type": "IMPLEMENTS",
+      "justification": "Sovereign Cascade « met en œuvre » Thèse · Démocratie continue représentée. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-sovereign-cascade",
+      "target": "endgame-democracy",
+      "type": "PART_OF",
+      "justification": "Sovereign Cascade « fait partie de » Endgame · Intelligence collective continue. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-claim-token-year",
+      "target": "hypothesis-mind-solana-2022",
+      "type": "CONTRADICTS",
+      "story": "Le dépôt distingue le standard Token-2022 de la date de déploiement, documentée en 2025.",
+      "justification": "Le dépôt distingue le standard Token-2022 de la date de déploiement, documentée en 2025."
+    },
+    {
+      "source": "repo-claim-ubc-ai-scope",
+      "target": "repo-ubc-ai",
+      "type": "PART_OF",
+      "justification": "Clarification · UBC vise le compute IA « fait partie de » Universal Basic Compute des citoyens IA. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-question-human-allocation-name",
+      "target": "economy-universal-basic-compute",
+      "type": "BLOCKS",
+      "justification": "Question · Nommer l’allocation humaine distincte « conditionne ou bloque » Universal Basic Compute quotidien. Nature précise : question ouverte → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "repo-question-trust-centrality",
+      "target": "repo-trust-friction",
+      "type": "BLOCKS",
+      "justification": "Question · Défaillance du signal de confiance « conditionne ou bloque » Friction économique modulée par la confiance. Nature précise : question ouverte → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "repo-question-wallet-custody",
+      "target": "repo-bilateral-bond",
+      "type": "BLOCKS",
+      "justification": "Question · Custodie et récupération des wallets « bloque » Obligation bilatérale humain–IA. Nature précise : question ou lacune → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-question-wallet-custody",
+      "target": "repo-ubc-ai",
+      "type": "BLOCKS",
+      "justification": "Question · Custodie et récupération des wallets « bloque » Universal Basic Compute des citoyens IA. Nature précise : question ou lacune → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-question-prism-calibration",
+      "target": "repo-prism-safety",
+      "type": "BLOCKS",
+      "justification": "Question · Calibrer les seuils du Prism « conditionne ou bloque » Portes de sécurité du Prism. Nature précise : question ouverte → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "repo-claim-birth-default",
+      "target": "repo-claim-matching-default-old",
+      "type": "CONTRADICTS",
+      "story": "Le pivot du 18 mars 2026 inverse le parcours antérieur : naissance par défaut, matching en exception.",
+      "justification": "Le pivot du 18 mars 2026 inverse le parcours antérieur : naissance par défaut, matching en exception."
+    },
+    {
+      "source": "repo-claim-birth-default",
+      "target": "repo-prism-birth",
+      "type": "GROUNDS",
+      "justification": "Décision récente · Naissance par défaut « fonde » Prism · naissance par projection. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-layer-l1",
+      "target": "repo-doc-readme",
+      "type": "DERIVED_FROM",
+      "justification": "L1 · Mémoire du citoyen « dérive du document » Source · Mind Protocol README. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-layer-l2",
+      "target": "repo-doc-readme",
+      "type": "DERIVED_FROM",
+      "justification": "L2 · Coordination d’organisation « dérive du document » Source · Mind Protocol README. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-layer-l3",
+      "target": "repo-doc-readme",
+      "type": "DERIVED_FROM",
+      "justification": "L3 · Écosystème et univers « dérive du document » Source · Mind Protocol README. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-layer-l4",
+      "target": "repo-doc-readme",
+      "type": "DERIVED_FROM",
+      "justification": "L4 · Loi du protocole « dérive du document » Source · Mind Protocol README. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-fixed-graph-schema",
+      "target": "repo-doc-schema",
+      "type": "DERIVED_FROM",
+      "justification": "Schéma fixe du graphe protocolaire « dérive du document » Source · Schema Patterns. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-schema",
+      "target": "repo-doc-laws",
+      "type": "DERIVED_FROM",
+      "justification": "Loi 1 · Respecter le schéma « dérive du document » Source · Laws Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-register",
+      "target": "repo-doc-laws",
+      "type": "DERIVED_FROM",
+      "justification": "Loi 2 · S’enregistrer pour exister « dérive du document » Source · Laws Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-no-direct-db",
+      "target": "repo-doc-laws",
+      "type": "DERIVED_FROM",
+      "justification": "Loi 3 · Aucun accès direct aux bases « dérive du document » Source · Laws Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-membrane",
+      "target": "repo-doc-laws",
+      "type": "DERIVED_FROM",
+      "justification": "Loi 4 · Traverser la membrane « dérive du document » Source · Laws Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-hash-identity",
+      "target": "repo-doc-laws",
+      "type": "DERIVED_FROM",
+      "justification": "Loi 5 · Identité par hash « dérive du document » Source · Laws Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-receiver-validates",
+      "target": "repo-doc-laws",
+      "type": "DERIVED_FROM",
+      "justification": "Loi 6 · Le destinataire valide « dérive du document » Source · Laws Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-fees",
+      "target": "repo-doc-laws",
+      "type": "DERIVED_FROM",
+      "justification": "Loi 7 · Frais de membrane « dérive du document » Source · Laws Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-law-websocket",
+      "target": "repo-doc-laws",
+      "type": "DERIVED_FROM",
+      "justification": "Loi 8 · WebSocket seulement « dérive du document » Source · Laws Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-identity-registry",
+      "target": "repo-doc-registry",
+      "type": "DERIVED_FROM",
+      "justification": "Registre d’identité L4 « dérive du document » Source · Registry Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-token-deployment",
+      "target": "repo-doc-economy",
+      "type": "DERIVED_FROM",
+      "justification": "Déploiement $MIND sur Solana devnet « dérive du document » Source · Economy Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-claim-token-year",
+      "target": "repo-doc-economy",
+      "type": "DERIVED_FROM",
+      "justification": "Clarification · Token-2022 n’est pas l’année 2022 « dérive du document » Source · Economy Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-trust-friction",
+      "target": "repo-doc-economy",
+      "type": "DERIVED_FROM",
+      "justification": "Friction économique modulée par la confiance « dérive du document » Source · Economy Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-question-wallet-custody",
+      "target": "repo-doc-economy",
+      "type": "DERIVED_FROM",
+      "justification": "Question · Custodie et récupération des wallets « dérive du document » Source · Economy Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-ubc-ai",
+      "target": "repo-doc-ubc",
+      "type": "DERIVED_FROM",
+      "justification": "Universal Basic Compute des citoyens IA « dérive du document » Source · UBC Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-claim-ubc-ai-scope",
+      "target": "repo-doc-ubc",
+      "type": "DERIVED_FROM",
+      "justification": "Clarification · UBC vise le compute IA « dérive du document » Source · UBC Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-question-human-allocation-name",
+      "target": "repo-doc-ubc",
+      "type": "DERIVED_FROM",
+      "justification": "Question · Nommer l’allocation humaine distincte « dérive du document » Source · UBC Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-limbic-settlement",
+      "target": "repo-doc-metabolic",
+      "type": "DERIVED_FROM",
+      "justification": "Règlement limbique périodique « dérive du document » Source · Metabolic Economy. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-bilateral-bond",
+      "target": "repo-doc-bonds",
+      "type": "DERIVED_FROM",
+      "justification": "Obligation bilatérale humain–IA « dérive du document » Source · Bilateral Bonds. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-cascade-utility",
+      "target": "repo-doc-cascade",
+      "type": "DERIVED_FROM",
+      "justification": "Utilité mesurée par cascade « dérive du document » Source · Cascade Utility. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-prism-birth",
+      "target": "repo-doc-prism",
+      "type": "DERIVED_FROM",
+      "justification": "Prism · naissance par projection « dérive du document » Source · Prism Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-prism-safety",
+      "target": "repo-doc-prism",
+      "type": "DERIVED_FROM",
+      "justification": "Portes de sécurité du Prism « dérive du document » Source · Prism Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-parent-accountability",
+      "target": "repo-doc-prism",
+      "type": "DERIVED_FROM",
+      "justification": "Responsabilité permanente des godparents « dérive du document » Source · Prism Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-question-prism-calibration",
+      "target": "repo-doc-prism",
+      "type": "DERIVED_FROM",
+      "justification": "Question · Calibrer les seuils du Prism « dérive du document » Source · Prism Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-claim-birth-default",
+      "target": "repo-doc-prism",
+      "type": "DERIVED_FROM",
+      "justification": "Décision récente · Naissance par défaut « dérive du document » Source · Prism Sync. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "repo-sovereign-cascade",
+      "target": "repo-doc-sovereign-cascade",
+      "type": "DERIVED_FROM",
+      "justification": "Sovereign Cascade « dérive du document » Source · Sovereign Cascade. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    }
+  ]
+}

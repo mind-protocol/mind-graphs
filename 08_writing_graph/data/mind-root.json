@@ -1,0 +1,12 @@
+{
+  "node": {
+    "id": "innovation-mind-protocol",
+    "name": "Mind Protocol",
+    "nodeType": "narrative",
+    "phrase": "L’esprit peut devenir un protocole vivant, souverain et réparable.",
+    "family": "Protocole · convergence",
+    "summary": "Hypothèse de convergence: langage, soin, agents IA, médias, identité, économie programmable et mémoire vérifiable deviennent une infrastructure centrée sur l’autonomie humaine.",
+    "status": "hypothèse de projet",
+    "semanticType": "protocol"
+  }
+}

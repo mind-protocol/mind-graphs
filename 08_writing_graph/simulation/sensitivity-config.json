@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0.0",
+  "primaryMetric": "coverageRate",
+  "direction": "maximize",
+  "parameters": [
+    { "path": "economy.supplyPerPerson", "values": [0.85, 1.08, 1.3], "label": "Offre quotidienne par personne" },
+    { "path": "arms.hybrid.dailyTransfer", "values": [0.2, 0.38, 0.6], "label": "Transfert quotidien hybride" },
+    { "path": "arms.mind.dailyTransfer", "values": [0.35, 0.72, 1], "label": "Crédit quotidien Mind" },
+    { "path": "arms.mind.demurrageRate", "values": [0.05, 0.18, 0.3], "label": "Démurrage Mind" },
+    { "path": "arms.mind.contextualPricing", "values": [0, 0.28, 0.5], "label": "Intensité du prix contextuel" },
+    { "path": "shocks.shortage.supplyMultiplier", "values": [0.4, 0.62, 0.85], "label": "Offre restante pendant la pénurie" },
+    { "path": "shocks.sybil.fakeIdentityShare", "values": [0, 0.12, 0.3], "label": "Part d’identités Sybil" }
+  ],
+  "notes": [
+    "Les plages sont des hypothèses exploratoires et non des intervalles empiriques.",
+    "Chaque cas modifie un seul paramètre ; les interactions entre paramètres ne sont pas estimées."
+  ]
+}

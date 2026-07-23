@@ -1,0 +1,20 @@
+{
+  "citizens": {
+    "actor-nlr": {
+      "id": "workspace-autonomous-improvement-smoke",
+      "version": 1,
+      "name": "Workspace · Amélioration autonome du graphe",
+      "text": "Améliorer le graphe de design de manière autonome. Guider l'énergie du citoyen vers les objectifs mesurables, le global workspace, les flux attribués, le routage sémantique, les tests et la réparation des erreurs.",
+      "goalIds": [
+        "state-goal-directed-autonomous-improvement"
+      ],
+      "activeNodeIds": [
+        "mech-global-workspace-composition",
+        "mech-workspace-embedding",
+        "mech-intention-tagged-energy-flow",
+        "mech-embedding-guided-energy-routing"
+      ],
+      "contentHash": "fixture:autonomous-improvement-smoke-v1"
+    }
+  }
+}

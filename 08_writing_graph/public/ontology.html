@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Protocol — Ontologie du graphe</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/ontology.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body class="ontology-page">
+    <header class="ontology-header">
+      <a class="back-link" href="/">← Retour au graphe</a>
+      <div><a class="back-link" href="/garden.html">Cité-jardin</a><a class="back-link" href="/decisions.html">Décisions</a><a class="back-link" href="/docs.html">Doc</a><button data-theme-toggle class="theme-toggle" type="button" aria-pressed="false">Thème clair</button><span id="schema-version" class="schema-badge">chargement…</span></div>
+    </header>
+
+    <main class="ontology-main">
+      <section class="ontology-hero">
+        <p class="eyebrow">HEAVEN IS REPAIR · MIND PROTOCOL</p>
+        <h1>L’ontologie du graphe</h1>
+        <p class="hero-copy">Une grammaire commune pour distinguer ce que les éléments sont, comment ils sont reliés et avec quel degré de connaissance ils sont avancés.</p>
+        <div id="ontology-stats" class="ontology-stats" aria-live="polite"></div>
+      </section>
+
+      <nav class="ontology-nav" aria-label="Sommaire">
+        <a href="#principes">Principes</a>
+        <a href="#noeuds">Types de nœuds</a>
+        <a href="#relations">Relations</a>
+        <a href="#statuts">Statuts</a>
+        <a href="#mesures">Mesures</a>
+      </nav>
+
+      <section class="concept-strip" aria-label="Structure de l’ontologie">
+        <article><span>01</span><strong>Type de nœud</strong><p>Ce qu’est l’objet dans le modèle.</p></article>
+        <div class="concept-arrow">→</div>
+        <article><span>02</span><strong>Relation</strong><p>Le sens précis du lien orienté.</p></article>
+        <div class="concept-arrow">→</div>
+        <article><span>03</span><strong>Statut épistémique</strong><p>Comment l’affirmation est connue ou proposée.</p></article>
+      </section>
+
+      <section id="principes" class="ontology-section">
+        <div class="section-heading"><p class="eyebrow">RÈGLES FONDATRICES</p><h2>Principes de modélisation</h2></div>
+        <ol id="principle-list" class="principle-list"></ol>
+      </section>
+
+      <section id="noeuds" class="ontology-section">
+        <div class="section-heading"><p class="eyebrow">VOCABULAIRE DES OBJETS</p><h2>Types de nœuds</h2><p>Le type classe l’objet. Il ne dit rien, à lui seul, de sa vérité.</p></div>
+        <div id="node-types" class="card-grid"></div>
+      </section>
+
+      <section id="relations" class="ontology-section">
+        <div class="section-heading"><p class="eyebrow">GRAMMAIRE DES LIENS</p><h2>Familles et prédicats</h2><p>Chaque prédicat conserve une direction unique, de la source vers la cible.</p></div>
+        <div id="relation-families" class="relation-groups"></div>
+      </section>
+
+      <section id="statuts" class="ontology-section">
+        <div class="section-heading"><p class="eyebrow">QUALITÉ DE CONNAISSANCE</p><h2>Statuts épistémiques</h2><p>Le statut explicite si un élément est documenté, proposé, hypothétique, spéculatif ou encore non résolu.</p></div>
+        <div id="epistemic-statuses" class="status-grid"></div>
+      </section>
+
+      <section id="mesures" class="ontology-section">
+        <div class="section-heading"><p class="eyebrow">DISCIPLINE QUANTITATIVE</p><h2>Mesures et parcours</h2><p>Probabilité, confiance, effet et poids de parcours restent des dimensions indépendantes.</p></div>
+        <div id="quantification" class="measure-grid"></div>
+        <div class="traversal-panel">
+          <div><p class="eyebrow">POIDS PAR DÉFAUT</p><h3>Propagation sémantique</h3><p id="traversal-definition"></p></div>
+          <div id="traversal-weights" class="weight-list"></div>
+        </div>
+      </section>
+
+      <p id="ontology-error" class="ontology-error" role="alert"></p>
+    </main>
+    <script type="module" src="/ontology.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "tickId": "integrated-example-001",
+  "recordedAt": "2026-07-23T16:00:00.000Z",
+  "sensory": {
+    "totalBudget": 1,
+    "allocatedEnergy": 0.78,
+    "transfers": [
+      { "targetNodeId": "goal-realization", "energy": 0.5 },
+      { "targetNodeId": "state-execution", "energy": 0.28 }
+    ]
+  },
+  "affect": {
+    "dominant": { "affect": "curiosity", "intensity": 0.72 }
+  },
+  "workspace": {
+    "id": "workspace-integrated-example-001",
+    "goalIds": ["goal-realization"],
+    "cortexState": "state-execution",
+    "activeEntity": {
+      "id": "candidate-prototyper",
+      "semanticType": "subentity",
+      "focusIntensity": 0.81,
+      "confidence": 0.76
+    }
+  },
+  "memory": {
+    "id": "integrated-example-moment-001",
+    "occurredAt": "2026-07-23T15:59:58.000Z",
+    "content": "La coalition active a choisi une voie de prototypage."
+  }
+}

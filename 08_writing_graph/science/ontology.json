@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "0.1.0",
+  "language": "fr",
+  "governanceRef": "governance/evidence-firewall.json",
+  "principles": [
+    "La source historique est immuable ; sa représentation est versionnée et corrigeable.",
+    "Un claim reste distinct de l'estimation et des preuves qui le justifient.",
+    "Toute contribution porte une provenance et un localisateur retrouvable.",
+    "L'ambiguïté peut rester représentée jusqu'à ce qu'une action impose de la résoudre.",
+    "La certitude est continue et dérivée ; les seuils appartiennent aux actions."
+  ],
+  "nodeTypes": [
+    { "id": "source_document", "label": "Source", "family": "provenance", "epistemicStatus": "source_record", "description": "Artefact historique figé et retrouvable." },
+    { "id": "study", "label": "Étude", "family": "scientific_record", "epistemicStatus": "source_representation", "description": "Unité de travail scientifique décrite par une publication." },
+    { "id": "variable", "label": "Variable", "family": "causal_core", "epistemicStatus": "source_representation", "description": "Grandeur ou caractéristique susceptible de varier." },
+    { "id": "mechanism", "label": "Mécanisme", "family": "causal_core", "epistemicStatus": "author_claim", "description": "Processus proposé reliant des variables dans un contexte." },
+    { "id": "context", "label": "Contexte", "family": "causal_core", "epistemicStatus": "source_representation", "description": "Périmètre dans lequel une observation ou un claim est interprétable." },
+    { "id": "intervention", "label": "Intervention", "family": "causal_core", "epistemicStatus": "source_representation", "description": "Modification délibérée d'un système ou d'une variable." },
+    { "id": "observation", "label": "Observation", "family": "causal_core", "epistemicStatus": "observation", "description": "Résultat observé ou rapporté dans un contexte explicite." },
+    { "id": "estimate", "label": "Estimation", "family": "scientific_record", "epistemicStatus": "reported_estimate", "description": "Quantification ou relation qualitative produite par une méthode." },
+    { "id": "claim", "label": "Claim", "family": "scientific_record", "epistemicStatus": "author_claim", "description": "Proposition atomique, contextualisée et contestable." },
+    { "id": "evidence", "label": "Preuve localisée", "family": "provenance", "epistemicStatus": "source_representation", "description": "Passage ou objet source qui justifie la représentation d'un claim." }
+  ],
+  "epistemicStatuses": [
+    { "id": "source_record", "label": "artefact source", "description": "Existence et identité de la source." },
+    { "id": "source_representation", "label": "représentation sourcée", "description": "Extraction attribuée et révisable." },
+    { "id": "author_claim", "label": "claim des auteurs", "description": "Proposition attribuée aux auteurs, non transformée en vérité par l'ingestion." },
+    { "id": "reported_estimate", "label": "estimation rapportée", "description": "Estimation produite par la méthode de l'étude." },
+    { "id": "observation", "label": "observation rapportée", "description": "Observation dans son contexte d'étude." }
+  ],
+  "relationFamilies": [
+    { "id": "provenance", "label": "Provenance" },
+    { "id": "study_structure", "label": "Structure de l'étude" },
+    { "id": "justification", "label": "Justification scientifique" },
+    { "id": "causal_structure", "label": "Structure causale proposée" }
+  ],
+  "relationTypes": [
+    { "id": "DESCRIBES", "label": "décrit", "family": "provenance", "scope": "provenance", "status": "active", "causalClaim": false },
+    { "id": "IN_CONTEXT", "label": "s'inscrit dans", "family": "study_structure", "scope": "scientific", "status": "active", "causalClaim": false },
+    { "id": "INVESTIGATES", "label": "étudie", "family": "study_structure", "scope": "scientific", "status": "active", "causalClaim": false },
+    { "id": "PROPOSES", "label": "propose", "family": "causal_structure", "scope": "scientific", "status": "active", "causalClaim": false },
+    { "id": "REPORTS_OBSERVATION", "label": "rapporte", "family": "study_structure", "scope": "scientific", "status": "active", "causalClaim": false },
+    { "id": "REPORTS_ESTIMATE", "label": "rapporte l'estimation", "family": "study_structure", "scope": "scientific", "status": "active", "causalClaim": false },
+    { "id": "DERIVED_FROM", "label": "est dérivé de", "family": "justification", "scope": "scientific", "status": "active", "causalClaim": false },
+    { "id": "SUPPORTS_CLAIM", "label": "soutient le claim", "family": "justification", "scope": "scientific", "status": "active", "causalClaim": false },
+    { "id": "JUSTIFIED_BY", "label": "est justifié par", "family": "justification", "scope": "provenance", "status": "active", "causalClaim": false },
+    { "id": "LOCATED_IN", "label": "est localisé dans", "family": "provenance", "scope": "provenance", "status": "active", "causalClaim": false },
+    { "id": "ABOUT", "label": "porte sur", "family": "causal_structure", "scope": "scientific", "status": "active", "causalClaim": false },
+    { "id": "RELATES", "label": "relie", "family": "causal_structure", "scope": "scientific", "status": "active", "causalClaim": true }
+  ],
+  "typeGroups": {
+    "causal_primitives": ["variable", "mechanism", "context", "intervention", "observation"],
+    "scientific_assertions": ["estimate", "claim"],
+    "source_objects": ["source_document", "evidence"]
+  },
+  "relationConstraints": {
+    "DESCRIBES": { "sourceTypes": ["source_document"], "targetTypes": ["study"] },
+    "IN_CONTEXT": { "sourceTypes": ["study", "observation", "estimate", "claim"], "targetTypes": ["context"] },
+    "INVESTIGATES": { "sourceTypes": ["study"], "targetTypes": ["variable"] },
+    "PROPOSES": { "sourceTypes": ["study"], "targetTypes": ["mechanism"] },
+    "REPORTS_OBSERVATION": { "sourceTypes": ["study"], "targetTypes": ["observation"] },
+    "REPORTS_ESTIMATE": { "sourceTypes": ["study"], "targetTypes": ["estimate"] },
+    "DERIVED_FROM": { "sourceTypes": ["estimate"], "targetTypes": ["observation"] },
+    "SUPPORTS_CLAIM": { "sourceTypes": ["estimate"], "targetTypes": ["claim"] },
+    "JUSTIFIED_BY": { "sourceTypes": ["claim"], "targetTypes": ["evidence"] },
+    "LOCATED_IN": { "sourceTypes": ["evidence"], "targetTypes": ["source_document"] },
+    "ABOUT": { "sourceTypes": ["claim", "estimate", "observation"], "targetTypes": ["variable", "mechanism", "context", "intervention"] },
+    "RELATES": { "sourceTypes": ["mechanism"], "targetTypes": ["variable", "observation"] }
+  },
+  "quantification": {
+    "probabilityPct": { "definition": "Probabilité rapportée en pourcentage.", "requires": ["supportingNodes"] },
+    "confidenceScore": { "definition": "Certitude calculée, jamais inventée à l'ingestion.", "requires": ["supportingNodes"] },
+    "effectSizePct": { "definition": "Effet relatif rapporté en pourcentage.", "requires": ["supportingNodes"] }
+  },
+  "hierarchy": { "kinds": ["none", "part_of", "subcase_of"] },
+  "nodeTypeHierarchy": {},
+  "traversal": {
+    "familyDefaults": { "provenance": 0.95, "study_structure": 0.85, "justification": 0.9, "causal_structure": 0.75 }
+  }
+}

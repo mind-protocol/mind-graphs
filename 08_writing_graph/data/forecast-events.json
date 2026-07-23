@@ -1,0 +1,441 @@
+{
+  "scope": "Scénarios de travail datés au 20 juillet 2026. Les fenêtres ne sont pas des prédictions certaines. ASI et AGI restent des hypothèses sans calendrier scientifiquement établi.",
+  "nodes": [
+    {
+      "id": "forecast-local-memory-models",
+      "name": "Modèles locaux autonomes sur mémoire personnelle",
+      "year": 2026,
+      "dateLabel": "2026–2028",
+      "family": "Événement prévu · IA personnelle",
+      "phrase": "Le modèle peut agir localement dans ma mémoire sans l’envoyer ailleurs.",
+      "summary": "Des modèles embarqués ou auto-hébergés deviennent capables de rechercher, synthétiser et agir sur une mémoire personnelle persistante avec davantage d’autonomie.",
+      "confidence": "moyenne",
+      "signals": "modèles compacts plus capables ; accélérateurs locaux ; outils d’agents ; mémoire longue applicative",
+      "assumptions": "coût matériel soutenable ; permissions granulaires ; fiabilité suffisante pour les tâches longues",
+      "impact": "déplacement du cloud vers l’appareil et montée de l’agent personnel souverain",
+      "response": "sandbox local, journal d’actions, consentement révocable et chiffrement",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025",
+      "sourceTitle": "International AI Safety Report 2025",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-agentic-work",
+      "name": "Généralisation des agents dans le travail",
+      "year": 2026,
+      "dateLabel": "2026–2029",
+      "family": "Événement prévu · travail",
+      "phrase": "Des équipes humaines commencent à déléguer des chaînes entières de tâches.",
+      "summary": "Les agents passent de l’assistance ponctuelle à l’exécution supervisée de processus professionnels comportant plusieurs étapes.",
+      "confidence": "élevée",
+      "signals": "agents de programmation, navigation et recherche ; investissements industriels ; adoption croissante",
+      "assumptions": "progrès de fiabilité ; intégration aux logiciels ; supervision humaine économiquement viable",
+      "impact": "réorganisation des métiers, du management et des responsabilités",
+      "response": "traçabilité, limites d’action, formation et responsabilité humaine explicite",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025",
+      "sourceTitle": "International AI Safety Report 2025",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-synthetic-trust-crisis",
+      "name": "Crise de confiance des médias synthétiques",
+      "year": 2027,
+      "dateLabel": "2026–2030",
+      "family": "Événement prévu · information",
+      "phrase": "Voir et entendre ne suffisent plus à prouver.",
+      "summary": "La génération de voix, d’images et de vidéos réalistes augmente fraude, manipulation et doute généralisé sur les preuves numériques.",
+      "confidence": "élevée",
+      "signals": "fraude par imitation vocale ; deepfakes ciblés ; contenu synthétique à bas coût",
+      "assumptions": "authentification et provenance progressent moins vite que la génération",
+      "impact": "érosion de la preuve visuelle et polarisation accrue",
+      "response": "provenance cryptographique, identité vérifiable et littératie médiatique",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025",
+      "sourceTitle": "International AI Safety Report 2025",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-employment-wave-one",
+      "name": "Première vague de transformation de l’emploi",
+      "year": 2027,
+      "dateLabel": "2027–2032",
+      "family": "Événement prévu · emploi",
+      "phrase": "Les tâches disparaissent avant que les métiers disparaissent.",
+      "summary": "Les fonctions administratives, médiatiques, techniques et analytiques fortement numérisées connaissent restructurations, compression des postes juniors et reconception des métiers.",
+      "confidence": "moyenne à élevée",
+      "signals": "un travailleur sur quatre dans une occupation exposée ; automatisation de tâches ; pression sur les rôles juniors",
+      "assumptions": "adoption rapide par les entreprises ; gains de productivité captés sans réduction proportionnelle du temps de travail",
+      "impact": "vagues sectorielles inégales plutôt qu’un chômage mondial instantané",
+      "response": "dialogue social, partage des gains, formation et sécurisation des transitions",
+      "sourceUrl": "https://www.ilo.org/publications/generative-ai-and-jobs-2025-update",
+      "sourceTitle": "OIT — Generative AI and jobs: a 2025 update",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-cyber-conflict-escalation",
+      "name": "Accélération des conflits cyber assistés par IA",
+      "year": 2028,
+      "dateLabel": "2027–2032",
+      "family": "Événement prévu · conflit",
+      "phrase": "L’attaque, la défense et la désinformation accélèrent ensemble.",
+      "summary": "Des agents augmentent la recherche de vulnérabilités, l’ingénierie sociale, la défense et la vitesse des campagnes cyber.",
+      "confidence": "élevée",
+      "signals": "capacités croissantes en cyber-offense ; agents autonomes ; imitation de voix et production de faux",
+      "assumptions": "diffusion des capacités et accès persistant aux outils numériques",
+      "impact": "cycles attaque-défense plus rapides et attribution plus difficile",
+      "response": "défense automatisée contrôlée, limitation des capacités dangereuses et coopération internationale",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/second-key-update-technical-safeguards-and-risk-management",
+      "sourceTitle": "International AI Safety Report — safeguards update",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-agent-economy",
+      "name": "Économie d’agents négociateurs",
+      "year": 2028,
+      "dateLabel": "2028–2033",
+      "family": "Événement prévu · économie",
+      "phrase": "Les logiciels commencent à acheter, vendre et négocier sous mandat.",
+      "summary": "Des agents personnels et organisationnels coordonnent achats, contrats, planification et échanges avec une intervention humaine intermittente.",
+      "confidence": "moyenne",
+      "signals": "agents outillés ; paiements programmables ; smart contracts ; protocoles inter-agents",
+      "assumptions": "identité des agents, responsabilité et plafonds de dépense fiables",
+      "impact": "marchés plus rapides, nouveaux intermédiaires et risques de comportements émergents",
+      "response": "mandats explicites, plafonds, audit et droit de reprise humain",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025",
+      "sourceTitle": "International AI Safety Report 2025",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-compute-blocs",
+      "name": "Blocs géopolitiques du calcul",
+      "year": 2029,
+      "dateLabel": "2027–2035",
+      "family": "Événement prévu · géopolitique",
+      "phrase": "Le calcul devient territoire, énergie et souveraineté.",
+      "summary": "Puces, énergie, centres de données, modèles et talents deviennent des actifs stratégiques organisant alliances, dépendances et restrictions.",
+      "confidence": "élevée",
+      "signals": "contrôles à l’exportation ; investissements souverains ; concentration du calcul avancé",
+      "assumptions": "la mise à l’échelle reste dépendante d’infrastructures coûteuses",
+      "impact": "fragmentation des écosystèmes IA et tensions sur l’énergie et les chaînes d’approvisionnement",
+      "response": "capacité locale proportionnée, standards ouverts et accords de non-prolifération ciblés",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025",
+      "sourceTitle": "International AI Safety Report 2025",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-social-contract-pressure",
+      "name": "Pression sur le contrat social",
+      "year": 2029,
+      "dateLabel": "2029–2038",
+      "family": "Événement prévu · société",
+      "phrase": "Si le travail se fragmente, la survie ne peut rester attachée au seul emploi.",
+      "summary": "Des transitions professionnelles répétées renforcent les débats sur revenu, services essentiels, temps de travail et partage des gains de productivité.",
+      "confidence": "moyenne",
+      "signals": "exposition inégale ; polarisation des revenus ; fragilisation des débuts de carrière",
+      "assumptions": "institutions sociales plus lentes que la transformation des tâches",
+      "impact": "conflits distributifs et expérimentations de nouveaux droits sociaux",
+      "response": "communs essentiels, assurance transitionnelle et réduction négociée du temps de travail",
+      "sourceUrl": "https://www.ilo.org/publications/work-transformed-promise-and-peril-artificial-intelligence",
+      "sourceTitle": "OIT — Work Transformed",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-autonomous-weapons-cycle",
+      "name": "Compression du cycle de décision militaire",
+      "year": 2030,
+      "dateLabel": "2028–2035",
+      "family": "Événement prévu · conflit",
+      "phrase": "La vitesse de ciblage réduit le temps disponible pour dire non.",
+      "summary": "L’aide à la décision et les systèmes autonomes accélèrent détection, sélection et engagement, avec des risques d’erreur et d’escalade.",
+      "confidence": "élevée",
+      "signals": "IA d’aide au ciblage ; systèmes autonomes ; intégration croissante dans la chaîne militaire",
+      "assumptions": "gouvernance internationale incomplète et pression stratégique pour accélérer",
+      "impact": "réduction du contrôle humain effectif et risque d’escalade involontaire",
+      "response": "contrôle humain significatif, délais obligatoires et accords multilatéraux",
+      "sourceUrl": "https://www.sipri.org/publications/2025/other-publications/autonomous-weapon-systems-and-ai-enabled-decision-support-systems-military-targeting-comparison-and",
+      "sourceTitle": "SIPRI — Autonomous Weapon Systems and AI-DSS",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-continuous-health-companion",
+      "name": "Compagnons de santé continus",
+      "year": 2030,
+      "dateLabel": "2028–2035",
+      "family": "Événement prévu · santé",
+      "phrase": "Le soin commence par des signaux faibles, avant la crise.",
+      "summary": "Des agents personnels suivent des signaux consentis et orientent vers des proches ou professionnels, sans remplacer diagnostic ni soin humain.",
+      "confidence": "moyenne",
+      "signals": "capteurs portables ; phénotypage numérique ; IA conversationnelle ; télésanté",
+      "assumptions": "validation clinique, confidentialité et responsabilité suffisantes",
+      "impact": "prévention plus précoce mais risque de surveillance, faux positifs et dépendance",
+      "response": "supervision clinique, opt-in, minimisation des données et droit au silence",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025",
+      "sourceTitle": "International AI Safety Report 2025",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-robotics-labor-wave",
+      "name": "Deuxième vague : automatisation du travail physique",
+      "year": 2032,
+      "dateLabel": "2030–2040",
+      "family": "Événement prévu · emploi",
+      "phrase": "L’agent quitte l’écran et entre dans l’atelier.",
+      "summary": "Les progrès en robotique et agents multimodaux étendent progressivement l’automatisation aux environnements physiques semi-structurés.",
+      "confidence": "moyenne à faible",
+      "signals": "modèles vision-action ; robotique polyvalente ; baisse des coûts des capteurs",
+      "assumptions": "fiabilité physique, coût et sécurité franchissent des seuils industriels",
+      "impact": "transformation de la logistique, fabrication, maintenance et services",
+      "response": "déploiement graduel, normes de sécurité et partage des gains de productivité",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025",
+      "sourceTitle": "International AI Safety Report 2025",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-post-work-experiments",
+      "name": "Expérimentations régionales post-travail",
+      "year": 2035,
+      "dateLabel": "2032–2045",
+      "family": "Événement prévu · société",
+      "phrase": "Certaines sociétés testent une vie moins définie par l’emploi.",
+      "summary": "Des territoires expérimentent services essentiels, temps de travail réduit, revenus complémentaires et nouvelles formes de contribution.",
+      "confidence": "faible à moyenne",
+      "signals": "expériences de revenu garanti ; semaine réduite ; automatisation sectorielle",
+      "assumptions": "gains de productivité durables et coalitions politiques capables de les redistribuer",
+      "impact": "divergence entre régions réparatrices et régions plus inégalitaires",
+      "response": "mesure comparative, participation démocratique et garanties universelles",
+      "sourceUrl": "https://www.ilo.org/publications/work-transformed-promise-and-peril-artificial-intelligence",
+      "sourceTitle": "OIT — Work Transformed",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-agi-threshold",
+      "name": "Seuil AGI",
+      "year": 2040,
+      "dateLabel": "2030–indéterminé",
+      "family": "Événement prévu · intelligence générale",
+      "phrase": "Un système devient capable d’apprendre et d’agir dans la plupart des domaines cognitifs.",
+      "summary": "Scénario où un système atteint une polyvalence cognitive comparable ou supérieure à l’humain dans une large gamme de tâches. Aucun calendrier consensuel n’existe.",
+      "confidence": "très faible · hautement spéculatif",
+      "signals": "progression des capacités générales ; transfert entre domaines ; autonomie croissante",
+      "assumptions": "la mise à l’échelle et les nouvelles architectures franchissent les limites actuelles",
+      "impact": "rupture possible du travail, de la science, de la sécurité et de la gouvernance",
+      "response": "évaluations de capacité, gouvernance internationale, ralentissement conditionnel et contrôle robuste",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025",
+      "sourceTitle": "International AI Safety Report 2025",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    },
+    {
+      "id": "forecast-asi-transition",
+      "name": "Transition ASI",
+      "year": 2060,
+      "dateLabel": "indéterminée · après AGI éventuelle",
+      "family": "Événement prévu · superintelligence",
+      "phrase": "Une intelligence pourrait dépasser largement les capacités humaines dans presque tous les domaines.",
+      "summary": "Scénario extrême de superintelligence artificielle. Il ne possède ni date fiable, ni définition opérationnelle universellement acceptée, ni probabilité établie.",
+      "confidence": "indéterminable · scénario extrême",
+      "signals": "aucun signal suffisant ; dépend entièrement d’un éventuel seuil AGI et d’accélérations ultérieures",
+      "assumptions": "auto-amélioration, ressources et autonomie franchissent plusieurs seuils non démontrés",
+      "impact": "transformation potentiellement irréversible de la civilisation et risque de perte de contrôle",
+      "response": "ne pas traiter comme inévitable ; gouvernance préalable, contrôle des ressources et recherche d’alignement",
+      "sourceUrl": "https://internationalaisafetyreport.org/publication/international-ai-safety-report-2025",
+      "sourceTitle": "International AI Safety Report 2025",
+      "semanticType": "forecast_event",
+      "nodeType": "moment"
+    }
+  ],
+  "links": [
+    {
+      "source": "mechanism-memory-vault",
+      "target": "forecast-local-memory-models",
+      "type": "MAKES_PLAUSIBLE",
+      "story": "Le coffre de mémoire donne au modèle local une source persistante sous contrôle humain.",
+      "justification": "Le coffre de mémoire donne au modèle local une source persistante sous contrôle humain."
+    },
+    {
+      "source": "forecast-local-memory-models",
+      "target": "forecast-agentic-work",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "Une fois fiables sur une mémoire et des outils locaux, les agents peuvent prendre en charge des processus de travail plus longs.",
+      "justification": "Une fois fiables sur une mémoire et des outils locaux, les agents peuvent prendre en charge des processus de travail plus longs."
+    },
+    {
+      "source": "forecast-agentic-work",
+      "target": "forecast-employment-wave-one",
+      "type": "PRESSURES",
+      "story": "La délégation de chaînes de tâches exerce une pression directe sur l’organisation et le volume de certains emplois.",
+      "justification": "La délégation de chaînes de tâches exerce une pression directe sur l’organisation et le volume de certains emplois."
+    },
+    {
+      "source": "forecast-agentic-work",
+      "target": "forecast-agent-economy",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "Les agents utilisés au travail commencent ensuite à négocier entre organisations et marchés.",
+      "justification": "Les agents utilisés au travail commencent ensuite à négocier entre organisations et marchés."
+    },
+    {
+      "source": "forecast-synthetic-trust-crisis",
+      "target": "forecast-cyber-conflict-escalation",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "La fraude et la désinformation synthétiques deviennent des instruments de conflit cyber et politique.",
+      "justification": "La fraude et la désinformation synthétiques deviennent des instruments de conflit cyber et politique."
+    },
+    {
+      "source": "forecast-agentic-work",
+      "target": "forecast-cyber-conflict-escalation",
+      "type": "PRESSURES",
+      "story": "Les mêmes capacités agentiques qui automatisent le travail accélèrent aussi l’offensive et la défense cyber.",
+      "justification": "Les mêmes capacités agentiques qui automatisent le travail accélèrent aussi l’offensive et la défense cyber."
+    },
+    {
+      "source": "forecast-cyber-conflict-escalation",
+      "target": "forecast-autonomous-weapons-cycle",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "L’accélération numérique pousse les chaînes militaires à réduire encore leur temps de décision.",
+      "justification": "L’accélération numérique pousse les chaînes militaires à réduire encore leur temps de décision."
+    },
+    {
+      "source": "forecast-compute-blocs",
+      "target": "forecast-cyber-conflict-escalation",
+      "type": "PRESSURES",
+      "story": "La fragmentation géopolitique du calcul intensifie espionnage, sabotage et compétition cyber.",
+      "justification": "La fragmentation géopolitique du calcul intensifie espionnage, sabotage et compétition cyber."
+    },
+    {
+      "source": "forecast-agentic-work",
+      "target": "forecast-compute-blocs",
+      "type": "PRESSURES",
+      "story": "La valeur économique des agents augmente la valeur stratégique du calcul qui les alimente.",
+      "justification": "La valeur économique des agents augmente la valeur stratégique du calcul qui les alimente."
+    },
+    {
+      "source": "forecast-employment-wave-one",
+      "target": "forecast-social-contract-pressure",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "Les transitions répétées de l’emploi déplacent la question technique vers le contrat social.",
+      "justification": "Les transitions répétées de l’emploi déplacent la question technique vers le contrat social."
+    },
+    {
+      "source": "forecast-employment-wave-one",
+      "target": "forecast-robotics-labor-wave",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "La première vague logicielle prépare une seconde vague lorsque l’agent atteint le monde physique.",
+      "justification": "La première vague logicielle prépare une seconde vague lorsque l’agent atteint le monde physique."
+    },
+    {
+      "source": "forecast-social-contract-pressure",
+      "target": "forecast-post-work-experiments",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "La pression distributive conduit certains territoires à tester de nouvelles garanties et de nouveaux rythmes de vie.",
+      "justification": "La pression distributive conduit certains territoires à tester de nouvelles garanties et de nouveaux rythmes de vie."
+    },
+    {
+      "source": "institution-post-work-commons",
+      "target": "forecast-social-contract-pressure",
+      "type": "MITIGATES",
+      "story": "Les communs post-travail proposent une réponse possible à la dépendance entre survie et emploi.",
+      "justification": "Les communs post-travail proposent une réponse possible à la dépendance entre survie et emploi."
+    },
+    {
+      "source": "horizon-second-currency",
+      "target": "forecast-social-contract-pressure",
+      "type": "MITIGATES",
+      "story": "La deuxième monnaie propose de diriger une partie de la valeur vers les besoins vivants.",
+      "justification": "La deuxième monnaie propose de diriger une partie de la valeur vers les besoins vivants."
+    },
+    {
+      "source": "forecast-agent-economy",
+      "target": "forecast-social-contract-pressure",
+      "type": "PRESSURES",
+      "story": "Une économie plus rapide et automatisée peut concentrer les gains et accroître la pression distributive.",
+      "justification": "Une économie plus rapide et automatisée peut concentrer les gains et accroître la pression distributive."
+    },
+    {
+      "source": "mechanism-consent-delegation",
+      "target": "forecast-agent-economy",
+      "type": "MITIGATES",
+      "story": "Le mandat révocable limite ce qu’un agent peut négocier ou dépenser au nom d’une personne.",
+      "justification": "Le mandat révocable limite ce qu’un agent peut négocier ou dépenser au nom d’une personne."
+    },
+    {
+      "source": "unlock-early-warning",
+      "target": "forecast-continuous-health-companion",
+      "type": "MAKES_PLAUSIBLE",
+      "story": "L’alerte précoce fournit la fonction centrale du compagnon de santé continu.",
+      "justification": "L’alerte précoce fournit la fonction centrale du compagnon de santé continu."
+    },
+    {
+      "source": "axiom-non-possession",
+      "target": "forecast-continuous-health-companion",
+      "type": "MITIGATES",
+      "story": "Connaître sans posséder protège le soin continu contre la surveillance totale.",
+      "justification": "Connaître sans posséder protège le soin continu contre la surveillance totale."
+    },
+    {
+      "source": "forecast-continuous-health-companion",
+      "target": "institution-planetary-care",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "Les compagnons individuels peuvent former une écologie de soutien s’ils restent reliés aux humains et aux institutions.",
+      "justification": "Les compagnons individuels peuvent former une écologie de soutien s’ils restent reliés aux humains et aux institutions."
+    },
+    {
+      "source": "forecast-robotics-labor-wave",
+      "target": "forecast-post-work-experiments",
+      "type": "PRESSURES",
+      "story": "L’automatisation physique renforce la nécessité de découpler une part des besoins essentiels de l’emploi.",
+      "justification": "L’automatisation physique renforce la nécessité de découpler une part des besoins essentiels de l’emploi."
+    },
+    {
+      "source": "forecast-local-memory-models",
+      "target": "unlock-sovereign-personal-ai",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "Les modèles locaux autonomes transforment l’IA personnelle souveraine en capacité opérationnelle.",
+      "justification": "Les modèles locaux autonomes transforment l’IA personnelle souveraine en capacité opérationnelle."
+    },
+    {
+      "source": "forecast-agentic-work",
+      "target": "forecast-agi-threshold",
+      "type": "MAKES_PLAUSIBLE",
+      "story": "L’autonomie croissante constitue un signal possible, mais insuffisant, d’un futur seuil général.",
+      "justification": "L’autonomie croissante constitue un signal possible, mais insuffisant, d’un futur seuil général."
+    },
+    {
+      "source": "forecast-agi-threshold",
+      "target": "forecast-asi-transition",
+      "type": "SCENARIO_LEADS_TO",
+      "story": "Le scénario ASI dépend entièrement d’un seuil AGI préalable puis d’accélérations supplémentaires non démontrées.",
+      "justification": "Le scénario ASI dépend entièrement d’un seuil AGI préalable puis d’accélérations supplémentaires non démontrées."
+    },
+    {
+      "source": "mechanism-consent-delegation",
+      "target": "forecast-agi-threshold",
+      "type": "MITIGATES",
+      "story": "Les limites de délégation constituent une défense partielle avant des systèmes plus généraux.",
+      "justification": "Les limites de délégation constituent une défense partielle avant des systèmes plus généraux."
+    },
+    {
+      "source": "institution-machine-deliberation",
+      "target": "forecast-agi-threshold",
+      "type": "MITIGATES",
+      "story": "Une gouvernance humain-agent peut préparer les institutions sans supposer que le seuil sera franchi.",
+      "justification": "Une gouvernance humain-agent peut préparer les institutions sans supposer que le seuil sera franchi."
+    },
+    {
+      "source": "forecast-asi-transition",
+      "target": "innovation-mind-protocol",
+      "type": "PRESSURES",
+      "story": "Le scénario ASI met à l’épreuve l’axiome central de souveraineté humaine de Mind Protocol.",
+      "justification": "Le scénario ASI met à l’épreuve l’axiome central de souveraineté humaine de Mind Protocol."
+    }
+  ]
+}

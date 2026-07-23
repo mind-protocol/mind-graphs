@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "science-ingestion-readiness-v1",
+  "purpose": "Mesurer la qualité opérationnelle d'une représentation ingérée, jamais la vérité scientifique de ses claims.",
+  "weights": {
+    "textualCoverage": 0.25,
+    "conceptCoverage": 0.15,
+    "structuralCoverage": 0.2,
+    "typedConnectivity": 0.15,
+    "provenanceCoverage": 0.15,
+    "agentReview": 0.1
+  },
+  "readiness": {
+    "minimumOverall": 0.8,
+    "dimensionFloors": {
+      "textualCoverage": 0.6,
+      "conceptCoverage": 0.8,
+      "structuralCoverage": 0.85,
+      "typedConnectivity": 0.8,
+      "provenanceCoverage": 1,
+      "agentReview": 0.3
+    }
+  },
+  "textualCoverage": {
+    "targetRepresentationRatio": 0.25,
+    "minimumRepresentationRatio": 0.15,
+    "fields": ["name", "phrase", "summary"],
+    "note": "Le ratio est un garde-fou de volume, pas une mesure de fidélité sémantique ; les autres dimensions empêchent de le satisfaire par verbosité."
+  },
+  "structuralCoverage": {
+    "requiredTypes": ["source_document", "study", "context", "variable", "mechanism", "observation", "estimate", "claim", "evidence"],
+    "minimumDistinctRelationTypes": 8,
+    "targetRelationsPerNode": 1.5,
+    "requiredChain": [
+      { "sourceType": "study", "relation": "REPORTS_ESTIMATE", "targetType": "estimate" },
+      { "sourceType": "estimate", "relation": "SUPPORTS_CLAIM", "targetType": "claim" },
+      { "sourceType": "claim", "relation": "JUSTIFIED_BY", "targetType": "evidence" },
+      { "sourceType": "evidence", "relation": "LOCATED_IN", "targetType": "source_document" }
+    ]
+  },
+  "agentReview": {
+    "requiredDimensions": ["source_identity", "coverage", "structure", "provenance", "scope_limits"],
+    "independenceFactors": { "independent": 1, "non_independent": 0.6 },
+    "verdictFactors": { "complete": 1, "partial": 0.5, "reject": 0 }
+  }
+}

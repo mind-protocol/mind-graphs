@@ -1,0 +1,39 @@
+{
+  "citizens": {
+    "actor-nlr": {
+      "id": "workspace-intent-profile-smoke",
+      "version": 1,
+      "name": "Workspace · Recherche d’une capacité manquante",
+      "text": "Améliorer le graphe autonome en trouvant ce qui manque pour atteindre un objectif mesurable.",
+      "goalIds": [
+        "state-goal-directed-autonomous-improvement"
+      ],
+      "activeNodeIds": [
+        "mech-goal-gap-activation",
+        "mech-missing-capability-creation",
+        "mech-feedback-workspace-reembedding"
+      ],
+      "cortexState": "state-targeting-planning",
+      "affectVector": {
+        "frustration": 0.7,
+        "curiosity": 0.4,
+        "fearOfError": 0.2
+      },
+      "predictionResidual": "Les chemins déjà essayés n’ont pas réduit l’écart mesuré ; chercher le blocage, le prérequis ou la capacité absente.",
+      "activeSubentity": {
+        "id": "subentity-autonomous-graph-repair",
+        "name": "Réparation autonome du graphe",
+        "identity": "Sous-entité instrumentale chargée de trouver les capacités absentes sans créer de finalité terminale.",
+        "motivations": [
+          "Réduire l’écart à l’objectif",
+          "Préserver les invariants du graphe"
+        ],
+        "strategies": [
+          "Chercher les questions bloquantes",
+          "Comparer plusieurs transformations réversibles"
+        ]
+      },
+      "contentHash": "fixture:intent-profile-smoke-v1"
+    }
+  }
+}

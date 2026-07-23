@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "scientific-certainty-governance",
+  "principle": "Le graphe scientifique conserve les justifications et dérive une certitude continue ; aucun palier ne promeut un claim en vérité.",
+  "certaintyModel": {
+    "kind": "continuous_from_justifications",
+    "status": "declared_not_yet_computed",
+    "dimensions": [
+      "source_fidelity",
+      "methodological_fit",
+      "estimate_precision",
+      "replication",
+      "context_transfer",
+      "contradiction_load"
+    ]
+  },
+  "contributionKinds": [
+    "source_representation",
+    "author_claim",
+    "reported_estimate",
+    "observation",
+    "appraisal",
+    "critique",
+    "reanalysis",
+    "derived_computation"
+  ],
+  "writeContract": {
+    "required": [
+      "contributor",
+      "contributionMethod",
+      "version",
+      "sourceId",
+      "reversible"
+    ],
+    "rule": "L'identité humaine, LLM ou service de l'auteur n'accorde ni n'interdit l'écriture ; le contrat et les invariants la gouvernent."
+  },
+  "actionThresholds": {
+    "location": "outside_science_graph",
+    "rule": "Chaque cadre d'action justifie son seuil sans modifier la connaissance scientifique."
+  }
+}

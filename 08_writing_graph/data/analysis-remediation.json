@@ -1,0 +1,793 @@
+{
+  "provenance": {
+    "title": "Recommandations de l’analyse du graphe Mind Protocol",
+    "sourcePath": "C:/Users/reyno/.codex/attachments/97172be3-5632-4e12-a60f-b9a12ddd6c57/pasted-text.txt",
+    "observedAt": "2026-07-21",
+    "status": "copie utilisateur du rapport d’analyse"
+  },
+  "nodes": [
+    {
+      "id": "doc-analysis-recommendations-2026-07-21",
+      "name": "Rapport d’analyse — 21 juillet 2026",
+      "phrase": "247 recommandations ont été copiées depuis l’analyse du graphe pour être traitées avec une provenance explicite.",
+      "family": "provenance",
+      "summary": "Source locale figée des recommandations ayant motivé ce lot de réponses candidates.",
+      "nodeType": "thing",
+      "status": "source utilisateur",
+      "sourceTitle": "Recommandations de l’analyse du graphe Mind Protocol",
+      "sourceUrl": "",
+      "sourcePath": "C:/Users/reyno/.codex/attachments/97172be3-5632-4e12-a60f-b9a12ddd6c57/pasted-text.txt",
+      "epistemicStatus": "documented",
+      "clusterId": "analysis-remediation-2026-07",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "response-csg-phased-migration",
+      "name": "Migration CSG par phases",
+      "phrase": "La migration CSG devrait passer par des adaptateurs, des snapshots comparables et des retours arrière testés.",
+      "family": "architecture",
+      "summary": "Réponse candidate au décalage entre la spécification CSG et l’implémentation actuelle.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "architecture CSG",
+      "targetDate": "2026-08-31",
+      "closureCriteria": "Plan de migration versionné, snapshot de référence et test de rollback exécuté.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "response-democracy-manipulation-controls",
+      "name": "Contrôles anti-manipulation démocratique",
+      "phrase": "Le système devrait combiner pluralité de modèles, audit adversarial, droit d’appel et arrêt humain.",
+      "family": "démocratie",
+      "summary": "Réponse candidate au risque de manipulation du système délibératif.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance et sûreté",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Menaces documentées, red-team réalisée et procédure d’appel testée.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "response-child-autonomy-safeguards",
+      "name": "Garanties d’autonomie de l’enfant",
+      "phrase": "L’éducation assistée devrait minimiser les données, faire évoluer les droits avec l’âge et éviter la dépendance comportementale.",
+      "family": "éducation",
+      "summary": "Réponse candidate au risque d’optimisation instrumentale des enfants.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "éducation et droits de l’enfant",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Politique de données, tests d’autonomie et revue indépendante approuvés.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "response-postwork-social-transition",
+      "name": "Transition sociale post-travail",
+      "phrase": "La transition post-travail devrait associer espaces sociaux non cliniques et escalade clinique accessible.",
+      "family": "santé mentale",
+      "summary": "Réponse candidate aux risques psychiques et sociaux de la transition post-travail.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "santé mentale",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Parcours de soutien défini, capacité estimée et protocole d’escalade testé.",
+      "semanticType": "institution"
+    },
+    {
+      "id": "response-protocol-rights-legal-matrix",
+      "name": "Matrice juridique des droits du protocole",
+      "phrase": "Les droits devraient être répartis explicitement entre opérateur, fondation, DAO et investisseurs selon chaque juridiction.",
+      "family": "droit",
+      "summary": "Réponse candidate à l’incertitude sur la détention et le contrôle des droits.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "conseil juridique",
+      "targetDate": "2026-08-31",
+      "closureCriteria": "Matrice des droits, pouvoirs et conflits validée dans les juridictions pilotes.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-scientific-adversarial-review",
+      "name": "Revue scientifique adversariale",
+      "phrase": "Chaque affirmation scientifique devrait supporter critique, versionnement, réplication et rétractation.",
+      "family": "science",
+      "summary": "Réponse candidate au risque d’accumulation de claims non corrigés.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "science ouverte",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Workflow critique-réponse-réplication-rétractation testé sur un corpus pilote.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-human-allocation-name",
+      "name": "Nom distinct pour l’allocation humaine",
+      "phrase": "UBC devrait rester réservé au compute IA ; l’allocation humaine reçoit provisoirement le nom Allocation universelle de vie.",
+      "family": "nomenclature",
+      "summary": "Décision candidate pour supprimer l’ambiguïté entre compute IA et allocation humaine.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "produit et communication",
+      "targetDate": "2026-08-15",
+      "closureCriteria": "Terme choisi, défini dans le glossaire et remplacé dans les documents actifs.",
+      "semanticType": "claim"
+    },
+    {
+      "id": "response-trust-circuit-breakers",
+      "name": "Coupe-circuits de confiance",
+      "phrase": "La confiance devrait rester multidimensionnelle, plafonnée, contestable et dégradable sans bloquer les droits essentiels.",
+      "family": "confiance",
+      "summary": "Réponse candidate au risque de centralité excessive de la confiance.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "trust and safety",
+      "targetDate": "2026-08-31",
+      "closureCriteria": "Dimensions, plafonds, recours et mode dégradé testés sur cas adversariaux.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "response-wallet-recovery-mpc",
+      "name": "Récupération de wallet distribuée",
+      "phrase": "La récupération devrait combiner MPC, plusieurs appareils et récupération sociale sans gardien unique.",
+      "family": "wallet",
+      "summary": "Réponse candidate à la garde et à la perte de clés.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "sécurité wallet",
+      "targetDate": "2026-08-31",
+      "closureCriteria": "Threat model, prototype et scénarios perte-vol-coercition testés.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "response-prism-calibration-study",
+      "name": "Étude de calibration PRISM",
+      "phrase": "Les seuils PRISM devraient être préenregistrés puis calibrés sur cohortes et cas adversariaux.",
+      "family": "sécurité IA",
+      "summary": "Réponse candidate à l’incertitude de calibration de PRISM.",
+      "nodeType": "moment",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "évaluation PRISM",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Protocole préenregistré, cohortes définies et rapport de calibration publié.",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "response-token-provenance-card",
+      "name": "Carte de provenance du token",
+      "phrase": "Le graphe devrait enregistrer mint, programme, autorités, historique et preuves vérifiables du token.",
+      "family": "token",
+      "summary": "Réponse candidate à la question de la preuve d’existence du token.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "blockchain",
+      "targetDate": "2026-08-15",
+      "closureCriteria": "Adresses et historique vérifiés par deux sources indépendantes ou hypothèse rejetée.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-token-minimal-role",
+      "name": "Rôle minimal du token en v1",
+      "phrase": "La v1 devrait limiter le token au paiement de compute et aux frais du protocole.",
+      "family": "token",
+      "summary": "Option candidate afin de réduire l’ambiguïté fonctionnelle et réglementaire.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "token design",
+      "targetDate": "2026-08-31",
+      "closureCriteria": "Rôle v1 arbitré, autres usages explicitement différés et modèle de flux cohérent.",
+      "semanticType": "claim"
+    },
+    {
+      "id": "response-supply-accounting-invariants",
+      "name": "Invariants de masse monétaire",
+      "phrase": "L’offre devrait être décrite par une équation auditable couvrant émission, redistribution, destruction et réserves.",
+      "family": "tokenomics",
+      "summary": "Réponse candidate à la question de l’offre et de sa comptabilité.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "économie quantitative",
+      "targetDate": "2026-08-31",
+      "closureCriteria": "Équation complète, invariants testés et simulation sans création ou perte inexpliquée.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-circulation-not-impossibility",
+      "name": "Circulation mesurable plutôt qu’impossibilité d’accumuler",
+      "phrase": "La non-accumulation absolue devrait être remplacée par des objectifs mesurables de circulation et de concentration maximale.",
+      "family": "tokenomics",
+      "summary": "Révision candidate d’une promesse techniquement trop absolue.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "économie quantitative",
+      "targetDate": "2026-08-31",
+      "closureCriteria": "Mesures de concentration choisies, seuils simulés et formulation absolue retirée.",
+      "semanticType": "claim"
+    },
+    {
+      "id": "response-sybil-private-personhood",
+      "name": "Preuve privée d’unicité humaine",
+      "phrase": "L’accès devrait prouver une singularité bornée avec divulgation minimale, recours et alternatives.",
+      "family": "identité",
+      "summary": "Réponse candidate au compromis Sybil, vie privée et exclusion.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "identité et privacy",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Threat model, mécanismes alternatifs et taux d’exclusion/fraude simulés.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "response-upgrade-constitution",
+      "name": "Constitution des mises à jour",
+      "phrase": "Les mises à jour devraient combiner timelock, audit, veto borné, urgence contrôlée et droit de fork.",
+      "family": "gouvernance",
+      "summary": "Réponse candidate aux pouvoirs de mise à jour du protocole.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance protocolaire",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Pouvoirs et procédures modélisés puis testés sur crise, capture et bug critique.",
+      "semanticType": "institution"
+    },
+    {
+      "id": "response-life-goods-taxonomy",
+      "name": "Taxonomie locale des biens de vie",
+      "phrase": "Les biens essentiels devraient être classés localement, versionnés et contestables.",
+      "family": "économie",
+      "summary": "Réponse candidate à la frontière entre biens de vie et biens de luxe.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "politique économique locale",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Taxonomie pilote, règles d’évolution et recours testés avec parties prenantes.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-merchant-settlement-model",
+      "name": "Modèle de règlement marchand",
+      "phrase": "L’adoption marchande devrait reposer sur réserves, plafonds, accès réciproque et économie unitaire soutenable.",
+      "family": "économie",
+      "summary": "Réponse candidate aux incitations des commerçants.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "merchant economics",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Unit economics, liquidité et comportement marchand simulés dans trois scénarios.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "response-convertibility-gated-bridge",
+      "name": "Pont de conversion limité",
+      "phrase": "La v1 éviterait la conversion générale et n’autoriserait qu’un règlement producteur plafonné et traçable.",
+      "family": "économie",
+      "summary": "Option candidate sur la convertibilité de MIND.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "token economics et conformité",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Flux, limites, abus et implications réglementaires simulés et revus.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "response-future-needs-reserves",
+      "name": "Réserves pour besoins futurs",
+      "phrase": "Les urgences et projets longs devraient utiliser des réserves fléchées et une assurance mutuelle plutôt qu’une accumulation libre.",
+      "family": "économie",
+      "summary": "Réponse candidate au besoin d’épargne et de couverture des urgences.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "économie et assurance",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Cas d’urgence couverts, solvabilité simulée et règles anti-capture définies.",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "response-price-fairness-audit",
+      "name": "Audit d’équité des prix instantanés",
+      "phrase": "Le prix algorithmique devrait avoir des bornes publiques, des tests contrefactuels, des mesures de disparité et un recours.",
+      "family": "pricing",
+      "summary": "Réponse candidate au risque de discrimination et d’opacité des prix.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "pricing et fairness",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Métriques et bornes choisies, audit pilote exécuté et recours testé.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-wellbeing-constitutional-objectives",
+      "name": "Objectifs constitutionnels pluralistes",
+      "phrase": "Le bonheur ne devrait pas être un score unique mais un ensemble pluraliste contraint par droits, opt-out et révision.",
+      "family": "gouvernance",
+      "summary": "Réponse candidate à la définition de l’objectif de bien-être.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance et éthique",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Objectifs, droits prioritaires, opt-out et procédure de révision arbitrés.",
+      "semanticType": "institution"
+    },
+    {
+      "id": "response-wallet-recovery-ceremony",
+      "name": "Cérémonie de récupération révocable",
+      "phrase": "Une récupération devrait être temporisée, multi-acteurs, révocable et observable par le propriétaire.",
+      "family": "wallet",
+      "summary": "Procédure candidate complétant le mécanisme MPC.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "sécurité wallet",
+      "targetDate": "2026-08-31",
+      "closureCriteria": "Cérémonie testée contre vol, coercition, collusion et indisponibilité.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-offline-risk-budgets",
+      "name": "Budgets de risque hors-ligne",
+      "phrase": "Le paiement hors-ligne devrait utiliser reçus signés, plafonds locaux et réconciliation différée.",
+      "family": "application",
+      "summary": "Réponse candidate au fonctionnement hors-ligne.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "paiements mobiles",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Double dépense, partition longue et réconciliation testées sous budgets explicites.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "response-accessibility-baseline",
+      "name": "Socle d’accessibilité universelle",
+      "phrase": "L’app devrait couvrir WCAG, voix, langues, aidants, anciens appareils et accès sans smartphone.",
+      "family": "application",
+      "summary": "Réponse candidate à l’accessibilité de l’application.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "accessibilité produit",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Matrice d’accès et tests utilisateurs couvrant chaque modalité prioritaire.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-data-egress-map",
+      "name": "Carte des sorties de données",
+      "phrase": "Chaque donnée sortante devrait avoir une finalité, un destinataire, une rétention, un consentement et une suppression.",
+      "family": "privacy",
+      "summary": "Réponse candidate à la confidentialité de l’application.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "privacy engineering",
+      "targetDate": "2026-08-31",
+      "closureCriteria": "Tous les flux cartographiés, minimisés et reliés à une base de traitement et une suppression.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-series-evidence-sequencing",
+      "name": "Séquencement série-preuves",
+      "phrase": "La série peut commencer tôt, mais ses faits devraient attendre les preuves et ses spéculations rester étiquetées.",
+      "family": "multimédia",
+      "summary": "Réponse candidate au séquencement entre validation et récit public.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "science et production éditoriale",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Charte éditoriale et gates de preuve appliqués à un épisode pilote.",
+      "semanticType": "method"
+    },
+    {
+      "id": "response-platform-agnostic-series",
+      "name": "Série indépendante de la plateforme",
+      "phrase": "La diffusion devrait rester multi-distributeur avec contrôle clair de l’IP et de l’indépendance éditoriale.",
+      "family": "multimédia",
+      "summary": "Réponse candidate au risque de dépendance à Netflix.",
+      "nodeType": "narrative",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "production et distribution",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Scénarios de distribution, droits et plan de continuité documentés.",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "response-series-impact-protocol",
+      "name": "Protocole d’impact de la série",
+      "phrase": "L’impact devrait mesurer avant et après compréhension, confiance, rejet, action et perception de propagande.",
+      "family": "multimédia",
+      "summary": "Expérience candidate pour mesurer les effets de la série.",
+      "nodeType": "moment",
+      "status": "proposition non approuvée",
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "research et audience",
+      "targetDate": "2026-09-30",
+      "closureCriteria": "Protocole préenregistré, échantillon défini et résultats publiés avec effets indésirables.",
+      "semanticType": "experiment"
+    }
+  ],
+  "links": [
+    {
+      "source": "response-csg-phased-migration",
+      "type": "ADDRESSES",
+      "target": "csg-gap-current-implementation",
+      "justification": "Migration CSG par phases « répond à » Gap · L'implémentation Mind actuelle n'est pas encore le CSG v0.2. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-democracy-manipulation-controls",
+      "type": "ADDRESSES",
+      "target": "dem-risk-manipulation",
+      "justification": "Contrôles anti-manipulation démocratique « répond à » Risque · Manipulation politique agentique. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-child-autonomy-safeguards",
+      "type": "ADDRESSES",
+      "target": "edu-risk-child-optimization",
+      "justification": "Garanties d’autonomie de l’enfant « répond à » Risque · Enfant optimisé ou dépendant. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-postwork-social-transition",
+      "type": "ADDRESSES",
+      "target": "mh-risk-postwork-transition",
+      "justification": "Transition sociale post-travail « répond à » Risque · Transition post-travail psychiatrique. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-protocol-rights-legal-matrix",
+      "type": "ADDRESSES",
+      "target": "fin-question-protocol-rights",
+      "justification": "Matrice juridique des droits du protocole « répond à » Question · Quels droits de protocole sont légalement viables ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-scientific-adversarial-review",
+      "type": "ADDRESSES",
+      "target": "sci-risk-claim-accumulation",
+      "justification": "Revue scientifique adversariale « répond à » Risque · Accumulation sans critique. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-human-allocation-name",
+      "type": "ADDRESSES",
+      "target": "repo-question-human-allocation-name",
+      "justification": "Nom distinct pour l’allocation humaine « répond à » Question · Nommer l’allocation humaine distincte. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-trust-circuit-breakers",
+      "type": "ADDRESSES",
+      "target": "repo-question-trust-centrality",
+      "justification": "Coupe-circuits de confiance « répond à » Question · Défaillance du signal de confiance. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-wallet-recovery-mpc",
+      "type": "ADDRESSES",
+      "target": "repo-question-wallet-custody",
+      "justification": "Récupération de wallet distribuée « répond à » Question · Custodie et récupération des wallets. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-prism-calibration-study",
+      "type": "ADDRESSES",
+      "target": "repo-question-prism-calibration",
+      "justification": "Étude de calibration PRISM « répond à » Question · Calibrer les seuils du Prism. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-token-provenance-card",
+      "type": "ADDRESSES",
+      "target": "question-token-proof",
+      "justification": "Carte de provenance du token « répond à » Quelle est la preuve on-chain du token 2022 ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-token-minimal-role",
+      "type": "ADDRESSES",
+      "target": "question-token-role",
+      "justification": "Rôle minimal du token en v1 « répond à » À quoi sert exactement $MIND ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-supply-accounting-invariants",
+      "type": "ADDRESSES",
+      "target": "question-token-supply",
+      "justification": "Invariants de masse monétaire « répond à » Comment naissent et disparaissent les Mind ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-circulation-not-impossibility",
+      "type": "ADDRESSES",
+      "target": "question-non-accumulation-implementation",
+      "justification": "Circulation mesurable plutôt qu’impossibilité d’accumuler « répond à » Comment rendre l’accumulation impossible sur Solana ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-sybil-private-personhood",
+      "type": "ADDRESSES",
+      "target": "question-sybil-identity",
+      "justification": "Preuve privée d’unicité humaine « répond à » Comment garantir une personne sans surveillance ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-upgrade-constitution",
+      "type": "ADDRESSES",
+      "target": "question-governance-upgrades",
+      "justification": "Constitution des mises à jour « répond à » Qui peut modifier les règles on-chain ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-life-goods-taxonomy",
+      "type": "ADDRESSES",
+      "target": "question-life-goods-boundary",
+      "justification": "Taxonomie locale des biens de vie « répond à » Qu’est-ce qu’un bien de vie ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-merchant-settlement-model",
+      "type": "ADDRESSES",
+      "target": "question-merchant-incentive",
+      "justification": "Modèle de règlement marchand « répond à » Pourquoi un producteur accepterait-il Mind ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-convertibility-gated-bridge",
+      "type": "ADDRESSES",
+      "target": "question-convertibility",
+      "justification": "Pont de conversion limité « répond à » Mind est-il convertible en argent ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-future-needs-reserves",
+      "type": "ADDRESSES",
+      "target": "question-savings-emergencies",
+      "justification": "Réserves pour besoins futurs « répond à » Comment financer les besoins futurs et les urgences ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-price-fairness-audit",
+      "type": "ADDRESSES",
+      "target": "question-price-fairness",
+      "justification": "Audit d’équité des prix instantanés « répond à » Comment prouver que le prix local est juste ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-wellbeing-constitutional-objectives",
+      "type": "ADDRESSES",
+      "target": "question-wellbeing-objective",
+      "justification": "Objectifs constitutionnels pluralistes « répond à » Qui définit le bonheur optimisé ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-wallet-recovery-ceremony",
+      "type": "ADDRESSES",
+      "target": "question-app-key-recovery",
+      "justification": "Cérémonie de récupération révocable « répond à » Comment récupérer son wallet sans perdre sa souveraineté ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-offline-risk-budgets",
+      "type": "ADDRESSES",
+      "target": "question-app-offline",
+      "justification": "Budgets de risque hors-ligne « répond à » Mind fonctionne-t-il hors ligne ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-accessibility-baseline",
+      "type": "ADDRESSES",
+      "target": "question-app-accessibility",
+      "justification": "Socle d’accessibilité universelle « répond à » L’application est-elle utilisable par tous ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-data-egress-map",
+      "type": "ADDRESSES",
+      "target": "question-app-privacy",
+      "justification": "Carte des sorties de données « répond à » Quelles données quittent le téléphone ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-series-evidence-sequencing",
+      "type": "ADDRESSES",
+      "target": "question-series-evidence",
+      "justification": "Séquencement série-preuves « répond à » La série vient-elle avant ou après les preuves ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-platform-agnostic-series",
+      "type": "ADDRESSES",
+      "target": "question-series-platform",
+      "justification": "Série indépendante de la plateforme « répond à » Netflix est-il partenaire ou symbole de portée ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-series-impact-protocol",
+      "type": "ADDRESSES",
+      "target": "question-series-impact",
+      "justification": "Protocole d’impact de la série « répond à » Comment mesurer l’effet de la série ?. Nature précise : solution spécifiée → question ou problème traité. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-prism-calibration-study",
+      "type": "TESTS",
+      "target": "repo-prism-safety",
+      "justification": "Étude de calibration PRISM « met à l’épreuve » Portes de sécurité du Prism. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-series-impact-protocol",
+      "type": "TESTS",
+      "target": "response-platform-agnostic-series",
+      "justification": "Protocole d’impact de la série « met à l’épreuve » Série indépendante de la plateforme. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-csg-phased-migration",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Migration CSG par phases « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-democracy-manipulation-controls",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Contrôles anti-manipulation démocratique « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-child-autonomy-safeguards",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Garanties d’autonomie de l’enfant « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-postwork-social-transition",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Transition sociale post-travail « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-protocol-rights-legal-matrix",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Matrice juridique des droits du protocole « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-scientific-adversarial-review",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Revue scientifique adversariale « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-human-allocation-name",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Nom distinct pour l’allocation humaine « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-trust-circuit-breakers",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Coupe-circuits de confiance « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-wallet-recovery-mpc",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Récupération de wallet distribuée « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-prism-calibration-study",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Étude de calibration PRISM « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-token-provenance-card",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Carte de provenance du token « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-token-minimal-role",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Rôle minimal du token en v1 « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-supply-accounting-invariants",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Invariants de masse monétaire « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-circulation-not-impossibility",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Circulation mesurable plutôt qu’impossibilité d’accumuler « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-sybil-private-personhood",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Preuve privée d’unicité humaine « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-upgrade-constitution",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Constitution des mises à jour « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-life-goods-taxonomy",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Taxonomie locale des biens de vie « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-merchant-settlement-model",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Modèle de règlement marchand « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-convertibility-gated-bridge",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Pont de conversion limité « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-future-needs-reserves",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Réserves pour besoins futurs « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-price-fairness-audit",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Audit d’équité des prix instantanés « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-wellbeing-constitutional-objectives",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Objectifs constitutionnels pluralistes « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-wallet-recovery-ceremony",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Cérémonie de récupération révocable « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-offline-risk-budgets",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Budgets de risque hors-ligne « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-accessibility-baseline",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Socle d’accessibilité universelle « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-data-egress-map",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Carte des sorties de données « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-series-evidence-sequencing",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Séquencement série-preuves « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-platform-agnostic-series",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Série indépendante de la plateforme « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "response-series-impact-protocol",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Protocole d’impact de la série « dérive du document » Rapport d’analyse — 21 juillet 2026. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    }
+  ]
+}

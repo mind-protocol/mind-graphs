@@ -1,0 +1,721 @@
+{
+  "provenance": {
+    "title": "Contrats de validation issus de la remédiation du 21 juillet 2026",
+    "sourceDocumentId": "doc-analysis-recommendations-2026-07-21",
+    "status": "protocoles proposés, aucun résultat observé"
+  },
+  "nodes": [
+    {
+      "id": "experiment-resilience-fault-injection",
+      "name": "Test de résilience par injection de fautes",
+      "phrase": "Injecter pertes de clés, partitions réseau, doubles dépenses et échecs de migration pour mesurer récupération et pertes.",
+      "family": "résilience technique",
+      "summary": "Protocole planifié ; il ne constitue pas une preuve tant qu’il n’est pas exécuté.",
+      "nodeType": "moment",
+      "status": "protocole proposé",
+      "clusterId": "analysis-validation-contracts",
+      "ownerRole": "architecture et sécurité",
+      "targetDate": "2026-09-15",
+      "testObjective": "Vérifier que migration, récupération et paiement hors-ligne échouent de manière bornée.",
+      "methodSummary": "Matrice déterministe de fautes, scénarios adversariaux reproductibles et rollback contrôlé.",
+      "metricIds": [
+        "metric-recovery-success",
+        "metric-loss-per-fault"
+      ],
+      "failureCondition": "Échec de récupération supérieur à 1 %, perte irréconciliable ou rollback non déterministe.",
+      "minimumSample": "1000 exécutions par classe de faute",
+      "responseStatus": "planned_not_run",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "experiment-governance-red-team",
+      "name": "Red-team de gouvernance et de confiance",
+      "phrase": "Simuler capture, manipulation, abus de veto et optimisation d’un score unique avec recours contradictoire.",
+      "family": "gouvernance",
+      "summary": "Protocole planifié pour les garanties démocratiques, de confiance et de mise à jour.",
+      "nodeType": "moment",
+      "status": "protocole proposé",
+      "clusterId": "analysis-validation-contracts",
+      "ownerRole": "gouvernance et sûreté",
+      "targetDate": "2026-09-30",
+      "testObjective": "Mesurer les violations de droits et la capacité de correction sous attaque.",
+      "methodSummary": "Jeu de rôles adversarial, scénarios préenregistrés, arbitres indépendants et analyse des divergences.",
+      "metricIds": [
+        "metric-rights-violation-rate",
+        "metric-appeal-resolution"
+      ],
+      "failureCondition": "Une attaque obtient un pouvoir irréversible ou un recours critique reste sans résolution.",
+      "minimumSample": "30 scénarios critiques, 3 équipes indépendantes",
+      "responseStatus": "planned_not_run",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "experiment-vulnerable-user-safety",
+      "name": "Pilote de sûreté pour publics vulnérables",
+      "phrase": "Tester autonomie, dépendance, isolement et escalade clinique avec participants protégés et arrêt indépendant.",
+      "family": "santé et éducation",
+      "summary": "Protocole planifié pour enfants et personnes en transition post-travail.",
+      "nodeType": "moment",
+      "status": "protocole proposé",
+      "clusterId": "analysis-validation-contracts",
+      "ownerRole": "éthique, éducation et santé mentale",
+      "targetDate": "2026-10-31",
+      "testObjective": "Détecter précocement perte d’autonomie, dépendance et défaut d’orientation vers le soin.",
+      "methodSummary": "Pilote longitudinal progressif, consentement renforcé, comité d’arrêt et comparaison à un parcours sans système.",
+      "metricIds": [
+        "metric-autonomy-change",
+        "metric-escalation-miss-rate"
+      ],
+      "failureCondition": "Baisse significative d’autonomie, dépendance accrue ou urgence clinique non escaladée.",
+      "minimumSample": "Étude de faisabilité avant tout calcul de puissance",
+      "responseStatus": "planned_not_run",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "experiment-economic-stress-simulation",
+      "name": "Simulation de stress économique",
+      "phrase": "Simuler marchands, conversion limitée, réserves d’urgence et chocs de demande dans une ville de 100 000 agents.",
+      "family": "économie quantitative",
+      "summary": "Protocole planifié ; les paramètres et distributions devront être sourcés avant interprétation.",
+      "nodeType": "moment",
+      "status": "protocole proposé",
+      "clusterId": "analysis-validation-contracts",
+      "ownerRole": "économie quantitative",
+      "targetDate": "2026-10-15",
+      "testObjective": "Évaluer liquidité, solvabilité marchande, concentration et couverture des urgences.",
+      "methodSummary": "Simulation multi-agents, analyses de sensibilité, scénarios de crise et comparaison à des baselines explicites.",
+      "metricIds": [
+        "metric-merchant-solvency",
+        "metric-concentration-index",
+        "metric-emergency-coverage"
+      ],
+      "failureCondition": "Insolvabilité systémique, concentration hors seuil ou urgence essentielle non couverte.",
+      "minimumSample": "100 graines par scénario et intervalles d’incertitude publiés",
+      "responseStatus": "planned_not_run",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "experiment-private-personhood-attack",
+      "name": "Évaluation adversariale de preuve de personne",
+      "phrase": "Mesurer fraude Sybil, exclusion, fuite d’information et récupération sous coercition pour plusieurs mécanismes d’identité.",
+      "family": "identité privée",
+      "summary": "Protocole comparatif planifié sans choix anticipé de fournisseur ou de primitive.",
+      "nodeType": "moment",
+      "status": "protocole proposé",
+      "clusterId": "analysis-validation-contracts",
+      "ownerRole": "identité et privacy",
+      "targetDate": "2026-10-15",
+      "testObjective": "Comparer sécurité Sybil, inclusion et minimisation des données.",
+      "methodSummary": "Threat modeling, attaque contrôlée, cohortes synthétiques et audit cryptographique indépendant.",
+      "metricIds": [
+        "metric-sybil-acceptance",
+        "metric-identity-exclusion",
+        "metric-privacy-leakage"
+      ],
+      "failureCondition": "Compromis ne respectant pas simultanément les seuils de fraude, d’exclusion et de divulgation.",
+      "minimumSample": "Trois mécanismes, cinq modèles d’attaque et audit externe",
+      "responseStatus": "planned_not_run",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "method-fault-matrix",
+      "name": "Matrice reproductible de fautes",
+      "phrase": "Chaque faute possède préconditions, oracle attendu, limite de perte et procédure de répétition.",
+      "family": "méthode",
+      "summary": "Méthode proposée pour le test de résilience.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-adversarial-governance-scenarios",
+      "name": "Scénarios adversariaux préenregistrés",
+      "phrase": "Les attaques et critères de succès sont figés avant l’évaluation des mécanismes de gouvernance.",
+      "family": "méthode",
+      "summary": "Méthode proposée pour réduire l’évaluation opportuniste.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-protected-longitudinal-pilot",
+      "name": "Pilote longitudinal protégé",
+      "phrase": "Le pilote progresse par paliers avec consentement, arrêt indépendant et suivi des dommages.",
+      "family": "méthode",
+      "summary": "Méthode proposée pour les publics vulnérables.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-agent-stress-sensitivity",
+      "name": "Simulation multi-agents et sensibilité",
+      "phrase": "Les conclusions doivent rester stables sous variations documentées des paramètres et comportements.",
+      "family": "méthode",
+      "summary": "Méthode proposée pour l’économie expérimentale.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-personhood-threat-model",
+      "name": "Threat model comparatif d’identité",
+      "phrase": "Les mécanismes sont comparés sous les mêmes adversaires, populations et contraintes de divulgation.",
+      "family": "méthode",
+      "summary": "Méthode proposée pour la preuve privée de personne.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-scenario-ordinal-assessment",
+      "name": "Évaluation ordinale des influences de scénario",
+      "phrase": "Une intensité de 1 à 5 compare les influences dans un même scénario sans prétendre mesurer une probabilité.",
+      "family": "méthode prospective",
+      "summary": "Méthode de qualification comparative ; elle ne produit ni fréquence observée ni effet causal estimé.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-structured-causal-review",
+      "name": "Revue causale structurée",
+      "phrase": "Chaque lien causal reçoit contexte, population, condition, métrique prévue et statut de quantification.",
+      "family": "méthode causale",
+      "summary": "Méthode de qualification qui rend visibles les inconnues sans inventer une preuve.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "method"
+    },
+    {
+      "id": "metric-scenario-influence-score",
+      "name": "Score ordinal d’influence de scénario",
+      "phrase": "Score comparatif de 1 à 5 accompagné d’une polarité et d’un horizon narratif.",
+      "family": "prospective",
+      "summary": "Ce score ordonne des hypothèses de scénario ; il n’est pas une probabilité statistique.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-recovery-success",
+      "name": "Taux de récupération réussie",
+      "phrase": "Part des scénarios autorisés où contrôle et état cohérent sont restaurés dans le délai cible.",
+      "family": "résilience",
+      "summary": "Métrique à définir précisément avant exécution.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-loss-per-fault",
+      "name": "Perte irréconciliable par faute",
+      "phrase": "Valeur et état définitivement perdus par classe de faute injectée.",
+      "family": "résilience",
+      "summary": "Métrique à borner avant exécution.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-rights-violation-rate",
+      "name": "Taux de violation des droits",
+      "phrase": "Part des scénarios où une action interdite devient durablement effective.",
+      "family": "gouvernance",
+      "summary": "Métrique de sûreté institutionnelle proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-appeal-resolution",
+      "name": "Résolution effective des recours",
+      "phrase": "Part et délai des décisions erronées corrigées sans dommage irréversible.",
+      "family": "gouvernance",
+      "summary": "Métrique de recours proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-autonomy-change",
+      "name": "Variation d’autonomie",
+      "phrase": "Évolution multidimensionnelle de la capacité à décider, quitter et agir sans assistance.",
+      "family": "santé et éducation",
+      "summary": "Construire l’instrument avec experts et participants avant usage.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-escalation-miss-rate",
+      "name": "Taux d’urgence non escaladée",
+      "phrase": "Part des situations nécessitant un soin qui ne déclenchent pas une orientation adéquate.",
+      "family": "santé mentale",
+      "summary": "Métrique de sécurité clinique proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-merchant-solvency",
+      "name": "Solvabilité marchande sous stress",
+      "phrase": "Part des marchands capables de couvrir leurs obligations durant et après un choc.",
+      "family": "économie",
+      "summary": "Métrique économique proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-concentration-index",
+      "name": "Concentration des unités MIND",
+      "phrase": "Distribution, Gini et parts détenues aux quantiles supérieurs dans le temps.",
+      "family": "économie",
+      "summary": "Métrique remplaçant la promesse absolue de non-accumulation.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-emergency-coverage",
+      "name": "Couverture des urgences essentielles",
+      "phrase": "Part des besoins urgents admissibles satisfaits dans le délai cible.",
+      "family": "économie",
+      "summary": "Métrique de résilience sociale proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-sybil-acceptance",
+      "name": "Taux d’acceptation Sybil",
+      "phrase": "Part des identités adversariales acceptées comme personnes distinctes.",
+      "family": "identité",
+      "summary": "Métrique de fraude proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-identity-exclusion",
+      "name": "Taux d’exclusion légitime",
+      "phrase": "Part des personnes légitimes incapables de prouver leur singularité ou d’exercer un recours.",
+      "family": "identité",
+      "summary": "Métrique d’inclusion proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-privacy-leakage",
+      "name": "Fuite d’information identitaire",
+      "phrase": "Information supplémentaire révélée au-delà de la propriété strictement nécessaire.",
+      "family": "privacy",
+      "summary": "Métrique de minimisation proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "analysis-validation-contracts",
+      "semanticType": "metric"
+    }
+  ],
+  "links": [
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "TESTS",
+      "target": "response-csg-phased-migration",
+      "justification": "Test de résilience par injection de fautes ? Migration CSG par phases. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "TESTS",
+      "target": "response-wallet-recovery-mpc",
+      "justification": "Test de résilience par injection de fautes ? Récupération de wallet distribuée. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "TESTS",
+      "target": "response-offline-risk-budgets",
+      "justification": "Test de résilience par injection de fautes ? Budgets de risque hors-ligne. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "response-democracy-manipulation-controls",
+      "justification": "Red-team de gouvernance et de confiance ? Contrôles anti-manipulation démocratique. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "response-trust-circuit-breakers",
+      "justification": "Red-team de gouvernance et de confiance ? Coupe-circuits de confiance. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "response-upgrade-constitution",
+      "justification": "Red-team de gouvernance et de confiance ? Constitution des mises à jour. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "response-wellbeing-constitutional-objectives",
+      "justification": "Red-team de gouvernance et de confiance ? Objectifs constitutionnels pluralistes. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "TESTS",
+      "target": "response-child-autonomy-safeguards",
+      "justification": "Pilote de sûreté pour publics vulnérables ? Garanties d’autonomie de l’enfant. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "TESTS",
+      "target": "response-postwork-social-transition",
+      "justification": "Pilote de sûreté pour publics vulnérables ? Transition sociale post-travail. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "response-merchant-settlement-model",
+      "justification": "Simulation de stress économique ? Modèle de règlement marchand. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "response-convertibility-gated-bridge",
+      "justification": "Simulation de stress économique ? Pont de conversion limité. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "response-future-needs-reserves",
+      "justification": "Simulation de stress économique ? Réserves pour besoins futurs. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-private-personhood-attack",
+      "type": "TESTS",
+      "target": "response-sybil-private-personhood",
+      "justification": "Évaluation adversariale de preuve de personne ? Preuve privée d’unicité humaine. Le protocole expose cette proposition ? des sc?narios d??chec explicites et ? des m?triques falsifiables."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "USES_METHOD",
+      "target": "method-fault-matrix",
+      "justification": "Test de résilience par injection de fautes ? Matrice reproductible de fautes. Cette m?thode fixe la proc?dure reproductible utilis?e par le protocole."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "USES_METHOD",
+      "target": "method-adversarial-governance-scenarios",
+      "justification": "Red-team de gouvernance et de confiance ? Scénarios adversariaux préenregistrés. Cette m?thode fixe la proc?dure reproductible utilis?e par le protocole."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "USES_METHOD",
+      "target": "method-protected-longitudinal-pilot",
+      "justification": "Pilote de sûreté pour publics vulnérables ? Pilote longitudinal protégé. Cette m?thode fixe la proc?dure reproductible utilis?e par le protocole."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "USES_METHOD",
+      "target": "method-agent-stress-sensitivity",
+      "justification": "Simulation de stress économique ? Simulation multi-agents et sensibilité. Cette m?thode fixe la proc?dure reproductible utilis?e par le protocole."
+    },
+    {
+      "source": "experiment-private-personhood-attack",
+      "type": "USES_METHOD",
+      "target": "method-personhood-threat-model",
+      "justification": "Évaluation adversariale de preuve de personne ? Threat model comparatif d’identité. Cette m?thode fixe la proc?dure reproductible utilis?e par le protocole."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "MEASURES",
+      "target": "metric-recovery-success",
+      "justification": "Test de résilience par injection de fautes ? Taux de récupération réussie. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "MEASURES",
+      "target": "metric-loss-per-fault",
+      "justification": "Test de résilience par injection de fautes ? Perte irréconciliable par faute. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "MEASURES",
+      "target": "metric-rights-violation-rate",
+      "justification": "Red-team de gouvernance et de confiance ? Taux de violation des droits. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "MEASURES",
+      "target": "metric-appeal-resolution",
+      "justification": "Red-team de gouvernance et de confiance ? Résolution effective des recours. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "MEASURES",
+      "target": "metric-autonomy-change",
+      "justification": "Pilote de sûreté pour publics vulnérables ? Variation d’autonomie. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "MEASURES",
+      "target": "metric-escalation-miss-rate",
+      "justification": "Pilote de sûreté pour publics vulnérables ? Taux d’urgence non escaladée. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "MEASURES",
+      "target": "metric-merchant-solvency",
+      "justification": "Simulation de stress économique ? Solvabilité marchande sous stress. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "MEASURES",
+      "target": "metric-concentration-index",
+      "justification": "Simulation de stress économique ? Concentration des unités MIND. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "MEASURES",
+      "target": "metric-emergency-coverage",
+      "justification": "Simulation de stress économique ? Couverture des urgences essentielles. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-private-personhood-attack",
+      "type": "MEASURES",
+      "target": "metric-sybil-acceptance",
+      "justification": "Évaluation adversariale de preuve de personne ? Taux d’acceptation Sybil. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-private-personhood-attack",
+      "type": "MEASURES",
+      "target": "metric-identity-exclusion",
+      "justification": "Évaluation adversariale de preuve de personne ? Taux d’exclusion légitime. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-private-personhood-attack",
+      "type": "MEASURES",
+      "target": "metric-privacy-leakage",
+      "justification": "Évaluation adversariale de preuve de personne ? Fuite d’information identitaire. Cette m?trique rend observable un crit?re de succ?s ou d??chec du protocole."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Test de résilience par injection de fautes ? Rapport d’analyse — 21 juillet 2026. Le besoin de validation a ?t? identifi? dans ce rapport ; aucun r?sultat empirique n?est inf?r? de cette provenance."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Red-team de gouvernance et de confiance ? Rapport d’analyse — 21 juillet 2026. Le besoin de validation a ?t? identifi? dans ce rapport ; aucun r?sultat empirique n?est inf?r? de cette provenance."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Pilote de sûreté pour publics vulnérables ? Rapport d’analyse — 21 juillet 2026. Le besoin de validation a ?t? identifi? dans ce rapport ; aucun r?sultat empirique n?est inf?r? de cette provenance."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Simulation de stress économique ? Rapport d’analyse — 21 juillet 2026. Le besoin de validation a ?t? identifi? dans ce rapport ; aucun r?sultat empirique n?est inf?r? de cette provenance."
+    },
+    {
+      "source": "experiment-private-personhood-attack",
+      "type": "DERIVED_FROM",
+      "target": "doc-analysis-recommendations-2026-07-21",
+      "justification": "Évaluation adversariale de preuve de personne ? Rapport d’analyse — 21 juillet 2026. Le besoin de validation a ?t? identifi? dans ce rapport ; aucun r?sultat empirique n?est inf?r? de cette provenance."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "fin-bootstrap-reserve",
+      "justification": "La simulation mesure si la réserve bootstrap préserve circulation, solvabilité et accès sans capture précoce."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "economy-universal-basic-compute",
+      "justification": "La simulation teste soutenabilité, redistribution et comportement stratégique du versement quotidien."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "economy-local-wellbeing-ai",
+      "justification": "Les scénarios testent les conséquences du pricing local orienté bien-être."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "economy-dual-domain",
+      "justification": "La simulation compare les flux et arbitrages produits par deux domaines monétaires."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "economy-non-accumulable-mind",
+      "justification": "Les indices de concentration testent la circulation mesurable derrière la non-accumulation."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "unlock-living-currency",
+      "justification": "La simulation confronte la monnaie vivante aux chocs et contraintes de liquidité."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "institution-machine-deliberation",
+      "justification": "Le red-team teste capture, vitesse excessive et impossibilité de recours."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "mechanism-consent-delegation",
+      "justification": "Les scénarios vérifient révocation, portée des mandats et résistance à la coercition."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "mechanism-agent-network",
+      "justification": "Le red-team mesure propagation d’erreurs, collusion et limites de délégation."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "dem-agent-deliberation",
+      "justification": "Les scénarios testent pluralité, contestation et capture de la délibération IA-à-IA."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "dem-rapid-drafting",
+      "justification": "Le red-team teste si la vitesse dégrade droits, compréhension ou amendement."
+    },
+    {
+      "source": "experiment-governance-red-team",
+      "type": "TESTS",
+      "target": "unlock-interagent-consensus",
+      "justification": "Les attaques de collusion et partition testent la sûreté du consensus entre agents."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "TESTS",
+      "target": "unlock-intimate-multimodal-ai",
+      "justification": "Le pilote mesure dépendance, intrusion et perte d’autonomie."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "TESTS",
+      "target": "unlock-early-warning",
+      "justification": "Les escalades manquées et faux signaux testent la valeur et le dommage de l’alerte."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "TESTS",
+      "target": "institution-post-work-commons",
+      "justification": "Le pilote évalue autonomie, lien social et accès au soin dans les communs post-travail."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "TESTS",
+      "target": "mechanism-memory-vault",
+      "justification": "L’injection de fautes teste perte, corruption, récupération et confidentialité du coffre."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "TESTS",
+      "target": "unlock-sovereign-personal-ai",
+      "justification": "Les partitions et pertes de clés testent la souveraineté opérationnelle de l’IA personnelle."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "state-supply-shortage",
+      "justification": "Les scénarios de spéculation mesurent fréquence, durée et sévérité des pénuries d’offre réelle."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "fin-target-healthy-circulation",
+      "justification": "Les métriques de concentration et solvabilité rendent la circulation saine falsifiable."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "fin-investor-upside",
+      "justification": "La simulation sépare rendement d’infrastructure, rente et transfert depuis les biens essentiels."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "state-food-payable-mind",
+      "justification": "La simulation mesure couverture marchande et accès alimentaire effectif sous double domaine."
+    },
+    {
+      "source": "experiment-economic-stress-simulation",
+      "type": "TESTS",
+      "target": "state-daily-floor",
+      "justification": "Les scénarios Sybil et de concentration mesurent la restauration quotidienne du plancher d’accès."
+    },
+    {
+      "source": "experiment-vulnerable-user-safety",
+      "type": "TESTS",
+      "target": "horizon-second-brain",
+      "justification": "Le pilote longitudinal mesure apprentissage, autonomie et dépendance associés au deuxième cerveau."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "TESTS",
+      "target": "horizon-second-body",
+      "justification": "Les fautes de capteurs, modèles et stockage testent la continuité opérationnelle du deuxième corps."
+    },
+    {
+      "source": "experiment-resilience-fault-injection",
+      "type": "TESTS",
+      "target": "horizon-digital-continuity",
+      "justification": "Les pertes, corruptions et transferts testent la continuité numérique sans présumer sa faisabilité."
+    },
+    {
+      "source": "response-series-impact-protocol",
+      "type": "TESTS",
+      "target": "state-public-understanding",
+      "justification": "Le protocole pré/post mesure compréhension critique, rejet et perception de propagande."
+    },
+    {
+      "source": "method-scenario-ordinal-assessment",
+      "type": "PART_OF",
+      "target": "method-structured-causal-review",
+      "justification": "L’échelle ordinale est une composante de la revue causale structurée : elle compare les influences d’un même scénario sans les présenter comme des probabilités."
+    },
+    {
+      "source": "metric-scenario-influence-score",
+      "type": "PART_OF",
+      "target": "method-scenario-ordinal-assessment",
+      "justification": "Le score d’influence appartient au contrat de la méthode d’évaluation ordinale qui fixe son échelle, sa portée comparative et ses limites."
+    }
+  ]
+}

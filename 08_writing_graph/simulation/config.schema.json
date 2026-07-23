@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mind-protocol.local/simulation/config.schema.json",
+  "title": "Mind city simulation configuration",
+  "type": "object",
+  "required": ["schemaVersion", "seed", "population", "days", "economy", "behavior", "shocks", "arms"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "seed": { "type": "integer", "minimum": 1 },
+    "population": { "type": "integer", "minimum": 100, "maximum": 1000000 },
+    "days": { "type": "integer", "minimum": 7, "maximum": 730 },
+    "economy": {
+      "type": "object",
+      "required": ["merchantCount", "dailyNeedMean", "dailyIncomeMean", "supplyPerPerson", "unitPrice", "unitCost"],
+      "properties": {
+        "merchantCount": { "type": "integer", "minimum": 10 },
+        "dailyNeedMean": { "type": "number", "exclusiveMinimum": 0 },
+        "dailyIncomeMean": { "type": "number", "exclusiveMinimum": 0 },
+        "supplyPerPerson": { "type": "number", "exclusiveMinimum": 0 },
+        "unitPrice": { "type": "number", "exclusiveMinimum": 0 },
+        "unitCost": { "type": "number", "minimum": 0 }
+      }
+    },
+    "behavior": {
+      "type": "object",
+      "required": ["id", "priceElasticity", "spendPropensity", "shortageSubstitution", "sybilParticipationMultiplier"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "priceElasticity": { "type": "number", "minimum": 0, "maximum": 2 },
+        "spendPropensity": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+        "shortageSubstitution": { "type": "number", "minimum": 0, "maximum": 1 },
+        "sybilParticipationMultiplier": { "type": "number", "minimum": 0, "maximum": 3 }
+      },
+      "additionalProperties": false
+    },
+    "shocks": {
+      "type": "object",
+      "required": ["unemployment", "shortage", "networkOutage", "sybil", "speculation", "migration", "governanceCapture"]
+    },
+    "arms": {
+      "type": "object",
+      "required": ["current", "hybrid", "mind"]
+    },
+    "decisionThresholds": { "type": ["object", "null"] },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

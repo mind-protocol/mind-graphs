@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "1.0.0",
+  "protocol": {
+    "seedOffsets": [0, 1, 2]
+  },
+  "metrics": [
+    { "id": "coverageRate", "direction": "maximize" },
+    { "id": "exclusionRate", "direction": "minimize" },
+    { "id": "merchantSurvivalRate", "direction": "maximize" }
+  ],
+  "profiles": [
+    {
+      "id": "reference",
+      "label": "Référence sans adaptation",
+      "assumptions": "Les ménages cherchent à couvrir tout leur besoin solvable, ne réduisent pas la demande face au prix et les marchands ne trouvent pas de substitution supplémentaire.",
+      "parameters": { "priceElasticity": 0, "spendPropensity": 1, "shortageSubstitution": 0, "sybilParticipationMultiplier": 1 }
+    },
+    {
+      "id": "cautious_households",
+      "label": "Ménages prudents",
+      "assumptions": "Les ménages conservent une part de leur liquidité, réduisent modérément leur demande quand le prix augmente et les attaques Sybil mobilisent moins de participants.",
+      "parameters": { "priceElasticity": 0.45, "spendPropensity": 0.88, "shortageSubstitution": 0.1, "sybilParticipationMultiplier": 0.75 }
+    },
+    {
+      "id": "adaptive_adversarial",
+      "label": "Adaptation avec adversaires actifs",
+      "assumptions": "La demande réagit fortement au prix, les marchands substituent une partie de l’offre perdue et les attaques Sybil recrutent davantage d’identités.",
+      "parameters": { "priceElasticity": 0.7, "spendPropensity": 0.96, "shortageSubstitution": 0.35, "sybilParticipationMultiplier": 1.5 }
+    }
+  ],
+  "notes": [
+    "Ces profils sont des scénarios comportementaux plausibles à comparer, pas des populations calibrées.",
+    "Chaque profil est appliqué aux trois bras sur la même population synthétique, le même seed et les mêmes chocs."
+  ]
+}

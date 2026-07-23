@@ -1,0 +1,623 @@
+{
+  "nodes": [
+    {
+      "id": "source-reddit-ai-democracy-continuous",
+      "name": "Reddit · Personal AI et démocratie continue",
+      "phrase": "Discussion publique sur les IA personnelles souveraines comme couche de délibération démocratique continue.",
+      "family": "Source externe · Reddit",
+      "summary": "Thread r/artificial publié par Lesterpaintstheworld le 22 juillet 2026, avec objections et clarifications sur démocratie continue, souveraineté de la mémoire, capture, attention, diversité des modèles et limites de la modélisation personnelle.",
+      "nodeType": "thing",
+      "sourceUrl": "https://www.reddit.com/r/artificial/comments/1v2levk/if_everyone_had_a_personal_ai_that_knew_them/",
+      "sourceTitle": "If everyone had a personal AI that knew them deeply, could democracy become continuous?",
+      "dateLabel": "22 juillet 2026",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "actor-reddit-lesterpaintstheworld",
+      "name": "u/Lesterpaintstheworld",
+      "phrase": "Auteur du post et des clarifications principales sur l'IA personnelle souveraine.",
+      "family": "Acteur · Reddit",
+      "summary": "Compte Reddit ayant proposé le cadre de démocratie continue et répondu aux objections par une architecture hybride centrée sur mémoire utilisateur, consentement et portabilité.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/Lesterpaintstheworld/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "actor-reddit-sceadwian",
+      "name": "u/sceadwian",
+      "phrase": "Critique la capacité d'une IA à comprendre l'expérience vécue et les sentiments.",
+      "family": "Acteur · Reddit",
+      "summary": "Commentateur sceptique, utile pour encoder l'objection forte: l'approximation d'une personne pourrait rester superficielle ou rigidifiante.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/sceadwian/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "actor-reddit-costafilh0",
+      "name": "u/costafilh0",
+      "phrase": "Cadre la proposition comme démocratie directe avec une couche IA.",
+      "family": "Acteur · Reddit",
+      "summary": "Commentateur soulignant que l'IA ne résout pas l'ignorance politique ni les problèmes sociaux par elle-même.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/costafilh0/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "actor-reddit-justin107d",
+      "name": "u/justin107d",
+      "phrase": "Signale le risque de paresse civique et de mauvaise interprétation par l'IA.",
+      "family": "Acteur · Reddit",
+      "summary": "Commentateur posant la question du moment où l'humain doit reprendre la main, être briefé et agir hors ligne.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/justin107d/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "actor-reddit-roodut",
+      "name": "u/Roodut",
+      "phrase": "Interroge la gouvernance du modèle de base, du calcul et des mises à jour.",
+      "family": "Acteur · Reddit",
+      "summary": "Commentateur formulant l'objection centrale: celui qui finance, entraîne et met à jour le modèle peut capturer l'IA dite souveraine.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/Roodut/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "actor-reddit-sympathyno8636",
+      "name": "u/SympathyNo8636",
+      "phrase": "Résume le point de rupture comme avidité et capture.",
+      "family": "Acteur · Reddit",
+      "summary": "Commentateur dont l'intervention motive l'encodage de la capture économique comme mode d'échec principal.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/SympathyNo8636/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "actor-reddit-benblackett",
+      "name": "u/benblackett",
+      "phrase": "Formule le paradoxe de l'attention: déléguer l'analyse crée une nouvelle dépendance à l'analyse de l'IA.",
+      "family": "Acteur · Reddit",
+      "summary": "Commentateur décrivant la démocratie IA comme échange d'un problème d'attention contre un autre.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/benblackett/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "actor-reddit-sageblue32",
+      "name": "u/Sageblue32",
+      "phrase": "Met en avant le risque de paralysie d'analyse face au pluralisme irréductible.",
+      "family": "Acteur · Reddit",
+      "summary": "Commentateur notant que certains désaccords religieux, moraux ou sécuritaires ne convergent pas vers un compromis parfait.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/Sageblue32/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "actor-reddit-neuropyrox",
+      "name": "u/NeuroPyrox",
+      "phrase": "Propose Cooperative Inverse Reinforcement Learning comme cadre connexe.",
+      "family": "Acteur · Reddit",
+      "summary": "Commentateur reliant l'idée de démocratie assistée par IA à l'inférence coopérative des buts humains.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/NeuroPyrox/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "actor-reddit-usefulunderling",
+      "name": "u/UsefulUnderling",
+      "phrase": "Souligne la limite de la connaissance de soi humaine.",
+      "family": "Acteur · Reddit",
+      "summary": "Commentateur demandant comment une IA peut connaître une personne si la personne se prédit déjà mal elle-même.",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/UsefulUnderling/",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "actor"
+    },
+    {
+      "id": "reddit-claim-continuous-democratic-bandwidth",
+      "name": "Signal Reddit · La démocratie est limitée par la bande passante citoyenne",
+      "phrase": "Une IA personnelle pourrait augmenter la bande passante démocratique sans remplacer le citoyen.",
+      "family": "Signal externe · démocratie IA",
+      "summary": "Le post affirme que les citoyens ne peuvent pas suivre chaque arbitrage public quotidien, mais que leurs IA personnelles pourraient lire, comparer, simuler, préserver les objections et demander approbation humaine sur les décisions importantes.",
+      "nodeType": "narrative",
+      "epistemicStatus": "documented",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "claim"
+    },
+    {
+      "id": "reddit-mechanism-public-consensus-proposals",
+      "name": "Signal Reddit · Propositions publiques de consensus IA-à-IA",
+      "phrase": "Le premier cas d'usage pourrait être des propositions publiques de consensus, avant tout vote formel.",
+      "family": "Signal externe · délibération",
+      "summary": "Le fil propose que 10 000 IA citoyennes produisent proposition de consensus, objections, rapports minoritaires, coûts, arbitrages et points nécessitant confirmation humaine.",
+      "nodeType": "narrative",
+      "epistemicStatus": "documented",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "reddit-mechanism-co-built-personal-model",
+      "name": "Signal Reddit · Modèle personnel co-construit",
+      "phrase": "L'IA personnelle devient moins générique par calibration longue, corrections, mémoire et langage partagé.",
+      "family": "Signal externe · IA personnelle",
+      "summary": "L'auteur distingue le chatbot générique d'un modèle personnel vivant: contexte, valeurs, conflits, style de décision, métaphores, santé mentale, projets et objectifs sont corrigés dans une boucle longue.",
+      "nodeType": "narrative",
+      "epistemicStatus": "documented",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "reddit-hypothesis-functional-approximation-consent",
+      "name": "Signal Reddit · Approximation fonctionnelle sous consentement",
+      "phrase": "La question testable n'est pas l'identité métaphysique, mais la prédiction consentie de préférences et objections.",
+      "family": "Signal externe · modélisation personnelle",
+      "summary": "L'auteur répond que l'IA n'est pas interchangeable avec la personne; le test porte sur ce qu'elle peut prédire ou signaler sous mémoire, correction, consentement et continuité.",
+      "nodeType": "narrative",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "reddit-observation-personal-ai-abc-31-50",
+      "name": "Observation Reddit · Test A/B/C personnel 31/50",
+      "phrase": "Un test auto-rapporté donne 31 bonnes réponses sur 50 pour une IA calibrée, contre environ 16 à 17 au hasard.",
+      "family": "Signal externe · auto-observation",
+      "summary": "Observation personnelle non indépendante rapportée par l'auteur; elle indique surtout un protocole possible et un problème de calibration entre soi intense/projet et soi calme/baseline.",
+      "nodeType": "moment",
+      "contextId": "reddit-self-report-personal-ai-calibration",
+      "populationOrSystem": "un utilisateur Reddit, IA personnelle calibrée, conversation fraîche",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "observation"
+    },
+    {
+      "id": "reddit-question-base-model-governance",
+      "name": "Question Reddit · Qui gouverne le modèle de base ?",
+      "phrase": "Qui entraîne le modèle de base, héberge le calcul, paie les coûts et pousse les mises à jour ?",
+      "family": "Signal externe · gouvernance IA",
+      "summary": "Roodut objecte que la souveraineté est fragile si l'acteur qui paie et met à jour le modèle contrôle données, garde-fous et comportement.",
+      "nodeType": "narrative",
+      "questionCategory": "gouvernance technique",
+      "decisionNeeded": "Définir la séparation entre mémoire/identité utilisateur et fournisseurs de modèles.",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "reddit-mechanism-hybrid-sovereign-stack",
+      "name": "Signal Reddit · Stack hybride de souveraineté personnelle",
+      "phrase": "La souveraineté proche terme porte sur mémoire, identité, portabilité et audit, pas sur l'entraînement local d'un frontier model.",
+      "family": "Signal externe · architecture personnelle",
+      "summary": "Clarification de l'auteur: stockage local-first ou chiffré pour mémoire sensible, petits modèles locaux, cloud chiffré ou trusted compute pour raisonnement lourd, mémoire portable et protocoles ouverts.",
+      "nodeType": "narrative",
+      "epistemicStatus": "documented",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "reddit-rationale-capture-breakpoint",
+      "name": "Signal Reddit · Capture comme point de rupture",
+      "phrase": "Si la couche d'IA personnelle est possédée par plateformes, États, assureurs, employeurs ou annonceurs, elle devient rapidement dystopique.",
+      "family": "Signal externe · risque de capture",
+      "summary": "Le fil converge sur la capture comme mode d'échec: vente de données, score social, achat de votes, délégation irréversible et contrôle de la représentation personnelle.",
+      "nodeType": "narrative",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "reddit-hypothesis-attention-substitution-risk",
+      "name": "Signal Reddit · Risque de substitution de l'attention",
+      "phrase": "Déléguer la lecture civique à l'IA peut déplacer le problème vers l'évaluation de la logique de l'IA.",
+      "family": "Signal externe · attention civique",
+      "summary": "benblackett note que l'IA réduit la charge démocratique seulement si l'humain conserve assez d'attention pour auditer la synthèse, comprendre les arbitrages et intervenir.",
+      "nodeType": "narrative",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "reddit-hypothesis-informed-population-limit",
+      "name": "Signal Reddit · Limite de la population informée",
+      "phrase": "Une couche IA sur démocratie directe ne résout pas mécaniquement l'ignorance politique.",
+      "family": "Signal externe · objection démocratique",
+      "summary": "costafilh0 cadre l'idée comme démocratie directe avec couche IA et avertit que déléguer depuis des préférences mal informées ne suffit pas à résoudre les problèmes sociaux.",
+      "nodeType": "narrative",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "reddit-question-model-diversity-collective",
+      "name": "Question Reddit · Diversité réelle des modèles à grande échelle",
+      "phrase": "Trois fournisseurs peuvent sembler divers pour un individu mais devenir insuffisants pour une décision collective d'un million de personnes.",
+      "family": "Signal externe · pluralisme algorithmique",
+      "summary": "Roodut pose une question de diversité effective: la pluralité des réponses vient-elle des humains représentés ou d'un petit nombre de modèles sous-jacents ?",
+      "nodeType": "narrative",
+      "questionCategory": "pluralisme algorithmique",
+      "decisionNeeded": "Définir une métrique de diversité de modèles et de représentations humaines pour la délibération collective.",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "reddit-hypothesis-self-knowledge-limit",
+      "name": "Signal Reddit · Limite de la connaissance de soi",
+      "phrase": "Si les humains se connaissent et se prédisent mal, l'IA personnelle ne peut pas simplement lire une vérité intérieure stable.",
+      "family": "Signal externe · objection cognitive",
+      "summary": "UsefulUnderling rappelle que les préférences sont souvent peu structurées; cette objection force Mind à traiter la modélisation personnelle comme hypothèse évolutive, pas comme accès direct au soi.",
+      "nodeType": "narrative",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "reddit-hypothesis-lived-experience-limit",
+      "name": "Signal Reddit · Limite de l'expérience vécue non formalisable",
+      "phrase": "Une IA peut manquer l'épaisseur des sentiments, besoins, morale et expérience vécue.",
+      "family": "Signal externe · objection cognitive",
+      "summary": "sceadwian soutient que les modèles actuels ne comprennent pas l'expérience humaine et risquent de ne capter que des motifs superficiels ou rigidifiants.",
+      "nodeType": "narrative",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "reddit-hypothesis-analysis-paralysis-pluralism",
+      "name": "Signal Reddit · Paralysie d'analyse et pluralisme irréductible",
+      "phrase": "La délibération IA peut échouer face aux désaccords moraux ou religieux qui ne convergent pas vers un compromis parfait.",
+      "family": "Signal externe · objection démocratique",
+      "summary": "Sageblue32 anticipe qu'une couche IA pourrait ralentir des décisions urgentes et mal gérer des acteurs irrationnels ou des positions non négociables.",
+      "nodeType": "narrative",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "reddit-claim-cirl-democracy",
+      "name": "Signal Reddit · CIRL comme analogie pour l'IA démocratique",
+      "phrase": "Cooperative Inverse Reinforcement Learning offre une analogie: inférer les buts humains pour assister leurs choix.",
+      "family": "Signal externe · méthode conceptuelle",
+      "summary": "NeuroPyrox rapproche la démocratie médiée par IA d'un cadre où l'agent infère les objectifs humains par observation puis aide à les satisfaire.",
+      "nodeType": "narrative",
+      "epistemicStatus": "documented",
+      "clusterId": "reddit-ai-democracy-2026-07-22",
+      "semanticType": "claim"
+    }
+  ],
+  "links": [
+    {
+      "source": "source-reddit-ai-democracy-continuous",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-lesterpaintstheworld",
+      "justification": "Le post Reddit source est publié par u/Lesterpaintstheworld."
+    },
+    {
+      "source": "reddit-claim-continuous-democratic-bandwidth",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le signal résume le post source sur la bande passante démocratique citoyenne."
+    },
+    {
+      "source": "reddit-claim-continuous-democratic-bandwidth",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-lesterpaintstheworld",
+      "justification": "L'idée centrale de bande passante démocratique est formulée par l'auteur du post."
+    },
+    {
+      "source": "reddit-claim-continuous-democratic-bandwidth",
+      "type": "MOTIVATES",
+      "target": "dem-thesis-continuous",
+      "justification": "Le signal externe renforce la thèse existante d'une démocratie plus continue."
+    },
+    {
+      "source": "reddit-mechanism-public-consensus-proposals",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le mécanisme est extrait de l'exemple des 10 000 IA citoyennes produisant consensus, objections et confirmations humaines."
+    },
+    {
+      "source": "reddit-mechanism-public-consensus-proposals",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-lesterpaintstheworld",
+      "justification": "Le mécanisme des propositions publiques est proposé par l'auteur du post."
+    },
+    {
+      "source": "reddit-mechanism-public-consensus-proposals",
+      "type": "IMPLEMENTS",
+      "target": "dem-agent-deliberation",
+      "justification": "Les propositions publiques donnent un cas d'usage concret de la délibération agent-à-agent."
+    },
+    {
+      "source": "reddit-mechanism-public-consensus-proposals",
+      "type": "IMPLEMENTS",
+      "target": "institution-machine-deliberation",
+      "justification": "Le mécanisme précise une sortie institutionnelle lisible par mairie, conseil ou parlement."
+    },
+    {
+      "source": "reddit-mechanism-co-built-personal-model",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le mécanisme provient de la réponse de l'auteur décrivant calibration longue, correction et mémoire."
+    },
+    {
+      "source": "reddit-mechanism-co-built-personal-model",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-lesterpaintstheworld",
+      "justification": "La notion de modèle personnel co-construit est formulée par l'auteur en réponse à une objection."
+    },
+    {
+      "source": "reddit-mechanism-co-built-personal-model",
+      "type": "IMPLEMENTS",
+      "target": "unlock-sovereign-personal-ai",
+      "justification": "La calibration longue fournit un mécanisme concret pour l'IA personnelle souveraine."
+    },
+    {
+      "source": "reddit-mechanism-co-built-personal-model",
+      "type": "IMPLEMENTS",
+      "target": "mechanism-memory-vault",
+      "justification": "Le mécanisme dépend d'une mémoire vivante, corrigée et portable."
+    },
+    {
+      "source": "reddit-hypothesis-functional-approximation-consent",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "L'hypothèse vient de la distinction faite entre identité métaphysique et approximation fonctionnelle consentie."
+    },
+    {
+      "source": "reddit-hypothesis-functional-approximation-consent",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-lesterpaintstheworld",
+      "justification": "La formulation testable de l'approximation fonctionnelle est portée par l'auteur du post."
+    },
+    {
+      "source": "reddit-hypothesis-functional-approximation-consent",
+      "type": "ASSUMES",
+      "target": "mechanism-consent-delegation",
+      "justification": "L'approximation n'est acceptable que si consentement, révocation et continuité sont garantis."
+    },
+    {
+      "source": "reddit-observation-personal-ai-abc-31-50",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "L'observation encode le test A/B/C auto-rapporté dans les commentaires du fil."
+    },
+    {
+      "source": "reddit-observation-personal-ai-abc-31-50",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-lesterpaintstheworld",
+      "justification": "Le résultat 31/50 est rapporté par l'auteur du post, sans validation indépendante."
+    },
+    {
+      "source": "reddit-observation-personal-ai-abc-31-50",
+      "type": "OBSERVES",
+      "target": "reddit-hypothesis-functional-approximation-consent",
+      "justification": "L'observation illustre une façon de tester l'approximation fonctionnelle, sans suffire à la prouver."
+    },
+    {
+      "source": "reddit-question-base-model-governance",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "La question reprend l'objection sur entraînement, hébergement, coûts et mises à jour du modèle de base."
+    },
+    {
+      "source": "reddit-question-base-model-governance",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-roodut",
+      "justification": "La question de gouvernance du modèle de base est formulée par u/Roodut."
+    },
+    {
+      "source": "reddit-question-base-model-governance",
+      "type": "BLOCKS",
+      "target": "unlock-sovereign-personal-ai",
+      "justification": "La souveraineté de l'IA personnelle reste incomplète tant que la couche modèle/compute n'est pas gouvernée.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "reddit-question-base-model-governance",
+      "type": "BLOCKS",
+      "target": "mechanism-agent-network",
+      "justification": "Un réseau d'agents peut être capturé si ses modèles de base et mises à jour sont contrôlés par peu d'acteurs.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "reddit-mechanism-hybrid-sovereign-stack",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le mécanisme synthétise la clarification de l'auteur sur une architecture hybride plutôt que fully local frontier."
+    },
+    {
+      "source": "reddit-mechanism-hybrid-sovereign-stack",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-lesterpaintstheworld",
+      "justification": "La stack hybride est formulée par l'auteur en réponse à Roodut."
+    },
+    {
+      "source": "reddit-mechanism-hybrid-sovereign-stack",
+      "type": "ADDRESSES",
+      "target": "reddit-question-base-model-governance",
+      "justification": "La stack hybride répond partiellement à la question de souveraineté en séparant mémoire/identité et fournisseurs de modèles."
+    },
+    {
+      "source": "reddit-mechanism-hybrid-sovereign-stack",
+      "type": "IMPLEMENTS",
+      "target": "mechanism-memory-vault",
+      "justification": "La mémoire utilisateur portable et local-first correspond au coffre mémoire existant."
+    },
+    {
+      "source": "reddit-mechanism-hybrid-sovereign-stack",
+      "type": "IMPLEMENTS",
+      "target": "mechanism-consent-delegation",
+      "justification": "La stack suppose des permissions portables et auditables."
+    },
+    {
+      "source": "reddit-rationale-capture-breakpoint",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le risque de capture est extrait de l'échange avec u/SympathyNo8636 et de la clarification de l'auteur."
+    },
+    {
+      "source": "reddit-rationale-capture-breakpoint",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-sympathyno8636",
+      "justification": "Le cadrage initial de l'avidité comme point de rupture est attribué à u/SympathyNo8636."
+    },
+    {
+      "source": "reddit-rationale-capture-breakpoint",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-lesterpaintstheworld",
+      "justification": "L'auteur développe ensuite les garde-fous contre la capture par plateformes, États, assureurs, employeurs ou annonceurs."
+    },
+    {
+      "source": "reddit-rationale-capture-breakpoint",
+      "type": "MOTIVATES",
+      "target": "mechanism-consent-delegation",
+      "justification": "Le risque de capture motive veto humain, révocation, permissions et absence de délégation irréversible."
+    },
+    {
+      "source": "reddit-hypothesis-attention-substitution-risk",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le signal reprend l'objection de benblackett sur le déplacement du problème d'attention."
+    },
+    {
+      "source": "reddit-hypothesis-attention-substitution-risk",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-benblackett",
+      "justification": "Le risque de substitution de l'attention est formulé par u/benblackett."
+    },
+    {
+      "source": "reddit-hypothesis-attention-substitution-risk",
+      "type": "MOTIVATES",
+      "target": "mechanism-consent-delegation",
+      "justification": "Ce risque motive des seuils d'intervention humaine, de briefing et de révocation."
+    },
+    {
+      "source": "reddit-hypothesis-attention-substitution-risk",
+      "type": "MOTIVATES",
+      "target": "dem-agent-deliberation",
+      "justification": "La délibération agent-à-agent doit inclure un mécanisme d'explication et de reprise humaine."
+    },
+    {
+      "source": "reddit-question-model-diversity-collective",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "La question reprend l'objection de Roodut sur la diversité réelle des modèles à l'échelle collective."
+    },
+    {
+      "source": "reddit-question-model-diversity-collective",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-roodut",
+      "justification": "La question de diversité collective est formulée par u/Roodut."
+    },
+    {
+      "source": "reddit-question-model-diversity-collective",
+      "type": "BLOCKS",
+      "target": "dem-agent-deliberation",
+      "justification": "La qualité de la délibération dépend de la diversité effective des modèles et des représentations humaines.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "reddit-hypothesis-self-knowledge-limit",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le signal reprend l'objection selon laquelle les humains prédisent mal leurs propres décisions."
+    },
+    {
+      "source": "reddit-hypothesis-self-knowledge-limit",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-usefulunderling",
+      "justification": "L'objection de connaissance de soi limitée est formulée par u/UsefulUnderling."
+    },
+    {
+      "source": "reddit-hypothesis-self-knowledge-limit",
+      "type": "CONTRADICTS",
+      "target": "reddit-hypothesis-functional-approximation-consent",
+      "justification": "L'objection ne réfute pas toute approximation, mais contredit la version forte où l'IA connaîtrait simplement une préférence humaine stable."
+    },
+    {
+      "source": "reddit-hypothesis-analysis-paralysis-pluralism",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le signal reprend l'objection de Sageblue32 sur hive mind, désaccords irréductibles et urgences."
+    },
+    {
+      "source": "reddit-hypothesis-analysis-paralysis-pluralism",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-sageblue32",
+      "justification": "L'objection de paralysie d'analyse est formulée par u/Sageblue32."
+    },
+    {
+      "source": "reddit-hypothesis-analysis-paralysis-pluralism",
+      "type": "CONTRADICTS",
+      "target": "dem-thesis-continuous",
+      "justification": "Le signal conteste qu'une couche continue améliore toujours la démocratie, surtout sous désaccord moral irréductible ou urgence."
+    },
+    {
+      "source": "reddit-claim-cirl-democracy",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le signal reprend la référence à Cooperative Inverse Reinforcement Learning dans les commentaires."
+    },
+    {
+      "source": "reddit-claim-cirl-democracy",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-neuropyrox",
+      "justification": "La référence CIRL est proposée par u/NeuroPyrox."
+    },
+    {
+      "source": "reddit-claim-cirl-democracy",
+      "type": "MOTIVATES",
+      "target": "dem-agent-deliberation",
+      "justification": "CIRL fournit une analogie utile pour décrire la délibération comme inférence assistée des buts humains."
+    },
+    {
+      "source": "reddit-hypothesis-attention-substitution-risk",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-justin107d",
+      "justification": "u/justin107d ajoute la question opérationnelle du moment où l'humain est briefé et reprend la main."
+    },
+    {
+      "source": "reddit-hypothesis-informed-population-limit",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le signal reprend l'objection de costafilh0 sur démocratie directe, population informée et préférences ignorantes."
+    },
+    {
+      "source": "reddit-hypothesis-informed-population-limit",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-costafilh0",
+      "justification": "L'objection de population informée est formulée par u/costafilh0."
+    },
+    {
+      "source": "reddit-hypothesis-informed-population-limit",
+      "type": "CONTRADICTS",
+      "target": "reddit-claim-continuous-democratic-bandwidth",
+      "justification": "Le signal conteste la version où l'augmentation de bande passante suffit à améliorer la décision démocratique."
+    },
+    {
+      "source": "reddit-hypothesis-informed-population-limit",
+      "type": "MOTIVATES",
+      "target": "dem-agent-deliberation",
+      "justification": "La délibération IA-à-IA doit inclure information, pédagogie et contrôle humain, pas seulement agrégation de préférences."
+    },
+    {
+      "source": "reddit-hypothesis-lived-experience-limit",
+      "type": "DERIVED_FROM",
+      "target": "source-reddit-ai-democracy-continuous",
+      "justification": "Le signal reprend l'objection de sceadwian sur l'expérience vécue, les sentiments et la morale non captés par l'IA."
+    },
+    {
+      "source": "reddit-hypothesis-lived-experience-limit",
+      "type": "AUTHORED_BY",
+      "target": "actor-reddit-sceadwian",
+      "justification": "L'objection de l'expérience vécue est formulée par u/sceadwian."
+    },
+    {
+      "source": "reddit-hypothesis-lived-experience-limit",
+      "type": "CONTRADICTS",
+      "target": "reddit-hypothesis-functional-approximation-consent",
+      "justification": "Le signal conteste que l'approximation fonctionnelle puisse capturer autre chose que des motifs superficiels."
+    }
+  ]
+}

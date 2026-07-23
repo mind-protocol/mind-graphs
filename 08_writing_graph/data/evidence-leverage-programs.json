@@ -1,0 +1,413 @@
+{
+  "scope": "Programmes de recherche proposés pour les sept cibles de preuve à plus fort levier. Aucun résultat n’est déclaré.",
+  "nodes": [
+    {
+      "id": "experiment-social-transition-panel",
+      "name": "Panel longitudinal de transition sociale",
+      "phrase": "Suivre emploi, revenus, temps, confiance institutionnelle, santé et réponses publiques dans plusieurs territoires exposés différemment à l’automatisation.",
+      "family": "preuve à fort levier · société",
+      "summary": "Programme observationnel quasi-expérimental proposé pour distinguer coïncidence temporelle et transformation sociale.",
+      "nodeType": "moment",
+      "status": "protocole proposé",
+      "clusterId": "evidence-leverage-programs",
+      "ownerRole": "économie du travail et politiques publiques",
+      "targetDate": "2026-11-30",
+      "testObjective": "Estimer comment automatisation, expérimentations post-travail et compagnons de santé modifient la pression sur le contrat social.",
+      "methodSummary": "Panel longitudinal multi-territoires, différences-de-différences prudentes, contrôles négatifs et analyses de sensibilité.",
+      "metricIds": [
+        "metric-job-transition-rate",
+        "metric-social-contract-pressure-index",
+        "metric-policy-response-lag"
+      ],
+      "failureCondition": "Exposition non identifiable, tendances préalables incompatibles ou attrition différentielle non corrigeable.",
+      "minimumSample": "Au moins 6 territoires et 24 mois de baseline avant interprétation causale.",
+      "responseStatus": "planned_not_run",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "experiment-compute-geopolitics-observatory",
+      "name": "Observatoire des blocs du calcul et des conflits IA",
+      "phrase": "Versionner restrictions sur puces, capacité de calcul, incidents cyber, autonomie locale et décisions militaires accélérées.",
+      "family": "preuve à fort levier · géopolitique",
+      "summary": "Programme de séries temporelles et d’événements proposé ; les sources devront être publiques et attribuées.",
+      "nodeType": "moment",
+      "status": "protocole proposé",
+      "clusterId": "evidence-leverage-programs",
+      "ownerRole": "géopolitique du calcul et cybersécurité",
+      "targetDate": "2026-10-31",
+      "testObjective": "Tester les relations entre fragmentation du calcul, escalade cyber et franchissement de capacités générales.",
+      "methodSummary": "Registre d’événements versionné, codage à double aveugle, séries temporelles interrompues et scénarios contrefactuels.",
+      "metricIds": [
+        "metric-compute-fragmentation",
+        "metric-ai-cyber-escalation",
+        "metric-general-capability-threshold"
+      ],
+      "failureCondition": "Couverture des événements trop biaisée, définitions instables ou absence de baseline reproductible.",
+      "minimumSample": "Cinq années rétrospectives et mise à jour mensuelle avant signal prospectif.",
+      "responseStatus": "planned_not_run",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "experiment-agent-economy-telemetry",
+      "name": "Télémétrie pilote de l’économie d’agents",
+      "phrase": "Observer mandats, négociations, échecs, fraude, coûts et décisions humaines dans un marché d’agents volontaire et borné.",
+      "family": "preuve à fort levier · agents",
+      "summary": "Pilote contrôlé proposé pour mesurer l’émergence réelle d’une économie d’agents.",
+      "nodeType": "moment",
+      "status": "protocole proposé",
+      "clusterId": "evidence-leverage-programs",
+      "ownerRole": "économie des agents et sécurité",
+      "targetDate": "2026-10-31",
+      "testObjective": "Mesurer adoption, valeur produite et risques de délégation dans une économie d’agents négociateurs.",
+      "methodSummary": "Marché pilote sandboxé, groupes de contrôle, journal d’audit complet et revue des incidents.",
+      "metricIds": [
+        "metric-agent-transaction-share",
+        "metric-human-override-rate",
+        "metric-agent-loss-rate"
+      ],
+      "failureCondition": "Mandats non auditables, dommages hors budget ou impossibilité de distinguer valeur créée et transfert artificiel.",
+      "minimumSample": "10 000 transactions et trois catégories de tâches avant généralisation.",
+      "responseStatus": "planned_not_run",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "experiment-continuous-health-companion-pilot",
+      "name": "Essai prudent de compagnon de santé continu",
+      "phrase": "Comparer un compagnon local, un suivi numérique standard et le soin habituel avec supervision clinique et arrêt indépendant.",
+      "family": "preuve à fort levier · santé",
+      "summary": "Essai pilote proposé, subordonné à une revue éthique et à une analyse des risques de surveillance.",
+      "nodeType": "moment",
+      "status": "protocole proposé",
+      "clusterId": "evidence-leverage-programs",
+      "ownerRole": "recherche clinique et privacy",
+      "targetDate": "2027-01-31",
+      "testObjective": "Mesurer bénéfices, faux signaux, escalades utiles, dépendance et atteintes à la vie privée.",
+      "methodSummary": "Essai randomisé de faisabilité, endpoints préenregistrés, comité de sécurité et analyse qualitative des dommages.",
+      "metricIds": [
+        "metric-actionable-health-alerts",
+        "metric-health-false-alarm-burden",
+        "metric-health-privacy-incidents"
+      ],
+      "failureCondition": "Risque clinique ou informationnel supérieur au soin habituel, ou bénéfice non mesurable sans surveillance disproportionnée.",
+      "minimumSample": "Étude de faisabilité et calcul de puissance indépendant avant essai confirmatoire.",
+      "responseStatus": "planned_not_run",
+      "semanticType": "experiment"
+    },
+    {
+      "id": "method-longitudinal-policy-panel",
+      "name": "Panel longitudinal quasi-expérimental",
+      "phrase": "Comparer les trajectoires avant et après exposition avec contrôles négatifs et hypothèses d’identification publiées.",
+      "family": "méthode",
+      "summary": "Méthode proposée pour la transition sociale.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-versioned-event-observatory",
+      "name": "Observatoire d’événements versionné",
+      "phrase": "Chaque événement reçoit sources, date, définition, codeurs et historique de correction.",
+      "family": "méthode",
+      "summary": "Méthode proposée pour la géopolitique du calcul.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-sandbox-agent-market",
+      "name": "Marché d’agents sandboxé",
+      "phrase": "Les mandats et pertes restent bornés, auditables et révocables durant le pilote.",
+      "family": "méthode",
+      "summary": "Méthode proposée pour l’économie d’agents.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-preregistered-health-feasibility",
+      "name": "Essai de santé préenregistré",
+      "phrase": "Endpoints, arrêts, analyses et effets indésirables sont publiés avant le recrutement.",
+      "family": "méthode",
+      "summary": "Méthode proposée pour le compagnon de santé.",
+      "nodeType": "narrative",
+      "status": "méthode proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "method"
+    },
+    {
+      "id": "metric-job-transition-rate",
+      "name": "Taux net de transition d’emploi",
+      "phrase": "Entrées, sorties et changements de qualité d’emploi par exposition à l’automatisation.",
+      "family": "emploi",
+      "summary": "Métrique proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-social-contract-pressure-index",
+      "name": "Indice de pression sur le contrat social",
+      "phrase": "Composite transparent de confiance, demande de redistribution, conflit distributif et accès aux services essentiels.",
+      "family": "société",
+      "summary": "Indice à valider, jamais score naturel unique.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-policy-response-lag",
+      "name": "Délai de réponse publique",
+      "phrase": "Temps entre choc documenté, reconnaissance institutionnelle et mise en œuvre d’une réponse.",
+      "family": "politique publique",
+      "summary": "Métrique proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-compute-fragmentation",
+      "name": "Fragmentation géopolitique du calcul",
+      "phrase": "Concentration, restrictions transfrontalières et incompatibilités d’accès aux puces, modèles et infrastructures.",
+      "family": "géopolitique",
+      "summary": "Métrique proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-ai-cyber-escalation",
+      "name": "Escalade cyber assistée par IA",
+      "phrase": "Fréquence, portée et temps de réaction des incidents attribuables avec niveau de confiance explicite.",
+      "family": "cybersécurité",
+      "summary": "Métrique proposée avec prudence d’attribution.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-general-capability-threshold",
+      "name": "Seuil de capacité générale opérationnel",
+      "phrase": "Batterie versionnée de transfert inter-domaines, autonomie, robustesse et coût d’intervention humaine.",
+      "family": "IA",
+      "summary": "Définition opérationnelle proposée, distincte d’une essence AGI.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-agent-transaction-share",
+      "name": "Part des transactions négociées par agents",
+      "phrase": "Part de valeur et de décisions négociées par agents sous mandat humain explicite.",
+      "family": "agents",
+      "summary": "Métrique proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-human-override-rate",
+      "name": "Taux d’override humain",
+      "phrase": "Part des propositions d’agents annulées, corrigées ou refusées par leurs mandants.",
+      "family": "agents",
+      "summary": "Métrique de contrôle proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-agent-loss-rate",
+      "name": "Taux de perte imputable aux agents",
+      "phrase": "Valeur perdue ou dommage produit par décision autonome, net des baselines humaines.",
+      "family": "agents",
+      "summary": "Métrique de risque proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-actionable-health-alerts",
+      "name": "Alertes de santé actionnables",
+      "phrase": "Alertes conduisant à une action appropriée confirmée sans dommage disproportionné.",
+      "family": "santé",
+      "summary": "Métrique clinique proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-health-false-alarm-burden",
+      "name": "Charge des fausses alertes de santé",
+      "phrase": "Temps, anxiété, consultations et interventions inutiles causés par de faux signaux.",
+      "family": "santé",
+      "summary": "Métrique de dommage proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-health-privacy-incidents",
+      "name": "Incidents de confidentialité en santé",
+      "phrase": "Accès, inférences ou transmissions non nécessaires de données intimes.",
+      "family": "privacy",
+      "summary": "Métrique de sécurité proposée.",
+      "nodeType": "narrative",
+      "status": "métrique proposée",
+      "clusterId": "evidence-leverage-programs",
+      "semanticType": "metric"
+    }
+  ],
+  "links": [
+    {
+      "source": "experiment-social-transition-panel",
+      "type": "TESTS",
+      "target": "forecast-social-contract-pressure",
+      "justification": "Le panel met directement à l’épreuve les déterminants proposés de la pression sociale."
+    },
+    {
+      "source": "experiment-social-transition-panel",
+      "type": "TESTS",
+      "target": "forecast-employment-wave-one",
+      "justification": "Le panel mesure la première vague d’emploi avec baseline et territoires comparables."
+    },
+    {
+      "source": "experiment-compute-geopolitics-observatory",
+      "type": "TESTS",
+      "target": "forecast-compute-blocs",
+      "justification": "L’observatoire teste la fragmentation du calcul sur événements et séries versionnés."
+    },
+    {
+      "source": "experiment-compute-geopolitics-observatory",
+      "type": "TESTS",
+      "target": "forecast-cyber-conflict-escalation",
+      "justification": "L’observatoire relie les incidents cyber à des expositions et délais explicites."
+    },
+    {
+      "source": "experiment-compute-geopolitics-observatory",
+      "type": "TESTS",
+      "target": "forecast-agi-threshold",
+      "justification": "La batterie opérationnelle remplace le seuil AGI vague par des capacités versionnées."
+    },
+    {
+      "source": "experiment-agent-economy-telemetry",
+      "type": "TESTS",
+      "target": "forecast-agent-economy",
+      "justification": "Le pilote observe directement adoption, valeur et dommages des transactions entre agents."
+    },
+    {
+      "source": "experiment-continuous-health-companion-pilot",
+      "type": "TESTS",
+      "target": "forecast-continuous-health-companion",
+      "justification": "L’essai compare bénéfices et dommages du compagnon à deux baselines explicites."
+    },
+    {
+      "source": "experiment-social-transition-panel",
+      "type": "USES_METHOD",
+      "target": "method-longitudinal-policy-panel",
+      "justification": "La méthode définit l’identification et les contrôles du panel."
+    },
+    {
+      "source": "experiment-compute-geopolitics-observatory",
+      "type": "USES_METHOD",
+      "target": "method-versioned-event-observatory",
+      "justification": "La méthode rend le codage des événements reproductible et corrigeable."
+    },
+    {
+      "source": "experiment-agent-economy-telemetry",
+      "type": "USES_METHOD",
+      "target": "method-sandbox-agent-market",
+      "justification": "La sandbox borne les pertes et rend chaque mandat auditable."
+    },
+    {
+      "source": "experiment-continuous-health-companion-pilot",
+      "type": "USES_METHOD",
+      "target": "method-preregistered-health-feasibility",
+      "justification": "Le préenregistrement sépare les endpoints prévus des analyses exploratoires."
+    },
+    {
+      "source": "experiment-social-transition-panel",
+      "type": "MEASURES",
+      "target": "metric-job-transition-rate",
+      "justification": "La transition d’emploi est un résultat central du panel."
+    },
+    {
+      "source": "experiment-social-transition-panel",
+      "type": "MEASURES",
+      "target": "metric-social-contract-pressure-index",
+      "justification": "L’indice rend la pression sociale observable sur des dimensions séparées."
+    },
+    {
+      "source": "experiment-social-transition-panel",
+      "type": "MEASURES",
+      "target": "metric-policy-response-lag",
+      "justification": "Le délai mesure la capacité d’adaptation institutionnelle."
+    },
+    {
+      "source": "experiment-compute-geopolitics-observatory",
+      "type": "MEASURES",
+      "target": "metric-compute-fragmentation",
+      "justification": "La fragmentation est la variable centrale des blocs du calcul."
+    },
+    {
+      "source": "experiment-compute-geopolitics-observatory",
+      "type": "MEASURES",
+      "target": "metric-ai-cyber-escalation",
+      "justification": "La métrique suit l’intensification des incidents sous attribution prudente."
+    },
+    {
+      "source": "experiment-compute-geopolitics-observatory",
+      "type": "MEASURES",
+      "target": "metric-general-capability-threshold",
+      "justification": "La batterie versionne le seuil de capacité au lieu de le présupposer."
+    },
+    {
+      "source": "experiment-agent-economy-telemetry",
+      "type": "MEASURES",
+      "target": "metric-agent-transaction-share",
+      "justification": "La part transactionnelle mesure l’adoption effective."
+    },
+    {
+      "source": "experiment-agent-economy-telemetry",
+      "type": "MEASURES",
+      "target": "metric-human-override-rate",
+      "justification": "L’override mesure le contrôle humain réellement exercé."
+    },
+    {
+      "source": "experiment-agent-economy-telemetry",
+      "type": "MEASURES",
+      "target": "metric-agent-loss-rate",
+      "justification": "La perte nette mesure les dommages du pilote."
+    },
+    {
+      "source": "experiment-continuous-health-companion-pilot",
+      "type": "MEASURES",
+      "target": "metric-actionable-health-alerts",
+      "justification": "Les alertes actionnables mesurent le bénéfice clinique potentiel."
+    },
+    {
+      "source": "experiment-continuous-health-companion-pilot",
+      "type": "MEASURES",
+      "target": "metric-health-false-alarm-burden",
+      "justification": "La charge des faux signaux mesure un dommage majeur."
+    },
+    {
+      "source": "experiment-continuous-health-companion-pilot",
+      "type": "MEASURES",
+      "target": "metric-health-privacy-incidents",
+      "justification": "Les incidents de confidentialité mesurent le risque informationnel."
+    }
+  ]
+}

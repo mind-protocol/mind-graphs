@@ -1,0 +1,450 @@
+/* Cité-jardin — UX spatiale du graphe (v1).
+   Palette d'éléments vive posée par-dessus le thème clair/sombre partagé. */
+:root {
+  --el-water: #38bdf8;
+  --el-energy: #fbbf24;
+  --el-fire: #fb7185;
+  --el-growth: #34d399;
+  --el-provenance: #a78bfa;
+  --el-stone: #cbd5e1;
+  --vit-documented: #34d399;
+  --vit-hypothesis: #a3e635;
+  --vit-proposal: #fbbf24;
+  --vit-target: #38bdf8;
+  --vit-unresolved: #fb7185;
+  --vit-scenario: #c084fc;
+  --vit-ruin: #94a3b8;
+  --chasm-deep: #000;
+  --lane-ink: #12161d;   /* sol opaque : la profondeur vient de la lumière, pas de l'alpha */
+  --card-body: #1b212b;
+}
+:root[data-theme="light"] {
+  --lane-ink: #e7ecf3;
+  --card-body: #ffffff;
+  --el-stone: #64748b;  /* la pierre doit rester lisible sur fond clair */
+  --chasm-deep: #334155; /* un trou reste plus sombre que le sol, même en clair */
+  --vit-hypothesis: #65a30d;
+}
+
+.garden-shell { background:
+  radial-gradient(1200px 700px at 30% -10%, color-mix(in srgb, var(--el-water) 10%, transparent), transparent 60%),
+  radial-gradient(1000px 800px at 100% 120%, color-mix(in srgb, var(--el-growth) 9%, transparent), transparent 55%),
+  var(--bg);
+}
+.garden-badge {
+  font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--el-energy); border: 1px solid color-mix(in srgb, var(--el-energy) 45%, var(--border));
+  border-radius: 999px; padding: 2px 8px; vertical-align: middle; margin-left: 8px;
+}
+.garden-deck { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+.garden-toolbar { gap: 12px; align-items: center; }
+.garden-switch { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; }
+.cluster-picker { display: grid; gap: 4px; color: var(--muted); font-size: 12px; min-width: min(520px, 48vw); flex: 1 1 420px; }
+.cluster-picker select { color: var(--text); background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; }
+.cluster-picker small { color: var(--muted); font-size: 10.5px; }
+.garden-zoom-controls { display: inline-flex; align-items: center; gap: 4px; }
+.garden-zoom-controls button { min-width: 34px; }
+.garden-zoom-controls output { min-width: 54px; color: var(--muted); font-size: 12px; text-align: center; }
+.garden-advanced { position: relative; }
+.garden-advanced > summary { cursor: pointer; color: var(--muted); font-size: 12px; list-style: none; padding: 9px 12px; border: 1px solid var(--border); border-radius: 8px; }
+.garden-advanced > summary::-webkit-details-marker { display: none; }
+.garden-advanced > summary::before { content: "+ "; color: var(--el-energy); }
+.garden-advanced[open] > summary::before { content: "− "; }
+.garden-advanced-panel {
+  position: absolute; z-index: 8; right: 0; top: calc(100% + 8px); width: 300px;
+  display: grid; gap: 11px; padding: 14px; background: var(--panel);
+  border: 1px solid var(--border); border-radius: 11px; box-shadow: 0 16px 40px rgba(0,0,0,.3);
+}
+.garden-advanced-panel button { justify-self: start; }
+
+.garden-workspace { display: grid; grid-template-columns: minmax(0, 1fr) 340px; min-height: 0; }
+.garden-wrap { position: relative; overflow: hidden; min-height: 0; }
+.garden-flow, .garden-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.garden-flow { pointer-events: none; z-index: 1; }
+.garden-svg { z-index: 2; cursor: grab; touch-action: none; user-select: none; }
+.garden-svg.is-panning { cursor: grabbing; }
+.garden-svg .parcel { cursor: pointer; }
+
+/* Voies : la ville a un axe. De gauche à droite, on s'approche de la cible.
+   Le sol s'éclaircit à mesure qu'on avance — la lumière indique la direction. */
+.lane-band { fill: var(--lane-ink); stroke: none; }
+.lane-band.lane-1 { fill: color-mix(in srgb, var(--el-water) 5%, var(--lane-ink)); }
+.lane-band.lane-2 { fill: color-mix(in srgb, var(--el-water) 9%, var(--lane-ink)); }
+.lane-band.lane-3 { fill: color-mix(in srgb, var(--el-water) 13%, var(--lane-ink)); }
+.lane-band.lane-target { fill: color-mix(in srgb, var(--el-energy) 12%, var(--lane-ink)); }
+.lane-band.lane-empty { opacity: .4; }
+.lane-title { fill: var(--muted); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; opacity: .55; }
+
+/* Le jardin-endgame : une clairière désirable, pas une case dans une pile.
+   Ce qui le définit est planté sur son pourtour — il se lit par ce qui le
+   compose, pas par une étiquette. */
+.garden-halo { fill: url(#garden-glow); }
+.garden-clearing { fill: color-mix(in srgb, var(--el-growth) 16%, var(--lane-ink));
+  stroke: color-mix(in srgb, var(--el-growth) 55%, transparent); stroke-width: 2; }
+.garden-inner { fill: none; stroke: color-mix(in srgb, var(--el-energy) 38%, transparent); stroke-width: 1.2; }
+.garden-kicker { fill: var(--el-energy); font-size: 12px; font-weight: 800; letter-spacing: .24em; text-anchor: middle; opacity: .85; }
+.garden-title { fill: var(--text); font-size: 25px; font-weight: 680; text-anchor: middle; }
+.garden-sub { fill: var(--muted); font-size: 13px; text-anchor: middle; }
+/* le district a une destination, mais rien d'observable n'en sort : le manque
+   se dit dans la clairière, pas en zone « aucune cible » à côté d'elle */
+.garden-void { fill: color-mix(in srgb, var(--el-fire) 80%, var(--muted)); font-size: 12px; text-anchor: middle; }
+/* sur le pourtour du jardin, les ouvrages qui le définissent sont mis en avant */
+.parcel.on-rim .plot-edge { stroke: var(--el-growth); stroke-width: 2.4; opacity: .95; }
+.parcel.on-rim { filter: drop-shadow(0 0 14px color-mix(in srgb, var(--el-growth) 40%, transparent)); }
+.parcel.is-fruit .plot-edge { stroke: var(--el-energy); stroke-width: 2.6; opacity: 1; }
+
+/* Le vide nommé : un district sans cible observable finit sur une zone qui le dit. */
+.void-zone { fill: color-mix(in srgb, var(--el-fire) 8%, var(--lane-ink)); stroke: color-mix(in srgb, var(--el-fire) 35%, transparent); stroke-width: 1.5; stroke-dasharray: 10 8; }
+.void-kicker { fill: var(--el-fire); font-size: 12px; font-weight: 800; letter-spacing: .22em; text-anchor: middle; }
+.void-text { fill: var(--muted); font-size: 13px; text-anchor: middle; }
+
+/* L'avenue principale : une seule route large et éclairée, de l'entrée à la cible. */
+.avenue-bed { fill: none; stroke: var(--bg); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+.avenue { fill: none; stroke: var(--el-energy); stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; opacity: .95;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--el-energy) 55%, transparent)); }
+.avenue-chevron { fill: none; stroke: var(--bg); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; opacity: .8; }
+
+/* Jalons numérotés : l'ordre de lecture est écrit sur la ville. */
+.waypoint-disc { fill: var(--el-energy); stroke: var(--bg); stroke-width: 2.5; }
+.waypoint-num { fill: #0b0b0a; font-size: 13px; font-weight: 800; text-anchor: middle; dominant-baseline: central; }
+
+/* Un verrou barre : il se dresse devant ce qu'il bloque, en travers de la route. */
+.gate-bar .gate-post { stroke: var(--el-fire); stroke-width: 4; stroke-linecap: round; }
+.gate-bar .gate-rung { stroke: var(--el-fire); stroke-width: 2.4; stroke-linecap: round; }
+.gate-bar .gate-glyph { font-size: 15px; text-anchor: middle; }
+.gate-bar.on-path .gate-post { stroke-width: 6; filter: drop-shadow(0 0 8px color-mix(in srgb, var(--el-fire) 70%, transparent)); }
+.gate-bar.answered { opacity: .62; }
+.gate-bar.answered .gate-post, .gate-bar.answered .gate-rung { stroke: var(--el-energy); }
+/* le flux bute et s'accumule contre la barrière : une pression qui ne passe pas */
+.gate-bar .gate-pool { fill: none; stroke: var(--el-water); stroke-width: 3.4; opacity: .55; stroke-linecap: round; }
+/* planche en matière d'échafaudage : franchissable provisoirement, jamais prouvée */
+.gate-bar .gate-plank { stroke: var(--el-energy); stroke-width: 3.4; stroke-dasharray: 5 4; stroke-linecap: round; }
+/* amorce vers celui qui bloque : on doit savoir qui */
+.gate-bar .gate-leader { fill: none; stroke: var(--el-fire); stroke-width: 1.2; stroke-dasharray: 2 6; opacity: .4; }
+
+/* Routes structurelles. Le pointillé ne sert plus qu'à une chose ici : dire
+   qu'un ouvrage n'est pas achevé (échafaudage d'un TESTS). Le reste se
+   distingue par la largeur, la couleur et le tracé — comme des matériaux. */
+.road { fill: none; stroke: color-mix(in srgb, var(--el-energy) 62%, var(--muted)); stroke-width: 2.6; opacity: .72; stroke-linecap: round; }
+.road.grounds { stroke: color-mix(in srgb, var(--el-growth) 75%, var(--muted)); stroke-width: 5; opacity: .85; }
+.road.tests { stroke-dasharray: 5 6; stroke: color-mix(in srgb, var(--el-water) 65%, var(--muted)); }
+.road.subcase { stroke-width: 1.3; opacity: .4; }
+.road.bridge { stroke: var(--el-energy); stroke-width: 3.6; filter: drop-shadow(0 1px 3px color-mix(in srgb, var(--el-energy) 55%, transparent)); }
+.road.crossing-district { opacity: .3; }
+.road.dim { opacity: .14; }
+
+/* Franchissements causaux : la matière dit ce que l'arête ose affirmer.
+   Corde qui pend = affirmation nue ; pierre qui s'arque = preuve du monde réel. */
+.causal-crossing .crossing-deck { fill: none; stroke: var(--crossing-ink, var(--el-energy)); stroke-linecap: round; }
+.causal-crossing .crossing-fray { fill: none; stroke: var(--crossing-ink); stroke-width: 1; stroke-dasharray: 1 7; opacity: .75; }
+.causal-crossing .crossing-plank { stroke: var(--crossing-ink); stroke-width: 2.2; stroke-linecap: round; }
+.causal-crossing .crossing-abutment { fill: var(--crossing-ink); opacity: .8; }
+.causal-crossing .crossing-anchor { fill: var(--el-growth); stroke: var(--bg); stroke-width: 1.2; }
+.causal-crossing.rope { --crossing-ink: color-mix(in srgb, var(--el-fire) 55%, var(--muted)); opacity: .78; }
+.causal-crossing.taut_rope { --crossing-ink: color-mix(in srgb, var(--el-energy) 65%, var(--muted)); opacity: .85; }
+.causal-crossing.plank { --crossing-ink: color-mix(in srgb, var(--el-water) 70%, var(--muted)); }
+.causal-crossing.stone { --crossing-ink: var(--el-stone); }
+.causal-crossing.stone .crossing-deck { filter: drop-shadow(0 1px 2px color-mix(in srgb, var(--el-stone) 45%, transparent)); }
+.causal-crossing.dim { opacity: .18; }
+
+/* Racines de provenance (souterrain) */
+/* Une racine est continue sous la terre : elle est estompée, pas hachée. */
+.root-link { fill: none; stroke: var(--el-provenance); stroke-width: 1.6; opacity: .3; stroke-linecap: round; }
+
+/* Murs & failles */
+.wall-glyph { stroke-linecap: round; }
+.wall-glyph .wall-body { stroke: var(--el-fire); stroke-width: 7; }
+.wall-glyph .wall-hatch { stroke: color-mix(in srgb, var(--el-fire) 70%, #000); stroke-width: 1.6; }
+.wall-glyph.rampart .wall-body { stroke: var(--el-growth); }
+.wall-glyph.rampart .wall-hatch { stroke: color-mix(in srgb, var(--el-growth) 70%, #000); }
+.fault-line { fill: none; stroke: var(--el-fire); stroke-width: 3; stroke-linejoin: round; filter: drop-shadow(0 0 6px color-mix(in srgb, var(--el-fire) 60%, transparent)); }
+
+/* Parcelles : des objets posés. La solidité — masse, lumière, ombre — porte le
+   statut épistémique. Un bâti achevé pose son ombre ; une proposition n'est
+   qu'un échafaudage qui ne pose rien ; une question est un trou dans le sol. */
+.parcel { cursor: pointer; }
+/* Le corps est opaque : la matière se lit par-dessus, pas au travers. */
+.parcel .plot-body { fill: var(--card-body); stroke: none; }
+.parcel .plot { stroke: none; }
+
+/* Un objet par type de nœud : la forme dit la fonction que l'ontologie attribue
+   au type. Trait par défaut, puis les signatures propres à chaque silhouette. */
+.parcel g > line, .parcel g > path, .parcel g > circle, .parcel g > rect { vector-effect: non-scaling-stroke; }
+.parcel .mach-seam { stroke: var(--vit); stroke-width: 1.4; opacity: .35; }
+.parcel .mach-meter { fill: none; stroke: var(--vit); stroke-width: 1.6; opacity: .8; }
+.parcel .mach-needle { stroke: var(--el-energy); stroke-width: 1.6; stroke-linecap: round; }
+.parcel .plant-stack { fill: color-mix(in srgb, var(--vit) 30%, var(--card-body)); stroke: var(--vit); stroke-width: 1.4; }
+.parcel .roofline { fill: none; stroke: var(--vit); stroke-width: 2; stroke-linejoin: round; opacity: .8; }
+.parcel .gate-door { fill: none; stroke: var(--vit); stroke-width: 1.6; opacity: .7; }
+.parcel .jig-bracket { fill: none; stroke: var(--vit); stroke-width: 2; stroke-linejoin: miter; opacity: .85; }
+.parcel .key-bow { fill: none; stroke: var(--vit); stroke-width: 2.2; }
+.parcel .key-bit { fill: none; stroke: var(--vit); stroke-width: 2.2; stroke-linecap: round; }
+.parcel .bedrock { fill: color-mix(in srgb, var(--vit) 45%, var(--card-body)); }
+/* une raison de design est une tension, pas un support : elle fissure le sol */
+.parcel .fissure-crack { fill: none; stroke: var(--el-fire); stroke-width: 2; stroke-linejoin: round; opacity: .7; }
+.parcel .stele-cap { fill: none; stroke: var(--vit); stroke-width: 2; stroke-linejoin: round; opacity: .8; }
+.parcel .stele-engraving { stroke: var(--vit); stroke-width: 1.2; opacity: .45; }
+.parcel .marker-post { stroke: var(--vit); stroke-width: 2; }
+.parcel .marker-flag { fill: color-mix(in srgb, var(--vit) 60%, transparent); stroke: none; }
+.parcel .plaque-border { fill: none; stroke: var(--vit); stroke-width: 1.2; opacity: .5; }
+.parcel .stake-corner { fill: none; stroke: var(--vit); stroke-width: 2; stroke-linecap: round; opacity: .75; }
+.parcel .beacon-mast { stroke: var(--vit); stroke-width: 2.4; stroke-linecap: round; opacity: .8; }
+.parcel .beacon-lamp-off { fill: none; stroke: color-mix(in srgb, var(--vit) 35%, transparent); stroke-width: 3.5; }
+.parcel .beacon-lamp { fill: none; stroke: var(--el-energy); stroke-width: 3.5; stroke-linecap: round;
+  transform: rotate(-90deg); transform-box: fill-box; transform-origin: center;
+  filter: drop-shadow(0 0 7px var(--el-energy)); }
+.parcel .beacon-plinth { fill: none; stroke: var(--vit); stroke-width: 5; stroke-linecap: round; opacity: .85; }
+.parcel .dial-mast { stroke: var(--vit); stroke-width: 2; opacity: .7; }
+.parcel .dial-face { fill: var(--card-body); stroke: var(--vit); stroke-width: 2; }
+.parcel .dial-needle { stroke: var(--el-energy); stroke-width: 2; stroke-linecap: round; }
+.parcel .gauge-scale { fill: none; stroke: var(--vit); stroke-width: 1.6; opacity: .6; }
+.parcel .gauge-error { fill: none; stroke: var(--vit); stroke-width: 1.6; opacity: .55; }
+.parcel .gauge-needle { fill: none; stroke: var(--el-energy); stroke-width: 2.4; stroke-linecap: round; }
+/* effet *voulu* : jamais la silhouette d'un état observable */
+.parcel .holo-ring { fill: none; stroke: var(--vit); stroke-width: 1.4; stroke-dasharray: 3 4; opacity: .55; }
+.parcel .panel-leg { fill: none; stroke: var(--vit); stroke-width: 2; opacity: .6; }
+.parcel .sprout-stem { fill: none; stroke: var(--vit); stroke-width: 2; stroke-linecap: round; opacity: .9; }
+.parcel .pin-shaft { stroke: var(--vit); stroke-width: 1.8; }
+.parcel .pin-head { fill: var(--vit); }
+.parcel .rig-frame { fill: none; stroke: var(--vit); stroke-width: 1.8; stroke-linejoin: miter; opacity: .8; }
+.parcel .tank-rim { fill: none; stroke: var(--vit); stroke-width: 1.6; opacity: .7; }
+.parcel .tank-rib { stroke: var(--vit); stroke-width: 1; opacity: .3; }
+.parcel .gate-slat { stroke: var(--el-fire); stroke-width: 2.6; opacity: .5; }
+.parcel .switch-rail { fill: none; stroke: var(--vit); stroke-width: 2.4; opacity: .8; }
+.parcel .switch-lever { fill: none; stroke: var(--vit); stroke-width: 2.2; stroke-linecap: round; }
+.parcel .switch-knob { fill: var(--el-energy); }
+/* une option non choisie reste éteinte */
+.parcel .siding-branch { fill: none; stroke: var(--vit); stroke-width: 2; stroke-dasharray: 5 4; opacity: .5; }
+.parcel .tower-body { fill: color-mix(in srgb, var(--vit) 22%, transparent); stroke: var(--vit); stroke-width: 1.4; stroke-linejoin: round; }
+.parcel .tower-haze { stroke: var(--vit); stroke-width: 4; opacity: .25; stroke-linecap: round; }
+.parcel .storm-cloud { fill: color-mix(in srgb, var(--vit) 26%, transparent); stroke: var(--vit); stroke-width: 1.3; }
+.parcel .storm-bolt { fill: none; stroke: var(--el-energy); stroke-width: 1.8; stroke-linejoin: round; }
+.parcel .rostrum-stand { fill: color-mix(in srgb, var(--vit) 25%, transparent); stroke: var(--vit); stroke-width: 1.4; }
+.parcel .rostrum-return { fill: none; stroke: var(--vit); stroke-width: 1.6; opacity: .7; }
+.parcel .pennant-staff { stroke: var(--vit); stroke-width: 1.8; }
+.parcel .pennant-flag { fill: color-mix(in srgb, var(--vit) 65%, transparent); }
+.parcel .worksign-band { fill: none; stroke: var(--el-energy); stroke-width: 2.4; opacity: .55; }
+.parcel .milestone-stone { fill: color-mix(in srgb, var(--vit) 35%, var(--card-body)); stroke: var(--vit); stroke-width: 1.4; }
+
+/* Ports. Un port déclaré mais non raccordé est **bouché** : c'est là que la
+   donnée manquante se voit. Rendu factuel, jamais alarmiste — le déficit se
+   constate en regardant, il ne fait pas virer le quartier au rouge. */
+.parcel .port { stroke: var(--vit); stroke-width: 1.6; }
+.parcel .port.wired { fill: color-mix(in srgb, var(--el-water) 70%, transparent); opacity: .95; }
+.parcel .port.capped { fill: color-mix(in srgb, var(--card-body) 80%, var(--vit)); opacity: .6; }
+.parcel line.port.wired { stroke: color-mix(in srgb, var(--el-water) 70%, var(--vit)); stroke-width: 3; }
+.parcel line.port.capped { stroke: var(--vit); stroke-width: 2; opacity: .35; stroke-dasharray: 3 3; }
+.parcel circle.port.wired { fill: var(--el-water); stroke: none; }
+.parcel circle.port.capped { fill: none; stroke: var(--vit); opacity: .45; }
+.parcel .port-cap-slash { stroke: var(--vit); stroke-width: 1.4; opacity: .55; }
+
+/* Le phare : mât, lanterne, socle. La lanterne s'allume en proportion des
+   affirmations causales chiffrées qui visent la cible. */
+.parcel .beacon-mast { stroke: var(--vit); stroke-width: 2.4; stroke-linecap: round; opacity: .8; }
+.parcel .beacon-lamp-off { fill: none; stroke: color-mix(in srgb, var(--vit) 35%, transparent); stroke-width: 3.5; }
+.parcel .beacon-lamp { fill: none; stroke: var(--el-energy); stroke-width: 3.5; stroke-linecap: round;
+  transform: rotate(-90deg); transform-box: fill-box; transform-origin: center;
+  filter: drop-shadow(0 0 7px var(--el-energy)); }
+.parcel .beacon-plinth { fill: none; stroke: var(--vit); stroke-width: 5; stroke-linecap: round; opacity: .85; }
+
+/* Orientation : ce qu'on vise brille, ce qu'on veut éviter alerte. */
+.parcel.orientation-desirable { --vit: var(--el-growth); }
+.parcel.orientation-adverse { --vit: var(--el-fire); }
+.parcel.orientation-adverse .beacon-lamp { stroke: var(--el-fire); filter: drop-shadow(0 0 7px var(--el-fire)); }
+
+/* Sur l'avenue : plus net, plus proche, détaché du décor. */
+.parcel.on-path .plot-edge { stroke-width: 2.4; opacity: 1; }
+.parcel.on-path { filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .5)); }
+.parcel:not(.on-path):not(:hover) .ptype { opacity: .8; }
+.parcel .plot-edge { fill: none; stroke: var(--vit, var(--muted)); stroke-width: 1.4; opacity: .55; }
+.parcel .glyph { font-size: 14px; text-anchor: middle; dominant-baseline: central; opacity: .9; }
+.parcel .plabel { fill: var(--text); font-size: 13px; font-weight: 500; }
+.parcel .ptype { fill: var(--muted); font-size: 10px; letter-spacing: .05em; }
+.parcel .vitpip { fill: var(--vit); }
+.parcel:focus { outline: none; }
+.parcel.faded { opacity: .22; }
+.parcel.focus-hidden, .road.focus-hidden, .causal-crossing.focus-hidden,
+.wall-glyph.focus-hidden, .root-link.focus-hidden { display: none; }
+.road.focus-dimmed, .causal-crossing.focus-dimmed,
+.wall-glyph.focus-dimmed, .root-link.focus-dimmed { opacity: .14; }
+.parcel.satellite { opacity: .82; }
+.parcel.satellite .plabel { fill: var(--muted); }
+
+/* Bâti achevé — l'objet a de la masse et porte une ombre sur le sol. */
+.parcel.plot-solid { filter: drop-shadow(0 5px 9px rgba(0, 0, 0, .42)); }
+.parcel.plot-solid .plot-edge { opacity: .85; stroke-width: 1.8; }
+
+/* Pousse — la matière monte du sol, l'objet n'est plein qu'en bas. */
+.parcel.plot-sprout { filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .3)); }
+.parcel .sprout-growth { fill: color-mix(in srgb, var(--vit) 22%, transparent); stroke: none; }
+
+/* Ruine — la crête de l'ouvrage manque, il ne reste que des pans et des gravats.
+   Un énoncé réfuté ne doit jamais ressembler à un chantier en cours. */
+.parcel.plot-ruin { opacity: .72; }
+.parcel.plot-ruin .plot-edge { stroke: none; }
+.parcel .ruin-crest { fill: none; stroke: var(--vit); stroke-width: 1.6; opacity: .75; stroke-linejoin: miter; }
+.parcel .ruin-rubble { stroke: var(--vit); stroke-width: 3; stroke-linecap: round; opacity: .5; }
+.parcel.plot-ruin .plabel { fill: var(--muted); text-decoration: line-through; text-decoration-thickness: 1px; }
+
+/* Mirage — un horizon conditionnel : la matière s'évapore avant de toucher le sol. */
+.parcel.plot-mirage .plot-edge { stroke: none; }
+.parcel .mirage-horizon { stroke: var(--vit); stroke-width: 1.6; opacity: .55; stroke-linecap: round; }
+.parcel.plot-mirage .plabel { fill: color-mix(in srgb, var(--text) 78%, transparent); }
+
+/* Fondation balisée — une dalle au sol, sans volume au-dessus. */
+.parcel.plot-foundation .plot-edge { opacity: .4; }
+.parcel .foundation-slab { stroke: var(--vit); stroke-width: 3.5; stroke-linecap: round; opacity: .9; }
+
+/* Chantier — montants et traverses, aucune ombre : rien n'est encore posé.
+   Le contour reste plein : la structure interne dit déjà « pas bâti », et
+   hachurer en plus mettrait la moitié de la vue en pointillé pour rien. */
+.parcel.plot-scaffold .plot-edge { opacity: .34; }
+.parcel .scaffold-post { stroke: var(--vit); stroke-width: 2.2; opacity: .8; stroke-linecap: round; }
+.parcel .scaffold-rail { stroke: var(--vit); stroke-width: 1.2; opacity: .45; stroke-linecap: round; }
+
+/* Faille — le creux est plus sombre que le sol et la lumière n'accroche que sa
+   lèvre basse. C'est un trou, pas une carte. */
+.parcel.plot-chasm .plot-edge { stroke: var(--vit); opacity: .45; }
+.parcel .chasm-lip { stroke: color-mix(in srgb, var(--vit) 75%, #fff); stroke-width: 2; opacity: .55; fill: none; }
+
+.parcel:focus .plot-edge, .parcel:hover .plot-edge { stroke-width: 2.6; opacity: 1; }
+.parcel:focus, .parcel:hover { filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--vit) 45%, transparent)); }
+.parcel.selected .plot-edge { stroke-width: 3; opacity: 1; }
+
+.garden-legend {
+  position: absolute; left: 14px; bottom: 14px; z-index: 3;
+  display: grid; gap: 14px; grid-auto-flow: column;
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; max-width: min(680px, 92%);
+  backdrop-filter: blur(6px);
+}
+.legend-block { display: grid; gap: 5px; font-size: 11px; color: var(--muted); }
+.legend-block strong { color: var(--text); font-size: 11px; font-weight: 600; letter-spacing: .04em; }
+.legend-block span { display: flex; align-items: center; gap: 7px; }
+.vk, .ak { width: 16px; height: 12px; border-radius: 3px; flex: 0 0 auto; display: inline-block; }
+.vk.documented { background: var(--vit-documented); }
+.vk.hypothesis { background: var(--vit-hypothesis); }
+.vk.proposal { background: repeating-linear-gradient(45deg, var(--vit-proposal), var(--vit-proposal) 3px, transparent 3px, transparent 6px); border: 1px solid var(--vit-proposal); }
+.vk.target { background: var(--vit-target); }
+.vk.scenario { background: linear-gradient(var(--vit-scenario), transparent); }
+.vk.unresolved { background: var(--vit-unresolved); }
+.vk.ruin { background: linear-gradient(transparent 40%, var(--vit-ruin) 40%); }
+.ak.wall { background: var(--el-fire); }
+.ak.rampart { background: var(--el-growth); }
+.ak.flow { background: linear-gradient(90deg, transparent, var(--el-water), var(--el-energy)); }
+.ak.road { background: var(--el-energy); }
+.ak.bridge { background: var(--el-energy); height: 4px; }
+.ak.root { background: var(--el-provenance); }
+.ak.rope { background: repeating-linear-gradient(90deg, color-mix(in srgb, var(--el-fire) 55%, var(--muted)), color-mix(in srgb, var(--el-fire) 55%, var(--muted)) 1px, transparent 1px, transparent 4px); height: 3px; }
+.ak.stone { background: var(--el-stone); height: 7px; }
+
+/* Briefing d'entrée de niveau : où suis-je, où ça va, qu'est-ce qui bloque,
+   par où je commence — dans cet ordre. */
+/* En surimpression sur la carte, ce panneau opaque masquait des parcelles — dont
+   l'étape ① vers laquelle son propre bouton renvoie. Il tient en tête de la
+   colonne d'inspection : le district d'abord, la parcelle choisie ensuite. */
+.garden-briefing {
+  display: grid; gap: 6px;
+  padding-bottom: 16px; margin-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.garden-briefing p { margin: 0; }
+.brief-kicker { font-size: 10.5px; letter-spacing: .18em; font-weight: 800; color: var(--muted); }
+.brief-goal-label { font-size: 11px; color: var(--muted); margin-top: 2px !important; }
+.brief-goal-label.void { color: var(--el-fire); font-weight: 700; }
+.brief-goal { font-size: 15px; font-weight: 650; line-height: 1.25; color: var(--text); }
+.brief-goal.desirable { border-left: 3px solid var(--el-growth); padding-left: 8px; }
+.brief-goal.adverse { border-left: 3px solid var(--el-fire); padding-left: 8px; }
+.brief-indicator, .brief-charge, .brief-gates, .brief-stranded { font-size: 11.5px; color: var(--muted); }
+.brief-gates.open { color: var(--el-fire); font-weight: 650; }
+.brief-charge { color: var(--el-energy); }
+.brief-void { font-size: 12px; color: var(--text); line-height: 1.4; }
+.brief-start {
+  margin-top: 6px; font-size: 12.5px; font-weight: 650; text-align: left;
+  background: var(--el-energy); color: #0b0b0a; border: 0; border-radius: 9px;
+  padding: 8px 11px; cursor: pointer;
+}
+.brief-start:hover { filter: brightness(1.08); }
+
+.garden-hint {
+  position: absolute; right: 14px; top: 14px; z-index: 3;
+  color: var(--muted); font-size: 11px; background: color-mix(in srgb, var(--panel) 80%, transparent);
+  border: 1px solid var(--border); border-radius: 999px; padding: 5px 11px;
+}
+.garden-details { border-left: 1px solid var(--border); overflow-y: auto; }
+.garden-vitality-line { margin: 4px 0 10px; font-size: 12px; color: var(--muted); }
+.garden-vitality-line .vit-chip { display: inline-block; padding: 2px 8px; border-radius: 999px; font-weight: 600; color: #0b0b0a; }
+.detail-relations .rel-row { padding: 7px 0; border-top: 1px solid var(--border); font-size: 12.5px; }
+.detail-relations .rel-verb { color: var(--el-energy); font-style: italic; margin: 0 4px; }
+.detail-relations .rel-afford { display: block; margin-top: 2px; color: var(--muted); font-size: 10.5px; }
+.detail-relations .rel-material { display: block; margin-top: 3px; font-size: 10.5px; color: var(--muted); border-left: 2px solid var(--crossing-ink, var(--muted)); padding-left: 6px; }
+.detail-relations .rel-material.rope { --crossing-ink: color-mix(in srgb, var(--el-fire) 55%, var(--muted)); }
+.detail-relations .rel-material.taut_rope { --crossing-ink: color-mix(in srgb, var(--el-energy) 65%, var(--muted)); }
+.detail-relations .rel-material.plank { --crossing-ink: color-mix(in srgb, var(--el-water) 70%, var(--muted)); }
+.detail-relations .rel-material.stone { --crossing-ink: var(--el-stone); }
+.garden-causal-stat { color: var(--muted); }
+.garden-causal-stat.deficit { color: color-mix(in srgb, var(--el-fire) 75%, var(--text)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .garden-flow { opacity: .55; }
+}
+@media (max-width: 900px) {
+  .cluster-picker { min-width: 100%; }
+  .garden-advanced-panel { position: fixed; left: 14px; right: 14px; top: auto; width: auto; }
+  .garden-workspace { grid-template-columns: 1fr; grid-template-rows: minmax(0,1fr) auto; }
+  .garden-details { border-left: 0; border-top: 1px solid var(--border); max-height: 40vh; }
+}
+
+/* Le marcheur L4. Sa lanterne EST I(t) : l'éclat ne code rien d'autre.
+   Trois états, et le troisième est le plus important : « indéterminé » ne se
+   confond jamais avec « éteint ». Une loi qui n'a pas de valeur pour un cas ne
+   dit pas que l'influence est nulle — elle ne dit rien, et ça se voit. */
+.walker-halo { fill: var(--el-energy); pointer-events: none; }
+.walker-lamp { fill: var(--el-energy); }
+.walker-ring { fill: none; stroke: var(--el-energy); stroke-width: 1.6; opacity: .55; }
+.walker-readout { fill: var(--text); font-size: 11px; text-anchor: middle; font-variant-numeric: tabular-nums;
+  paint-order: stroke; stroke: var(--bg); stroke-width: 3.5; stroke-linejoin: round; }
+
+.walker.lamp-out .walker-lamp { fill: var(--muted); }
+.walker.lamp-out .walker-ring { stroke: var(--muted); }
+/* indéterminé : la lanterne est creuse et hachurée, pas sombre */
+.walker.lamp-unknown .walker-lamp,
+.walker-still.lamp-unknown .walker-lamp { fill: none; stroke: var(--el-provenance); stroke-width: 2.2; stroke-dasharray: 3 3; }
+.walker.lamp-unknown .walker-ring { stroke: var(--el-provenance); stroke-dasharray: 2 4; }
+.walker.lamp-unknown .walker-halo { fill: var(--el-provenance); }
+.walker.lamp-unknown .walker-readout { fill: var(--el-provenance); }
+.walker-still .walker-lamp { fill: var(--el-energy); }
+.walker-still.lamp-out .walker-lamp { fill: var(--muted); }
+
+/* Le résultat de l'expérience, pas un commentaire de l'animation. */
+.garden-walk-report { display: grid; gap: 6px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.garden-walk-report p { margin: 0; }
+.walk-kicker { font-size: 10.5px; letter-spacing: .18em; font-weight: 800; color: var(--el-provenance); }
+.walk-equation { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10.5px;
+  color: var(--muted); background: color-mix(in srgb, var(--el-provenance) 9%, transparent);
+  border-radius: 6px; padding: 6px 8px; overflow-x: auto; }
+.walk-line { font-size: 12.5px; color: var(--text); }
+.walk-finding { font-size: 12px; color: var(--text); line-height: 1.45;
+  border-left: 3px solid var(--el-fire); padding-left: 9px; }
+.walk-sub { font-size: 11px; color: var(--muted); margin-top: 4px !important; }
+.walk-stipulations { margin: 0; padding-left: 16px; display: grid; gap: 5px; }
+.walk-stipulations li { font-size: 11px; color: var(--muted); line-height: 1.4; }
+.walk-stipulations strong { color: var(--el-provenance); }
+
+.garden-hit { fill: transparent; cursor: pointer; }
+.parcel.is-garden:focus .garden-hit, .parcel.is-garden:hover .garden-hit { fill: color-mix(in srgb, var(--el-growth) 7%, transparent); }
+.parcel.is-garden { filter: none; }
+
+.brief-fruit-label { font-size: 11px; color: var(--muted); margin-top: 4px !important; }
+.brief-fruit { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.25; }
+.brief-fruit.desirable { border-left: 3px solid var(--el-energy); padding-left: 8px; }
+.brief-fruit.adverse { border-left: 3px solid var(--el-fire); padding-left: 8px; }
+
+/* L'énoncé précis du nœud, là où l'œil est censé s'arrêter. */
+.parcel .pphrase { fill: var(--muted); font-size: 11.5px; }
+.parcel.on-path .pphrase, .parcel.on-rim .pphrase { fill: color-mix(in srgb, var(--text) 82%, transparent); }
+.garden-phrase { fill: color-mix(in srgb, var(--text) 88%, transparent); font-size: 15px; text-anchor: middle; }
+.garden-indicator { fill: var(--muted); font-size: 11.5px; text-anchor: middle; }
+
+.brief-context { font-size: 12px; color: var(--text); line-height: 1.4; font-style: italic;
+  border-left: 2px solid var(--border); padding-left: 8px; opacity: .9; }

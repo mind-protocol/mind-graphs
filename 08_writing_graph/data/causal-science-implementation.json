@@ -1,0 +1,900 @@
+{
+  "scope": "Extraction architecturale de Causal Science Graph v0.2. Le cluster décrit un contrat cible plus strict que l'implémentation actuelle de mind-causal-graph.",
+  "source": {
+    "title": "Causal Science Graph - Full Implementation Specification v0.2",
+    "path": "C:/Users/reyno/OneDrive/Documents/Causal_Science_Graph_Full_Implementation_v0.2.pdf",
+    "pages": 68,
+    "date": "2026-07-12"
+  },
+  "nodes": [
+    {
+      "id": "doc-csg-v02",
+      "name": "Document · Causal Science Graph v0.2",
+      "nodeType": "thing",
+      "phrase": "Source scientifique → objets auditables → mécanismes → dérivations → gaps → réponse → prochaine recherche.",
+      "family": "Source · spécification CSG",
+      "summary": "Spécification de 68 pages pour une mémoire scientifique causale exécutable sur FalkorDB, avec ingestion, raisonnement, runtime de questions et architecture de production.",
+      "sourceTitle": "Causal_Science_Graph_Full_Implementation_v0.2.pdf",
+      "sourcePage": "1-68",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "document source",
+      "semanticType": "source_document"
+    },
+    {
+      "id": "csg-mission-executable-memory",
+      "name": "Mission · Mémoire scientifique exécutable",
+      "nodeType": "narrative",
+      "phrase": "Le graphe ne stocke pas seulement ce que l'on sait : il exécute ce que l'on peut demander.",
+      "family": "CSG v0.2 · mission",
+      "summary": "Le système couvre observation, intervention, projection, contre-factuel, explication mécaniste et justification épistémique.",
+      "sourcePage": "1-6",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "mission and sufficiency",
+      "semanticType": "protocol"
+    },
+    {
+      "id": "csg-separate-world-measure-belief",
+      "name": "Principe · Séparer monde, mesure et croyance",
+      "nodeType": "narrative",
+      "phrase": "Une variable réelle, son observation et le claim qui la décrit ne sont jamais le même objet.",
+      "family": "CSG v0.2 · architecture",
+      "summary": "Le graphe ontique, observationnel et épistémique restent séparés mais connectés.",
+      "sourcePage": "2,7",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "architecture principle P1",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "csg-kernel-five-primitives",
+      "name": "Noyau · Cinq primitives irréductibles",
+      "nodeType": "narrative",
+      "phrase": "Variable, Mechanism, Context, Intervention et Observation forment le noyau.",
+      "family": "CSG v0.2 · modèle formel",
+      "summary": "Le noyau minimal porte état, transformation causale, régime de validité, action et contact avec les données.",
+      "sourcePage": "2,8",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "irreducible kernel",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-mechanism-node",
+      "name": "Primitive · Mécanisme réifié",
+      "nodeType": "narrative",
+      "phrase": "La causalité complexe devient un nœud multi-entrée, multi-sortie et exécutable.",
+      "family": "CSG v0.2 · causalité",
+      "summary": "Ports, fonctions, bruit, mémoire, paramètres, gardes, délais et solveur remplacent le simple lien A → B.",
+      "sourcePage": "7-8,12-13,20-23",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "mechanisms, cycles and interventions",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-bitemporal-versioning",
+      "name": "Principe · Bitemporalité et supersession",
+      "nodeType": "narrative",
+      "phrase": "Le temps du monde et le temps d'enregistrement restent distincts.",
+      "family": "CSG v0.2 · versioning",
+      "summary": "Les corrections créent de nouvelles versions, conservent l'historique et rendent projections et réponses reproductibles.",
+      "sourcePage": "9",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "identity, time and versioning",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-canonical-ontology",
+      "name": "Contrat · Ontologie canonique scientifique",
+      "nodeType": "narrative",
+      "phrase": "Les objets ontiques, observationnels, épistémiques, multi-échelles et computationnels ont des contrats séparés.",
+      "family": "CSG v0.2 · ontologie",
+      "summary": "Entity, Variable, Event, Process, Mechanism, Context, Study, Dataset, Claim, Evidence, Scale, Artifact, Projection et Agent composent le modèle opérationnel.",
+      "sourcePage": "10-20",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "canonical node and relation ontology",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-atomic-contestable-claim",
+      "name": "Principe · Claim atomique et contestable",
+      "nodeType": "narrative",
+      "phrase": "Un claim est assez petit pour être soutenu, borné, contredit ou supersédé indépendamment.",
+      "family": "CSG v0.2 · épistémologie",
+      "summary": "P-values, citations et scores restent dans Estimate et Evidence, jamais comme propriétés intrinsèques d'un mécanisme.",
+      "sourcePage": "7,17,25",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "claims and evidence",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "csg-quality-vector",
+      "name": "Contrat · Vecteur de qualité",
+      "nodeType": "narrative",
+      "phrase": "Identifiabilité, validité, mesure, robustesse, réplication et transportabilité ne fusionnent pas en un score opaque.",
+      "family": "CSG v0.2 · épistémologie",
+      "summary": "Les incertitudes aléatoire, épistémique, de mesure, structurelle, de transport et numérique restent distinctes.",
+      "sourcePage": "25-26,46,56",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "quality and uncertainty",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-contextual-conflict",
+      "name": "Mécanisme · Contradictions contextualisées",
+      "nodeType": "narrative",
+      "phrase": "Deux résultats incompatibles restent visibles avant toute réconciliation.",
+      "family": "CSG v0.2 · épistémologie",
+      "summary": "Le système teste population, mesure, dose, temporalité, analyse, échelle et contexte avant de conclure à une contradiction globale.",
+      "sourcePage": "26,38,46",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "scientific disagreement",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-abstraction-map",
+      "name": "Primitive · Mapping multi-échelle",
+      "nodeType": "narrative",
+      "phrase": "Les modèles micro et macro se relient par ce qu'ils préservent et perdent.",
+      "family": "CSG v0.2 · multi-échelle",
+      "summary": "State mapping, intervention mapping, propriétés préservées, perte d'information et erreur d'approximation conditionnent le passage d'échelle.",
+      "sourcePage": "18,27",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "multi-scale abstractions",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-falkor-mapping",
+      "name": "Infrastructure · FalkorDB comme mémoire structurée",
+      "nodeType": "narrative",
+      "phrase": "Le graphe indexe et traverse ; les calculs lourds s'exécutent hors base.",
+      "family": "CSG v0.2 · infrastructure",
+      "summary": "Propriétés scalaires, graph keys, contraintes, indexes exact/full-text/vector et imports idempotents structurent le stockage.",
+      "sourcePage": "2,28-31",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "FalkorDB mapping",
+      "semanticType": "institution"
+    },
+    {
+      "id": "csg-ingestion-state-machine",
+      "name": "Pipeline · Ingestion transactionnelle",
+      "nodeType": "narrative",
+      "phrase": "Acquire, parse, structure, atomize, normalize, resolve, validate, review puis commit.",
+      "family": "CSG v0.2 · ingestion",
+      "summary": "Chaque source est hashée, les spans restent localisables, les ambiguïtés vont en revue et le commit canonique est atomique.",
+      "sourcePage": "32-33,43-47,67",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "paper ingestion procedure",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-llm-proposal-only",
+      "name": "Proposition v0.2 · Le LLM propose sans écrire au canonical",
+      "nodeType": "narrative",
+      "phrase": "Extraction assistée, validation déterministe, arbitrage humain.",
+      "family": "CSG v0.2 · responsabilités",
+      "summary": "Le modèle produit des propositions structurées avec spans ; services et humains contrôlent schéma, causalité, fusion et décisions sensibles.",
+      "epistemicStatus": "superseded",
+      "sourcePage": "32-34,59,64,66-68",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "LLM, deterministic service and human boundaries",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "csg-blocking-invariants",
+      "name": "Gate · Invariants bloquants",
+      "nodeType": "narrative",
+      "phrase": "Identité, types, unités, ports, temps, provenance et evidence doivent passer avant promotion.",
+      "family": "CSG v0.2 · validation",
+      "summary": "Le service de commandes applique les invariants sémantiques que FalkorDB ne peut pas garantir seul.",
+      "sourcePage": "33-34,47",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "validation invariants",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-science-acceleration",
+      "name": "Moteur · Science Acceleration Layer",
+      "nodeType": "narrative",
+      "phrase": "La mémoire devient boucle de découverte et d'ordonnancement scientifique.",
+      "family": "CSG v0.2 · accélération",
+      "summary": "Dérivations, gaps, contradictions, patterns, hypothèses, analyses et expériences sont calculés à partir du graphe.",
+      "sourcePage": "48-53",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "science acceleration layer",
+      "semanticType": "institution"
+    },
+    {
+      "id": "csg-gap-taxonomy",
+      "name": "Contrat · Taxonomie des gaps",
+      "nodeType": "narrative",
+      "phrase": "L'inconnu devient un objet typé plutôt qu'une absence de lien.",
+      "family": "CSG v0.2 · gaps",
+      "summary": "Existence, relation, causalité, mécanisme, temps, contexte, multi-échelle, mesure, réplication, contradiction et formalisme sont distingués.",
+      "sourcePage": "48-50",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "research gap taxonomy",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-derivation-invalidation",
+      "name": "Mécanisme · Dérivations et invalidation",
+      "nodeType": "narrative",
+      "phrase": "Une prémisse modifiée suspend les conclusions et réponses qui en dépendent.",
+      "family": "CSG v0.2 · raisonnement",
+      "summary": "La clôture déductive crée des propositions reproductibles et propage la staleness sans effacer l'historique.",
+      "sourcePage": "49,56",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "deductive closure and staleness",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-frontier-scheduler",
+      "name": "Moteur · Ordonnanceur de frontière",
+      "nodeType": "narrative",
+      "phrase": "Dependency-first, closure-first, puis frontier-first.",
+      "family": "CSG v0.2 · stratégie d'ingestion",
+      "summary": "Trois queues BACKBONE, RESOLUTION et FRONTIER maximisent closure gain, diversité, actionnabilité et information par coût.",
+      "sourcePage": "50,52-53",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "ingestion scheduler",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-question-runtime",
+      "name": "Runtime · Question auditable",
+      "nodeType": "narrative",
+      "phrase": "La question devient session, interprétation, FormalQuery, plan, EvidenceBundle et Answer versionnée.",
+      "family": "CSG v0.2 · question answering",
+      "summary": "Le runtime sépare questions descriptives, causales, prédictives, mécanistes, contrefactuelles, normatives et de transportabilité.",
+      "sourcePage": "54-57",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "question answering runtime",
+      "semanticType": "institution"
+    },
+    {
+      "id": "csg-hybrid-retrieval",
+      "name": "Mécanisme · Retrieval hybride contraint",
+      "nodeType": "narrative",
+      "phrase": "Exact, full-text, vecteurs et parcours récupèrent un sous-graphe puis filtrent scope et permissions.",
+      "family": "CSG v0.2 · question answering",
+      "summary": "La similarité vectorielle propose des candidats mais ne crée jamais automatiquement identité ou causalité.",
+      "sourcePage": "29,55,62",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "search and query subgraph",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-answer-scientific-object",
+      "name": "Objet · Answer scientifique versionnée",
+      "nodeType": "narrative",
+      "phrase": "Chaque phrase remonte à preuves, dérivations, contradictions, gaps et snapshot.",
+      "family": "CSG v0.2 · question answering",
+      "summary": "Une réponse déclare statut, portée, incertitude, preuves, mécanismes, contradictions et prochaine recherche.",
+      "sourcePage": "54,56-57",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "answer contract",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-production-isolation",
+      "name": "Proposition v0.2 · Canonical, staging, runtime et sandbox isolés",
+      "nodeType": "narrative",
+      "phrase": "Les services spécialisés entourent FalkorDB sans accès d'écriture libre.",
+      "family": "CSG v0.2 · production",
+      "summary": "Command Service, ingestion, normalisation, validation, reconciliation, runtime, moteurs, scheduler et review console ont des responsabilités bornées.",
+      "epistemicStatus": "design_proposal",
+      "sourcePage": "35-36,58-64",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "production architecture",
+      "semanticType": "institution"
+    },
+    {
+      "id": "csg-ingestion-endgame-living-cluster",
+      "name": "Endgame · Un cluster scientifique vivant",
+      "nodeType": "narrative",
+      "phrase": "L'ingestion réussit lorsqu'elle produit un cluster sourcé, fiable, améliorable et utilement connecté — pas lorsqu'elle récite une pipeline à la lettre.",
+      "family": "CSG · endgame d'ingestion",
+      "summary": "Le résultat recherché est une représentation scientifique qui permet d'évaluer séparément ses angles, de révéler ses omissions, de recevoir des objections et analyses nouvelles, et de se relier à d'autres connaissances. La conformité procédurale n'est qu'un moyen candidat ; la qualité du cluster créé est le critère final.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · endgame ingestion",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "csg-every-contribution-sourced",
+      "name": "Invariant · Toute contribution reste sourcée",
+      "nodeType": "narrative",
+      "phrase": "Aucune affirmation, correction, évaluation ou extension n'entre sans auteur, provenance et objet source retrouvable.",
+      "family": "CSG · provenance vivante",
+      "summary": "La source ne se limite pas à l'article initial. Une critique, une réanalyse, un mapping ou un pattern match possède aussi son auteur, sa méthode, sa version et ses entrées. La provenance permet la contestation ; elle ne transforme pas une contribution en vérité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · endgame ingestion",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "csg-source-fixed-model-living",
+      "name": "Principe · La source est fixe, son graphe est vivant",
+      "nodeType": "narrative",
+      "phrase": "L'article historique reste immuable ; sa représentation, ses critiques, ses extensions et ses connexions peuvent évoluer.",
+      "family": "CSG · étude vivante",
+      "summary": "Corriger une extraction ou ajouter un effet omis ne réécrit ni le PDF ni ce que les auteurs ont déclaré. Le graphe conserve la représentation source, puis accueille autour d'elle des contributions attribuées et versionnées. L'étude devient un objet collectif sans perdre son histoire.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · endgame ingestion",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "csg-study-cluster-quality-vector",
+      "name": "Contrat · Qualité multidimensionnelle du cluster d'étude",
+      "nodeType": "narrative",
+      "phrase": "Fidélité, complétude, fiabilité, connectivité et enrichissement restent des dimensions distinctes.",
+      "family": "CSG · qualité d'ingestion",
+      "summary": "Le cluster est évalué au moins sur la fidélité à la source, la complétude structurelle relative à une méthode, le reporting, les biais, la mesure, l'identifiabilité causale, la robustesse, la réplication, la transportabilité, la fraîcheur, les contradictions, la connectivité typée et les enrichissements externes. Aucun score global opaque ne fusionne ces dimensions ; la fiabilité reste scopée par claim, outcome et contexte.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · endgame ingestion",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-ingestion-quality-audit",
+      "name": "Algorithme · Audit de readiness d'une ingestion scientifique",
+      "nodeType": "narrative",
+      "phrase": "Volume textuel, concepts, structure, connectivité, provenance et revue restent visibles avant toute agrégation.",
+      "family": "CSG · qualité d'ingestion",
+      "summary": "L'algorithme produit les mesures brutes et six scores séparés. Un score de readiness aux poids déclarés peut bloquer l'étiquette complete, mais ne mesure ni la validité scientifique, ni la certitude d'un claim, ni un droit d'agir. Les seuils et la formule sont versionnés dans science/quality-contract.json.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "implémentation · qualité d'ingestion",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-ai-ingestion-review",
+      "name": "Mécanisme · Revue d'ingestion par agent IA attribué",
+      "nodeType": "narrative",
+      "phrase": "Un agent peut auditer couverture, structure, provenance et limites sans remplacer les invariants déterministes.",
+      "family": "CSG · qualité d'ingestion",
+      "summary": "La revue déclare agent, méthode, date, dimensions, verdict, findings, limites et indépendance. Une auto-revue reste admissible mais reçoit un facteur inférieur à une revue indépendante ; aucun agent ne peut compenser un hash faux, une preuve non localisée ou un plancher de couverture manquant.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "implémentation · revue d'ingestion",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-community-study-enrichment",
+      "name": "Mécanisme · Enrichissement collectif des études",
+      "nodeType": "narrative",
+      "phrase": "Une étude peut recevoir corrections, oppositions, effets omis, réanalyses, réplications et connexions nouvelles.",
+      "family": "CSG · étude vivante",
+      "summary": "Les contributeurs n'éditent pas silencieusement la source : ils ajoutent des objets attribués qui peuvent contredire, compléter, remapper ou réanalyser une partie du cluster. Ces contributions restent elles-mêmes évaluables et peuvent alimenter la certitude du claim à leur propre poids probant.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · endgame ingestion",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-scientific-pattern-library",
+      "name": "Méthode · Bibliothèque versionnée de patterns scientifiques",
+      "nodeType": "narrative",
+      "phrase": "Les instruments d'appraisal et les détecteurs de structure sont des objets du graphe, pas des règles gravées dans son schéma.",
+      "family": "CSG · patterns scientifiques",
+      "summary": "Chaque pattern déclare sa version, sa provenance, son domaine d'applicabilité, le sous-graphe requis, sa procédure de calcul, ses sorties, ses limites, ses contre-exemples et son jeu de validation. La bibliothèque peut porter des instruments Cochrane adaptés au design, des analyses d'aveuglement, des contrôles de mesure ou des détecteurs de contradictions et de gaps.",
+      "methodSummary": "Vérifier l'applicabilité → sélectionner un snapshot du cluster → matcher ou calculer → produire un résultat sourcé et contestable → relier gaps, conflits ou propositions d'amélioration sans réécrire la source.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · bibliothèque de patterns",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-pattern-results-are-contestable",
+      "name": "Invariant · Un pattern produit une justification, jamais un verdict opaque",
+      "nodeType": "narrative",
+      "phrase": "Chaque score ou détection expose méthode, périmètre, entrées, sortie et raisons.",
+      "family": "CSG · patterns scientifiques",
+      "summary": "Un pattern crée un appraisal, un match, un gap, un conflit ou une proposition d'amélioration versionnés. Un label comme « double aveugle » n'ajoute pas mécaniquement des points : le résultat doit préciser qui est aveuglé, pour quel outcome, si l'aveuglement pouvait tenir et dans quelle direction son échec biaiserait l'estimation.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · bibliothèque de patterns",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "csg-ambiguity-as-data",
+      "name": "Règle · Représenter l'ambiguïté avant de vouloir la trancher",
+      "nodeType": "narrative",
+      "phrase": "Plusieurs interprétations compatibles restent visibles jusqu'à ce qu'une action exige une résolution.",
+      "family": "CSG · ambiguïté et décision",
+      "summary": "L'existence d'une ambiguïté n'impose ni blocage ni revue humaine. Le graphe conserve candidats, compatibilités, désaccords et justifications. Une revue n'est requise que lorsqu'une opération doit choisir une identité unique ou engage une action dont le cadre impose un seuil de certitude.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · ambiguïté",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "csg-author-neutral-validated-writes",
+      "name": "Règle · Gouverner l'écriture par son contrat, pas par l'identité de son auteur",
+      "nodeType": "narrative",
+      "phrase": "Humain, LLM ou service peuvent contribuer ; provenance, validation, versionnement et réversibilité gouvernent la mutation.",
+      "family": "CSG · responsabilités",
+      "summary": "Interdire l'écriture parce que l'auteur est un LLM vise le mauvais axe : un humain peut mal fusionner et une extraction automatisée peut être vérifiable. Aucune écriture structurante ne doit contourner les invariants applicables, mais toute contribution qui satisfait son contrat peut être inscrite avec son auteur et ses limites.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · responsabilités",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "question-csg-state-isolation-mechanism",
+      "name": "Question · Quel mécanisme d'isolation sert réellement l'endgame ?",
+      "nodeType": "narrative",
+      "phrase": "Faut-il quatre graphes, des ChangeSets transactionnels, un journal append-only, des snapshots ou une combinaison plus simple ?",
+      "family": "CSG · architecture de production",
+      "summary": "Le besoin est de distinguer source, propositions, état de référence, calculs reconstructibles et expériences. La séparation canonical/staging/runtime/sandbox est une option technique parmi d'autres ; elle doit être comparée selon auditabilité, références, réversibilité, coût de synchronisation et capacité à garder l'ambiguïté visible.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "arbitrage de projet · architecture à comparer",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "csg-vertical-slice",
+      "name": "Roadmap · Vertical slice scientifique",
+      "nodeType": "narrative",
+      "phrase": "Un paper, deux variables, un mécanisme, une question, une réponse, un gap et une invalidation.",
+      "family": "CSG v0.2 · roadmap",
+      "summary": "La construction privilégie un cycle complet et testable avant l'élargissement de l'ontologie.",
+      "sourcePage": "37,65-66",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "implementation order and definition of done",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "csg-gap-current-implementation",
+      "name": "Gap · L'implémentation Mind actuelle n'est pas encore le CSG v0.2",
+      "nodeType": "narrative",
+      "phrase": "Quels contrats migrer en premier sans casser le graphe de design existant ?",
+      "family": "CSG v0.2 · écart d'implémentation",
+      "summary": "Le graphe actuel stocke des MindNode et relations narratives ; il ne sépare pas encore Variable, Observation, Claim, Evidence, snapshots, staging et runtime selon la spécification.",
+      "sourcePage": "2,7,10-37,58-66",
+      "clusterId": "causal-science-implementation",
+      "documentSection": "implementation gap inferred from specification",
+      "semanticType": "open_question"
+    }
+  ],
+  "links": [
+    {
+      "source": "csg-separate-world-measure-belief",
+      "target": "csg-mission-executable-memory",
+      "type": "GROUNDS",
+      "justification": "Principe · Séparer monde, mesure et croyance « fonde » Mission · Mémoire scientifique exécutable. Nature précise : principe → choix de design. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-kernel-five-primitives",
+      "target": "csg-mission-executable-memory",
+      "type": "IMPLEMENTS",
+      "justification": "Noyau · Cinq primitives irréductibles « met en œuvre » Mission · Mémoire scientifique exécutable. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-mechanism-node",
+      "target": "csg-kernel-five-primitives",
+      "type": "PART_OF",
+      "justification": "Primitive · Mécanisme réifié « fait partie de » Noyau · Cinq primitives irréductibles. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-bitemporal-versioning",
+      "target": "csg-mission-executable-memory",
+      "type": "SAFEGUARDS",
+      "justification": "Principe · Bitemporalité et supersession « protège » Mission · Mémoire scientifique exécutable. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-canonical-ontology",
+      "target": "csg-kernel-five-primitives",
+      "type": "IMPLEMENTS",
+      "justification": "Contrat · Ontologie canonique scientifique « met en œuvre » Noyau · Cinq primitives irréductibles. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-atomic-contestable-claim",
+      "target": "csg-separate-world-measure-belief",
+      "type": "IMPLEMENTS",
+      "justification": "Principe · Claim atomique et contestable « met en œuvre » Principe · Séparer monde, mesure et croyance. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-quality-vector",
+      "target": "csg-atomic-contestable-claim",
+      "type": "SAFEGUARDS",
+      "justification": "Contrat · Vecteur de qualité « protège » Principe · Claim atomique et contestable. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-contextual-conflict",
+      "target": "csg-atomic-contestable-claim",
+      "type": "SAFEGUARDS",
+      "justification": "Mécanisme · Contradictions contextualisées « protège » Principe · Claim atomique et contestable. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-abstraction-map",
+      "target": "csg-canonical-ontology",
+      "type": "PART_OF",
+      "justification": "Primitive · Mapping multi-échelle « fait partie de » Contrat · Ontologie canonique scientifique. Nature précise : partie → ensemble. Portée : structural. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-falkor-mapping",
+      "target": "csg-mission-executable-memory",
+      "type": "IMPLEMENTS",
+      "justification": "Infrastructure · FalkorDB comme mémoire structurée « met en œuvre » Mission · Mémoire scientifique exécutable. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-ingestion-state-machine",
+      "target": "csg-canonical-ontology",
+      "type": "IMPLEMENTS",
+      "justification": "Pipeline · Ingestion transactionnelle « met en œuvre » Contrat · Ontologie canonique scientifique. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-llm-proposal-only",
+      "target": "csg-ingestion-state-machine",
+      "type": "SAFEGUARDS",
+      "justification": "Garde-fou · Le LLM propose sans écrire au canonical « protège » Pipeline · Ingestion transactionnelle. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-blocking-invariants",
+      "target": "csg-ingestion-state-machine",
+      "type": "SAFEGUARDS",
+      "justification": "Gate · Invariants bloquants « protège » Pipeline · Ingestion transactionnelle. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-ingestion-state-machine",
+      "target": "csg-science-acceleration",
+      "type": "UNLOCKS",
+      "justification": "Pipeline · Ingestion transactionnelle « débloque » Moteur · Science Acceleration Layer. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-gap-taxonomy",
+      "target": "csg-science-acceleration",
+      "type": "IMPLEMENTS",
+      "justification": "Contrat · Taxonomie des gaps « met en œuvre » Moteur · Science Acceleration Layer. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-derivation-invalidation",
+      "target": "csg-science-acceleration",
+      "type": "IMPLEMENTS",
+      "justification": "Mécanisme · Dérivations et invalidation « met en œuvre » Moteur · Science Acceleration Layer. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-frontier-scheduler",
+      "target": "csg-science-acceleration",
+      "type": "IMPLEMENTS",
+      "justification": "Moteur · Ordonnanceur de frontière « met en œuvre » Moteur · Science Acceleration Layer. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-science-acceleration",
+      "target": "csg-question-runtime",
+      "type": "FEEDS",
+      "justification": "Moteur · Science Acceleration Layer « alimente » Runtime · Question auditable. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-hybrid-retrieval",
+      "target": "csg-question-runtime",
+      "type": "IMPLEMENTS",
+      "justification": "Mécanisme · Retrieval hybride contraint « met en œuvre » Runtime · Question auditable. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-question-runtime",
+      "target": "csg-answer-scientific-object",
+      "type": "LEADS_TO",
+      "justification": "Runtime · Question auditable « conduit potentiellement à » Objet · Answer scientifique versionnée. Nature précise : cause contributive proposée → effet. Portée : design_hypothesis. Elle porte une affirmation causale qui reste à justifier empiriquement."
+    },
+    {
+      "source": "csg-quality-vector",
+      "target": "csg-answer-scientific-object",
+      "type": "FEEDS",
+      "justification": "Contrat · Vecteur de qualité « alimente » Objet · Answer scientifique versionnée. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-contextual-conflict",
+      "target": "csg-answer-scientific-object",
+      "type": "FEEDS",
+      "justification": "Mécanisme · Contradictions contextualisées « alimente » Objet · Answer scientifique versionnée. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-gap-taxonomy",
+      "target": "csg-answer-scientific-object",
+      "type": "FEEDS",
+      "justification": "Contrat · Taxonomie des gaps « alimente » Objet · Answer scientifique versionnée. Nature précise : source de flux → mécanisme ou état alimenté. Portée : design_hypothesis. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-production-isolation",
+      "target": "csg-falkor-mapping",
+      "type": "SAFEGUARDS",
+      "justification": "Architecture · Canonical, staging, runtime et sandbox isolés « protège » Infrastructure · FalkorDB comme mémoire structurée. Nature précise : garde-fou → élément protégé. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-production-isolation",
+      "target": "csg-question-runtime",
+      "type": "IMPLEMENTS",
+      "justification": "Architecture · Canonical, staging, runtime et sandbox isolés « met en œuvre » Runtime · Question auditable. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-every-contribution-sourced",
+      "target": "csg-ingestion-endgame-living-cluster",
+      "type": "GROUNDS",
+      "justification": "La provenance de chaque contribution fonde l'endgame parce qu'un cluster collectif ne reste contestable que si l'on peut distinguer l'article, son extraction, une critique, une réanalyse et le résultat d'un pattern. Être sourcé rend une proposition auditables sans la rendre vraie."
+    },
+    {
+      "source": "csg-source-fixed-model-living",
+      "target": "csg-ingestion-endgame-living-cluster",
+      "type": "GROUNDS",
+      "justification": "Séparer l'artefact historique de sa représentation évolutive fonde le caractère vivant du cluster : on peut corriger, compléter et contredire le modèle sans attribuer rétroactivement ces apports aux auteurs de l'étude."
+    },
+    {
+      "source": "csg-ingestion-endgame-living-cluster",
+      "target": "csg-ingestion-state-machine",
+      "type": "MOTIVATES",
+      "justification": "L'endgame donne à la pipeline son critère de réussite : la chaîne n'est utile que si elle produit un cluster fidèle, multidimensionnel, améliorable et connecté. La conformité à ses étapes ne constitue pas une fin autonome."
+    },
+    {
+      "source": "csg-study-cluster-quality-vector",
+      "target": "csg-ingestion-endgame-living-cluster",
+      "type": "IMPLEMENTS",
+      "justification": "Le vecteur rend l'endgame mesurable sans l'écraser en un score : chaque angle du cluster conserve son périmètre, sa méthode et sa justification, notamment par claim, outcome et contexte."
+    },
+    {
+      "source": "csg-ingestion-quality-audit",
+      "target": "csg-study-cluster-quality-vector",
+      "type": "IMPLEMENTS",
+      "justification": "L'audit rend le vecteur d'ingestion exécutable en exposant six dimensions, leurs mesures brutes, leurs seuils et une agrégation de readiness explicitement distincte de la qualité scientifique."
+    },
+    {
+      "source": "csg-ingestion-quality-audit",
+      "target": "csg-ingestion-state-machine",
+      "type": "SAFEGUARDS",
+      "justification": "L'audit empêche la pipeline de déclarer complete une représentation sous les planchers de couverture, même si ses étapes techniques se sont exécutées."
+    },
+    {
+      "source": "csg-ai-ingestion-review",
+      "target": "csg-ingestion-quality-audit",
+      "type": "FEEDS",
+      "justification": "La revue attribuée alimente une dimension du vecteur avec son verdict et son degré d'indépendance, sans remplacer les mesures déterministes."
+    },
+    {
+      "source": "csg-pattern-results-are-contestable",
+      "target": "csg-ingestion-quality-audit",
+      "type": "SAFEGUARDS",
+      "justification": "L'invariant oblige l'audit à publier formule, poids, mesures et échecs de plancher au lieu de produire une note inexplicable."
+    },
+    {
+      "source": "csg-community-study-enrichment",
+      "target": "csg-ingestion-endgame-living-cluster",
+      "type": "IMPLEMENTS",
+      "justification": "L'ajout attribué de corrections, oppositions, effets omis et réanalyses met en œuvre l'étude vivante : le cluster progresse après publication sans effacer la source ni confondre contribution et constat historique."
+    },
+    {
+      "source": "csg-source-fixed-model-living",
+      "target": "csg-community-study-enrichment",
+      "type": "SAFEGUARDS",
+      "justification": "L'immuabilité de la source protège l'enrichissement collectif contre la réécriture de l'histoire : toute amélioration s'ajoute autour de la représentation source avec attribution et version, elle ne remplace pas silencieusement ce que l'article contenait."
+    },
+    {
+      "source": "csg-scientific-pattern-library",
+      "target": "csg-ingestion-endgame-living-cluster",
+      "type": "IMPLEMENTS",
+      "justification": "La bibliothèque applique au cluster des lectures méthodologiques et structurelles réutilisables. Elle permet de mesurer plusieurs angles, détecter des patterns et proposer des améliorations sans graver Cochrane, l'aveuglement ou une discipline particulière dans l'ontologie."
+    },
+    {
+      "source": "csg-scientific-pattern-library",
+      "target": "csg-study-cluster-quality-vector",
+      "type": "IMPLEMENTS",
+      "justification": "Les patterns sont les instruments versionnés qui renseignent les dimensions du vecteur. Leur gate d'applicabilité empêche d'appliquer un outil au mauvais design et leurs sorties restent séparées au lieu de former une note globale opaque."
+    },
+    {
+      "source": "csg-pattern-results-are-contestable",
+      "target": "csg-scientific-pattern-library",
+      "type": "SAFEGUARDS",
+      "justification": "Exposer méthode, snapshot, entrées, périmètre et raisons empêche un pattern de transformer un label ou un score en autorité. Le résultat reste une justification contestable, versionnée et comparable à d'autres lectures."
+    },
+    {
+      "source": "csg-ambiguity-as-data",
+      "target": "csg-ingestion-endgame-living-cluster",
+      "type": "SAFEGUARDS",
+      "justification": "Conserver plusieurs interprétations protège la complétude et la fidélité du cluster : forcer trop tôt une résolution détruirait l'information sur le désaccord. Le besoin d'un choix n'apparaît qu'au point d'une action qui ne tolère pas plusieurs candidats."
+    },
+    {
+      "source": "csg-author-neutral-validated-writes",
+      "target": "csg-ingestion-state-machine",
+      "type": "SAFEGUARDS",
+      "justification": "La pipeline est protégée par des contrats de provenance, validation, versionnement et réversibilité applicables à tous les auteurs. Ce contrôle porte sur la qualité et la nature de l'écriture plutôt que sur l'étiquette humain, LLM ou service."
+    },
+    {
+      "source": "csg-author-neutral-validated-writes",
+      "target": "csg-llm-proposal-only",
+      "type": "CONTRADICTS",
+      "justification": "La règle adoptée contredit la prescription v0.2 sur son critère : l'identité LLM ne suffit pas à interdire une écriture, pas plus que l'identité humaine ne suffit à l'autoriser. Les deux positions restent visibles ; la proposition v0.2 est conservée pour provenance mais marquée superseded."
+    },
+    {
+      "source": "question-csg-state-isolation-mechanism",
+      "target": "csg-production-isolation",
+      "type": "BLOCKS",
+      "justification": "La séparation canonical/staging/runtime/sandbox ne doit pas devenir l'architecture adoptée tant que ses alternatives n'ont pas été comparées selon l'endgame. La question bloque l'adoption de cette option, pas l'expression des besoins qu'elle cherchait à couvrir."
+    },
+    {
+      "source": "csg-vertical-slice",
+      "target": "csg-mission-executable-memory",
+      "type": "TESTS",
+      "justification": "Roadmap · Vertical slice scientifique « met à l’épreuve » Mission · Mémoire scientifique exécutable. Nature précise : expérience ou simulation → hypothèse ou état testé. Portée : planned_test. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-gap-current-implementation",
+      "target": "csg-vertical-slice",
+      "type": "BLOCKS",
+      "justification": "Gap · L'implémentation Mind actuelle n'est pas encore le CSG v0.2 « conditionne ou bloque » Roadmap · Vertical slice scientifique. Nature précise : question ouverte → élément bloqué. Portée : unresolved. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité.",
+      "migratedFrom": "CONSTRAINS"
+    },
+    {
+      "source": "csg-mission-executable-memory",
+      "target": "sci-thesis-computable-knowledge",
+      "type": "IMPLEMENTS",
+      "justification": "Mission · Mémoire scientifique exécutable « met en œuvre » Thèse · Connaissance scientifique calculable. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-atomic-contestable-claim",
+      "target": "sci-atomic-claim",
+      "type": "IMPLEMENTS",
+      "justification": "Principe · Claim atomique et contestable « met en œuvre » Primitive · Claim atomique évalué. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-quality-vector",
+      "target": "sci-critical-appraisal",
+      "type": "IMPLEMENTS",
+      "justification": "Contrat · Vecteur de qualité « met en œuvre » Mécanisme · Critique multidimensionnelle. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-question-runtime",
+      "target": "innovation-mind-protocol",
+      "type": "UNLOCKS",
+      "justification": "Runtime · Question auditable « débloque » Mind Protocol. Nature précise : condition → capacité proposée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-vertical-slice",
+      "target": "sci-pilot-vertical",
+      "type": "IMPLEMENTS",
+      "justification": "Roadmap · Vertical slice scientifique « met en œuvre » Pilote · 20 à 100 articles dans un domaine. Nature précise : mécanisme → principe ou capacité réalisée. Portée : design_proposal. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-mission-executable-memory",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Mission · Mémoire scientifique exécutable « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-separate-world-measure-belief",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Principe · Séparer monde, mesure et croyance « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-kernel-five-primitives",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Noyau · Cinq primitives irréductibles « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-mechanism-node",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Primitive · Mécanisme réifié « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-bitemporal-versioning",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Principe · Bitemporalité et supersession « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-canonical-ontology",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Contrat · Ontologie canonique scientifique « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-atomic-contestable-claim",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Principe · Claim atomique et contestable « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-quality-vector",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Contrat · Vecteur de qualité « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-contextual-conflict",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Contradictions contextualisées « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-abstraction-map",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Primitive · Mapping multi-échelle « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-falkor-mapping",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Infrastructure · FalkorDB comme mémoire structurée « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-ingestion-state-machine",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Pipeline · Ingestion transactionnelle « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-llm-proposal-only",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Garde-fou · Le LLM propose sans écrire au canonical « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-blocking-invariants",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Gate · Invariants bloquants « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-science-acceleration",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Moteur · Science Acceleration Layer « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-gap-taxonomy",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Contrat · Taxonomie des gaps « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-derivation-invalidation",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Dérivations et invalidation « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-frontier-scheduler",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Moteur · Ordonnanceur de frontière « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-question-runtime",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Runtime · Question auditable « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-hybrid-retrieval",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Mécanisme · Retrieval hybride contraint « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-answer-scientific-object",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Objet · Answer scientifique versionnée « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-production-isolation",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Architecture · Canonical, staging, runtime et sandbox isolés « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-vertical-slice",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Roadmap · Vertical slice scientifique « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    },
+    {
+      "source": "csg-gap-current-implementation",
+      "target": "doc-csg-v02",
+      "type": "DERIVED_FROM",
+      "justification": "Gap · L'implémentation Mind actuelle n'est pas encore le CSG v0.2 « dérive du document » Document · Causal Science Graph v0.2. Nature précise : proposition extraite → document source. Portée : provenance. Elle décrit une structure ou une proposition sans affirmer à elle seule une causalité."
+    }
+  ]
+}

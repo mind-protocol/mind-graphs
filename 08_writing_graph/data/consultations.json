@@ -1,0 +1,446 @@
+{
+  "purpose": "Consultations externes : ce que le graphe a demandé à une audience qu'il ne contrôle pas, et ce qui en est revenu. Voir consultationContract dans data/graph-ontology.json.",
+  "rule": "Un nœud relié à une consultation par ANSWERS documente qu'une personne l'a dit. Il ne porte jamais probabilityPct, confidenceScore ni effectSizePct, et n'est source d'aucun SUPPORTS_ESTIMATE.",
+  "nodes": [
+    {
+      "id": "consultation-tension-reddit-hypothesis-analysis--dem-thesis-continuous",
+      "name": "Consultation · Signal Reddit · Paralysie d'analyse et pluralisme irréductible ↔ Thèse · Démocratie continue représentée",
+      "phrase": "qualifier deux affirmations tenues simultanément Soumis à une audience externe, sans engagement sur la valeur des réponses.",
+      "family": "Consultation externe · Contradiction ou tension",
+      "summary": "Une incompatibilité explicite est encodée dans le graphe. Le contexte de contradiction doit être vérifié. La consultation demande : Est-ce une vraie incompatibilité, ou un contexte manquant qui les réconcilie ? Elle n'engage aucune valeur du modèle : ce qui reviendra sera attribué à son auteur, jamais compté comme preuve.",
+      "nodeType": "moment",
+      "consultationStatus": "draft",
+      "consultationChannel": "reddit",
+      "consultationCategory": "contradiction",
+      "askedAt": "2026-07-22",
+      "findingId": "contradiction:explicit:4",
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "semanticType": "consultation"
+    },
+    {
+      "id": "consultation-question-reddit-question-model-dive--dem-thesis-continuous",
+      "name": "Consultation · Question Reddit · Diversité réelle des modèles à grande échelle",
+      "phrase": "ouvrir une question que le corpus laisse structurellement ouverte Soumis à une audience externe, sans engagement sur la valeur des réponses.",
+      "family": "Consultation externe · Question non résolue",
+      "summary": "Bloque 1 élément(s) direct(s) et atteint 20 élément(s) en aval sur quatre niveaux. Aucune solution n’est reliée par ADDRESSES : la question reste structurellement ouverte. La consultation demande : Qu'est-ce qui vous ferait pencher d'un côté ou de l'autre, et pourquoi ? Elle n'engage aucune valeur du modèle : ce qui reviendra sera attribué à son auteur, jamais compté comme preuve.",
+      "nodeType": "moment",
+      "consultationStatus": "published",
+      "consultationChannel": "reddit",
+      "consultationCategory": "unanswered_question",
+      "askedAt": "2026-07-22",
+      "findingId": "question:reddit-question-model-diversity-collective",
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "publishedAt": "2026-07-22",
+      "sourceUrl": "https://www.reddit.com/r/artificial/comments/1v3otnp/a_million_people_a_million_personal_ais_three/",
+      "sourceTitle": "Question Reddit · Diversité réelle des modèles à grande échelle",
+      "semanticType": "consultation"
+    },
+    {
+      "id": "consultation-mecanisme-reddit-mechanism-public-co--dem-agent-deliberation",
+      "name": "Consultation · Signal Reddit · Propositions publiques de consensus IA-à-IA",
+      "phrase": "chercher les angles morts d'un mécanisme proposé sans implémentation ni test Soumis à une audience externe, sans engagement sur la valeur des réponses.",
+      "family": "Consultation externe · Solution sous-spécifiée",
+      "summary": "Éléments manquants : test. 0 question(s) ouverte(s), 0 test(s), 1 justification(s) et 2 lien(s) d’implémentation. La consultation demande : Où est-ce que ça casse, et qu'est-ce qui a déjà été tenté de similaire ? Elle n'engage aucune valeur du modèle : ce qui reviendra sera attribué à son auteur, jamais compté comme preuve.",
+      "nodeType": "moment",
+      "consultationStatus": "draft",
+      "consultationChannel": "reddit",
+      "consultationCategory": "underspecified_solution",
+      "askedAt": "2026-07-22",
+      "findingId": "solution:reddit-mechanism-public-consensus-proposals",
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "semanticType": "consultation"
+    },
+    {
+      "nodeType": "moment",
+      "consultationStatus": "published",
+      "consultationChannel": "reddit",
+      "askedAt": "2026-07-22",
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "id": "consultation-mecanisme-hybrid-sovereign-stack",
+      "name": "Consultation · Stack hybride de souveraineté — où casse-t-elle ?",
+      "phrase": "Éprouver la réponse donnée à l'objection de capture, qui n'a jamais été implémentée ni testée.",
+      "family": "Consultation externe · Solution sous-spécifiée",
+      "summary": "La stack hybride est la seule réponse ADDRESSES à « Qui gouverne le modèle de base ? ». Elle n'a ni implémentation, ni test, ni mode d'échec documenté. La consultation demande où elle casse, en nommant quatre points de rupture soupçonnés : mémoire portable sans calibration portable, trusted compute promis par la partie dont on se méfie, petits modèles locaux insuffisants, protocoles ouverts perdant face aux produits intégrés.",
+      "consultationCategory": "underspecified_solution",
+      "publishedAt": "2026-07-22",
+      "sourceUrl": "https://www.reddit.com/r/artificial/comments/1v3osgi/last_month_you_asked_me_who_governs_the_base/",
+      "sourceTitle": "Stack hybride de souveraineté — où casse-t-elle ?",
+      "semanticType": "consultation"
+    },
+    {
+      "nodeType": "moment",
+      "consultationStatus": "published",
+      "consultationChannel": "reddit",
+      "askedAt": "2026-07-22",
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "id": "consultation-tension-approximation-vs-self-knowledge",
+      "name": "Consultation · L'approximation fonctionnelle survit-elle aux deux objections épistémiques ?",
+      "phrase": "Fusionner deux objections qui visent la même thèse, et soumettre le protocole de test au lieu du résultat.",
+      "family": "Consultation externe · Contradiction ou tension",
+      "summary": "Deux CONTRADICTS distincts visent la même hypothèse : les préférences humaines sont mal structurées (UsefulUnderling), et l'expérience vécue n'est pas formalisable (sceadwian). Le graphe porte par ailleurs une auto-observation 31/50 explicitement non indépendante. La consultation soumet le protocole plutôt que le résultat : quelle expérience rendrait l'approximation fonctionnelle réellement falsifiable ?",
+      "consultationCategory": "contradiction",
+      "publishedAt": "2026-07-22",
+      "sourceUrl": "https://www.reddit.com/r/artificial/comments/1v3ouum/two_of_you_told_me_an_ai_cant_know_me_because_i/",
+      "sourceTitle": "L'approximation fonctionnelle survit-elle aux deux objections épistémiques ?",
+      "semanticType": "consultation"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "actor-reddit-ocean-protocol",
+      "name": "u/ocean_protocol",
+      "phrase": "Apporte l'outillage d'ensemble learning qui manquait à la question de diversité.",
+      "summary": "Commentateur r/artificial qui déplace la question du nombre de modèles vers la corrélation des erreurs, et propose une métrique, un protocole et un critère de seuil.",
+      "family": "Acteur · reddit",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/ocean_protocol/",
+      "semanticType": "actor"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "reddit-method-double-fault-diversity",
+      "name": "Méthode · Mesure de double faute pour la diversité effective",
+      "phrase": "Mesurer la corrélation des erreurs, pas le nombre de modèles.",
+      "summary": "La double-fault measure de l'ensemble learning compte la fraction des cas où deux agents se trompent ensemble. Une diversité de sortie faible avec une corrélation d'erreurs forte est un faux pluralisme : trois modèles peuvent différer de ton tout en partageant l'angle mort sur les cas difficiles. La référence à l'extrémisation a été vérifiée le 22 juillet 2026 : Satopää, Pemantle et Ungar, « Modeling Probability Forecasts via Information Diversity », arXiv:1406.2148, publié au Journal of the American Statistical Association 111(516). Le résultat central soutient bien l'usage qu'en fait le commentateur — la quantité optimale d'extrémisation varie en fonction du recouvrement d'information entre experts.",
+      "family": "Méthode · issue de consultation externe",
+      "nodeType": "narrative",
+      "semanticType": "method"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "reddit-method-base-model-swap-variance",
+      "name": "Méthode · Permutation des modèles de base à préférences fixées",
+      "phrase": "Fixer l'humain, permuter le modèle, lire la variance du résultat.",
+      "summary": "Protocole opérationnel proposé : fixer les préférences déclarées d'une personne, faire tourner la même délibération sur les modèles de base A, B puis C, et mesurer la variance du résultat. Une variance faible indique que le système suit l'humain ; une variance forte indique une idiosyncrasie de modèle déguisée en diversité humaine. Le protocole n'a jamais été exécuté.",
+      "family": "Méthode · issue de consultation externe",
+      "nodeType": "narrative",
+      "semanticType": "method"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "reddit-claim-diversity-threshold-self-consistency",
+      "name": "Affirmation · Seuil de diversité par auto-cohérence",
+      "phrase": "En dessous de l'auto-cohérence d'un seul modèle, on a un modèle en trois costumes.",
+      "summary": "Aucun seuil universel n'est proposé, mais un plancher relatif l'est : la corrélation d'erreurs entre modèles doit au minimum être inférieure à la variance d'auto-cohérence d'un modèle unique entre graines aléatoires. Au-dessus, la pluralité apparente n'est qu'un seul modèle décliné.",
+      "family": "Affirmation · issue de consultation externe",
+      "nodeType": "narrative",
+      "semanticType": "claim"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "actor-reddit-master-bug-6904",
+      "name": "u/Master-Bug6904",
+      "phrase": "Fournit le protocole préenregistré que le test improvisé n'avait pas.",
+      "summary": "Commentateur r/artificial qui transforme un auto-test non aveugle en design falsifiable : préenregistrement, questions écrites par un tiers, jeu scellé, plafond d'auto-cohérence, quatre prédicteurs comparés, scores propres plutôt que top-1, et rappel que même un succès n'établirait qu'une personnalisation prédictive.",
+      "family": "Acteur · reddit",
+      "nodeType": "actor",
+      "sourceUrl": "https://www.reddit.com/user/Master-Bug6904/",
+      "semanticType": "actor"
+    },
+    {
+      "id": "consultation-personal-ai-preference-prediction",
+      "name": "Consultation · Un test de fidélité qui pourrait réellement échouer",
+      "phrase": "Soumettre un auto-test non aveugle à une audience externe pour obtenir un protocole capable d'échouer.",
+      "family": "Consultation externe · Question non résolue",
+      "summary": "Post r/artificial du 22 juillet 2026 : un auto-test de prédiction des préférences déclarées (50 questions A/B/C, 31 bonnes réponses contre 16-17 attendues par hasard) est publié avec ses défauts nommés — questions écrites par le sujet, notation par le sujet, n = 2, aucune baseline, préférences dépendantes de l'état. La demande porte sur un design falsifiable, les bonnes baselines, les travaux antérieurs, et l'argument selon lequel aucune précision de prédiction ne répondrait à l'objection sur l'expérience vécue. Le nombre 31/50 est explicitement écarté par l'auteur. Cette consultation est rattachée après coup aux nœuds du district seed, écrits le même jour : elle porte sur le même verrou, elle ne les a pas précédés.",
+      "nodeType": "moment",
+      "consultationStatus": "harvested",
+      "consultationChannel": "reddit",
+      "consultationCategory": "unanswered_question",
+      "askedAt": "2026-07-22",
+      "findingId": "manual:l1-seed-import:fidelity-without-model-verdict",
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "publishedAt": "2026-07-22",
+      "sourceUrl": "https://www.reddit.com/r/artificial/comments/1v3ouum/",
+      "sourceTitle": "What would a version of this test look like that could actually fail?",
+      "semanticType": "consultation"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "reddit-method-preregistered-blinded-prediction",
+      "name": "Méthode · Préenregistrement, tiers auteur des questions et jeu scellé",
+      "phrase": "Celui qui écrit les questions et celui qui note les réponses ne doivent pas être celui qui est testé.",
+      "summary": "Design proposé en réponse : préenregistrer le protocole, faire générer les questions par une personne indépendante sur des domaines déclarés, sceller un jeu de questions retenu avant la fin de la calibration, aveugler le correcteur quant à l'identité du prédicteur, puis publier toutes les questions et toutes les exclusions. Le protocole n'a jamais été exécuté.",
+      "family": "Méthode · issue de consultation externe",
+      "nodeType": "narrative",
+      "semanticType": "method"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "reddit-method-self-consistency-ceiling",
+      "name": "Méthode · Plafond d'auto-cohérence par test-retest",
+      "phrase": "Demander deux fois à la personne, à des semaines d'écart, borne ce qu'un prédicteur peut atteindre.",
+      "summary": "Recueillir les réponses du sujet deux fois, séparées de plusieurs semaines, pour estimer l'accord de la personne avec elle-même. Cet accord fixe le plafond que n'importe quel prédicteur peut atteindre : un score qui le dépasse mesure autre chose que la prédiction d'une préférence. Le protocole n'a jamais été exécuté.",
+      "family": "Méthode · issue de consultation externe",
+      "nodeType": "narrative",
+      "semanticType": "method"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "reddit-method-four-predictors-proper-scoring",
+      "name": "Méthode · Quatre prédicteurs comparés et scores propres",
+      "phrase": "Un score n'a de sens qu'à côté de trois autres, et le top-1 n'est pas le bon score.",
+      "summary": "Comparer quatre prédicteurs sur les mêmes questions : taux de base de population, inconnu disposant des écrits publics, proche connaissant la personne, et IA personnelle restreinte à sa mémoire antérieure au gel. Demander à chacun des probabilités plutôt qu'un choix, puis scorer en Brier ou log loss et en calibration. Le contexte d'état, s'il est fourni, doit l'être également à toutes les baselines. Le protocole n'a jamais été exécuté.",
+      "family": "Méthode · issue de consultation externe",
+      "nodeType": "narrative",
+      "semanticType": "method"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "reddit-claim-prediction-is-not-understanding",
+      "name": "Affirmation · Prédire n'est pas comprendre",
+      "phrase": "Même un succès complet n'établirait qu'une personnalisation prédictive.",
+      "summary": "Position rapportée : la réussite d'un test de prédiction de préférences déclarées établit une personnalisation prédictive, et rien sur la compréhension d'une expérience vécue. Les deux revendications doivent rester séparées, sous peine de substituer silencieusement la seconde à la première parce que la première est mesurable.",
+      "family": "Affirmation · issue de consultation externe",
+      "nodeType": "narrative",
+      "semanticType": "claim"
+    },
+    {
+      "dateLabel": "2026-07-22",
+      "clusterId": "consultations",
+      "epistemicStatus": "documented",
+      "id": "reddit-claim-exercise-not-worth-doing",
+      "name": "Affirmation · L'exercice ne valait pas le temps passé",
+      "phrase": "Des post-it, une cible de fléchettes et six bières auraient mieux occupé la soirée.",
+      "summary": "Position rapportée, sans méthode ni critère : le commentateur juge l'exercice sans valeur plutôt que mal conçu. Elle est conservée telle quelle. Un rejet sans argument reste une information sur la réception de la question posée, et l'effacer fabriquerait un accueil plus favorable que celui qui a eu lieu.",
+      "family": "Affirmation · issue de consultation externe",
+      "nodeType": "narrative",
+      "semanticType": "claim"
+    }
+  ],
+  "links": [
+    {
+      "source": "consultation-personal-ai-preference-prediction",
+      "target": "question-seed-fidelity-without-model-verdict",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet à une audience externe le verrou de mesure de fidélité : comment savoir si un modèle d une personne lui ressemble sans laisser ce modèle en juger. Elle interroge, elle ne conclut pas."
+    },
+    {
+      "source": "consultation-personal-ai-preference-prediction",
+      "target": "effect-seed-close-to-the-lived-life",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet également l effet recherché lui-même : elle demande à quelles conditions une affirmation de ressemblance pourrait échouer, plutôt que par quel chiffre elle pourrait être confirmée."
+    },
+    {
+      "source": "reddit-method-preregistered-blinded-prediction",
+      "target": "consultation-personal-ai-preference-prediction",
+      "type": "ANSWERS",
+      "justification": "Intervention publiée en réponse à la consultation sur la mesure de fidélité. Elle documente un design proposé, elle ne le valide pas."
+    },
+    {
+      "source": "reddit-method-self-consistency-ceiling",
+      "target": "consultation-personal-ai-preference-prediction",
+      "type": "ANSWERS",
+      "justification": "Intervention publiée en réponse à la consultation sur la mesure de fidélité. Elle documente une méthode proposée, elle ne l a pas exécutée."
+    },
+    {
+      "source": "reddit-method-four-predictors-proper-scoring",
+      "target": "consultation-personal-ai-preference-prediction",
+      "type": "ANSWERS",
+      "justification": "Intervention publiée en réponse à la consultation sur la mesure de fidélité. Elle documente un jeu de baselines et une règle de score, elle ne fournit aucun résultat."
+    },
+    {
+      "source": "reddit-claim-prediction-is-not-understanding",
+      "target": "consultation-personal-ai-preference-prediction",
+      "type": "ANSWERS",
+      "justification": "Intervention publiée en réponse à la consultation. Elle documente une délimitation de portée soutenue par son auteur, elle ne la démontre pas."
+    },
+    {
+      "source": "reddit-claim-exercise-not-worth-doing",
+      "target": "consultation-personal-ai-preference-prediction",
+      "type": "ANSWERS",
+      "justification": "Intervention publiée en réponse à la consultation. Elle documente un rejet sans méthode ; le graphe l enregistre sans le transformer en argument qu il ne contient pas."
+    },
+    {
+      "source": "reddit-method-preregistered-blinded-prediction",
+      "target": "actor-reddit-master-bug-6904",
+      "type": "AUTHORED_BY",
+      "justification": "Le design de préenregistrement et d aveuglement est attribué au commentateur qui l a publié dans le fil du 22 juillet 2026."
+    },
+    {
+      "source": "reddit-method-self-consistency-ceiling",
+      "target": "actor-reddit-master-bug-6904",
+      "type": "AUTHORED_BY",
+      "justification": "La méthode du plafond d auto-cohérence est attribuée au commentateur qui l a publiée dans le même message."
+    },
+    {
+      "source": "reddit-method-four-predictors-proper-scoring",
+      "target": "actor-reddit-master-bug-6904",
+      "type": "AUTHORED_BY",
+      "justification": "Le jeu de quatre prédicteurs et la règle de score propre sont attribués au commentateur qui les a publiés dans le même message."
+    },
+    {
+      "source": "reddit-claim-prediction-is-not-understanding",
+      "target": "actor-reddit-master-bug-6904",
+      "type": "AUTHORED_BY",
+      "justification": "La délimitation entre personnalisation prédictive et compréhension de l expérience vécue est attribuée au commentateur qui l a formulée en conclusion de son message."
+    },
+    {
+      "source": "reddit-claim-exercise-not-worth-doing",
+      "target": "actor-reddit-sceadwian",
+      "type": "AUTHORED_BY",
+      "justification": "Le rejet de l exercice est attribué au commentateur qui l a publié ; c est le même compte dont l objection sur l expérience vécue avait motivé le post."
+    },
+    {
+      "source": "consultation-tension-reddit-hypothesis-analysis--dem-thesis-continuous",
+      "target": "reddit-hypothesis-analysis-paralysis-pluralism",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet ce point à une audience externe afin de qualifier deux affirmations tenues simultanément. Elle interroge, elle ne conclut pas : aucune réponse ne validera ce nœud."
+    },
+    {
+      "source": "consultation-tension-reddit-hypothesis-analysis--dem-thesis-continuous",
+      "target": "dem-thesis-continuous",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet ce point à une audience externe afin de qualifier deux affirmations tenues simultanément. Elle interroge, elle ne conclut pas : aucune réponse ne validera ce nœud."
+    },
+    {
+      "source": "consultation-question-reddit-question-model-dive--dem-thesis-continuous",
+      "target": "reddit-question-model-diversity-collective",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet ce point à une audience externe afin de ouvrir une question que le corpus laisse structurellement ouverte. Elle interroge, elle ne conclut pas : aucune réponse ne validera ce nœud."
+    },
+    {
+      "source": "consultation-question-reddit-question-model-dive--dem-thesis-continuous",
+      "target": "dem-thesis-continuous",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet ce point à une audience externe afin de ouvrir une question que le corpus laisse structurellement ouverte. Elle interroge, elle ne conclut pas : aucune réponse ne validera ce nœud."
+    },
+    {
+      "source": "consultation-question-reddit-question-model-dive--dem-thesis-continuous",
+      "target": "dem-consensus-certificate",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet ce point à une audience externe afin de ouvrir une question que le corpus laisse structurellement ouverte. Elle interroge, elle ne conclut pas : aucune réponse ne validera ce nœud."
+    },
+    {
+      "source": "consultation-mecanisme-reddit-mechanism-public-co--dem-agent-deliberation",
+      "target": "reddit-mechanism-public-consensus-proposals",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet ce point à une audience externe afin de chercher les angles morts d'un mécanisme proposé sans implémentation ni test. Elle interroge, elle ne conclut pas : aucune réponse ne validera ce nœud."
+    },
+    {
+      "source": "consultation-mecanisme-reddit-mechanism-public-co--dem-agent-deliberation",
+      "target": "dem-agent-deliberation",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet ce point à une audience externe afin de chercher les angles morts d'un mécanisme proposé sans implémentation ni test. Elle interroge, elle ne conclut pas : aucune réponse ne validera ce nœud."
+    },
+    {
+      "source": "consultation-mecanisme-reddit-mechanism-public-co--dem-agent-deliberation",
+      "target": "institution-machine-deliberation",
+      "type": "CONSULTS",
+      "justification": "La consultation soumet ce point à une audience externe afin de chercher les angles morts d'un mécanisme proposé sans implémentation ni test. Elle interroge, elle ne conclut pas : aucune réponse ne validera ce nœud."
+    },
+    {
+      "source": "consultation-mecanisme-hybrid-sovereign-stack",
+      "target": "reddit-mechanism-hybrid-sovereign-stack",
+      "type": "CONSULTS",
+      "justification": "La stack est le mécanisme éprouvé : c'est sa robustesse qui est soumise, pas son intention."
+    },
+    {
+      "source": "consultation-mecanisme-hybrid-sovereign-stack",
+      "target": "reddit-question-base-model-governance",
+      "type": "CONSULTS",
+      "justification": "La question de gouvernance reste ouverte tant que la stack n'a pas résisté à un examen extérieur."
+    },
+    {
+      "source": "consultation-mecanisme-hybrid-sovereign-stack",
+      "target": "unlock-sovereign-personal-ai",
+      "type": "CONSULTS",
+      "justification": "La capacité entière dépend de cette réponse : si la stack casse, la souveraineté personnelle reste un mot."
+    },
+    {
+      "source": "consultation-tension-approximation-vs-self-knowledge",
+      "target": "reddit-hypothesis-functional-approximation-consent",
+      "type": "CONSULTS",
+      "justification": "L'hypothèse visée par les deux objections ; c'est elle qui doit devenir falsifiable."
+    },
+    {
+      "source": "consultation-tension-approximation-vs-self-knowledge",
+      "target": "reddit-hypothesis-self-knowledge-limit",
+      "type": "CONSULTS",
+      "justification": "Première objection soumise, sur la structure instable des préférences."
+    },
+    {
+      "source": "consultation-tension-approximation-vs-self-knowledge",
+      "target": "reddit-observation-personal-ai-abc-31-50",
+      "type": "CONSULTS",
+      "justification": "L'auto-observation est soumise comme protocole à critiquer, jamais comme résultat à confirmer."
+    },
+    {
+      "source": "reddit-method-double-fault-diversity",
+      "target": "consultation-question-reddit-question-model-dive--dem-thesis-continuous",
+      "type": "ANSWERS",
+      "justification": "Intervention publiée en réponse à la consultation sur la diversité des modèles. Elle documente une position argumentée, elle ne la valide pas."
+    },
+    {
+      "source": "reddit-method-double-fault-diversity",
+      "target": "actor-reddit-ocean-protocol",
+      "type": "AUTHORED_BY",
+      "justification": "Publié par u/ocean_protocol dans le fil de la consultation."
+    },
+    {
+      "source": "reddit-method-base-model-swap-variance",
+      "target": "consultation-question-reddit-question-model-dive--dem-thesis-continuous",
+      "type": "ANSWERS",
+      "justification": "Intervention publiée en réponse à la consultation sur la diversité des modèles. Elle documente une position argumentée, elle ne la valide pas."
+    },
+    {
+      "source": "reddit-method-base-model-swap-variance",
+      "target": "actor-reddit-ocean-protocol",
+      "type": "AUTHORED_BY",
+      "justification": "Publié par u/ocean_protocol dans le fil de la consultation."
+    },
+    {
+      "source": "reddit-claim-diversity-threshold-self-consistency",
+      "target": "consultation-question-reddit-question-model-dive--dem-thesis-continuous",
+      "type": "ANSWERS",
+      "justification": "Intervention publiée en réponse à la consultation sur la diversité des modèles. Elle documente une position argumentée, elle ne la valide pas."
+    },
+    {
+      "source": "reddit-claim-diversity-threshold-self-consistency",
+      "target": "actor-reddit-ocean-protocol",
+      "type": "AUTHORED_BY",
+      "justification": "Publié par u/ocean_protocol dans le fil de la consultation."
+    },
+    {
+      "source": "reddit-method-double-fault-diversity",
+      "target": "reddit-question-model-diversity-collective",
+      "type": "ADDRESSES",
+      "justification": "Répond à la demande de métrique : la double faute donne une grandeur calculable qui sépare corrélation d'erreurs et nombre de fournisseurs. Traiter la question n'est pas la trancher."
+    },
+    {
+      "source": "reddit-method-base-model-swap-variance",
+      "target": "reddit-question-model-diversity-collective",
+      "type": "ADDRESSES",
+      "justification": "Répond à la demande d'un test opérationnel distinguant diversité des humains représentés et diversité des modèles sous-jacents."
+    },
+    {
+      "source": "reddit-claim-diversity-threshold-self-consistency",
+      "target": "reddit-question-model-diversity-collective",
+      "type": "ADDRESSES",
+      "justification": "Répond à la sous-question du seuil explicitement posée dans le post, par un plancher relatif plutôt qu'une valeur absolue."
+    }
+  ]
+}

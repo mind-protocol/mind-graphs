@@ -1,0 +1,1814 @@
+{
+  "schemaVersion": "1.17.0",
+  "language": "fr",
+  "principles": [
+    "Un type décrit ce qu’est un nœud, jamais son degré de vérité.",
+    "Le statut épistémique décrit comment nous savons, croyons ou proposons quelque chose.",
+    "Un prédicat de relation garde un sens directionnel unique.",
+    "Probabilité, confiance et taille d’effet sont trois mesures indépendantes.",
+    "Toute estimation quantitative doit être reliée à ses justifications par des nœuds et relations explicites.",
+    "Toute relation doit porter une justification textuelle qui décrit sa nature précise entre la source et la cible."
+  ],
+  "nodeTypes": [
+    {
+      "id": "actor",
+      "label": "acteur",
+      "description": "Entité agissante ou citoyen (pompe d'énergie)."
+    },
+    {
+      "id": "moment",
+      "label": "moment",
+      "description": "Événement de cycle de vie ou repère temporel."
+    },
+    {
+      "id": "narrative",
+      "label": "récit",
+      "description": "Proposition, claim, idée ou représentation de design."
+    },
+    {
+      "id": "space",
+      "label": "espace",
+      "description": "Périmètre, contexte d'application ou conteneur."
+    },
+    {
+      "id": "thing",
+      "label": "objet",
+      "description": "Artefact, document, métrique ou composant matériel/exécutable."
+    }
+  ],
+  "semanticTypes": [
+    {
+      "id": "subentity",
+      "label": "sous-entité",
+      "family": "cognition",
+      "epistemicStatus": "observed",
+      "description": "Acteur interne non-citoyen (état, persona) capable d'agir sur le graphe."
+    },
+    {
+      "id": "subentity_goal",
+      "label": "objectif de sous-entité",
+      "family": "volition",
+      "epistemicStatus": "working_hypothesis",
+      "description": "Cible temporaire (Narrative, État ou Question) sélectionnée par une sous-entité en état TARGETING."
+    },
+    {
+      "id": "subentity_state_machine",
+      "label": "machine à états de sous-entité",
+      "family": "behaviour",
+      "epistemicStatus": "design_proposal",
+      "description": "Spécification du cycle de vie (IDLE, TARGETING, ENGAGED, EVALUATING, RESOLVED) et des règles de transition d'une sous-entité."
+    },
+    {
+      "id": "subentity_action",
+      "label": "action mécanique de graphe",
+      "family": "behaviour",
+      "epistemicStatus": "observed",
+      "description": "Opération mécanique exécutée par une sous-entité sur la structure du graphe (ENFOLD, RELEASE, GATE_CONTROL, PULSE, ADDRESS)."
+    },
+    {
+      "id": "protocol",
+      "label": "protocole expérimental",
+      "family": "proposed_protocol",
+      "epistemicStatus": "working_hypothesis",
+      "description": "Système central proposé dont le graphe étudie les conditions, mécanismes et effets."
+    },
+    {
+      "id": "axiom",
+      "label": "axiome de design",
+      "family": "normative_claim",
+      "epistemicStatus": "design_proposal",
+      "description": "Principe normatif choisi par le projet ; il ne se prouve pas comme un fait."
+    },
+    {
+      "id": "unlock",
+      "label": "capacité débloquante",
+      "family": "proposed_capability",
+      "epistemicStatus": "design_proposal",
+      "description": "Capacité nécessaire ou souhaitée que le protocole cherche à rendre possible."
+    },
+    {
+      "id": "mechanism",
+      "label": "mécanisme de protocole",
+      "family": "proposed_mechanism",
+      "epistemicStatus": "design_proposal",
+      "description": "Moyen technique ou organisationnel générique proposé par Mind Protocol."
+    },
+    {
+      "id": "institution",
+      "label": "institution proposée",
+      "family": "proposed_institution",
+      "epistemicStatus": "design_proposal",
+      "description": "Organisation ou règle collective envisagée."
+    },
+    {
+      "id": "horizon",
+      "label": "horizon futur",
+      "family": "future_vision",
+      "epistemicStatus": "speculative_horizon",
+      "description": "Destination spéculative de long terme, non assimilable à une prévision."
+    },
+    {
+      "id": "forecast_event",
+      "label": "événement prospectif",
+      "family": "forecast",
+      "epistemicStatus": "scenario",
+      "description": "Événement futur conditionnel doté d’une fenêtre et d’hypothèses."
+    },
+    {
+      "id": "design_rationale",
+      "label": "raison de design",
+      "family": "design_argument",
+      "epistemicStatus": "design_proposal",
+      "description": "Problème ou tension expliquant pourquoi un mécanisme est proposé."
+    },
+    {
+      "id": "economic_mechanism",
+      "label": "mécanisme économique Mind",
+      "family": "proposed_mechanism",
+      "epistemicStatus": "design_proposal",
+      "description": "Règle économique opérationnelle proposée pour Mind."
+    },
+    {
+      "id": "design_effect",
+      "label": "effet recherché",
+      "family": "intended_outcome",
+      "epistemicStatus": "target",
+      "description": "Effet désiré par le design, à ne pas confondre avec un effet observé."
+    },
+    {
+      "id": "working_hypothesis",
+      "label": "hypothèse de travail",
+      "family": "hypothesis",
+      "epistemicStatus": "working_hypothesis",
+      "description": "Affirmation provisoire nécessitant vérification ou décision."
+    },
+    {
+      "id": "open_question",
+      "label": "question ouverte",
+      "family": "knowledge_gap",
+      "epistemicStatus": "unresolved",
+      "description": "Inconnue ou décision non résolue bloquant une partie du modèle."
+    },
+    {
+      "id": "system_state",
+      "label": "état testable du système",
+      "family": "observable_state",
+      "epistemicStatus": "test_target",
+      "description": "État désirable, indésirable ou mixte défini par des indicateurs observables."
+    },
+    {
+      "id": "source_document",
+      "label": "document source",
+      "family": "documented_source",
+      "epistemicStatus": "documented",
+      "description": "Artefact identifiable dont des propositions du graphe sont explicitement dérivées."
+    },
+    {
+      "id": "actor",
+      "label": "acteur ou auteur",
+      "family": "documented_actor",
+      "epistemicStatus": "documented",
+      "description": "Personne, collectif, organisation ou compte public associé à une source, une proposition ou une action."
+    },
+    {
+      "id": "consultation",
+      "label": "consultation externe",
+      "family": "external_inquiry",
+      "epistemicStatus": "unresolved",
+      "description": "Point du graphe soumis à une audience externe : ce qui a été demandé, où, et ce qui en est revenu. Une consultation enregistre une sollicitation ; elle n’affirme rien et ne prouve rien par elle-même."
+    },
+    {
+      "id": "claim",
+      "label": "affirmation",
+      "family": "claim",
+      "epistemicStatus": "working_hypothesis",
+      "description": "Proposition explicite susceptible d’être soutenue, contredite, testée ou révisée."
+    },
+    {
+      "id": "observation",
+      "label": "observation",
+      "family": "evidence_artifact",
+      "epistemicStatus": "observed",
+      "description": "Résultat observé dans un contexte, une population et une période explicités."
+    },
+    {
+      "id": "experiment",
+      "label": "expérience réalisée",
+      "family": "evidence_artifact",
+      "epistemicStatus": "documented",
+      "description": "Intervention ou protocole exécuté produisant des observations ou estimations."
+    },
+    {
+      "id": "dataset",
+      "label": "jeu de données",
+      "family": "evidence_artifact",
+      "epistemicStatus": "documented",
+      "description": "Collection de données identifiable avec provenance, couverture et limites."
+    },
+    {
+      "id": "metric",
+      "label": "métrique",
+      "family": "measurement_definition",
+      "epistemicStatus": "documented",
+      "description": "Définition d’une grandeur mesurable, de son unité et de sa méthode de calcul."
+    },
+    {
+      "id": "estimate",
+      "label": "estimation",
+      "family": "quantified_claim",
+      "epistemicStatus": "working_hypothesis",
+      "description": "Valeur quantitative contextualisée avec méthode, incertitude et justifications."
+    },
+    {
+      "id": "method",
+      "label": "méthode",
+      "family": "method_resource",
+      "epistemicStatus": "documented",
+      "description": "Procédure d’observation, d’expérimentation, de calcul ou d’inférence."
+    },
+    {
+      "id": "context",
+      "label": "contexte d’application",
+      "family": "scope_context",
+      "epistemicStatus": "documented",
+      "description": "Population, territoire, juridiction, période ou conditions dans lesquels une affirmation s’applique."
+    },
+    {
+      "id": "terme",
+      "label": "terme défini",
+      "family": "controlled_vocabulary",
+      "epistemicStatus": "documented",
+      "description": "Entrée de vocabulaire dont le sens est fixé par une définition et un contexte d’emploi explicites."
+    },
+    {
+      "id": "decision",
+      "label": "décision gouvernée",
+      "family": "governance_decision",
+      "epistemicStatus": "design_proposal",
+      "description": "Arbitrage traçable doté d’un cycle de vie, d’options, d’un responsable et de critères de clôture."
+    },
+    {
+      "id": "decision_option",
+      "label": "option de décision",
+      "family": "decision_option",
+      "epistemicStatus": "design_proposal",
+      "description": "Option comparable rattachée à une décision ; elle ne devient pas un choix approuvé sans changement explicite du statut de décision."
+    },
+    {
+      "id": "idea",
+      "label": "idée de travail",
+      "family": "work_item",
+      "epistemicStatus": "design_proposal",
+      "description": "Piste issue du graphe ou d’une recommandation, non encore engagée comme tâche."
+    },
+    {
+      "id": "task",
+      "label": "tâche exécutable",
+      "family": "work_item",
+      "epistemicStatus": "documented",
+      "description": "Unité de travail bornée avec statut, autonomie, critères de clôture et commande de vérification."
+    },
+    {
+      "id": "change",
+      "label": "changement livré",
+      "family": "work_log",
+      "epistemicStatus": "observed",
+      "description": "Trace immuable d’un changement effectivement réalisé et vérifié dans le projet."
+    }
+  ],
+  "relationFamilies": [
+    {
+      "id": "enablement",
+      "label": "condition de possibilité",
+      "description": "Rend possible sans affirmer une cause suffisante."
+    },
+    {
+      "id": "normative",
+      "label": "normatif",
+      "description": "Fonde, protège ou met en œuvre une proposition de design."
+    },
+    {
+      "id": "causal",
+      "label": "causal",
+      "description": "Affirme qu’un changement de la source contribue à changer la cible."
+    },
+    {
+      "id": "flow",
+      "label": "flux",
+      "description": "Transmet des ressources, données ou signaux sans affirmer à lui seul un effet final."
+    },
+    {
+      "id": "scenario",
+      "label": "scénario",
+      "description": "Relation prospective conditionnelle entre événements futurs."
+    },
+    {
+      "id": "design_reasoning",
+      "label": "raisonnement de design",
+      "description": "Relie tension, hypothèse, question, mécanisme et effet recherché."
+    },
+    {
+      "id": "validation",
+      "label": "validation",
+      "description": "Met une hypothèse ou un état à l’épreuve."
+    },
+    {
+      "id": "communication",
+      "label": "communication",
+      "description": "Traduit un mécanisme ou état en récit public."
+    },
+    {
+      "id": "evidence",
+      "label": "preuve",
+      "description": "Soutient, réfute ou met en contradiction une affirmation quantitative ou qualitative."
+    },
+    {
+      "id": "hierarchy",
+      "label": "hiérarchie",
+      "description": "Décrit une partie, un sous-cas, une instance ou une spécialisation sans impliquer de causalité."
+    },
+    {
+      "id": "contextual",
+      "label": "contexte",
+      "description": "Délimite la population, le territoire, la période ou les conditions d’application."
+    },
+    {
+      "id": "workflow",
+      "label": "travail du projet",
+      "description": "Relie idées, tâches, dépendances, cibles et changements livrés."
+    }
+  ],
+  "relationTypes": [
+    {
+      "id": "UNLOCKS",
+      "label": "débloque",
+      "family": "enablement",
+      "scope": "design_proposal",
+      "causalClaim": false,
+      "direction": "condition → capacité proposée",
+      "status": "active"
+    },
+    {
+      "id": "GROUNDS",
+      "label": "fonde",
+      "family": "normative",
+      "scope": "design_proposal",
+      "causalClaim": false,
+      "direction": "principe → choix de design",
+      "status": "active"
+    },
+    {
+      "id": "SAFEGUARDS",
+      "label": "protège",
+      "family": "normative",
+      "scope": "design_proposal",
+      "causalClaim": false,
+      "direction": "garde-fou → élément protégé",
+      "status": "active"
+    },
+    {
+      "id": "IMPLEMENTS",
+      "label": "met en œuvre",
+      "family": "normative",
+      "scope": "design_proposal",
+      "causalClaim": false,
+      "direction": "mécanisme → principe ou capacité réalisée",
+      "status": "active"
+    },
+    {
+      "id": "LEADS_TO",
+      "label": "conduit potentiellement à",
+      "family": "causal",
+      "scope": "design_hypothesis",
+      "causalClaim": true,
+      "direction": "cause contributive proposée → effet",
+      "status": "active",
+      "canonicalPredicate": "CAUSES"
+    },
+    {
+      "id": "CONVERGES_IN",
+      "label": "converge dans",
+      "family": "flow",
+      "scope": "design_proposal",
+      "causalClaim": false,
+      "direction": "composant → synthèse",
+      "status": "active"
+    },
+    {
+      "id": "MAKES_PLAUSIBLE",
+      "label": "rend plausible",
+      "family": "scenario",
+      "scope": "scenario",
+      "causalClaim": false,
+      "direction": "condition observée → scénario rendu plus plausible",
+      "status": "active"
+    },
+    {
+      "id": "SCENARIO_LEADS_TO",
+      "label": "peut conduire au scénario",
+      "family": "scenario",
+      "scope": "scenario",
+      "causalClaim": true,
+      "direction": "scénario source → scénario cible",
+      "status": "active",
+      "canonicalPredicate": "CAUSES"
+    },
+    {
+      "id": "PRESSURES",
+      "label": "met sous pression",
+      "family": "scenario",
+      "scope": "scenario",
+      "causalClaim": true,
+      "direction": "pression → système affecté",
+      "status": "active"
+    },
+    {
+      "id": "MITIGATES",
+      "label": "atténue",
+      "family": "scenario",
+      "scope": "scenario",
+      "causalClaim": true,
+      "direction": "réponse → risque réduit",
+      "status": "active"
+    },
+    {
+      "id": "AFFECTS_SCENARIO",
+      "label": "affecte le scénario",
+      "family": "scenario",
+      "scope": "scenario",
+      "causalClaim": true,
+      "direction": "scénario source → scénario affecté",
+      "status": "active"
+    },
+    {
+      "id": "MOTIVATES",
+      "label": "motive ce choix",
+      "family": "design_reasoning",
+      "scope": "design_proposal",
+      "causalClaim": false,
+      "direction": "problème ou raison → choix de design",
+      "status": "active"
+    },
+    {
+      "id": "CAUSES",
+      "label": "produit ou contribue à produire",
+      "family": "causal",
+      "scope": "hypothesis",
+      "causalClaim": true,
+      "direction": "cause contributive → effet",
+      "status": "active"
+    },
+    {
+      "id": "FEEDS",
+      "label": "alimente",
+      "family": "flow",
+      "scope": "design_hypothesis",
+      "causalClaim": false,
+      "direction": "source de flux → mécanisme ou état alimenté",
+      "status": "active"
+    },
+    {
+      "id": "ASSUMES",
+      "label": "suppose",
+      "family": "design_reasoning",
+      "scope": "working_hypothesis",
+      "causalClaim": false,
+      "direction": "hypothèse de travail → élément qui en dépend",
+      "status": "active"
+    },
+    {
+      "id": "TESTS",
+      "label": "met à l’épreuve",
+      "family": "validation",
+      "scope": "planned_test",
+      "causalClaim": false,
+      "direction": "expérience ou simulation → hypothèse ou état testé",
+      "status": "active"
+    },
+    {
+      "id": "COMMUNICATES",
+      "label": "met en récit",
+      "family": "communication",
+      "scope": "planned_communication",
+      "causalClaim": false,
+      "direction": "média ou récit → concept ou état communiqué",
+      "status": "active"
+    },
+    {
+      "id": "PART_OF",
+      "label": "fait partie de",
+      "family": "hierarchy",
+      "scope": "structural",
+      "causalClaim": false,
+      "direction": "partie → ensemble",
+      "status": "active"
+    },
+    {
+      "id": "SUBCASE_OF",
+      "label": "est un sous-cas de",
+      "family": "hierarchy",
+      "scope": "structural",
+      "causalClaim": false,
+      "direction": "cas spécifique → cas général",
+      "status": "active"
+    },
+    {
+      "id": "DERIVED_FROM",
+      "label": "dérive du document",
+      "family": "evidence",
+      "scope": "provenance",
+      "causalClaim": false,
+      "direction": "proposition extraite → document source",
+      "status": "active"
+    },
+    {
+      "id": "AUTHORED_BY",
+      "label": "attribué à",
+      "family": "evidence",
+      "scope": "provenance",
+      "causalClaim": false,
+      "direction": "proposition ou source → acteur auteur",
+      "status": "active"
+    },
+    {
+      "id": "CONSULTS",
+      "label": "consulte sur",
+      "family": "validation",
+      "scope": "unresolved",
+      "causalClaim": false,
+      "direction": "consultation → point du graphe soumis à l’audience",
+      "status": "active"
+    },
+    {
+      "id": "ANSWERS",
+      "label": "répond à la consultation",
+      "family": "evidence",
+      "scope": "provenance",
+      "causalClaim": false,
+      "direction": "signal externe rapporté → consultation qui l’a sollicité",
+      "status": "active"
+    },
+    {
+      "id": "SUPPORTS_ESTIMATE",
+      "label": "justifie l’estimation",
+      "family": "evidence",
+      "scope": "evidence",
+      "causalClaim": false,
+      "direction": "preuve ou résultat → estimation soutenue",
+      "status": "active"
+    },
+    {
+      "id": "CONTRADICTS",
+      "label": "contredit",
+      "family": "evidence",
+      "scope": "evidence",
+      "causalClaim": false,
+      "direction": "affirmation ou preuve → affirmation incompatible",
+      "status": "active",
+      "symmetric": true
+    },
+    {
+      "id": "ADDRESSES",
+      "label": "répond à",
+      "family": "design_reasoning",
+      "scope": "design_proposal",
+      "causalClaim": false,
+      "direction": "solution spécifiée → question ou problème traité",
+      "status": "active"
+    },
+    {
+      "id": "BLOCKS",
+      "label": "conditionne ou bloque",
+      "family": "design_reasoning",
+      "scope": "unresolved",
+      "causalClaim": false,
+      "direction": "question ouverte ou décision non prise → élément bloqué",
+      "status": "active"
+    },
+    {
+      "id": "OBSERVES",
+      "label": "observe",
+      "family": "evidence",
+      "scope": "observation",
+      "causalClaim": false,
+      "direction": "observation → état ou affirmation observée",
+      "status": "active"
+    },
+    {
+      "id": "PRODUCES",
+      "label": "produit comme résultat",
+      "family": "evidence",
+      "scope": "evidence",
+      "causalClaim": false,
+      "direction": "expérience → observation, données ou estimation",
+      "status": "active"
+    },
+    {
+      "id": "USES_METHOD",
+      "label": "utilise la méthode",
+      "family": "validation",
+      "scope": "method",
+      "causalClaim": false,
+      "direction": "activité ou estimation → méthode",
+      "status": "active"
+    },
+    {
+      "id": "MEASURES",
+      "label": "mesure selon",
+      "family": "validation",
+      "scope": "measurement",
+      "causalClaim": false,
+      "direction": "observation ou estimation → métrique",
+      "status": "active"
+    },
+    {
+      "id": "MEASURED_BY",
+      "label": "s’observe par",
+      "family": "validation",
+      "scope": "measurement",
+      "causalClaim": false,
+      "direction": "état ou effet observable → métrique qui l’objective",
+      "status": "active"
+    },
+    {
+      "id": "USES_DATASET",
+      "label": "utilise les données",
+      "family": "evidence",
+      "scope": "evidence",
+      "causalClaim": false,
+      "direction": "méthode, expérience ou estimation → jeu de données",
+      "status": "active"
+    },
+    {
+      "id": "APPLIES_IN",
+      "label": "s’applique dans",
+      "family": "contextual",
+      "scope": "context",
+      "causalClaim": false,
+      "direction": "affirmation, estimation ou mécanisme → contexte",
+      "status": "active"
+    },
+    {
+      "id": "OPTION_FOR",
+      "label": "est une option pour",
+      "family": "design_reasoning",
+      "scope": "decision_option",
+      "causalClaim": false,
+      "direction": "option explicite → décision à prendre",
+      "status": "active"
+    },
+    {
+      "id": "RECOMMENDS",
+      "label": "recommande",
+      "family": "design_reasoning",
+      "scope": "recommendation",
+      "causalClaim": false,
+      "direction": "proposition argumentée → décision concernée",
+      "status": "active"
+    },
+    {
+      "id": "PROMOTES_TO",
+      "label": "est promue en",
+      "family": "workflow",
+      "scope": "project_work",
+      "causalClaim": false,
+      "direction": "idée → tâche exécutable",
+      "status": "active"
+    },
+    {
+      "id": "TARGETS",
+      "label": "cible le travail sur",
+      "family": "workflow",
+      "scope": "project_work",
+      "causalClaim": false,
+      "direction": "tâche → nœud concerné",
+      "status": "active"
+    },
+    {
+      "id": "DEPENDS_ON",
+      "label": "dépend de",
+      "family": "workflow",
+      "scope": "project_work",
+      "causalClaim": false,
+      "direction": "tâche bloquée → tâche prérequise",
+      "status": "active"
+    },
+    {
+      "id": "DOCUMENTS_PROGRESS",
+      "label": "documente l’avancement de",
+      "family": "workflow",
+      "scope": "project_work",
+      "causalClaim": false,
+      "direction": "changement livré → tâche concernée",
+      "status": "active"
+    },
+    {
+      "id": "DEFINES",
+      "label": "définit",
+      "family": "hierarchy",
+      "scope": "documented",
+      "causalClaim": false,
+      "direction": "terme → élément d'ontologie qu'il définit",
+      "status": "active",
+      "description": "Un terme du vocabulaire fixe le sens d'un élément de l'ontologie : type de nœud, prédicat, statut épistémique ou famille de relations. Le lien rend la doctrine contestable dans le graphe au lieu de la laisser implicite dans le schéma."
+    }
+  ],
+  "epistemicStatuses": [
+    {
+      "id": "documented",
+      "label": "documenté",
+      "meaning": "Soutenu par une source ou un artefact identifiable ; ne garantit pas l’interprétation causale."
+    },
+    {
+      "id": "design_proposal",
+      "label": "proposition de design",
+      "meaning": "Choix normatif ou technique du projet."
+    },
+    {
+      "id": "working_hypothesis",
+      "label": "hypothèse de travail",
+      "meaning": "Affirmation provisoire nécessitant vérification."
+    },
+    {
+      "id": "scenario",
+      "label": "scénario",
+      "meaning": "Futur conditionnel, pas une prédiction certaine."
+    },
+    {
+      "id": "speculative_horizon",
+      "label": "horizon spéculatif",
+      "meaning": "Vision de long terme non probabilisée."
+    },
+    {
+      "id": "unresolved",
+      "label": "non résolu",
+      "meaning": "Question ouverte ou décision manquante."
+    },
+    {
+      "id": "target",
+      "label": "cible désirée",
+      "meaning": "Résultat recherché, non encore observé."
+    },
+    {
+      "id": "test_target",
+      "label": "état à tester",
+      "meaning": "État défini par un indicateur ; sa présence reste à mesurer."
+    },
+    {
+      "id": "observed",
+      "label": "observé",
+      "meaning": "Résultat effectivement observé dans un contexte documenté."
+    },
+    {
+      "id": "refuted",
+      "label": "réfuté",
+      "meaning": "Affirmation contredite par un test ou un ensemble de preuves jugé suffisant."
+    },
+    {
+      "id": "superseded",
+      "label": "remplacé",
+      "meaning": "Élément conservé pour traçabilité mais remplacé par une version plus récente."
+    }
+  ],
+  "quantification": {
+    "probabilityPct": {
+      "unit": "percent",
+      "range": [
+        0,
+        100
+      ],
+      "definition": "Probabilité que l’événement ou l’état spécifié survienne dans une population, un contexte et un horizon donnés.",
+      "requires": [
+        "eventDefinition",
+        "populationOrSystem",
+        "baselineDate",
+        "horizon",
+        "method",
+        "supportingNodes"
+      ]
+    },
+    "confidenceScore": {
+      "unit": "ratio",
+      "range": [
+        0,
+        1
+      ],
+      "definition": "Confiance dans la qualité de l’estimation, indépendante de la probabilité estimée.",
+      "anchors": [
+        {
+          "max": 0.2,
+          "label": "très faible"
+        },
+        {
+          "max": 0.4,
+          "label": "faible"
+        },
+        {
+          "max": 0.6,
+          "label": "moyenne"
+        },
+        {
+          "max": 0.8,
+          "label": "élevée"
+        },
+        {
+          "max": 1,
+          "label": "très élevée"
+        }
+      ],
+      "requires": [
+        "method",
+        "evidenceCoverage",
+        "supportingNodes"
+      ]
+    },
+    "effectSizePct": {
+      "unit": "percent_change",
+      "range": [
+        -100,
+        null
+      ],
+      "definition": "Variation relative d’une métrique explicitement nommée par rapport à une baseline explicite.",
+      "formula": "100 × (valeur_scenario - valeur_baseline) / abs(valeur_baseline)",
+      "requires": [
+        "metricId",
+        "baselineValue",
+        "scenarioValue",
+        "populationOrSystem",
+        "horizon",
+        "method",
+        "supportingNodes"
+      ]
+    },
+    "valenceScore": {
+      "unit": "signed_ratio",
+      "range": [
+        -1,
+        1
+      ],
+      "definition": "Estimation continue du bien-être humain vécu : -1 ancre une souffrance physique ou affective extrême, 0 un état neutre mesuré et +1 un bonheur ou bien-être extrême. Un champ absent signifie inconnu ; zéro ne signifie jamais absence de donnée.",
+      "requires": [
+        "populationOrSystem",
+        "contextId",
+        "methodId",
+        "confidenceScore",
+        "supportingNodes"
+      ]
+    },
+    "humanValenceDelta": {
+      "unit": "signed_ratio_change",
+      "range": [
+        -2,
+        2
+      ],
+      "definition": "Différence attribuable entre la valence humaine après et avant une contribution ou une interaction. La création de valeur Mind ne retient que sa partie positive, avec son incertitude et son contexte.",
+      "formula": "valence_après - valence_avant",
+      "requires": [
+        "metricId",
+        "baselineValue",
+        "scenarioValue",
+        "populationOrSystem",
+        "methodId",
+        "confidenceScore",
+        "supportingNodes"
+      ]
+    },
+    "quantificationStatus": [
+      "unquantified",
+      "assumption",
+      "model_estimate",
+      "observational_estimate",
+      "experimental_estimate",
+      "contested"
+    ]
+  },
+  "evidenceLadder": {
+    "purpose": "Échelle générale des niveaux de preuve du projet. Elle vaut pour toute affirmation défendable : arête causale du modèle comme paramètre du code qui calcule ce modèle. Un barreau ne conditionne jamais le droit d’écrire ; il déclare sur quoi l’affirmation tient aujourd’hui.",
+    "principle": "Le design et le développement ne doivent pas le niveau de preuve de la science. Le coût demandé n’est jamais de prouver, seulement d’étiqueter. Le seul véritable échec est un « on pense que » relu six mois plus tard comme un « on a mesuré ».",
+    "rungs": [
+      {
+        "id": "assertion",
+        "rank": 1,
+        "label": "assertion argumentée",
+        "meaning": "Défendu par un raisonnement de design explicite dans la justification, sans mesure externe. Confiance typiquement basse.",
+        "selfInvalidating": false,
+        "requiresReviewDate": true,
+        "expiryNote": "Rien ne viendra contredire ce barreau tout seul : le raisonnement reste littéralement vrai dans le fichier quand son contexte a disparu. D’où la date de revue obligatoire."
+      },
+      {
+        "id": "expert_judgment",
+        "rank": 2,
+        "label": "jugement attribué",
+        "meaning": "Défendu par le jugement d’une personne identifiée qui porte le contexte du projet. Ce n’est pas une clôture du débat : le jugement est faillible et révisable. Ce qui le distingue d’une assertion n’est pas l’autorité mais l’attribution — l’affirmation tient sur qui la porte, non sur le raisonnement énoncé.",
+        "selfInvalidating": false,
+        "requiresReviewDate": true,
+        "requiresField": "responsibleRole",
+        "expiryNote": "Mode d’échec propre : il tombe quand le modèle mental de la personne était faux, ce qui se détecte bien plus tard qu’un raisonnement réfuté. Exige donc un responsable nommé."
+      },
+      {
+        "id": "simulation",
+        "rank": 3,
+        "label": "mesuré en monde clos",
+        "meaning": "Chiffré par une exécution reproductible dans un monde fabriqué : run de simulation ou suite de tests. Sur une arête causale, le confidenceScore est réécrit par ce run.",
+        "selfInvalidating": true,
+        "requiresReviewDate": false,
+        "expiryNote": "Se rejoue, donc porte sa propre alarme : la mesure se contredit d’elle-même quand le monde clos change."
+      },
+      {
+        "id": "real_world",
+        "rank": 4,
+        "label": "preuve du monde réel",
+        "meaning": "Défendu par une observation, une expérience ou une source externe, reliée par SUPPORTS_ESTIMATE ou OBSERVES.",
+        "selfInvalidating": true,
+        "requiresReviewDate": false,
+        "expiryNote": "Les indicateurs observés se recalculent : un écart au réel finit par apparaître sans qu’on le cherche."
+      }
+    ]
+  },
+  "linkQuantification": {
+    "appliesToFamilies": [
+      "causal"
+    ],
+    "definition": "Une arête de la famille causal porte sa force sur le lien lui-même, indépendamment du degré de vérité des nœuds qu’elle relie.",
+    "fields": {
+      "effectSizePct": "Variation relative attendue de l’indicateur nommé de la cible par rapport à sa baseline ; même grossière ou estimée, elle doit exister. Même unité que effectSizePct des nœuds (percent_change).",
+      "confidenceScore": "Confiance dans l’affirmation causale (0–1), indépendante de la taille d’effet ; une assertion nue vaut une confiance basse mais explicite.",
+      "evidenceBasis": "Barreau de evidenceLadder défendant le lien causal, restreint à admittedRungs."
+    },
+    "admittedRungs": [
+      "assertion",
+      "real_world",
+      "simulation"
+    ],
+    "admissionNote": "expert_judgment n’est pas encore admis sur une arête causale. Les matières de la cité-jardin (corde → corde tendue → planches → pierre) sont calées sur quatre rangs ; insérer un barreau changerait le langage visuel de tout le corpus. Restriction assumée et rouvrable, pas oubli.",
+    "principle": "Aucun mur de statut épistémique n’autorise ni n’interdit un CAUSES ; c’est le chiffre porté par l’arête qui exprime sa force. Un CAUSES entre deux propositions de design est légitime dès lors qu’il porte evidenceBasis, confidenceScore et effectSizePct."
+  },
+  "parameterContract": {
+    "purpose": "Un paramètre du code qui produit une conclusion sur laquelle le projet agit est une affirmation comme une autre : il doit pouvoir être rouvert. Le code conserve le choix mais détruit les alternatives ; seule une décision du graphe garde les options écartées et le critère qui a tranché.",
+    "scope": "Seul le paramètre décisif appelle une décision : celui dont le changement changerait une conclusion sur laquelle le projet agit. Un paramètre d’agrément n’en demande aucune — exiger une justification partout produit une cérémonie qui dévalue les vraies.",
+    "anchor": {
+      "codeToGraph": "La déclaration du paramètre porte decisionId ; le validateur échoue si l’identifiant ne résout pas vers un nœud decision.",
+      "graphToCode": "Le nœud decision porte codeParameters, liste de références « module.paramètre » ; le validateur échoue si une référence ne résout pas vers un paramètre déclaré.",
+      "exactness": "Les deux sens doivent coïncider exactement : l’ensemble des paramètres qui désignent une décision est identique à l’ensemble que cette décision revendique. Une correspondance partielle passerait inaperçue, ce qui est précisément le drift à empêcher.",
+      "rationale": "Le double sens est ce qui survit aux refactors : renommer ou supprimer le paramètre casse le lien au lieu de le laisser pourrir en silence."
+    },
+    "requiredOnDecision": [
+      "codeParameters",
+      "evidenceRung"
+    ],
+    "nullRungIsLegal": "evidenceRung doit être présent mais peut valoir null, ce qui déclare « ce choix tourne sans qu’aucune raison n’ait été enregistrée ». Forcer un barreau plancher inventerait une assertion argumentée là où il n’y a rien : le graphe doit pouvoir dire l’absence, sinon il la maquille.",
+    "measures": [
+      "part des paramètres décisifs portant un barreau déclaré",
+      "justifications de barreau non auto-invalidant dont la date de revue est dépassée"
+    ],
+    "measurementPrinciple": "On mesure la déclaration et la fraîcheur, jamais l’altitude. Viser un barreau haut partout pousserait au benchmark cérémoniel et punirait les choix normatifs, qui sont déjà à leur plafond."
+  },
+  "causalContract": {
+    "purpose": "Le graphe est un moteur d’inférence causale, pas seulement un registre de provenance. Un mécanisme n’est causalement complet que lorsqu’il affirme l’effet qu’il produit sur un état ou une métrique observable.",
+    "canonicalCause": {
+      "predicate": "CAUSES",
+      "preferredSourceTypes": [
+        "mechanism",
+        "economic_mechanism"
+      ],
+      "canonicalTargetTypes": [
+        "system_state",
+        "metric"
+      ],
+      "rationale": "Une arête causale doit pouvoir déplacer un indicateur falsifiable : system_state porte stateIndicator/stateOrientation, metric porte baselineValue/scenarioValue. L orientation indique ce que le projet vise ou évite ; elle ne doit pas être confondue avec valenceScore, estimation continue du bien-être humain. On ne pointe pas un CAUSES vers un design_effect, qui reste l’effet visé (relié par MOTIVATES), non l’effet affirmé. Test de complétude d’un mécanisme : l’état qu’il cause coïncide-t-il avec l’effet recherché qu’il vise ?",
+      "constraintNote": "relationConstraints.CAUSES autorise les cibles falsifiables (groupe testable) et metric. design_effect en est exclu : l'effet visé se relie par MOTIVATES, l'effet affirmé vise l'état ou la métrique observable."
+    },
+    "flowVsCause": {
+      "FEEDS": "Transmet une ressource, une donnée ou un signal sans affirmer à lui seul qu’un indicateur bouge (plomberie).",
+      "CAUSES": "Affirme qu’un indicateur nommé de la cible change, avec effectSizePct et confidenceScore.",
+      "rule": "Dès qu’un auteur affirme qu’un FEEDS déplace un indicateur, il ajoute un CAUSES chiffré parallèle. On ne fusionne pas les deux prédicats : le FEEDS documente le canal, le CAUSES documente l’effet, et l’ambiguïté « ce flux a-t-il un effet ? » devient obligatoirement explicite."
+    },
+    "scenarioCausality": "La causalité entre événements futurs conditionnels reste dans la famille scenario (SCENARIO_LEADS_TO, PRESSURES, MITIGATES, AFFECTS_SCENARIO). CAUSES est réservé à mécanisme → état ou métrique.",
+    "enforcement": "Contrat déclaratif mesuré par un indicateur de saturation causale dans l’analyse (part des mécanismes non-orphelins ayant au moins un CAUSES vers un system_state ou une metric), jamais imposé par un refus du validateur. Aucun quota arbitraire : l’indicateur rend le déficit visible, l’humain le résorbe cas par cas.",
+    "gapStates": {
+      "effect_unencoded": "L’effet du mécanisme est connu mais pas encore saisi comme arête causale.",
+      "effect_unknown": "L’effet du mécanisme reste à établir par recherche ou expérimentation.",
+      "effect_unobservable": "Le mécanisme ne peut affirmer aucun effet parce que son périmètre ne contient aucun état ni métrique à déplacer."
+    }
+  },
+  "observabilityContract": {
+    "purpose": "Un CAUSES ne peut être chiffré que si sa cible possède une unité de mesure. La chaîne d’ancrage relie donc le mécanisme à un observable, puis l’observable à sa métrique.",
+    "anchorChain": "mechanism —CAUSES→ system_state —MEASURED_BY→ metric ←MEASURES— experiment",
+    "rules": [
+      "Un system_state décrit une situation qualifiée ; sa quantification vit dans les metric reliées par MEASURED_BY, jamais dans le texte de stateIndicator seul.",
+      "stateIndicator reste un résumé humain ; sa divergence avec les MEASURED_BY est un signal d’audit, pas une erreur de validation.",
+      "Une metric sans MEASURED_BY entrante n’est rattachée à aucun état : elle mesure une expérience isolée et ne peut servir de cible causale.",
+      "Un périmètre qui contient des mécanismes sans aucun system_state ni metric rend le contrat causal structurellement insatisfiable : c’est une lacune d’observabilité, à corriger avant toute campagne de chiffrage."
+    ],
+    "enforcement": "Mesuré par l’indicateur d’observabilité de l’analyse (couverture des états par une métrique, et présence d’observables par périmètre). Le validateur ne refuse rien : il n’existe aucun quota d’états ni de métriques."
+  },
+  "consultationContract": {
+    "purpose": "Certaines lacunes du graphe ne se résorbent ni par relecture ni par simulation : il faut des angles morts qu’un auteur seul ne produit pas. Une consultation soumet un point précis du graphe à une audience externe, puis rapporte ce qui en revient sans lui donner un statut qu’il n’a pas.",
+    "statuses": [
+      "draft",
+      "published",
+      "harvested",
+      "closed"
+    ],
+    "requiredFields": [
+      "consultationStatus",
+      "consultationChannel",
+      "askedAt"
+    ],
+    "requiredWhenPublished": [
+      "sourceUrl",
+      "publishedAt"
+    ],
+    "eligibleFindingCategories": [
+      "unanswered_question",
+      "unquantified_causal",
+      "contradiction",
+      "underspecified_solution"
+    ],
+    "solicitationRule": "Une consultation remplace le source_document pour la matière sollicitée : un document non sollicité reste un source_document relié par DERIVED_FROM, une réponse sollicitée se relie par ANSWERS. Les deux encodent une provenance, aucun des deux n’encode une preuve.",
+    "harvestRule": "Un nœud relié à une consultation par ANSWERS documente qu’une personne l’a dit, dans un fil identifiable, à une date donnée. Il ne porte jamais probabilityPct, confidenceScore ni effectSizePct ; il ne peut être source ni d’un SUPPORTS_ESTIMATE ni d’une arête causale chiffrée. Une réponse convaincante produit une tâche, une expérience ou une question mieux posée — jamais un chiffre.",
+    "closureRule": "Une consultation qui n’a rien ramené reste visible en l’état. Le silence d’une audience est une information sur la question posée ; l’effacer fabriquerait un taux de réponse qui n’existe pas.",
+    "enforcement": "Le validateur contrôle les champs de la consultation et refuse toute quantification atteignable depuis une réponse. Il n’impose aucun quota de consultations et ne juge jamais la qualité d’une réponse."
+  },
+  "decisionLifecycle": {
+    "statuses": [
+      "proposed",
+      "in_review",
+      "approved",
+      "rejected",
+      "deferred",
+      "superseded"
+    ],
+    "requiredForReview": [
+      "responsibleRole",
+      "decisionDue",
+      "optionCriteria"
+    ],
+    "requiredForApproval": [
+      "chosenOptionId",
+      "decisionRationale",
+      "closureEvidence",
+      "reviewDate"
+    ],
+    "principle": "Une recommandation ou une option ne vaut jamais approbation ; seul le statut explicite de la décision fait foi."
+  },
+  "traversal": {
+    "weightRange": [
+      0,
+      1
+    ],
+    "definition": "Force sémantique d’une relation lors d’une propagation dans le graphe ; elle n’est ni une probabilité ni une confiance.",
+    "familyDefaults": {
+      "enablement": 0.75,
+      "normative": 0.8,
+      "causal": 0.9,
+      "flow": 0.75,
+      "scenario": 0.7,
+      "design_reasoning": 0.85,
+      "validation": 0.8,
+      "communication": 0.5,
+      "evidence": 0.95,
+      "hierarchy": 0.95,
+      "contextual": 0.85,
+      "workflow": 0.9
+    }
+  },
+  "hierarchy": {
+    "weightRange": [
+      0,
+      1
+    ],
+    "kinds": [
+      "none",
+      "part_of",
+      "subcase_of",
+      "instance_of",
+      "specializes"
+    ],
+    "definition": "Degré de containment ou de spécialisation porté par le lien ; zéro signifie que le lien n’est pas hiérarchique."
+  },
+  "nodeTypeHierarchy": {
+    "axiom": "claim",
+    "horizon": "claim",
+    "forecast_event": "claim",
+    "design_effect": "claim",
+    "working_hypothesis": "claim",
+    "estimate": "claim",
+    "economic_mechanism": "mechanism"
+  },
+  "typeGroups": {
+    "claims": [
+      "claim",
+      "axiom",
+      "horizon",
+      "forecast_event",
+      "design_effect",
+      "working_hypothesis",
+      "estimate"
+    ],
+    "design": [
+      "protocol",
+      "axiom",
+      "unlock",
+      "mechanism",
+      "institution",
+      "horizon",
+      "design_rationale",
+      "economic_mechanism",
+      "design_effect",
+      "working_hypothesis",
+      "decision",
+      "decision_option",
+      "subentity_goal",
+      "subentity_state_machine",
+      "subentity_action"
+    ],
+    "evidence": [
+      "source_document",
+      "actor",
+      "observation",
+      "experiment",
+      "dataset",
+      "method"
+    ],
+    "testable": [
+      "claim",
+      "working_hypothesis",
+      "system_state",
+      "forecast_event",
+      "estimate"
+    ],
+    "measurement": [
+      "observation",
+      "experiment",
+      "dataset",
+      "metric",
+      "estimate",
+      "method"
+    ],
+    "work": [
+      "idea",
+      "task",
+      "change"
+    ],
+    "vocabulary": [
+      "terme"
+    ],
+    "inquiry": [
+      "consultation"
+    ]
+  },
+  "relationConstraints": {
+    "UNLOCKS": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "targetGroups": [
+        "design"
+      ]
+    },
+    "GROUNDS": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "targetGroups": [
+        "design"
+      ]
+    },
+    "SAFEGUARDS": {
+      "sourceGroups": [
+        "design"
+      ],
+      "targetGroups": [
+        "design",
+        "claims"
+      ]
+    },
+    "IMPLEMENTS": {
+      "sourceGroups": [
+        "design",
+        "testable",
+        "evidence"
+      ],
+      "targetGroups": [
+        "design",
+        "claims"
+      ]
+    },
+    "LEADS_TO": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "targetGroups": [
+        "design",
+        "testable"
+      ]
+    },
+    "CONVERGES_IN": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "targetTypes": [
+        "protocol"
+      ]
+    },
+    "MAKES_PLAUSIBLE": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "targetTypes": [
+        "forecast_event"
+      ]
+    },
+    "SCENARIO_LEADS_TO": {
+      "sourceTypes": [
+        "forecast_event"
+      ],
+      "targetGroups": [
+        "design",
+        "testable"
+      ]
+    },
+    "PRESSURES": {
+      "sourceTypes": [
+        "forecast_event"
+      ],
+      "targetGroups": [
+        "design",
+        "testable"
+      ]
+    },
+    "MITIGATES": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "targetTypes": [
+        "forecast_event"
+      ]
+    },
+    "AFFECTS_SCENARIO": {
+      "sourceTypes": [
+        "forecast_event"
+      ],
+      "targetTypes": [
+        "forecast_event"
+      ]
+    },
+    "MOTIVATES": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "sourceTypes": [
+        "open_question"
+      ],
+      "targetGroups": [
+        "design",
+        "testable",
+        "work"
+      ]
+    },
+    "CAUSES": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "targetGroups": [
+        "testable"
+      ],
+      "targetTypes": [
+        "metric"
+      ]
+    },
+    "FEEDS": {
+      "sourceGroups": [
+        "design",
+        "testable",
+        "measurement"
+      ],
+      "targetGroups": [
+        "design",
+        "testable"
+      ],
+      "targetTypes": [
+        "method"
+      ]
+    },
+    "ASSUMES": {
+      "sourceGroups": [
+        "claims",
+        "testable"
+      ],
+      "targetGroups": [
+        "design",
+        "testable"
+      ]
+    },
+    "BLOCKS": {
+      "sourceTypes": [
+        "open_question",
+        "decision"
+      ],
+      "targetGroups": [
+        "design",
+        "testable"
+      ]
+    },
+    "TESTS": {
+      "sourceTypes": [
+        "working_hypothesis",
+        "experiment",
+        "protocol"
+      ],
+      "targetGroups": [
+        "design",
+        "testable"
+      ],
+      "targetTypes": [
+        "method"
+      ]
+    },
+    "ADDRESSES": {
+      "sourceGroups": [
+        "design",
+        "testable",
+        "evidence"
+      ],
+      "targetTypes": [
+        "open_question",
+        "decision"
+      ]
+    },
+    "COMMUNICATES": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "targetGroups": [
+        "claims",
+        "testable"
+      ]
+    },
+    "DERIVED_FROM": {
+      "sourceGroups": [
+        "design",
+        "claims",
+        "testable",
+        "evidence",
+        "vocabulary"
+      ],
+      "sourceTypes": [
+        "open_question"
+      ],
+      "targetTypes": [
+        "source_document",
+        "dataset"
+      ]
+    },
+    "AUTHORED_BY": {
+      "sourceGroups": [
+        "design",
+        "claims",
+        "testable",
+        "evidence",
+        "vocabulary",
+        "inquiry"
+      ],
+      "sourceTypes": [
+        "open_question"
+      ],
+      "targetTypes": [
+        "actor"
+      ]
+    },
+    "CONSULTS": {
+      "sourceTypes": [
+        "consultation"
+      ],
+      "targetGroups": [
+        "design",
+        "claims",
+        "testable",
+        "measurement"
+      ],
+      "targetTypes": [
+        "open_question",
+        "system_state",
+        "metric"
+      ]
+    },
+    "ANSWERS": {
+      "sourceGroups": [
+        "design",
+        "claims",
+        "testable",
+        "evidence"
+      ],
+      "sourceTypes": [
+        "open_question"
+      ],
+      "targetTypes": [
+        "consultation"
+      ]
+    },
+    "SUPPORTS_ESTIMATE": {
+      "sourceGroups": [
+        "evidence",
+        "measurement"
+      ],
+      "targetTypes": [
+        "estimate",
+        "claim",
+        "working_hypothesis",
+        "forecast_event",
+        "system_state"
+      ]
+    },
+    "CONTRADICTS": {
+      "sourceGroups": [
+        "claims",
+        "testable",
+        "evidence"
+      ],
+      "targetGroups": [
+        "claims",
+        "testable",
+        "evidence"
+      ]
+    },
+    "PART_OF": {
+      "allowAny": true
+    },
+    "SUBCASE_OF": {
+      "allowAny": true
+    },
+    "OBSERVES": {
+      "sourceTypes": [
+        "observation"
+      ],
+      "targetGroups": [
+        "claims",
+        "testable"
+      ]
+    },
+    "PRODUCES": {
+      "sourceTypes": [
+        "experiment"
+      ],
+      "targetTypes": [
+        "observation",
+        "dataset",
+        "estimate"
+      ]
+    },
+    "USES_METHOD": {
+      "sourceTypes": [
+        "experiment",
+        "observation",
+        "estimate"
+      ],
+      "targetTypes": [
+        "method"
+      ]
+    },
+    "MEASURES": {
+      "sourceTypes": [
+        "experiment",
+        "observation",
+        "estimate",
+        "protocol"
+      ],
+      "targetTypes": [
+        "metric"
+      ]
+    },
+    "MEASURED_BY": {
+      "sourceTypes": [
+        "system_state",
+        "design_effect"
+      ],
+      "targetTypes": [
+        "metric"
+      ]
+    },
+    "USES_DATASET": {
+      "sourceTypes": [
+        "method",
+        "experiment",
+        "estimate"
+      ],
+      "targetTypes": [
+        "dataset"
+      ]
+    },
+    "APPLIES_IN": {
+      "sourceGroups": [
+        "design",
+        "claims",
+        "testable"
+      ],
+      "targetTypes": [
+        "context"
+      ]
+    },
+    "OPTION_FOR": {
+      "sourceTypes": [
+        "decision_option"
+      ],
+      "targetTypes": [
+        "decision"
+      ]
+    },
+    "RECOMMENDS": {
+      "sourceGroups": [
+        "design",
+        "testable"
+      ],
+      "targetTypes": [
+        "decision"
+      ]
+    },
+    "PROMOTES_TO": {
+      "sourceTypes": [
+        "idea"
+      ],
+      "targetTypes": [
+        "task"
+      ]
+    },
+    "TARGETS": {
+      "sourceTypes": [
+        "task"
+      ],
+      "targetGroups": [
+        "design",
+        "claims",
+        "testable",
+        "evidence",
+        "measurement",
+        "work",
+        "vocabulary"
+      ],
+      "targetTypes": [
+        "open_question",
+        "context",
+        "protocol"
+      ]
+    },
+    "DEPENDS_ON": {
+      "sourceTypes": [
+        "task"
+      ],
+      "targetTypes": [
+        "task"
+      ]
+    },
+    "DOCUMENTS_PROGRESS": {
+      "sourceTypes": [
+        "change"
+      ],
+      "targetTypes": [
+        "task"
+      ]
+    },
+    "DEFINES": {
+      "sourceTypes": [
+        "terme"
+      ],
+      "allowAny": true
+    }
+  },
+  "traversalContract": {
+    "unansweredQuestion": {
+      "startNodeType": "open_question",
+      "blockingRelations": [
+        "BLOCKS"
+      ],
+      "resolutionRelation": "ADDRESSES"
+    },
+    "underspecifiedSolution": {
+      "solutionNodeFamilies": [
+        "proposed_mechanism",
+        "proposed_capability",
+        "proposed_institution"
+      ],
+      "specificationRelations": [
+        "IMPLEMENTS",
+        "TESTS",
+        "ADDRESSES"
+      ],
+      "evidenceRelation": "SUPPORTS_ESTIMATE"
+    },
+    "fragileClaim": {
+      "claimRelations": [
+        "CAUSES",
+        "LEADS_TO",
+        "SCENARIO_LEADS_TO",
+        "PRESSURES",
+        "MITIGATES",
+        "AFFECTS_SCENARIO"
+      ],
+      "evidenceRelation": "SUPPORTS_ESTIMATE"
+    },
+    "contradiction": {
+      "explicitRelation": "CONTRADICTS",
+      "stateNodeType": "system_state",
+      "stateOrientationField": "stateOrientation"
+    },
+    "duplicateCandidate": {
+      "keys": [
+        "normalizedName",
+        "nodeType",
+        "family",
+        "neighborSignature"
+      ]
+    }
+  },
+  "stateOrientation": {
+    "purpose": "Orientation normative d'un system_state. Elle indique si le projet vise, évite ou discute cet état ; ce n est pas une mesure de valence humaine.",
+    "values": [
+      {
+        "id": "desirable",
+        "label": "désirable",
+        "meaning": "État que le projet cherche à rendre vrai ; sa présence reste à mesurer."
+      },
+      {
+        "id": "undesirable",
+        "label": "indésirable",
+        "meaning": "État que le projet cherche à éviter ; il rend le périmètre réfutable."
+      },
+      {
+        "id": "mixed",
+        "label": "mixte",
+        "meaning": "État dont l orientation normative dépend du contexte d'application, à expliciter par APPLIES_IN."
+      }
+    ],
+    "principle": "Les identifiants sont en anglais comme les types et les prédicats ; les libellés français appartiennent à l'interface. L orientation reste catégorielle ; la valence humaine est le float valenceScore borné de -1 à +1."
+  },
+  "humanValence": {
+    "purpose": "Signal terminal de valeur de Mind : le bien-être physique et affectif effectivement vécu par une personne, estimé sur une échelle continue de -1 à +1 et révisé à mesure que les capteurs s améliorent.",
+    "scoreField": "valenceScore",
+    "deltaField": "humanValenceDelta",
+    "unknownRule": "Une valeur absente signifie inconnue. La valeur 0 signifie qu une mesure conclut à un état neutre ; elle ne sert jamais de valeur de repli.",
+    "pricingRule": "Un prix Mind peut être informé par la partie positive d un delta de valence attribuable à une contribution, jamais par un signal brut isolé ni par la valeur intrinsèque supposée d une personne.",
+    "measurementRule": "Les durées de messages à l IA personnelle, biométries, comportements et interprétations sémantiques sont des estimateurs révisables avec méthode, contexte, consentement, incertitude et justification ; aucun n est la définition du bonheur."
+  },
+  "blueprintContract": {
+    "purpose": "Contrat de naissance du L1 : ce qui est identique chez tous les citoyens est la structure, ce qui leur appartient est le contenu. Le contrat rend cette frontière contrôlable au lieu de la laisser à la discipline de l éditeur du blueprint.",
+    "constitutionalAxiom": "axiom-structure-universal-content-sovereign",
+    "prohibitionAxiom": "axiom-blueprint-never-prefills-a-life",
+    "prohibitionField": "prohibitedPrefills",
+    "layers": [
+      {
+        "id": "constitution",
+        "label": "constitution",
+        "meaning": "Invariants qu une instance ne peut pas modifier silencieusement ; leur amendement relève d une procédure déclarée, pas d une mise à jour."
+      },
+      {
+        "id": "seed",
+        "label": "seed",
+        "meaning": "Capacités, outils et structures initiales fournis à l instanciation ; modifiables et migrables."
+      },
+      {
+        "id": "citizen_state",
+        "label": "état citoyen",
+        "meaning": "Mémoire, valeurs, relations, objectifs et inférences ; souverains, jamais atteignables par une migration de structure."
+      }
+    ],
+    "prohibitedPrefills": [
+      "personal_facts",
+      "inferred_psychology",
+      "political_or_cultural_preferences",
+      "biometrics",
+      "wellbeing_baseline",
+      "interpersonal_value_ranking",
+      "beliefs_as_universal_truth"
+    ],
+    "universalityRule": "Un blueprint déclare des types, des capacités, des patterns et des permissions. Il ne déclare jamais un fait, une préférence ou une croyance au nom du citoyen.",
+    "referenceRule": "Le savoir partagé entre dans un L1 par référence versionnée et annotation personnelle, jamais par copie présentée comme vérité locale.",
+    "forkRule": "Une instance L1 est un fork souverain : les évolutions du blueprint lui sont proposées, jamais poussées dans sa couche état citoyen.",
+    "seedImportRule": "L interdit de préremplissage vise ce que l éditeur écrirait au nom d un citoyen, pas ce que le citoyen apporte. Un seed peut naître plein si sa matière vient du corpus consenti de la personne, atomisée selon importContract.",
+    "enforcement": "Le validateur contrôle que les deux axiomes constitutionnels existent bien comme nœuds de type axiom et que chaque catégorie interdite ici est portée par l axiome de prohibition. Il ne juge ni la complétude du blueprint ni le contenu d une instance : une liste qui pourrit en silence est le seul échec qu il peut voir."
+  },
+  "importContract": {
+    "purpose": "Un L1 ne naît pas ignorant : le corpus déjà détenu par la personne est importé pour que son graphe démarre aussi proche que possible de la vie déjà vécue. Le contrat porte sur la forme de l entrée — atomisée, sourcée, qualifiée, révocable — jamais sur la véracité de ce qui entre.",
+    "pipelineNode": "mech-l1-seed-import-pipeline",
+    "sourceKindField": "importSourceKind",
+    "sourceLadder": [
+      {
+        "id": "documents",
+        "label": "documents et textes",
+        "meaning": "Écrits de la personne : la source la plus proche du fait déclaré, contre laquelle les suivantes se calibrent."
+      },
+      {
+        "id": "photos",
+        "label": "photographies",
+        "meaning": "Lieux, dates, présences et relations ; presque tout ce qui va au-delà du constat est une inférence, et les tiers y sont massivement présents."
+      },
+      {
+        "id": "videos",
+        "label": "vidéos et enregistrements",
+        "meaning": "Parole, scènes et déroulé temporel ; densité maximale, et captation massive de ce qui n était l objet de personne."
+      },
+      {
+        "id": "cloud_drive",
+        "label": "drive et espaces de stockage",
+        "meaning": "Arborescence, versions et partages porteurs de sens ; un seul consentement y ouvre le plus grand volume."
+      }
+    ],
+    "atomProvenanceFields": [
+      "sourceArtifact",
+      "sourceLocator",
+      "extractedAt",
+      "extractionMethod",
+      "confidenceScore",
+      "claimNature"
+    ],
+    "claimNatures": [
+      "declared_fact",
+      "observation",
+      "inference",
+      "preference"
+    ],
+    "atomizationRule": "Aucun artefact n entre entier comme vérité opaque. L unité mémorisée, corrigeable et oubliable est l atome, relié à l endroit exact d où il vient.",
+    "inferenceRule": "La quantité de données ne change pas le statut d une affirmation. Ce qu un modèle conclut reste une inférence, quels que soient sa confiance et le nombre de sources concordantes.",
+    "consentRule": "Le consentement est donné source par source, borné dans le temps et l usage, et retirable. Un accès unique à un espace de stockage n autorise pas l import de tout ce qu il contient.",
+    "revocationRule": "Retirer une source retire ce qui en descend, atomes dérivés et inférences comprises. Un oubli qui ne remonte pas la chaîne de provenance laisse survivre la conclusion en effaçant sa cause.",
+    "thirdPartyRule": "Les atomes concernant un tiers identifiable sont marqués, restent locaux et ne sont ni exportés ni agrégés. Ils décrivent la relation vue par le porteur du L1, jamais le tiers lui-même.",
+    "fidelityRule": "La fidélité d un seed se constate auprès de la personne qu il décrit — ce qu elle confirme, dément ou requalifie — jamais auprès du modèle qui l a produit.",
+    "enforcement": "Le validateur contrôle que le pipeline existe comme nœud et que l échelle de sources déclarée ici correspond exactement aux méthodes d import du graphe, une par catégorie. Il ne juge ni la qualité d une extraction ni le contenu d une instance."
+  },
+  "predictionContract": {
+    "purpose": "Modélisation continue d une personne par son IA : prédire en permanence ce qu elle va faire, observer ce qui arrive, apprendre de l écart. La réalité écrit les questions et note les réponses, ce qui supprime l auto-notation — au prix de trois dangers que le contrat borne : agir sur sa prédiction, rendre la personne prédictible, et transformer le journal en dossier.",
+    "engineNode": "mech-continuous-prediction-engine",
+    "restrictionNode": "mech-prediction-restriction-set",
+    "restrictionField": "restrictedPredictionDomains",
+    "restrictedDomains": [
+      "clinical_diagnosis",
+      "mental_health_crisis",
+      "addiction_relapse",
+      "relationship_rupture",
+      "third_party_behaviour",
+      "legal_or_financial_jeopardy"
+    ],
+    "ledgerRule": "Une prédiction non scellée avant l issue n a jamais existé. Le journal est append-only : une prédiction ratée ne peut être ni supprimée ni réécrite.",
+    "scoringRule": "Le score est une règle propre — Brier ou log loss — rapportée à une baseline construite sur les régularités passées de la personne. L exactitude brute est refusée : sur une prédiction continue elle est dominée par le trivial et monte sans qu aucune connaissance progresse.",
+    "contaminationRule": "Une issue précédée d une action du système est contaminée. Elle instruit le modèle de l effet des interventions, jamais le modèle de la personne. Les deux modèles restent séparés et ne partagent pas leur score.",
+    "predictabilityRule": "La prédictibilité d une personne n est jamais une cible. Aucune boucle d optimisation, aucun prix et aucune récompense ne prend le score de prédiction pour objectif. Une prédictibilité qui monte pendant que la surprise baisse est une alarme.",
+    "surfacingRule": "Une prédiction se montre comme un pari daté et probabilisé, ou ne se montre pas. Présentée comme un trait, elle devient une description à laquelle la personne se conforme ou contre laquelle elle se défend.",
+    "driftRule": "Une baisse de compétence est une hypothèse à deux branches — modèle vieilli ou personne changée — avant d être un motif de réentraînement. Réapprendre par réflexe effacerait le signal le plus intéressant qu une vie puisse produire.",
+    "restrictionScope": "Dans les domaines restreints, une prédiction n est ni affichée spontanément, ni exportée, ni utilisée dans un calcul économique. La restriction porte sur l affichage et la circulation, jamais sur l escalade humaine en cas d urgence.",
+    "enforcement": "Le validateur contrôle que le moteur existe comme nœud et que les domaines restreints déclarés ici sont exactement ceux portés par le nœud de retenue. Il ne juge ni la qualité d une prédiction ni la calibration d un moteur."
+  },
+  "vocabularyContract": {
+    "purpose": "Le schéma reste exécutable, mais son sens vit dans le graphe : chaque type, prédicat, statut et famille possède un terme qui le définit, relié par DEFINES et justifié comme toute autre relation.",
+    "bootstrap": "Le noyau déclaratif ne peut pas être dissous dans la donnée qu'il valide : graph-ontology.json reste la référence exécutable, le graphe en porte la doctrine.",
+    "definitionStatus": {
+      "defined": "La définition est écrite.",
+      "to_define": "Le terme existe et son sens reste à fixer ; le déficit est compté, jamais masqué."
+    }
+  },
+  "roleAxis": {
+    "purpose": "Axe physique primaire de chaque nœud, orthogonal au type épistémique. Le rôle dit ce que le nœud fait de l énergie ; le nodeType conservé en facette dit ce qu il affirme et avec quel statut épistémique. Cinq rôles ne remplacent pas trente types : ils s ajoutent comme premier axe et les trente restent la facette.",
+    "primacy": "role est l axe primaire écrit nativement sur le nœud ; nodeType est la facette épistémique conservée. Un rôle mal deviné est corrigible sans perte car la facette demeure.",
+    "derivation": "Le rôle par défaut de chaque type et ses overrides d instance vivent dans l4-node-type-mapping. Un override n est jamais appliqué en silence : le défaut est écrit et marqué en revue.",
+    "roles": [
+      {
+        "id": "actor",
+        "label": "acteur",
+        "function": "pompe",
+        "meaning": "injecte de l énergie ; entité agissante."
+      },
+      {
+        "id": "narrative",
+        "label": "narratif",
+        "function": "attracteur",
+        "meaning": "retient ; proposition, principe, question ou affirmation à interpréter."
+      },
+      {
+        "id": "moment",
+        "label": "moment",
+        "function": "passage",
+        "meaning": "transmet et absorbe ; événement de cycle de vie ou mesure datée."
+      },
+      {
+        "id": "space",
+        "label": "espace",
+        "function": "conteneur",
+        "meaning": "borne la diffusion ; périmètre ou contexte."
+      },
+      {
+        "id": "thing",
+        "label": "chose",
+        "function": "routeur",
+        "meaning": "laisse passer en transformant ; artefact ou composant exécutable."
+      }
+    ]
+  }
+}

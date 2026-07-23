@@ -1,0 +1,12 @@
+node_modules/
+artifacts/
+.claude/
+.env
+.env.*
+!.env.example
+*.log
+coverage/
+tmp/
+.DS_Store
+Thumbs.db
+*.tmp

@@ -1,0 +1,1741 @@
+{
+  "scope": "Formation des prix et adoption marchande. Ce cluster encode une lacune assumée — la fonction de prix n'existe pas encore — ses effets recherchés, les contraintes qu'elle doit respecter, et quatre options d'adoption marchande avec leurs conséquences positives et négatives. Toutes les arêtes causales sont des assertions argumentées à confiance basse : aucune n'est mesurée, aucune ne provient d'une simulation.",
+  "nodes": [
+    {
+      "id": "question-price-function-unspecified",
+      "name": "Question · De quoi le prix contextuel est-il fonction ?",
+      "nodeType": "narrative",
+      "phrase": "Le mécanisme central du modèle n'est pas encore spécifié.",
+      "family": "Économie · formation des prix",
+      "summary": "La masse monétaire est fixe et l'épargne est refusée : c'est donc le prix, et lui seul, qui alloue les ressources. Ses entrées, sa forme, ses bornes et son lieu d'exécution restent à définir.",
+      "questionCategory": "économie",
+      "decisionNeeded": "Définir les entrées du prix, leur pondération, les bornes, le lieu de calcul et la procédure de contestation.",
+      "verificationNeeded": "Fonction spécifiée, bornée, exécutable localement et rejouable sur les scénarios P0.",
+      "clusterId": "price-formation",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "effect-price-absorbs-urgency",
+      "name": "Cible · Le prix absorbe l'urgence",
+      "nodeType": "narrative",
+      "phrase": "On ne provisionne pas l'avenir : quand le besoin est réel, le prix tend vers zéro.",
+      "family": "Économie · effet recherché",
+      "summary": "Doctrine retenue en remplacement de l'épargne : plutôt que d'autoriser un stock pour les besoins futurs, le système fait chuter le prix au moment du besoin avéré. Cela supprime la nécessité d'accumuler sans réintroduire un guichet qui autoriserait certains stocks.",
+      "clusterId": "price-formation",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "effect-contribution-lowers-cost",
+      "name": "Cible · Contribuer baisse son propre coût de la vie",
+      "nodeType": "narrative",
+      "phrase": "Si tu fais tout bien, pour toi tout est gratuit.",
+      "family": "Économie · effet recherché",
+      "summary": "Ce qui rémunère un producteur n'est pas son solde mais l'effet de sa contribution récente sur ses propres prix. Mind fonctionne alors comme un registre de contribution qui abaisse le coût de la vie, plutôt que comme un moyen de paiement à convertir.",
+      "clusterId": "price-formation",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "axiom-price-urgency-to-zero",
+      "name": "Contrainte · Un besoin vital avéré fait tendre le prix vers zéro",
+      "nodeType": "narrative",
+      "phrase": "L'urgence ne se paie pas.",
+      "family": "Économie · contrainte de prix",
+      "summary": "Sans cette contrainte, refuser l'épargne revient à laisser une personne sans recours au moment précis où elle en a besoin. C'est la contrainte qui rend la non-accumulation soutenable.",
+      "clusterId": "price-formation",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-price-assumed-differentiation",
+      "name": "Contrainte · La différenciation des prix est assumée, pas dissimulée",
+      "nodeType": "narrative",
+      "phrase": "Deux personnes paient des prix différents, et le système le dit.",
+      "family": "Économie · contrainte de prix",
+      "summary": "Le projet assume de discriminer selon la contribution récente et l'état de confiance. La contrainte n'est donc pas l'égalité des prix mais l'explicitation : tout écart doit être attribuable à un critère nommé publiquement, jamais à un facteur non déclaré.",
+      "clusterId": "price-formation",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-price-contestable",
+      "name": "Contrainte · Tout prix est explicable et contestable",
+      "nodeType": "narrative",
+      "phrase": "Un prix qu'on ne peut pas contester est une décision sans recours.",
+      "family": "Économie · contrainte de prix",
+      "summary": "Une allocation différenciée sans procédure de contestation transforme l'algorithme en autorité. La contrainte impose une explication reconstituable par la personne et une voie de recours effective.",
+      "clusterId": "price-formation",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-price-bounded",
+      "name": "Contrainte · Le prix reste borné",
+      "nodeType": "narrative",
+      "phrase": "Explorer un prix n'autorise pas n'importe quel prix.",
+      "family": "Économie · contrainte de prix",
+      "summary": "Une exploration locale sans bornes rend le système imprévisible et manipulable. Des bornes publiques par catégorie de bien encadrent l'exploration sans rétablir un catalogue permanent.",
+      "clusterId": "price-formation",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-price-computed-locally",
+      "name": "Contrainte · La différenciation n'exige pas d'exporter la personne",
+      "nodeType": "narrative",
+      "phrase": "Un prix personnalisé ne doit pas se payer en surveillance.",
+      "family": "Économie · contrainte de prix",
+      "summary": "Différencier suppose de connaître la situation ; la contrainte impose que ce calcul reste local et que seules des sorties minimales quittent l'appareil, sinon le mécanisme de prix devient le meilleur outil de surveillance jamais déployé.",
+      "clusterId": "price-formation",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "decision-merchant-adoption",
+      "name": "Décision requise · Comment rendre l'adoption marchande soutenable ?",
+      "nodeType": "moment",
+      "phrase": "Un producteur reçoit une monnaie qui expire, ne s'accumule pas et n'achète que des biens de vie : qu'est-ce qui rend son acceptation rationnelle ?",
+      "family": "Décision économique · adoption",
+      "summary": "Quatre options non exclusives sont comparées. Elles ne se valent ni en délai, ni en réversibilité, ni en dépendance à des mécanismes non encore construits.",
+      "decisionNeeded": "Choisir la doctrine de régime permanent, le dispositif de démarrage et la soupape éventuelle, en les distinguant explicitement.",
+      "verificationNeeded": "Économie unitaire d'un producteur type simulée sur trois scénarios, dont un scénario sans subvention.",
+      "questionCategory": "économie",
+      "decisionStatus": "proposed",
+      "responsibleRole": "économie marchande",
+      "decisionDue": "2026-09-30",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-10-31",
+      "closureEvidence": "Doctrine de régime permanent arbitrée, dispositif de démarrage daté, soupape bornée ou écartée.",
+      "optionCriteria": [
+        "viabilité du producteur sans conversion",
+        "dépendance à un mécanisme non encore construit",
+        "réversibilité",
+        "risque de réintroduire la spéculation",
+        "délai avant premier test"
+      ],
+      "clusterId": "price-formation",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-adoption-contribution-discount",
+      "name": "Option A · La contribution récente baisse le prix du contributeur",
+      "nodeType": "narrative",
+      "phrase": "Ce qui rémunère le psychologue n'est pas son solde, c'est que ses propres achats deviennent presque gratuits.",
+      "family": "Option de décision · adoption",
+      "summary": "Doctrine de fond : Mind devient un registre de contribution qui abaisse le coût de la vie du contributeur. Le producteur n'a plus besoin de sortie vers l'euro puisqu'il n'a plus besoin d'acheter.",
+      "optionCode": "A",
+      "optionBenefits": [
+        "supprime le besoin de conversion",
+        "aligne rémunération et contribution réelle",
+        "cohérent avec la doctrine « si tu fais tout bien, tout est gratuit »"
+      ],
+      "optionRisks": [
+        "dépend entièrement d'une mesure de contribution qui n'existe pas encore",
+        "un score de contribution opaque devient une autorité sans recours",
+        "ne couvre pas les charges du producteur libellées en euros"
+      ],
+      "optionConditions": [
+        "mesure de contribution opérationnelle et contestable",
+        "couverture du panier vital suffisante pour que la baisse de prix compense réellement",
+        "explication reconstituable de chaque variation de score"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "économie marchande",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-adoption-basket-threshold",
+      "name": "Option B · Masse critique sectorielle du panier vital",
+      "nodeType": "narrative",
+      "phrase": "Accepter Mind devient rationnel dès qu'assez de son propre panier vital est payable en Mind.",
+      "family": "Option de décision · adoption",
+      "summary": "Plutôt qu'un pont vers l'euro, on vise une couverture sectorielle suffisante sur un territoire : le producteur dépense son Mind là où il vit. La grandeur décisive est un seuil, donc un objet mesurable et simulable.",
+      "optionCode": "B",
+      "optionBenefits": [
+        "falsifiable et simulable dès P0",
+        "ne demande aucun mécanisme nouveau",
+        "définit un objectif de déploiement clair : la couverture, pas le nombre d'utilisateurs"
+      ],
+      "optionRisks": [
+        "en dessous du seuil, l'acceptation est irrationnelle et l'offre se retire",
+        "exige une couverture quasi complète sur un territoire restreint avant tout élargissement",
+        "un seuil mal estimé condamne le pilote sans invalider le modèle"
+      ],
+      "optionConditions": [
+        "seuil estimé en simulation avant tout déploiement",
+        "périmètre géographique volontairement étroit",
+        "mesure continue de la couverture du panier vital"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "économie marchande",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-adoption-dated-subsidy",
+      "name": "Option C · Subvention de démarrage assumée et datée",
+      "nodeType": "narrative",
+      "phrase": "On paie l'amorçage en euros, on l'écrit, et on annonce la date de fin.",
+      "family": "Option de décision · adoption",
+      "summary": "Reprend la réserve bootstrap existante mais la qualifie explicitement comme subvention temporaire, avec une date de fin publique et une mesure séparant l'effet de la subvention de l'effet du modèle.",
+      "optionCode": "C",
+      "optionBenefits": [
+        "débloque immédiatement le démarrage",
+        "dispositif déjà budgété dans le graphe",
+        "effet fort et rapide sur la participation marchande"
+      ],
+      "optionRisks": [
+        "le pilote démontre que l'argent achète la participation, pas que le modèle tourne",
+        "falaise d'adoption à la fin de la subvention",
+        "si la date de fin n'est pas publique, la subvention devient structurelle par défaut"
+      ],
+      "optionConditions": [
+        "date de fin publique et engageante",
+        "mesure de rétention marchande après la fin de la subvention",
+        "aucune conclusion sur le modèle tirée pendant la période subventionnée"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "trésorerie et économie marchande",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-adoption-sunset-bridge",
+      "name": "Option D · Pont producteur plafonné avec extinction programmée",
+      "nodeType": "narrative",
+      "phrase": "Une soupape de sortie vers l'euro, réservée aux producteurs, plafonnée et destinée à se fermer.",
+      "family": "Option de décision · adoption",
+      "summary": "Soupape de sécurité contre la rupture d'offre, et non doctrine. Le pont n'est ouvert qu'aux producteurs, il est plafonné, tracé, et son extinction est programmée dès son ouverture.",
+      "optionCode": "D",
+      "optionBenefits": [
+        "réduit le risque de rupture d'offre pendant la montée en charge",
+        "rassure un producteur qui ne peut pas parier sur la couverture future",
+        "réversible par construction si l'extinction est écrite d'avance"
+      ],
+      "optionRisks": [
+        "rouvre le canal spéculatif que la séparation des domaines devait fermer",
+        "un plafond révisable à la hausse devient une convertibilité générale de fait",
+        "déplace la valeur de l'usage vers l'arbitrage entre les deux domaines"
+      ],
+      "optionConditions": [
+        "réservé aux producteurs identifiés",
+        "plafond et traçabilité publics",
+        "extinction datée et non prorogeable sans décision explicite"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "token economics et conformité",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "state-vital-basket-covered",
+      "name": "Le panier vital est réellement payable en Mind",
+      "nodeType": "narrative",
+      "phrase": "Sur ce territoire, ce dont on a besoin pour vivre s'achète en Mind.",
+      "family": "État du système · couverture",
+      "summary": "État de couverture d'un territoire : la part du panier vital effectivement payable auprès de fournisseurs disponibles, et non la part théoriquement éligible.",
+      "stateOrientation": "desirable",
+      "stateDimension": "accès matériel",
+      "stateIndicator": "part du panier vital effectivement payable en Mind sur le territoire",
+      "clusterId": "price-formation",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-adoption-bought",
+      "name": "L'adoption tient à la subvention, pas au modèle",
+      "nodeType": "narrative",
+      "phrase": "Les marchands partent quand l'argent s'arrête.",
+      "family": "État du système · illusion d'adoption",
+      "summary": "État indésirable dans lequel la participation marchande observée mesure la subvention versée plutôt que la viabilité du mécanisme, et s'effondre à la fin du financement.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "validité de la preuve",
+      "stateIndicator": "rétention marchande six mois après la fin de la subvention",
+      "clusterId": "price-formation",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-price-unexplainable",
+      "name": "Le prix est subi et non contestable",
+      "nodeType": "narrative",
+      "phrase": "On me donne un prix, je ne sais pas pourquoi, je ne peux rien en faire.",
+      "family": "État du système · recours",
+      "summary": "État indésirable dans lequel la différenciation des prix est appliquée sans explication reconstituable ni voie de recours effective, transformant l'algorithme en autorité.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "pouvoir et recours",
+      "stateIndicator": "part des prix contestés recevant une explication jugée recevable par la personne",
+      "clusterId": "price-formation",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-contribution-opaque",
+      "name": "La contribution devient un score opaque",
+      "nodeType": "narrative",
+      "phrase": "Mon coût de la vie dépend d'un score que je ne comprends pas.",
+      "family": "État du système · recours",
+      "summary": "État indésirable dans lequel la mesure de contribution qui pilote les prix n'est pas reconstituable par la personne concernée, ce qui rend l'écart de prix indéfendable même s'il est juste.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "pouvoir et recours",
+      "stateIndicator": "part des variations de score que la personne peut reconstituer",
+      "clusterId": "price-formation",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "metric-vital-basket-mind-coverage",
+      "name": "Couverture du panier vital en Mind",
+      "nodeType": "narrative",
+      "phrase": "Quelle part de ce qu'il faut pour vivre est réellement payable en Mind ?",
+      "family": "Mesure · couverture",
+      "summary": "Part, en valeur, du panier vital de référence effectivement payable en Mind auprès de fournisseurs disponibles sur le territoire, mesurée mensuellement. La disponibilité réelle est exigée : l'éligibilité théorique ne compte pas.",
+      "clusterId": "price-formation",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-merchant-retention-post-subsidy",
+      "name": "Rétention marchande après subvention",
+      "nodeType": "narrative",
+      "phrase": "Combien de marchands restent quand l'argent s'arrête ?",
+      "family": "Mesure · adoption",
+      "summary": "Part des marchands actifs à la fin de la subvention encore actifs six mois après, à périmètre constant. C'est la seule mesure qui sépare l'effet du modèle de l'effet du financement.",
+      "clusterId": "price-formation",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-merchant-margin-coverage",
+      "name": "Couverture des charges du producteur",
+      "nodeType": "narrative",
+      "phrase": "Le producteur couvre-t-il ses intrants, son travail et sa maintenance ?",
+      "family": "Mesure · viabilité",
+      "summary": "Rapport entre les charges d'un producteur type et ce que son activité en Mind lui permet de couvrir, en distinguant explicitement la part des charges libellées en euros.",
+      "clusterId": "price-formation",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-stockout-days",
+      "name": "Jours de rupture sur le panier vital",
+      "nodeType": "narrative",
+      "phrase": "Combien de jours le droit existe-t-il sans que le bien existe ?",
+      "family": "Mesure · offre",
+      "summary": "Nombre de jours-produits pendant lesquels un bien du panier vital est payable en Mind mais indisponible, rapporté au nombre de jours-produits observés.",
+      "clusterId": "price-formation",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-price-appeal-outcome",
+      "name": "Issue des contestations de prix",
+      "nodeType": "narrative",
+      "phrase": "Contester un prix mène-t-il quelque part ?",
+      "family": "Mesure · recours",
+      "summary": "Part des prix contestés recevant une explication jugée recevable par la personne, et part aboutissant à une révision. Les deux sont comptées séparément : comprendre n'est pas obtenir gain de cause.",
+      "clusterId": "price-formation",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-contribution-explainability",
+      "name": "Reconstituabilité du score de contribution",
+      "nodeType": "narrative",
+      "phrase": "La personne peut-elle refaire le calcul qui la concerne ?",
+      "family": "Mesure · recours",
+      "summary": "Part des variations du score de contribution qu'une personne peut reconstituer à partir des informations qui lui sont fournies, mesurée par reconstitution effective sur un échantillon.",
+      "clusterId": "price-formation",
+      "semanticType": "metric"
+    },
+    {
+      "id": "decision-mind-settlement-nature",
+      "name": "Décision requise · Mind circule-t-il ou s'éteint-il au paiement ?",
+      "nodeType": "moment",
+      "phrase": "Monnaie récursive et droit de tirage ferment la boucle par deux architectures différentes.",
+      "family": "Décision économique · nature de Mind",
+      "summary": "Contexte : la récursion supprime le fonds central lorsque toute la chaîne accepte Mind ; le coupon fonctionne avant cette couverture mais exige un règlement euro. Problème : choisir une seule nature dès le lancement confond régime transitoire et régime cible.",
+      "decisionNeeded": "Choisir une architecture permanente ou une coexistence ordonnée par phases.",
+      "verificationNeeded": "Comptabilité de cycle complet sur un producteur type et mesure de la part encore réglée en euros.",
+      "questionCategory": "économie monétaire",
+      "decisionStatus": "proposed",
+      "responsibleRole": "architecture économique",
+      "decisionDue": "2026-09-30",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-10-31",
+      "closureEvidence": "Nature transitoire et nature cible nommées, règle de passage publiée et test comptable exécuté.",
+      "optionCriteria": [
+        "dépendance à un fonds euro",
+        "fermeture de boucle",
+        "délai de test",
+        "réversibilité"
+      ],
+      "clusterId": "price-formation",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-settlement-recursive-currency",
+      "name": "Option N1 · Monnaie récursive",
+      "nodeType": "narrative",
+      "phrase": "Le producteur reçoit Mind et le dépense dans sa chaîne d'approvisionnement.",
+      "family": "Option de décision · nature de Mind",
+      "summary": "Mind circule durablement ; l'euro se retire à mesure que les fournisseurs entrent dans le domaine.",
+      "optionCode": "N1",
+      "optionBenefits": [
+        "fermeture décentralisée",
+        "absence de rachat permanent"
+      ],
+      "optionRisks": [
+        "inopérante avant couverture productive",
+        "accumulation à contrôler"
+      ],
+      "optionConditions": [
+        "chaîne productive suffisamment couverte",
+        "prix et acceptation opérationnels"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "architecture économique",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-settlement-pure-drawdown",
+      "name": "Option N2 · Droit de tirage pur",
+      "nodeType": "narrative",
+      "phrase": "Mind est détruit au paiement et le producteur reçoit des euros du fonds.",
+      "family": "Option de décision · nature de Mind",
+      "summary": "Mind règle la priorité d'accès sans devenir un actif détenu par le producteur.",
+      "optionCode": "N2",
+      "optionBenefits": [
+        "fonctionne avant la récursion",
+        "non-accumulation structurelle"
+      ],
+      "optionRisks": [
+        "besoin de financement euro à l'échelle",
+        "centralisation du règlement"
+      ],
+      "optionConditions": [
+        "fonds solvable",
+        "règles de règlement auditables"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "trésorerie",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-settlement-temporal-coexistence",
+      "name": "Option N3 · Coexistence temporelle",
+      "nodeType": "narrative",
+      "phrase": "Mind se comporte d'abord comme un coupon puis devient circulant secteur par secteur.",
+      "family": "Option de décision · nature de Mind",
+      "summary": "Le règlement euro décroît selon la couverture productive mesurée ; la monnaie récursive reste le régime cible.",
+      "optionCode": "N3",
+      "optionBenefits": [
+        "démarrage praticable",
+        "transition orientée vers la récursion"
+      ],
+      "optionRisks": [
+        "complexité de deux régimes",
+        "transition capturable si les seuils restent discrétionnaires"
+      ],
+      "optionConditions": [
+        "seuils écrits avant lancement",
+        "mesure séparée des règlements euro et Mind"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "architecture économique et trésorerie",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "recommendation-temporal-coexistence",
+      "name": "Recommandation · Coupon transitoire, monnaie récursive cible",
+      "nodeType": "narrative",
+      "phrase": "La fonction de droit de tirage amorce la fonction monétaire au lieu de la remplacer.",
+      "family": "Recommandation Codex · nature de Mind",
+      "summary": "Adopter N3 : régler provisoirement en euros la part des charges encore extérieure à Mind, puis réduire cette part à mesure que la chaîne productive devient payable en Mind.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "price-formation",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "decision-mind-domain-boundary",
+      "name": "Décision requise · Où s'arrête le domaine Mind ?",
+      "nodeType": "moment",
+      "phrase": "Un four n'est ni un besoin vital direct ni un luxe : sa fonction productive décide de sa place.",
+      "family": "Décision économique · frontière du domaine",
+      "summary": "Contexte : limiter Mind aux achats finaux laisse les intrants en euros. Problème : une liste statique classe mal les biens à usage mixte et ne ferme pas la chaîne Carrefour.",
+      "decisionNeeded": "Choisir entre panier vital strict, catalogue administré et éligibilité récursive par usage productif.",
+      "verificationNeeded": "Classer des cas limites — four, camion, chambre froide, logiciel et actif mixte — avec une règle reproductible.",
+      "questionCategory": "périmètre économique",
+      "decisionStatus": "proposed",
+      "responsibleRole": "gouvernance économique",
+      "decisionDue": "2026-09-30",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-10-31",
+      "closureEvidence": "Règle d'éligibilité publiée et appliquée sans contradiction aux cas limites.",
+      "optionCriteria": [
+        "fermeture de chaîne",
+        "auditabilité",
+        "usages mixtes",
+        "risque d'expansion arbitraire"
+      ],
+      "clusterId": "price-formation",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-domain-vital-only",
+      "name": "Option F1 · Panier vital strict",
+      "nodeType": "narrative",
+      "phrase": "Seuls les biens consommés directement pour vivre sont payables en Mind.",
+      "family": "Option de décision · frontière",
+      "summary": "Frontière simple, mais les producteurs conservent leurs intrants et investissements en euros.",
+      "optionCode": "F1",
+      "optionBenefits": [
+        "frontière lisible",
+        "expansion limitée"
+      ],
+      "optionRisks": [
+        "boucle productive jamais fermée",
+        "dépendance permanente au pont"
+      ],
+      "optionConditions": [
+        "fonds euro permanent",
+        "définition du panier vital"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance économique",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-domain-administered-list",
+      "name": "Option F2 · Catalogue de moyens de production",
+      "nodeType": "narrative",
+      "phrase": "Une autorité ajoute les équipements admissibles à une liste.",
+      "family": "Option de décision · frontière",
+      "summary": "Étend Mind aux intrants explicitement approuvés, au prix d'une maintenance politique du catalogue.",
+      "optionCode": "F2",
+      "optionBenefits": [
+        "contrôle explicite",
+        "déploiement progressif"
+      ],
+      "optionRisks": [
+        "capture du catalogue",
+        "retard sur les nouveaux usages"
+      ],
+      "optionConditions": [
+        "procédure publique",
+        "recours et révision périodique"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance économique",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-domain-recursive-use",
+      "name": "Option F3 · Éligibilité récursive par usage",
+      "nodeType": "narrative",
+      "phrase": "Une dépense est payable en Mind lorsqu'elle produit ou distribue un bien lui-même admissible.",
+      "family": "Option de décision · frontière",
+      "summary": "Le four entre dans Mind pour la part vérifiable de son usage consacrée au pain admissible ; les actifs positionnels restent dehors.",
+      "optionCode": "F3",
+      "optionBenefits": [
+        "ferme la chaîne",
+        "classe les biens par fonction réelle"
+      ],
+      "optionRisks": [
+        "preuves d'usage complexes",
+        "fraude sur les usages mixtes"
+      ],
+      "optionConditions": [
+        "ventilation des usages mixtes",
+        "audit proportionné"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance économique",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "recommendation-recursive-domain-boundary",
+      "name": "Recommandation · Frontière récursive par usage productif",
+      "nodeType": "narrative",
+      "phrase": "Le four est dans Mind dans la mesure où son usage produit du vital admissible.",
+      "family": "Recommandation Codex · frontière",
+      "summary": "Adopter F3 avec ventilation proportionnelle des usages mixtes et exclusion explicite des actifs spéculatifs ou positionnels.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "price-formation",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "decision-value-sensor-boundary",
+      "name": "Décision requise · Quel pouvoir donner au capteur de valeur ?",
+      "nodeType": "moment",
+      "phrase": "Des signaux intimes peuvent éclairer une attestation sans devenir un score social central.",
+      "family": "Décision économique · capteur de valeur",
+      "summary": "Contexte : conversations, biométrie, usages et achats répétés renseignent la valeur vécue. Problème : exporter ces preuves crée surveillance, manipulation et décisions impossibles à contester.",
+      "decisionNeeded": "Choisir où le calcul a lieu, ce qui sort de l'appareil et si la machine peut agir sans confirmation humaine.",
+      "verificationNeeded": "Audit de flux de données, test d'opt-out et démonstration qu'aucune donnée brute ne quitte l'appareil.",
+      "questionCategory": "vie privée et allocation",
+      "decisionStatus": "proposed",
+      "responsibleRole": "privacy et gouvernance économique",
+      "decisionDue": "2026-09-30",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-10-31",
+      "closureEvidence": "Flux de données et pouvoir décisionnel documentés, testés et contestables.",
+      "optionCriteria": [
+        "vie privée",
+        "qualité du signal",
+        "consentement",
+        "contestabilité"
+      ],
+      "clusterId": "price-formation",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-sensor-central-raw",
+      "name": "Option C1 · Capteur central",
+      "nodeType": "narrative",
+      "phrase": "Les preuves brutes remontent au protocole pour produire le score.",
+      "family": "Option de décision · capteur",
+      "summary": "Maximise la capacité d'analyse centrale, mais transforme les données intimes en infrastructure d'allocation.",
+      "optionCode": "C1",
+      "optionBenefits": [
+        "modèle global riche",
+        "audit central uniforme"
+      ],
+      "optionRisks": [
+        "surveillance",
+        "fuite irréversible de données intimes"
+      ],
+      "optionConditions": [
+        "base juridique et consentement",
+        "sécurité exceptionnelle"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "privacy",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-sensor-explicit-only",
+      "name": "Option C2 · Attestation explicite seule",
+      "nodeType": "narrative",
+      "phrase": "La personne atteste sans assistance des signaux passifs.",
+      "family": "Option de décision · capteur",
+      "summary": "Évite l'analyse intime, mais perd le contexte susceptible d'aider la personne à reconnaître une valeur vécue.",
+      "optionCode": "C2",
+      "optionBenefits": [
+        "consentement direct",
+        "architecture simple"
+      ],
+      "optionRisks": [
+        "oubli et biais de visibilité",
+        "signal pauvre"
+      ],
+      "optionConditions": [
+        "interface accessible",
+        "protection contre la coercition"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "produit et privacy",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-sensor-local-assisted",
+      "name": "Option C3 · Inférence locale assistée et volontaire",
+      "nodeType": "narrative",
+      "phrase": "L'IA locale suggère une attestation que la personne confirme, modifie ou refuse.",
+      "family": "Option de décision · capteur",
+      "summary": "La preuve reste sur l'appareil ; seule une conclusion minimale, signée par la personne, peut circuler.",
+      "optionCode": "C3",
+      "optionBenefits": [
+        "contexte riche sans export brut",
+        "auteur humain conservé"
+      ],
+      "optionRisks": [
+        "influence de la suggestion",
+        "modèle local imparfait"
+      ],
+      "optionConditions": [
+        "opt-in granulaire",
+        "aucune sanction automatique",
+        "explication locale"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "privacy et produit",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "recommendation-local-voluntary-sensor",
+      "name": "Recommandation · Capteur local, volontaire et sans pouvoir sur le socle",
+      "nodeType": "narrative",
+      "phrase": "La machine suggère le jugement ; la personne en reste l'auteur.",
+      "family": "Recommandation Codex · capteur",
+      "summary": "Adopter C3 : aucune donnée brute ne sort, l'utilisateur confirme l'attestation et le signal ne module que le surplus, jamais l'accès vital inconditionnel.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "price-formation",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "decision-attestation-budget",
+      "name": "Décision requise · Qui détient le pouvoir d'attester ?",
+      "nodeType": "moment",
+      "phrase": "Le coût de l'award doit raréfier l'attention sans vendre le jugement aux plus riches.",
+      "family": "Décision économique · budget d'attestation",
+      "summary": "Contexte : une attestation gratuite s'inflate. Problème : la payer avec la richesse ou la réputation concentre le pouvoir de déterminer la valeur des autres.",
+      "decisionNeeded": "Choisir entre budget acheté, gagné ou distribué également et périodiquement.",
+      "verificationNeeded": "Simulation de concentration, Sybil et pouvoir d'attestation sur plusieurs cycles.",
+      "questionCategory": "gouvernance de la réputation",
+      "decisionStatus": "proposed",
+      "responsibleRole": "gouvernance économique",
+      "decisionDue": "2026-09-30",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-10-31",
+      "closureEvidence": "Règle de dotation publiée et concentration mesurée sur plusieurs cycles.",
+      "optionCriteria": [
+        "résistance Sybil",
+        "égalité politique",
+        "concentration",
+        "simplicité"
+      ],
+      "clusterId": "price-formation",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-attestation-purchased",
+      "name": "Option B1 · Budget acheté",
+      "nodeType": "narrative",
+      "phrase": "Le solde Mind détermine combien d'awards une personne peut envoyer.",
+      "family": "Option de décision · budget d'attestation",
+      "summary": "Le signal est coûteux, mais le jugement devient proportionnel à la richesse disponible.",
+      "optionCode": "B1",
+      "optionBenefits": [
+        "friction simple",
+        "coût économique visible"
+      ],
+      "optionRisks": [
+        "ploutocratie du jugement",
+        "réduction de l'accès à la reconnaissance"
+      ],
+      "optionConditions": [
+        "plafond strict",
+        "surveillance de concentration"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance économique",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-attestation-earned",
+      "name": "Option B2 · Budget gagné",
+      "nodeType": "narrative",
+      "phrase": "Contribuer davantage donne davantage de capacité d'attestation.",
+      "family": "Option de décision · budget d'attestation",
+      "summary": "Récompense l'expérience contributive, mais boucle réputation et pouvoir de produire la réputation.",
+      "optionCode": "B2",
+      "optionBenefits": [
+        "poids accordé aux contributeurs actifs",
+        "incitation à participer"
+      ],
+      "optionRisks": [
+        "aristocratie réputationnelle",
+        "avantage cumulatif"
+      ],
+      "optionConditions": [
+        "plafond bas",
+        "décroissance rapide"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance économique",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-attestation-equal-periodic",
+      "name": "Option B3 · Budget égal, périodique et non cumulable",
+      "nodeType": "narrative",
+      "phrase": "Chaque personne reçoit la même capacité temporaire d'attester.",
+      "family": "Option de décision · budget d'attestation",
+      "summary": "Le coût devient une rareté d'attention ; les droits inutilisés expirent et ne se vendent pas.",
+      "optionCode": "B3",
+      "optionBenefits": [
+        "égalité du pouvoir",
+        "absence d'accumulation"
+      ],
+      "optionRisks": [
+        "budget gaspillé par les personnes peu actives",
+        "marché noir à prévenir"
+      ],
+      "optionConditions": [
+        "non-transférabilité",
+        "identité Sybil-résistante"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance économique",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "recommendation-equal-periodic-attestation-budget",
+      "name": "Recommandation · Rareté égale de l'attention",
+      "nodeType": "narrative",
+      "phrase": "L'award coûte une part d'un budget civique identique, pas une part de la richesse.",
+      "family": "Recommandation Codex · attestation",
+      "summary": "Adopter B3 : dotation égale, périodique, non transférable et non cumulable ; expérimenter tout complément gagné seulement sous plafond bas.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "price-formation",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "decision-invisible-care-attestation",
+      "name": "Décision requise · Comment reconnaître le soin sans bénéficiaire attestant ?",
+      "nodeType": "moment",
+      "phrase": "L'absence de signal ne doit pas être confondue avec l'absence de valeur.",
+      "family": "Décision économique · soin invisible",
+      "summary": "Contexte : enfant, démence, détresse ou isolement empêchent parfois une attestation fiable. Problème : le bénéficiaire seul exclut le soin lourd ; les tiers seuls ouvrent les cartels locaux.",
+      "decisionNeeded": "Choisir qui peut reconnaître une contribution lorsque le bénéficiaire direct ne le peut pas.",
+      "verificationNeeded": "Tester cas de vulnérabilité, coercition, collusion et recours avec associations de patients et aidants.",
+      "questionCategory": "équité du soin",
+      "decisionStatus": "proposed",
+      "responsibleRole": "gouvernance du soin",
+      "decisionDue": "2026-09-30",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-10-31",
+      "closureEvidence": "Voies d'attestation et recours validés sur des cas de bénéficiaires incapables d'attester.",
+      "optionCriteria": [
+        "inclusion",
+        "résistance à la collusion",
+        "dignité",
+        "recours"
+      ],
+      "clusterId": "price-formation",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-care-beneficiary-only",
+      "name": "Option S1 · Bénéficiaire exclusivement",
+      "nodeType": "narrative",
+      "phrase": "Seule la personne aidée peut reconnaître le soin.",
+      "family": "Option de décision · soin invisible",
+      "summary": "Lien direct fort, mais exclusion structurelle lorsque le bénéficiaire ne peut pas s'exprimer.",
+      "optionCode": "S1",
+      "optionBenefits": [
+        "proximité de la valeur vécue",
+        "faible bureaucratie"
+      ],
+      "optionRisks": [
+        "soin lourd invisible",
+        "coercition du bénéficiaire"
+      ],
+      "optionConditions": [
+        "capacité d'attester",
+        "protection contre la pression"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance du soin",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-care-authorized-third-party",
+      "name": "Option S2 · Tiers habilité",
+      "nodeType": "narrative",
+      "phrase": "Un représentant, pair ou professionnel atteste à la place du bénéficiaire.",
+      "family": "Option de décision · soin invisible",
+      "summary": "Rend le soin visible, mais concentre la reconnaissance dans des institutions ou réseaux locaux.",
+      "optionCode": "S2",
+      "optionBenefits": [
+        "couvre l'incapacité",
+        "responsabilité identifiable"
+      ],
+      "optionRisks": [
+        "cartels locaux",
+        "conflits d'intérêts"
+      ],
+      "optionConditions": [
+        "habilitation auditée",
+        "recours indépendant"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance du soin",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-care-multichannel",
+      "name": "Option S3 · Faisceau de voies alternatives",
+      "nodeType": "narrative",
+      "phrase": "Bénéficiaire, représentant, pair, professionnel ou preuve minimale peuvent chacun ouvrir la reconnaissance.",
+      "family": "Option de décision · soin invisible",
+      "summary": "Plusieurs voies indépendantes évitent qu'un canal unique décide de la valeur ; le nombre de témoins ne multiplie pas mécaniquement le poids.",
+      "optionCode": "S3",
+      "optionBenefits": [
+        "inclut les bénéficiaires incapables",
+        "réduit le point de défaillance unique"
+      ],
+      "optionRisks": [
+        "gouvernance plus complexe",
+        "incohérences entre voies"
+      ],
+      "optionConditions": [
+        "poids bornés",
+        "recours",
+        "absence d'avantage au simple nombre de témoins"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance du soin",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "recommendation-multichannel-care-recognition",
+      "name": "Recommandation · Reconnaissance multicanale du soin",
+      "nodeType": "narrative",
+      "phrase": "Non observé ne veut jamais dire sans valeur.",
+      "family": "Recommandation Codex · soin invisible",
+      "summary": "Adopter S3 avec voies alternatives, poids bornés, recours documenté et interdiction de convertir le nombre de témoins en popularité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "price-formation",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "option-adoption-free-market",
+      "name": "Option M5 · Marché Mind-euro libre",
+      "nodeType": "narrative",
+      "phrase": "Le taux de conversion et l'accès au pont sont déterminés par le marché.",
+      "family": "Option de décision · adoption",
+      "summary": "Donne immédiatement un prix et une sortie, mais crée des détenteurs intéressés par l'appréciation et par le maintien du pont.",
+      "optionCode": "M5",
+      "optionBenefits": [
+        "liquidité",
+        "prix observable"
+      ],
+      "optionRisks": [
+        "spéculation",
+        "priorité vitale achetable",
+        "verrouillage politique de la transition"
+      ],
+      "optionConditions": [
+        "acceptation explicite d'un marché secondaire",
+        "qualification juridique"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "token economics et conformité",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "recommendation-central-decreasing-producer-settlement",
+      "name": "Recommandation · Règlement producteur central, plafonné et décroissant",
+      "nodeType": "narrative",
+      "phrase": "La part euro suit les charges encore extérieures à Mind et diminue avec la couverture productive.",
+      "family": "Recommandation Codex · transition",
+      "summary": "Combiner subvention d'amorçage, pont réservé aux producteurs et seuil de couverture ; exclure la conversion particulière et le marché libre transitoire.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "price-formation",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "recommendation-capital-plus-common-pool",
+      "name": "Recommandation · Capital séparé et pool commun",
+      "nodeType": "narrative",
+      "phrase": "L'investisseur finance le système sans acheter sa propre priorité d'usage.",
+      "family": "Recommandation Codex · entrée des euros",
+      "summary": "Combiner E1 et E2 : upside par equity ou droits de capital, abondement collectif possible, aucun crédit Mind personnel ni garantie de rachat.",
+      "epistemicStatus": "design_proposal",
+      "jurisdiction": "qualification requise avec conseil juridique indépendant",
+      "clusterId": "price-formation",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "metric-mind-euro-bridge-share",
+      "name": "Part du flux passant par le pont euro",
+      "nodeType": "narrative",
+      "phrase": "Quelle part de Mind sort du domaine au lieu d'y circuler, tous motifs confondus ?",
+      "family": "Mesure · circulation",
+      "summary": "Indicateur agrégé conservé pour continuité historique. Il ne doit jamais servir seul à interpréter le pont : une sortie producteur ferme provisoirement la boucle, tandis qu'une sortie particulière peut signaler un défaut d'allocation ou d'offre.",
+      "clusterId": "price-formation",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-producer-mind-euro-exit-share",
+      "name": "Part des recettes producteur converties en euros",
+      "nodeType": "narrative",
+      "phrase": "Combien de Mind reçus par les producteurs doivent encore sortir vers l'euro ?",
+      "family": "Mesure · pont producteur",
+      "summary": "Volume de Mind converti en euros par des producteurs identifiés, rapporté à leurs recettes Mind. Il mesure la part des charges productives que le domaine Mind ne couvre pas encore.",
+      "clusterId": "price-formation",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-personal-mind-euro-exit-share",
+      "name": "Part des allocations particulières converties en euros",
+      "nodeType": "narrative",
+      "phrase": "Combien de Mind alloués aux personnes sortent vers l'euro ?",
+      "family": "Mesure · pont particulier",
+      "summary": "Volume de Mind converti en euros par des particuliers, rapporté à leur allocation Mind. Cet indicateur doit être interprété avec la disponibilité du panier vital : il peut signaler une allocation mal calibrée, un ciblage inadéquat ou une pénurie d'offre.",
+      "clusterId": "price-formation",
+      "semanticType": "metric"
+    },
+    {
+      "id": "hypothesis-behavioral-value-sensor",
+      "name": "Hypothèse · Capteur comportemental de valeur vécue",
+      "nodeType": "narrative",
+      "phrase": "La valeur reçue peut être inférée par la personne, ses usages et ses signaux locaux.",
+      "family": "Économie · preuve de valeur",
+      "summary": "Hypothèse proposée : satisfaction déclarée, biométrie, conversations avec l'IA, comportement on-chain, expression sociale et achats répétés peuvent contribuer à une conclusion signée. Elle reste contrainte par le calcul local : la conclusion minimale peut circuler, jamais l'audio, le verbatim ni la biométrie brute.",
+      "hypothesisStatus": "proposed",
+      "clusterId": "price-formation",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "mechanism-typed-costly-attestation",
+      "name": "Mécanisme proposé · Attestation typée et coûteuse",
+      "nodeType": "narrative",
+      "phrase": "Remercier, soutenir ou signaler une aide consomme un budget et conserve le contexte.",
+      "family": "Économie · attestation de valeur",
+      "summary": "Award inspiré de Reddit : attestation signée, non anonyme, typée et inscrite dans un registre vérifiable. Son coût vise à préserver le signal. La source, le renouvellement et la concentration du budget d'attestation restent à arbitrer avant implémentation.",
+      "clusterId": "price-formation",
+      "semanticType": "economic_mechanism"
+    },
+    {
+      "id": "question-attestation-budget",
+      "name": "Question · D'où vient le budget d'attestation ?",
+      "nodeType": "narrative",
+      "phrase": "Une attestation coûteuse exige une dotation qui ne concentre pas le pouvoir de juger.",
+      "family": "Question économique · attestation",
+      "summary": "Deux familles restent ouvertes : budget égal, périodique et non cumulable ; ou budget gagné avec la contribution. La seconde peut concentrer l'influence chez ceux qui disposent déjà de réputation.",
+      "questionCategory": "économie et gouvernance",
+      "decisionNeeded": "Choisir la source, la périodicité, la non-cumulabilité et les bornes de concentration du budget d'attestation.",
+      "verificationNeeded": "Simulation Sybil et concentration sur plusieurs cycles, incluant les non-utilisateurs et les bénéficiaires incapables d'attester.",
+      "clusterId": "price-formation",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "state-intimacy-goodhart",
+      "name": "L'intimité est performée pour le score",
+      "nodeType": "narrative",
+      "phrase": "Ce qui est mesuré comme gratitude devient un comportement à produire.",
+      "family": "État du système · échec du capteur",
+      "summary": "Les personnes adaptent paroles, interactions ou signaux observables pour récompenser un proche. Le capteur privilégie alors la gratitude exprimée sur la fidélité silencieuse, ambivalente ou conflictuelle.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "authenticité relationnelle",
+      "stateIndicator": "écart entre attestations observées et évaluations indépendantes, variation des comportements en présence du capteur",
+      "clusterId": "price-formation",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-heavy-care-invisible",
+      "name": "Le soin lourd reste invisible",
+      "nodeType": "narrative",
+      "phrase": "Le bénéficiaire qui ne peut pas attester laisse le soin sans signal.",
+      "family": "État du système · échec du capteur",
+      "summary": "Démence, enfance, détresse ou isolement peuvent empêcher le bénéficiaire de produire les signaux attendus. Un système fondé uniquement sur l'attestation sous-évalue alors les contributions les plus lourdes et les moins visibles.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "équité du soin",
+      "stateIndicator": "taux de contributions de soin vérifiées sans attestation directe du bénéficiaire",
+      "clusterId": "price-formation",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "hypothesis-phased-loop-closure",
+      "name": "Hypothèse · Fermeture de boucle en trois phases",
+      "nodeType": "narrative",
+      "phrase": "La boucle producteur passe de la subvention au rachat plafonné, puis à la récursion productive.",
+      "family": "Économie · transition",
+      "summary": "Phasage proposé : amorçage par subvention explicite ; transition par pont producteur ou rachat central plafonné ; régime cible où la chaîne d'approvisionnement du vital accepte Mind. Les conditions de sortie doivent être écrites avant chaque phase et déclenchées par des seuils mesurés, non par une promesse de date seule.",
+      "hypothesisStatus": "proposed",
+      "clusterId": "price-formation",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "decision-euro-entry-into-mind",
+      "name": "Décision requise · Comment l'euro entre-t-il dans Mind ?",
+      "nodeType": "moment",
+      "phrase": "Financer le système, abonder le commun ou acheter un droit personnel sont trois actes différents.",
+      "family": "Décision économique · entrée de capital",
+      "summary": "L'intuition d'autoriser les investisseurs à acheter Mind entre en tension avec la séparation actuelle entre capital et monnaie d'usage. La décision doit distinguer financement du protocole, abondement collectif et achat personnel de priorité.",
+      "decisionNeeded": "Choisir si l'euro finance seulement le capital, abonde un pool commun sans droit personnel, ou permet l'achat général de Mind ; expliciter alors l'effet sur l'accès vital et le statut juridique.",
+      "verificationNeeded": "Avis juridique qualifié, simulation de concentration et scénario de pénurie comparant les trois options.",
+      "questionCategory": "économie, équité et conformité",
+      "decisionStatus": "proposed",
+      "responsibleRole": "gouvernance économique et conseil juridique",
+      "decisionDue": "2026-09-30",
+      "chosenOptionId": "",
+      "decisionRationale": "",
+      "reviewDate": "2026-10-31",
+      "closureEvidence": "Option choisie, articulation explicite avec fin-thesis-separation et rationale-essential-access, avis juridique qualifié référencé.",
+      "optionCriteria": [
+        "accès vital en situation de pénurie",
+        "capacité de financement",
+        "concentration et spéculation",
+        "qualification juridique",
+        "réversibilité"
+      ],
+      "clusterId": "price-formation",
+      "semanticType": "decision"
+    },
+    {
+      "id": "option-euro-entry-capital-only",
+      "name": "Option E1 · L'euro finance le capital, jamais Mind",
+      "nodeType": "narrative",
+      "phrase": "L'investisseur détient des droits de capital, pas une priorité d'usage.",
+      "family": "Option de décision · entrée de capital",
+      "summary": "Maintient la doctrine actuelle : equity, SAFE ou droits de holding portent l'upside ; Mind reste une unité d'usage non achetable.",
+      "optionCode": "E1",
+      "optionBenefits": [
+        "préserve la séparation entre capital et usage",
+        "évite d'acheter une priorité vitale",
+        "réduit le canal spéculatif"
+      ],
+      "optionRisks": [
+        "rend le financement de l'écosystème dépendant de la valeur du protocole ou de la holding",
+        "ne crée aucun prix de marché observable pour Mind",
+        "peut limiter certains profils d'investisseurs"
+      ],
+      "optionConditions": [
+        "droits de capital clairement séparés du portefeuille Mind",
+        "communication publique sans promesse de rendement sur Mind",
+        "structure d'investissement qualifiée juridiquement"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance économique",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-euro-entry-common-pool",
+      "name": "Option E2 · L'euro abonde le pool commun",
+      "nodeType": "narrative",
+      "phrase": "L'euro augmente la capacité collective, jamais le droit de tirage de son payeur.",
+      "family": "Option de décision · entrée de capital",
+      "summary": "Employeur, collectivité, mécène ou investisseur finance le pool commun sans créditer son propre portefeuille Mind ni acheter une priorité personnelle sur les biens rares.",
+      "optionCode": "E2",
+      "optionBenefits": [
+        "fait entrer des euros sans vendre de priorité personnelle",
+        "augmente la capacité collective",
+        "reste compatible avec un rachat producteur plafonné"
+      ],
+      "optionRisks": [
+        "le financeur peut chercher une influence indirecte sur l'allocation",
+        "le pool peut devenir une subvention permanente",
+        "l'upside investisseur doit toujours être défini ailleurs"
+      ],
+      "optionConditions": [
+        "aucun crédit Mind personnel en contrepartie du versement",
+        "gouvernance et traçabilité du pool",
+        "séparation comptable entre financement collectif et droits du capital"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "trésorerie et gouvernance",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    },
+    {
+      "id": "option-euro-entry-general-purchase",
+      "name": "Option E3 · Achat général de Mind",
+      "nodeType": "narrative",
+      "phrase": "Un investisseur ou un particulier peut acheter Mind avec des euros.",
+      "family": "Option de décision · entrée de capital",
+      "summary": "Encode l'intuition exprimée sans l'approuver. Cette option exige de remplacer ou raffiner la raison de design selon laquelle l'accès vital ne dépend pas du revenu, et d'assumer les risques de priorité achetée, de marché secondaire et de qualification financière.",
+      "optionCode": "E3",
+      "optionBenefits": [
+        "crée une demande monétaire directe pour Mind",
+        "rend possible un prix de marché observable",
+        "offre aux investisseurs une exposition directe"
+      ],
+      "optionRisks": [
+        "permet d'acheter une priorité sur des biens vitaux rares",
+        "crée accumulation, arbitrage et attente de hausse",
+        "peut qualifier Mind comme instrument financier"
+      ],
+      "optionConditions": [
+        "remplacement ou raffinement explicite de rationale-essential-access",
+        "analyse juridique indépendante avant toute vente",
+        "simulation de pénurie, concentration et marché secondaire",
+        "règles de sortie compatibles avec le régime récursif cible"
+      ],
+      "responseStatus": "candidate_not_approved",
+      "ownerRole": "gouvernance économique et conseil juridique",
+      "clusterId": "price-formation",
+      "semanticType": "decision_option"
+    }
+  ],
+  "links": [
+    {
+      "source": "effect-price-absorbs-urgency",
+      "target": "economy-local-price-exploration",
+      "type": "MOTIVATES",
+      "justification": "Refuser l'épargne n'est tenable que si le prix chute au moment du besoin. C'est cet effet recherché qui oblige à construire une exploration de prix, et non l'inverse."
+    },
+    {
+      "source": "effect-contribution-lowers-cost",
+      "target": "economy-local-price-exploration",
+      "type": "MOTIVATES",
+      "justification": "Faire de la contribution récente une entrée du prix est ce qui permet de rémunérer un producteur sans lui donner de solde convertible."
+    },
+    {
+      "source": "axiom-price-urgency-to-zero",
+      "target": "economy-local-price-exploration",
+      "type": "GROUNDS",
+      "justification": "Sans plancher d'urgence, la suppression de l'épargne laisse la personne sans recours au moment exact où elle en a besoin."
+    },
+    {
+      "source": "axiom-price-assumed-differentiation",
+      "target": "economy-local-price-exploration",
+      "type": "GROUNDS",
+      "justification": "Le projet assume la différenciation ; la contrainte porte donc sur son explicitation, pas sur son élimination."
+    },
+    {
+      "source": "axiom-price-contestable",
+      "target": "economy-local-price-exploration",
+      "type": "GROUNDS",
+      "justification": "Une allocation différenciée sans recours transfère à l'algorithme un pouvoir que le projet refuse aux personnes qui l'exploitent."
+    },
+    {
+      "source": "axiom-price-bounded",
+      "target": "economy-local-price-exploration",
+      "type": "GROUNDS",
+      "justification": "L'exploration locale sans bornes rend le prix imprévisible pour la personne et manipulable par qui connaît la fonction."
+    },
+    {
+      "source": "axiom-price-computed-locally",
+      "target": "economy-local-price-exploration",
+      "type": "GROUNDS",
+      "justification": "La différenciation exige de la connaissance sur la personne ; sans exécution locale, le mécanisme de prix devient un dispositif de surveillance."
+    },
+    {
+      "source": "question-price-function-unspecified",
+      "target": "economy-local-price-exploration",
+      "type": "BLOCKS",
+      "justification": "Le mécanisme est nommé et motivé, mais ses entrées, sa pondération, ses bornes et son lieu d'exécution ne sont pas définis : il ne peut être ni implémenté ni testé."
+    },
+    {
+      "source": "question-price-function-unspecified",
+      "target": "decision-merchant-adoption",
+      "type": "BLOCKS",
+      "justification": "Les quatre options d'adoption dépendent du prix que le producteur paiera pour ses propres besoins ; aucune ne peut être évaluée avant que la fonction de prix existe."
+    },
+    {
+      "source": "question-price-function-unspecified",
+      "target": "effect-price-absorbs-urgency",
+      "type": "BLOCKS",
+      "justification": "L'effet recherché suppose une chute de prix à l'urgence dont rien ne garantit aujourd'hui qu'elle soit calculable, bornée et non manipulable."
+    },
+    {
+      "source": "option-adoption-contribution-discount",
+      "target": "decision-merchant-adoption",
+      "type": "OPTION_FOR",
+      "justification": "Option de doctrine pour le régime permanent : la contribution remplace la conversion."
+    },
+    {
+      "source": "option-adoption-basket-threshold",
+      "target": "decision-merchant-adoption",
+      "type": "OPTION_FOR",
+      "justification": "Option de doctrine pour le régime permanent : la couverture sectorielle remplace la conversion."
+    },
+    {
+      "source": "option-adoption-dated-subsidy",
+      "target": "decision-merchant-adoption",
+      "type": "OPTION_FOR",
+      "justification": "Option de démarrage, non exclusive des options de doctrine."
+    },
+    {
+      "source": "option-adoption-sunset-bridge",
+      "target": "decision-merchant-adoption",
+      "type": "OPTION_FOR",
+      "justification": "Option de soupape, non exclusive des options de doctrine."
+    },
+    {
+      "source": "option-adoption-contribution-discount",
+      "target": "state-merchants-viable",
+      "type": "CAUSES",
+      "effectSizePct": 40,
+      "confidenceScore": 0.15,
+      "evidenceBasis": "assertion",
+      "effectStatement": "couverture des charges du producteur (metric-merchant-margin-coverage), +40 % vs adoption sans remise de contribution, horizon 12 mois, territoire pilote",
+      "justification": "Effet jugé probable parce que la remise s'applique aux dépenses vitales du producteur, qui constituent la part la plus régulière de ses charges : un psychologue qui consulte en Mind voit son propre panier vital baisser. L'ampleur reste incertaine car la part des charges couvertes dépend du métier — élevée pour un service à faible capital, faible pour une activité à intrants lourds. Confiance basse : aucune mesure, et le mécanisme de contribution n'existe pas encore."
+    },
+    {
+      "source": "option-adoption-contribution-discount",
+      "target": "state-contribution-opaque",
+      "type": "CAUSES",
+      "effectSizePct": 60,
+      "confidenceScore": 0.3,
+      "evidenceBasis": "assertion",
+      "effectStatement": "reconstituabilité du score (metric-contribution-explainability), −60 % vs un prix uniforme, horizon 12 mois",
+      "justification": "Effet négatif jugé probable, et plus probable que le bénéfice ci-dessus : dès qu'un score pilote le coût de la vie, l'écart entre ce que la personne observe et ce qu'elle peut reconstituer devient la mesure du pouvoir exercé sur elle. La mesure de contribution envisagée s'appuie sur les usages vérifiés en aval, donc sur des informations que la personne ne détient pas. Le risque est structurel, pas accidentel."
+    },
+    {
+      "source": "option-adoption-basket-threshold",
+      "target": "state-vital-basket-covered",
+      "type": "CAUSES",
+      "effectSizePct": 70,
+      "confidenceScore": 0.25,
+      "evidenceBasis": "assertion",
+      "effectStatement": "couverture du panier vital en Mind (metric-vital-basket-mind-coverage), +70 % vs déploiement non ciblé, horizon 18 mois, territoire pilote",
+      "justification": "Effet jugé probable par construction : concentrer le déploiement sur un territoire étroit augmente mécaniquement la couverture de ce territoire, puisque c'est l'objectif poursuivi plutôt qu'un effet indirect. L'incertitude ne porte pas sur le signe mais sur le coût d'atteinte du seuil et sur le fait qu'aucun seuil n'a encore été estimé."
+    },
+    {
+      "source": "option-adoption-basket-threshold",
+      "target": "state-supply-shortage",
+      "type": "CAUSES",
+      "effectSizePct": -50,
+      "confidenceScore": 0.2,
+      "evidenceBasis": "assertion",
+      "effectStatement": "jours de rupture sur le panier vital (metric-stockout-days), −50 % vs déploiement non ciblé, horizon 18 mois",
+      "justification": "Effet jugé probable parce que la rupture vient du décalage entre droit nominal et offre réelle : viser la couverture avant le nombre d'utilisateurs réduit ce décalage à la source. L'effet s'inverse si le seuil est franchi par le nombre d'utilisateurs avant de l'être par l'offre, ce que la mesure doit surveiller."
+    },
+    {
+      "source": "option-adoption-dated-subsidy",
+      "target": "state-merchants-viable",
+      "type": "CAUSES",
+      "effectSizePct": 80,
+      "confidenceScore": 0.4,
+      "evidenceBasis": "assertion",
+      "effectStatement": "couverture des charges du producteur (metric-merchant-margin-coverage), +80 % pendant la période subventionnée, horizon 12 mois",
+      "justification": "Effet jugé très probable et c'est précisément le problème : une subvention couvre des charges par définition, donc l'effet est quasi certain sans rien démontrer sur le mécanisme. C'est la seule arête de ce cluster dont la confiance dépasse 0,3, et elle porte sur l'effet le moins informatif."
+    },
+    {
+      "source": "option-adoption-dated-subsidy",
+      "target": "state-adoption-bought",
+      "type": "CAUSES",
+      "effectSizePct": 75,
+      "confidenceScore": 0.35,
+      "evidenceBasis": "assertion",
+      "effectStatement": "rétention marchande après subvention (metric-merchant-retention-post-subsidy), −75 % vs adoption non subventionnée, horizon 6 mois après la fin",
+      "justification": "Effet négatif jugé probable parce que la subvention modifie l'incitation qu'on cherche justement à tester : tant qu'elle coule, on ne mesure pas la viabilité du modèle mais la générosité du financement. L'ampleur est incertaine, le sens ne l'est pas. C'est la raison pour laquelle la date de fin doit être publique avant le début, et non décidée à la fin."
+    },
+    {
+      "source": "option-adoption-sunset-bridge",
+      "target": "state-supply-shortage",
+      "type": "CAUSES",
+      "effectSizePct": -35,
+      "confidenceScore": 0.2,
+      "evidenceBasis": "assertion",
+      "effectStatement": "jours de rupture sur le panier vital (metric-stockout-days), −35 % vs absence de pont, horizon 12 mois",
+      "justification": "Effet jugé probable parce que le pont supprime la raison principale d'un refus d'acceptation : le producteur n'a plus à parier sur une couverture future qui n'existe pas encore. L'effet devrait décroître à mesure que la couverture progresse, ce qui justifie l'extinction programmée plutôt qu'un dispositif permanent."
+    },
+    {
+      "source": "option-adoption-sunset-bridge",
+      "target": "state-speculative-mind",
+      "type": "CAUSES",
+      "effectSizePct": 45,
+      "confidenceScore": 0.3,
+      "evidenceBasis": "assertion",
+      "effectStatement": "part des recettes producteur converties (metric-producer-mind-euro-exit-share), +45 % vs absence de pont, horizon 12 mois",
+      "justification": "Effet négatif jugé probable parce qu'un prix de sortie, même plafonné, crée un écart entre les deux domaines, et un écart persistant attire l'arbitrage avant d'attirer l'usage. C'est exactement le canal que la séparation des domaines devait fermer : le rouvrir sous condition ne change pas sa nature, seulement son débit."
+    },
+    {
+      "source": "state-vital-basket-covered",
+      "target": "metric-vital-basket-mind-coverage",
+      "type": "MEASURED_BY",
+      "justification": "La couverture se mesure en valeur du panier vital effectivement payable auprès de fournisseurs disponibles, et non en nombre de catégories déclarées éligibles."
+    },
+    {
+      "source": "state-adoption-bought",
+      "target": "metric-merchant-retention-post-subsidy",
+      "type": "MEASURED_BY",
+      "justification": "Seule la rétention après l'arrêt du financement distingue une adoption portée par le modèle d'une adoption portée par la subvention."
+    },
+    {
+      "source": "state-price-unexplainable",
+      "target": "metric-price-appeal-outcome",
+      "type": "MEASURED_BY",
+      "justification": "L'état se mesure par ce que la contestation produit, pas par l'existence d'une procédure de contestation."
+    },
+    {
+      "source": "state-contribution-opaque",
+      "target": "metric-contribution-explainability",
+      "type": "MEASURED_BY",
+      "justification": "L'opacité se mesure par reconstitution effective sur un échantillon, non par la publication de la formule."
+    },
+    {
+      "source": "state-merchants-viable",
+      "target": "metric-merchant-margin-coverage",
+      "type": "MEASURED_BY",
+      "justification": "La viabilité annoncée par l'état — couvrir intrants, travail, maintenance et investissement — devient mesurable en distinguant la part des charges libellées en euros."
+    },
+    {
+      "source": "state-supply-shortage",
+      "target": "metric-stockout-days",
+      "type": "MEASURED_BY",
+      "justification": "L'écart entre droit nominal et offre réelle se mesure en jours-produits où le bien est payable mais indisponible."
+    },
+    {
+      "source": "state-speculative-mind",
+      "target": "metric-mind-euro-bridge-share",
+      "type": "MEASURED_BY",
+      "justification": "La dérive spéculative se lit d'abord dans la part du flux qui sort du domaine plutôt que d'y circuler."
+    },
+    {
+      "source": "repo-cascade-utility",
+      "target": "option-adoption-contribution-discount",
+      "type": "UNLOCKS",
+      "justification": "L'option suppose opérationnelle la mesure de contribution décrite dans le dépôt, aujourd'hui au stade brouillon et non reliée au mécanisme de prix local."
+    },
+    {
+      "source": "repo-trust-friction",
+      "target": "option-adoption-contribution-discount",
+      "type": "UNLOCKS",
+      "justification": "L'option suppose que la confiance module effectivement les conditions d'échange, mécanisme décrit dans le dépôt au stade conception."
+    },
+    {
+      "source": "fin-bootstrap-reserve",
+      "target": "option-adoption-dated-subsidy",
+      "type": "UNLOCKS",
+      "justification": "L'option réutilise la réserve bootstrap déjà budgétée, en la requalifiant explicitement de subvention temporaire plutôt que de preuve de circulation."
+    },
+    {
+      "source": "hypothesis-city-simulation-100k",
+      "target": "option-adoption-basket-threshold",
+      "type": "ASSUMES",
+      "justification": "Le seuil de couverture qui rend l'acceptation rationnelle doit être estimé en simulation avant tout déploiement ; l'option dépend donc de la ville testable."
+    },
+    {
+      "source": "state-price-unexplainable",
+      "target": "state-algorithmic-discrimination",
+      "type": "CAUSES",
+      "effectSizePct": 50,
+      "confidenceScore": 0.25,
+      "evidenceBasis": "assertion",
+      "effectStatement": "part des écarts de prix attribuables à un critère nommé, −50 % vs prix explicable, horizon 12 mois",
+      "justification": "Effet jugé probable parce que la discrimination assumée et la discrimination subie ne se distinguent que par l'explication : sans explication reconstituable, un écart légitime devient indiscernable d'un écart arbitraire, y compris pour qui l'a produit."
+    },
+    {
+      "source": "axiom-price-computed-locally",
+      "target": "hypothesis-behavioral-value-sensor",
+      "type": "SAFEGUARDS",
+      "justification": "Le capteur proposé ne respecte la frontière de vie privée que si l'appareil conserve les sources intimes et ne publie qu'une conclusion minimale signée."
+    },
+    {
+      "source": "hypothesis-behavioral-value-sensor",
+      "target": "mechanism-typed-costly-attestation",
+      "type": "UNLOCKS",
+      "justification": "Les signaux locaux peuvent fournir le contexte d'une attestation typée sans transformer l'audio, la biométrie ou le verbatim en données publiques."
+    },
+    {
+      "source": "question-attestation-budget",
+      "target": "mechanism-typed-costly-attestation",
+      "type": "BLOCKS",
+      "justification": "Sans origine et renouvellement du budget, le coût de l'award peut soit être fictif, soit concentrer le pouvoir de jugement ; le mécanisme n'est donc pas implémentable."
+    },
+    {
+      "source": "state-intimacy-goodhart",
+      "target": "hypothesis-behavioral-value-sensor",
+      "type": "MOTIVATES",
+      "justification": "La performativité des signaux impose de tester le capteur contre les changements de comportement induits par la récompense."
+    },
+    {
+      "source": "state-heavy-care-invisible",
+      "target": "hypothesis-behavioral-value-sensor",
+      "type": "MOTIVATES",
+      "justification": "L'incapacité de certains bénéficiaires à produire un signal oblige à prévoir une voie distincte pour le soin invisible."
+    },
+    {
+      "source": "mechanism-typed-costly-attestation",
+      "target": "effect-contribution-lowers-cost",
+      "type": "IMPLEMENTS",
+      "justification": "L'attestation typée fournit un signal de contribution possible pour moduler un surplus ou un prix, sans suffire à elle seule à définir le socle d'accès."
+    },
+    {
+      "source": "hypothesis-phased-loop-closure",
+      "target": "decision-merchant-adoption",
+      "type": "ADDRESSES",
+      "justification": "Le phasage distingue explicitement le démarrage, la soupape transitoire et le régime cible au lieu de demander à une seule option de remplir trois fonctions incompatibles."
+    },
+    {
+      "source": "option-adoption-dated-subsidy",
+      "target": "hypothesis-phased-loop-closure",
+      "type": "UNLOCKS",
+      "justification": "La subvention datée fournit la première phase d'amorçage tout en interdisant d'en tirer une preuve de viabilité du régime permanent."
+    },
+    {
+      "source": "option-adoption-sunset-bridge",
+      "target": "hypothesis-phased-loop-closure",
+      "type": "UNLOCKS",
+      "justification": "Le pont producteur plafonné fournit la phase de transition, sous condition que sa sortie soit spécifiée avant son ouverture."
+    },
+    {
+      "source": "option-adoption-basket-threshold",
+      "target": "hypothesis-phased-loop-closure",
+      "type": "UNLOCKS",
+      "justification": "La couverture sectorielle mesurée fournit le déclencheur vers la phase récursive où les producteurs dépensent Mind dans leur propre chaîne d'approvisionnement."
+    },
+    {
+      "source": "state-speculative-mind",
+      "target": "metric-producer-mind-euro-exit-share",
+      "type": "MEASURED_BY",
+      "justification": "Le flux producteur doit être suivi séparément pour distinguer une soupape de charges encore libellées en euros d'un marché général de Mind."
+    },
+    {
+      "source": "state-speculative-mind",
+      "target": "metric-personal-mind-euro-exit-share",
+      "type": "MEASURED_BY",
+      "justification": "Le flux particulier révèle directement si le pont devient un moyen d'arbitrer ou d'acheter puis revendre un droit d'usage."
+    },
+    {
+      "source": "option-euro-entry-capital-only",
+      "target": "decision-euro-entry-into-mind",
+      "type": "OPTION_FOR",
+      "justification": "Première branche : maintenir la séparation actuelle entre droits du capital et monnaie d'usage."
+    },
+    {
+      "source": "option-euro-entry-common-pool",
+      "target": "decision-euro-entry-into-mind",
+      "type": "OPTION_FOR",
+      "justification": "Deuxième branche : autoriser le financement collectif sans créer de priorité personnelle achetable."
+    },
+    {
+      "source": "option-euro-entry-general-purchase",
+      "target": "decision-euro-entry-into-mind",
+      "type": "OPTION_FOR",
+      "justification": "Troisième branche : représenter explicitement l'achat de Mind souhaité pour les investisseurs, sans le confondre avec une décision déjà prise."
+    },
+    {
+      "source": "fin-thesis-separation",
+      "target": "decision-euro-entry-into-mind",
+      "type": "MOTIVATES",
+      "justification": "La doctrine existante rend visible que l'achat investisseur de Mind serait un renversement ou un raffinement, pas un simple paramètre."
+    },
+    {
+      "source": "rationale-essential-access",
+      "target": "decision-euro-entry-into-mind",
+      "type": "MOTIVATES",
+      "justification": "Toute entrée d'euros doit être évaluée selon qu'elle permet ou non d'acheter une priorité personnelle sur des biens vitaux rares."
+    },
+    {
+      "source": "fin-legal-boundary",
+      "target": "decision-euro-entry-into-mind",
+      "type": "MOTIVATES",
+      "justification": "L'achat de Mind dans l'attente d'un gain peut transformer l'unité d'usage en instrument financier ; la décision exige donc une qualification juridique indépendante."
+    },
+    {
+      "source": "option-settlement-recursive-currency",
+      "target": "decision-mind-settlement-nature",
+      "type": "OPTION_FOR",
+      "justification": "N1 propose la récursion comme nature unique et permanente de Mind."
+    },
+    {
+      "source": "option-settlement-pure-drawdown",
+      "target": "decision-mind-settlement-nature",
+      "type": "OPTION_FOR",
+      "justification": "N2 propose un droit de tirage détruit au paiement et réglé en euros."
+    },
+    {
+      "source": "option-settlement-temporal-coexistence",
+      "target": "decision-mind-settlement-nature",
+      "type": "OPTION_FOR",
+      "justification": "N3 distingue la fonction transitoire de coupon du régime cible récursif."
+    },
+    {
+      "source": "recommendation-temporal-coexistence",
+      "target": "decision-mind-settlement-nature",
+      "type": "RECOMMENDS",
+      "justification": "La coexistence temporelle rend le démarrage praticable sans abandonner la fermeture récursive comme cible."
+    },
+    {
+      "source": "recommendation-temporal-coexistence",
+      "target": "option-settlement-temporal-coexistence",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation met en œuvre N3 en faisant décroître la part euro avec la couverture productive."
+    },
+    {
+      "source": "hypothesis-phased-loop-closure",
+      "target": "decision-mind-settlement-nature",
+      "type": "MOTIVATES",
+      "justification": "Le phasage déjà proposé révèle que la nature opérationnelle de Mind peut changer entre amorçage et régime permanent."
+    },
+    {
+      "source": "option-domain-vital-only",
+      "target": "decision-mind-domain-boundary",
+      "type": "OPTION_FOR",
+      "justification": "F1 maintient une frontière limitée aux consommations vitales directes."
+    },
+    {
+      "source": "option-domain-administered-list",
+      "target": "decision-mind-domain-boundary",
+      "type": "OPTION_FOR",
+      "justification": "F2 étend la frontière au moyen d'un catalogue gouverné."
+    },
+    {
+      "source": "option-domain-recursive-use",
+      "target": "decision-mind-domain-boundary",
+      "type": "OPTION_FOR",
+      "justification": "F3 classe le bien selon son usage dans une chaîne qui produit déjà du vital admissible."
+    },
+    {
+      "source": "recommendation-recursive-domain-boundary",
+      "target": "decision-mind-domain-boundary",
+      "type": "RECOMMENDS",
+      "justification": "La récursion ferme la chaîne sans assimiler automatiquement tout actif productif à un bien vital."
+    },
+    {
+      "source": "recommendation-recursive-domain-boundary",
+      "target": "option-domain-recursive-use",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation applique F3 avec ventilation des usages mixtes et audit proportionné."
+    },
+    {
+      "source": "option-sensor-central-raw",
+      "target": "decision-value-sensor-boundary",
+      "type": "OPTION_FOR",
+      "justification": "C1 centralise les preuves brutes et le calcul."
+    },
+    {
+      "source": "option-sensor-explicit-only",
+      "target": "decision-value-sensor-boundary",
+      "type": "OPTION_FOR",
+      "justification": "C2 renonce aux signaux passifs et conserve seulement le geste explicite."
+    },
+    {
+      "source": "option-sensor-local-assisted",
+      "target": "decision-value-sensor-boundary",
+      "type": "OPTION_FOR",
+      "justification": "C3 exploite localement le contexte et exige une confirmation humaine avant toute sortie."
+    },
+    {
+      "source": "recommendation-local-voluntary-sensor",
+      "target": "decision-value-sensor-boundary",
+      "type": "RECOMMENDS",
+      "justification": "Le modèle local assisté conserve l'information utile sans donner aux preuves intimes un pouvoir central sur l'accès."
+    },
+    {
+      "source": "recommendation-local-voluntary-sensor",
+      "target": "option-sensor-local-assisted",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation adopte C3 et borne son effet au surplus."
+    },
+    {
+      "source": "state-wellbeing-surveillance",
+      "target": "decision-value-sensor-boundary",
+      "type": "MOTIVATES",
+      "justification": "L'état d'échec rend nécessaire une décision explicite sur les données qui sortent et le pouvoir du score."
+    },
+    {
+      "source": "state-intimacy-goodhart",
+      "target": "decision-value-sensor-boundary",
+      "type": "MOTIVATES",
+      "justification": "La performativité relationnelle oblige à conserver une confirmation humaine et à interdire la sanction automatique."
+    },
+    {
+      "source": "option-attestation-purchased",
+      "target": "decision-attestation-budget",
+      "type": "OPTION_FOR",
+      "justification": "B1 fait payer les awards avec le solde disponible."
+    },
+    {
+      "source": "option-attestation-earned",
+      "target": "decision-attestation-budget",
+      "type": "OPTION_FOR",
+      "justification": "B2 lie le pouvoir d'attester à la contribution antérieure."
+    },
+    {
+      "source": "option-attestation-equal-periodic",
+      "target": "decision-attestation-budget",
+      "type": "OPTION_FOR",
+      "justification": "B3 distribue une rareté d'attention égale, temporaire et non vendable."
+    },
+    {
+      "source": "recommendation-equal-periodic-attestation-budget",
+      "target": "decision-attestation-budget",
+      "type": "RECOMMENDS",
+      "justification": "La dotation égale empêche la richesse et la réputation acquise de se transformer automatiquement en pouvoir de jugement."
+    },
+    {
+      "source": "recommendation-equal-periodic-attestation-budget",
+      "target": "option-attestation-equal-periodic",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation applique B3 avec expiration et non-transférabilité."
+    },
+    {
+      "source": "question-attestation-budget",
+      "target": "decision-attestation-budget",
+      "type": "BLOCKS",
+      "justification": "La question ouverte demeure le verrou de fond que la décision doit arbitrer ; créer les options ne constitue pas encore une réponse approuvée."
+    },
+    {
+      "source": "option-care-beneficiary-only",
+      "target": "decision-invisible-care-attestation",
+      "type": "OPTION_FOR",
+      "justification": "S1 réserve la reconnaissance au bénéficiaire direct."
+    },
+    {
+      "source": "option-care-authorized-third-party",
+      "target": "decision-invisible-care-attestation",
+      "type": "OPTION_FOR",
+      "justification": "S2 délègue la reconnaissance à un tiers habilité."
+    },
+    {
+      "source": "option-care-multichannel",
+      "target": "decision-invisible-care-attestation",
+      "type": "OPTION_FOR",
+      "justification": "S3 offre plusieurs voies alternatives sans faire du nombre de témoins un multiplicateur de valeur."
+    },
+    {
+      "source": "recommendation-multichannel-care-recognition",
+      "target": "decision-invisible-care-attestation",
+      "type": "RECOMMENDS",
+      "justification": "Le faisceau multicanal réduit l'exclusion du soin lourd sans confier toute la valeur à une institution unique."
+    },
+    {
+      "source": "recommendation-multichannel-care-recognition",
+      "target": "option-care-multichannel",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation adopte S3 avec poids bornés et recours."
+    },
+    {
+      "source": "state-heavy-care-invisible",
+      "target": "decision-invisible-care-attestation",
+      "type": "MOTIVATES",
+      "justification": "L'invisibilité du soin lorsque le bénéficiaire ne peut pas attester impose une voie d'arbitrage propre."
+    },
+    {
+      "source": "option-adoption-free-market",
+      "target": "decision-merchant-adoption",
+      "type": "OPTION_FOR",
+      "justification": "M5 rend explicite l'alternative du marché libre et ses conséquences spéculatives."
+    },
+    {
+      "source": "recommendation-central-decreasing-producer-settlement",
+      "target": "decision-merchant-adoption",
+      "type": "RECOMMENDS",
+      "justification": "Le règlement producteur décroissant ferme provisoirement la boucle sans créer un droit général à la conversion."
+    },
+    {
+      "source": "recommendation-central-decreasing-producer-settlement",
+      "target": "option-adoption-dated-subsidy",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation reprend la subvention explicite pour l'amorçage."
+    },
+    {
+      "source": "recommendation-central-decreasing-producer-settlement",
+      "target": "option-adoption-sunset-bridge",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation reprend le pont producteur plafonné pour la transition."
+    },
+    {
+      "source": "recommendation-central-decreasing-producer-settlement",
+      "target": "option-adoption-basket-threshold",
+      "type": "IMPLEMENTS",
+      "justification": "La couverture du panier et de sa chaîne fournit le déclencheur mesuré de réduction du règlement euro."
+    },
+    {
+      "source": "recommendation-capital-plus-common-pool",
+      "target": "decision-euro-entry-into-mind",
+      "type": "RECOMMENDS",
+      "justification": "E1 et E2 font entrer des capitaux et des euros sans vendre une priorité personnelle sur les biens vitaux."
+    },
+    {
+      "source": "recommendation-capital-plus-common-pool",
+      "target": "option-euro-entry-capital-only",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation place l'upside investisseur dans les droits du capital."
+    },
+    {
+      "source": "recommendation-capital-plus-common-pool",
+      "target": "option-euro-entry-common-pool",
+      "type": "IMPLEMENTS",
+      "justification": "La recommandation permet l'abondement collectif sans crédit personnel de Mind."
+    }
+  ]
+}

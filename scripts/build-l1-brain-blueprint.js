@@ -13,6 +13,7 @@ const cortexSourcePath = args.get("--cortex-source") || "data/l1-design.json";
 const affectSourcePath = args.get("--affect-source") || "l1/data/l1-affective-blueprint-v0.1.json";
 const sensorySourcePath = args.get("--sensory-source") || "l1/data/l1-sensory-blueprint-v0.1.json";
 const metacognitiveSourcePath = args.get("--metacognitive-source") || "l1/data/l1-metacognitive-blueprint-v0.1.json";
+const humanSituationSourcePath = args.get("--human-situation-source") || "l1/data/l1-human-situation-blueprint-v0.1.json";
 const citizenAIRolesSourcePath = args.get("--citizen-ai-roles-source") || "l1/data/l1-citizen-ai-roles-blueprint-v0.1.json";
 const subentityAttributionSourcePath = args.get("--subentity-attribution-source") || "l1/data/l1-subentity-memory-attribution-blueprint-v0.1.json";
 if (!sourcePath) throw new Error("Usage: node scripts/build-l1-brain-blueprint.js --source=<texte> [--output=<json>]");

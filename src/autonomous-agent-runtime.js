@@ -100,7 +100,6 @@ export function discoverCitizenCandidates({
     .map(item => [item.citizenId, finite(item.energy)]));
   const citizenIds = [...new Set([
     ...energyByCitizen.keys(),
-    ...Object.keys(physicsWorkspaces),
     fallbackActorId
   ].filter(Boolean))].sort((left, right) => left.localeCompare(right, "fr"));
   const maximumEnergy = Math.max(1, ...energyByCitizen.values());

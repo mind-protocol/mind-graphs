@@ -299,7 +299,12 @@ test("a hard human order ignores the citizen choice and keeps its lease", () => 
 
 test("citizen discovery and scoring expose an explainable fallback", () => {
   const candidates = discoverCitizenCandidates({
-    physicsState: { summary: { byCitizen: [{ citizenId: "citizen-a", energy: 2 }] } },
+    physicsState: {
+      summary: { byCitizen: [{ citizenId: "citizen-a", energy: 2 }] },
+      workspaces: {
+        "stale-physics-workspace": { activeTask: { id: "old-physics-task" } }
+      }
+    },
     globalWorkspaceState: {
       citizens: {
         "stale-workspace": { activeTask: { id: "old-task" } }

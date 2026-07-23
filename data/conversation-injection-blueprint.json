@@ -8,7 +8,7 @@
       "semanticType": "mechanism",
       "phrase": "Ingérer en autonomie les conversations passées humain↔IA dans le L1, bloc par bloc, en affinant quatre profils.",
       "family": "Injection conversations · procédé racine",
-      "summary": "Mission au long cours (plusieurs jours) : récupérer les conversations en ordre chrono-inverse, les découper en blocs d'environ deux réponses, produire pour chaque bloc des atomes sourcés (moment, contexte, acteurs, faits), et mettre à jour quatre missions transversales (profil psychologique, situation, objectifs/préférences, financier). Les quatre missions vivent comme des nœuds du L1 (nlr_ai) reliés à l'acteur self-nlr-ai. Chaque sous-procédé est une pièce PART_OF de celui-ci.",
+      "summary": "Mission au long cours (plusieurs jours) : récupérer les conversations en ordre chrono-inverse, les découper en blocs d'environ deux réponses, présenter chaque bloc au L1 comme stimulus, exécuter des ticks intégrés jusqu'à stabilisation bornée, retourner le Global Workspace obtenu, puis produire des atomes sourcés et mettre à jour quatre missions transversales (profil psychologique, situation, objectifs/préférences, financier). Les quatre missions vivent comme des nœuds du L1 (nlr_ai) reliés à l'acteur self-nlr-ai. Chaque sous-procédé est une pièce PART_OF de celui-ci.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -39,9 +39,9 @@
       "name": "Formulaires · atomes sourcés par bloc",
       "nodeType": "narrative",
       "semanticType": "mechanism",
-      "phrase": "Chaque bloc produit un moment brut et des atomes extraits : contexte, acteurs, faits saillants.",
+      "phrase": "Après passage du bloc comme stimulus et retour du Global Workspace, le Citizen AI produit un moment brut et des atomes sourcés.",
       "family": "Injection conversations · atomes",
-      "summary": "Pour chaque bloc : un moment-mémoire (message_moment, observed), un atome de contexte (observation avec contextId), des ancres d'acteurs tiers, et les faits/préférences/objectifs surgis. Chaque atome porte sa provenance (conversation, blockId, date, méthode) et un lien CONSENTED_UNDER vers le consentement du programme.",
+      "summary": "Le bloc brut est conservé comme moment-mémoire, mais ses atomes sémantiques ne sont pas extraits par un audit externe direct. Le Citizen AI lit le Global Workspace résultant des ticks : nœuds activés, entité diffusée, buts, sous-entités, affect, nouveauté et contexte. Il peut alors créer ou relier contexte, acteurs, faits, préférences et objectifs avec la double provenance du bloc source et du WorkspaceSnapshot qui a rendu cette interprétation saillante. Chaque atome porte conversation, blockId, sourceLocator, date ou inconnue explicite, méthode, workspaceSnapshotId et CONSENTED_UNDER.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -108,6 +108,64 @@
       "phrase": "Une conversation traitée est marquée comme terminée (soft-delete) après ingestion vérifiée ; l'effacement dur reste gardé.",
       "family": "Injection conversations · suppression",
       "summary": "Le retrait de la file se fait par défaut en marquant la conversation comme terminée (soft-delete / déplacement en « traité »), après (1) tous les blocs ingérés et vérifiés et (2) hash + manifest archivés. L'effacement dur des données à la source reste opt-in et exige une autorisation humaine explicite. L'agent n'efface jamais dur tout seul.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-block-stimulus",
+      "name": "Stimulus · présenter le bloc au L1",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Le bloc conversationnel entre dans le runtime comme stimulus sourcé avant toute interprétation ou proposition de lien.",
+      "family": "Injection conversations · cognition",
+      "summary": "L'adaptateur transforme le bloc en stimulus stable portant conversationId, blockId, blockIndex, texte, auteur, provenance, consentement et statut temporel. Ce stimulus n'est ni une croyance, ni un profil, ni déjà une mémoire interprétée. Son embedding sert au routage attentionnel vers les nœuds L1 proches ; la similarité ne crée aucune arête et ne résout aucune identité.",
+      "stimulusContract": {
+        "required": ["conversationId", "blockId", "blockIndex", "content", "speakerRole", "sourceArtifact", "sourceLocator", "consentId"],
+        "temporal": ["occurredAt", "timestampBasis"],
+        "stableIdentity": "hash(conversationId, blockId, content)",
+        "forbiddenEffects": ["direct semantic link creation", "person merge", "profile assertion", "automatic truth promotion"]
+      },
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-integrated-stimulus-ticks",
+      "name": "Ticks · propagation intégrée jusqu'à stabilisation bornée",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Le stimulus traverse embeddings, attention, coalitions, affect et compétition du Global Workspace pendant un nombre borné de micro-ticks.",
+      "family": "Injection conversations · cognition",
+      "summary": "Le runtime route l'embedding du bloc vers les nœuds L1 similaires avec un budget conservé, combine les activations avec le contexte, l'affect et les sous-entités, puis exécute runIntegratedL1UntilStable. L'observationId reste stable afin qu'un bloc ne fabrique pas de récurrence en étant rejoué. L'exécution s'arrête sur stabilité, événement matériel ou maxMicroTicks ; elle journalise chaque micro-tick sans multiplier la preuve source.",
+      "tickContract": {
+        "runner": "runIntegratedL1UntilStable",
+        "stableObservationId": true,
+        "boundedBy": ["maxMicroTicks", "requiredQuietTicks"],
+        "stopReasons": ["stable", "material_event", "max_micro_ticks"],
+        "energyRule": "le stimulus route un budget attribué au citoyen ; il ne crée aucune pompe supplémentaire"
+      },
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "mech-ci-global-workspace-return",
+      "name": "Retour · Global Workspace du bloc",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "L'appel MCP retourne le Global Workspace final et sa trace de sélection, pas une liste de liens décidés à la place du Citizen AI.",
+      "family": "Injection conversations · cognition",
+      "summary": "Le résultat contient le WorkspaceSnapshot final : entité diffusée, slots, nœuds et buts actifs, contrôleurs et alternatives, affect, nouveauté, contexte, raisons de sélection et historique borné de stabilisation. Des mémoires similaires, personnes possibles ou concepts pertinents apparaissent parce qu'ils ont reçu de l'activation et gagné la compétition ; ils restent des éléments d'attention. Le Citizen AI décide ensuite s'il faut réutiliser un nœud, proposer un lien typé, créer un nouvel atome, conserver une ambiguïté ou ne rien faire.",
+      "workspaceOutput": [
+        "workspaceSnapshot",
+        "activeEntity",
+        "slots",
+        "activeNodeIds",
+        "goalIds",
+        "controllersAndAlternatives",
+        "affectAndNovelty",
+        "selectionReasons",
+        "stabilizationSummary",
+        "sourceStimulusId"
+      ],
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
@@ -199,10 +257,17 @@
       "name": "MCP · inspection et revue guidée du cluster",
       "nodeType": "narrative",
       "semanticType": "mechanism",
-      "phrase": "Deux appels MCP répétés transforment la forme du cluster en petite liste de questions, puis consignent les réponses et la décision de clôture.",
+      "phrase": "L'appel MCP principal présente le bloc comme stimulus, exécute les ticks et retourne le Global Workspace ; la revue de forme intervient ensuite.",
       "family": "Injection conversations · MCP",
-      "summary": "La surface proposée sépare un appel read-only inspect_conversation_cluster et un appel append-only report_conversation_cluster_round. Le premier renvoie shapeSnapshot, qualityVector, gaps, questionAgenda et completionState. Le second reçoit les réponses, nœuds de preuve, mutations vérifiées et la décision continue, complete_sufficient, complete_sparse ou blocked_need_human ; il écrit le ledger du round puis impose une nouvelle inspection si le travail continue.",
+      "summary": "La surface proposée commence par stimulate_conversation_block : le call construit le stimulus, exécute les ticks intégrés et retourne le Global Workspace sans créer de liens sémantiques. Après que le Citizen AI a interprété ce workspace et muté le cluster avec provenance, inspect_conversation_cluster mesure la forme restante. report_conversation_cluster_round consigne les réponses, preuves, mutations vérifiées et la décision continue, complete_sufficient, complete_sparse ou blocked_need_human. Un gap persistant peut lui-même devenir un nouveau stimulus cognitif lors d'un round suivant, plutôt qu'une question détachée de l'état interne.",
       "mcpTools": [
+        {
+          "name": "stimulate_conversation_block",
+          "mutation": "runtime stimulus and tick trace; no direct semantic link",
+          "requiredInputs": ["graphId", "conversationId", "blockId", "blockIndex", "content", "speakerRole", "sourceArtifact", "sourceLocator", "consentId"],
+          "optionalInputs": ["occurredAt", "timestampBasis", "maxMicroTicks", "requiredQuietTicks", "dryRun"],
+          "outputs": ["stimulusId", "workspaceSnapshot", "activeEntity", "slots", "activeNodeIds", "goalIds", "controllersAndAlternatives", "selectionReasons", "stabilizationSummary"]
+        },
         {
           "name": "inspect_conversation_cluster",
           "mutation": "none",
@@ -218,7 +283,7 @@
           "completionDecisions": ["continue", "complete_sufficient", "complete_sparse", "blocked_need_human"]
         }
       ],
-      "reuseContract": "Réutiliser le compilateur de questions structurelles, son budget, ses gapKey stables, ses tentatives et son cooldown ; ajouter des définitions de gaps propres à la forme conversationnelle au lieu de demander au LLM d'inventer les critères.",
+      "reuseContract": "Réutiliser le runtime sensoriel, runIntegratedL1UntilStable et la sélection du Global Workspace pour la cognition du bloc. Réutiliser ensuite le compilateur de questions structurelles, son budget, ses gapKey stables, ses tentatives et son cooldown pour auditer le cluster ; ne jamais remplacer la cognition L1 par une simple recherche vectorielle externe.",
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },

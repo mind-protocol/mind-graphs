@@ -486,7 +486,7 @@ There are no long-lived working branches.
 
 All Citizen AI work on one continuously evolving canonical state because Mind is intended to be a shared living system rather than a collection of isolated realities merged after the fact.
 
-Git requires a commit message, but the message has no semantic role. It may be a mechanical snapshot identifier.
+Git commit are made automatically at each modification.
 
 A short stabilization window may group the multiple low-level filesystem events produced by one logical mutation into a single snapshot.
 

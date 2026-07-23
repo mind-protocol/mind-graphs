@@ -1,0 +1,54 @@
+{
+  "name": "Ontologie L2 · Cognition organisationnelle & Design",
+  "version": "1.0.0",
+  "description": "Ontologie gouvernant la cognition organisationnelle de Mind Protocol (espaces, décisions, mandats, projets, propositions de design et promotion L4).",
+  "nodeTypes": [
+    {
+      "type": "space",
+      "l4Role": "space",
+      "summary": "Périmètre organisationnel ou espace de travail (ex. Design, Architecture, Opérations)."
+    },
+    {
+      "type": "actor",
+      "l4Role": "actor",
+      "summary": "Acteur ou agent de l'organisation (humain, Citizen AI, sous-entité)."
+    },
+    {
+      "type": "narrative",
+      "l4Role": "narrative",
+      "summary": "Proposition de design, décision, doctrine ou hypothèse de travail."
+    },
+    {
+      "type": "moment",
+      "l4Role": "moment",
+      "summary": "Événement organisationnel, réunion, livraison, révision ou test."
+    },
+    {
+      "type": "thing",
+      "l4Role": "thing",
+      "summary": "Artefact, prototype, suite de validation ou demande de promotion L4."
+    }
+  ],
+  "linkTypes": [
+    {
+      "type": "PART_OF",
+      "family": "hierarchy",
+      "summary": "Appartenance d'un sous-espace ou d'une composante à un espace parent."
+    },
+    {
+      "type": "JUSTIFIES",
+      "family": "normative",
+      "summary": "Justification d'un choix de design ou d'un composant par une décision."
+    },
+    {
+      "type": "TESTED_BY",
+      "family": "validation",
+      "summary": "Lien entre une proposition de design et son prototype ou sa suite de test."
+    },
+    {
+      "type": "REQUESTS_PROMOTION_TO",
+      "family": "governance",
+      "summary": "Demande explicite de promotion d'une décision validée L2 vers le registre canonique L4."
+    }
+  ]
+}

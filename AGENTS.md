@@ -1,21 +1,23 @@
 # Agent instructions
 
-## Graph context before code edits
+## Turn lifecycle: Sense at start & Moment at end
 
-Graph context augmentation is enabled by default for code changes in this workspace. The user may disable it explicitly for the current task or for named files.
+1. **Sense at start of turn**:
+   - At the start of every turn, call the MCP sensing tool (`sense()`) to perceive the active graph context, current space, active task, and node environment.
+2. **Moment creation at end of turn**:
+   - At the end of every turn, record a `Moment` node capturing the cognitive/operational episode (summary of actions, ISO timestamp, actor `actor-nlr-ai`, space `space-l2-autonomous-cognition`) via the L1/L2 message API or graph ingestion tick.
 
-Before every operation that creates or modifies a code file:
 
-1. Call the MCP tool `before_code_edit` with that file's path, `enabled: true`, and `maxDepth: 1` unless the user requested another depth.
-2. Read the returned `Thing` anchors and their local nodes before deciding or applying the modification.
-3. If one write operation covers several code files, call `before_code_edit` separately for every path before the write.
-4. Call it again before a later modification of the same file when the graph may have changed or been reseeded. Otherwise, one call immediately before a contiguous edit sequence is sufficient.
+## L1 task wakes and Telegram blockers
 
-This is an agent protocol, not an MCP hook: MCP cannot intercept native write tools. Do not claim that the call is automatic or technically enforced.
+When a task is selected through `next_l1_task_wake`, use the returned objective data and never substitute a hard-coded task or wake cadence.
 
-If the user explicitly disables graph augmentation, do not call the tool and continue normally. If `before_code_edit` is unavailable or FalkorDB is unreachable, state that briefly, continue with the code task, and report the missing augmentation in the final response. A missing matching `Thing` is a valid empty result and must not block the edit.
+After reporting a wake through `report_l1_task_wake`:
 
-The protocol applies to source code, tests, scripts, stylesheets, templates, and executable configuration. It does not apply to prose-only Markdown or generated artifacts unless they contain executable code being changed.
+1. If the result contains `notification.required: true`, call `mcp__mind.send` in the same turn with `platform: "telegram"` and the exact `notification.message`.
+2. Report that the blocker notification was sent only after the Telegram MCP call succeeds.
+3. If Telegram MCP is unavailable or fails, keep the task blocked and surface the notification failure to the user; never silently treat it as delivered.
+4. A `progressed` task must declare its next wake before the current cycle ends. A `completed` or `blocked` task must not invent a future wake.
 
 ## Merge to main
 

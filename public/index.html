@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Protocol — Graphe causal</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">HEAVEN IS REPAIR · MIND PROTOCOL</p>
+          <h1>Graphe causal de Mind Protocol</h1>
+        </div>
+        <div class="topbar-actions">
+          <a class="page-link" href="/citizens.html">Statut citoyens</a>
+          <a class="page-link" href="/garden.html">Cité-jardin</a>
+          <a class="page-link" href="/decisions.html">Décisions</a>
+          <a class="page-link" href="/analysis.html">Santé du graphe</a>
+          <a class="page-link" href="/ontology.html">Comprendre l’ontologie</a>
+          <a class="page-link" href="/docs.html">Doc</a>
+          <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" title="Basculer le thème clair / sombre">Thème clair</button>
+          <div class="stats" aria-live="polite">
+            <span id="node-count">— nœuds</span>
+            <span id="link-count">— relations</span>
+            <span id="db-status" class="status">connexion…</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="toolbar" aria-label="Contrôles du graphe">
+        <label class="search-field">
+          <span>Rechercher</span>
+          <input id="search" type="search" placeholder="axiome, mécanisme, question, décision…" autocomplete="off" />
+        </label>
+        <details class="filter-group">
+          <summary>Relations visibles</summary>
+          <div class="filter-options">
+          <div class="filter-bulk">
+            <button type="button" data-bulk="relation" data-bulk-action="all">Tout cocher</button>
+            <button type="button" data-bulk="relation" data-bulk-action="none">Tout décocher</button>
+          </div>
+          <label><input type="checkbox" data-link-type="GROUNDS" checked /> fonde</label>
+          <label><input type="checkbox" data-link-type="UNLOCKS" checked /> débloque</label>
+          <label><input type="checkbox" data-link-type="SAFEGUARDS" checked /> protège</label>
+          <label><input type="checkbox" data-link-type="IMPLEMENTS" checked /> met en œuvre</label>
+          <label><input type="checkbox" data-link-type="LEADS_TO" checked /> conduit à</label>
+          <label><input type="checkbox" data-link-type="CONVERGES_IN" checked /> converge dans</label>
+          <label><input type="checkbox" data-link-type="MAKES_PLAUSIBLE" checked /> rend plausible</label>
+          <label><input type="checkbox" data-link-type="SCENARIO_LEADS_TO" checked /> scénario mène à</label>
+          <label><input type="checkbox" data-link-type="PRESSURES" checked /> met sous pression</label>
+          <label><input type="checkbox" data-link-type="MITIGATES" checked /> atténue</label>
+          <label><input type="checkbox" data-link-type="AFFECTS_SCENARIO" checked /> influence relative</label>
+          <label><input type="checkbox" data-link-type="MOTIVATES" checked /> motive</label>
+          <label><input type="checkbox" data-link-type="CAUSES" checked /> produit</label>
+          <label><input type="checkbox" data-link-type="FEEDS" checked /> alimente</label>
+          <label><input type="checkbox" data-link-type="ASSUMES" checked /> suppose</label>
+          <label><input type="checkbox" data-link-type="CONSTRAINS" checked /> conditionne</label>
+          <label><input type="checkbox" data-link-type="TESTS" checked /> met à l’épreuve</label>
+          <label><input type="checkbox" data-link-type="ADDRESSES" checked /> répond à</label>
+          <label><input type="checkbox" data-link-type="COMMUNICATES" checked /> met en récit</label>
+          <label><input type="checkbox" data-link-type="DERIVED_FROM" /> provenance documentaire</label>
+          <label><input type="checkbox" data-link-type="AUTHORED_BY" /> auteur</label>
+          <label><input type="checkbox" data-link-type="PART_OF" checked /> partie de</label>
+          <label><input type="checkbox" data-link-type="SUBCASE_OF" checked /> sous-cas de</label>
+          <label><input type="checkbox" data-link-type="SUPPORTS_ESTIMATE" checked /> justifie</label>
+          <label><input type="checkbox" data-link-type="CONTRADICTS" checked /> contredit</label>
+          <label><input type="checkbox" data-link-type="BLOCKS" checked /> bloque</label>
+          <label><input type="checkbox" data-link-type="OBSERVES" checked /> observe</label>
+          <label><input type="checkbox" data-link-type="PRODUCES" checked /> produit un résultat</label>
+          <label><input type="checkbox" data-link-type="USES_METHOD" checked /> utilise une méthode</label>
+          <label><input type="checkbox" data-link-type="MEASURES" checked /> mesure</label>
+          <label><input type="checkbox" data-link-type="USES_DATASET" checked /> utilise des données</label>
+          <label><input type="checkbox" data-link-type="APPLIES_IN" checked /> s’applique dans</label>
+          <label><input type="checkbox" data-link-type="PROMOTES_TO" checked /> promeut en tâche</label>
+          <label><input type="checkbox" data-link-type="TARGETS" checked /> cible</label>
+          <label><input type="checkbox" data-link-type="DEPENDS_ON" checked /> dépend de</label>
+          <label><input type="checkbox" data-link-type="DOCUMENTS_PROGRESS" checked /> documente l’avancement</label>
+          <label><input type="checkbox" data-link-type="OPTION_FOR" checked /> option pour</label>
+          <label><input type="checkbox" data-link-type="RECOMMENDS" checked /> recommande</label>
+          </div>
+        </details>
+        <details class="filter-group">
+          <summary>Couches</summary>
+          <div class="filter-options">
+          <div class="filter-bulk">
+            <button type="button" data-bulk="node" data-bulk-action="all">Tout cocher</button>
+            <button type="button" data-bulk="node" data-bulk-action="none">Tout décocher</button>
+          </div>
+          <label><input type="checkbox" data-node-type="protocol" checked /> protocole</label>
+          <label><input type="checkbox" data-node-type="axiom" checked /> axiomes</label>
+          <label><input type="checkbox" data-node-type="unlock" checked /> débloquantes</label>
+          <label><input type="checkbox" data-node-type="mechanism" checked /> mécanismes</label>
+          <label><input type="checkbox" data-node-type="institution" checked /> institutions</label>
+          <label><input type="checkbox" data-node-type="horizon" checked /> horizons</label>
+          <label><input type="checkbox" data-node-type="forecast_event" checked /> événements prévus</label>
+          <label><input type="checkbox" data-node-type="design_rationale" checked /> raisons économiques</label>
+          <label><input type="checkbox" data-node-type="economic_mechanism" checked /> systèmes économiques</label>
+          <label><input type="checkbox" data-node-type="design_effect" checked /> effets recherchés</label>
+          <label><input type="checkbox" data-node-type="working_hypothesis" checked /> hypothèses de travail</label>
+          <label><input type="checkbox" data-node-type="open_question" checked /> questions ouvertes</label>
+          <label><input type="checkbox" data-node-type="system_state" checked /> états testables</label>
+          <label><input type="checkbox" data-node-type="subentity" checked /> sous-entités</label>
+          <label><input type="checkbox" data-node-type="subentity_goal" checked /> objectifs de sous-entité</label>
+          <label><input type="checkbox" data-node-type="subentity_state_machine" checked /> machines à états de sous-entité</label>
+          <label><input type="checkbox" data-node-type="subentity_action" checked /> actions de sous-entité</label>
+          <label><input type="checkbox" data-node-type="source_document" checked /> documents sources</label>
+          <label><input type="checkbox" data-node-type="actor" checked /> acteurs / auteurs</label>
+          <label><input type="checkbox" data-node-type="consultation" checked /> consultations externes</label>
+          <label><input type="checkbox" data-node-type="claim" checked /> affirmations</label>
+          <label><input type="checkbox" data-node-type="observation" checked /> observations</label>
+          <label><input type="checkbox" data-node-type="experiment" checked /> expériences</label>
+          <label><input type="checkbox" data-node-type="dataset" checked /> jeux de données</label>
+          <label><input type="checkbox" data-node-type="metric" checked /> métriques</label>
+          <label><input type="checkbox" data-node-type="estimate" checked /> estimations</label>
+          <label><input type="checkbox" data-node-type="method" checked /> méthodes</label>
+          <label><input type="checkbox" data-node-type="context" checked /> contextes</label>
+          <label><input type="checkbox" data-node-type="terme" checked /> termes</label>
+          <label><input type="checkbox" data-node-type="decision" checked /> décisions gouvernées</label>
+          <label><input type="checkbox" data-node-type="decision_option" checked /> options de décision</label>
+          <label><input type="checkbox" data-node-type="idea" checked /> idées de travail</label>
+          <label><input type="checkbox" data-node-type="task" checked /> tâches</label>
+          <label><input type="checkbox" data-node-type="change" checked /> changements livrés</label>
+          </div>
+        </details>
+        <details class="filter-group">
+          <summary>Préréglages</summary>
+          <div class="filter-options filter-presets">
+            <button type="button" data-preset="all">Tout afficher</button>
+            <button type="button" data-preset="causal">Causalité seule</button>
+            <button type="button" data-preset="validation">Validation &amp; preuve</button>
+            <button type="button" data-preset="work">Travail &amp; décisions</button>
+          </div>
+        </details>
+        <button id="fit" type="button">Tout cadrer</button>
+        <button id="reset" type="button">Réinitialiser</button>
+        <button id="legend-toggle" type="button" aria-pressed="false">Légende</button>
+        <details class="filter-group export-group">
+          <summary>Exporter</summary>
+          <div class="filter-options">
+            <button id="export-png" type="button">Image PNG</button>
+            <button id="export-json" type="button">Données JSON</button>
+          </div>
+        </details>
+        <button id="fullscreen" type="button" aria-pressed="false">Plein écran</button>
+      </section>
+
+      <section class="workspace">
+        <div id="graph-wrap" class="graph-wrap">
+          <canvas id="graph" aria-label="Graphe causal interactif de Mind Protocol"></canvas>
+          <section id="node-a11y" class="visually-hidden" aria-label="Liste accessible des nœuds visibles">
+            <h2>Nœuds visibles</h2>
+            <p id="node-a11y-count" aria-live="polite"></p>
+            <ul id="node-a11y-list"></ul>
+          </section>
+          <aside id="term-hover-card" class="term-hover-card" role="tooltip" hidden></aside>
+          <nav class="graph-navigation" aria-label="Navigation hiérarchique">
+            <button id="hierarchy-back" type="button" hidden>← Vue d’ensemble</button>
+            <span id="hierarchy-status">Vue d’ensemble</span>
+          </nav>
+          <div id="copy-menu" class="node-copy-popover" hidden>
+            <button id="copy-node" type="button">Copier ce nœud</button>
+            <button id="copy-cluster" type="button">Copier le cluster</button>
+          </div>
+          <p id="copy-status" class="copy-status" aria-live="polite"></p>
+          <article id="cluster-presentation" class="cluster-presentation" aria-labelledby="cluster-presentation-title" hidden>
+            <header>
+              <div>
+                <p class="details-kicker">Présentation générée · double-clic sur un nœud</p>
+                <h2 id="cluster-presentation-title"></h2>
+              </div>
+              <button id="cluster-presentation-close" type="button" aria-label="Fermer la présentation">Fermer</button>
+            </header>
+            <p id="cluster-presentation-meta" class="cluster-presentation-meta"></p>
+            <p id="cluster-presentation-lede" class="cluster-presentation-lede"></p>
+            <div id="cluster-presentation-patterns" class="cluster-presentation-patterns"></div>
+            <div id="cluster-presentation-sections" class="cluster-presentation-sections"></div>
+          </article>
+          <div class="legend" aria-label="Légende" hidden>
+            <div class="relation-legend">
+              <strong class="legend-title">Textures des liens</strong>
+              <span title="Un changement contribue à produire un effet"><i class="link-key causal"></i>causal</span>
+              <span title="Transmission de ressources, données ou signaux"><i class="link-key flow"></i>flux</span>
+              <span title="Relation prospective conditionnelle"><i class="link-key scenario"></i>scénario</span>
+              <span title="Principe ou garde-fou de design"><i class="link-key normative"></i>normatif</span>
+              <span title="Condition nécessaire mais non suffisante"><i class="link-key enablement"></i>possibilité</span>
+              <span title="Hypothèse, motivation ou contrainte de design"><i class="link-key reasoning"></i>raisonnement</span>
+              <span title="Mise à l’épreuve d’une hypothèse"><i class="link-key validation"></i>validation</span>
+              <span title="Traduction vers un récit public"><i class="link-key communication"></i>communication</span>
+              <span title="Source, justification ou contradiction"><i class="link-key evidence"></i>preuve</span>
+              <span title="Partie, sous-cas ou spécialisation"><i class="link-key hierarchy"></i>hiérarchie</span>
+            </div>
+            <div class="family-legend">
+              <span><i class="swatch protocol"></i>Mind Protocol</span>
+              <span><i class="swatch axiom"></i>axiomes</span>
+              <span><i class="swatch unlock"></i>débloquantes</span>
+              <span><i class="swatch mechanism"></i>mécanismes</span>
+              <span><i class="swatch institution"></i>institutions</span>
+              <span><i class="swatch horizon"></i>horizons</span>
+              <span><i class="swatch forecast-event"></i>événements prévus</span>
+              <span><i class="swatch design-rationale"></i>raisons économiques</span>
+              <span><i class="swatch economic-mechanism"></i>systèmes économiques</span>
+              <span><i class="swatch design-effect"></i>effets recherchés</span>
+              <span><i class="swatch working-hypothesis"></i>hypothèses de travail</span>
+              <span><i class="swatch open-question"></i>questions ouvertes</span>
+              <span><i class="swatch state-desirable"></i>états désirables</span>
+              <span><i class="swatch state-indesirable"></i>états indésirables</span>
+              <span><i class="swatch source-document"></i>documents sources</span>
+            </div>
+          </div>
+          <div class="chronology-axis" aria-hidden="true">
+            <span>FUTUR</span><i></i><span>ANCIEN</span>
+          </div>
+          <p id="empty" class="empty" hidden>Aucun système ne correspond à cette recherche.</p>
+        </div>
+
+        <aside id="details" class="details" aria-live="polite">
+          <section class="graph-query" aria-labelledby="graph-query-title">
+            <p class="details-kicker">Moteur local · similarité ≠ probabilité</p>
+            <h2 id="graph-query-title">Parler au graphe</h2>
+            <form id="graph-query-form">
+              <label for="graph-question">Question</label>
+              <textarea id="graph-question" rows="3" placeholder="Pourquoi la simulation économique à l’échelle d’une ville est-elle importante ?"></textarea>
+              <div class="graph-query-actions">
+                <button type="submit">Explorer</button>
+                <label class="cluster-picker" for="named-cluster">
+                  <span>Cluster documentaire</span>
+                  <select id="named-cluster">
+                    <option value="civilization-endgame">Civilization Endgame</option>
+                    <option value="democracy-endgame">Democracy Endgame</option>
+                    <option value="education-endgame">Education Endgame</option>
+                    <option value="mental-health-endgame">Mental Health Endgame</option>
+                    <option value="financial-realignment">Financial Narrative</option>
+                    <option value="science-endgame">Science Endgame v2</option>
+                    <option value="causal-science-implementation">Causal Science Graph v0.2</option>
+                    <option value="question-endgame">Endgame de la question</option>
+                    <option value="human-valence-endgame">Endgame de la valence humaine</option>
+                    <option value="l1-blueprint">Blueprint L1 · naissance du citoyen</option>
+                    <option value="l1-seed-import">Seed L1 · import du corpus personnel</option>
+                    <option value="human-prediction-engine">Moteur de prédiction de l'humain</option>
+                    <option value="strategic-feedback-decisions">Feedback &amp; décisions</option>
+                    <option value="project-work">Travail &amp; avancement</option>
+                    <option value="reddit-ai-democracy-2026-07-22">Reddit · AI Democracy</option>
+                    <option value="consultations">Consultations externes</option>
+                  </select>
+                </label>
+                <button id="show-named-cluster" type="button">Voir le cluster</button>
+                <button id="graph-query-clear" type="button" hidden>Quitter le cluster</button>
+              </div>
+            </form>
+            <p id="graph-query-status" class="analysis-disclaimer">Index local en préparation…</p>
+            <div id="graph-query-results" class="graph-query-results"></div>
+          </section>
+          <section class="node-inspector" aria-labelledby="detail-name">
+            <p class="details-kicker">Nœud sélectionné</p>
+            <h2 id="detail-name">Clique sur un nœud</h2>
+            <p id="detail-phrase" class="detail-phrase">Chaque nœud porte une traduction ou une phrase-manifeste propre à son rôle dans le graphe.</p>
+            <dl id="detail-meta"></dl>
+            <p id="detail-summary" class="detail-summary"></p>
+            <section id="detail-forecast" class="detail-forecast" hidden>
+              <h3>Scénario prospectif</h3>
+              <dl id="detail-forecast-list"></dl>
+            </section>
+            <section id="detail-roadmap" class="detail-roadmap" hidden>
+              <h3>Programme de validation</h3>
+              <dl id="detail-roadmap-list"></dl>
+            </section>
+            <section id="detail-work" class="detail-roadmap" hidden>
+              <h3>Pilotage du projet</h3>
+              <dl id="detail-work-list"></dl>
+            </section>
+            <p id="detail-source" class="detail-source"></p>
+            <div id="detail-relations" class="detail-relations"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="/vendor/d3.min.js"></script>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,294 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "Source de vérité unique de la composition des graphes. Chaque graphe déclare sa base FalkorDB, son ontologie et ses jeux de données ordonnés. Aucun script ne doit plus contenir de liste de fichiers en dur.",
+  "principles": [
+    "Un graphe = une base FalkorDB + une ontologie + une liste ordonnée de jeux de données.",
+    "L'ordre des jeux de données fixe l'ordre de chargement et donc l'ordre des rapports d'erreur.",
+    "Les particularités d'un jeu de données sont déclarées ici, jamais devinées depuis son nom de fichier.",
+    "Un graphe déclaré mais inactif rend une frontière visible sans prétendre qu'elle est déjà implémentée."
+  ],
+  "graphs": [
+    {
+      "id": "design",
+      "status": "active",
+      "label": "Graphe causal de design · Mind Protocol",
+      "falkorGraph": "mind_causal_graph",
+      "purpose": "Décrit ce que Mind Protocol propose et décide : axiomes, mécanismes, institutions, questions ouvertes, décisions, prospective et pilotage du projet.",
+      "ontology": "data/graph-ontology.json",
+      "ontologyMirror": "public/graph-ontology.json",
+      "dataDir": "data",
+      "datasets": [
+        {
+          "id": "mind-root",
+          "file": "mind-root.json",
+          "shape": "root"
+        },
+        {
+          "id": "mind-protocol-concepts",
+          "file": "mind-protocol-concepts.json"
+        },
+        {
+          "id": "mind-economic-causality",
+          "file": "mind-economic-causality.json"
+        },
+        {
+          "id": "economy-price-formation",
+          "file": "economy-price-formation.json"
+        },
+        {
+          "id": "human-valence-endgame",
+          "file": "human-valence-endgame.json"
+        },
+        {
+          "id": "l1-blueprint",
+          "file": "l1-blueprint.json"
+        },
+        {
+          "id": "l1-design",
+          "file": "l1-design.json"
+        },
+        {
+          "id": "l1-seed-import-endgame",
+          "file": "l1-seed-import-endgame.json"
+        },
+        {
+          "id": "human-prediction-engine-endgame",
+          "file": "human-prediction-engine-endgame.json"
+        },
+        {
+          "id": "autonomous-improvement-endgame",
+          "file": "autonomous-improvement-endgame.json"
+        },
+        {
+          "id": "code-endgame-design",
+          "file": "code-endgame-design.json"
+        },
+        {
+          "id": "continuous-verification",
+          "file": "continuous-verification.json"
+        },
+        {
+          "id": "mind-validation-roadmap",
+          "file": "mind-validation-roadmap.json"
+        },
+        {
+          "id": "forecast-events",
+          "file": "forecast-events.json",
+          "defaultNodeType": "forecast_event"
+        },
+        {
+          "id": "forecast-influences",
+          "file": "forecast-influences.json",
+          "forcedLinkType": "AFFECTS_SCENARIO"
+        },
+        {
+          "id": "civilization-endgame",
+          "file": "civilization-endgame.json"
+        },
+        {
+          "id": "endgame-domains",
+          "file": "endgame-domains.json"
+        },
+        {
+          "id": "causal-science-implementation",
+          "file": "causal-science-implementation.json"
+        },
+        {
+          "id": "question-endgame",
+          "file": "question-endgame.json"
+        },
+        {
+          "id": "l4-ontology-mapping",
+          "file": "l4-ontology-mapping.json"
+        },
+        {
+          "id": "mind-protocol-repository",
+          "file": "mind-protocol-repository.json",
+          "requires": "github-provenance"
+        },
+        {
+          "id": "mind-strategic-feedback",
+          "file": "mind-strategic-feedback.json"
+        },
+        {
+          "id": "analysis-remediation",
+          "file": "analysis-remediation.json"
+        },
+        {
+          "id": "analysis-validation-contracts",
+          "file": "analysis-validation-contracts.json"
+        },
+        {
+          "id": "evidence-leverage-programs",
+          "file": "evidence-leverage-programs.json"
+        },
+        {
+          "id": "reddit-ai-democracy",
+          "file": "reddit-ai-democracy.json"
+        },
+        {
+          "id": "consultations",
+          "file": "consultations.json"
+        },
+        {
+          "id": "evidence-appraisal-method",
+          "file": "evidence-appraisal-method.json"
+        },
+        {
+          "id": "graph-architecture-decisions",
+          "file": "graph-architecture-decisions.json"
+        },
+        {
+          "id": "code-parameter-decisions",
+          "file": "code-parameter-decisions.json"
+        },
+        {
+          "id": "project-work",
+          "file": "project-work.json"
+        },
+        {
+          "id": "ontology-vocabulary",
+          "file": "ontology-vocabulary.json"
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "status": "active",
+      "label": "Graphe scientifique · matière évaluée",
+      "falkorGraph": "mind_science_graph",
+      "purpose": "Accueillera la matière scientifique elle-même — études, claims atomiques, estimations, preuves, appraisals — sous une ontologie propre. Les nœuds sci-* et csg-* restent dans le graphe de design : ils décrivent ce système, ils n'en sont pas le contenu.",
+      "ontology": "science/ontology.json",
+      "dataDir": "science/data",
+      "datasets": [
+        {
+          "id": "satopaa-information-diversity",
+          "file": "satopaa-2014-information-diversity.json"
+        }
+      ],
+      "frontier": {
+        "rule": "Aucune arête ne traverse les deux graphes. Une référence inter-graphes se fait par identifiant stable déclaré, jamais par une relation FalkorDB.",
+        "sharedGovernance": "governance/evidence-firewall.json",
+        "note": "Statut actif : l'ontologie scientifique et le premier cluster sourcé sont validés séparément du graphe de design."
+      }
+    },
+    {
+      "id": "l1-nlr-ai",
+      "status": "active",
+      "label": "L1 · Mémoire personnelle de NLR AI",
+      "falkorGraph": "l1_nlr_ai_graph",
+      "purpose": "Instance concrète du blueprint L1 pour le citoyen NLR AI. Contenu souverain : identité, mémoire, relations, valeurs, préférences, apportés par la personne et jamais installés par le blueprint. La doctrine de design reste dans le graphe de design ; ce graphe en est un sujet, pas une copie.",
+      "ontology": "l1/ontology.json",
+      "dataDir": "l1/data",
+      "blueprintSync": {
+        "enabled": true,
+        "source": "l1/data/l1-brain-blueprint-v0.1.graph.json",
+        "mode": "structural_opt_in",
+        "personalContentPolicy": "never_overwrite"
+      },
+      "datasets": [
+        {
+          "id": "l1-nlr-ai-identity",
+          "file": "identity.json"
+        },
+        {
+          "id": "l1-nlr-ai-cognitive-seed-v0.1",
+          "file": "nlr-cognitive-seed-v0.1.json"
+        },
+        {
+          "id": "l1-nlr-ai-personal-goals",
+          "file": "personal-goals.json"
+        }
+      ],
+      "frontier": {
+        "rule": "Aucune arête ne traverse ce graphe et les autres. self-nlr-ai référence actor-nlr-ai du graphe de design par identifiant stable (champ correspondsTo), jamais par une relation FalkorDB.",
+        "note": "Statut actif : premier graphe personnel matérialisé. Il naît avec une ancre d'identité et un fait déclaré donnant le nom du citoyen ; le seed l'enrichira depuis le corpus consenti."
+      }
+    },
+    {
+      "id": "l1-demo",
+      "status": "active",
+      "label": "L1 · Citoyen Démo",
+      "falkorGraph": "l1_demo_graph",
+      "purpose": "Instance de démonstration du blueprint L1 pour l'observabilité et la comparaison multi-graphes.",
+      "ontology": "l1/ontology.json",
+      "dataDir": "l1/data",
+      "datasets": [
+        {
+          "id": "l1-demo-identity",
+          "file": "identity.json"
+        }
+      ]
+    },
+    {
+      "id": "l2-mind",
+      "status": "active",
+      "label": "L2 · Organisation Mind Protocol",
+      "falkorGraph": "l2_mind_protocol_graph",
+      "purpose": "Cognition organisationnelle de Mind Protocol (L2), hébergeant les espaces de Design, Architecture, Recherche, Roadmap et Gouvernance.",
+      "ontology": "l2/ontology.json",
+      "dataDir": "data",
+      "datasets": [
+        {
+          "id": "l2-mind-organization",
+          "file": "l2-mind-organization.json"
+        }
+      ]
+    },
+    {
+      "id": "l3-ecosystem",
+      "status": "active",
+      "label": "L3 · Écosystème vécu",
+      "falkorGraph": "l3_ecosystem_graph",
+      "purpose": "Représente les acteurs, espaces, conversations et événements externes auxquels un citoyen peut être relié. L3 conserve le stimulus extérieur ; L1 conserve sa perception, son interprétation et ses conséquences internes.",
+      "ontology": "l3/ontology.json",
+      "dataDir": "l3/data",
+      "datasets": [
+        {
+          "id": "l3-ecosystem-bootstrap",
+          "file": "ecosystem.json"
+        }
+      ],
+      "frontier": {
+        "rule": "Aucune arête ne traverse L3 et L1. Les identités partagées utilisent correspondsTo et les événements utilisent un sourceMessageId stable ; le runtime sensoriel réalise la projection vers L1.",
+        "note": "Statut actif : le message « coucou » de NLR constitue le premier événement externe canonique de L3."
+      }
+    },
+    {
+      "id": "l4-registry",
+      "status": "active",
+      "label": "L4 · Protocol Registry",
+      "falkorGraph": "mind_l4_registry",
+      "purpose": "Registre canonique et officiel du protocole Mind Protocol : types fondamentaux, profils physiques, schémas, capacités et gouvernance.",
+      "ontology": "data/graph-ontology.json",
+      "dataDir": "data",
+      "datasets": [
+        {
+          "id": "l4-registry",
+          "file": "l4-registry.json"
+        }
+      ],
+      "frontier": {
+        "rule": "Registre canonique signé et versionné. Les justifications de design vivent dans mind-design et s'y relient par JUSTIFIED_BY."
+      }
+    },
+    {
+      "id": "l4-kernel",
+      "status": "active",
+      "label": "L4 · Physics Kernel",
+      "falkorGraph": "mind_l4_kernel",
+      "purpose": "Noyau physique exécutable de propagation d'énergie, de décrémentation, de conservation et de dynamique de liens.",
+      "ontology": "data/graph-ontology.json",
+      "dataDir": "data",
+      "datasets": [
+        {
+          "id": "l4-kernel",
+          "file": "l4-kernel.json"
+        }
+      ],
+      "frontier": {
+        "rule": "Noyau exécutable. Les paramètres et lois sont enregistrés dans l4-registry par REGISTERED_IN."
+      }
+    }
+  ]
+}

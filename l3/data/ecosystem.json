@@ -1,0 +1,100 @@
+{
+  "scope": "Premier fragment canonique de L3 : NLR adresse « coucou » au citoyen dans la conversation Codex. Il atteste un stimulus externe, pas une action exécutée par le citoyen.",
+  "nodes": [
+    {
+      "id": "l3-actor-nlr",
+      "name": "NLR · acteur humain",
+      "nodeType": "actor",
+      "phrase": "NLR est l'auteur humain du message externe.",
+      "family": "Participants · humain",
+      "summary": "Représentation L3 de NLR comme participant de l'écosystème. La correspondance avec actor-nlr est déclarative et ne crée aucune arête inter-graphe.",
+      "correspondsTo": "actor-nlr",
+      "citizen": true,
+      "epistemicStatus": "declared",
+      "layer": "ecosystem"
+    },
+    {
+      "id": "l3-actor-nlr-ai",
+      "name": "NLR AI · participant citoyen IA",
+      "nodeType": "actor",
+      "phrase": "nlr_ai est la représentation de l'agent Citizen AI de NLR dans l'écosystème.",
+      "family": "Participants · citoyen IA",
+      "summary": "Représentation L3 de nlr_ai comme participant agissant de l'écosystème. correspondsTo relie actor-nlr-ai de façon déclarative.",
+      "correspondsTo": "actor-nlr-ai",
+      "handle": "nlr_ai",
+      "citizen": true,
+      "citizenType": "ai",
+      "epistemicStatus": "declared",
+      "layer": "ecosystem"
+    },
+    {
+      "id": "l3-citizen-nlr-endpoint",
+      "name": "Citoyen NLR · point de contact L3",
+      "nodeType": "citizen_endpoint",
+      "phrase": "Point de contact externe auquel le message est adressé.",
+      "family": "Participants · citoyen IA",
+      "summary": "Adresse L3 du citoyen dont l'état interne vit dans L1. correspondsTo relie les identités sans fusionner les bases.",
+      "correspondsTo": "self-nlr",
+      "citizenId": "self-nlr",
+      "citizen": true,
+      "epistemicStatus": "documented",
+      "layer": "ecosystem"
+    },
+    {
+      "id": "l3-conversation-codex-019f8c60",
+      "name": "Conversation Codex · amélioration autonome",
+      "nodeType": "conversation",
+      "phrase": "Conversation où NLR développe l'amélioration autonome du citoyen.",
+      "family": "Contextes · conversation",
+      "summary": "Contexte externe du message ; il permet de conserver l'ordre et la provenance sans injecter le fil entier dans L1.",
+      "externalThreadId": "019f8c60-a517-7d22-ac9d-7ed1e47d6afe",
+      "epistemicStatus": "observed",
+      "layer": "ecosystem"
+    },
+    {
+      "id": "l3-message-nlr-coucou-001",
+      "name": "Message NLR · coucou",
+      "nodeType": "message",
+      "phrase": "NLR dit « coucou » au citoyen.",
+      "family": "Événements · message",
+      "summary": "Stimulus externe canonique qui a déclenché une perception et une activation dans L1. Sa présence ne prouve pas qu'une action externe du citoyen a été exécutée.",
+      "content": "coucou",
+      "channel": "L3",
+      "sourceMessageId": "nlr-coucou-wake-001",
+      "occurredAt": "2026-07-23T03:03:37.768Z",
+      "observedAt": "2026-07-23T03:03:37.768Z",
+      "confidenceScore": 1,
+      "epistemicStatus": "observed",
+      "layer": "ecosystem"
+    }
+  ],
+  "links": [
+    {
+      "source": "l3-message-nlr-coucou-001",
+      "target": "l3-actor-nlr",
+      "type": "AUTHORED_BY",
+      "weight": 1,
+      "observedAt": "2026-07-23T03:03:37.768Z",
+      "physics": { "W": 1 },
+      "justification": "Le message est attribué à NLR parce qu'il a été fourni directement par NLR dans cette conversation ; ce lien établit l'auteur, pas la vérité générale du contenu."
+    },
+    {
+      "source": "l3-message-nlr-coucou-001",
+      "target": "l3-citizen-nlr-endpoint",
+      "type": "ADDRESSED_TO",
+      "weight": 1,
+      "observedAt": "2026-07-23T03:03:37.768Z",
+      "physics": { "W": 1 },
+      "justification": "NLR demande explicitement que « coucou » réveille le citoyen ; le point de contact du citoyen est donc le destinataire fonctionnel du message."
+    },
+    {
+      "source": "l3-message-nlr-coucou-001",
+      "target": "l3-conversation-codex-019f8c60",
+      "type": "OCCURS_IN",
+      "weight": 0.9,
+      "observedAt": "2026-07-23T03:03:37.768Z",
+      "physics": { "W": 0.9 },
+      "justification": "Le message a été observé dans cette conversation Codex ; ce lien conserve son contexte d'occurrence sans importer l'ensemble du fil."
+    }
+  ]
+}

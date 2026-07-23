@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Citoyens · Statut L1</title>
+  <link rel="stylesheet" href="/citizens.css" />
+</head>
+<body>
+  <header class="masthead">
+    <div>
+      <p class="eyebrow">Mind Protocol · L1 observable</p>
+      <h1>État vivant des citoyens</h1>
+      <p class="lede">Une lecture instantanée de l’attention, de l’énergie, des affects, de la métacognition, de l’agence et de l’apprentissage.</p>
+    </div>
+    <nav aria-label="Navigation">
+      <a href="/">Graphe</a>
+      <a href="/l1-runtime.html">Sous-entités</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="control-bar" aria-label="Choix du citoyen et du niveau de lecture">
+      <label>Citoyen <select id="citizen-select"></select></label>
+      <label>Niveau de lecture
+        <select id="detail-select">
+          <option value="compact">Essentiel</option>
+          <option value="standard" selected>Standard</option>
+          <option value="detailed">Détaillé</option>
+        </select>
+      </label>
+      <span id="connection" class="connection" aria-live="polite">Connexion…</span>
+    </section>
+
+    <section id="hero" class="hero" aria-labelledby="citizen-title">
+      <div>
+        <p id="citizen-kicker" class="eyebrow"></p>
+        <h2 id="citizen-title">Chargement…</h2>
+        <p id="citizen-summary" class="summary"></p>
+      </div>
+      <div id="alerts" class="alerts" aria-label="Alertes"></div>
+    </section>
+
+    <section id="metrics" class="metrics" aria-label="Mesures principales"></section>
+
+    <section class="dashboard">
+      <article class="panel narrative-panel">
+        <header><p class="eyebrow">Traduction déterministe</p><h2>Ce que dit l’état</h2></header>
+        <div id="narrative" class="narrative"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Orientation</p><h2>Attention et énergie</h2></header>
+        <div id="attention-energy"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Homéostasie</p><h2>Affects</h2></header>
+        <div id="affects"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Réflexivité</p><h2>Conscience métacognitive</h2></header>
+        <div id="awareness"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Compétition interne</p><h2>Sous-entités et contrôle</h2></header>
+        <div id="subentities"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Direction</p><h2>Tâche, objectifs et stratégie</h2></header>
+        <div id="direction"></div>
+      </article>
+      <article class="panel wide">
+        <header><p class="eyebrow">Manques actifs</p><h2>Questions internes</h2></header>
+        <div id="questions"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Mémoire lente</p><h2>Apprentissage et intégrité</h2></header>
+        <div id="learning"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Provenance runtime</p><h2>Sources</h2></header>
+        <div id="sources"></div>
+      </article>
+      <details class="panel raw wide">
+        <summary>Voir le snapshot JSON complet</summary>
+        <pre id="raw-json"></pre>
+      </details>
+    </section>
+  </main>
+
+  <template id="empty-template"><p class="empty">Aucune mesure disponible.</p></template>
+  <script type="module" src="/citizens.js"></script>
+</body>
+</html>

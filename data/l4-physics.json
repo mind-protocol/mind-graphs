@@ -1,0 +1,41 @@
+{
+  "scope": "Noyau physique exécutable L4. Spécifie les équations de propagation d'énergie, les paramètres dynamiques, le gating et la conservation.",
+  "kernelVersion": "1.0.0",
+  "physicsProfile": "l4-protocol-physics-v1.9.1",
+  "laws": [
+    {
+      "id": "law-impulse-propagation",
+      "name": "Loi d'impulsion physique",
+      "equation": "I = E * W * P * G",
+      "summary": "L'impulsion transférée le long d'un lien est le produit de l'énergie de la source (E), du poids du lien (W), de la polarité (P) et de l'état de gate (G)."
+    },
+    {
+      "id": "law-energy-conservation",
+      "name": "Principe de conservation et de decay",
+      "equation": "E_next = (E_current * (1 - decayRate)) + E_injected",
+      "summary": "L'énergie décroît à chaque tick selon un taux de décrémentation et se conserve sous forme d'impulsions distribuées."
+    }
+  ],
+  "parameters": {
+    "defaultWeight": 1.0,
+    "defaultEnergy": 0.0,
+    "defaultGate": 1.0,
+    "defaultStability": 0.5,
+    "decayRate": 0.05,
+    "minEnergyThreshold": 0.01
+  },
+  "nodes": [
+    {
+      "id": "l4-physics-kernel-anchor",
+      "name": "Kernel Physique L4",
+      "nodeType": "thing",
+      "phrase": "Moteur d'exécution des lois physiques du protocole.",
+      "family": "L4 Physics",
+      "summary": "Exécute les équations de propagation, la décrémentation et la gestion de la mémoire de travail.",
+      "epistemicStatus": "documented",
+      "clusterId": "l4-physics",
+      "semanticType": "protocol"
+    }
+  ],
+  "links": []
+}

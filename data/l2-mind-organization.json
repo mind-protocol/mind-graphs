@@ -1,0 +1,123 @@
+{
+  "scope": "Structure racine de la cognition organisationnelle L2 · Mind Protocol. Héberge les espaces de design, d'architecture, de recherche, d'opérations et de gouvernance.",
+  "nodes": [
+    {
+      "id": "space-l2-mind-protocol",
+      "name": "Space · Organisation Mind Protocol",
+      "nodeType": "context",
+      "phrase": "Espace racine de la cognition organisationnelle de Mind Protocol.",
+      "family": "L2 Organization",
+      "summary": "Englobe le design, l'architecture, la recherche, les opérations et la gouvernance de Mind Protocol.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "space"
+    },
+    {
+      "id": "space-l2-design",
+      "name": "Space · Design du protocole",
+      "nodeType": "context",
+      "phrase": "Espace majeur où l'organisation conçoit les endgames, principes et choix d'architecture.",
+      "family": "L2 Organization · Design",
+      "summary": "Contient le graphe de design (axiomes, mécanismes, prospective, choix de design).",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "space"
+    },
+    {
+      "id": "space-l2-architecture",
+      "name": "Space · Architecture technique & Code",
+      "nodeType": "context",
+      "phrase": "Espace décrivant les composants spectraux, modules logiciels et infrastructures.",
+      "family": "L2 Organization · Architecture",
+      "summary": "Structure le code source, les paquetages, les tests et l'intégration continue.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "space"
+    },
+    {
+      "id": "space-l2-research",
+      "name": "Space · Recherche & Expériences",
+      "nodeType": "context",
+      "phrase": "Espace d'expérimentation, d'études et d'évaluation empirique.",
+      "family": "L2 Organization · Research",
+      "summary": "Héberge les jeux de données d'évaluation, les tests de prédiction et l'évidence scientifique.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "space"
+    },
+    {
+      "id": "space-l2-roadmap",
+      "name": "Space · Roadmap & Gouvernance",
+      "nodeType": "context",
+      "phrase": "Espace de suivi des jalons, décisions de promotion et arbitrages organisationnels.",
+      "family": "L2 Organization · Governance",
+      "summary": "Organise les tâches, verrous, arbitrages et demandes de promotion vers L4.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "space"
+    },
+    {
+      "id": "space-l2-autonomous-cognition",
+      "name": "Space · Cognition Autonome & Citoyens IA",
+      "nodeType": "context",
+      "phrase": "Espace de travail et d'exécution dédié aux Citoyens IA et à la cognition autonome.",
+      "family": "L2 Organization · Autonomous Cognition",
+      "summary": "Périmètre de présence et d'interaction des Citoyens IA (dont nlr_ai) au sein du L2.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "space"
+    },
+    {
+      "id": "actor-nlr-ai",
+      "name": "NLR AI · Citoyen AI Organisationnel",
+      "nodeType": "actor",
+      "phrase": "Instance de Citizen AI de NLR opérant dans le L2 et les espaces organisationnels.",
+      "family": "L2 Organization · Acteurs",
+      "summary": "Agent souverain Citizen AI (nlr_ai) actif au sein du Space de Cognition Autonome du L2.",
+      "handle": "nlr_ai",
+      "citizen": true,
+      "citizenType": "ai",
+      "currentSpaceId": "space-l2-autonomous-cognition",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "actor"
+    }
+  ],
+  "links": [
+    {
+      "source": "space-l2-design",
+      "target": "space-l2-mind-protocol",
+      "type": "CONVERGES_IN",
+      "justification": "Le Space de Design est la fonction cognitive principale du L2 de Mind Protocol."
+    },
+    {
+      "source": "space-l2-architecture",
+      "target": "space-l2-mind-protocol",
+      "type": "CONVERGES_IN",
+      "justification": "L'architecture technique est une composante structurelle du L2."
+    },
+    {
+      "source": "space-l2-research",
+      "target": "space-l2-mind-protocol",
+      "type": "CONVERGES_IN",
+      "justification": "La recherche est un sous-espace d'expérimentation du L2."
+    },
+    {
+      "source": "space-l2-roadmap",
+      "target": "space-l2-mind-protocol",
+      "type": "CONVERGES_IN",
+      "justification": "La gouvernance et la roadmap guident les promotions du L2."
+    },
+    {
+      "source": "space-l2-autonomous-cognition",
+      "target": "space-l2-mind-protocol",
+      "type": "CONVERGES_IN",
+      "justification": "L'espace des Citoyens IA est un sous-espace fonctionnel de l'organisation L2."
+    },
+    {
+      "source": "actor-nlr-ai",
+      "target": "space-l2-autonomous-cognition",
+      "type": "CONVERGES_IN",
+      "justification": "L'agent nlr_ai est hébergé et agit dans le Space de Cognition Autonome L2."
+    },
+    {
+      "source": "actor-nlr-ai",
+      "target": "space-l2-design",
+      "type": "CONVERGES_IN",
+      "justification": "L'agent nlr_ai participe activement aux réflexions et arbitrages du Space de Design."
+    }
+  ]
+}

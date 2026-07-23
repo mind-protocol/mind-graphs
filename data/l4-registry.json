@@ -1,0 +1,100 @@
+{
+  "scope": "Registre canonique du protocole Mind Protocol L4. Définit les types physiques, le lien universel, le catalogue de prédicats et les profils physiques enregistrés.",
+  "schemaVersion": "1.9.1",
+  "registryVersion": "1.0.0",
+  "canonicalTypes": [
+    {
+      "id": "l4-type-actor",
+      "name": "Actor",
+      "role": "actor",
+      "summary": "Entité agissante, pompe énergétique ou source de volition."
+    },
+    {
+      "id": "l4-type-moment",
+      "name": "Moment",
+      "role": "moment",
+      "summary": "Événement temporel situé, daté et irréversible."
+    },
+    {
+      "id": "l4-type-narrative",
+      "name": "Narrative",
+      "role": "narrative",
+      "summary": "Attracteur conceptuel, proposition de sens ou doctrine."
+    },
+    {
+      "id": "l4-type-space",
+      "name": "Space",
+      "role": "space",
+      "summary": "Périmètre de validité, contexte ou conteneur d'activité."
+    },
+    {
+      "id": "l4-type-thing",
+      "name": "Thing",
+      "role": "thing",
+      "summary": "Artefact identifiable, ressource matérielle ou composant exécutable."
+    }
+  ],
+  "registeredProfiles": [
+    {
+      "id": "l1-cognitive-physics-v0.1",
+      "layer": "L1",
+      "status": "active",
+      "purpose": "Profil physique cognitif pour les sous-entités L1 (Global Workspace, coalitions, renforcement hebbien)."
+    },
+    {
+      "id": "l2-organizational-physics-v0.1",
+      "layer": "L2",
+      "status": "draft",
+      "purpose": "Profil physique organisationnel (mandats, tâches et allocations de ressources)."
+    },
+    {
+      "id": "l3-ecosystem-physics-v0.1",
+      "layer": "L3",
+      "status": "active",
+      "purpose": "Profil physique environnemental (stimuli, interactions et perception sensorielle)."
+    },
+    {
+      "id": "l4-protocol-physics-v1.9.1",
+      "layer": "L4",
+      "status": "active",
+      "purpose": "Profil physique universel et canonique du protocole."
+    }
+  ],
+  "registeredCitizens": [
+    {
+      "id": "actor-nlr-ai",
+      "handle": "nlr_ai",
+      "name": "NLR AI",
+      "citizenType": "ai",
+      "status": "active",
+      "summary": "Citoyen AI canoniquement enregistré pour l'agent de NLR (nlr_ai)."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "l4-protocol-registry-anchor",
+      "name": "Registre Canonique du Protocole L4",
+      "nodeType": "thing",
+      "phrase": "Registre officiel des types, profils, permissions et graphes reconnus par Mind Protocol.",
+      "family": "L4 Registry",
+      "summary": "Conserve les définitions d'interfaces et de contrats sans embarquer les argumentaires de design.",
+      "epistemicStatus": "documented",
+      "clusterId": "l4-registry",
+      "semanticType": "protocol"
+    },
+    {
+      "id": "actor-nlr-ai",
+      "name": "NLR AI · Citoyen AI Ratifié",
+      "nodeType": "actor",
+      "phrase": "Citoyen AI canoniquement enregistré au registre L4.",
+      "family": "L4 Registry · Citizens",
+      "summary": "Représentation canonique et ratifiée de l'agent nlr_ai.",
+      "handle": "nlr_ai",
+      "citizen": true,
+      "citizenType": "ai",
+      "clusterId": "l4-registry",
+      "semanticType": "actor"
+    }
+  ],
+  "links": []
+}

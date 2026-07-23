@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L1 · Sous-entités runtime</title>
+  <link rel="stylesheet" href="/l1-runtime.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">L1 · cognition observable</p>
+      <h1>Sous-entités runtime</h1>
+      <p class="lede">Coalitions, contrôleurs, fusions et narratifs inférés. Cette vue observe le moteur ; elle ne décide rien.</p>
+    </div>
+    <div class="topbar-actions">
+      <div class="graph-selector-group" aria-label="Sélection du graphe L1">
+        <label for="l1-graph-select" class="sr-only">Graphe L1</label>
+        <select id="l1-graph-select" class="graph-select" title="Choisir le graphe L1 à observer"></select>
+        <button id="l1-graph-switch-btn" type="button" class="btn-graph-switch">Changer de graphe</button>
+      </div>
+      <span id="connection" class="status" aria-live="polite">Connexion…</span>
+      <a href="/citizens.html">Statut citoyens</a>
+      <a href="/">Retour au graphe</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="stats" class="stats" aria-label="Synthèse du runtime"></section>
+    <section class="grid">
+      <article class="panel controllers-panel">
+        <header><p class="eyebrow">Maintenant</p><h2>Contrôle du workspace</h2></header>
+        <div id="controllers" class="stack"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Structure lente</p><h2>Sous-entités actives</h2></header>
+        <div id="subentities" class="stack"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Transitions</p><h2>Événements récents</h2></header>
+        <div id="events" class="timeline"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Inférences traçables</p><h2>Narratifs</h2></header>
+        <div id="narratives" class="stack"></div>
+      </article>
+      <article class="panel shadow-panel">
+        <header>
+          <div><p class="eyebrow">Simulation sans écriture L1</p><h2>Calibration shadow</h2></div>
+          <span id="shadow-status" class="badge">Chargement…</span>
+        </header>
+        <div id="shadow-metrics" class="shadow-metrics"></div>
+        <div id="shadow-proposals" class="stack"></div>
+      </article>
+    </section>
+  </main>
+  <template id="empty-template"><p class="empty-state">Aucune donnée pour le moment.</p></template>
+  <script type="module" src="/l1-runtime.js"></script>
+</body>
+</html>

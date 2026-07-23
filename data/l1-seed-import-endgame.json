@@ -1,0 +1,807 @@
+{
+  "scope": "Endgame du seed et de l'import : un L1 ne naît pas ignorant. Tout le corpus déjà disponible d'une personne — documents, photos, vidéos, drive — est atomisé en faits adressables, sourcés et corrigeables, afin que le graphe démarre aussi proche que possible de la vie déjà vécue. Le blueprint donne à tous les mêmes capacités ; le seed donne à chacun la sienne.",
+  "nodes": [
+    {
+      "id": "term-seed-atomization",
+      "name": "atomisation",
+      "nodeType": "narrative",
+      "phrase": "Un fichier n'entre pas dans un L1 comme fichier : il en sort des faits séparés, adressables et contestables un par un.",
+      "family": "Vocabulaire de l'import",
+      "summary": "L'atomisation transforme un document, une photo ou une vidéo en éléments distincts — personnes, lieux, dates, événements, relations, énoncés — chacun relié à l'endroit exact d'où il vient. Une pièce jointe conservée entière reste une boîte noire : on ne peut ni la corriger, ni la contredire, ni en oublier une partie.",
+      "definition": "Décomposition d'un artefact personnel en éléments de sens séparément adressables, chacun portant sa provenance, sa nature et son incertitude, par opposition au stockage du fichier comme unité opaque.",
+      "definitionStatus": "defined",
+      "context": "Import du corpus personnel dans un L1 ; s'applique à la forme de l'entrée, pas à la véracité de ce qui entre.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "terme"
+    },
+    {
+      "id": "term-imported-atom",
+      "name": "atome importé",
+      "nodeType": "narrative",
+      "phrase": "La plus petite chose qu'un L1 peut affirmer, corriger ou oublier séparément.",
+      "family": "Vocabulaire de l'import",
+      "summary": "Un atome importé porte son fichier d'origine, sa localisation dans ce fichier, la date et la méthode d'extraction, sa confiance et sa nature — fait déclaré, observation, inférence ou préférence. Sans ces cinq attributs, un atome devient une affirmation anonyme que personne ne peut plus contester ni dater.",
+      "definition": "Élément de sens extrait d'un artefact personnel, portant obligatoirement source, localisation, date, méthode, confiance et nature de l'affirmation.",
+      "definitionStatus": "defined",
+      "context": "Contenu de la couche état citoyen après import ; unité de correction, de contestation et d'oubli.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "terme"
+    },
+    {
+      "id": "axiom-seed-filled-only-by-the-persons-own-data",
+      "name": "Axiome · Le seed n'est rempli que par les données de la personne",
+      "nodeType": "narrative",
+      "phrase": "Un L1 peut naître plein, à condition que tout ce qu'il contient vienne de celui dont il est le graphe.",
+      "family": "Endgame du seed · frontière constitutionnelle",
+      "summary": "L'interdit de préremplissage vise ce que l'éditeur du blueprint écrirait au nom d'un citoyen, pas ce que le citoyen apporte lui-même. Un seed nourri du corpus consenti d'une personne ne franchit donc pas la frontière : la matière est souveraine, seule la forme reste universelle.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-import-atomizes-never-swallows",
+      "name": "Axiome · Rien n'entre entier comme vérité opaque",
+      "nodeType": "narrative",
+      "phrase": "Avaler un fichier crée une mémoire qu'on ne peut ni corriger ni oublier par morceaux.",
+      "family": "Endgame du seed · doctrine d'import",
+      "summary": "Tout artefact importé est décomposé en atomes reliés à leur origine. Le fichier reste consultable, mais ce qui compte dans le graphe est ce qui en a été extrait, nommément et séparément. L'unité d'oubli est l'atome ; sans atomisation, oublier signifierait tout perdre ou tout garder.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-import-inference-stays-inference",
+      "name": "Axiome · Le volume ne transforme pas une inférence en fait",
+      "nodeType": "narrative",
+      "phrase": "Dix mille photos concordantes produisent une inférence solide, jamais une déclaration de la personne.",
+      "family": "Endgame du seed · doctrine d'import",
+      "summary": "Ce qu'une personne a écrit ou dit d'elle-même est un fait déclaré. Ce qu'un modèle en conclut est une inférence, quel que soit son niveau de confiance ou le nombre de sources concordantes. Confondre les deux fabrique une biographie que personne n'a signée et que la personne devra ensuite démentir.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-no-inner-truth-to-read",
+      "name": "Axiome · Il n'y a pas de vérité intérieure à lire",
+      "nodeType": "narrative",
+      "phrase": "Le seed reconstitue des traces, pas un moi stable qui attendrait d'être découvert.",
+      "family": "Endgame du seed · limite revendiquée",
+      "summary": "Décision de portée : Mind ne prétend pas accéder à ce qu'une personne est vraiment. Une personne se prédit elle-même imparfaitement, et cette instabilité n'est pas un défaut de mesure à corriger. Le graphe modélise ce qui a été dit, fait et conservé ; il ne se donne jamais pour plus proche de quelqu'un que cette personne ne l'est d'elle-même.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "axiom-prediction-is-not-understanding",
+      "name": "Axiome · Prédire des choix n'est pas comprendre une expérience",
+      "nodeType": "narrative",
+      "phrase": "Un score de prédiction parfait n'établirait qu'une personnalisation prédictive.",
+      "family": "Endgame du seed · limite revendiquée",
+      "summary": "Décision de portée : la fidélité prédictive et la compréhension d'une expérience vécue sont deux revendications distinctes, et aucune quantité de la première ne produit la seconde. La confusion est facile parce que seule la première se mesure ; c'est précisément pourquoi elle est interdite ici.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "axiom"
+    },
+    {
+      "id": "horizon-seed-reconstructs-a-lived-life",
+      "name": "Horizon · Le seed reconstitue une vie déjà vécue",
+      "nodeType": "narrative",
+      "phrase": "Le premier jour, l'IA d'une personne connaît déjà son histoire parce que cette personne la lui a donnée.",
+      "family": "Endgame du seed · horizon",
+      "summary": "Horizon de long terme : la totalité du corpus personnel accessible devient un graphe de vie sourcé, corrigeable et oubliable, assez fidèle pour que la personne s'y reconnaisse. La fidélité s'améliore par extraction plus fine et correction humaine, jamais par ajout d'inférences plus audacieuses.",
+      "epistemicStatus": "speculative_horizon",
+      "clusterId": "l1-seed-import",
+      "semanticType": "horizon"
+    },
+    {
+      "id": "context-l1-consented-personal-corpus",
+      "name": "Contexte · Corpus personnel consenti, source par source",
+      "nodeType": "space",
+      "phrase": "L'import ne s'applique qu'aux données que la personne détient déjà et donne explicitement, une source à la fois.",
+      "family": "Endgame du seed · périmètre",
+      "summary": "Périmètre d'application : artefacts en possession de la personne, apportés source par source, avec consentement révocable et traitement au plus près d'elle. Rien de ce district ne vaut pour des données acquises auprès de tiers, déduites d'un réseau social ou collectées à son insu.",
+      "epistemicStatus": "documented",
+      "clusterId": "l1-seed-import",
+      "semanticType": "context"
+    },
+    {
+      "id": "mech-l1-seed-import-pipeline",
+      "name": "Pipeline d'import atomisant du seed",
+      "nodeType": "narrative",
+      "phrase": "Chaque source consentie traverse la même chaîne : extraire, atomiser, sourcer, qualifier, relier, soumettre à correction.",
+      "family": "Endgame du seed · artefact central",
+      "summary": "Six étapes ordonnées transforment un corpus en graphe personnel. Aucune étape ne peut être sautée : un atome sans provenance, sans nature déclarée ou sans possibilité de correction n'entre pas. Le pipeline remplit les emplacements que le blueprint laisse vides, sans jamais y écrire autre chose que la matière apportée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-import-source-consent-ledger",
+      "name": "Registre de consentement par source",
+      "nodeType": "narrative",
+      "phrase": "Chaque source importée est un consentement daté, borné et retirable, pas une autorisation générale.",
+      "family": "Endgame du seed · consentement",
+      "summary": "Le registre enregistre quelle source a été donnée, quand, pour quel usage et jusqu'à quand. Un accès accordé au drive n'autorise pas l'import de la caméra ; un consentement retiré déclenche la révocation des atomes qui en descendent. Un consentement global et permanent serait indistinguable d'une cession.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-import-atom-provenance",
+      "name": "Provenance obligatoire de chaque atome",
+      "nodeType": "narrative",
+      "phrase": "Aucun atome n'existe sans dire d'où il vient, quand et par quelle méthode il a été extrait.",
+      "family": "Endgame du seed · provenance",
+      "summary": "Fichier d'origine, localisation précise, date d'extraction, méthode, confiance et nature de l'affirmation accompagnent chaque atome. La provenance permet de rejouer une extraction quand la méthode s'améliore et d'invalider en bloc ce qu'un extracteur défaillant a produit, au lieu de le découvrir atome par atome.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-import-third-party-shielding",
+      "name": "Traitement séparé des tiers présents dans le corpus",
+      "nodeType": "narrative",
+      "phrase": "Les photos et documents d'une personne contiennent d'autres personnes qui n'ont rien accepté.",
+      "family": "Endgame du seed · tiers",
+      "summary": "Les atomes concernant un tiers sont marqués comme tels, restent locaux, ne nourrissent aucun profil partagé et ne peuvent être exportés ni agrégés. Ils décrivent la relation vue par le porteur du L1, jamais le tiers lui-même. Sans ce marquage, l'import d'une vie importerait des dizaines d'autres vies non consentantes.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-import-revocation-and-forgetting",
+      "name": "Révocation et oubli propagés",
+      "nodeType": "narrative",
+      "phrase": "Retirer une source doit retirer ce qui en descend, y compris ce qui en a été déduit.",
+      "family": "Endgame du seed · oubli",
+      "summary": "La révocation d'une source suit les liens de provenance jusqu'aux atomes dérivés et aux inférences qui s'en nourrissaient. Un oubli qui ne remonte pas la chaîne laisse survivre la conclusion en effaçant sa cause : la personne perd alors la trace de ce qu'elle a effacé tout en continuant à en subir l'effet.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-import-personal-correction-loop",
+      "name": "Boucle de correction par la personne",
+      "nodeType": "narrative",
+      "phrase": "Le seed est proposé à celui qu'il décrit, qui corrige, retire ou requalifie avant qu'il ne fasse autorité.",
+      "family": "Endgame du seed · correction",
+      "summary": "Toute inférence importée est présentée avec sa source et peut être requalifiée, démentie ou supprimée. La correction humaine est prioritaire sur la reconstruction automatique et n'est jamais écrasée par un import ultérieur. C'est cette boucle, et non la finesse de l'extracteur, qui rend le seed fidèle.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "mech-seed-never-finished",
+      "name": "Enrichissement progressif d'un seed jamais terminé",
+      "nodeType": "narrative",
+      "phrase": "L'import n'est pas un événement de naissance mais un processus qui continue toute la vie du graphe.",
+      "family": "Endgame du seed · progressivité",
+      "summary": "Nouvelles sources, meilleures méthodes d'extraction et corrections successives réécrivent le seed sans le refonder. Chaque passe déclare la version de l'extracteur qui l'a produite, ce qui permet de distinguer un changement du corpus d'un changement du modèle qui le lit.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "mechanism"
+    },
+    {
+      "id": "method-import-stage-1-documents",
+      "name": "Source 1 · Documents et textes",
+      "nodeType": "narrative",
+      "phrase": "Ce que la personne a elle-même écrit est la matière la plus proche d'un fait déclaré.",
+      "family": "Endgame du seed · échelle de sources 1",
+      "importSourceKind": "documents",
+      "summary": "Notes, courriers, contrats, textes et écrits personnels fournissent des énoncés attribuables à la personne, datables et peu ambigus. C'est la source la moins interprétative, donc celle par laquelle l'échelle commence — et celle contre laquelle les suivantes se calibrent.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-import-stage-2-photos",
+      "name": "Source 2 · Photographies",
+      "nodeType": "narrative",
+      "phrase": "Une photo donne des lieux, des dates et des visages, et presque jamais un sens.",
+      "family": "Endgame du seed · échelle de sources 2",
+      "importSourceKind": "photos",
+      "summary": "Métadonnées, contenu visuel et séries temporelles produisent des atomes de lieu, de date, de présence et de relation. Presque tout ce qui en est tiré au-delà du constat est une inférence : la proximité sur une image ne dit ni le lien ni le sentiment, et les tiers y sont massivement présents.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-import-stage-3-videos",
+      "name": "Source 3 · Vidéos et enregistrements",
+      "nodeType": "narrative",
+      "phrase": "Une vidéo ajoute la parole, la durée et la scène, et multiplie ce qui est capté sans être visé.",
+      "family": "Endgame du seed · échelle de sources 3",
+      "importSourceKind": "videos",
+      "summary": "Transcription, scènes, participants et déroulé temporel produisent des atomes riches. La densité est aussi le risque : une vidéo capte des propos de tiers, des lieux et des états qui n'étaient l'objet de personne, et son coût d'extraction impose de choisir ce qui est atomisé.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-import-stage-4-cloud-drive",
+      "name": "Source 4 · Drive et espaces de stockage",
+      "nodeType": "narrative",
+      "phrase": "Un drive n'est pas un tas de fichiers : son arborescence, ses versions et ses partages sont déjà du sens.",
+      "family": "Endgame du seed · échelle de sources 4",
+      "importSourceKind": "cloud_drive",
+      "summary": "Structure des dossiers, dates, historiques de version et listes de partage racontent projets, périodes et collaborations. C'est aussi la source où l'on trouve le plus de documents appartenant à d'autres, et où un accès unique ouvre le plus grand volume d'un seul consentement.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "method"
+    },
+    {
+      "id": "method-import-stage-5-conversations",
+      "name": "Source 5 · Conversations avec des IA",
+      "nodeType": "narrative",
+      "phrase": "Les échanges tenus avec une IA sont un journal déjà écrit de ce que la personne a demandé, pensé et décidé.",
+      "family": "Endgame du seed · échelle de sources 5",
+      "importSourceKind": "ai_conversations",
+      "summary": "Les exports Claude et ChatGPT fournissent des tours horodatés et attribués : questions, décisions et faits déclarés côté humain, contenus produits côté modèle. La source est riche en énoncés proches du fait déclaré pour ce que la personne a écrit, mais mêle des sorties du modèle qui restent des inférences et des tiers évoqués dans les échanges. Elle s'ingère chunk par chunk parce qu'un export de conversations dépasse ce qu'une seule passe peut atomiser fidèlement.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "method"
+    },
+    {
+      "id": "effect-seed-close-to-the-lived-life",
+      "name": "Cible · Un seed que la personne reconnaît comme le sien",
+      "nodeType": "narrative",
+      "phrase": "Le graphe initial doit ressembler à la vie de quelqu'un, pas au résumé qu'une machine en fait.",
+      "family": "Endgame du seed · effet recherché",
+      "summary": "Effet de design : maximiser la fidélité perçue par la personne elle-même, mesurée par ce qu'elle corrige et ce qu'elle reconnaît. La ressemblance jugée par un modèle ne compte pas : c'est exactement la mesure qui se laisse optimiser sans que la fidélité augmente.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "design_effect"
+    },
+    {
+      "id": "hypothesis-atomized-import-beats-summary",
+      "name": "Hypothèse · L'atomisation bat le résumé",
+      "nodeType": "narrative",
+      "phrase": "Des milliers de faits sourcés serviraient mieux qu'un portrait synthétique, même bien écrit.",
+      "family": "Endgame du seed · hypothèse",
+      "summary": "Le pipeline parie que des atomes nombreux, contestables et reliés produisent une mémoire plus utile et plus corrigeable qu'une synthèse dense. Rien ne le démontre : l'atomisation peut aussi noyer le signal, multiplier les erreurs de détail et rendre la correction humaine impraticable par son volume.",
+      "hypothesisBasis": "Décision de design de l auteur, cohérente avec la doctrine de claim atomique déjà retenue pour la matière scientifique.",
+      "verificationNeeded": "Importer un même corpus des deux façons et comparer la fidélité perçue, le coût de correction et le taux d erreurs détectées par la personne.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "l1-seed-import",
+      "semanticType": "working_hypothesis"
+    },
+    {
+      "id": "state-seed-recognized-by-the-person",
+      "name": "La personne se reconnaît dans son seed",
+      "nodeType": "narrative",
+      "phrase": "En parcourant son graphe initial, quelqu'un y retrouve sa vie plutôt qu'un portrait approximatif.",
+      "family": "Endgame du seed · état visé",
+      "summary": "État désirable et observable : la personne confirme largement ce qu'elle lit, ses corrections portent sur des détails plutôt que sur le sens, et elle trouve ce qu'elle cherche dans son propre passé. La reconnaissance se constate auprès d'elle, jamais auprès du modèle qui a produit le seed.",
+      "stateOrientation": "desirable",
+      "stateDimension": "fidélité perçue du graphe personnel initial",
+      "stateIndicator": "part des atomes confirmés, nature des corrections apportées, capacité à retrouver un souvenir cherché",
+      "epistemicStatus": "test_target",
+      "clusterId": "l1-seed-import",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-seed-fabricates-a-false-person",
+      "name": "Le seed fabrique une personne qui n'existe pas",
+      "nodeType": "narrative",
+      "phrase": "L'IA connaît quelqu'un d'autre, mais avec les dates et les lieux de la bonne personne.",
+      "family": "Endgame du seed · risque",
+      "summary": "État indésirable : les inférences présentées comme des faits, les erreurs d'attribution et les silences du corpus produisent une biographie plausible et fausse. Le danger tient à sa cohérence : une reconstitution fausse mais détaillée est plus difficile à contester qu'un graphe vide.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "véracité et statut des affirmations importées",
+      "stateIndicator": "part des atomes présentés comme faits alors qu ils sont inférés, taux de démenti par la personne, erreurs d attribution détectées",
+      "epistemicStatus": "test_target",
+      "clusterId": "l1-seed-import",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-import-absorbs-third-parties",
+      "name": "L'import d'une vie absorbe celle des autres",
+      "nodeType": "narrative",
+      "phrase": "Les proches se retrouvent décrits dans un graphe qu'ils ne connaissent pas et qu'ils ne peuvent pas corriger.",
+      "family": "Endgame du seed · risque",
+      "summary": "État indésirable : photos, vidéos, documents partagés et listes de partage font entrer des tiers en masse. Chacun d'eux devient un sujet de mémoire sans consentement, sans droit de correction et sans savoir que le graphe existe.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "vie privée des personnes non porteuses du L1",
+      "stateIndicator": "part des atomes concernant un tiers identifiable, portée de ces atomes hors de l instance, demandes de retrait reçues",
+      "epistemicStatus": "test_target",
+      "clusterId": "l1-seed-import",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "state-import-makes-forgetting-impossible",
+      "name": "L'oubli devient impossible",
+      "nodeType": "narrative",
+      "phrase": "Supprimer une source laisse intactes toutes les conclusions qu'on en avait tirées.",
+      "family": "Endgame du seed · risque",
+      "summary": "État indésirable : la révocation s'arrête aux fichiers et ne remonte pas aux atomes dérivés ni aux inférences. La personne croit avoir effacé et continue d'être décrite par ce qu'elle a retiré, sans plus pouvoir désigner ce qui subsiste.",
+      "stateOrientation": "undesirable",
+      "stateDimension": "effectivité de la révocation dans le graphe",
+      "stateIndicator": "part des atomes dérivés effectivement retirés après révocation d une source, délai de propagation",
+      "epistemicStatus": "test_target",
+      "clusterId": "l1-seed-import",
+      "semanticType": "system_state"
+    },
+    {
+      "id": "metric-seed-perceived-fidelity",
+      "name": "Métrique · Fidélité perçue et nature des corrections",
+      "nodeType": "narrative",
+      "phrase": "Que corrige la personne quand elle relit son propre seed ?",
+      "family": "Endgame du seed · mesure de fidélité",
+      "summary": "Part des atomes confirmés, démentis ou requalifiés par la personne, ventilée par gravité : une date fausse et un lien de parenté inventé ne sont pas la même erreur. Un taux de confirmation élevé obtenu sur des atomes triviaux ne compte pas comme fidélité.",
+      "epistemicStatus": "documented",
+      "clusterId": "l1-seed-import",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-import-inference-passed-as-fact",
+      "name": "Métrique · Inférences présentées comme des faits",
+      "nodeType": "narrative",
+      "phrase": "Combien d'affirmations du graphe se donnent pour déclarées alors qu'elles sont déduites ?",
+      "family": "Endgame du seed · mesure de véracité",
+      "summary": "Décompte des atomes dont la nature déclarée ne correspond pas à leur mode de production, détectés par audit de provenance et par démenti de la personne. La cible est zéro : c'est une erreur de statut, pas une imprécision tolérable.",
+      "epistemicStatus": "documented",
+      "clusterId": "l1-seed-import",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-import-third-party-atom-reach",
+      "name": "Métrique · Portée des atomes concernant des tiers",
+      "nodeType": "narrative",
+      "phrase": "Combien de personnes non consentantes ce graphe décrit-il, et jusqu'où cela circule-t-il ?",
+      "family": "Endgame du seed · mesure de tiers",
+      "summary": "Part des atomes rattachés à un tiers identifiable, et portée effective de ces atomes : locaux, exportés, agrégés ou exposés à un service. Le nombre seul ne dit rien sans sa portée, puisque le préjudice naît de la circulation et non de l existence.",
+      "epistemicStatus": "documented",
+      "clusterId": "l1-seed-import",
+      "semanticType": "metric"
+    },
+    {
+      "id": "metric-forgetting-propagation-completeness",
+      "name": "Métrique · Complétude de la propagation d'un oubli",
+      "nodeType": "narrative",
+      "phrase": "Après une révocation, que reste-t-il de ce qui en descendait ?",
+      "family": "Endgame du seed · mesure d'oubli",
+      "summary": "Part des atomes dérivés et des inférences effectivement retirés après révocation d'une source, et délai de propagation. Un oubli partiel se compte comme un échec, non comme une réussite proportionnelle : ce qui survit est précisément ce que la personne croit avoir effacé.",
+      "epistemicStatus": "documented",
+      "clusterId": "l1-seed-import",
+      "semanticType": "metric"
+    },
+    {
+      "id": "protocol-preregistered-seed-fidelity-test",
+      "nodeType": "narrative",
+      "name": "Protocole · Test de fidélité préenregistré et aveuglé",
+      "phrase": "Un test de fidélité ne vaut que s'il a été écrit, scellé et noté par quelqu'un d'autre que le sujet.",
+      "family": "Endgame du seed · protocole de réfutation",
+      "summary": "Design adopté après consultation externe : préenregistrement, questions écrites par un tiers sur des domaines déclarés, jeu retenu scellé avant la fin de la calibration, correcteur aveugle à l'identité du prédicteur, publication de toutes les questions et de toutes les exclusions. Quatre prédicteurs sont comparés sur les mêmes questions — taux de base, inconnu disposant des écrits publics, proche, et modèle personnel restreint à sa mémoire antérieure au gel — chacun rendant des probabilités notées en Brier ou log loss et en calibration, jamais en top-1. Le contexte d'état, s'il est fourni, l'est également à tous. Le protocole n'a jamais été exécuté.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-seed-import",
+      "semanticType": "protocol"
+    },
+    {
+      "id": "metric-self-consistency-ceiling",
+      "name": "Métrique · Plafond d'auto-cohérence de la personne",
+      "nodeType": "narrative",
+      "phrase": "À quel point quelqu'un est-il d'accord avec lui-même à des semaines d'écart ?",
+      "family": "Endgame du seed · mesure de plafond",
+      "summary": "Accord test-retest de la personne avec ses propres réponses, sur les mêmes questions séparées de plusieurs semaines. Cette valeur borne ce que n'importe quel prédicteur peut atteindre : un score qui la dépasse ne mesure plus une préférence mais la structure des questions. Sans elle, toute performance reste ininterprétable.",
+      "epistemicStatus": "documented",
+      "clusterId": "l1-seed-import",
+      "semanticType": "metric"
+    },
+    {
+      "id": "question-which-self-is-the-ground-truth",
+      "name": "Question · De quel soi le seed doit-il être fidèle ?",
+      "nodeType": "narrative",
+      "phrase": "La même personne en plein projet et un dimanche calme ne répond pas la même chose, et aucune des deux réponses n'est fausse.",
+      "family": "Endgame du seed · verrou de référence",
+      "summary": "Les préférences dépendent de l'état, et la boucle de correction suppose un arbitre qui n'existe peut-être pas : la personne qui corrige est elle-même dans un état. Restent à trancher si le contexte d'état doit être une entrée déclarée, si le graphe conserve plusieurs réponses concurrentes plutôt qu'une résolue, et ce qui sert de référence quand elles divergent.",
+      "questionCategory": "référence de fidélité",
+      "decisionNeeded": "Décider si l état est une entrée explicite du modèle et si des réponses concurrentes sont conservées, avant de comparer un prédicteur à une vérité de terrain unique.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "l1-seed-import",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-import-third-party-consent",
+      "name": "Question · Comment importer une vie sans importer celle des autres ?",
+      "nodeType": "narrative",
+      "phrase": "Une photo appartient à celui qui la détient, mais elle décrit ceux qui s'y trouvent.",
+      "family": "Endgame du seed · verrou du tiers",
+      "summary": "Restent à trancher ce qu'un L1 peut mémoriser d'un tiers, sous quelle forme, avec quelle durée, quel droit de retrait pour une personne qui ignore l'existence du graphe, et si certains atomes de tiers doivent être refusés à l'import plutôt que marqués.",
+      "questionCategory": "vie privée des tiers",
+      "decisionNeeded": "Fixer le régime des atomes de tiers — refus, marquage, portée et droit de retrait — avant tout import de photos, de vidéos ou de partages.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "l1-seed-import",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-import-derived-atoms-after-revocation",
+      "name": "Question · Que devient une conclusion quand sa source disparaît ?",
+      "nodeType": "narrative",
+      "phrase": "Une inférence nourrie de dix sources dont une est retirée n'est ni valide ni invalide.",
+      "family": "Endgame du seed · verrou d'oubli",
+      "summary": "Restent à trancher le sort des atomes dérivés partiellement, la conservation ou non de la trace du retrait, le cas des inférences déjà corrigées par la personne, et ce qui doit être recalculé plutôt que supprimé. Une règle unique produira soit un oubli illusoire, soit une amnésie disproportionnée.",
+      "questionCategory": "propagation de la révocation",
+      "decisionNeeded": "Définir la règle de propagation des révocations aux atomes dérivés avant que l import ne produise des inférences multi-sources.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "l1-seed-import",
+      "semanticType": "open_question"
+    },
+    {
+      "id": "question-seed-fidelity-without-model-verdict",
+      "name": "Question · Comment mesurer la fidélité sans laisser un modèle dire qui est la personne ?",
+      "nodeType": "narrative",
+      "phrase": "Demander à une IA si le portrait est ressemblant revient à lui demander de noter sa propre copie.",
+      "family": "Endgame du seed · verrou de mesure",
+      "summary": "Restent à trancher la méthode d'échantillonnage soumise à la personne, le coût acceptable de sa relecture, le traitement des atomes qu'elle ne peut ni confirmer ni démentir, et la pondération d'erreurs de gravités très différentes.",
+      "questionCategory": "mesure de fidélité",
+      "decisionNeeded": "Choisir un protocole de vérification centré sur la personne avant de publier un chiffre de fidélité du seed.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "l1-seed-import",
+      "semanticType": "open_question"
+    }
+  ],
+  "links": [
+    {
+      "source": "term-seed-atomization",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "DEFINES",
+      "justification": "Le terme fixe le sens de l opération centrale du pipeline : décomposer un artefact en éléments séparément adressables, par opposition au stockage du fichier entier."
+    },
+    {
+      "source": "term-imported-atom",
+      "target": "mech-import-atom-provenance",
+      "type": "DEFINES",
+      "justification": "Le terme fixe ce qu un atome doit obligatoirement porter ; le mécanisme de provenance est la règle qui rend cette définition opposable à l import."
+    },
+    {
+      "source": "term-imported-atom",
+      "target": "term-seed-atomization",
+      "type": "SUBCASE_OF",
+      "justification": "L atome est le produit de l atomisation : le premier nomme le résultat, le second nomme l opération qui le produit."
+    },
+    {
+      "source": "axiom-seed-filled-only-by-the-persons-own-data",
+      "target": "axiom-structure-universal-content-sovereign",
+      "type": "SUBCASE_OF",
+      "justification": "L axiome spécialise la souveraineté du contenu au cas du remplissage initial : un seed plein reste conforme tant que sa matière vient de la personne et non de l éditeur du blueprint."
+    },
+    {
+      "source": "axiom-seed-filled-only-by-the-persons-own-data",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "GROUNDS",
+      "justification": "Le pipeline n est légitime que parce qu il ne transporte que la matière apportée par la personne ; sans cette restriction il deviendrait le canal de préremplissage que le blueprint interdit."
+    },
+    {
+      "source": "axiom-blueprint-never-prefills-a-life",
+      "target": "mech-import-source-consent-ledger",
+      "type": "GROUNDS",
+      "justification": "L interdit de préremplissage impose que chaque source soit un consentement identifié : c est ce qui distingue une donnée apportée par la personne d un contenu installé à son insu."
+    },
+    {
+      "source": "axiom-import-atomizes-never-swallows",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "GROUNDS",
+      "justification": "L interdiction d avaler un fichier entier est la raison pour laquelle le pipeline impose une étape d atomisation avant toute écriture dans le graphe."
+    },
+    {
+      "source": "axiom-import-atomizes-never-swallows",
+      "target": "mech-import-revocation-and-forgetting",
+      "type": "GROUNDS",
+      "justification": "L oubli par morceaux n est possible que si l unité mémorisée est l atome ; un corpus avalé entier ne laisse le choix qu entre tout garder et tout perdre."
+    },
+    {
+      "source": "axiom-import-inference-stays-inference",
+      "target": "mech-import-atom-provenance",
+      "type": "GROUNDS",
+      "justification": "La nature de l affirmation est un attribut obligatoire de la provenance précisément pour empêcher qu une inférence circule ensuite comme une déclaration de la personne."
+    },
+    {
+      "source": "axiom-non-possession",
+      "target": "mech-import-third-party-shielding",
+      "type": "GROUNDS",
+      "justification": "Connaître sans posséder justifie qu un atome concernant un tiers reste local et sans portée : le L1 peut savoir sans constituer un dossier sur quelqu un d autre."
+    },
+    {
+      "source": "axiom-local-first",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "GROUNDS",
+      "justification": "Le principe local d abord impose que l extraction et l atomisation d un corpus intime s exécutent au plus près de la personne plutôt que sur un service qui recevrait l ensemble de sa vie."
+    },
+    {
+      "source": "guardrail-privacy-no-score",
+      "target": "mech-import-third-party-shielding",
+      "type": "SAFEGUARDS",
+      "justification": "Le garde-fou contre le score social protège le traitement des tiers : des atomes de tiers agrégés hors de l instance produiraient exactement le dossier permanent que ce garde-fou interdit."
+    },
+    {
+      "source": "mechanism-consent-delegation",
+      "target": "mech-import-source-consent-ledger",
+      "type": "GROUNDS",
+      "justification": "Le mandat révocable déjà retenu par le protocole fournit la forme juridique du consentement par source : borné, daté et retirable plutôt que général et permanent."
+    },
+    {
+      "source": "mech-import-source-consent-ledger",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "Le registre de consentement est l étape d entrée du pipeline : aucune source n est traversée sans un consentement identifié et borné."
+    },
+    {
+      "source": "mech-import-atom-provenance",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "La provenance obligatoire est l étape du pipeline qui qualifie chaque atome avant écriture ; un atome sans elle n entre pas."
+    },
+    {
+      "source": "mech-import-third-party-shielding",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "Le traitement séparé des tiers est l étape du pipeline qui marque et borne ce qui ne concerne pas le porteur du L1."
+    },
+    {
+      "source": "mech-import-revocation-and-forgetting",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "La révocation propagée est l étape inverse du pipeline : elle emprunte les mêmes liens de provenance, en sens opposé."
+    },
+    {
+      "source": "mech-import-personal-correction-loop",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "La boucle de correction est l étape terminale du pipeline : un seed non soumis à celui qu il décrit n est pas encore un seed valide."
+    },
+    {
+      "source": "mech-seed-never-finished",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "L enrichissement progressif est la partie du pipeline qui décrit sa réexécution dans le temps, à mesure que le corpus et les extracteurs changent."
+    },
+    {
+      "source": "method-import-stage-1-documents",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "Les documents forment la première source de l échelle : la plus proche du fait déclaré, donc celle contre laquelle les suivantes se calibrent."
+    },
+    {
+      "source": "method-import-stage-2-photos",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "Les photographies forment la deuxième source : riches en lieux, dates et présences, pauvres en sens et denses en tiers."
+    },
+    {
+      "source": "method-import-stage-3-videos",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "Les vidéos forment la troisième source : elles ajoutent la parole et le déroulé, et multiplient ce qui est capté sans avoir été visé."
+    },
+    {
+      "source": "method-import-stage-4-cloud-drive",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "Les espaces de stockage forment la quatrième source : leur structure et leurs partages sont eux-mêmes du sens, et un seul consentement y ouvre le plus grand volume."
+    },
+    {
+      "source": "method-import-stage-5-conversations",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "PART_OF",
+      "justification": "Les conversations avec des IA forment une cinquième source de l'échelle : un corpus déjà textuel et horodaté, proche du fait déclaré côté humain mais mêlé de sorties inférées du modèle et de tiers évoqués, qui impose une ingestion chunk par chunk."
+    },
+    {
+      "source": "mech-l1-seed-import-pipeline",
+      "target": "question-l1-seed-contents",
+      "type": "ADDRESSES",
+      "justification": "Le pipeline répond à la question de ce que contient un seed en fixant sa doctrine — atomes sourcés issus du corpus consenti de la personne — sans fournir encore la liste exhaustive des nœuds créés à l instanciation."
+    },
+    {
+      "source": "mech-l1-seed-import-pipeline",
+      "target": "mech-l1-empty-slots",
+      "type": "FEEDS",
+      "justification": "L import est ce qui remplit les emplacements que le blueprint laisse vides ; ce flux ne franchit pas la frontière constitutionnelle parce que la matière transportée vient de la personne."
+    },
+    {
+      "source": "mech-import-atom-provenance",
+      "target": "mech-l1-memory-patterns",
+      "type": "IMPLEMENTS",
+      "justification": "La provenance obligatoire des atomes met en œuvre, au moment de l import, les patterns de provenance, de séparation fait-inférence-préférence et d incertitude imposés par le blueprint."
+    },
+    {
+      "source": "mech-l1-seed-import-pipeline",
+      "target": "context-l1-consented-personal-corpus",
+      "type": "APPLIES_IN",
+      "justification": "Le pipeline n est décrit que pour un corpus détenu par la personne et apporté source par source ; il ne dit rien de données acquises auprès de tiers ou collectées à son insu."
+    },
+    {
+      "source": "mech-l1-seed-import-pipeline",
+      "target": "effect-seed-close-to-the-lived-life",
+      "type": "IMPLEMENTS",
+      "justification": "Le pipeline est le moyen par lequel la proximité entre le graphe initial et la vie déjà vécue est recherchée ; l effet reste visé et non observé."
+    },
+    {
+      "source": "effect-seed-close-to-the-lived-life",
+      "target": "horizon-seed-reconstructs-a-lived-life",
+      "type": "PART_OF",
+      "justification": "La fidélité perçue est la traduction mesurable de l horizon ; elle n en épuise pas la portée, qui inclut la couverture progressive de tout le corpus disponible."
+    },
+    {
+      "source": "state-seed-recognized-by-the-person",
+      "target": "horizon-seed-reconstructs-a-lived-life",
+      "type": "PART_OF",
+      "justification": "La reconnaissance par la personne donne à l horizon sa destination testable au lieu de le laisser comme promesse de complétude documentaire."
+    },
+    {
+      "source": "state-seed-recognized-by-the-person",
+      "target": "metric-seed-perceived-fidelity",
+      "type": "MEASURED_BY",
+      "justification": "La reconnaissance s observe par ce que la personne confirme, dément ou requalifie, ventilé par gravité, et jamais par un jugement de ressemblance rendu par un modèle."
+    },
+    {
+      "source": "state-seed-fabricates-a-false-person",
+      "target": "metric-import-inference-passed-as-fact",
+      "type": "MEASURED_BY",
+      "justification": "La fabrication d une personne fausse s observe d abord par les erreurs de statut : des affirmations déduites qui circulent comme des déclarations."
+    },
+    {
+      "source": "state-import-absorbs-third-parties",
+      "target": "metric-import-third-party-atom-reach",
+      "type": "MEASURED_BY",
+      "justification": "L absorption des tiers s observe par le nombre d atomes les concernant croisé avec leur portée effective, puisque le préjudice naît de la circulation."
+    },
+    {
+      "source": "state-import-makes-forgetting-impossible",
+      "target": "metric-forgetting-propagation-completeness",
+      "type": "MEASURED_BY",
+      "justification": "L impossibilité d oublier s observe par ce qui survit à une révocation le long des liens de provenance, et par le délai avant disparition."
+    },
+    {
+      "source": "state-seed-fabricates-a-false-person",
+      "target": "mech-import-personal-correction-loop",
+      "type": "MOTIVATES",
+      "justification": "Le risque d une biographie plausible et fausse impose que la personne relise et corrige avant que le seed ne fasse autorité, plutôt que de compter sur la qualité de l extracteur."
+    },
+    {
+      "source": "state-seed-fabricates-a-false-person",
+      "target": "axiom-import-inference-stays-inference",
+      "type": "MOTIVATES",
+      "justification": "Le même risque justifie de fixer comme invariant que la quantité de données ne change pas le statut d une affirmation."
+    },
+    {
+      "source": "state-import-absorbs-third-parties",
+      "target": "mech-import-third-party-shielding",
+      "type": "MOTIVATES",
+      "justification": "Le risque que des proches soient décrits dans un graphe qu ils ignorent impose de marquer et de borner les atomes de tiers dès l extraction."
+    },
+    {
+      "source": "state-import-makes-forgetting-impossible",
+      "target": "mech-import-revocation-and-forgetting",
+      "type": "MOTIVATES",
+      "justification": "Le risque qu une conclusion survive à sa source impose que la révocation remonte la chaîne de provenance au lieu de s arrêter aux fichiers."
+    },
+    {
+      "source": "hypothesis-atomized-import-beats-summary",
+      "target": "mech-l1-seed-import-pipeline",
+      "type": "ASSUMES",
+      "justification": "Le pipeline dépend de l hypothèse non vérifiée que des atomes nombreux et sourcés servent mieux qu une synthèse ; si elle est fausse, le volume rendra la correction humaine impraticable."
+    },
+    {
+      "source": "hypothesis-atomized-import-beats-summary",
+      "target": "context-l1-consented-personal-corpus",
+      "type": "APPLIES_IN",
+      "justification": "L hypothèse n est formulée que pour un corpus personnel consenti et de taille humaine ; elle ne prétend rien pour des corpus institutionnels ou acquis."
+    },
+    {
+      "source": "csg-atomic-contestable-claim",
+      "target": "hypothesis-atomized-import-beats-summary",
+      "type": "GROUNDS",
+      "justification": "La doctrine du claim atomique déjà retenue pour la matière scientifique fournit le précédent de design dont l hypothèse d import est la transposition au corpus personnel."
+    },
+    {
+      "source": "question-import-third-party-consent",
+      "target": "mech-import-third-party-shielding",
+      "type": "BLOCKS",
+      "justification": "Le marquage des atomes de tiers ne peut pas être considéré comme suffisant avant d avoir décidé ce qui doit être refusé à l import et quel droit de retrait s applique. Le verrou porte en premier lieu sur les photographies et les partages, sources les plus denses en personnes non consentantes."
+    },
+    {
+      "source": "question-import-derived-atoms-after-revocation",
+      "target": "mech-import-revocation-and-forgetting",
+      "type": "BLOCKS",
+      "justification": "La propagation ne peut pas être implémentée avant d avoir tranché le sort des atomes dérivés de plusieurs sources dont une seule est retirée."
+    },
+    {
+      "source": "question-seed-fidelity-without-model-verdict",
+      "target": "effect-seed-close-to-the-lived-life",
+      "type": "BLOCKS",
+      "justification": "L effet recherché ne peut être déclaré atteint avant d avoir fixé l échantillonnage soumis à la personne et la pondération d erreurs de gravités inégales ; sans ce protocole, un chiffre de fidélité mesurerait surtout la complaisance de son évaluateur."
+    },
+    {
+      "source": "axiom-no-inner-truth-to-read",
+      "target": "mech-import-personal-correction-loop",
+      "type": "GROUNDS",
+      "justification": "La boucle de correction n est pas un contrôle qualité mais la conséquence directe de l absence de vérité intérieure : faute de moi stable à lire, seule la personne peut arbitrer ce que son graphe affirme d elle."
+    },
+    {
+      "source": "axiom-no-inner-truth-to-read",
+      "target": "horizon-seed-reconstructs-a-lived-life",
+      "type": "SAFEGUARDS",
+      "justification": "L axiome borne l horizon : reconstituer une vie signifie rassembler des traces sourcées, jamais atteindre ce qu une personne serait vraiment sous ses traces."
+    },
+    {
+      "source": "axiom-prediction-is-not-understanding",
+      "target": "effect-seed-close-to-the-lived-life",
+      "type": "SAFEGUARDS",
+      "justification": "L axiome empêche l effet recherché de se relire comme une compréhension : un seed peut devenir très prédictif sans qu aucune expérience vécue ait été comprise, et c est la seule des deux propriétés que le graphe sait mesurer."
+    },
+    {
+      "source": "reddit-claim-prediction-is-not-understanding",
+      "target": "axiom-prediction-is-not-understanding",
+      "type": "MOTIVATES",
+      "justification": "La position rapportée en consultation externe motive la décision de porter cette délimitation au rang d axiome ; elle ne la démontre pas, et l axiome reste un choix du projet."
+    },
+    {
+      "source": "protocol-preregistered-seed-fidelity-test",
+      "target": "question-seed-fidelity-without-model-verdict",
+      "type": "ADDRESSES",
+      "justification": "Le protocole traite explicitement le verrou de mesure en retirant au sujet l écriture des questions et la notation, sans prouver pour autant qu il produira un résultat interprétable."
+    },
+    {
+      "source": "protocol-preregistered-seed-fidelity-test",
+      "target": "state-seed-recognized-by-the-person",
+      "type": "TESTS",
+      "justification": "Le protocole met à l épreuve l état visé en le rendant réfutable : sans baselines ni plafond d auto-cohérence, un taux de reconnaissance élevé resterait ininterprétable."
+    },
+    {
+      "source": "protocol-preregistered-seed-fidelity-test",
+      "target": "metric-self-consistency-ceiling",
+      "type": "MEASURES",
+      "justification": "Le test-retest du protocole produit le plafond d auto-cohérence, qui borne l interprétation de tous les autres scores obtenus."
+    },
+    {
+      "source": "protocol-preregistered-seed-fidelity-test",
+      "target": "metric-seed-perceived-fidelity",
+      "type": "MEASURES",
+      "justification": "Le protocole fournit la procédure par laquelle la fidélité perçue cesse d être une impression et devient une grandeur comparable à des baselines."
+    },
+    {
+      "source": "reddit-method-preregistered-blinded-prediction",
+      "target": "protocol-preregistered-seed-fidelity-test",
+      "type": "PART_OF",
+      "justification": "Le design de préenregistrement et d aveuglement rapporté en consultation est repris comme partie du protocole adopté ; son origine externe reste tracée par ANSWERS et AUTHORED_BY."
+    },
+    {
+      "source": "reddit-method-self-consistency-ceiling",
+      "target": "protocol-preregistered-seed-fidelity-test",
+      "type": "PART_OF",
+      "justification": "La méthode de plafond par test-retest est reprise comme partie du protocole adopté : c est elle qui rend les autres scores interprétables."
+    },
+    {
+      "source": "reddit-method-four-predictors-proper-scoring",
+      "target": "protocol-preregistered-seed-fidelity-test",
+      "type": "PART_OF",
+      "justification": "Le jeu de quatre prédicteurs et la règle de score propre sont repris comme partie du protocole adopté, en remplacement d une exactitude top-1 sans point de comparaison."
+    },
+    {
+      "source": "question-which-self-is-the-ground-truth",
+      "target": "mech-import-personal-correction-loop",
+      "type": "BLOCKS",
+      "justification": "La boucle suppose un arbitre stable ; tant que la dépendance à l état n est pas tranchée, la personne qui corrige est elle-même dans un état et sa correction n a pas de statut privilégié."
+    },
+    {
+      "source": "question-which-self-is-the-ground-truth",
+      "target": "effect-seed-close-to-the-lived-life",
+      "type": "BLOCKS",
+      "justification": "Aucune proximité ne peut être déclarée avant d avoir dit de quel soi le seed doit être proche, puisque deux états de la même personne donnent des réponses différentes et également sincères."
+    },
+    {
+      "source": "question-which-self-is-the-ground-truth",
+      "target": "protocol-progressive-human-valence-estimation",
+      "type": "BLOCKS",
+      "justification": "Le même verrou atteint l estimation de valence : comparer un avant et un après suppose de savoir si l écart mesure un changement de bien-être ou un changement d état de la personne interrogée."
+    },
+    {
+      "source": "mech-import-personal-correction-loop",
+      "target": "mech-l1-capability-set",
+      "type": "IMPLEMENTS",
+      "justification": "Corriger et contester ne sont des capacités effectives que si elles s exercent sur le contenu importé ; la boucle de relecture est l endroit où les capacités promises par le blueprint rencontrent la matière réelle."
+    }
+  ]
+}

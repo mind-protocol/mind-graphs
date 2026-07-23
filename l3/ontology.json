@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "0.1.0",
+  "language": "fr",
+  "purpose": "Ontologie minimale de L3 : le monde relationnel et événementiel extérieur au cerveau personnel L1. L3 décrit ce qui arrive et qui y participe, sans prétendre décrire l'état cognitif interne du citoyen.",
+  "principles": [
+    "Le stimulus externe et sa perception interne sont deux faits distincts.",
+    "Toute relation possède une justification lisible et vérifiable.",
+    "Les correspondances inter-graphes utilisent des identifiants stables, jamais des arêtes entre bases.",
+    "Une activation cognitive n'est pas une action : une action exige une trace d'exécution distincte."
+  ],
+  "nodeTypes": [
+    { "id": "actor", "label": "acteur", "family": "participants", "epistemicStatus": "declared", "description": "Personne ou système qui participe à un événement de l'écosystème." },
+    { "id": "citizen_endpoint", "label": "point de contact citoyen", "family": "participants", "epistemicStatus": "documented", "description": "Adresse relationnelle du citoyen dans L3 ; elle correspond à une identité L1 sans être son état interne." },
+    { "id": "conversation", "label": "conversation", "family": "contexts", "epistemicStatus": "observed", "description": "Contexte ordonné dans lequel des messages sont échangés." },
+    { "id": "message", "label": "message", "family": "events", "epistemicStatus": "observed", "description": "Événement communicationnel externe, daté et attribué à une source." },
+    { "id": "action", "label": "action exécutée", "family": "events", "epistemicStatus": "observed", "description": "Mutation externe effectivement exécutée, distincte d'une intention, d'une activation ou d'une réponse proposée." }
+  ],
+  "epistemicStatuses": [
+    { "id": "declared", "label": "déclaré", "description": "Identité ou propriété explicitement déclarée par sa source." },
+    { "id": "observed", "label": "observé", "description": "Événement capté par une trace horodatée." },
+    { "id": "documented", "label": "documenté", "description": "Élément technique décrit par le système." }
+  ],
+  "relationFamilies": [
+    { "id": "participation", "label": "participation", "description": "Relie les événements aux acteurs et destinataires qui y participent." },
+    { "id": "context", "label": "contexte", "description": "Situe un événement dans son espace conversationnel." },
+    { "id": "execution", "label": "exécution", "description": "Distingue une action effectivement réalisée de ses causes ou destinataires." }
+  ],
+  "relationTypes": [
+    { "id": "AUTHORED_BY", "label": "écrit par", "family": "participation", "scope": "ecosystem", "status": "active", "causalClaim": false, "description": "Attribue un message à son auteur déclaré." },
+    { "id": "ADDRESSED_TO", "label": "adressé à", "family": "participation", "scope": "ecosystem", "status": "active", "causalClaim": false, "description": "Relie un message au point de contact citoyen auquel il est destiné." },
+    { "id": "OCCURS_IN", "label": "se produit dans", "family": "context", "scope": "ecosystem", "status": "active", "causalClaim": false, "description": "Situe un message ou une action dans une conversation." },
+    { "id": "EXECUTED_BY", "label": "exécuté par", "family": "execution", "scope": "ecosystem", "status": "active", "causalClaim": false, "description": "Attribue uniquement une action effectivement exécutée à son agent." }
+  ],
+  "typeGroups": {
+    "participants": ["actor", "citizen_endpoint"],
+    "events": ["message", "action"]
+  },
+  "relationConstraints": {
+    "AUTHORED_BY": { "sourceTypes": ["message"], "targetTypes": ["actor", "citizen_endpoint"] },
+    "ADDRESSED_TO": { "sourceTypes": ["message"], "targetTypes": ["actor", "citizen_endpoint"] },
+    "OCCURS_IN": { "sourceGroups": ["events"], "targetTypes": ["conversation"] },
+    "EXECUTED_BY": { "sourceTypes": ["action"], "targetGroups": ["participants"] }
+  },
+  "quantification": {
+    "probabilityPct": { "definition": "Non utilisée pour les événements observés de L3.", "requires": ["supportingNodes"] },
+    "confidenceScore": { "definition": "Confiance de provenance dans [0,1].", "requires": ["supportingNodes"] },
+    "effectSizePct": { "definition": "Non utilisée par l'ontologie L3 minimale.", "requires": ["supportingNodes"] }
+  },
+  "hierarchy": { "kinds": ["none", "part_of", "subcase_of"] },
+  "traversal": {
+    "familyDefaults": {
+      "participation": 0.95,
+      "context": 0.75,
+      "execution": 1
+    }
+  }
+}

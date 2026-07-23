@@ -3708,6 +3708,18 @@
       "target": "mech-l1-seed-import-pipeline",
       "type": "TARGETS",
       "justification": "La tâche transverse instrumente chaque étape du pipeline d'import pour qu'un blocage réveille NLR et maintienne la chaîne prioritaire, au lieu d'une veille silencieuse."
+    },
+    {
+      "source": "task-l1-human-situation-model",
+      "target": "task-l1-blueprint",
+      "type": "DEPENDS_ON",
+      "justification": "Le modèle de situation humaine étend la structure universelle du L1 sans préremplir le contenu personnel que le contrat de naissance protège."
+    },
+    {
+      "source": "change-2026-07-23-l1-human-situation-model",
+      "target": "task-l1-human-situation-model",
+      "type": "DOCUMENTS_PROGRESS",
+      "justification": "Le changement journalise l'intégration vérifiée du cluster 33, de ses trois frames séparées, de sa temporalité, de son consentement et de sa projection bornée vers le workspace."
     }
   ]
 }

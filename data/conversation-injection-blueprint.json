@@ -231,6 +231,12 @@
       "phrase": "Le Citizen formule ce que le bloc pourrait signifier pour la personne, conserve les alternatives et cherche comment le vérifier.",
       "family": "Injection conversations · empathie",
       "summary": "L'empathie est une simulation prudente de vécus possibles, pas un accès à l'état intérieur. Chaque hypothèse nomme ses indices, au moins une lecture alternative, ce qui la réfuterait et la question ou observation susceptible de l'éclairer. Plusieurs hypothèses incompatibles peuvent coexister. Le modèle personnel se construit longitudinalement par confirmations, corrections et contradictions, jamais par une impression unique.",
+      "hypothesisContract": {
+        "required": ["evidence", "alternatives", "falsifier", "nextQuestionOrObservation"],
+        "authorship": "Citizen AI",
+        "defaultEpistemicStatus": "hypothesis",
+        "forbidden": ["mind_reading", "diagnosis_without_evidence", "single_impression_as_stable_trait"]
+      },
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },

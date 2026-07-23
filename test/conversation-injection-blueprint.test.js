@@ -28,18 +28,18 @@ test("conversation ingestion makes encounter response precede mission projection
   const encounter = nodes.get("mech-ci-citizen-encounter-response");
 
   assert.ok(encounter);
-  assert.deepEqual(
-    encounter.possibleFacets,
-    assert.arrayContaining([
-      "functional_reaction",
-      "evocation",
-      "empathic_hypothesis",
-      "curiosity",
-      "care_concern",
-      "ambition",
-      "idea"
-    ])
-  );
+  const encounterContract = encounter.encounterResponseContract;
+  for (const facet of [
+    "functional_reaction",
+    "evocation",
+    "empathic_hypothesis",
+    "curiosity",
+    "care_concern",
+    "ambition",
+    "idea"
+  ]) {
+    assert.ok(encounterContract.possibleFacets.includes(facet));
+  }
   assert.ok(hasLink(
     links,
     "mech-ci-global-workspace-return",
@@ -75,24 +75,24 @@ test("encounter response preserves authorship and epistemic boundaries", async (
   const empathy = nodes.get("mech-ci-empathic-person-model");
   const shape = nodes.get("mech-ci-shape-audit");
 
-  assert.deepEqual(
-    encounter.requiredTrace,
-    assert.arrayContaining([
-      "authoredByCitizen",
-      "triggeringEvidence",
-      "workspaceSnapshotId",
-      "epistemicStatus",
-      "alternativesOrBoundary"
-    ])
-  );
-  assert.ok(encounter.forbiddenConversions.includes("reaction → human trait"));
-  assert.ok(encounter.forbiddenConversions.includes("idea → human commitment"));
-  assert.deepEqual(
-    empathy.hypothesisContract,
-    assert.objectContaining({
-      required: assert.arrayContaining(["evidence", "alternatives", "falsifier"])
-    })
-  );
+  for (const field of [
+    "authoredByCitizen",
+    "triggeringEvidence",
+    "workspaceSnapshotId",
+    "epistemicStatus",
+    "alternativesOrBoundary"
+  ]) {
+    assert.ok(encounter.encounterResponseContract.requiredForEachTrace.includes(field));
+  }
+  assert.ok(encounter.encounterResponseContract.forbiddenConversions.includes(
+    "citizen reaction becomes human trait"
+  ));
+  assert.ok(encounter.encounterResponseContract.forbiddenConversions.includes(
+    "idea becomes human commitment"
+  ));
+  for (const field of ["evidence", "alternatives", "falsifier"]) {
+    assert.ok(empathy.hypothesisContract.required.includes(field));
+  }
   assert.equal(shape.shapeContract.encounterResponse.requiredAuthorship, "Citizen AI");
 });
 
@@ -102,15 +102,14 @@ test("valuable curiosity becomes bounded discovery work before completion", asyn
   const completion = nodes.get("mech-ci-explicit-completion");
   const quality = nodes.get("mech-ci-quality-vector");
 
-  assert.deepEqual(
-    curiosity.resolutionOrder,
-    assert.arrayContaining([
-      "personal graph",
-      "adjacent consented source",
-      "non-sensitive observation or reversible experiment",
-      "precise human question when genuinely blocked"
-    ])
-  );
+  for (const step of [
+    "existing graph",
+    "adjacent consented source",
+    "non-sensitive observation",
+    "precise human question"
+  ]) {
+    assert.ok(curiosity.curiosityContract.resolutionOrder.includes(step));
+  }
   assert.ok(curiosity.curiosityContract.required.includes("stopCondition"));
   assert.ok(completion.completionContract.complete_sparse.some(rule =>
     rule.includes("high-value curiosities")

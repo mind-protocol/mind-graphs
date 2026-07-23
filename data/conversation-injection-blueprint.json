@@ -444,6 +444,28 @@
       "epistemicStatus": "design_proposal",
       "clusterId": "conversation-injection"
     },
+    {
+      "id": "rat-ci-cognition-before-linking",
+      "name": "Justification · cognition avant liaison",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Une mémoire devient pertinente parce qu'elle entre dans la compétition cognitive du L1, pas parce qu'un service de recherche a dépassé un seuil.",
+      "family": "Injection conversations · justification",
+      "summary": "Une recherche vectorielle directe court-circuite attention, buts actifs, contexte, affect, sous-entités et budget du citoyen. Présenter le bloc comme stimulus permet aux ressemblances sémantiques et contextuelles d'influencer le Global Workspace sans les transformer en décisions. Le Citizen AI garde la responsabilité de typer et justifier toute liaison.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "rat-ci-embedding-not-identity",
+      "name": "Justification · un embedding ne prouve jamais l'identité",
+      "nodeType": "narrative",
+      "semanticType": "design_rationale",
+      "phrase": "Deux mentions ou mémoires similaires peuvent activer la même zone sans désigner la même personne.",
+      "family": "Injection conversations · justification",
+      "summary": "La similarité sert au routage attentionnel uniquement. Une décision same_person exige des identifiants, alias contextualisés, provenance ou confirmation indépendante ; sinon le Citizen AI conserve possible_same_person, ambiguous ou unknown et peut demander l'humain lorsque l'enjeu le justifie.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "conversation-injection"
+    },
 
     {
       "id": "verif-ci-reverse-order",
@@ -566,6 +588,39 @@
       "epistemicStatus": "test_target",
       "clusterId": "conversation-injection"
     },
+    {
+      "id": "verif-ci-stimulus-workspace-path",
+      "name": "Vérification · le bloc traverse réellement stimulus, ticks et workspace",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Le call MCP retourne un WorkspaceSnapshot issu des micro-ticks et aucune arête sémantique créée directement.",
+      "family": "Injection conversations · vérification",
+      "summary": "Injecter une fixture de bloc avec observationId stable. Vérifier la création du stimulus, la trace de micro-ticks, une condition d'arrêt bornée, le WorkspaceSnapshot final et la conservation du budget. Avant l'interprétation du Citizen AI, le nombre de liens sémantiques personnels doit rester inchangé.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-workspace-contextual-retrieval",
+      "name": "Vérification · le contexte infléchit les mémoires diffusées",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Le même texte sous deux contextes de buts différents peut produire deux Global Workspaces explicablement différents.",
+      "family": "Injection conversations · vérification",
+      "summary": "Exécuter le même stimulus avec deux états de workspace contrôlés. Vérifier que les nœuds actifs et raisons de sélection reflètent la compétition contextuelle, tout en conservant le même stimulus et le même budget total. Le résultat doit exposer cette différence sans déclarer qu'une mémoire activée est vraie.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
+    {
+      "id": "verif-ci-embedding-cannot-merge-person",
+      "name": "Vérification · la similarité ne fusionne aucune personne",
+      "nodeType": "moment",
+      "semanticType": "experiment",
+      "phrase": "Deux personnes aux descriptions proches peuvent coactiver le workspace sans devenir une seule identité.",
+      "family": "Injection conversations · vérification",
+      "summary": "Présenter un stimulus ambigu proche de deux nœuds-personnes. Vérifier que les deux candidats et leurs preuves restent visibles, qu'aucune fusion ni SAME_AS n'est créée automatiquement et que la sortie autorise ambiguous ou blocked_need_human.",
+      "epistemicStatus": "test_target",
+      "clusterId": "conversation-injection"
+    },
 
     {
       "id": "oq-ci-source-format",
@@ -637,7 +692,9 @@
       "acceptanceCriteria": [
         "Un adaptateur de source liste, récupère et rend les conversations en ordre chrono-inverse.",
         "Chaque conversation est découpée en blocs d'environ deux réponses (trois à quatre si très courtes) et ingérée via la primitive idempotente.",
-        "Chaque conversation possède un clusterId stable ; ses blocs produisent des atomes sourcés de contexte, acteurs, faits et autres angles applicables, sous consentement.",
+        "Chaque bloc est présenté comme stimulus sourcé au L1, traverse des ticks intégrés bornés avec observationId stable, puis retourne un Global Workspace auditable avant toute interprétation.",
+        "Les embeddings routent l'attention mais ne créent aucun lien, ne confirment aucune croyance et ne fusionnent aucune personne.",
+        "Chaque conversation possède un clusterId stable ; le Citizen AI produit depuis le bloc et son WorkspaceSnapshot des atomes sourcés de contexte, acteurs, faits et autres angles applicables, sous consentement.",
         "Les quatre missions (profil psychologique, situation, objectifs/préférences, financier) sont résolues à chaque bloc par matière étayée ou par un statut explicite d'absence, d'inconnu, de non-pertinence ou de rétention sensible.",
         "Un audit de forme déterministe calcule le vecteur de qualité, détecte les absences silencieuses, les atomes isolés, les contradictions invisibles et les duplications sans récompenser le nombre brut de nœuds.",
         "Les appels MCP inspect_conversation_cluster et report_conversation_cluster_round produisent puis consignent une petite questionAgenda bornée, avec gapKey stable, tentatives, cooldown, preuves et mutations vérifiées.",

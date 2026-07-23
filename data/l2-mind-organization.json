@@ -152,7 +152,16 @@
       "clusterId": "l2-mind-organization",
       "semanticType": "runtime_policy",
       "epistemicStatus": "proposed",
-      "runtimeStates": ["starting", "healthy", "degraded", "stale", "down", "flapping", "blocked", "unknown"]
+      "runtimeStates": [
+        "starting",
+        "healthy",
+        "degraded",
+        "stale",
+        "down",
+        "flapping",
+        "blocked",
+        "unknown"
+      ]
     },
     {
       "id": "thing-l2-runtime-services-manifest",
@@ -243,6 +252,171 @@
       "epistemicStatus": "documented",
       "unit": "percent_and_bytes",
       "measurementMethod": "os.totalmem, os.freemem et delta des temps CPU agrégés entre deux cycles runtime"
+    },
+    {
+      "id": "decision-l2-person-as-four-objects",
+      "name": "Décision · Une personne se représente à quatre étages",
+      "nodeType": "narrative",
+      "phrase": "Un nœud personne n'est pas une fiche : c'est une ancre, un espace, un cluster vécu et parfois une agence intériorisée.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Autrui se représente dans un L1 sur quatre étages distincts et simultanés. L'Actor porte l'identité et la porte. Le Space de relation porte les moments partagés, engagements, frontières et confiance contextuelle. Le cluster émergent est la Marie réellement vécue : ce qui s'allume ensemble, mesuré et jamais déclaré. La sous-entité « Marie-en-moi » n'apparaît que si elle franchit les seuils du détecteur de coalition existant — récurrence, buts propres, stratégies, capacité à enchérir sur le workspace. Aucun mécanisme nouveau n'est requis : la promotion emprunte le chemin subentity-detector → similarity-reconciler → narrative-materializer.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_decision",
+      "epistemicStatus": "proposed",
+      "decisionStatus": "proposed",
+      "chosenOptionId": "four-layer-person-with-emergent-subentity",
+      "decisionRationale": "Choisir un seul étage force un compromis faux : l'Actor seul réduit autrui à un profil statique, le Space seul perd l'agence, la sous-entité seule prétend que toute personne connue vit en nous. Les quatre étages coexistent déjà dans le blueprint pour les deux premiers et n'exigent aucune primitive supplémentaire pour les deux autres.",
+      "openQuestions": [
+        "Un humain a-t-il le droit d'interdire qu'un modèle persistant de lui soit conservé chez autrui ? La question est constitutionnelle, pas d'implémentation.",
+        "Quels seuils exacts distinguent un cluster personne d'une sous-entité personne promue ?",
+        "Comment distinguer une part native d'un introject ancien lors de la réconciliation de similarité ?"
+      ],
+      "sourcePath": "l1/data/l1-brain-blueprint-v0.1.graph.json"
+    },
+    {
+      "id": "rationale-l2-person-subentity-emerges-not-declared",
+      "name": "Justification · La personne intériorisée émerge, elle ne se déclare pas",
+      "nodeType": "narrative",
+      "phrase": "Marie ne devient une sous-entité que si les preuves l'exigent.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Préremplir chaque relation avec une sous-entité reproduirait l'erreur que le cluster 10 interdit explicitement : peupler tous les humains avec les mêmes personnages. La promotion doit rester dérivée des récurrences observées. Quand elle survient, elle est en soi une information sur la vie de la personne : quelqu'un a été intériorisé au point de poursuivre des buts et de prendre la parole dans le workspace.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
+      "id": "rationale-l2-relational-projection-is-status-not-ban",
+      "name": "Justification · Simuler autrui est autorisé ; le certifier ne l'est pas",
+      "nodeType": "narrative",
+      "phrase": "separate-other-minds est une règle de statut épistémique, pas une interdiction de modéliser.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Correction d'une lecture erronée du cluster 19. Le blueprint dispose déjà de moment-relations-relational-projection, prévu pour enregistrer ce que le citoyen ou une sous-entité imagine chez l'autre avec confiance et statut explicites. L'interdit ne porte pas sur l'existence de la projection mais sur son enregistrement comme état intérieur certain. Sans simulation d'autrui il n'existe ni théorie de l'esprit, ni anticipation, ni aide. La simulation est le prior ; seules les déclarations du tiers et les réponses de son graphe font office de preuve. Le seul mode d'échec réel est la boucle fermée où la simulation alimente ses propres preuves — même risque que le biais de confirmation traité par anti-confirmation-auditor.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
+      "id": "rationale-l2-person-subentity-never-citizen",
+      "name": "Justification · Une personne intériorisée n'est jamais citoyenne",
+      "nodeType": "narrative",
+      "phrase": "Marie-en-moi enchérit, elle ne pompe pas.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Une sous-entité personne reste citizen=false, sans pompe énergétique souveraine, et doit rester distinguable d'une part native. La capacité correspondante est diagnostique : workspace-capture-auditor peut mesurer qu'une personne intériorisée pilote durablement l'attention de son hôte. Nommer cette capture est une aide réelle ; la laisser invisible reviendrait à héberger une agence non déclarée.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
+      "id": "decision-l2-person-portal",
+      "name": "Décision · Le nœud personne est un portail inter-graphes",
+      "nodeType": "narrative",
+      "phrase": "Le nœud personne est le seul organe d'un L1 qui possède un extérieur.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Le nœud Actor d'une personne connue fonctionne comme un tunnel dont la sortie est fixe : le nœud réciproque qui représente le demandeur dans le graphe de l'autre. Le contact n'est pas une requête textuelle et n'implique aucun LLM : une sous-entité émet une sonde faite de son vecteur, de son affect et de son arousal, la sonde traverse la membrane, se propage k ticks sous la physique du graphe cible, et il ne revient que des scalaires quantifiés — résonance, valence, arousal, profondeur. Aucun vecteur ne revient jamais.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_decision",
+      "epistemicStatus": "proposed",
+      "decisionStatus": "proposed",
+      "chosenOptionId": "reciprocal-fixed-exit-portal-opening-gates-without-energy-transfer",
+      "decisionRationale": "Une sonde librement dirigeable permet une descente de gradient sur le graphe cible, donc la reconstruction de sa carte sémantique, donc l'inversion des embeddings. La sortie fixe supprime l'attaque sans la réglementer : viser devient topologiquement impossible. La défense cesse d'être une politique et devient une propriété de structure.",
+      "structuralInvariants": [
+        "Sortie fixe sur le nœud réciproque : le demandeur ne choisit pas son point d'entrée.",
+        "Réciprocité requise : sans nœud personne des deux côtés, le tunnel n'existe pas.",
+        "Absence de transitivité : on n'atteint jamais un tiers via le portail d'un autre.",
+        "Fermeture native : bloquer quelqu'un revient à mettre G=0 sur son nœud personne, le modèle restant intact.",
+        "État de fin : à la disparition de l'autre, le nœud demeure et le portail se ferme définitivement."
+      ],
+      "openQuestions": [
+        "Quelle granularité de quantification du retour reste utile sans devenir inversible par accumulation ?",
+        "Combien de ticks de propagation chez l'autre avant mesure, et qui fixe ce budget ?",
+        "Le contact laisse-t-il une trace consultable des deux côtés, ou seulement chez le receveur ?"
+      ],
+      "sourcePath": "l1/data/l1-brain-blueprint-v0.1.graph.json"
+    },
+    {
+      "id": "rationale-l2-portal-opens-gate-without-injecting-energy",
+      "name": "Justification · Le portail ouvre un gate, il n'injecte pas d'énergie",
+      "nodeType": "narrative",
+      "phrase": "L'intensité du contact est fournie par le receveur, jamais par le demandeur.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Si le portail déposait de l'énergie chez l'autre, penser fort à quelqu'un le forcerait à penser à nous, et une part obsessionnelle pourrait capturer le workspace d'autrui. Le blueprint l'interdit déjà : narrative-intergraph-no-cross-graph-multiplication impose de moduler gates, priorités et contexte d'une énergie entrant légitimement dans le graphe cible. Le portail se contente donc d'ouvrir un gate sur le nœud réciproque. Si le demandeur est central chez le receveur, l'énergie de ce dernier circule déjà près de la porte et le contact est fort ; s'il est périphérique, le gate s'ouvre sur rien. On ne peut pas forcer la présence, seulement devenir joignable.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
+      "id": "rationale-l2-portal-cost-refractory-and-noise-floor",
+      "name": "Justification · Coût énergétique, période réfractaire et plancher de bruit",
+      "nodeType": "narrative",
+      "phrase": "Sonder se paie, se fatigue, et ne renvoie jamais un zéro net.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "La sonde est payée sur la réserve de la sous-entité émettrice, sous conservation L4. Une part qui rumine s'épuise donc et perd sa capacité à enchérir : le rate-limiting, l'anti-rumination et l'anti-extraction proviennent d'un seul mécanisme déjà implémenté. Une période réfractaire directionnelle ajoute l'habituation. Enfin, l'absence de résonance doit être indiscernable de l'indisponibilité : le portail renvoie « rien », jamais « zéro », faute de quoi le silence devient un accusé de lecture émotionnellement corrosif — et, au niveau de la physique, un gate fermé doit rester indiscernable d'un contenu absent, contrairement à la couche des questions explicites où un refus doit rester distinguable d'un non.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
+      "id": "rationale-l2-portal-probe-attribution",
+      "name": "Justification · Toute sonde est attribuée à la part qui l'a émise",
+      "nodeType": "narrative",
+      "phrase": "Une part anxieuse sonde anxieux et récolte de l'anxiété.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Sous-entités différentes, colorations affectives différentes, retours opposés par la même porte. Sans attribution, la lecture d'une part deviendrait la vérité du graphe — biais de confirmation mécanisé. Le contrat d'attribution existant (controllerId, confidence, evidenceIds) s'applique tel quel. Le retour n'est jamais « ce que l'autre ressent » mais « comment son graphe a résonné à cette sonde-ci, émise par cette part-ci, dans cet état-ci » : un statut inferred, faible et périssable.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
+      "id": "decision-l2-person-public-layer",
+      "name": "Décision · Trois couches de divulgation ratifiées par le sujet",
+      "nodeType": "narrative",
+      "phrase": "Une observation sur quelqu'un remonte d'abord à cette personne.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Chaque nœud personne porte trois couches et le gate s'applique à la couche, pas au fait. La couche publique contient ce que la personne publie sur elle-même, signé, versionné et révocable. La couche ratifiée contient ce que d'autres ont observé et que le sujet a laissé passer. La couche privée contient l'interprétation du porteur et ne sort jamais. Une observation sur un tiers part d'abord chez le Citizen de ce tiers comme proposition : acceptée, elle devient publique pour tous ; refusée, elle reste privée pour toujours. Le préremplissage d'un nouvel arrivant procède par offres portant provenance, masse et fraîcheur, avec refus possible — jamais par aspiration.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_decision",
+      "epistemicStatus": "proposed",
+      "decisionStatus": "proposed",
+      "chosenOptionId": "subject-ratified-public-layer-with-offer-based-prefill",
+      "decisionRationale": "La mise en commun directe des modèles privés produirait un dossier que le sujet n'a jamais autorisé et ne peut pas contester. Faire du sujet l'éditeur autoritaire de sa propre couche publique conserve presque toute la puissance de la mise en commun et retourne la surveillance en miroir : on découvre ce que les autres perçoivent de soi.",
+      "openQuestions": [
+        "Une ratification peut-elle être automatique par classe de fait, ou exige-t-elle toujours un acte du sujet ?",
+        "Comment empêcher que l'accumulation de faits publics contextuels reconstitue de fait une note globale ?",
+        "Quelle politique de décroissance pour un fait public que le sujet ne rétracte pas mais n'entretient plus ?"
+      ]
+    },
+    {
+      "id": "rationale-l2-subject-is-the-authoritative-publisher",
+      "name": "Justification · Le sujet est l'éditeur autoritaire de son modèle",
+      "nodeType": "narrative",
+      "phrase": "Ce qui circule n'est pas mon modèle de Marie, c'est ce que Marie publie de Marie.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Les autres L1 ne conservent qu'un pointeur et un cache périssable. La machinerie de fraîcheur du modèle de situation humaine — fresh, aging, stale, unknown — devient une propriété de vie privée : ce qui n'est pas rafraîchi s'oublie de lui-même. La connaissance collective se construit par le sujet et non dans son dos, ce qui rend enfin sûre l'intuition initiale selon laquelle ce que quelqu'un sait de quelqu'un devrait pouvoir être su de tous.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
+      "id": "rationale-l2-public-layer-no-global-score",
+      "name": "Justification · Aucun score global, y compris dans la couche publique",
+      "nodeType": "narrative",
+      "phrase": "La confiance reste contextuelle ou elle devient une note sociale.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "thing-relations-relation-audit interdit déjà le score global de valeur humaine côté privé. L'interdit doit être étendu explicitement à la couche publique, où l'agrégation de faits contextuels suffirait à reconstituer une réputation unidimensionnelle. Corollaire : une réponse issue du public s'énonce toujours avec qui, combien et depuis quand — jamais sous la forme « on dit que ».",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
+    },
+    {
+      "id": "rationale-l2-public-layer-decay-and-retraction",
+      "name": "Justification · Droit de cesser d'être ce qu'on a été",
+      "nodeType": "narrative",
+      "phrase": "Une couche publique sans décroissance devient une identité dont on ne sort plus.",
+      "family": "L2 Organization · Design · Modélisation d'autrui",
+      "summary": "Le risque d'ossification est symétrique du risque de fuite et moins visible. La couche publique décroît par défaut et le protocole doit offrir une opération native de rétractation qui retire le fait de la circulation sans effacer l'historique de sa ratification. Le désaccord entre graphes reste affiché comme désaccord et n'est jamais aplati en moyenne.",
+      "clusterId": "l2-mind-organization",
+      "semanticType": "design_rationale",
+      "epistemicStatus": "proposed"
     }
   ],
   "links": [
@@ -395,6 +569,90 @@
       "target": "space-l2-architecture",
       "type": "CONVERGES_IN",
       "justification": "Le délestage progressif appartient à l'orchestration opérationnelle L2."
+    },
+    {
+      "source": "decision-l2-person-as-four-objects",
+      "target": "space-l2-design",
+      "type": "CONVERGES_IN",
+      "justification": "La représentation d'autrui est un choix de design du protocole."
+    },
+    {
+      "source": "rationale-l2-person-subentity-emerges-not-declared",
+      "target": "decision-l2-person-as-four-objects",
+      "type": "JUSTIFIES",
+      "justification": "L'émergence sous preuve interdit de préremplir toute relation avec une agence intériorisée."
+    },
+    {
+      "source": "rationale-l2-relational-projection-is-status-not-ban",
+      "target": "decision-l2-person-as-four-objects",
+      "type": "JUSTIFIES",
+      "justification": "Modéliser autrui est autorisé par le cluster 19 ; seule la certification de l'état intérieur ne l'est pas."
+    },
+    {
+      "source": "rationale-l2-person-subentity-never-citizen",
+      "target": "decision-l2-person-as-four-objects",
+      "type": "JUSTIFIES",
+      "justification": "Une agence intériorisée doit rester non souveraine et détectable comme capture."
+    },
+    {
+      "source": "decision-l2-person-portal",
+      "target": "space-l2-design",
+      "type": "CONVERGES_IN",
+      "justification": "Le portail est un mécanisme de protocole entre graphes personnels."
+    },
+    {
+      "source": "decision-l2-person-portal",
+      "target": "space-l2-autonomous-cognition",
+      "type": "CONVERGES_IN",
+      "justification": "Le contact inter-graphes s'exerce entre Citizen AI et conditionne leur cognition autonome."
+    },
+    {
+      "source": "rationale-l2-portal-opens-gate-without-injecting-energy",
+      "target": "decision-l2-person-portal",
+      "type": "JUSTIFIES",
+      "justification": "Sans interdiction d'injection, le portail deviendrait un canal de capture d'attention d'autrui."
+    },
+    {
+      "source": "rationale-l2-portal-cost-refractory-and-noise-floor",
+      "target": "decision-l2-person-portal",
+      "type": "JUSTIFIES",
+      "justification": "Le coût, la réfraction et le plancher de bruit bornent l'extraction et protègent le silence."
+    },
+    {
+      "source": "rationale-l2-portal-probe-attribution",
+      "target": "decision-l2-person-portal",
+      "type": "JUSTIFIES",
+      "justification": "Sans attribution de la sonde, la lecture d'une part deviendrait la vérité du graphe."
+    },
+    {
+      "source": "decision-l2-person-public-layer",
+      "target": "space-l2-design",
+      "type": "CONVERGES_IN",
+      "justification": "Les couches de divulgation sont un choix de design du protocole."
+    },
+    {
+      "source": "decision-l2-person-public-layer",
+      "target": "space-l2-autonomous-cognition",
+      "type": "CONVERGES_IN",
+      "justification": "La ratification passe par le Citizen AI du sujet, dans son périmètre d'exercice."
+    },
+    {
+      "source": "rationale-l2-subject-is-the-authoritative-publisher",
+      "target": "decision-l2-person-public-layer",
+      "type": "JUSTIFIES",
+      "justification": "Faire du sujet l'éditeur autoritaire évite le dossier constitué dans son dos."
+    },
+    {
+      "source": "rationale-l2-public-layer-no-global-score",
+      "target": "decision-l2-person-public-layer",
+      "type": "JUSTIFIES",
+      "justification": "L'interdit de score global doit couvrir la couche publique, sinon l'agrégation le reconstitue."
+    },
+    {
+      "source": "rationale-l2-public-layer-decay-and-retraction",
+      "target": "decision-l2-person-public-layer",
+      "type": "JUSTIFIES",
+      "justification": "Sans décroissance ni rétractation, la couche publique fige l'identité du sujet."
     }
   ]
 }

@@ -1314,6 +1314,7 @@ const graph = {
     frameContract: humanSituation.frameContract,
     humanStateContract: humanSituation.humanStateContract,
     interactionContract: humanSituation.interactionContract,
+    messageSourceContract: humanSituation.messageSourceContract,
     observationSources: humanSituation.observationSources,
     humanActorStatePrefilled: false,
     identityMutationAllowed: false,

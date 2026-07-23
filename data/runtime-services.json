@@ -40,7 +40,7 @@
       "dependencies": ["falkordb"],
       "observation": {
         "process": { "commandIncludes": ["src/server.js"] },
-        "http": { "url": "http://localhost:4173/api/health", "timeoutMs": 10000 }
+        "http": { "url": "http://localhost:4173/api/health", "timeoutMs": 30000 }
       },
       "repair": {
         "allowedActions": ["restart"],

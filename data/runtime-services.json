@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0.0",
+  "manager": {
+    "id": "mind-runtime-manager",
+    "statusPath": "artifacts/runtime/status.json",
+    "eventsPath": "artifacts/runtime/events.jsonl",
+    "lockPath": "artifacts/runtime/runtime-manager.lock",
+    "healthyIntervalSeconds": 30,
+    "degradedIntervalSeconds": 10,
+    "repairingIntervalSeconds": 5,
+    "defaultIntervalSeconds": 15,
+    "transitionOnlyEvents": true
+  },
+  "states": ["starting", "healthy", "degraded", "stale", "down", "flapping", "blocked", "unknown"],
+  "services": [
+    {
+      "id": "falkordb",
+      "name": "FalkorDB",
+      "criticality": "critical",
+      "required": true,
+      "singleton": true,
+      "observation": {
+        "tcp": { "host": "127.0.0.1", "port": 6379, "timeoutMs": 1500 }
+      },
+      "repair": {
+        "allowedActions": ["start"],
+        "command": ["docker", "compose", "up", "-d"],
+        "maxAttempts": 3,
+        "windowSeconds": 900,
+        "backoffSeconds": [5, 30, 120],
+        "circuitBreaker": { "openAfterFailures": 3, "retryAfterSeconds": 600 }
+      }
+    },
+    {
+      "id": "web_api",
+      "name": "Web/API",
+      "criticality": "critical",
+      "required": true,
+      "singleton": true,
+      "dependencies": ["falkordb"],
+      "observation": {
+        "process": { "commandIncludes": ["src/server.js"] },
+        "http": { "url": "http://localhost:4173/api/health", "timeoutMs": 2000 }
+      },
+      "repair": {
+        "allowedActions": ["restart"],
+        "command": ["npm", "start"],
+        "maxAttempts": 3,
+        "windowSeconds": 900,
+        "backoffSeconds": [5, 30, 120],
+        "circuitBreaker": { "openAfterFailures": 3, "retryAfterSeconds": 600 }
+      }
+    },
+    {
+      "id": "autonomy",
+      "name": "Autonomy",
+      "criticality": "critical",
+      "required": true,
+      "singleton": true,
+      "dependencies": ["falkordb"],
+      "observation": {
+        "process": { "commandIncludes": ["scripts/autonomous-agent.js"] },
+        "artifact": { "path": "artifacts/autonomy/wake-log.jsonl", "maxAgeSeconds": 900, "progressExpected": true }
+      },
+      "repair": {
+        "allowedActions": ["restart"],
+        "command": ["npm", "run", "autonomy:watch", "--", "--no-personal"],
+        "maxAttempts": 3,
+        "windowSeconds": 900,
+        "backoffSeconds": [5, 30, 120],
+        "circuitBreaker": { "openAfterFailures": 3, "retryAfterSeconds": 600 }
+      }
+    },
+    {
+      "id": "l4_physics",
+      "name": "L4 Physics",
+      "criticality": "critical",
+      "required": true,
+      "dependencies": ["autonomy"],
+      "managedBy": "autonomy",
+      "observation": {
+        "artifact": { "path": "artifacts/l4/physics-state.json", "maxAgeSeconds": 60, "progressExpected": true }
+      },
+      "repair": {
+        "allowedActions": ["restart-dependency"],
+        "targetServiceId": "autonomy",
+        "maxAttempts": 2,
+        "windowSeconds": 900,
+        "backoffSeconds": [30, 120],
+        "circuitBreaker": { "openAfterFailures": 2, "retryAfterSeconds": 600 }
+      }
+    },
+    {
+      "id": "continuous_health",
+      "name": "Continuous Health",
+      "criticality": "supporting",
+      "required": true,
+      "dependencies": ["falkordb"],
+      "observation": {
+        "process": { "commandIncludes": ["scripts/verify-continuously.js", "--watch"] },
+        "artifact": { "path": "artifacts/l4/thing-energy-ledger.json", "maxAgeSeconds": 300, "progressExpected": false }
+      },
+      "repair": {
+        "allowedActions": ["restart"],
+        "command": ["npm", "run", "health:watch"],
+        "maxAttempts": 3,
+        "windowSeconds": 900,
+        "backoffSeconds": [5, 30, 120],
+        "circuitBreaker": { "openAfterFailures": 3, "retryAfterSeconds": 600 }
+      }
+    },
+    {
+      "id": "repo_autocommit",
+      "name": "Repo Autocommit",
+      "criticality": "supporting",
+      "required": false,
+      "singleton": true,
+      "observation": {
+        "process": { "commandIncludes": ["scripts/repo-autocommit-watch.js"] }
+      },
+      "repair": {
+        "allowedActions": ["restart"],
+        "command": ["npm", "run", "repo:autocommit"],
+        "maxAttempts": 2,
+        "windowSeconds": 900,
+        "backoffSeconds": [30, 120],
+        "circuitBreaker": { "openAfterFailures": 2, "retryAfterSeconds": 600 }
+      }
+    },
+    {
+      "id": "l1_shadow",
+      "name": "L1 Shadow",
+      "criticality": "optional",
+      "required": false,
+      "enabled": false,
+      "observation": {
+        "process": { "commandIncludes": ["scripts/l1-shadow-watch.js", "--watch"] }
+      },
+      "repair": {
+        "allowedActions": ["restart"],
+        "command": ["npm", "run", "l1:shadow", "--", "--watch"],
+        "maxAttempts": 1,
+        "windowSeconds": 900,
+        "backoffSeconds": [60],
+        "circuitBreaker": { "openAfterFailures": 1, "retryAfterSeconds": 900 }
+      }
+    }
+  ]
+}

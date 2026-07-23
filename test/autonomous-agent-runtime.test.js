@@ -67,11 +67,11 @@ test("the global workspace incorporates current physics and advances each wake",
   assert.equal(second.version, 2);
   assert.deepEqual(first.activeNodeIds, ["task", "source", "target"]);
   assert.equal(first.sense.status, "read_at_wake");
-  assert.equal(first.sense.layer, "all");
+  assert.match(first.sense.contract, /Global Workspace courant/);
   assert.notEqual(first.contentHash, second.contentHash);
 });
 
-test("the wake resolves the MCP sense handle from the citizen graph and reads every awareness layer", () => {
+test("the wake resolves the MCP sense handle and reads the current Global Workspace", () => {
   const workspace = composeGlobalWorkspace({
     queue: { total: 0, eligibleCount: 0, tasks: [], nextTask: null },
     actorId: "actor-nlr",
@@ -88,8 +88,9 @@ test("the wake resolves the MCP sense handle from the citizen graph and reads ev
   assert.equal(workspace.sense.server, "mind");
   assert.equal(workspace.sense.tool, "sense");
   assert.match(prompt, /outil sense du serveur MCP local mind \(mind-mcp-v2\)/);
-  assert.match(prompt, /layer="all", handle="nlr_ai"/);
-  assert.match(prompt, /Une couche indisponible n'est pas un état nul/);
+  assert.match(prompt, /handle="nlr_ai"/);
+  assert.doesNotMatch(prompt, /layer=/);
+  assert.match(prompt, /résultat de sense est le contenu du Global Workspace courant/);
 });
 
 test("an explicit MCP sense handle takes precedence and survives workspace carryover", () => {

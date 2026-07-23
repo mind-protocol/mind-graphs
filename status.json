@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "managerId": "test-manager",
+  "checkedAt": "2026-07-23T12:00:00.000Z",
+  "overall": "degraded",
+  "services": [
+    {
+      "id": "web",
+      "name": "Web",
+      "criticality": "critical",
+      "required": true,
+      "managedBy": null,
+      "checkedAt": "2026-07-23T12:00:00.000Z",
+      "observation": {
+        "serviceId": "web",
+        "checkedAt": "2026-07-23T12:00:00.000Z",
+        "checks": {
+          "process": {
+            "ok": false,
+            "count": 0,
+            "pids": []
+          }
+        },
+        "errors": []
+      },
+      "state": "down",
+      "reason": "expected process is not running",
+      "repairAttempts": [
+        {
+          "at": "2026-07-23T12:00:00.000Z",
+          "action": "restart",
+          "pid": 42
+        }
+      ],
+      "repairDecision": {
+        "action": "restart",
+        "command": [
+          "npm",
+          "start"
+        ],
+        "attempts": 0
+      },
+      "lastStartedAt": "2026-07-23T12:00:00.000Z"
+    }
+  ]
+}

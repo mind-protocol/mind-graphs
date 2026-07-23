@@ -1,0 +1,2 @@
+{"type":"runtime_state_transition","serviceId":"web","previousState":null,"state":"down","reason":"expected process is not running","observedAt":"2026-07-23T12:00:00.000Z"}
+{"type":"runtime_repair_attempt","serviceId":"web","action":"restart","pid":42,"observedAt":"2026-07-23T12:00:00.000Z"}

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { prepareL1Seed, seedL1Graph } from "../src/l1-seed.js";
+import { normalizeL1EpistemicStatus, prepareL1Seed, seedL1Graph } from "../src/l1-seed.js";
 
 const graphConfig = {
   id: "l1-test",
@@ -13,7 +13,13 @@ const graphConfig = {
 };
 const ontology = {
   nodeTypes: [{ id: "memory", epistemicStatus: "declared" }],
-  relationTypes: [{ id: "DESCRIBES" }]
+  relationTypes: [{ id: "DESCRIBES" }],
+  epistemicStatuses: [
+    { id: "declared" },
+    { id: "observed" },
+    { id: "inferred" },
+    { id: "pending" }
+  ]
 };
 const datasets = [{
   data: {
@@ -87,6 +93,27 @@ test("a L1 graph cannot opt out of Blueprint copying", () => {
     datasets,
     blueprint
   }), /blueprintSync.enabled=true/);
+});
+
+test("seed maps design-graph epistemic statuses into the L1 contract", () => {
+  assert.equal(normalizeL1EpistemicStatus("working_hypothesis", ontology), "inferred");
+  assert.equal(normalizeL1EpistemicStatus("design_proposal", ontology), "pending");
+  assert.equal(normalizeL1EpistemicStatus("unresolved", ontology), "pending");
+  assert.equal(normalizeL1EpistemicStatus("not_detected", ontology), "observed");
+
+  const prepared = prepareL1Seed({
+    graphConfig,
+    ontology,
+    datasets: [{
+      data: {
+        nodes: [{ id: "generated-memory", nodeType: "memory", epistemicStatus: "working_hypothesis" }],
+        links: []
+      },
+      spec: {}
+    }],
+    blueprint
+  });
+  assert.equal(prepared.nodes[0].epistemicStatus, "inferred");
 });
 
 test("seed refuses to report success when Blueprint sync is not current", async () => {

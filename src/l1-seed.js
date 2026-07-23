@@ -10,6 +10,21 @@ const relationshipType = value => {
   return type;
 };
 
+const L1_EPISTEMIC_STATUS_ALIASES = {
+  working_hypothesis: "inferred",
+  design_proposal: "pending",
+  unresolved: "pending",
+  not_detected: "observed"
+};
+
+export function normalizeL1EpistemicStatus(status, ontology, fallback = "pending") {
+  const statusIds = new Set((ontology.epistemicStatuses || []).map(item => item.id));
+  const resolved = L1_EPISTEMIC_STATUS_ALIASES[status] || status || fallback;
+  if (!statusIds.size || statusIds.has(resolved)) return resolved;
+  if (statusIds.has(fallback)) return fallback;
+  return [...statusIds][0] || resolved;
+}
+
 export function prepareL1Seed({ graphConfig, ontology, datasets, blueprint }) {
   if (graphConfig?.blueprintSync?.enabled !== true) {
     throw new Error(`Le graphe L1 "${graphConfig?.id || "unknown"}" doit déclarer blueprintSync.enabled=true.`);
@@ -27,7 +42,14 @@ export function prepareL1Seed({ graphConfig, ontology, datasets, blueprint }) {
   for (const link of links) {
     if (!relationTypeIds.has(link.type)) throw new Error(`Prédicat inconnu dans ${graphConfig.id} : ${link.type}`);
   }
-  return { nodes, links };
+  const normalizedNodes = nodes.map(node => {
+    const fallback = ontology.nodeTypes.find(type => type.id === node.nodeType)?.epistemicStatus || "pending";
+    return {
+      ...node,
+      epistemicStatus: normalizeL1EpistemicStatus(node.epistemicStatus, ontology, fallback)
+    };
+  });
+  return { nodes: normalizedNodes, links };
 }
 
 export async function seedL1Graph({

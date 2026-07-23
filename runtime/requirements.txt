@@ -1,0 +1,18 @@
+# Dépendances runtime de mind-mcp (miroir de pyproject.toml [project].dependencies).
+# Monte l'environnement du serveur MCP (stdio + HTTP) :
+#   python -m venv .venv && .venv/Scripts/pip install -r requirements.txt   (Windows)
+#   python -m venv .venv && .venv/bin/pip install -r requirements.txt       (Unix)
+falkordb>=1.0.0
+neo4j>=5.0.0
+numpy>=1.24.0
+httpx>=0.24.0
+websockets>=11.0
+pydantic>=2.0.0
+pyyaml>=6.0
+fastapi>=0.100.0
+uvicorn>=0.30.0
+python-dotenv>=1.0.0
+PyJWT>=2.8.0
+bcrypt>=4.0.0
+flask>=3.0.0
+requests>=2.31.0

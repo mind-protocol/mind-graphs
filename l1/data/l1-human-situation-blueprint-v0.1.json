@@ -191,8 +191,27 @@
     "silenceCanBeHelpful": true,
     "consequentialActionRequiresMandate": true
   },
+  "messageSourceContract": {
+    "telegram": {
+      "sourceType": "telegram_message",
+      "requiredFields": [
+        "platform",
+        "chatId",
+        "messageId",
+        "authorId",
+        "occurredAt",
+        "contentKind"
+      ],
+      "inboundHumanMessageIsObservation": true,
+      "outboundCitizenMessageIsHumanObservation": false,
+      "outboundCitizenMessageIsRelationshipEvent": true,
+      "replyOrReactionCreatesNewObservation": true,
+      "rule": "Un message Telegram entrant attribué à l'humain devient un Moment HumanObservation. Un message sortant du Citizen AI décrit son action relationnelle et ne prouve rien sur l'état humain avant une réponse ou réaction attribuée."
+    }
+  },
   "observationSources": [
     "direct_human_message",
+    "telegram_message",
     "calendar",
     "task_state",
     "current_conversation",

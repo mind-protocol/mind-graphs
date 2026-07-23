@@ -55,6 +55,7 @@
     "score:day": "node scripts/score-day.js",
     "runtime:once": "node scripts/runtime-manager.js --once",
     "runtime:watch": "node scripts/runtime-manager.js",
+    "runtime:install-windows": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-windows-runtime-tasks.ps1",
     "health:check": "node scripts/verify-continuously.js",
     "health:watch": "node scripts/verify-continuously.js --watch",
     "health:assert-runtime": "node scripts/assert-runtime-health.js"

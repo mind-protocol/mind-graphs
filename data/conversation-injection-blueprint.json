@@ -329,7 +329,12 @@
         },
         "missions": {
           "requiredKeys": ["psychology", "situation", "objectives_preferences", "financial"],
-          "resolutionStates": ["present_supported", "absent_in_source", "unknown_missing_source", "not_applicable", "withheld_sensitive"]
+          "cardinality": "exactly_one_distinct_projection_node_per_mission_per_block",
+          "requiredClaimNature": "mission_projection",
+          "requiredFields": ["missionKey", "resolutionState", "analysis", "evidence", "hypotheses", "unknowns", "nextValidation"],
+          "resolutionStates": ["present_supported", "absent_in_source", "unknown_missing_source", "not_applicable", "withheld_sensitive"],
+          "hypothesisRule": "Une interprétation non directement soutenue reste une hypothèse avec alternatives et falsifier ; elle ne peut pas être encodée comme fait humain.",
+          "unknownConversionRule": "Toute inconnue qui peut changer une projection reçoit une valeur attendue. Si elle est élevée, elle doit pointer vers une question ou une tâche bornée avec stratégie, condition d'arrêt et frontière d'action."
         },
         "qualityRecord": {
           "expectedClaimNatures": ["cluster_shape_audit", "cluster_completion_decision"]
@@ -897,7 +902,7 @@
         "Toute hypothèse empathique conserve ses preuves, alternatives plausibles, falsifier et prochaine voie d'observation.",
         "Toute curiosité à valeur attendue élevée est résolue, transformée en question/tâche bornée avec condition d'arrêt, ou explicitement abandonnée avec raison avant clôture.",
         "Chaque conversation possède un clusterId stable ; le Citizen AI produit depuis le bloc et son WorkspaceSnapshot des atomes sourcés de contexte, acteurs, faits et autres angles applicables, sous consentement.",
-        "Les quatre missions (profil psychologique, situation, objectifs/préférences, financier) sont résolues à chaque bloc par matière étayée ou par un statut explicite d'absence, d'inconnu, de non-pertinence ou de rétention sensible.",
+        "Les quatre missions (profil psychologique, situation, objectifs/préférences, financier) produisent chacune un nœud de projection distinct à chaque bloc, avec analyse, preuves, hypothèses, inconnues et prochaine validation, ou un statut explicite d'absence, d'inconnu, de non-pertinence ou de rétention sensible.",
         "Un audit de forme déterministe calcule le vecteur de qualité, détecte les absences silencieuses, les atomes isolés, les contradictions invisibles et les duplications sans récompenser le nombre brut de nœuds.",
         "Les appels MCP inspect_conversation_cluster et report_conversation_cluster_round produisent puis consignent une petite questionAgenda bornée, avec gapKey stable, tentatives, cooldown, preuves et mutations vérifiées.",
         "Le Citizen AI peut choisir continue, complete_sufficient, complete_sparse ou blocked_need_human ; toute clôture conserve ses raisons et ses gaps résiduels.",

@@ -123,3 +123,36 @@ test("valuable curiosity becomes bounded discovery work before completion", asyn
     "TESTS"
   ));
 });
+
+test("the four missions are distinct analyses and valuable unknowns create validation work", async () => {
+  const { nodes } = indexBlueprint(await loadBlueprint());
+  const missions = nodes.get("mech-ci-shape-audit").shapeContract.missions;
+  const task = nodes.get("task-conversation-injection");
+
+  assert.equal(
+    missions.cardinality,
+    "exactly_one_distinct_projection_node_per_mission_per_block"
+  );
+  assert.deepEqual(missions.requiredKeys, [
+    "psychology",
+    "situation",
+    "objectives_preferences",
+    "financial"
+  ]);
+  for (const field of [
+    "missionKey",
+    "resolutionState",
+    "analysis",
+    "evidence",
+    "hypotheses",
+    "unknowns",
+    "nextValidation"
+  ]) {
+    assert.ok(missions.requiredFields.includes(field));
+  }
+  assert.match(missions.hypothesisRule, /alternatives/);
+  assert.match(missions.unknownConversionRule, /tâche bornée/);
+  assert.ok(task.acceptanceCriteria.some(criterion =>
+    criterion.includes("un nœud de projection distinct")
+  ));
+});

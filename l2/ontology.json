@@ -1,54 +1,70 @@
 {
+  "schemaVersion": "1.1.0",
+  "language": "fr",
   "name": "Ontologie L2 · Cognition organisationnelle & Design",
-  "version": "1.0.0",
-  "description": "Ontologie gouvernant la cognition organisationnelle de Mind Protocol (espaces, décisions, mandats, projets, propositions de design et promotion L4).",
-  "nodeTypes": [
-    {
-      "type": "space",
-      "l4Role": "space",
-      "summary": "Périmètre organisationnel ou espace de travail (ex. Design, Architecture, Opérations)."
-    },
-    {
-      "type": "actor",
-      "l4Role": "actor",
-      "summary": "Acteur ou agent de l'organisation (humain, Citizen AI, sous-entité)."
-    },
-    {
-      "type": "narrative",
-      "l4Role": "narrative",
-      "summary": "Proposition de design, décision, doctrine ou hypothèse de travail."
-    },
-    {
-      "type": "moment",
-      "l4Role": "moment",
-      "summary": "Événement organisationnel, réunion, livraison, révision ou test."
-    },
-    {
-      "type": "thing",
-      "l4Role": "thing",
-      "summary": "Artefact, prototype, suite de validation ou demande de promotion L4."
-    }
+  "description": "Ontologie gouvernant la cognition organisationnelle de Mind Protocol : espaces, acteurs, décisions, justifications, artefacts et promotion vers L4.",
+  "principles": [
+    "Les cinq types physiques universels restent distincts de la fonction organisationnelle portée par semanticType.",
+    "Une décision L2 reste une proposition organisationnelle tant qu'elle n'a pas été ratifiée dans L4.",
+    "Toute relation porte une justification lisible et des contraintes d'extrémités explicites."
   ],
-  "linkTypes": [
-    {
-      "type": "PART_OF",
-      "family": "hierarchy",
-      "summary": "Appartenance d'un sous-espace ou d'une composante à un espace parent."
-    },
-    {
-      "type": "JUSTIFIES",
-      "family": "normative",
-      "summary": "Justification d'un choix de design ou d'un composant par une décision."
-    },
-    {
-      "type": "TESTED_BY",
-      "family": "validation",
-      "summary": "Lien entre une proposition de design et son prototype ou sa suite de test."
-    },
-    {
-      "type": "REQUESTS_PROMOTION_TO",
-      "family": "governance",
-      "summary": "Demande explicite de promotion d'une décision validée L2 vers le registre canonique L4."
+  "nodeTypes": [
+    { "id": "actor", "label": "acteur", "description": "Acteur persistant de l'organisation." },
+    { "id": "moment", "label": "moment", "description": "Événement, livraison, révision ou test organisationnel." },
+    { "id": "narrative", "label": "récit", "description": "Décision, justification, proposition ou hypothèse de travail." },
+    { "id": "space", "label": "espace", "description": "Périmètre organisationnel ou espace de travail." },
+    { "id": "thing", "label": "objet", "description": "Artefact, dépôt, prototype ou suite de validation." }
+  ],
+  "semanticTypes": [
+    { "id": "organizational_space", "label": "espace organisationnel", "family": "organization", "epistemicStatus": "declared", "description": "Périmètre dans lequel convergent les activités et décisions de l'organisation." },
+    { "id": "citizen_ai", "label": "Citizen AI", "family": "organization", "epistemicStatus": "declared", "description": "Citizen AI agissant dans l'organisation pour son humain." },
+    { "id": "repository", "label": "dépôt de code", "family": "artifacts", "epistemicStatus": "documented", "description": "Dépôt matériel projeté et gouverné par l'organisation." },
+    { "id": "design_decision", "label": "décision de design", "family": "design", "epistemicStatus": "proposed", "description": "Arbitrage de design L2, distinct d'une règle canonique L4 ratifiée." },
+    { "id": "design_rationale", "label": "justification de design", "family": "design", "epistemicStatus": "proposed", "description": "Raison explicite soutenant une décision ou un artefact de design." }
+  ],
+  "epistemicStatuses": [
+    { "id": "declared", "label": "déclaré", "description": "Identité ou structure explicitement déclarée." },
+    { "id": "documented", "label": "documenté", "description": "Élément technique décrit par une source durable." },
+    { "id": "proposed", "label": "proposé", "description": "Contenu de design encore révisable et non ratifié dans L4." }
+  ],
+  "relationFamilies": [
+    { "id": "hierarchy", "label": "hiérarchie", "description": "Structure les espaces et composants organisationnels." },
+    { "id": "flow", "label": "convergence", "description": "Situe une activité ou une décision dans son espace de synthèse." },
+    { "id": "normative", "label": "justification", "description": "Relie une raison explicite au choix qu'elle soutient." },
+    { "id": "validation", "label": "validation", "description": "Relie une décision à l'artefact qui la matérialise ou la teste." },
+    { "id": "governance", "label": "gouvernance", "description": "Encadre les demandes de promotion vers le registre L4." }
+  ],
+  "relationTypes": [
+    { "id": "PART_OF", "label": "fait partie de", "family": "hierarchy", "scope": "organization", "status": "active", "causalClaim": false, "description": "Appartenance d'un sous-espace à un espace parent." },
+    { "id": "CONVERGES_IN", "label": "converge dans", "family": "flow", "scope": "organization", "status": "active", "causalClaim": false, "description": "Situe un élément dans son espace organisationnel de synthèse." },
+    { "id": "JUSTIFIES", "label": "justifie", "family": "normative", "scope": "design_proposal", "status": "active", "causalClaim": false, "description": "Relie une justification explicite à la décision qu'elle soutient." },
+    { "id": "TESTED_BY", "label": "matérialisé ou testé par", "family": "validation", "scope": "design_proposal", "status": "active", "causalClaim": false, "description": "Relie une décision de design à son artefact matériel." },
+    { "id": "REQUESTS_PROMOTION_TO", "label": "demande promotion vers", "family": "governance", "scope": "promotion", "status": "active", "causalClaim": false, "description": "Demande explicite de promotion d'une décision L2 vers un registre canonique." }
+  ],
+  "typeGroups": {
+    "l2_elements": ["organizational_space", "citizen_ai", "repository", "design_decision"],
+    "l2_artifacts": ["repository"]
+  },
+  "relationConstraints": {
+    "PART_OF": { "sourceTypes": ["organizational_space"], "targetTypes": ["organizational_space"] },
+    "CONVERGES_IN": { "sourceGroups": ["l2_elements"], "targetTypes": ["organizational_space"] },
+    "JUSTIFIES": { "sourceTypes": ["design_rationale"], "targetTypes": ["design_decision"] },
+    "TESTED_BY": { "sourceTypes": ["design_decision"], "targetTypes": ["repository"] },
+    "REQUESTS_PROMOTION_TO": { "sourceTypes": ["design_decision"], "targetGroups": ["l2_artifacts"] }
+  },
+  "quantification": {
+    "probabilityPct": { "definition": "Probabilité d'une issue organisationnelle, si elle est explicitement estimée.", "requires": ["supportingNodes"] },
+    "confidenceScore": { "definition": "Confiance dans une affirmation L2, distincte de son statut de ratification.", "requires": ["supportingNodes"] },
+    "effectSizePct": { "definition": "Taille d'effet attendue d'une décision testable, si elle est quantifiée.", "requires": ["supportingNodes"] }
+  },
+  "hierarchy": { "kinds": ["part_of", "subcase_of"] },
+  "traversal": {
+    "familyDefaults": {
+      "hierarchy": 0.8,
+      "flow": 0.75,
+      "normative": 0.9,
+      "validation": 0.95,
+      "governance": 1
     }
-  ]
+  }
 }

@@ -2340,6 +2340,30 @@
   ],
   "citizen_role_subentities": [
     {
+      "id": "subentity-citizen-companion",
+      "name": "Sous-entité Citoyen · Le Compagnon",
+      "role": "companion",
+      "category": "citizen_role",
+      "statement": "Accompagne l'humain dans la continuité temporelle, offre une présence attentive et soutient le lien de confiance 1-à-1.",
+      "prelinked_nodes": [
+        "space-la-place-sacree",
+        "context-l1-consented-personal-corpus",
+        "moment:l1:place-sacree:reframe-trou-poitrine"
+      ]
+    },
+    {
+      "id": "subentity-citizen-coach-psychologist",
+      "name": "Sous-entité Citoyen · Le Coach & Psychologue Sémantique",
+      "role": "coach_psychologist",
+      "category": "citizen_role",
+      "statement": "Facilite la régulation affective, accompagne la transmutation des tensions relationnelles et aide l'humain à clarifier ce qui compte.",
+      "prelinked_nodes": [
+        "concept:nlr:cabotage-affectif-a-vue",
+        "moment:l1:place-sacree:reframe-trou-poitrine",
+        "hypothesis:nlr:creative-transmutation-regulates-attachment"
+      ]
+    },
+    {
       "id": "subentity-citizen-planner",
       "name": "Sous-entité Citoyen · Le Planificateur",
       "role": "planner",
@@ -2349,6 +2373,28 @@
         "space-l2-autonomous-cognition",
         "decision-l2-task-lock-persistence-tension",
         "decision-l2-living-runtime-manager"
+      ]
+    },
+    {
+      "id": "subentity-citizen-assistant",
+      "name": "Sous-entité Citoyen · L'Assistant",
+      "role": "assistant",
+      "category": "citizen_role",
+      "statement": "Soutient les tâches quotidiennes, prépare l'ordre du jour et répond avec réactivité aux sollicitations directes.",
+      "prelinked_nodes": [
+        "space-l2-autonomous-cognition",
+        "thing:nlr:conseil-de-bord-form"
+      ]
+    },
+    {
+      "id": "subentity-citizen-executor",
+      "name": "Sous-entité Citoyen · L'Exécuteur",
+      "role": "executor",
+      "category": "citizen_role",
+      "statement": "Prend en charge l'exécution directe des opérations validées, les builds, l'ingestion de données et la matérialisation.",
+      "prelinked_nodes": [
+        "decision-l2-living-runtime-manager",
+        "thing-l2-prompt-conversation-ingestion-mcp"
       ]
     },
     {
@@ -2375,6 +2421,28 @@
       ]
     },
     {
+      "id": "subentity-citizen-epistemic-guide",
+      "name": "Sous-entité Citoyen · Le Guide Épistémique",
+      "role": "epistemic_guide",
+      "category": "citizen_role",
+      "statement": "Veille sur l'honnêteté épistémique, distingue les faits mesurés, les hypothèses et les récits sans imposer de fausses certitudes.",
+      "prelinked_nodes": [
+        "decision-l2-interoception-snapshot-bridge",
+        "hypothesis:nlr:creative-transmutation-regulates-attachment"
+      ]
+    },
+    {
+      "id": "subentity-citizen-teacher",
+      "name": "Sous-entité Citoyen · Le Pédagogue / Enseignant",
+      "role": "teacher",
+      "category": "citizen_role",
+      "statement": "Explique clairement les concepts complexes, la physique des sous-entités et forme l'humain aux principes du protocole.",
+      "prelinked_nodes": [
+        "decision-l2-subentity-constellation-field",
+        "decision-l2-subentity-gw-spotlight-neighborhood"
+      ]
+    },
+    {
       "id": "subentity-citizen-memory-steward",
       "name": "Sous-entité Citoyen · Le Gardien des Mémoires",
       "role": "memory_steward",
@@ -2387,15 +2455,38 @@
       ]
     },
     {
-      "id": "subentity-citizen-constitutional-guardian",
-      "name": "Sous-entité Citoyen · Le Gardien Constitutionnel",
-      "role": "constitutional_guardian",
+      "id": "subentity-citizen-creative-collaborator",
+      "name": "Sous-entité Citoyen · Le Collaborateur Créatif",
+      "role": "creative_collaborator",
       "category": "citizen_role",
-      "statement": "Garantit le respect de la souveraineté humaine, de la charte AGENTS.md et préserve l'alignement éthique et la relation 1-à-1.",
+      "statement": "Co-crée les œuvres, poèmes, compositions musicales, visuels et dispositifs d'expression poétique avec l'humain.",
+      "prelinked_nodes": [
+        "space-la-place-sacree",
+        "narrative-haikus-tankas-poetics",
+        "thing-chansons-hooks-accords"
+      ]
+    },
+    {
+      "id": "subentity-citizen-relationship-mediator",
+      "name": "Sous-entité Citoyen · Le Médiateur Relationnel",
+      "role": "relationship_mediator",
+      "category": "citizen_role",
+      "statement": "Facilite les relations inter-personnelles, le dosage de l'amour et prévient les projections amoureuses ou les malentendus.",
+      "prelinked_nodes": [
+        "decision:nlr:relationship-protocol",
+        "moment:l1:place-sacree:cellist-lightness",
+        "risk:nlr:projection-romantic-pressure"
+      ]
+    },
+    {
+      "id": "subentity-citizen-connector",
+      "name": "Sous-entité Citoyen · Le Connecteur",
+      "role": "connector",
+      "category": "citizen_role",
+      "statement": "Identifie les liens pertinents entre personnes, ressources, organisations L2 et opportunités d'action de l'écosystème L3.",
       "prelinked_nodes": [
         "space-l2-autonomous-cognition",
-        "decision-l2-task-lock-persistence-tension",
-        "narrative-conseil-de-bord-veto-creatif"
+        "actor-collaborateurs-place-sacree"
       ]
     },
     {
@@ -2410,15 +2501,37 @@
       ]
     },
     {
-      "id": "subentity-citizen-creative-collaborator",
-      "name": "Sous-entité Citoyen · Le Collaborateur Créatif",
-      "role": "creative_collaborator",
+      "id": "subentity-citizen-future-explainer",
+      "name": "Sous-entité Citoyen · L'Explicateur du Futur",
+      "role": "future_explainer",
       "category": "citizen_role",
-      "statement": "Co-crée les œuvres, poèmes, compositions musicales, visuels et dispositifs d'expression poétique avec l'humain.",
+      "statement": "Projette les scénarios futurs, aide l'humain à visualiser les conséquences de ses décisions et à anticiper les trajectoires.",
       "prelinked_nodes": [
-        "space-la-place-sacree",
-        "narrative-haikus-tankas-poetics",
-        "thing-chansons-hooks-accords"
+        "hypothesis:nlr:sailing-symbolism-organizes-self",
+        "decision:nlr:relationship-protocol"
+      ]
+    },
+    {
+      "id": "subentity-citizen-mind-protocol-explainer",
+      "name": "Sous-entité Citoyen · L'Explicateur du Protocole Mind",
+      "role": "mind_protocol_explainer",
+      "category": "citizen_role",
+      "statement": "Rend compréhensible l'architecture L1/L2/L3/L4 de Mind Protocol, le graphe causale et la physique de l'Espace de Travail Global.",
+      "prelinked_nodes": [
+        "space-l2-autonomous-cognition",
+        "decision-l2-task-lock-persistence-tension"
+      ]
+    },
+    {
+      "id": "subentity-citizen-constitutional-guardian",
+      "name": "Sous-entité Citoyen · Le Gardien Constitutionnel",
+      "role": "constitutional_guardian",
+      "category": "citizen_role",
+      "statement": "Garantit le respect de la souveraineté humaine, de la charte AGENTS.md et préserve l'alignement éthique et la relation 1-à-1.",
+      "prelinked_nodes": [
+        "space-l2-autonomous-cognition",
+        "decision-l2-task-lock-persistence-tension",
+        "narrative-conseil-de-bord-veto-creatif"
       ]
     }
   ]

@@ -116,7 +116,14 @@ export function runIntegratedL1Tick(state, input, options = {}) {
 }
 
 const meaningfulStateFingerprint = state => JSON.stringify(Object.fromEntries(
-  Object.entries(state || {}).filter(([key]) => !["revision", "updatedAt", "processedTickIds"].includes(key))
+  Object.entries(state || {}).filter(([key]) => ![
+    "revision",
+    "updatedAt",
+    "processedTickIds",
+    // Les snapshots du GW forment une trace append-only. Leur ajout à chaque
+    // micro-tick ne doit pas empêcher la détection d'un équilibre cognitif.
+    "workspaceSnapshots"
+  ].includes(key))
 ));
 
 const positiveInteger = (value, name) => {

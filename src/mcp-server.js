@@ -24,6 +24,11 @@ import {
   getNextL1TaskWake,
   reportL1TaskWake
 } from "./l1-task-engine.js";
+import {
+  CONVERSATION_STIMULUS_DEFAULTS,
+  formatConversationStimulus,
+  stimulateConversationBlock
+} from "./l1-conversation-stimulus.js";
 
 const GRAPH_API_URL = process.env.GRAPH_API_URL || "http://localhost:4173/api/graph";
 const injectionsPath = path.resolve(projectDir, "artifacts/l4/injections.jsonl");
@@ -92,6 +97,53 @@ server.registerTool("ask_graph", graphQuestionSchema, answerGraphQuestion);
 
 // Alias conservé pour les clients MCP déjà configurés.
 server.registerTool("query_graph", graphQuestionSchema, answerGraphQuestion);
+
+server.registerTool(
+  "stimulate_conversation_block",
+  {
+    title: "Injecter un bloc de conversation dans la cognition L1",
+    description:
+      "Transforme un bloc en stimulus, route un budget sensoriel fini vers le contexte L1, exécute des micro-ticks bornés puis renvoie le Global Workspace. "
+      + "L'embedding active du contexte mais ne crée jamais à lui seul une identité ou un lien sémantique. apply=false simule sans persister.",
+    inputSchema: {
+      graphId: z.string().min(1).default(CONVERSATION_STIMULUS_DEFAULTS.graphId),
+      conversationId: z.string().min(1),
+      blockId: z.string().min(1),
+      content: z.string().min(1),
+      sourceArtifact: z.string().min(1).optional(),
+      sourceLocator: z.string().min(1).optional(),
+      consentId: z.string().min(1).optional(),
+      speakerRole: z.enum(["human", "citizen_ai", "third_party", "unknown"]).default("unknown"),
+      occurredAt: z.string().datetime({ offset: true }).optional(),
+      timestampBasis: z.enum(["source", "inferred", "unknown"]).default("unknown"),
+      recordedAt: z.string().datetime({ offset: true }).optional(),
+      sensoryEnergyBudget: z.number().nonnegative().default(CONVERSATION_STIMULUS_DEFAULTS.sensoryEnergyBudget),
+      minSimilarity: z.number().min(0).max(1).default(CONVERSATION_STIMULUS_DEFAULTS.minSimilarity),
+      topK: z.number().int().positive().default(CONVERSATION_STIMULUS_DEFAULTS.topK),
+      characterBudget: z.number().int().positive().default(CONVERSATION_STIMULUS_DEFAULTS.characterBudget),
+      maxMicroTicks: z.number().int().positive().default(CONVERSATION_STIMULUS_DEFAULTS.maxMicroTicks),
+      requiredQuietTicks: z.number().int().positive().default(CONVERSATION_STIMULUS_DEFAULTS.requiredQuietTicks),
+      apply: z.boolean().default(false)
+    }
+  },
+  async args => {
+    try {
+      const result = await stimulateConversationBlock({
+        ...args,
+        recordedAt: args.recordedAt || new Date().toISOString()
+      });
+      return {
+        content: [{ type: "text", text: formatConversationStimulus(result) }],
+        structuredContent: result
+      };
+    } catch (err) {
+      return {
+        isError: true,
+        content: [{ type: "text", text: `Injection cognitive impossible : ${err.message}` }]
+      };
+    }
+  }
+);
 
 server.registerTool(
   "sync_l1_blueprint",

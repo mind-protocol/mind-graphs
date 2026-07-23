@@ -99,6 +99,31 @@ test("automatic micro-ticks stop at equilibrium without repeating evidence", () 
   assert.equal(replay.state.subentities[0].weight, candidate.weight);
 });
 
+test("append-only Global Workspace snapshots do not prevent cognitive equilibrium", () => {
+  const result = runIntegratedL1UntilStable(EMPTY_SUBENTITY_RUNTIME_STATE, {
+    tickId: "auto-workspace-stable-1",
+    observationId: "stimulus-workspace-1",
+    recordedAt: "2026-07-23T17:00:00Z",
+    sensory: {
+      citizenId: "actor-nlr",
+      totalBudget: 1,
+      allocatedEnergy: 1,
+      transfers: [{ targetNodeId: "choice", energy: 1, sourceCitizenId: "actor-nlr" }]
+    },
+    affect: { availability: "not_provided", vector: {} },
+    workspace: {
+      id: "ws-auto-configured",
+      actorId: "actor-nlr",
+      characterBudget: 800,
+      activeNodeIds: ["choice"]
+    }
+  });
+  assert.equal(result.report.stopReason, "stable");
+  assert.equal(result.report.microTickCount, 2);
+  assert.equal(result.state.workspaceSnapshots.length, 2);
+  assert.equal(result.workspace.slots[0].nodeIds[0], "choice");
+});
+
 test("automatic micro-ticks require an explicit observation identity and a bounded budget", () => {
   assert.throws(() => runIntegratedL1UntilStable(EMPTY_SUBENTITY_RUNTIME_STATE, { tickId: "missing-observation" }), /observationId/);
   assert.throws(() => runIntegratedL1UntilStable(EMPTY_SUBENTITY_RUNTIME_STATE, { tickId: "bad-budget", observationId: "o1" }, { maxMicroTicks: 0 }), /positive integer/);

@@ -25,6 +25,8 @@ Select Case serviceName
     command = Quote(nodeExecutable) & " " & Quote(projectDirectory & "\src\server.js")
   Case "autonomy"
     command = Quote(nodeExecutable) & " " & Quote(projectDirectory & "\scripts\autonomous-agent.js") & " --no-personal"
+  Case "manager"
+    command = Quote(nodeExecutable) & " " & Quote(projectDirectory & "\scripts\runtime-manager.js") & " --interval=15"
   Case Else
     WScript.Quit 64
 End Select

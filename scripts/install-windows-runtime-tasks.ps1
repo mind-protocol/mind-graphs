@@ -14,7 +14,8 @@ if (-not (Test-Path -LiteralPath $runnerPath -PathType Leaf)) {
 
 $taskDefinitions = @(
   @{ Name = "NLR L1 API"; Service = "api" },
-  @{ Name = "NLR Autonomous Agent"; Service = "autonomy" }
+  @{ Name = "NLR Autonomous Agent"; Service = "autonomy" },
+  @{ Name = "NLR Runtime Manager"; Service = "manager" }
 )
 
 $trigger = New-ScheduledTaskTrigger -AtLogOn -User $env:USERNAME

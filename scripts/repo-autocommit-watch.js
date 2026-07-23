@@ -27,7 +27,11 @@ const IGNORE = [
   /(^|\/)\.DS_Store$/
 ];
 
-const git = args => exec("git", args, { cwd: projectDir, maxBuffer: 128 * 1024 * 1024 });
+const git = args => exec("git", args, {
+  cwd: projectDir,
+  maxBuffer: 128 * 1024 * 1024,
+  windowsHide: true
+});
 
 async function openGraphOrNull() {
   try {

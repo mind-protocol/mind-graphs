@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { buildTransitionEvents, classifyService, commandMatches, repairDecision, runtimeCycle } from "../src/runtime-manager.js";
+import { buildRuntimeAlert, buildTransitionEvents, classifyService, commandMatches, repairDecision, runtimeCycle } from "../src/runtime-manager.js";
 
 test("process command matching requires every declared fragment", () => {
   assert.equal(commandMatches("node scripts/autonomous-agent.js --no-personal", ["scripts/autonomous-agent.js"]), true);
@@ -86,6 +86,62 @@ test("events are emitted only for transitions, not stable cycles", () => {
   const changed = { services: [{ id: "web", state: "stale", reason: "old artifact" }] };
   assert.equal(buildTransitionEvents(previous, stable).length, 0);
   assert.equal(buildTransitionEvents(previous, changed).length, 1);
+});
+
+test("runtime alert is created only when health becomes non-healthy or changes", () => {
+  const now = new Date("2026-07-23T12:00:00Z");
+  const healthy = { overall: "healthy", services: [{ id: "web", name: "Web", state: "healthy" }] };
+  const degraded = {
+    overall: "degraded",
+    checkedAt: now.toISOString(),
+    services: [{ id: "web", name: "Web", state: "down", reason: "expected process is not running" }]
+  };
+  assert.equal(buildRuntimeAlert(healthy, healthy, now), null);
+  const alert = buildRuntimeAlert(healthy, degraded, now);
+  assert.equal(alert.platform, "telegram");
+  assert.match(alert.message, /Mind runtime n'est pas healthy/);
+  assert.match(alert.message, /Web: down/);
+  assert.equal(buildRuntimeAlert(degraded, degraded, now), null);
+});
+
+test("runtime cycle emits a Telegram notification event for degraded state", async () => {
+  const cwd = await fs.mkdtemp(path.join(os.tmpdir(), "mind-runtime-manager-"));
+  const config = {
+    schemaVersion: "1.0.0",
+    manager: {
+      id: "test-manager",
+      statusPath: "status.json",
+      eventsPath: "events.jsonl",
+      notifications: {
+        telegram: {
+          enabled: true,
+          outboxPath: "telegram-alerts.jsonl"
+        }
+      }
+    },
+    services: [{
+      id: "web",
+      name: "Web",
+      required: true,
+      observation: { process: { commandIncludes: ["src/server.js"] } },
+      repair: { allowedActions: [], maxAttempts: 0 }
+    }]
+  };
+  const sent = [];
+  const result = await runtimeCycle(config, {
+    cwd,
+    now: new Date("2026-07-23T12:00:00Z"),
+    previousStatus: { overall: "healthy", services: [{ id: "web", state: "healthy" }] },
+    processes: [],
+    sendRuntimeAlert: async alert => {
+      sent.push(alert);
+      return { delivered: true, reason: "sent" };
+    }
+  });
+  assert.equal(sent.length, 1);
+  assert.equal(result.events.find(event => event.type === "runtime_notification_sent").delivered, true);
+  const outbox = await fs.readFile(path.join(cwd, "telegram-alerts.jsonl"), "utf8");
+  assert.match(outbox, /runtime_health_alert/);
 });
 
 test("runtime cycle keeps manifest commands as argv arrays for platform resolution", async () => {

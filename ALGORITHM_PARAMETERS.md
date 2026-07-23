@@ -46,7 +46,7 @@ Extrait un cluster pertinent du corpus pour une question en langue naturelle. Il
 
 ## Moteur d'énergie L4
 
-Fait circuler l'énergie sur les liens du graphe selon la physique signée du moteur d'ontologie global (`ontology-mapping`). Il ne produit aucune affirmation : il dit où le graphe est chaud, jamais si ce qui y est écrit est vrai.
+Fait circuler l'énergie sur les liens du graphe selon la physique signée du cluster l4-ontology-mapping. Il ne produit aucune affirmation : il dit où le graphe est chaud, jamais si ce qui y est écrit est vrai.
 
 | Paramètre | Valeur | Unité | Décisif | Justification | Rôle |
 |---|---:|---|---|---|---|

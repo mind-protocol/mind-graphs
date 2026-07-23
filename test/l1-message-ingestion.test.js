@@ -13,6 +13,21 @@ test("a live user message becomes a dated and placed Moment", () => {
   assert.equal(tick.memory.metadata.authorNodeId, "self-nlr");
 });
 
+test("an inbound Telegram message is an explicit human observation source", () => {
+  const tick = createLiveMessageTick({
+    conversationId: "telegram-chat-1",
+    messageId: "telegram-message-1",
+    position: 0,
+    content: "Je travaille encore sur le L1",
+    channel: "telegram",
+    occurredAt: "2026-07-23T17:59:00Z"
+  }, { now });
+  assert.equal(tick.memory.metadata.sourceKind, "telegram_message");
+  assert.equal(tick.memory.metadata.channel, "telegram");
+  assert.equal(tick.memory.metadata.authorNodeId, "self-nlr");
+  assert.equal(tick.memory.metadata.timestampBasis, "source_timestamp");
+});
+
 test("message identifiers and payloads produce stable idempotency keys", () => {
   const input = { conversationId: "thread-1", messageId: "msg-1", position: 4, content: "Bonjour", occurredAt: "2026-07-23T17:59:00Z" };
   assert.deepEqual(createLiveMessageTick(input, { now }), createLiveMessageTick(input, { now }));

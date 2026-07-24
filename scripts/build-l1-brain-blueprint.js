@@ -172,7 +172,7 @@ if (!cortexCluster) throw new Error("Le cluster 10 des sous-entités est absent.
 const cortexTypeMap = {
   context: ["Space", "CortexExecutionSpace"],
   subentity_goal: ["Narrative", "SubentityGoal"],
-  subentity_state_machine: ["Moment", "CortexState"],
+  subentity_state_machine: ["Thing", "subentity_state_machine"],
   design_rationale: ["Narrative", "DesignJustification"],
   subentity_action: ["Thing", "CortexPrimitive"],
   decision: ["Moment", "Decision"],
@@ -288,10 +288,10 @@ const transitions = [
   ["state-frustration-pivot", "state-monitoring", "stratégie libérée et blocage historisé"]
 ];
 for (const [source, target, condition] of transitions) {
-  addDerivedRelation({ source, type: "TRANSITIONS_TO", target, W: 0.85, S: 0.9, condition, justification: `Transition Cortex autorisée lorsque la condition « ${condition} » est satisfaite.` });
+  addDerivedRelation({ source, type: "INCREASES_PROPENSITY", target, W: 0.85, S: 0.9, condition, justification: `Une activation ou une observation accroît la propension vers « ${target} » lorsque la condition « ${condition} » est satisfaite.` });
 }
 
-for (const [state, action] of [
+for (const [pattern, action] of [
   ["state-targeting-planning", "action-gate-lock"],
   ["state-execution", "action-enfold"],
   ["state-execution", "action-pulse"],
@@ -300,7 +300,7 @@ for (const [state, action] of [
   ["state-closure-consolidation", "action-release"],
   ["state-frustration-pivot", "action-release"]
 ]) {
-  addDerivedRelation({ source: state, type: "USES", target: action, W: 0.85, S: 0.9, justification: `${state} emploie ${action} pour produire son effet topologique sans injecter d'énergie nouvelle.` });
+  addDerivedRelation({ source: pattern, type: "RECRUITS", target: action, W: 0.85, S: 0.9, justification: `${pattern} recrute ${action} comme action possible plutôt que de l'imposer comme unique suite.` });
 }
 
 const lifecycleThings = [

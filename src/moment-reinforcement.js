@@ -122,6 +122,7 @@ export function reinforceMoments(moments, outcome, {
       lastEligibility: eligibility,
       lastScore: eligibility > 0 ? scored.score : (previous.lastScore ?? null),
       lastOutcomeVector: eligibility > 0 ? scored.vector : (previous.lastOutcomeVector ?? null),
+      lastOutcomeContributions: eligibility > 0 ? scored.contributions : (previous.lastOutcomeContributions ?? null),
       lastOutcomeId: eligibility > 0 ? outcomeId : (previous.lastOutcomeId ?? null),
       lastObservedAt: eligibility > 0 ? observedAt : (previous.lastObservedAt ?? null)
     };

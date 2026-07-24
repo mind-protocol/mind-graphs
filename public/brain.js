@@ -1035,3 +1035,63 @@ byId("reset-layout").addEventListener("click", () => {
 
 await initGraphSelector();
 await loadFrame();
+
+// ── think() resolver UI wiring
+function prettyJSON(obj) {
+  try { return JSON.stringify(obj, null, 2); } catch { return String(obj); }
+}
+
+function renderThinkResult(obj) {
+  const box = byId("think-result");
+  box.replaceChildren();
+  if (!obj) { box.append(element("pre", "empty-state", "Aucun résultat.")); return; }
+  // summary header
+  const header = element("div", "think-summary");
+  header.append(element("strong", "", obj.actionChosen ? `Action: ${obj.actionChosen}` : "Résultat"));
+  if (obj.coalitions) header.append(element("span", "dim", ` · coalitions ${obj.coalitions.length}`));
+  box.append(header);
+  // full payload
+  const pre = document.createElement("pre");
+  pre.className = "think-payload";
+  pre.textContent = prettyJSON(obj);
+  box.append(pre);
+}
+
+function thinkFormValues() {
+  const actor = byId("think-actor").value || "nlr_ai";
+  const stimulus = byId("think-stimulus").value || "";
+  const task = byId("think-task").value || null;
+  const max_ticks = Math.max(1, Number(byId("think-max-ticks").value || 6));
+  const mode = document.querySelector("input[name='think-mode']:checked").value || "simulate";
+  return { actor, stimulus, task, max_ticks, mode };
+}
+
+byId("think-run").addEventListener("click", async () => {
+  const values = thinkFormValues();
+  const box = byId("think-result");
+  box.replaceChildren(element("p", "dim", "Envoi du think()…"));
+  try {
+    const response = await fetch(`/api/l1/think${query()}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values)
+    });
+    const payload = await response.json();
+    if (!response.ok) throw new Error(payload?.error || `HTTP ${response.status}`);
+    renderThinkResult(payload);
+    pushJournal({ kind: "think", title: `think() ${values.mode}`, detail: `actor=${values.actor} · ticks=${values.max_ticks}` });
+    await loadFrame();
+  } catch (err) {
+    box.replaceChildren(element("p", "error", `Erreur: ${err.message}`));
+    pushJournal({ kind: "error", title: "think() échoué", detail: err.message });
+  }
+});
+
+byId("think-clear").addEventListener("click", () => {
+  byId("think-actor").value = "nlr_ai";
+  byId("think-stimulus").value = "";
+  byId("think-task").value = "";
+  byId("think-max-ticks").value = "6";
+  document.querySelector("input[name='think-mode'][value='simulate']").checked = true;
+  byId("think-result").replaceChildren(element("p", "empty-state", "Aucun résultat."));
+});

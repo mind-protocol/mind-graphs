@@ -99,6 +99,34 @@
         <header><p class="eyebrow">Trace des pulsations</p><h2>Journal</h2></header>
         <div id="journal" class="journal"></div>
       </article>
+      <article class="panel">
+        <header><p class="eyebrow">Interroger la pensée</p><h2>Resolver `think()`</h2></header>
+        <div class="stack">
+          <form id="think-form" class="think-form">
+            <label>Actor
+              <input id="think-actor" name="actor" placeholder="nlr_ai" />
+            </label>
+            <label>Stimulus
+              <input id="think-stimulus" name="stimulus" placeholder="Décrire le stimulus..." />
+            </label>
+            <label>Task (optionnel)
+              <input id="think-task" name="task" placeholder="tâche liée (ex: planifier)" />
+            </label>
+            <label>Max ticks
+              <input id="think-max-ticks" name="max_ticks" type="number" min="1" value="6" />
+            </label>
+            <div class="think-mode">
+              <label><input type="radio" name="think-mode" value="simulate" checked /> Simulate</label>
+              <label><input type="radio" name="think-mode" value="commit" /> Commit</label>
+            </div>
+            <div class="think-actions">
+              <button id="think-run" type="button" class="btn">Run think()</button>
+              <button id="think-clear" type="button" class="btn btn-small">Clear</button>
+            </div>
+          </form>
+          <div id="think-result" class="think-result"></div>
+        </div>
+      </article>
     </section>
   </main>
 

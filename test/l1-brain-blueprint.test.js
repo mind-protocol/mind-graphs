@@ -68,12 +68,13 @@ test("open thresholds remain explicit questions, not invented constants", () => 
   ]);
 });
 
-test("the complete graph includes the eight-state Cortex machine and its primitives", () => {
-  const states = graph.nodes.filter(node => node.semanticType === "CortexState");
+test("the complete graph includes the eight-state subentity behavior artifacts and their action influences", () => {
+  const states = graph.nodes.filter(node => node.semanticType === "subentity_state_machine");
   const primitives = graph.nodes.filter(node => node.semanticType === "CortexPrimitive");
   assert.equal(states.length, 8);
   assert.equal(primitives.length, 4);
-  assert.equal(graph.relations.filter(relation => relation.type === "TRANSITIONS_TO").length, 10);
+  assert.equal(graph.relations.filter(relation => relation.type === "INCREASES_PROPENSITY").length, 10);
+  assert.equal(graph.relations.filter(relation => relation.type === "RECRUITS").length, 7);
   for (const state of states) {
     assert.ok(graph.relations.some(relation =>
       relation.target === state.id

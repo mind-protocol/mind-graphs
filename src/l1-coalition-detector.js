@@ -39,8 +39,7 @@ function stableCoalitionKey({ targets, affect, workspace }) {
   const parts = [
     ...targets.slice(0, 3).map(target => `node:${target.id}`),
     ...(affect ? [`affect:${affect.key}`] : []),
-    ...(workspace.goalIds || []).map(id => `goal:${id}`).sort(),
-    workspace.cortexState ? `cortex:${workspace.cortexState}` : null
+    ...(workspace.goalIds || []).map(id => `goal:${id}`).sort()
   ].filter(Boolean);
   return parts.sort().join("|");
 }
@@ -178,8 +177,7 @@ export function deriveSubentityCandidates({ state = {}, sensory = {}, affect = {
   const signature = Object.fromEntries([
     ...targets.slice(0, 8).map(target => [`node:${target.id}`, target.share]),
     ...(dominantAffect ? [[`affect:${dominantAffect.key}`, dominantAffect.intensity]] : []),
-    ...(workspace.goalIds || []).map(goalId => [`goal:${goalId}`, 1]),
-    ...(workspace.cortexState ? [[`cortex:${workspace.cortexState}`, 1]] : [])
+    ...(workspace.goalIds || []).map(goalId => [`goal:${goalId}`, 1])
   ]);
   const observedMomentIds = evidenceBacked ? [...evidenceMomentIds, ...(memory?.id ? [memory.id] : [])] : [];
   const accumulatedEvidenceMomentIds = [...new Set([...(previous?.evidenceMomentIds || []), ...observedMomentIds])];
@@ -203,7 +201,7 @@ export function deriveSubentityCandidates({ state = {}, sensory = {}, affect = {
       : clamp01(previous?.certainty),
     coherence,
     goals: (workspace.goalIds || []).map(goalId => ({ key: goalId, score: 1 })),
-    strategies: workspace.cortexState ? [{ key: workspace.cortexState, score: clamp01(0.5 + 0.5 * activation) }] : (previous?.strategies || []),
+    strategies: previous?.strategies || [],
     preferences: previous?.preferences || [],
     beliefs: previous?.beliefs || [],
     evidenceMomentIds: accumulatedEvidenceMomentIds,

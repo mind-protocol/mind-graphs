@@ -244,6 +244,36 @@ app.get("/api/ontology", async (_req, res) => {
   }
 });
 
+// Minimal mock handler for think() resolver used by the brain UI.
+// Accepts JSON { actor, stimulus, task, max_ticks, mode } and returns a
+// simulated analysis payload so the frontend can be exercised without full
+// L1 decision-loop integration.
+app.post("/api/l1/think", async (req, res) => {
+  try {
+    const { actor = "nlr_ai", stimulus = "", task = null, max_ticks = 6, mode = "simulate" } = req.body || {};
+    // Simple deterministic mock: echo stimulus, propose a faux coalition and
+    // an action when stimulus is non-empty.
+    const coalitions = stimulus ? [
+      { id: "coalition-1", members: ["subentity:A", "subentity:B"], score: 0.82 },
+      { id: "coalition-2", members: ["subentity:C"], score: 0.41 }
+    ] : [];
+    const actionChosen = stimulus ? (mode === "commit" ? "apply_merge" : "propose_merge") : null;
+    const alternatives = stimulus ? [{ name: "no_op", reason: "low_confidence" }, { name: "defer", reason: "need_more_ticks" }] : [];
+    const moment = {
+      id: `mock-moment-${Date.now()}`,
+      actor,
+      createdAt: new Date().toISOString(),
+      summary: stimulus ? `Simulated think on ${actor}: ${String(stimulus).slice(0, 160)}` : "No stimulus"
+    };
+    const delta = stimulus && mode === "commit" ? { nodesChanged: 2, edgesChanged: 1 } : { nodesChanged: 0, edgesChanged: 0 };
+    const learning = { note: "mock learning — no persistent effect in this test handler" };
+
+    res.json({ actor, stimulus, task, max_ticks, mode, coalitions, actionChosen, alternatives, moment, delta, learning });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // État énergétique L4 : le runtime écrit par `l4:watch`, lu par la page live.
 // C'est un runtime, pas un corpus — absent tant que le moteur n'a pas tourné.
 app.get("/api/l4/state", async (_req, res) => {

@@ -450,6 +450,132 @@
       "status": "active"
     },
     {
+      "id": "INCREASES_PROPENSITY",
+      "label": "augmente la propension à",
+      "family": "influence",
+      "scope": "behavioral",
+      "causalClaim": false,
+      "direction": "situation ou expérience → stratégie ou action",
+      "status": "active"
+    },
+    {
+      "id": "DECREASES_PROPENSITY",
+      "label": "diminue la propension à",
+      "family": "influence",
+      "scope": "behavioral",
+      "causalClaim": false,
+      "direction": "situation ou expérience → stratégie ou action",
+      "status": "active"
+    },
+    {
+      "id": "RECRUITS",
+      "label": "recrute",
+      "family": "behavioral",
+      "scope": "action_selection",
+      "causalClaim": false,
+      "direction": "pattern de comportement → action primitive",
+      "status": "active"
+    },
+    {
+      "id": "INHIBITS",
+      "label": "inhibe",
+      "family": "influence",
+      "scope": "behavioral",
+      "causalClaim": false,
+      "direction": "situation ou commentaire → stratégie ou action",
+      "status": "active"
+    },
+    {
+      "id": "MAKES_SALIENT",
+      "label": "rend saillant",
+      "family": "influence",
+      "scope": "behavioral",
+      "causalClaim": false,
+      "direction": "situation ou commentaire → stratégie ou action",
+      "status": "active"
+    },
+    {
+      "id": "COMMENTED_ON",
+      "label": "commenté par",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "action ou moment → commentaire",
+      "status": "active"
+    },
+    {
+      "id": "EXPLAINS",
+      "label": "explique",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action ou moment",
+      "status": "active"
+    },
+    {
+      "id": "REGRETS",
+      "label": "regrette",
+      "family": "affective",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action ou décision passée",
+      "status": "active"
+    },
+    {
+      "id": "APPROVES",
+      "label": "approuve",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action ou décision passée",
+      "status": "active"
+    },
+    {
+      "id": "QUESTIONS",
+      "label": "questionne",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action, moment ou hypothèse",
+      "status": "active"
+    },
+    {
+      "id": "REINTERPRETS",
+      "label": "réinterprète",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action ou résultat passé",
+      "status": "active"
+    },
+    {
+      "id": "LEARNS_FROM",
+      "label": "apprend de",
+      "family": "learning",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → moment ou évaluation",
+      "status": "active"
+    },
+    {
+      "id": "PROPOSES_CHANGE_TO",
+      "label": "propose de changer",
+      "family": "learning",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → stratégie ou pattern",
+      "status": "active"
+    },
+    {
+      "id": "BASED_ON",
+      "label": "s’appuie sur",
+      "family": "evidence",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → observation ou moment",
+      "status": "active"
+    },
+    {
       "id": "CAUSES",
       "label": "produit ou contribue à produire",
       "family": "causal",

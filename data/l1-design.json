@@ -277,6 +277,171 @@
       "semanticType": "subentity_action"
     },
     {
+      "id": "thing-situation-pattern",
+      "name": "Pattern de situation",
+      "nodeType": "thing",
+      "phrase": "Structuration d'une configuration de contexte et d'émotions qui reconnaît un état du sous-graphe.",
+      "family": "Behavioral Patterns",
+      "summary": "Décrit une situation reconnue par une sous-entité, avec ses causes, ses déclencheurs, ses indices et sa compatibilité contextuelle.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "SituationPattern"
+    },
+    {
+      "id": "thing-behavior-pattern",
+      "name": "Pattern de comportement",
+      "nodeType": "thing",
+      "phrase": "Comportement appris activé par une situation reconnue.",
+      "family": "Behavioral Patterns",
+      "summary": "Décrit une transformation possible du sous-graphe : la coalition, l'action, les inhibitions et l'effet attendu.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "BehaviorPattern"
+    },
+    {
+      "id": "thing-applicability-context",
+      "name": "Contexte d'applicabilité",
+      "nodeType": "thing",
+      "phrase": "Contrainte contextuelle pour un pattern de comportement.",
+      "family": "Behavioral Patterns",
+      "summary": "Décrit les conditions dans lesquelles une stratégie est utile ou échoue.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "ApplicabilityContext"
+    },
+    {
+      "id": "thing-expected-effect",
+      "name": "Effet attendu",
+      "nodeType": "thing",
+      "phrase": "Résultat anticipé d'une action ou d'un pattern.",
+      "family": "Behavioral Patterns",
+      "summary": "Capture la prédiction associée à un comportement avant sa vérification.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "ExpectedEffect"
+    },
+    {
+      "id": "moment-behavior-episode",
+      "name": "Episode comportemental",
+      "nodeType": "moment",
+      "phrase": "Traçage d'une situation réelle, de la stratégie utilisée et du résultat observé.",
+      "family": "Behavioral Patterns",
+      "summary": "Enregistre le contexte, l'action, l'effet prédit et les conséquences pour apprendre des situations passées.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "BehaviorEpisode"
+    },
+    {
+      "id": "moment-pattern-evaluation",
+      "name": "Évaluation de pattern",
+      "nodeType": "moment",
+      "phrase": "Comparaison d'un effet observé à son effet attendu.",
+      "family": "Behavioral Patterns",
+      "summary": "Fournit la base pour renforcer, affaiblir, spécialiser ou superseder un comportement appris.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "PatternEvaluation"
+    },
+    {
+      "id": "thing-counterexample",
+      "name": "Contre-exemple",
+      "nodeType": "thing",
+      "phrase": "Observation d'une situation où un pattern a échoué.",
+      "family": "Behavioral Patterns",
+      "summary": "Enregistre un cas de non-applicabilité et fournit une condition négative ou une spécialisation.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "Counterexample"
+    },
+    {
+      "id": "thing-pattern-version",
+      "name": "Version de pattern",
+      "nodeType": "thing",
+      "phrase": "Itération d'un comportement appris.",
+      "family": "Behavioral Patterns",
+      "summary": "Permet de conserver l'histoire d'une stratégie, ses corrections et sa supersession sans effacer son passé.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "PatternVersion"
+    },
+    {
+      "id": "thing-action-graph",
+      "name": "Graphe d'action",
+      "nodeType": "thing",
+      "phrase": "Décrit une séquence ou un flux d'opérations exécutable par une sous-entité.",
+      "family": "Behavioral Patterns",
+      "summary": "Représente la topologie du programme comportemental, avec des nœuds de détection, de décision, d'exécution et de vérification.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "ActionGraph"
+    },
+    {
+      "id": "thing-compiled-artifact",
+      "name": "Artifact compilé",
+      "nodeType": "thing",
+      "phrase": "Version optimisée d'un comportement suffisamment stable pour être exécutée sans modèle général.",
+      "family": "Behavioral Patterns",
+      "summary": "Représente une implémentation compilée ou typée d'une stratégie, avec code, permissions, entrées, sorties et provenance.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "CompiledArtifact"
+    },
+    {
+      "id": "thing-comment",
+      "name": "Commentaire interne",
+      "nodeType": "thing",
+      "phrase": "Observation, interprétation ou suggestion écrite par la sous-entité sur une action passée.",
+      "family": "Behavioral Patterns",
+      "summary": "Représente une remarque structurée distincte du fait brut, de l'évaluation et de l'affect. Elle peut expliquer, proposer, apprendre ou interroger un Moment.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "Comment"
+    },
+    {
+      "id": "thing-behavior-pattern-candidate",
+      "name": "Candidate de pattern",
+      "nodeType": "thing",
+      "phrase": "Motif comportemental en cours d'inférence à partir de plusieurs épisodes.",
+      "family": "Behavioral Patterns",
+      "summary": "Suggère qu'une suite de décisions et de résultats répétitifs pourrait cristalliser en un BehaviorPattern stable.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "BehaviorPatternCandidate"
+    },
+    {
+      "id": "narrative-behavior-pattern-learning",
+      "name": "Apprentissage par conséquences observées",
+      "nodeType": "narrative",
+      "phrase": "Renforcer un comportement seulement après comparaison réelle entre prédiction et résultat.",
+      "family": "Behavioral Patterns",
+      "summary": "Un pattern ne s'ajuste que lorsque l'issue a été observée et contextualisée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "narrative-behavior-pattern-specialization",
+      "name": "Spécialisation contextuelle des patterns",
+      "nodeType": "narrative",
+      "phrase": "Apprendre le domaine d'applicabilité exact d'une stratégie.",
+      "family": "Behavioral Patterns",
+      "summary": "Une stratégie fonctionne dans certaines conditions et pas dans d'autres ; le graphe doit capturer ces domaines sans en faire une règle universelle.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
+      "id": "narrative-behavior-pattern-supercedes",
+      "name": "Superséquence d'un pattern",
+      "nodeType": "narrative",
+      "phrase": "Remplacer une stratégie générale par une stratégie plus précise.",
+      "family": "Behavioral Patterns",
+      "summary": "Un nouveau pattern peut superseder un ancien sans effacer son histoire ni sa trace.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "l1-design",
+      "semanticType": "design_rationale"
+    },
+    {
       "id": "narrative-cortex-eight-state-functional-decomposition",
       "name": "Justification · Huit états séparent huit responsabilités exécutives",
       "nodeType": "narrative",
@@ -608,6 +773,96 @@
       "target": "state-frustration-pivot",
       "type": "MOTIVATES",
       "justification": "Le pivot est une branche obligatoire afin que l échec persistant ou l épuisement du budget termine la stratégie en cours."
+    },
+    {
+      "source": "thing-situation-pattern",
+      "target": "moment-behavior-episode",
+      "type": "MATCHES",
+      "justification": "Un situation pattern peut correspondre à un épisode concret vécu par la sous-entité."
+    },
+    {
+      "source": "thing-situation-pattern",
+      "target": "thing-behavior-pattern",
+      "type": "INCREASES_PROPENSITY",
+      "justification": "Une situation reconnue augmente la propension relative à certaines stratégies, sans les déclencher automatiquement."
+    },
+    {
+      "source": "thing-situation-pattern",
+      "target": "thing-behavior-pattern",
+      "type": "DECREASES_PROPENSITY",
+      "justification": "Une situation reconnue diminue la propension relative aux stratégies moins adaptées."
+    },
+    {
+      "source": "thing-situation-pattern",
+      "target": "thing-behavior-pattern",
+      "type": "MAKES_SALIENT",
+      "justification": "Une situation peut rendre certaines stratégies plus saillantes dans le champ comportemental."
+    },
+    {
+      "source": "thing-behavior-pattern",
+      "target": "thing-action-graph",
+      "type": "RECRUITS",
+      "justification": "Un pattern comportemental recrute des actions primitives possibles plutôt que d’imposer une séquence unique."
+    },
+    {
+      "source": "thing-behavior-pattern",
+      "target": "thing-applicability-context",
+      "type": "APPLIES_IN",
+      "justification": "Chaque comportement est lié à un contexte d'applicabilité précisant ses conditions de succès."
+    },
+    {
+      "source": "thing-behavior-pattern",
+      "target": "thing-expected-effect",
+      "type": "EXPECTS",
+      "justification": "Un comportement prédit un effet attendu qui pourra être vérifié après exécution."
+    },
+    {
+      "source": "moment-behavior-episode",
+      "target": "thing-situation-pattern",
+      "type": "INSTANCE_OF",
+      "justification": "Un épisode particulier est une instance d'un pattern de situation général."
+    },
+    {
+      "source": "moment-behavior-episode",
+      "target": "thing-behavior-pattern",
+      "type": "USED",
+      "justification": "L'épisode documente le pattern de comportement réellement utilisé."
+    },
+    {
+      "source": "moment-pattern-evaluation",
+      "target": "thing-expected-effect",
+      "type": "COMPARED_WITH",
+      "justification": "L'évaluation compare les effets observés avec les effets attendus."
+    },
+    {
+      "source": "moment-pattern-evaluation",
+      "target": "thing-behavior-pattern",
+      "type": "REINFORCES",
+      "justification": "Une évaluation positive renforce le comportement utilisé."
+    },
+    {
+      "source": "moment-pattern-evaluation",
+      "target": "thing-behavior-pattern",
+      "type": "WEAKENS",
+      "justification": "Une évaluation négative ou partielle affaiblit le comportement qui a été choisi."
+    },
+    {
+      "source": "thing-counterexample",
+      "target": "thing-behavior-pattern",
+      "type": "LIMITS",
+      "justification": "Un contre-exemple enregistre une situation où le pattern ne doit plus s'appliquer."
+    },
+    {
+      "source": "thing-pattern-version",
+      "target": "thing-pattern-version",
+      "type": "SUPERSEDES",
+      "justification": "Une nouvelle version de pattern peut superseder une version précédente sans effacer son histoire."
+    },
+    {
+      "source": "thing-behavior-pattern",
+      "target": "thing-compiled-artifact",
+      "type": "COMPILES_TO",
+      "justification": "Un comportement stable peut pointer vers un artifact compilé exécutable."
     },
     {
       "source": "rationale-l1-separate-perception-space-and-agency",

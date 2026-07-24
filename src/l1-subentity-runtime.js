@@ -229,8 +229,8 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
     subentities: [...active, ...reconciliation.retired],
     narratives: upsertById(state.narratives, newNarratives),
     moments: momentReinforcement?.moments || momentsBeforeReinforcement,
-    workspaceSnapshots: input.workspaceSnapshot?.semanticType === "WorkspaceSnapshot"
-      ? upsertById(state.workspaceSnapshots, [input.workspaceSnapshot])
+    workspaceSnapshots: workspaceSnapshot?.semanticType === "WorkspaceSnapshot"
+      ? upsertById(state.workspaceSnapshots, [workspaceSnapshot])
       : state.workspaceSnapshots,
     memoryAttributions: attributionResult
       ? upsertById(state.memoryAttributions, [attributionResult.attribution])

@@ -154,7 +154,7 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
           metadata: { ...(input.memory.metadata || {}), previousMomentId: inferredPreviousMomentId }
         }
       : input.memory;
-    memoryResult = createMemoryMoment({ ...memory, workspaceSnapshot: input.workspaceSnapshot || {} });
+    memoryResult = createMemoryMoment({ ...memory, workspaceSnapshot: workspaceSnapshot || {} });
     newRelations.push(...memoryResult.relations);
     attributionResult = attributeMemoryMoment({
       moment: memoryResult.moment,

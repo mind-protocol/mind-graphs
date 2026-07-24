@@ -35,6 +35,54 @@ test("one lifecycle transaction promotes, narrates and attributes its Moment", (
   assert.ok(result.state.relations.some(edge => edge.type === "SUPPORTS"));
 });
 
+test("une coalition meneuse fusionnée dans le tick ne persiste pas un contrôleur fantôme", () => {
+  // alpha et beta portent la même signature : elles fusionnent. alpha domine (poids,
+  // certitude), donc beta est absorbée. Le snapshot, arbitré avant la fusion, fait
+  // pourtant mener beta — l'entité qui va disparaître.
+  const alpha = { ...strongCandidate("alpha"), signature: { care: 1 }, goals: [{ key: "care", score: 1 }] };
+  const beta = { ...strongCandidate("beta"), weight: 4, certainty: 0.4, stability: 0.4, signature: { care: 1 }, goals: [{ key: "care", score: 1 }] };
+  const gamma = { ...strongCandidate("gamma"), signature: { explore: 1 }, goals: [{ key: "explore", score: 1 }] };
+  const mergeTick = {
+    tickId: "merge-tick",
+    recordedAt: "2026-07-23T12:30:00.000Z",
+    candidates: [alpha, beta, gamma],
+    workspaceSnapshot: {
+      id: "workspace-merge", semanticType: "WorkspaceSnapshot", version: 3,
+      characterBudget: 2000, characterUsed: 2000,
+      controllerId: "beta", controllerStatus: "attributed_live",
+      activeEntity: { id: "beta", semanticType: "subentity", confidence: 0.6 },
+      controllers: [{ subentityId: "beta", confidence: 0.6, active: true, rank: 1 }, { subentityId: "alpha", confidence: 0.55, active: true, rank: 2 }],
+      slots: [
+        { rank: 1, role: "lead", controllerId: "beta", characterAllocation: 900, score: 0.5, positiveScore: 0.5, penalty: 0 },
+        { rank: 2, role: "support", controllerId: "alpha", characterAllocation: 600, score: 0.45, positiveScore: 0.45, penalty: 0 },
+        { rank: 3, role: "support", controllerId: "gamma", characterAllocation: 500, score: 0.3, positiveScore: 0.3, penalty: 0 }
+      ],
+      bids: [
+        { candidateId: "workspace-candidate-beta", controllerId: "beta", rank: 1, score: 0.5 },
+        { candidateId: "workspace-candidate-alpha", controllerId: "alpha", rank: 2, score: 0.45 },
+        { candidateId: "workspace-candidate-gamma", controllerId: "gamma", rank: 3, score: 0.3 }
+      ],
+      audit: { empty: false, controllerUnknown: false }
+    },
+    memory: { id: "moment-merge", occurredAt: "2026-07-23T12:29:59.000Z", content: "Two coalitions became one." }
+  };
+  const result = runSubentityLifecycleTick(EMPTY_SUBENTITY_RUNTIME_STATE, mergeTick);
+
+  const persisted = result.state.workspaceSnapshots.find(snapshot => snapshot.id === "workspace-merge");
+  const activeIds = new Set(result.state.subentities.filter(entity => entity.status !== "merged").map(entity => entity.id));
+  assert.ok(!activeIds.has("beta"), "beta a bien été absorbée");
+  // Le contrôleur persisté existe encore et porte une carte.
+  assert.equal(persisted.controllerId, "alpha");
+  assert.ok(activeIds.has(persisted.controllerId));
+  assert.ok(!persisted.slots.some(slot => slot.controllerId === "beta"), "aucun créneau ne pointe vers la coalition morte");
+  // alpha, désormais unique, tient la somme des parts des deux créneaux repliés.
+  assert.equal(persisted.slots.find(slot => slot.controllerId === "alpha").characterAllocation, 1500);
+  // L'attribution mémoire encode le Moment sous le survivant, pas sous le fantôme.
+  const encodedUnder = result.state.relations.filter(edge => edge.type === "ENCODED_UNDER");
+  assert.ok(encodedUnder.length > 0);
+  assert.ok(encodedUnder.every(edge => edge.target !== "beta"));
+});
+
 test("replaying a stable tick id is idempotent", () => {
   const first = runSubentityLifecycleTick(EMPTY_SUBENTITY_RUNTIME_STATE, tick);
   const replay = runSubentityLifecycleTick(first.state, tick);

@@ -15,7 +15,10 @@ export const LOCAL_EMBEDDING_MODEL = Object.freeze({
 });
 
 const idOf = endpoint => typeof endpoint === "object" ? endpoint?.id : endpoint;
-const nodeText = node => [
+/** Surface textuelle d'un nœud. Exportée pour que tout producteur d'embedding
+ *  encode exactement le même texte : deux surfaces différentes produiraient des
+ *  vecteurs incomparables dans un espace pourtant présenté comme commun. */
+export const nodeText = node => [
   node.name,
   node.phrase,
   node.summary,

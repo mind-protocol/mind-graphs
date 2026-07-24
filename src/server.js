@@ -2,7 +2,7 @@ import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFile, readdir } from "node:fs/promises";
-import { getGraph, getL1Graph, graphName, host, port as dbPort } from "./db.js";
+import { getGraph, getGraphByName, getL1Graph, graphName, host, port as dbPort } from "./db.js";
 import { createL1SubentityRouter } from "./l1-subentity-api.js";
 import { createL1ShadowRouter } from "./l1-shadow-api.js";
 import { createL1MessageRouter } from "./l1-message-api.js";
@@ -11,6 +11,7 @@ import { readFalkorSubentityState } from "./l1-subentity-falkor.js";
 import { readL1ShadowState } from "./l1-shadow-runtime.js";
 import { composeCitizenStatuses } from "./l1-citizen-status.js";
 import { statusToMarkdown } from "./citizen-status-text.js";
+import { readLiveTickInput } from "./l1-live-signals.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.resolve(__dirname, "../public");
@@ -19,7 +20,10 @@ const l4StatePath = path.resolve(__dirname, "../artifacts/l4/physics-state.json"
 const globalWorkspacePath = path.resolve(__dirname, "../artifacts/autonomy/global-workspace.json");
 const l1ShadowStatePath = path.resolve(__dirname, "../artifacts/l1/subentity-shadow-state.json");
 const docsDir = path.resolve(__dirname, "..");
-const port = Number(process.env.PORT || 4173);
+// `--port=` permet d'ouvrir une seconde instance (worktree, vérification) sans
+// arrêter le serveur du dépôt principal, qui sert le runtime vivant.
+const portArgument = process.argv.find(argument => argument.startsWith("--port="))?.slice(7);
+const port = Number(portArgument || process.env.PORT || 4173);
 const app = express();
 
 async function readJsonOrEmpty(filePath) {
@@ -41,7 +45,138 @@ app.use(express.json({ limit: "1mb" }));
 app.use(express.static(publicDir));
 app.use("/api/l1/moments", createL1MessageRouter({ getGraph: getL1Graph }));
 app.use("/api/l1/subentities/shadow", createL1ShadowRouter());
-app.use("/api/l1/subentities", createL1SubentityRouter({ getGraph: customName => getL1Graph(customName) }));
+// Une coalition peut activer des nœuds de la mémoire personnelle (L1) comme du
+// graphe de design : on interroge donc le L1 observé d'abord, puis le design
+// pour les identifiants restés introuvables. Un nœud sans vecteur est laissé
+// hors du plan plutôt que placé arbitrairement (voir `npm run embeddings:check`).
+const NODE_LOOKUP = `
+  MATCH (n) WHERE n.id IN $ids
+  RETURN n.id AS id, n.name AS name, n.clusterId AS clusterId,
+         n.semanticType AS semanticType, n.embedding AS embedding,
+         n.summary AS summary, n.phrase AS phrase, n.description AS description,
+         n.content AS content, n.definition AS definition,
+         n.epistemicStatus AS epistemicStatus
+`;
+
+// Le nom seul ne dit pas ce que la sous-entité regarde. On remonte la première
+// surface de contenu disponible, dans l'ordre où elle porte le plus de sens.
+const contentOf = row => row.summary || row.phrase || row.description || row.content || row.definition || null;
+
+function collectNodes(target, rows, origin) {
+  for (const row of rows || []) {
+    if (!row.id || target.has(row.id)) continue;
+    target.set(row.id, {
+      name: row.name || null,
+      content: contentOf(row),
+      clusterId: row.clusterId || null,
+      semanticType: row.semanticType || null,
+      epistemicStatus: row.epistemicStatus || null,
+      embedding: Array.isArray(row.embedding) ? row.embedding : null,
+      origin
+    });
+  }
+}
+
+// Les bases FalkorDB sont en cours de renommage (`nlr_ai` → `l1_nlr_ai`,
+// `mind_causal` → `l2_mind_causal`). Chercher dans une seule base nommée en dur
+// rendait invisibles des nœuds pourtant présents. On balaie donc le L1 observé
+// puis toutes les bases actives déclarées par le manifeste, en s'arrêtant dès
+// que tout est résolu. Un identifiant introuvable reste introuvable : il n'est
+// pas placé plutôt que placé au hasard.
+let manifestGraphNames = null;
+
+async function activeGraphNames() {
+  if (manifestGraphNames) return manifestGraphNames;
+  try {
+    const manifest = JSON.parse(await readFile(path.resolve(__dirname, "../graphs.json"), "utf8"));
+    manifestGraphNames = manifest.graphs
+      .filter(graph => graph.status === "active" && graph.falkorGraph)
+      .map(graph => graph.falkorGraph);
+  } catch {
+    manifestGraphNames = [];
+  }
+  return manifestGraphNames;
+}
+
+async function resolveActivatedNodes(ids, l1GraphName) {
+  const resolved = new Map();
+  const seen = new Set();
+  const sources = [
+    { origin: "l1", load: () => getL1Graph(l1GraphName) },
+    { origin: "design", load: () => getGraph() },
+    ...(await activeGraphNames()).map(name => ({ origin: name, load: () => getGraphByName(name) }))
+  ];
+  for (const source of sources) {
+    if (seen.has(source.origin)) continue;
+    seen.add(source.origin);
+    const missing = ids.filter(id => !resolved.has(id));
+    if (!missing.length) break;
+    try {
+      const graph = await source.load();
+      const result = await graph.roQuery(NODE_LOOKUP, { params: { ids: missing } });
+      collectNodes(resolved, result.data, source.origin);
+    } catch {
+      // Une base injoignable ou vide ne doit pas vider la carte : les nœuds
+      // qu'elle portait restent simplement non résolus, donc non placés.
+    }
+  }
+  return resolved;
+}
+
+// Nature des relations dessinées. Aucun lien ne porte de vecteur affectif dans
+// le graphe : on remonte la famille et le prédicat, et on signale explicitement
+// l'absence d'affect plutôt que de colorer une émotion inexistante.
+async function resolveRelationNatures(edges, l1GraphName) {
+  const resolved = new Map();
+  const seen = new Set();
+  const sources = [
+    { origin: "l1", load: () => getL1Graph(l1GraphName) },
+    { origin: "design", load: () => getGraph() },
+    ...(await activeGraphNames()).map(name => ({ origin: name, load: () => getGraphByName(name) }))
+  ];
+  const wanted = edges.map(edge => `${edge.source}|${edge.type}|${edge.target}`);
+  for (const source of sources) {
+    if (seen.has(source.origin)) continue;
+    seen.add(source.origin);
+    if (resolved.size >= wanted.length) break;
+    try {
+      const graph = await source.load();
+      const result = await graph.roQuery(`
+        MATCH (a)-[r]->(b)
+        WHERE (a.id + '|' + type(r) + '|' + b.id) IN $keys
+        RETURN (a.id + '|' + type(r) + '|' + b.id) AS key,
+               r.relationFamily AS family, r.canonicalPredicate AS predicate,
+               r.epistemicStatus AS epistemicStatus,
+               r.affectVector IS NOT NULL OR r.emotions IS NOT NULL AS hasAffect
+      `, { params: { keys: wanted.filter(key => !resolved.has(key)) } });
+      for (const row of result.data || []) {
+        if (!row.key || resolved.has(row.key)) continue;
+        resolved.set(row.key, {
+          family: row.family || null,
+          predicate: row.predicate || null,
+          epistemicStatus: row.epistemicStatus || null,
+          hasAffect: row.hasAffect === true
+        });
+      }
+    } catch {
+      // Une base injoignable laisse l'arête sans famille : elle sera dessinée
+      // en neutre, ce qui est honnête, plutôt que colorée au hasard.
+    }
+  }
+  return resolved;
+}
+
+app.use("/api/l1/subentities", createL1SubentityRouter({
+  getGraph: customName => getL1Graph(customName),
+  resolveNodes: resolveActivatedNodes,
+  resolveRelations: resolveRelationNatures,
+  readPhysics: () => readJsonOrEmpty(l4StatePath),
+  readLiveTick: options => readLiveTickInput({
+    workspacePath: globalWorkspacePath,
+    physicsPath: l4StatePath,
+    ...options
+  })
+}));
 
 app.get("/api/l1/graphs", async (_req, res) => {
   try {

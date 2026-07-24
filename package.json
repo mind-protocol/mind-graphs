@@ -32,6 +32,8 @@
     "science:quality:satopaa": "node scripts/science-quality.js",
     "docs:parameters": "node scripts/docs-parameters.js",
     "bench:query": "node scripts/run-query-benchmark.js --output=artifacts/benchmark/query-reference.json",
+    "embeddings:ensure": "node scripts/ensure-node-embeddings.js --all",
+    "embeddings:check": "node scripts/ensure-node-embeddings.js --all --check",
     "l1:seed": "node scripts/l1-seed.js --graph=l1-nlr-ai",
     "l1:blueprint:sync": "node scripts/sync-l1-blueprint.js",
     "l1:sensory:tick": "node scripts/l1-sensory-tick.js",

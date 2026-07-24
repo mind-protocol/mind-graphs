@@ -22,7 +22,7 @@ export function normalizeAffectVector(vector = {}) {
   return normalized;
 }
 
-const FRENCH_AFFECT_PHRASES = Object.freeze({
+export const FRENCH_AFFECT_PHRASES = Object.freeze({
   curiosity: "curieux",
   desire: "désireux d'avancer",
   care: "attentionné",

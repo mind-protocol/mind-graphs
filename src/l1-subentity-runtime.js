@@ -7,6 +7,7 @@ import {
   promoteSubentity,
   reconcileSubentities
 } from "./l1-subentities.js";
+import { remapWorkspaceSnapshotControllers } from "./l1-global-workspace.js";
 import { attributeMemoryMoment } from "./l1-subentity-memory-attribution.js";
 import { reinforceMoments } from "./moment-reinforcement.js";
 

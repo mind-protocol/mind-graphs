@@ -1,5 +1,5 @@
 {
-  "scope": "Endgame du code de Mind (design-only, différé). Le programme canonique devient un graphe atomisé de fonctions, contrats, comportements, types, tests, justifications et observations ; les fichiers redeviennent des artefacts de compilation reconstruits depuis une révision ; développeurs et Citizen AI travaillent exclusivement sur le Program Graph. Ce cluster décrit vision, mission, décisions de design, mécanismes cibles, gabarits d’événements et de tâches, risques, garde-fous et questions ouvertes. Il ne doit déclencher aucune migration avant stabilisation des priorités courantes.",
+  "scope": "Endgame du code de Mind (design-only, différé). Le programme canonique devient un graphe atomisé de fonctions, contrats, comportements, types, tests, justifications et observations ; les fichiers redeviennent des artefacts de compilation reconstruits depuis une révision ; développeurs et Citizen AI travaillent exclusivement sur le Program Graph. Ce cluster décrit vision, mission, décisions de design, mécanismes cibles, gabarits d’événements et de tâches, risques, garde-fous et questions ouvertes. Il ne doit déclencher aucune migration avant stabilisation des priorités courantes. Étendu le 2026-07-24 par la strate « programmation par intention vérifiable » : l’intention proof-carrying devient l’unité de programmation, trois régimes d’exécution (interprétation directe, compilation à la volée, cristallisation en capacité), le code devient un cache exécutable dérivé, un Trusted Kernel déterministe demeure sous le graphe, et graphe et code se corrigent mutuellement.",
   "clusterId": "code-endgame-design",
   "lifecycle": "design_only",
   "implementationStatus": "deferred",
@@ -11,7 +11,7 @@
       "semanticType": "context",
       "phrase": "Le filesystem n’est qu’un détail de toolchain ; le programme canonique vit dans le graphe.",
       "family": "Endgame du code · périmètre",
-      "summary": "Périmètre de conception (design-only, différé) de l’endgame du code : le programme canonique de Mind devient un graphe atomisé de fonctions, contrats, comportements, types, tests, justifications et observations. Développeurs et Citizen AI ne modifient jamais des fichiers directement ; les fichiers redeviennent des artefacts de compilation reconstruits depuis une révision. Ce cluster décrit l’état cible et ne doit déclencher aucune migration avant stabilisation des priorités courantes.",
+      "summary": "Périmètre de conception (design-only, différé) de l’endgame du code : le programme canonique de Mind devient un graphe atomisé de fonctions, contrats, comportements, types, tests, justifications et observations. Développeurs et Citizen AI ne modifient jamais des fichiers directement ; les fichiers redeviennent des artefacts de compilation reconstruits depuis une révision. Ce cluster décrit l’état cible et ne doit déclencher aucune migration avant stabilisation des priorités courantes. Strate finale (2026-07-24) : la programmation par intention vérifiable — le programme devient un delta d’état du monde porté par contraintes, délégations et preuves attendues ; le code devient un cache dérivé au-dessus d’un Trusted Kernel déterministe.",
       "epistemicStatus": "design_proposal",
       "clusterId": "code-endgame-design",
       "lifecycle": "design_only",
@@ -36,9 +36,10 @@
       "semanticType": "actor",
       "phrase": "Humain ou Citizen AI qui travaille exclusivement sur le Program Graph.",
       "family": "Endgame du code · acteurs",
-      "summary": "Il ne voit ni chemins ni fichiers : il navigue et modifie les unités sémantiques, leurs contrats, leurs tests et leurs révisions.",
-      "epistemicStatus": "documented",
-      "clusterId": "code-endgame-design"
+      "summary": "Il ne voit ni chemins ni fichiers : il navigue et modifie les unités sémantiques, leurs contrats, leurs tests et leurs révisions. Dans l’endgame par intention, son rôle monte d’un niveau : expliciter les invariants, construire les primitives, concevoir les vérifications, auditer les effets, résoudre les ambiguïtés, maintenir le kernel et développer les ontologies.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
     },
     {
       "id": "actor-role-code-steward",
@@ -48,8 +49,9 @@
       "phrase": "Il préserve contrats, dépendances, révisions, provenance et cohérence.",
       "family": "Endgame du code · acteurs",
       "summary": "Rôle opérationnel garant de l’intégrité du graphe canonique et de la lisibilité humaine complète.",
-      "epistemicStatus": "documented",
-      "clusterId": "code-endgame-design"
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
     },
     {
       "id": "actor-role-repair-agent",
@@ -59,8 +61,9 @@
       "phrase": "Il reçoit des tâches de réparation et propose des ChangeSets bornés.",
       "family": "Endgame du code · acteurs",
       "summary": "Rôle futur, activé par une erreur devenue tâche ; ses propositions restent contraintes par budgets, permissions, portée et rollback.",
-      "epistemicStatus": "documented",
-      "clusterId": "code-endgame-design"
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
     },
     {
       "id": "horizon-program-becomes-graph",
@@ -592,7 +595,7 @@
       "name": "Gabarit de Moment · Materialization Run",
       "nodeType": "moment",
       "semanticType": "observation",
-      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "phrase": "Projection datée d’une révision vers des artefacts de compilation.",
       "family": "Endgame du code · gabarits d’événements",
       "summary": "Projection d’une révision vers des artefacts de compilation. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
       "epistemicStatus": "speculative_horizon",
@@ -606,7 +609,7 @@
       "name": "Gabarit de Moment · Compilation Run",
       "nodeType": "moment",
       "semanticType": "observation",
-      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "phrase": "Compilation datée des artefacts d’une révision précise.",
       "family": "Endgame du code · gabarits d’événements",
       "summary": "Compilation d’artefacts reliée à une révision précise. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
       "epistemicStatus": "speculative_horizon",
@@ -620,7 +623,7 @@
       "name": "Gabarit de Moment · Compilation Error",
       "nodeType": "moment",
       "semanticType": "observation",
-      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "phrase": "Erreur de compilation observée, reliée aux atomes, contrats et révision concernés.",
       "family": "Endgame du code · gabarits d’événements",
       "summary": "Erreur observée, reliée aux atomes, contrats, artefacts et révision concernés. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
       "epistemicStatus": "speculative_horizon",
@@ -634,7 +637,7 @@
       "name": "Gabarit de Moment · Build Run",
       "nodeType": "moment",
       "semanticType": "observation",
-      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "phrase": "Build complet ou partiel daté d’une révision.",
       "family": "Endgame du code · gabarits d’événements",
       "summary": "Build complet ou partiel d’une révision. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
       "epistemicStatus": "speculative_horizon",
@@ -648,7 +651,7 @@
       "name": "Gabarit de Moment · Test Run",
       "nodeType": "moment",
       "semanticType": "observation",
-      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "phrase": "Résultats datés des tests sur une révision et des hashes précis.",
       "family": "Endgame du code · gabarits d’événements",
       "summary": "Résultats datés des tests sur une révision et des hashes précis. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
       "epistemicStatus": "speculative_horizon",
@@ -662,7 +665,7 @@
       "name": "Gabarit de Moment · Runtime Error",
       "nodeType": "moment",
       "semanticType": "observation",
-      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "phrase": "Erreur runtime traduite vers les identités du Program Graph.",
       "family": "Endgame du code · gabarits d’événements",
       "summary": "Erreur runtime traduite vers les identités du Program Graph. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
       "epistemicStatus": "speculative_horizon",
@@ -676,7 +679,7 @@
       "name": "Gabarit de Moment · Performance Observation",
       "nodeType": "moment",
       "semanticType": "observation",
-      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "phrase": "Latence, mémoire, throughput ou coût observés sur une révision.",
       "family": "Endgame du code · gabarits d’événements",
       "summary": "Latence, mémoire, throughput ou coût observés. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
       "epistemicStatus": "speculative_horizon",
@@ -690,7 +693,7 @@
       "name": "Gabarit de Moment · Promotion Run",
       "nodeType": "moment",
       "semanticType": "observation",
-      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "phrase": "Décision et résultat datés de la promotion d’une révision.",
       "family": "Endgame du code · gabarits d’événements",
       "summary": "Décision et résultat de promotion d’une révision. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
       "epistemicStatus": "speculative_horizon",
@@ -704,7 +707,7 @@
       "name": "Gabarit de Moment · Rollback Run",
       "nodeType": "moment",
       "semanticType": "observation",
-      "phrase": "Gabarit d’événement futur, daté et rattaché à une révision précise.",
+      "phrase": "Retour observé et daté vers une révision antérieure.",
       "family": "Endgame du code · gabarits d’événements",
       "summary": "Retour observé vers une révision antérieure. Gabarit design-only : décrit la forme de l’événement, pas un événement réel.",
       "epistemicStatus": "speculative_horizon",
@@ -743,9 +746,9 @@
       "name": "Risque · Deux sources de vérité",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Le graphe et les fichiers divergent pendant la transition.",
       "family": "Endgame du code · risques",
-      "summary": "Le graphe et les fichiers divergent pendant la transition.",
+      "summary": "Si une zone laisse coexister édition par fichiers et édition par graphe, les deux représentations divergent silencieusement et aucune n’est plus fiable ; c’est le mode de défaillance central de la transition.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -756,9 +759,9 @@
       "name": "Risque · Erreur systémique du matérialiseur",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Un bug du matérialiseur produit des artefacts incorrects à grande échelle.",
       "family": "Endgame du code · risques",
-      "summary": "Un bug du matérialiseur produit des artefacts incorrects à grande échelle.",
+      "summary": "Le matérialiseur touche tous les artefacts à chaque projection : un défaut systémique s’y réplique instantanément sur l’ensemble du programme, contrairement à une erreur locale dans un fichier.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -769,9 +772,9 @@
       "name": "Risque · Corruption du Program Graph",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "La perte du graphe canonique équivaut à la perte du code source.",
       "family": "Endgame du code · risques",
-      "summary": "La perte du graphe canonique équivaut à la perte du code source.",
+      "summary": "Le Program Graph devient l’unique source d’autorité : sa corruption ou sa perte équivaut à perdre le code source de tout le système.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -782,9 +785,9 @@
       "name": "Risque · Paradoxe de bootstrap",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Le matérialiseur et le Graph IDE dépendent du système qu’ils produisent.",
       "family": "Endgame du code · risques",
-      "summary": "Le matérialiseur et le Graph IDE dépendent du système qu’ils produisent.",
+      "summary": "Les outils qui matérialisent et éditent le graphe finissent décrits dans le graphe lui-même : sans noyau externe, une panne les rend irréparables par leurs propres moyens.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -795,9 +798,9 @@
       "name": "Risque · Verrouillage ontologique",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Une mauvaise ontologie fige des choix prématurés.",
       "family": "Endgame du code · risques",
-      "summary": "Une mauvaise ontologie fige des choix prématurés.",
+      "summary": "Le schéma des atomes structure tout le reste : une catégorisation prématurée devient coûteuse à défaire une fois le programme migré dessus.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -808,9 +811,9 @@
       "name": "Risque · Granularité incorrecte",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Des atomes trop petits explosent le graphe ; trop gros, ils empêchent les changements indépendants.",
       "family": "Endgame du code · risques",
-      "summary": "Des atomes trop petits explosent le graphe ; trop gros, ils empêchent les changements indépendants.",
+      "summary": "Des atomes trop petits pulvérisent le programme en poussière ingérable ; trop gros, ils recréent des fichiers sous un autre nom et empêchent les changements indépendants.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -821,9 +824,9 @@
       "name": "Risque · Mauvaise représentation des langages dynamiques",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Closures, métaprogrammation, imports dynamiques et effets de bord échappent au modèle.",
       "family": "Endgame du code · risques",
-      "summary": "Closures, métaprogrammation, imports dynamiques et effets de bord échappent au modèle.",
+      "summary": "Les constructions dynamiques n’ont pas de frontière statique nette : un modèle pensé pour des fonctions nommées les représente mal ou les mutile.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -834,9 +837,9 @@
       "name": "Risque · Opacité du debugging",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "L’abstraction masque trop le runtime sous-jacent.",
       "family": "Endgame du code · risques",
-      "summary": "L’abstraction masque trop le runtime sous-jacent.",
+      "summary": "Si les frames, logs et artefacts réels deviennent inaccessibles, chaque panne de la toolchain se transforme en boîte noire.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -847,9 +850,9 @@
       "name": "Risque · Perte de l’écosystème IDE",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Les outils matures basés sur les fichiers deviennent temporairement indisponibles.",
       "family": "Endgame du code · risques",
-      "summary": "Les outils matures basés sur les fichiers deviennent temporairement indisponibles.",
+      "summary": "Linters, debuggers, profilers et IDE existants présupposent des fichiers : les perdre sans équivalent graph-native fait régresser des décennies d’outillage.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -860,9 +863,9 @@
       "name": "Risque · Graph IDE inutilisable",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Une interface lente ou moins expressive réduit la productivité.",
       "family": "Endgame du code · risques",
-      "summary": "Une interface lente ou moins expressive réduit la productivité.",
+      "summary": "Si le Graph IDE est plus lent ou moins expressif que l’éditeur de texte qu’il remplace, les développeurs contourneront l’abstraction ou la subiront.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -873,9 +876,9 @@
       "name": "Risque · Coût de résolution et matérialisation",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Les validations et générations ralentissent les boucles de développement.",
       "family": "Endgame du code · risques",
-      "summary": "Les validations et générations ralentissent les boucles de développement.",
+      "summary": "Résolution, matérialisation et validation ajoutent des étapes entre l’intention et l’exécution : si la boucle de feedback dépasse celle d’un save-and-run, l’adoption échoue.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -886,9 +889,9 @@
       "name": "Risque · Statuts déconnectés du réel",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Le graphe affirme qu’une unité est validée alors que les artefacts actifs diffèrent.",
       "family": "Endgame du code · risques",
-      "summary": "Le graphe affirme qu’une unité est validée alors que les artefacts actifs diffèrent.",
+      "summary": "Le graphe affirme qu’une unité est validée alors que les artefacts actifs diffèrent : le statut devient une fiction que plus personne ne peut réfuter sans redescendre au réel.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -899,9 +902,9 @@
       "name": "Risque · Réparation autonome incontrôlée",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Des agents enchaînent ChangeSets et promotions sans maîtrise suffisante.",
       "family": "Endgame du code · risques",
-      "summary": "Des agents enchaînent ChangeSets et promotions sans maîtrise suffisante.",
+      "summary": "Une boucle erreur→tâche→réparation→promotion sans bornes laisse des agents réécrire le programme plus vite que la supervision ne peut suivre.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -912,9 +915,9 @@
       "name": "Risque · Surface d’attaque centrale",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "La compromission du graphe ou du matérialiseur peut modifier tout le programme.",
       "family": "Endgame du code · risques",
-      "summary": "La compromission du graphe ou du matérialiseur peut modifier tout le programme.",
+      "summary": "Le graphe et le matérialiseur concentrent le pouvoir d’écrire tout le code : ils deviennent la cible d’attaque la plus rentable du système.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -925,9 +928,9 @@
       "name": "Risque · Conflits de révisions concurrentes",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Plusieurs agents modifient des contrats interdépendants.",
       "family": "Endgame du code · risques",
-      "summary": "Plusieurs agents modifient des contrats interdépendants.",
+      "summary": "Deux révisions concurrentes peuvent chacune passer leurs tests et rester incompatibles entre elles au niveau des contrats partagés.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -938,9 +941,9 @@
       "name": "Risque · Dépendances externes mal modélisées",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Bibliothèques et toolchains changent hors du Program Graph.",
       "family": "Endgame du code · risques",
-      "summary": "Bibliothèques et toolchains changent hors du Program Graph.",
+      "summary": "Le monde extérieur évolue sans émettre de Moments : une dépendance non épinglée rend le rebuild non reproductible.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -951,9 +954,9 @@
       "name": "Risque · Équivalence comportementale mal prouvée",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Les tests passent alors que le comportement a changé ailleurs.",
       "family": "Endgame du code · risques",
-      "summary": "Les tests passent alors que le comportement a changé ailleurs.",
+      "summary": "La sélection de tests par impact peut manquer un effet à distance : la révision est promue sur une équivalence comportementale qui n’a pas été réellement prouvée.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -964,9 +967,9 @@
       "name": "Risque · Croissance incontrôlée",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Moments, révisions et erreurs saturent le stockage et les interfaces.",
       "family": "Endgame du code · risques",
-      "summary": "Moments, révisions et erreurs saturent le stockage et les interfaces.",
+      "summary": "Chaque build, test et erreur ajoute des Moments : sans politique de rétention, le graphe devient illisible et coûteux avant d’être utile.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -977,9 +980,9 @@
       "name": "Risque · Perte de lisibilité humaine",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Le système devient compréhensible uniquement par ses propres agents.",
       "family": "Endgame du code · risques",
-      "summary": "Le système devient compréhensible uniquement par ses propres agents.",
+      "summary": "Si seuls les agents du système peuvent encore le comprendre, les humains perdent la capacité de l’auditer, de le corriger et de le gouverner.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -990,9 +993,9 @@
       "name": "Risque · Migration irréversible trop précoce",
       "nodeType": "narrative",
       "semanticType": "design_effect",
-      "phrase": "Effet indésirable menaçant la vision de l’endgame du code s’il n’est pas maîtrisé.",
+      "phrase": "Des zones critiques deviennent graph-authoritative avant preuve du rollback.",
       "family": "Endgame du code · risques",
-      "summary": "Des zones critiques deviennent graph-authoritative avant preuve du rollback.",
+      "summary": "Migrer l’autorité d’une zone critique avant d’avoir démontré rollback et rebuild indépendant rend l’échec irréversible.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design",
       "orientation": "undesirable",
@@ -1003,9 +1006,9 @@
       "name": "Garde-fou · Le programme reste exportable",
       "nodeType": "narrative",
       "semanticType": "institution",
-      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "phrase": "Toute révision peut être exportée vers un format ouvert et reconstruite indépendamment.",
       "family": "Endgame du code · garde-fous",
-      "summary": "Toute révision peut être exportée vers un format ouvert et reconstruite indépendamment.",
+      "summary": "L’export ouvert garantit qu’aucun verrouillage — outil, ontologie ou vendeur — ne peut retenir le programme prisonnier du graphe.",
       "epistemicStatus": "design_proposal",
       "clusterId": "code-endgame-design",
       "implementationStatus": "deferred"
@@ -1015,9 +1018,9 @@
       "name": "Garde-fou · Les révisions promues sont immuables",
       "nodeType": "narrative",
       "semanticType": "institution",
-      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "phrase": "Toute modification produit une nouvelle révision ; une révision promue n’est jamais réécrite.",
       "family": "Endgame du code · garde-fous",
-      "summary": "Toute modification produit une nouvelle révision.",
+      "summary": "L’immutabilité rend l’histoire auditable et le rollback fiable : on ne restaure que ce qui n’a pas pu changer.",
       "epistemicStatus": "design_proposal",
       "clusterId": "code-endgame-design",
       "implementationStatus": "deferred"
@@ -1027,9 +1030,9 @@
       "name": "Garde-fou · Les promotions sont signées et auditables",
       "nodeType": "narrative",
       "semanticType": "institution",
-      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "phrase": "Initiateur, validations, artefacts, tests, hashes et décision sont conservés pour chaque promotion.",
       "family": "Endgame du code · garde-fous",
-      "summary": "Initiateur, validations, artefacts, tests, hashes et décision sont conservés.",
+      "summary": "La signature et l’audit rendent toute promotion attribuable et rejouable, condition de la confiance dans un pipeline partiellement autonome.",
       "epistemicStatus": "design_proposal",
       "clusterId": "code-endgame-design",
       "implementationStatus": "deferred"
@@ -1039,9 +1042,9 @@
       "name": "Garde-fou · Les candidats sont isolés",
       "nodeType": "narrative",
       "semanticType": "institution",
-      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "phrase": "Aucune révision candidate ne modifie les artefacts actifs.",
       "family": "Endgame du code · garde-fous",
-      "summary": "Aucune révision candidate ne modifie les artefacts actifs.",
+      "summary": "L’isolation garantit qu’un candidat défaillant ne peut pas endommager le système actif avant promotion.",
       "epistemicStatus": "design_proposal",
       "clusterId": "code-endgame-design",
       "implementationStatus": "deferred"
@@ -1051,9 +1054,9 @@
       "name": "Garde-fou · Le rebuild indépendant est obligatoire",
       "nodeType": "narrative",
       "semanticType": "institution",
-      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "phrase": "Les artefacts actifs doivent être reconstructibles depuis le graphe seul.",
       "family": "Endgame du code · garde-fous",
-      "summary": "Les artefacts actifs doivent être reconstructibles depuis le graphe.",
+      "summary": "Le rebuild indépendant est le test permanent d’autorité unique : si la reconstruction diverge des artefacts actifs, une double source de vérité s’est installée.",
       "epistemicStatus": "design_proposal",
       "clusterId": "code-endgame-design",
       "implementationStatus": "deferred"
@@ -1063,9 +1066,9 @@
       "name": "Garde-fou · Les réparations autonomes sont bornées",
       "nodeType": "narrative",
       "semanticType": "institution",
-      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "phrase": "Budgets, permissions, portée, rollback et confirmations protègent les zones critiques.",
       "family": "Endgame du code · garde-fous",
-      "summary": "Budgets, permissions, portée, rollback et confirmations protègent les zones critiques.",
+      "summary": "Budgets, permissions, portée limitée, rollback systématique et confirmations humaines sur zones critiques plafonnent ce qu’une réparation autonome peut faire sans supervision.",
       "epistemicStatus": "design_proposal",
       "clusterId": "code-endgame-design",
       "implementationStatus": "deferred"
@@ -1075,9 +1078,9 @@
       "name": "Garde-fou · Les résultats réels sont des Moments",
       "nodeType": "narrative",
       "semanticType": "institution",
-      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "phrase": "Tests, builds et santé ne sont jamais de simples propriétés permanentes.",
       "family": "Endgame du code · garde-fous",
-      "summary": "Tests, builds et santé ne sont jamais de simples propriétés permanentes.",
+      "summary": "Tout état affiché doit être dérivable de Moments datés ; une propriété figée finit toujours par mentir.",
       "epistemicStatus": "design_proposal",
       "clusterId": "code-endgame-design",
       "implementationStatus": "deferred"
@@ -1087,9 +1090,9 @@
       "name": "Garde-fou · Une vue humaine complète reste obligatoire",
       "nodeType": "narrative",
       "semanticType": "institution",
-      "phrase": "Règle de sûreté que l’endgame du code doit respecter dès l’implémentation.",
+      "phrase": "Toute unité, erreur, révision et décision doit rester inspectable par un humain.",
       "family": "Endgame du code · garde-fous",
-      "summary": "Toute unité, erreur, révision et décision doit rester inspectable.",
+      "summary": "La lisibilité humaine complète est une exigence de gouvernance, pas un confort : ce qui n’est plus inspectable n’est plus gouvernable.",
       "epistemicStatus": "design_proposal",
       "clusterId": "code-endgame-design",
       "implementationStatus": "deferred"
@@ -1099,9 +1102,9 @@
       "name": "Question · Quelle représentation canonique ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Source textuelle atomique, AST, IR sémantique ou combinaison progressive ?",
       "family": "Endgame du code · questions ouvertes",
-      "summary": "Source textuelle atomique, AST, IR sémantique ou combinaison progressive ?",
+      "summary": "Le choix de la représentation canonique conditionne diff, merge, export, outillage et lisibilité ; c’est la décision la plus structurante du design.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
     },
@@ -1110,9 +1113,9 @@
       "name": "Question · Quelle frontière d’un atome ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Fonction, méthode, classe, closure, machine d’état ou module — selon quels critères ?",
       "family": "Endgame du code · questions ouvertes",
-      "summary": "Fonction, méthode, classe, closure, machine d’état ou module — selon quels critères ?",
+      "summary": "Les critères de frontière décident de la taille réelle du graphe et de la praticabilité des changements indépendants.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
     },
@@ -1121,9 +1124,9 @@
       "name": "Question · Comment édite-t-on dans le Graph IDE ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Code atomique, éditeur structurel, dialogue agentique ou plusieurs vues synchronisées ?",
       "family": "Endgame du code · questions ouvertes",
-      "summary": "Code atomique, éditeur structurel, dialogue agentique ou plusieurs vues synchronisées ?",
+      "summary": "Le mode d’édition principal décide de l’ergonomie réelle du travail graph-native ; c’est lui qui fera adopter ou rejeter le Graph IDE.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
     },
@@ -1132,9 +1135,9 @@
       "name": "Question · Comment bootstrapper le système ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Quels composants restent hors du Program Graph pour pouvoir le reconstruire ?",
       "family": "Endgame du code · questions ouvertes",
-      "summary": "Quels composants restent hors du Program Graph pour pouvoir le reconstruire ?",
+      "summary": "La réponse fixe le périmètre du noyau de confiance : trop large, le graphe ne décrit plus le système ; trop étroit, la panne devient irréparable.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
     },
@@ -1143,9 +1146,9 @@
       "name": "Question · Comment fusionner les Program Revisions ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Quel équivalent de branche, commit, rebase, cherry-pick et conflit ?",
       "family": "Endgame du code · questions ouvertes",
-      "summary": "Quel équivalent de branche, commit, rebase, cherry-pick et conflit ?",
+      "summary": "Sans modèle de fusion, les révisions parallèles ne peuvent pas se recombiner et le travail concurrent devient impossible.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
     },
@@ -1154,9 +1157,9 @@
       "name": "Question · Comment garantir les source maps graph-native ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Quel mapping minimal entre instruction runtime, artefact, Function ID et révision ?",
       "family": "Endgame du code · questions ouvertes",
-      "summary": "Quel mapping minimal entre instruction runtime, artefact, Function ID et révision ?",
+      "summary": "C’est la condition pour que le debugging survive à l’abstraction : sans mapping garanti, toute erreur réelle devient introuvable.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
     },
@@ -1165,9 +1168,9 @@
       "name": "Question · Comment représenter les dépendances externes ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Que référencer et que conserver localement ?",
       "family": "Endgame du code · questions ouvertes",
-      "summary": "Que référencer et que conserver localement ?",
+      "summary": "La frontière entre référence et copie locale décide de la reproductibilité des rebuilds face à un écosystème qui bouge.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
     },
@@ -1176,9 +1179,9 @@
       "name": "Question · Jusqu’où masquer le runtime et le filesystem ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Quels détails bas niveau restent accessibles lors d’une panne de toolchain ?",
       "family": "Endgame du code · questions ouvertes",
-      "summary": "Quels détails bas niveau restent accessibles lors d’une panne de toolchain ?",
+      "summary": "Trop d’accès recrée les fichiers comme surface de travail ; pas assez rend la panne opaque.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
     },
@@ -1187,9 +1190,9 @@
       "name": "Question · Quand une erreur devient-elle une tâche ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Quand une erreur observée mérite-t-elle une tâche ?",
       "family": "Endgame du code · questions ouvertes",
-      "summary": "Comment éviter une explosion de tâches transitoires ou dérivées ?",
+      "summary": "Le seuil sépare le silence dangereux de l’avalanche ingérable de tâches transitoires ou dérivées.",
       "epistemicStatus": "unresolved",
       "clusterId": "code-endgame-design"
     },
@@ -1198,7 +1201,7 @@
       "name": "Question · Comment calculer les statuts courants ?",
       "nodeType": "narrative",
       "semanticType": "open_question",
-      "phrase": "Question ouverte qui bloque l’engagement d’une partie du design tant qu’elle n’est pas tranchée.",
+      "phrase": "Comment relier l’état affiché d’une unité aux Moments réels plutôt qu’à une propriété figée ?",
       "family": "Endgame du code · questions ouvertes",
       "summary": "Comment relier l’état affiché d’une unité aux Moments réels de build, de test et d’exécution plutôt qu’à une propriété figée ?",
       "epistemicStatus": "unresolved",
@@ -1215,7 +1218,6 @@
       "answer": "Calculer une vue de statut par révision et environnement à partir des Moments applicables les plus récents, en conservant conflit, absence et obsolescence comme états distincts.",
       "hypothesis": "Une réduction déterministe des Moments peut remplacer toute propriété de statut figée.",
       "residualUnknown": "Fenêtre de fraîcheur, précédence des événements concurrents et agrégation multi-environnements.",
-      "supportingNodeIds": ["axiom-decision-reality-as-moments", "mechanism-program-revision", "moment-template-build-run", "moment-template-test-run", "moment-template-runtime-error", "institution-guardrail-moments-not-status", "risk-status-fiction"],
       "epistemicStatus": "working_hypothesis",
       "clusterId": "code-endgame-design"
     },
@@ -1230,7 +1232,6 @@
       "answer": "Masquer totalement le bas niveau en fonctionnement nominal, tout en gardant une voie de diagnostic et de récupération bornée, auditée et non canonique.",
       "hypothesis": "Un accès de bris de glace centré sur la lecture, les artefacts immuables, les source maps et le rollback préserve l'abstraction sans rendre la panne opaque.",
       "residualUnknown": "Autorité d'ouverture, écritures de récupération admissibles et procédure hors graphe.",
-      "supportingNodeIds": ["axiom-decision-graph-only-work", "axiom-decision-graph-source-maps", "axiom-decision-explicit-authority", "mechanism-rollback-engine", "mechanism-artifact-store", "risk-debugging-opacity"],
       "epistemicStatus": "working_hypothesis",
       "clusterId": "code-endgame-design"
     },
@@ -1245,7 +1246,6 @@
       "answer": "Référencer la dépendance comme Thing épinglé et vérifiable, puis conserver localement ce qu'exigent le lock et la politique de rebuild.",
       "hypothesis": "Identité, version, hash, provenance et artefact reproductible donnent une représentation suffisante sans ingérer systématiquement le code tiers.",
       "residualUnknown": "Seuil de vendoring, garanties hors ligne, révocation et évolution des licences.",
-      "supportingNodeIds": ["mechanism-dependency-resolver", "mechanism-artifact-store", "mechanism-build-runner", "risk-external-dependencies", "institution-guardrail-independent-rebuild"],
       "epistemicStatus": "working_hypothesis",
       "clusterId": "code-endgame-design"
     },
@@ -1260,7 +1260,6 @@
       "answer": "Bootstrapper avec un noyau externe minimal, versionné et vérifiable capable de charger, valider, matérialiser et restaurer le Program Graph.",
       "hypothesis": "Le rebuild indépendant permet de tester que ce noyau est suffisant sans laisser toute la toolchain hors graphe.",
       "residualUnknown": "Périmètre minimal exact, mise à jour du noyau et gestion de la racine de confiance.",
-      "supportingNodeIds": ["mechanism-program-materializer", "mechanism-contract-validator", "risk-bootstrap-paradox", "risk-materializer-corruption", "institution-guardrail-independent-rebuild"],
       "epistemicStatus": "working_hypothesis",
       "clusterId": "code-endgame-design"
     },
@@ -1275,7 +1274,291 @@
       "answer": "Tracer la frontière à la plus petite unité ayant identité stable, contrat testable, invariants propres et raison de changer indépendante.",
       "hypothesis": "Ce critère sémantique peut couvrir fonctions, closures, machines d'état et modules sans imposer une catégorie syntaxique unique.",
       "residualUnknown": "Calibration sur langages dynamiques, effets implicites et détection des mauvaises granularités.",
-      "supportingNodeIds": ["axiom-decision-bounded-granularity", "axiom-decision-stable-logical-id", "mechanism-semantic-atom-schema", "mechanism-atom-function", "mechanism-atom-contract", "mechanism-atom-behavior", "risk-wrong-granularity", "risk-dynamic-language-mismatch"],
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "hypothesis-canonical-progressive-representation",
+      "name": "Hypothèse de travail · Canonicité progressive du texte vers l’IR",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "La source textuelle atomique est canonique d’abord ; AST et IR restent des dérivations régénérables tant qu’un round-trip prouvé ne justifie pas leur promotion.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : démarrer avec une source textuelle par atome — diffable, exportable, lisible — et stocker AST et IR comme dérivations cachées, régénérables et jamais éditées à la main ; ne promouvoir une forme dérivée au rang canonique que zone par zone, sur preuve d’un round-trip sans perte. Hypothèse : la canonicité peut migrer par étages sans big-bang de représentation. Inconnue résiduelle : normalisation du texte (formatage, commentaires), critères exacts de promotion d’une représentation et traitement multi-langages.",
+      "answer": "Texte atomique canonique au départ, AST/IR dérivés et vérifiables, promotion d’une représentation seulement sur preuve de round-trip.",
+      "hypothesis": "Une canonicité progressive évite à la fois le verrouillage ontologique précoce et l’illisibilité d’une IR imposée d’emblée.",
+      "residualUnknown": "Normalisation textuelle, critères de promotion d’une représentation, couverture multi-langages.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "axiom-decision-unfreeze-criteria",
+      "name": "Décision · Le dégel de l’implémentation exige des preuves",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Aucune zone ne devient graph-authoritative sans round-trip fidèle, rollback démontré et revue sémantique praticable sur une zone pilote.",
+      "family": "Endgame du code · gouvernance",
+      "summary": "Le passage du design à l’acte n’est pas seulement différé : il est conditionné à des preuves falsifiables obtenues sur une zone pilote non critique — (1) round-trip fichiers→graphe→matérialisation produisant un build identique, (2) rollback réel démontré vers la révision antérieure, (3) revue sémantique d’un ChangeSet réel jugée praticable par un humain, (4) priorités courantes stabilisées. Chaque preuve est un Moment daté, jamais une déclaration.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "institution-guardrail-standard-artifacts",
+      "name": "Garde-fou · Les artefacts matérialisés restent standards",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Le matérialiseur émet des sources standards du langage, exploitables en lecture par l’outillage fichiers existant.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "Les fichiers projetés restent des sources idiomatiques : linters, debuggers, profilers et IDE classiques continuent de fonctionner en lecture sur les artefacts pendant toute la transition, ce qui évite de perdre des décennies d’outillage en attendant un Graph IDE mature.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "question-moment-retention",
+      "name": "Question · Quelle rétention pour Moments et révisions ?",
+      "nodeType": "narrative",
+      "semanticType": "open_question",
+      "phrase": "Quelle politique d’agrégation, d’archivage et d’oubli évite la saturation sans perdre la traçabilité causale ?",
+      "family": "Endgame du code · questions ouvertes",
+      "summary": "Chaque build, test et erreur ajoute des Moments et chaque changement une révision : sans règles de compaction, d’archivage et d’oubli, le graphe sature stockage et interfaces. La politique doit préserver la traçabilité causale des décisions passées.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "horizon-causal-world-governance",
+      "name": "Vision · La programmation devient gouvernance causale du monde",
+      "nodeType": "narrative",
+      "semanticType": "horizon",
+      "phrase": "On ne dit plus « exécute ces instructions » mais « voici le monde voulu, ses contraintes, ses interdits, ses autorités et ses preuves de réussite ».",
+      "family": "Endgame du code · vision",
+      "summary": "La formulation finale de l’endgame : Mind transforme la programmation impérative en gouvernance causale du monde. Le programme devient une différence entre l’état actuel et un état souhaité, accompagnée de contraintes, de délégations et de preuves attendues ; le système construit, exécute et vérifie le chemin. On programme presque entièrement en intention — mais jamais avec des intentions seules : intentions + ontologie + contraintes + délégations + tests + observation des conséquences.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "axiom-decision-deterministic-substrate",
+      "name": "Décision · Un substrat exécutable déterministe demeure sous le graphe",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "On peut s’affranchir du code comme artefact humain principal, jamais d’un substrat exécutable déterministe.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "Distinction fondamentale de l’endgame : l’intention peut remplacer le code comme unité de programmation, mais sous le graphe subsiste toujours un substrat déterministe qui stocke, transige, autorise, signe, sandboxe, compile et vérifie. Petit kernel déterministe + grand monde programmable par intention — l’analogie est le système d’exploitation : noyau rigoureux, comportements supérieurs dynamiques.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-trusted-kernel",
+      "name": "Trusted Kernel",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Stockage du graphe, transactions atomiques, permissions, signatures, idempotence, leases, outbox, sandbox, compilateur minimal, vérificateurs, pilotes.",
+      "family": "Endgame du code · mécanismes",
+      "summary": "Le noyau irréductible qui reste du code : stockage du graphe, transactions atomiques, permissions, signatures, idempotence, leases, outbox, sandbox, compilateur ou interpréteur minimal, vérificateurs et pilotes matériels et réseau. Il peut devenir très petit, stable et extrêmement audité ; tout le reste peut progressivement être exprimé dans le graphe.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-intent-as-program-unit",
+      "name": "Décision · L’intention vérifiable est la nouvelle unité de programmation",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Le programme est un delta d’état du monde porté par des contraintes, des délégations et des preuves attendues — une proof-carrying intention.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "On ne programme plus principalement en écrivant des fonctions : on décrit l’état désiré, pourquoi il est désiré, les contraintes, les interdits, les permissions, les critères de réussite et la manière de vérifier le résultat ; le système déduit comment produire ce delta de monde. L’intention seule ne suffit jamais — « envoie le rapport à Basel » est trop ambigu : une intention exécutable porte avec elle les conditions permettant de prouver qu’elle a été correctement réalisée.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-verifiable-intent-schema",
+      "name": "Schema de l’intention exécutable",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Goal, CurrentState, Constraints, ForbiddenEffects, Delegation, SuccessCriteria, FailurePolicy, Budget, Reversibility.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "Le contrat commun d’une intention exécutable : état désiré, état observé, ce qui doit rester vrai, ce qui ne doit jamais arriver, qui autorise quoi, ce qui prouve la réussite, quoi faire en cas d’échec, les budgets (temps, compute, argent, attention) et la réversibilité (annulation ou compensation). Une intention dont ces champs manquent n’est pas exécutable — elle est une ambiguïté.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-three-execution-regimes",
+      "name": "Décision · Trois régimes d’exécution pour une intention",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Interprétation directe du graphe, compilation à la volée, cristallisation en capacité : le régime dépend de ce qui existe et de ce qui se répète.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "Une intention s’exécute selon trois régimes : interprétation directe du sous-graphe quand toutes les capacités existent déjà ; compilation à la volée d’un code temporaire, testé et sandboxé quand une capacité manque ; cristallisation en Capability permanente quand un même plan revient régulièrement. Exécution ponctuelle → plan récurrent → capacité stable : le système apprend à programmer comme il apprend à penser — les récurrences prouvées se cristallisent.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-graph-interpreter",
+      "name": "Interpréteur direct du graphe",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Orchestre les capacités existantes directement depuis le sous-graphe d’intention, sans générer de code.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "Quand toutes les capacités nécessaires existent, le runtime interprète le sous-graphe et orchestre les capacités existantes. L’équivalent d’un moteur de workflow, mais beaucoup plus riche : objets, raisons, relations, permissions et preuves font partie du même monde.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-jit-capability-compiler",
+      "name": "Compilateur de capacité à la volée",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Intention → spécification graphée → génération de code → tests synthétiques → sandbox → vérification → exécution.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "Quand une capacité manque, le système produit du code temporaire : spécification graphée, génération, tests synthétiques, sandbox, vérification, puis exécution. Le code devient un artefact compilé, comme du bytecode ou un cache JIT — jetable après usage si la tâche est unique.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-capability-crystallizer",
+      "name": "Cristalliseur de capacités",
+      "nodeType": "thing",
+      "semanticType": "mechanism",
+      "phrase": "Plans semblables répétés → structure stable → tests accumulés → capacité réutilisable → exécuteur permanent.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "Détecte les plans qui reviennent, accumule structure stable et tests, puis promeut le code généré en Capability réutilisable dotée d’un exécuteur permanent. Analogue direct du continuum des sous-entités : traversée ponctuelle → pattern récurrent → coalition stable.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-code-as-derived-cache",
+      "name": "Décision · Le code est un cache exécutable dérivé",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Le graphe est la source de vérité ; perdu, le code se régénère ; incohérent, il est invalide ; modifié, son delta doit être réconcilié.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "La formulation la plus forte de l’endgame : le fichier source n’est qu’une matérialisation possible d’un sous-graphe portant intention, architecture, contrats, dépendances, invariants, tests, décisions, provenance et observations runtime. À terme, les fichiers (Python, JavaScript, Cypher, SQL, contrats d’API, containers, scripts d’infrastructure) sont des build artifacts : comme on ne considère plus le binaire compilé comme la source du logiciel, on cessera de considérer le code textuel comme la source — la source est le graphe d’intentions et de contraintes.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "axiom-decision-bidirectional-correction",
+      "name": "Décision · Graphe et code se corrigent mutuellement",
+      "nodeType": "narrative",
+      "semanticType": "axiom",
+      "phrase": "Graph→code : une intention changée génère un patch testé ; code→graph : une trace réelle contredit l’effet attendu et corrige code ou intention.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "Le système fonctionne dans les deux sens. Graph→code : nouveau besoin, analyse d’impact, génération du patch, tests, déploiement. Code→graph : le comportement observé est comparé à l’effet attendu ; une contradiction force la correction du code ou la révision de l’intention. Le runtime n’est plus « ce que fait le logiciel » : c’est une expérience permanente testant si le monde produit correspond au monde demandé.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "mechanism-conversational-programming-loop",
+      "name": "Comportement · La programmation comme conversation avec le réel",
+      "nodeType": "narrative",
+      "semanticType": "mechanism",
+      "phrase": "Je veux X → questions → hypothèse d’exécution → simulation → effets et risques montrés → validation → exécution → mesure → correction de l’intention ou de la capacité.",
+      "family": "Endgame du code · programmation par intention",
+      "summary": "Le cycle nominal de la programmation par intention : le système demande ce qui manque, construit une hypothèse d’exécution, simule, montre les effets attendus et les risques, reçoit validation, exécute, mesure le résultat, puis demande si c’est bien ce qui était voulu. Beaucoup plus proche de la manière dont un architecte ou un dirigeant pense que de la programmation actuelle.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "risk-vague-intention-cloud",
+      "name": "Risque · Nuage d’intentions vagues et génération probabiliste",
+      "nodeType": "narrative",
+      "semanticType": "design_effect",
+      "phrase": "Du code lisible est remplacé par des intentions floues exécutées par génération probabiliste.",
+      "family": "Endgame du code · risques",
+      "summary": "Le danger principal de la programmation par intention : perdre la rigueur du code sans gagner celle de la preuve. Le système doit être plus strict, pas moins strict, que la programmation classique — sinon l’endgame produit un système ingouvernable qui a seulement l’air déclaratif.",
+      "epistemicStatus": "unresolved",
+      "clusterId": "code-endgame-design",
+      "orientation": "undesirable",
+      "implementationStatus": "not_mitigated"
+    },
+    {
+      "id": "institution-guardrail-compiled-intention-only",
+      "name": "Garde-fou · Aucun effet sans intention compilée et prouvable",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Une intention ne produit un effet que compilée en plan déterminé, contraintes satisfaites, tests, permissions, budget et preuve de résultat.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "La parade à la génération probabiliste : rien ne s’exécute depuis une intention brute. Toute exécution exige un plan déterminé, des contraintes vérifiées, des tests, des permissions actives, un budget engagé et une preuve de résultat définie à l’avance.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "institution-guardrail-why-traceability",
+      "name": "Garde-fou · Tout comportement répond à « pourquoi »",
+      "nodeType": "narrative",
+      "semanticType": "institution",
+      "phrase": "Effet observé ← code généré ← capacité ← tests ← décision ← intention ← autorité humaine : la traversée doit toujours exister.",
+      "family": "Endgame du code · garde-fous",
+      "summary": "À tout moment, on peut demander pourquoi un comportement existe, et le système répond par une traversée complète, de l’effet observé jusqu’à l’humain ou l’institution ayant autorité. Un comportement sans chaîne de provenance est un défaut, pas une curiosité.",
+      "epistemicStatus": "design_proposal",
+      "clusterId": "code-endgame-design",
+      "implementationStatus": "deferred"
+    },
+    {
+      "id": "hypothesis-merge-semantic-changesets",
+      "name": "Hypothèse de travail · Fusion au niveau des contrats et des intentions",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "Fusionner des Program Revisions, c’est fusionner des ChangeSets : le conflit est une contradiction de contrats ou d’intentions, jamais un chevauchement textuel.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : la branche est un fork du graphe, le commit un ChangeSet scellé, le rebase la ré-application d’une intention sur une base nouvelle, le cherry-pick la ré-application d’un ChangeSet dont la justification reste valable. Un conflit existe quand deux ChangeSets touchent le même contrat avec des postconditions incompatibles — pas quand ils touchent les mêmes lignes. Hypothèse : le diff sémantique donne un critère de conflit plus juste que le texte. Inconnue résiduelle : conflits comportementaux invisibles aux contrats, ordre de fusion, ergonomie de résolution.",
+      "answer": "Fusionner des ChangeSets au niveau des contrats et des intentions ; le conflit est défini par l’incompatibilité des postconditions, pas par le texte.",
+      "hypothesis": "Le diff sémantique fournit un critère de conflit plus juste et plus rare que le chevauchement textuel.",
+      "residualUnknown": "Conflits comportementaux invisibles aux contrats, ordre de fusion, ergonomie de résolution.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "hypothesis-source-map-atom-triplet",
+      "name": "Hypothèse de travail · Le triplet atome, révision, hash sur chaque artefact",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "Chaque unité matérialisée embarque (Function ID, Program Revision, hash) et le matérialiseur émet la table instruction→atome ; toute frame remonte au moins à l’atome et à la révision.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : le mapping minimal garanti est frame → atome + révision, obtenu par un en-tête de provenance par unité de compilation et une table d’adresses émise à la matérialisation ; la granularité instruction est un raffinement souhaitable, pas une condition. Hypothèse : ce minimum suffit à rendre chaque erreur réelle adressable dans le graphe. Inconnue résiduelle : code inliné ou optimisé, runtimes et bibliothèques tiers, frames natives.",
+      "answer": "Garantir frame → atome + révision partout ; traiter la précision à l’instruction comme un raffinement, jamais comme la condition du debugging.",
+      "hypothesis": "Un en-tête de provenance par unité de compilation et une table d’adresses émise à la matérialisation suffisent au mapping minimal.",
+      "residualUnknown": "Code inliné ou optimisé, runtimes tiers, frames natives.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "hypothesis-ide-dialogue-with-synced-views",
+      "name": "Hypothèse de travail · Dialogue agentique sur vues synchronisées",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "L’édition principale est un dialogue portant sur l’intention et le contrat, adossé à des vues synchronisées — code atomique, contrat, tests, graphe — toutes éditables.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : le mode nominal du Graph IDE est la conversation — exprimer l’intention, arbitrer les ambiguïtés, valider les effets — adossée à des vues synchronisées où le texte de l’atome reste une édition de première classe tant que la canonicité est textuelle. Hypothèse : aucune vue unique ne suffit ; c’est la synchronisation bidirectionnelle des vues qui rend le graphe éditable sans régression d’expressivité. Inconnue résiduelle : réconciliation des éditions concurrentes entre vues, latence perçue, courbe d’apprentissage.",
+      "answer": "Dialogue agentique comme mode nominal, vues synchronisées éditables comme socle, texte atomique de première classe tant qu’il est canonique.",
+      "hypothesis": "La synchronisation bidirectionnelle des vues évite la régression d’expressivité qui ferait rejeter le Graph IDE.",
+      "residualUnknown": "Réconciliation des éditions concurrentes entre vues, latence perçue, courbe d’apprentissage.",
+      "epistemicStatus": "working_hypothesis",
+      "clusterId": "code-endgame-design"
+    },
+    {
+      "id": "hypothesis-error-task-actionability-threshold",
+      "name": "Hypothèse de travail · Seuil d’actionnabilité budgété",
+      "nodeType": "narrative",
+      "semanticType": "working_hypothesis",
+      "phrase": "Une erreur devient tâche si elle est nouvelle ou franchit un seuil, imputable à un atome et une révision, et non couverte par une tâche ouverte ; sinon elle renforce son cluster.",
+      "family": "Endgame du code · réponses provisoires",
+      "summary": "Réponse provisoire : trois conditions cumulatives — signature nouvelle ou fréquence/gravité franchissant un seuil ; imputabilité à un atome et une révision précis ; absence de tâche ouverte couvrant le cluster. Toute autre occurrence renforce le cluster existant sans créer de travail. Les seuils sont calibrés par budget d’attention, pas dans l’absolu. Hypothèse : l’actionnabilité — peut-on désigner quoi réparer ? — est le bon critère de passage. Inconnue résiduelle : calibration des seuils, erreurs transitoires d’infrastructure, tempêtes d’erreurs corrélées.",
+      "answer": "Créer une tâche seulement si l’erreur est nouvelle ou au-dessus du seuil, imputable, et non couverte ; sinon renforcer le cluster existant.",
+      "hypothesis": "L’actionnabilité, calibrée par budget d’attention, sépare le silence dangereux de l’avalanche ingérable.",
+      "residualUnknown": "Calibration des seuils, erreurs transitoires d’infrastructure, tempêtes corrélées.",
       "epistemicStatus": "working_hypothesis",
       "clusterId": "code-endgame-design"
     }
@@ -1345,79 +1628,79 @@
       "source": "axiom-decision-semantic-atoms",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "Sans identités canoniques indépendantes des fichiers, aucune abstraction du filesystem n’est possible : c’est la décision fondatrice de la mission."
     },
     {
       "source": "axiom-decision-graph-only-work",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "Le flux de travail exclusivement graph-native est la forme opérationnelle directe de l’abstraction du filesystem."
     },
     {
       "source": "axiom-decision-files-are-artifacts",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "Réduire les fichiers à des projections regénérables retire au filesystem tout rôle porteur de sens."
     },
     {
       "source": "axiom-decision-stable-logical-id",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "L’identité indépendante du chemin coupe le dernier lien entre l’identité du code et son emplacement sur disque."
     },
     {
       "source": "axiom-decision-graph-source-maps",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "On peut masquer les fichiers parce qu’on sait toujours y retourner : les source maps sont la condition de sûreté de l’abstraction."
     },
     {
       "source": "axiom-decision-reality-as-moments",
-      "target": "horizon-abstract-filesystem",
+      "target": "horizon-program-becomes-graph",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "Les événements datés rattachés aux révisions rendent le graphe vivant et observé, pas seulement descriptif : la vision exige que la réalité y retourne."
     },
     {
       "source": "axiom-decision-errors-are-moments-not-actors",
-      "target": "horizon-abstract-filesystem",
+      "target": "horizon-program-becomes-graph",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "Cette décision fixe la place ontologique de l’erreur dans le programme-graphe : un fait daté, jamais un agent."
     },
     {
       "source": "axiom-decision-errors-become-tasks",
-      "target": "horizon-abstract-filesystem",
+      "target": "horizon-program-becomes-graph",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "Le passage gouverné de l’erreur observée au travail identifié boucle le cycle observation→action que la vision promet."
     },
     {
       "source": "axiom-decision-transactional-materialization",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "La matérialisation transactionnelle rend l’abstraction sûre : les fichiers regénérés ne peuvent jamais corrompre l’état actif."
     },
     {
       "source": "axiom-decision-semantic-diff-review",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "Si la revue restait un diff de lignes, les fichiers resteraient l’unité de pensée ; la revue sémantique est la condition cognitive de l’abstraction."
     },
     {
       "source": "axiom-decision-branches-as-revisions",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "Déplacer le versionnement du fichier vers le graphe retire au filesystem sa dernière fonction structurante : l’historique."
     },
     {
       "source": "axiom-decision-explicit-authority",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "L’autorité déclarée par zone rend la transition praticable sans double source de vérité entre graphe et fichiers."
     },
     {
       "source": "axiom-decision-bounded-granularity",
       "target": "horizon-abstract-filesystem",
       "type": "IMPLEMENTS",
-      "justification": "Cette décision de design met en œuvre la mission d’abstraction du filesystem sur le Program Graph."
+      "justification": "Borner l’atomisation au sémantique garde le graphe navigable, condition pour que le travail sans fichiers reste praticable."
     },
     {
       "source": "mechanism-program-graph",
@@ -1579,49 +1862,49 @@
       "source": "mechanism-program-graph",
       "target": "axiom-decision-semantic-atoms",
       "type": "IMPLEMENTS",
-      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+      "justification": "Le Program Graph est le lieu où les atomes sémantiques existent comme identités canoniques."
     },
     {
       "source": "mechanism-filesystem-abstraction-layer",
       "target": "axiom-decision-graph-only-work",
       "type": "IMPLEMENTS",
-      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+      "justification": "La couche d’abstraction est l’écran concret qui rend le travail hors fichiers possible au quotidien."
     },
     {
       "source": "mechanism-program-materializer",
       "target": "axiom-decision-files-are-artifacts",
       "type": "IMPLEMENTS",
-      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+      "justification": "Le matérialiseur est ce qui fait des fichiers de simples projections regénérables du graphe."
     },
     {
       "source": "mechanism-graph-source-map-emitter",
       "target": "axiom-decision-graph-source-maps",
       "type": "IMPLEMENTS",
-      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+      "justification": "L’émetteur produit concrètement le mapping frames→atomes→révisions exigé par la décision."
     },
     {
       "source": "mechanism-runtime-telemetry-ingestor",
       "target": "axiom-decision-reality-as-moments",
       "type": "IMPLEMENTS",
-      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+      "justification": "L’ingesteur est la porte par laquelle la réalité runtime devient des Moments du graphe."
     },
     {
       "source": "mechanism-error-to-task-router",
       "target": "axiom-decision-errors-become-tasks",
       "type": "IMPLEMENTS",
-      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+      "justification": "Le routeur applique le seuil : déduplication et contextualisation avant toute création de tâche."
     },
     {
       "source": "mechanism-promotion-pipeline",
       "target": "axiom-decision-transactional-materialization",
       "type": "IMPLEMENTS",
-      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+      "justification": "La pipeline enchaîne matérialisation, build, tests et audit en isolation avant toute promotion."
     },
     {
       "source": "mechanism-semantic-diff-engine",
       "target": "axiom-decision-semantic-diff-review",
       "type": "IMPLEMENTS",
-      "justification": "Ce mécanisme met concrètement en œuvre la décision de design correspondante."
+      "justification": "Le moteur de diff produit la vue contrats/comportements/risques sur laquelle porte la revue."
     },
     {
       "source": "moment-template-materialization-run",
@@ -1692,8 +1975,8 @@
     {
       "source": "mechanism-repair-compilation-error-task-template",
       "target": "actor-role-repair-agent",
-      "type": "AUTHORED_BY",
-      "justification": "Le gabarit de tâche de réparation est destiné au Repair Agent, qui l’instancie et propose un ChangeSet."
+      "type": "GROUNDS",
+      "justification": "Le gabarit fonde le rôle du Repair Agent : c’est la forme de travail qu’il reçoit et instancie."
     },
     {
       "source": "mechanism-compilation-error-flow",
@@ -1843,97 +2126,97 @@
       "source": "institution-guardrail-exportability",
       "target": "horizon-program-becomes-graph",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+      "justification": "La réversibilité de sortie rend la vision adoptable : on peut s’engager dans le graphe parce qu’on peut en sortir."
     },
     {
       "source": "institution-guardrail-exportability",
       "target": "risk-graph-corruption",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+      "justification": "Un export ouvert et reconstructible borne la perte maximale : même graphe corrompu, le programme reste récupérable depuis le dernier export."
     },
     {
       "source": "institution-guardrail-immutable-revisions",
       "target": "horizon-program-becomes-graph",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+      "justification": "Comparer et restaurer supposent des révisions qui ne bougent pas : l’immutabilité est le socle de confiance de la vision."
     },
     {
       "source": "institution-guardrail-immutable-revisions",
       "target": "risk-premature-migration",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+      "justification": "L’immutabilité garantit qu’une migration ratée laisse toujours la révision antérieure intacte et restaurable."
     },
     {
       "source": "institution-guardrail-signed-promotions",
       "target": "horizon-program-becomes-graph",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+      "justification": "L’auditabilité des promotions maintient la gouvernance humaine sur un pipeline de plus en plus autonome."
     },
     {
       "source": "institution-guardrail-signed-promotions",
       "target": "risk-security",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+      "justification": "La signature ferme la voie d’une promotion silencieuse par un acteur compromis : toute écriture d’autorité est attribuable."
     },
     {
       "source": "institution-guardrail-isolated-candidates",
       "target": "horizon-program-becomes-graph",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+      "justification": "L’isolation des candidats permet d’expérimenter dans le graphe sans jamais mettre le système actif en danger."
     },
     {
       "source": "institution-guardrail-isolated-candidates",
       "target": "risk-materializer-corruption",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+      "justification": "Un matérialiseur défaillant ne peut corrompre que l’environnement isolé du candidat, jamais les artefacts actifs."
     },
     {
       "source": "institution-guardrail-independent-rebuild",
       "target": "horizon-program-becomes-graph",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+      "justification": "Le rebuild permanent prouve en continu que le graphe est bien la source d’autorité qu’il prétend être."
     },
     {
       "source": "institution-guardrail-independent-rebuild",
       "target": "risk-dual-authority",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+      "justification": "La reconstruction obligatoire depuis le graphe détecte toute divergence entre graphe et fichiers dès qu’elle apparaît."
     },
     {
       "source": "institution-guardrail-bounded-repair",
       "target": "horizon-program-becomes-graph",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+      "justification": "La réparation bornée permet d’accueillir des agents autonomes sans abandonner la maîtrise du programme."
     },
     {
       "source": "institution-guardrail-bounded-repair",
       "target": "risk-repair-runaway",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+      "justification": "Budgets, portée et confirmations plafonnent la vitesse et l’étendue de ce qu’une boucle de réparation peut modifier."
     },
     {
       "source": "institution-guardrail-moments-not-status",
       "target": "horizon-program-becomes-graph",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+      "justification": "Ancrer les statuts dans l’observé garde le graphe fidèle au réel, condition de sa crédibilité."
     },
     {
       "source": "institution-guardrail-moments-not-status",
       "target": "risk-status-fiction",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+      "justification": "Un statut dérivé de Moments datés ne peut pas affirmer plus que ce qui a été réellement observé."
     },
     {
       "source": "institution-guardrail-human-readable-view",
       "target": "horizon-program-becomes-graph",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou protège la vision de l’endgame du code contre un mode de défaillance identifié."
+      "justification": "La lisibilité humaine complète garde la vision gouvernable : un programme-graphe illisible ne serait plus auditable."
     },
     {
       "source": "institution-guardrail-human-readable-view",
       "target": "risk-human-legibility",
       "type": "SAFEGUARDS",
-      "justification": "Ce garde-fou est la parade directe au risque correspondant."
+      "justification": "La vue humaine obligatoire est la parade directe : rien ne peut exister dans le graphe sans rester inspectable."
     },
     {
       "source": "question-canonical-representation",
@@ -1945,7 +2228,7 @@
       "source": "question-canonical-representation",
       "target": "axiom-decision-semantic-atoms",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "On ne peut pas figer le schéma des atomes sans savoir sous quelle forme canonique leur contenu est stocké."
     },
     {
       "source": "question-atom-boundary",
@@ -1957,7 +2240,7 @@
       "source": "question-atom-boundary",
       "target": "axiom-decision-bounded-granularity",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "Le principe de granularité reste inapplicable tant que les critères concrets de frontière ne sont pas tranchés."
     },
     {
       "source": "question-graph-ide-editing",
@@ -1969,7 +2252,7 @@
       "source": "question-graph-ide-editing",
       "target": "mechanism-graph-ide",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "On ne peut pas construire l’IDE sans avoir choisi son mode d’édition principal."
     },
     {
       "source": "question-bootstrap",
@@ -1981,7 +2264,7 @@
       "source": "question-bootstrap",
       "target": "mechanism-program-materializer",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "Le matérialiseur ne peut pas être conçu sans savoir quelles parties de lui-même vivent hors du graphe."
     },
     {
       "source": "question-merge-model",
@@ -1993,7 +2276,7 @@
       "source": "question-merge-model",
       "target": "axiom-decision-branches-as-revisions",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "Des révisions non fusionnables ne remplaceraient pas les branches ; le modèle de merge conditionne la décision."
     },
     {
       "source": "question-source-maps",
@@ -2005,7 +2288,7 @@
       "source": "question-source-maps",
       "target": "mechanism-graph-source-map-emitter",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "L’émetteur dépend du mapping minimal retenu entre runtime, artefacts et identités du graphe."
     },
     {
       "source": "question-external-code",
@@ -2017,7 +2300,7 @@
       "source": "question-external-code",
       "target": "risk-external-dependencies",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "Le risque ne peut pas être fermé tant que la frontière entre référence et copie locale n’est pas tranchée."
     },
     {
       "source": "question-low-level-access",
@@ -2029,7 +2312,7 @@
       "source": "question-low-level-access",
       "target": "axiom-decision-graph-only-work",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "L’interdiction d’accès direct ne peut être promue sans avoir défini la voie de secours en cas de panne."
     },
     {
       "source": "question-error-threshold",
@@ -2041,7 +2324,7 @@
       "source": "question-error-threshold",
       "target": "axiom-decision-errors-become-tasks",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "Sans seuil défini, le routeur oscillerait entre silence et avalanche de tâches."
     },
     {
       "source": "question-status-computation",
@@ -2053,7 +2336,7 @@
       "source": "question-status-computation",
       "target": "axiom-decision-reality-as-moments",
       "type": "BLOCKS",
-      "justification": "Tant qu’elle n’est pas tranchée, cette question bloque l’engagement de l’élément de design qu’elle concerne."
+      "justification": "Tant que la réduction Moments→statut n’est pas définie, la décision ne fournit pas d’état exploitable."
     },
     {
       "source": "hypothesis-status-from-revision-moments",
@@ -2084,6 +2367,732 @@
       "target": "question-atom-boundary",
       "type": "ADDRESSES",
       "justification": "L'hypothèse applique la décision de granularité sémantique et conserve les cas dynamiques comme inconnue résiduelle."
+    },
+    {
+      "source": "axiom-decision-reality-as-moments",
+      "target": "hypothesis-status-from-revision-moments",
+      "type": "GROUNDS",
+      "justification": "Si les résultats réels sont des Moments, le statut ne peut être qu’une vue calculée sur eux."
+    },
+    {
+      "source": "mechanism-program-revision",
+      "target": "hypothesis-status-from-revision-moments",
+      "type": "GROUNDS",
+      "justification": "La révision fournit la clé d’agrégation stable sur laquelle la réduction opère."
+    },
+    {
+      "source": "moment-template-build-run",
+      "target": "hypothesis-status-from-revision-moments",
+      "type": "GROUNDS",
+      "justification": "Les Moments de build sont l’un des signaux d’entrée de la réduction de statut."
+    },
+    {
+      "source": "moment-template-test-run",
+      "target": "hypothesis-status-from-revision-moments",
+      "type": "GROUNDS",
+      "justification": "Les Moments de test sont l’un des signaux d’entrée de la réduction de statut."
+    },
+    {
+      "source": "moment-template-runtime-error",
+      "target": "hypothesis-status-from-revision-moments",
+      "type": "GROUNDS",
+      "justification": "Les erreurs runtime datées entrent dans la réduction comme signal de dégradation."
+    },
+    {
+      "source": "institution-guardrail-moments-not-status",
+      "target": "hypothesis-status-from-revision-moments",
+      "type": "GROUNDS",
+      "justification": "Le garde-fou impose exactement ce que l’hypothèse opérationnalise : aucun statut figé."
+    },
+    {
+      "source": "hypothesis-status-from-revision-moments",
+      "target": "risk-status-fiction",
+      "type": "ADDRESSES",
+      "justification": "Un statut recalculé depuis les Moments ne peut pas diverger durablement des artefacts observés."
+    },
+    {
+      "source": "axiom-decision-graph-only-work",
+      "target": "hypothesis-low-level-break-glass-access",
+      "type": "GROUNDS",
+      "justification": "L’hypothèse précise la limite de cette décision : le flux nominal reste sans fichiers."
+    },
+    {
+      "source": "axiom-decision-graph-source-maps",
+      "target": "hypothesis-low-level-break-glass-access",
+      "type": "GROUNDS",
+      "justification": "Les source maps rendent l’accès bas niveau exploitable sans rompre les identités du graphe."
+    },
+    {
+      "source": "axiom-decision-explicit-authority",
+      "target": "hypothesis-low-level-break-glass-access",
+      "type": "GROUNDS",
+      "justification": "Le bris de glace exige une autorité déclarée pour ne pas recréer une source concurrente."
+    },
+    {
+      "source": "mechanism-rollback-engine",
+      "target": "hypothesis-low-level-break-glass-access",
+      "type": "GROUNDS",
+      "justification": "Le rollback est la principale écriture de récupération que la voie de secours doit offrir."
+    },
+    {
+      "source": "mechanism-artifact-store",
+      "target": "hypothesis-low-level-break-glass-access",
+      "type": "GROUNDS",
+      "justification": "Les artefacts immuables sont ce que la voie de bris de glace donne à lire."
+    },
+    {
+      "source": "hypothesis-low-level-break-glass-access",
+      "target": "risk-debugging-opacity",
+      "type": "ADDRESSES",
+      "justification": "La voie de diagnostic bornée est la parade proposée à l’opacité du debugging."
+    },
+    {
+      "source": "mechanism-dependency-resolver",
+      "target": "hypothesis-external-dependency-reference",
+      "type": "GROUNDS",
+      "justification": "Le resolver est ce qui rend une dépendance référencée effectivement résoluble au build."
+    },
+    {
+      "source": "mechanism-artifact-store",
+      "target": "hypothesis-external-dependency-reference",
+      "type": "GROUNDS",
+      "justification": "Le store conserve lock, métadonnées et artefacts exigés par la politique de rebuild."
+    },
+    {
+      "source": "mechanism-build-runner",
+      "target": "hypothesis-external-dependency-reference",
+      "type": "GROUNDS",
+      "justification": "Le build réel vérifie que l’épinglage suffit à un rebuild conforme."
+    },
+    {
+      "source": "institution-guardrail-independent-rebuild",
+      "target": "hypothesis-external-dependency-reference",
+      "type": "GROUNDS",
+      "justification": "Le rebuild indépendant fixe le critère de suffisance de ce qui est conservé localement."
+    },
+    {
+      "source": "hypothesis-external-dependency-reference",
+      "target": "risk-external-dependencies",
+      "type": "ADDRESSES",
+      "justification": "Identité, version et hash épinglés rendent observable tout changement survenu hors du graphe."
+    },
+    {
+      "source": "mechanism-program-materializer",
+      "target": "hypothesis-bootstrap-trusted-kernel",
+      "type": "GROUNDS",
+      "justification": "Le matérialiseur déterministe est la pièce centrale que le noyau doit embarquer."
+    },
+    {
+      "source": "mechanism-contract-validator",
+      "target": "hypothesis-bootstrap-trusted-kernel",
+      "type": "GROUNDS",
+      "justification": "Le noyau doit pouvoir valider schémas et contrats sans dépendre du graphe qu’il charge."
+    },
+    {
+      "source": "institution-guardrail-independent-rebuild",
+      "target": "hypothesis-bootstrap-trusted-kernel",
+      "type": "GROUNDS",
+      "justification": "Le rebuild indépendant est le test qui borne le périmètre réel du noyau de confiance."
+    },
+    {
+      "source": "hypothesis-bootstrap-trusted-kernel",
+      "target": "risk-bootstrap-paradox",
+      "type": "ADDRESSES",
+      "justification": "Un noyau versionné hors graphe casse la circularité entre l’outil et ce qu’il produit."
+    },
+    {
+      "source": "hypothesis-bootstrap-trusted-kernel",
+      "target": "risk-materializer-corruption",
+      "type": "ADDRESSES",
+      "justification": "Un matérialiseur minimal, externe et vérifiable réduit la surface d’un défaut systémique."
+    },
+    {
+      "source": "axiom-decision-bounded-granularity",
+      "target": "hypothesis-atom-independent-contract-change",
+      "type": "GROUNDS",
+      "justification": "L’hypothèse est l’application directe du principe de granularité sémantique."
+    },
+    {
+      "source": "axiom-decision-stable-logical-id",
+      "target": "hypothesis-atom-independent-contract-change",
+      "type": "GROUNDS",
+      "justification": "Une frontière n’est viable que si l’unité découpée peut porter une identité stable."
+    },
+    {
+      "source": "mechanism-semantic-atom-schema",
+      "target": "hypothesis-atom-independent-contract-change",
+      "type": "GROUNDS",
+      "justification": "Le schéma commun fixe ce qu’une unité doit porter pour être un atome recevable."
+    },
+    {
+      "source": "mechanism-atom-function",
+      "target": "hypothesis-atom-independent-contract-change",
+      "type": "GROUNDS",
+      "justification": "La fonction est le cas nominal du critère : identité, contrat et raison de changer propres."
+    },
+    {
+      "source": "mechanism-atom-contract",
+      "target": "hypothesis-atom-independent-contract-change",
+      "type": "GROUNDS",
+      "justification": "Le contrat testable est l’un des trois tests de la frontière proposée."
+    },
+    {
+      "source": "mechanism-atom-behavior",
+      "target": "hypothesis-atom-independent-contract-change",
+      "type": "GROUNDS",
+      "justification": "Le comportement observable relie la frontière proposée à des tests et des Moments."
+    },
+    {
+      "source": "hypothesis-atom-independent-contract-change",
+      "target": "risk-wrong-granularity",
+      "type": "ADDRESSES",
+      "justification": "Le critère identité/contrat/raison de changer donne un test opposable aux découpes trop fines ou trop grosses."
+    },
+    {
+      "source": "hypothesis-atom-independent-contract-change",
+      "target": "risk-dynamic-language-mismatch",
+      "type": "ADDRESSES",
+      "justification": "Le critère sémantique inter-langages garde ensemble closures et machines d’état quand les séparer détruirait un invariant."
+    },
+    {
+      "source": "hypothesis-canonical-progressive-representation",
+      "target": "question-canonical-representation",
+      "type": "ADDRESSES",
+      "justification": "L’hypothèse ordonne les candidats dans le temps au lieu d’en choisir un seul définitivement."
+    },
+    {
+      "source": "axiom-decision-stable-logical-id",
+      "target": "hypothesis-canonical-progressive-representation",
+      "type": "GROUNDS",
+      "justification": "L’identité logique stable permet de changer de représentation sans casser l’histoire des atomes."
+    },
+    {
+      "source": "institution-guardrail-exportability",
+      "target": "hypothesis-canonical-progressive-representation",
+      "type": "GROUNDS",
+      "justification": "Le texte atomique est la forme la plus directement exportable et reconstructible."
+    },
+    {
+      "source": "mechanism-artifact-store",
+      "target": "hypothesis-canonical-progressive-representation",
+      "type": "GROUNDS",
+      "justification": "Le store conserve les dérivations (AST, IR, hashes) sans leur donner autorité."
+    },
+    {
+      "source": "hypothesis-canonical-progressive-representation",
+      "target": "risk-ontology-lock-in",
+      "type": "ADDRESSES",
+      "justification": "Retarder la promotion d’une représentation évite de figer une ontologie non éprouvée."
+    },
+    {
+      "source": "axiom-decision-unfreeze-criteria",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette décision de gouvernance fait partie du périmètre de conception de l’endgame du code."
+    },
+    {
+      "source": "axiom-decision-unfreeze-criteria",
+      "target": "axiom-design-now-implement-later",
+      "type": "IMPLEMENTS",
+      "justification": "Transforme l’interdiction de démarrer en critère positif, daté et falsifiable de dégel."
+    },
+    {
+      "source": "axiom-decision-unfreeze-criteria",
+      "target": "risk-premature-migration",
+      "type": "SAFEGUARDS",
+      "justification": "La migration d’autorité est conditionnée à des preuves plutôt qu’à un calendrier ou une conviction."
+    },
+    {
+      "source": "institution-guardrail-standard-artifacts",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce garde-fou fait partie des règles de sûreté de l’endgame du code."
+    },
+    {
+      "source": "institution-guardrail-standard-artifacts",
+      "target": "horizon-program-becomes-graph",
+      "type": "SAFEGUARDS",
+      "justification": "La continuité d’outillage rend la transition survivable : la vision n’exige pas de tout abandonner d’un coup."
+    },
+    {
+      "source": "institution-guardrail-standard-artifacts",
+      "target": "risk-tooling-loss",
+      "type": "SAFEGUARDS",
+      "justification": "Des artefacts standards gardent l’écosystème fichiers utilisable en lecture pendant toute la transition."
+    },
+    {
+      "source": "institution-guardrail-standard-artifacts",
+      "target": "risk-graph-ide-usability",
+      "type": "SAFEGUARDS",
+      "justification": "Tant que le Graph IDE n’a pas fait ses preuves, les artefacts standards offrent une voie de lecture de secours."
+    },
+    {
+      "source": "mechanism-program-materializer",
+      "target": "institution-guardrail-standard-artifacts",
+      "type": "IMPLEMENTS",
+      "justification": "C’est le matérialiseur qui décide de la forme des artefacts ; il porte l’obligation de standardité."
+    },
+    {
+      "source": "question-moment-retention",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Cette question ouverte fait partie de l’agenda de conception de l’endgame du code."
+    },
+    {
+      "source": "question-moment-retention",
+      "target": "mechanism-artifact-store",
+      "type": "BLOCKS",
+      "justification": "Le store ne peut pas être dimensionné sans politique de rétention des Moments et des révisions."
+    },
+    {
+      "source": "question-moment-retention",
+      "target": "risk-graph-bloat",
+      "type": "BLOCKS",
+      "justification": "Le risque de saturation reste ouvert tant que la politique de rétention n’est pas tranchée."
+    },
+    {
+      "source": "institution-guardrail-exportability",
+      "target": "risk-ontology-lock-in",
+      "type": "SAFEGUARDS",
+      "justification": "L’export ouvert permet de re-modéliser le programme sous une autre ontologie si celle-ci se révèle mauvaise."
+    },
+    {
+      "source": "mechanism-contract-validator",
+      "target": "risk-concurrency",
+      "type": "SAFEGUARDS",
+      "justification": "Les révisions concurrentes incompatibles sont détectées à la validation des contrats avant toute promotion."
+    },
+    {
+      "source": "mechanism-impact-analyzer",
+      "target": "risk-performance-cost",
+      "type": "SAFEGUARDS",
+      "justification": "Borner le rayon d’un changement limite builds et tests au strict nécessaire."
+    },
+    {
+      "source": "mechanism-semantic-diff-engine",
+      "target": "risk-false-equivalence",
+      "type": "SAFEGUARDS",
+      "justification": "Le diff sémantique expose les contrats et comportements touchés au-delà des seuls tests sélectionnés."
+    },
+    {
+      "source": "mechanism-impact-analyzer",
+      "target": "risk-false-equivalence",
+      "type": "SAFEGUARDS",
+      "justification": "Le calcul des dépendants réduit la probabilité qu’un effet à distance échappe à la sélection de tests."
+    },
+    {
+      "source": "mechanism-rollback-engine",
+      "target": "risk-premature-migration",
+      "type": "SAFEGUARDS",
+      "justification": "Le rollback démontré est la condition matérielle pour que la migration reste réversible."
+    },
+    {
+      "source": "mechanism-program-revision",
+      "target": "institution-guardrail-immutable-revisions",
+      "type": "IMPLEMENTS",
+      "justification": "Le snapshot immuable est la forme technique de la règle : une révision promue ne peut plus changer."
+    },
+    {
+      "source": "mechanism-promotion-pipeline",
+      "target": "institution-guardrail-signed-promotions",
+      "type": "IMPLEMENTS",
+      "justification": "La pipeline collecte et scelle initiateur, validations, hashes et décision à chaque promotion."
+    },
+    {
+      "source": "mechanism-build-runner",
+      "target": "institution-guardrail-isolated-candidates",
+      "type": "IMPLEMENTS",
+      "justification": "Le Build Runner exécute toute la toolchain du candidat dans un environnement isolé."
+    },
+    {
+      "source": "mechanism-program-materializer",
+      "target": "institution-guardrail-independent-rebuild",
+      "type": "IMPLEMENTS",
+      "justification": "Le matérialiseur déterministe est ce qui rend le rebuild depuis le graphe seul possible et vérifiable."
+    },
+    {
+      "source": "mechanism-graph-ide",
+      "target": "institution-guardrail-human-readable-view",
+      "type": "IMPLEMENTS",
+      "justification": "Le Graph IDE est la vue par laquelle les humains inspectent unités, erreurs, révisions et décisions."
+    },
+    {
+      "source": "mechanism-artifact-store",
+      "target": "institution-guardrail-exportability",
+      "type": "IMPLEMENTS",
+      "justification": "Le store conserve les formes exportables et les hashes qui permettent une reconstruction indépendante."
+    },
+    {
+      "source": "moment-template-materialization-run",
+      "target": "mechanism-program-materializer",
+      "type": "GROUNDS",
+      "justification": "Le gabarit fixe la trace observable que chaque matérialisation doit émettre."
+    },
+    {
+      "source": "moment-template-compilation-run",
+      "target": "mechanism-build-runner",
+      "type": "GROUNDS",
+      "justification": "Le gabarit fixe la trace observable de chaque compilation exécutée par le Build Runner."
+    },
+    {
+      "source": "moment-template-compilation-error",
+      "target": "mechanism-runtime-telemetry-ingestor",
+      "type": "GROUNDS",
+      "justification": "C’est sous cette forme que l’ingesteur fait entrer une erreur de compilation dans le graphe."
+    },
+    {
+      "source": "moment-template-build-run",
+      "target": "mechanism-build-runner",
+      "type": "GROUNDS",
+      "justification": "Le gabarit fixe la trace observable d’un build complet ou partiel."
+    },
+    {
+      "source": "moment-template-test-run",
+      "target": "mechanism-test-runner",
+      "type": "GROUNDS",
+      "justification": "Le gabarit fixe la trace datée que le Test Runner émet pour chaque exécution."
+    },
+    {
+      "source": "moment-template-runtime-error",
+      "target": "mechanism-runtime-telemetry-ingestor",
+      "type": "GROUNDS",
+      "justification": "C’est sous cette forme que l’ingesteur traduit une erreur runtime vers les identités du graphe."
+    },
+    {
+      "source": "moment-template-performance-observation",
+      "target": "mechanism-runtime-telemetry-ingestor",
+      "type": "GROUNDS",
+      "justification": "C’est sous cette forme que les mesures de performance entrent dans le graphe."
+    },
+    {
+      "source": "moment-template-promotion-run",
+      "target": "mechanism-promotion-pipeline",
+      "type": "GROUNDS",
+      "justification": "Le gabarit fixe la trace auditable que chaque décision de promotion doit laisser."
+    },
+    {
+      "source": "moment-template-rollback-run",
+      "target": "mechanism-rollback-engine",
+      "type": "GROUNDS",
+      "justification": "Le gabarit fixe la trace observable de chaque restauration effectuée."
+    },
+    {
+      "source": "horizon-program-becomes-graph",
+      "target": "horizon-causal-world-governance",
+      "type": "IMPLEMENTS",
+      "justification": "Le programme-graphe est la condition structurelle de la gouvernance causale : on ne gouverne causalement que ce dont les causes sont représentées."
+    },
+    {
+      "source": "horizon-causal-world-governance",
+      "target": "actor-org-mind-protocol",
+      "type": "AUTHORED_BY",
+      "justification": "La formulation finale de l’endgame est portée par l’organisation Mind Protocol."
+    },
+    {
+      "source": "axiom-decision-deterministic-substrate",
+      "target": "horizon-causal-world-governance",
+      "type": "IMPLEMENTS",
+      "justification": "La gouvernance causale n’est crédible que si un substrat déterministe exécute et vérifie réellement ce qui est décidé."
+    },
+    {
+      "source": "axiom-decision-deterministic-substrate",
+      "target": "hypothesis-bootstrap-trusted-kernel",
+      "type": "GROUNDS",
+      "justification": "La décision de substrat donne son fondement à l’hypothèse du noyau minimal hors graphe."
+    },
+    {
+      "source": "mechanism-trusted-kernel",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-trusted-kernel",
+      "target": "axiom-decision-deterministic-substrate",
+      "type": "IMPLEMENTS",
+      "justification": "Le Trusted Kernel est la forme concrète du substrat déterministe irréductible."
+    },
+    {
+      "source": "hypothesis-bootstrap-trusted-kernel",
+      "target": "mechanism-trusted-kernel",
+      "type": "GROUNDS",
+      "justification": "L’hypothèse du noyau de bootstrap définit le périmètre initial de ce mécanisme."
+    },
+    {
+      "source": "axiom-decision-intent-as-program-unit",
+      "target": "horizon-causal-world-governance",
+      "type": "IMPLEMENTS",
+      "justification": "L’intention vérifiable est l’unité par laquelle la gouvernance causale s’exprime et s’exécute."
+    },
+    {
+      "source": "mechanism-verifiable-intent-schema",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-verifiable-intent-schema",
+      "target": "axiom-decision-intent-as-program-unit",
+      "type": "IMPLEMENTS",
+      "justification": "Le schéma rend l’intention exécutable : sans ses neuf champs, elle reste une ambiguïté."
+    },
+    {
+      "source": "axiom-decision-three-execution-regimes",
+      "target": "axiom-decision-intent-as-program-unit",
+      "type": "IMPLEMENTS",
+      "justification": "Les trois régimes décrivent comment une intention compilable devient effet dans le monde."
+    },
+    {
+      "source": "mechanism-graph-interpreter",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-graph-interpreter",
+      "target": "axiom-decision-three-execution-regimes",
+      "type": "IMPLEMENTS",
+      "justification": "L’interprétation directe est le premier régime : orchestrer l’existant sans générer de code."
+    },
+    {
+      "source": "mechanism-jit-capability-compiler",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-jit-capability-compiler",
+      "target": "axiom-decision-three-execution-regimes",
+      "type": "IMPLEMENTS",
+      "justification": "La compilation à la volée est le deuxième régime : produire une capacité manquante, testée et sandboxée."
+    },
+    {
+      "source": "mechanism-capability-crystallizer",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce mécanisme fait partie de l’architecture cible de l’endgame du code."
+    },
+    {
+      "source": "mechanism-capability-crystallizer",
+      "target": "axiom-decision-three-execution-regimes",
+      "type": "IMPLEMENTS",
+      "justification": "La cristallisation est le troisième régime : promouvoir les récurrences prouvées en capacités stables."
+    },
+    {
+      "source": "mechanism-jit-capability-compiler",
+      "target": "mechanism-capability-crystallizer",
+      "type": "GROUNDS",
+      "justification": "La cristallisation opère sur les codes générés et les tests accumulés par la compilation à la volée."
+    },
+    {
+      "source": "axiom-decision-code-as-derived-cache",
+      "target": "horizon-causal-world-governance",
+      "type": "IMPLEMENTS",
+      "justification": "Si le code n’est qu’un cache dérivé, la source gouvernable du système est bien le graphe d’intentions et de contraintes."
+    },
+    {
+      "source": "axiom-decision-files-are-artifacts",
+      "target": "axiom-decision-code-as-derived-cache",
+      "type": "GROUNDS",
+      "justification": "La décision existante sur les fichiers-artefacts fonde sa radicalisation : même le code source cesse d’être canonique."
+    },
+    {
+      "source": "axiom-decision-bidirectional-correction",
+      "target": "horizon-causal-world-governance",
+      "type": "IMPLEMENTS",
+      "justification": "La gouvernance causale exige que le monde observé puisse corriger l’intention autant que l’inverse."
+    },
+    {
+      "source": "axiom-decision-reality-as-moments",
+      "target": "axiom-decision-bidirectional-correction",
+      "type": "GROUNDS",
+      "justification": "Les Moments datés sont la matière première du sens code→graphe : sans eux, aucune contradiction n’est détectable."
+    },
+    {
+      "source": "mechanism-conversational-programming-loop",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce comportement fait partie du périmètre de l’endgame du code."
+    },
+    {
+      "source": "mechanism-conversational-programming-loop",
+      "target": "axiom-decision-intent-as-program-unit",
+      "type": "IMPLEMENTS",
+      "justification": "La boucle conversationnelle est le mode nominal par lequel une intention se précise jusqu’à devenir exécutable."
+    },
+    {
+      "source": "mechanism-verifiable-intent-schema",
+      "target": "mechanism-conversational-programming-loop",
+      "type": "GROUNDS",
+      "justification": "Chaque tour de conversation remplit ou corrige un champ du schéma d’intention."
+    },
+    {
+      "source": "risk-vague-intention-cloud",
+      "target": "context-code-endgame-design",
+      "type": "PART_OF",
+      "justification": "Ce risque fait partie de la carte des menaces de l’endgame du code."
+    },
+    {
+      "source": "institution-guardrail-compiled-intention-only",
+      "target": "horizon-causal-world-governance",
+      "type": "SAFEGUARDS",
+      "justification": "La rigueur de compilation est ce qui distingue la gouvernance causale d’une génération probabiliste d’effets."
+    },
+    {
+      "source": "institution-guardrail-compiled-intention-only",
+      "target": "risk-vague-intention-cloud",
+      "type": "SAFEGUARDS",
+      "justification": "Rien ne s’exécute depuis une intention brute : la règle ferme la porte au nuage d’intentions vagues."
+    },
+    {
+      "source": "mechanism-jit-capability-compiler",
+      "target": "institution-guardrail-compiled-intention-only",
+      "type": "IMPLEMENTS",
+      "justification": "La chaîne génération→tests→sandbox→vérification applique la règle avant toute exécution."
+    },
+    {
+      "source": "mechanism-graph-interpreter",
+      "target": "institution-guardrail-compiled-intention-only",
+      "type": "IMPLEMENTS",
+      "justification": "L’interpréteur n’orchestre que des sous-graphes dont contraintes, permissions et preuves sont déjà satisfaites."
+    },
+    {
+      "source": "institution-guardrail-why-traceability",
+      "target": "horizon-causal-world-governance",
+      "type": "SAFEGUARDS",
+      "justification": "Une gouvernance dont on ne peut pas expliquer les comportements n’est plus une gouvernance."
+    },
+    {
+      "source": "institution-guardrail-why-traceability",
+      "target": "risk-human-legibility",
+      "type": "SAFEGUARDS",
+      "justification": "La traversée effet→autorité garantit qu’un humain peut toujours remonter la chaîne d’un comportement."
+    },
+    {
+      "source": "institution-guardrail-why-traceability",
+      "target": "risk-vague-intention-cloud",
+      "type": "SAFEGUARDS",
+      "justification": "Un effet qui ne peut pas répondre « pourquoi » est rejeté : la traçabilité rend la génération vague inopérante."
+    },
+    {
+      "source": "rationale-causal-intelligibility",
+      "target": "institution-guardrail-why-traceability",
+      "type": "GROUNDS",
+      "justification": "Le garde-fou prolonge l’exigence d’intelligibilité causale jusqu’à l’autorité humaine qui a voulu l’effet."
+    },
+    {
+      "source": "hypothesis-merge-semantic-changesets",
+      "target": "question-merge-model",
+      "type": "ADDRESSES",
+      "justification": "L’hypothèse donne un équivalent graph-native à branche, commit, rebase, cherry-pick et conflit."
+    },
+    {
+      "source": "mechanism-change-set",
+      "target": "hypothesis-merge-semantic-changesets",
+      "type": "GROUNDS",
+      "justification": "Le ChangeSet scellé est l’unité que la fusion recombine."
+    },
+    {
+      "source": "mechanism-semantic-diff-engine",
+      "target": "hypothesis-merge-semantic-changesets",
+      "type": "GROUNDS",
+      "justification": "Le diff sémantique fournit le critère de conflit au niveau des contrats."
+    },
+    {
+      "source": "axiom-decision-branches-as-revisions",
+      "target": "hypothesis-merge-semantic-changesets",
+      "type": "GROUNDS",
+      "justification": "L’hypothèse opérationnalise la décision : des forks comparables doivent aussi être fusionnables."
+    },
+    {
+      "source": "hypothesis-merge-semantic-changesets",
+      "target": "risk-concurrency",
+      "type": "ADDRESSES",
+      "justification": "Un conflit défini au niveau des contrats détecte l’incompatibilité que des tests exécutés séparément manquent."
+    },
+    {
+      "source": "hypothesis-source-map-atom-triplet",
+      "target": "question-source-maps",
+      "type": "ADDRESSES",
+      "justification": "L’hypothèse fixe le mapping minimal garanti et relègue la granularité instruction au rang de raffinement."
+    },
+    {
+      "source": "axiom-decision-graph-source-maps",
+      "target": "hypothesis-source-map-atom-triplet",
+      "type": "GROUNDS",
+      "justification": "La décision exige le mapping ; l’hypothèse en propose la forme minimale."
+    },
+    {
+      "source": "mechanism-graph-source-map-emitter",
+      "target": "hypothesis-source-map-atom-triplet",
+      "type": "GROUNDS",
+      "justification": "L’émetteur est le mécanisme qui produirait le triplet et la table d’adresses."
+    },
+    {
+      "source": "mechanism-program-materializer",
+      "target": "hypothesis-source-map-atom-triplet",
+      "type": "GROUNDS",
+      "justification": "C’est à la matérialisation que la provenance peut être injectée dans chaque artefact."
+    },
+    {
+      "source": "hypothesis-source-map-atom-triplet",
+      "target": "risk-debugging-opacity",
+      "type": "ADDRESSES",
+      "justification": "Tant que chaque frame remonte à un atome et une révision, l’abstraction ne rend aucune panne anonyme."
+    },
+    {
+      "source": "hypothesis-ide-dialogue-with-synced-views",
+      "target": "question-graph-ide-editing",
+      "type": "ADDRESSES",
+      "justification": "L’hypothèse choisit un mode nominal — le dialogue — sans sacrifier l’édition textuelle tant qu’elle est canonique."
+    },
+    {
+      "source": "mechanism-graph-ide",
+      "target": "hypothesis-ide-dialogue-with-synced-views",
+      "type": "GROUNDS",
+      "justification": "Le Graph IDE est l’artefact que cette hypothèse spécifie."
+    },
+    {
+      "source": "hypothesis-canonical-progressive-representation",
+      "target": "hypothesis-ide-dialogue-with-synced-views",
+      "type": "GROUNDS",
+      "justification": "Tant que le texte atomique est canonique, la vue textuelle reste une édition de première classe."
+    },
+    {
+      "source": "mechanism-conversational-programming-loop",
+      "target": "hypothesis-ide-dialogue-with-synced-views",
+      "type": "GROUNDS",
+      "justification": "Le dialogue d’édition est la même boucle que la programmation par intention."
+    },
+    {
+      "source": "hypothesis-ide-dialogue-with-synced-views",
+      "target": "risk-graph-ide-usability",
+      "type": "ADDRESSES",
+      "justification": "Des vues synchronisées évitent la régression d’expressivité qui ferait rejeter l’IDE."
+    },
+    {
+      "source": "hypothesis-error-task-actionability-threshold",
+      "target": "question-error-threshold",
+      "type": "ADDRESSES",
+      "justification": "L’hypothèse remplace un seuil absolu par trois conditions cumulatives calibrées par budget d’attention."
+    },
+    {
+      "source": "mechanism-bug-clusterer",
+      "target": "hypothesis-error-task-actionability-threshold",
+      "type": "GROUNDS",
+      "justification": "Le clustering fournit les signatures et fréquences sur lesquelles portent les conditions."
+    },
+    {
+      "source": "mechanism-error-to-task-router",
+      "target": "hypothesis-error-task-actionability-threshold",
+      "type": "GROUNDS",
+      "justification": "Le routeur est le mécanisme qui appliquerait les trois conditions cumulatives."
+    },
+    {
+      "source": "axiom-decision-errors-become-tasks",
+      "target": "hypothesis-error-task-actionability-threshold",
+      "type": "GROUNDS",
+      "justification": "L’hypothèse précise le « actionnable » que la décision laisse ouvert."
     }
   ]
 }

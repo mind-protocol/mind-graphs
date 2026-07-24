@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Protocol — Endgame du code</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/code-endgame.css" />
+    <script src="/theme.js"></script>
+  </head>
+  <body class="endgame-page">
+    <header class="endgame-header">
+      <a href="/">← Retour au graphe</a>
+      <nav>
+        <a href="/docs.html">Documentation</a>
+        <a href="/decisions.html">Décisions</a>
+        <a href="/ontology.html">Ontologie</a>
+        <button data-theme-toggle class="theme-toggle" type="button" aria-pressed="false">Thème clair</button>
+      </nav>
+    </header>
+
+    <main class="endgame-main">
+
+      <!-- ============================== HERO ============================== -->
+      <section class="hero">
+        <p class="eyebrow">DESIGN-ONLY · DIFFÉRÉ · CLUSTER <code>code-endgame-design</code></p>
+        <h1>Endgame du code — le programme devient un graphe</h1>
+        <p class="hero-lede">
+          On ne dit plus « exécute ces instructions ». On dit : <em>voici le monde voulu,
+          ses contraintes, ses interdits, ses autorités et ses preuves de réussite</em> —
+          puis le système construit, exécute et vérifie le chemin.
+        </p>
+        <ul class="hero-badges" aria-label="État du cluster">
+          <li>126 nœuds</li>
+          <li>255 liens</li>
+          <li>au 2026-07-24</li>
+          <li class="badge-warn">aucune migration avant preuve de dégel</li>
+        </ul>
+      </section>
+
+      <!-- ==================== 1 · LE GRAPHE DÉCOMPOSÉ ==================== -->
+      <section class="strata" aria-labelledby="strata-title">
+        <h2 id="strata-title">1 · Le graphe, décomposé en sept strates</h2>
+        <p class="section-lede">
+          De la surface vers le socle : tout ce qui est au-dessus lit et écrit le
+          Program Graph ; seul le Trusted Kernel reste du code au sens classique.
+        </p>
+
+        <ol class="stack" aria-label="Strates de l’architecture">
+          <li class="layer">
+            <span class="layer-id">A6</span>
+            <div class="layer-body">
+              <h3>Surfaces</h3>
+              <div class="chips">
+                <span class="chip">Graph IDE · dialogue agentique</span>
+                <span class="chip">vues synchronisées</span>
+                <span class="chip">bris de glace audité</span>
+              </div>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer-id">A5</span>
+            <div class="layer-body">
+              <h3>Strate d’intention</h3>
+              <div class="chips">
+                <span class="chip">schéma d’intention · 9 champs</span>
+                <span class="chip">routeur de régime</span>
+                <span class="chip">interpréteur direct</span>
+                <span class="chip">compilateur JIT</span>
+                <span class="chip">cristalliseur de capacités</span>
+              </div>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer-id">A4</span>
+            <div class="layer-body">
+              <h3>Boucle de réalité</h3>
+              <div class="chips">
+                <span class="chip">telemetry ingestor</span>
+                <span class="chip">bug clusterer</span>
+                <span class="chip">error-to-task router</span>
+                <span class="chip">repair agent borné</span>
+              </div>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer-id">A3</span>
+            <div class="layer-body">
+              <h3>Pipeline transactionnel</h3>
+              <div class="chips">
+                <span class="chip">build runner</span>
+                <span class="chip">test runner</span>
+                <span class="chip">promotion signée</span>
+                <span class="chip">rollback engine</span>
+                <span class="chip">artifact store</span>
+              </div>
+            </div>
+          </li>
+          <li class="layer">
+            <span class="layer-id">A2</span>
+            <div class="layer-body">
+              <h3>Services de projection <small>déterministes, hash pour hash</small></h3>
+              <div class="chips">
+                <span class="chip">materializer</span>
+                <span class="chip">dependency resolver</span>
+                <span class="chip">unit planner</span>
+                <span class="chip">import/export</span>
+                <span class="chip">source maps</span>
+                <span class="chip">diff sémantique</span>
+                <span class="chip">impact analyzer</span>
+                <span class="chip">contract validator</span>
+              </div>
+            </div>
+          </li>
+          <li class="layer layer-source">
+            <span class="layer-id">A1</span>
+            <div class="layer-body">
+              <h3>Program Graph <small>source d’autorité</small></h3>
+              <div class="chips">
+                <span class="chip">atomes + contrats</span>
+                <span class="chip">révisions immuables</span>
+                <span class="chip">ChangeSets</span>
+                <span class="chip">Moments datés</span>
+                <span class="chip">intentions</span>
+                <span class="chip">capacités</span>
+              </div>
+            </div>
+          </li>
+          <li class="layer layer-kernel">
+            <span class="layer-id">A0</span>
+            <div class="layer-body">
+              <h3>Trusted Kernel <small>hors graphe · le seul code classique</small></h3>
+              <div class="chips">
+                <span class="chip">transactions</span>
+                <span class="chip">permissions</span>
+                <span class="chip">signatures</span>
+                <span class="chip">idempotence · leases · outbox</span>
+                <span class="chip">sandbox</span>
+                <span class="chip">vérificateurs</span>
+              </div>
+            </div>
+          </li>
+        </ol>
+
+        <div class="families" aria-label="Familles du cluster de design">
+          <h3 class="families-title">Ce que contient le cluster de design</h3>
+          <div class="families-grid">
+            <div class="family"><strong>3</strong><span>visions &amp; mission</span></div>
+            <div class="family"><strong>20</strong><span>décisions</span></div>
+            <div class="family"><strong>34</strong><span>mécanismes</span></div>
+            <div class="family"><strong>9</strong><span>gabarits de Moments</span></div>
+            <div class="family"><strong>21</strong><span>risques</span></div>
+            <div class="family"><strong>11</strong><span>garde-fous</span></div>
+            <div class="family"><strong>11</strong><span>questions ouvertes</span></div>
+            <div class="family"><strong>10</strong><span>hypothèses de travail</span></div>
+          </div>
+          <p class="families-note">
+            Chaque risque a sa parade ou sa réponse provisoire, chaque question son
+            hypothèse — sauf la rétention des Moments, volontairement laissée ouverte.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== 2 · UN EXEMPLE COMPLET ===================== -->
+      <section class="example" aria-labelledby="example-title">
+        <h2 id="example-title">2 · Un exemple, de bout en bout</h2>
+        <p class="section-lede">
+          Le rapport Basel : comment une phrase devient un effet prouvé dans le monde —
+          sans écrire un service, sans toucher un fichier.
+        </p>
+
+        <!-- Étape 1 : intention brute -->
+        <article class="step step-rejected">
+          <header><span class="step-no">①</span><h3>L’intention brute</h3><span class="tag tag-bad">ambiguë · non exécutable</span></header>
+          <blockquote>« Envoie le rapport à Basel. »</blockquote>
+          <p>Qui autorise ? Combien de fois ? Qu’est-ce qui prouve l’envoi ? Que faire si
+          Telegram ne répond pas ? Une intention sans ses preuves n’est pas un programme :
+          c’est une ambiguïté que la boucle conversationnelle doit d’abord résoudre.</p>
+        </article>
+
+        <!-- Étape 2 : intention compilée -->
+        <article class="step">
+          <header><span class="step-no">②</span><h3>L’intention compilée</h3><span class="tag tag-ok">proof-carrying intention</span></header>
+          <dl class="intent">
+            <div><dt>Goal</dt><dd>Basel a reçu le rapport validé, exactement une fois.</dd></div>
+            <div><dt>CurrentState</dt><dd>Un rapport validé pour Basel est disponible ; rien n’a été envoyé.</dd></div>
+            <div><dt>Constraints</dt><dd>Proposer l’envoi d’abord ; n’envoyer qu’après approbation.</dd></div>
+            <div><dt>ForbiddenEffects</dt><dd>Jamais de double envoi ; jamais d’envoi sans approbation.</dd></div>
+            <div><dt>Delegation</dt><dd>NLR approuve ; le Citizen exécute.</dd></div>
+            <div><dt>SuccessCriteria</dt><dd>Telegram renvoie un <code>message_id</code>.</dd></div>
+            <div><dt>FailurePolicy</dt><dd>Résultat ambigu → vérifier avant tout réessai.</dd></div>
+            <div><dt>Budget</dt><dd>1 envoi, fenêtre de 24 h, attention de NLR : une seule demande.</dd></div>
+            <div><dt>Reversibility</dt><dd>Non annulable → d’où la porte d’approbation en amont.</dd></div>
+          </dl>
+        </article>
+
+        <!-- Étape 3 : routage -->
+        <article class="step">
+          <header><span class="step-no">③</span><h3>Le routage</h3><span class="tag">quel régime d’exécution ?</span></header>
+          <div class="regimes">
+            <div class="regime regime-active">
+              <h4>Régime 1 · interprétation directe</h4>
+              <p><code>telegram.send_message</code> existe, la délégation est active :
+              le runtime orchestre le sous-graphe. <strong>Aucun code généré.</strong></p>
+            </div>
+            <div class="regime">
+              <h4>Régime 2 · compilation JIT</h4>
+              <p>Si la capacité manquait : génération → tests synthétiques → sandbox →
+              vérification → exécution. Code jetable après usage.</p>
+            </div>
+            <div class="regime">
+              <h4>Régime 3 · cristallisation</h4>
+              <p>Si ce plan revenait chaque semaine : structure stable + tests accumulés
+              → <em>Capability</em> permanente « envoi de rapport approuvé ».</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Étape 4 : exécution -->
+        <article class="step">
+          <header><span class="step-no">④</span><h3>L’exécution observée</h3><span class="tag">chaque fait est un Moment daté</span></header>
+          <ol class="timeline">
+            <li><span>t₀</span> Rapport validé détecté → proposition d’envoi à NLR.</li>
+            <li><span>t₁</span> NLR approuve → <em>Moment · Approbation</em> (signé, délégation consommée).</li>
+            <li><span>t₂</span> Envoi via l’outbox — idempotent : un seul tir possible.</li>
+            <li><span>t₃</span> Telegram renvoie <code>message_id 4271</code> → <em>Moment · Preuve de réussite</em>.</li>
+            <li class="timeline-alt"><span>t₃′</span> Réponse ambiguë ? → vérification de l’état réel <em>avant</em> tout réessai (FailurePolicy).</li>
+          </ol>
+        </article>
+
+        <!-- Étape 5 : pourquoi -->
+        <article class="step step-why">
+          <header><span class="step-no">⑤</span><h3>La traversée « pourquoi »</h3><span class="tag tag-ok">toujours disponible</span></header>
+          <p>Six mois plus tard : <em>« pourquoi ce message a-t-il été envoyé ? »</em>
+          Le système répond par une traversée, jamais par une supposition :</p>
+          <ol class="why-chain">
+            <li>message Telegram 4271 <small>effet observé</small></li>
+            <li>telegram.send_message <small>capacité</small></li>
+            <li>SuccessCriteria = message_id <small>test</small></li>
+            <li>approbation du 12 mars <small>décision</small></li>
+            <li>intention « rapport Basel » <small>proof-carrying</small></li>
+            <li>NLR <small>autorité humaine</small></li>
+          </ol>
+          <p class="step-note">Un comportement sans cette chaîne n’est pas une curiosité :
+          c’est un défaut.</p>
+        </article>
+      </section>
+
+      <footer class="endgame-footer">
+        <p>
+          Design-only : rien de cette page n’est implémenté, et rien ne le sera avant les
+          preuves de dégel (round-trip fidèle, rollback démontré, revue praticable sur zone
+          pilote). Sources : <code>data/code-endgame-design.json</code> ·
+          <code>CODE_ENDGAME_ARCHITECTURE.md</code>.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>

@@ -208,3 +208,35 @@ export function describeCitizenStatus(status, configInput = "standard") {
     alerts
   };
 }
+
+// Sérialise un `status` (issu de composeCitizenStatuses) en markdown lisible :
+// le Global Workspace en prose. On ne réémet pas `summary` séparément, car la
+// section « Orientation actuelle » en est déjà le texte — éviter le doublon.
+export function statusToMarkdown(status, configInput = "standard") {
+  const described = describeCitizenStatus(status, configInput);
+  const lines = [`# ${described.headline}`];
+
+  const provenance = [];
+  if (status?.observedAt) provenance.push(`observé ${status.observedAt}`);
+  if (finite(status?.tick) !== null) provenance.push(`tick ${status.tick}`);
+  if (finite(status?.revision) !== null) provenance.push(`révision ${status.revision}`);
+  const degraded = Object.entries(status?.sourceAvailability || {})
+    .filter(([, value]) => value && value.available === false)
+    .map(([source]) => source);
+  if (degraded.length) provenance.push(`sources indisponibles : ${degraded.join(", ")}`);
+  if (provenance.length) lines.push("", `*${provenance.join(" · ")}*`);
+
+  for (const section of described.sections) {
+    if (!section.text) continue;
+    lines.push("", `## ${section.title}`, section.text);
+  }
+
+  if (described.alerts.length) {
+    lines.push("", "## Alertes");
+    for (const alert of described.alerts) {
+      lines.push(`- **[${alert.level}]** ${alert.text} (\`${alert.code}\`)`);
+    }
+  }
+
+  return lines.join("\n");
+}

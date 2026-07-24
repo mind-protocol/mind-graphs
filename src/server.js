@@ -10,6 +10,7 @@ import { aggregateHealthStatuses } from "./continuous-verification.js";
 import { readFalkorSubentityState } from "./l1-subentity-falkor.js";
 import { readL1ShadowState } from "./l1-shadow-runtime.js";
 import { composeCitizenStatuses } from "./l1-citizen-status.js";
+import { statusToMarkdown } from "./citizen-status-text.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.resolve(__dirname, "../public");
@@ -159,6 +160,11 @@ app.get("/api/l1/citizens/status", async (req, res) => {
     fallbackCitizenId: process.env.L1_PRIMARY_CITIZEN_ID || "citizen-local",
     textConfig: preset
   });
+  if (req.query.format === "md") {
+    const md = payload.citizens.map(citizen => statusToMarkdown(citizen, preset)).join("\n\n---\n\n");
+    res.type("text/markdown").status(200).send(md);
+    return;
+  }
   res.status(200).json(payload);
 });
 

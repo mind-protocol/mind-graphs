@@ -172,6 +172,93 @@ export function selectGlobalWorkspace({
   };
 }
 
+/**
+ * Répare l'identité d'un snapshot de workspace après une fusion de coalitions.
+ *
+ * Le snapshot est arbitré sur les candidats d'avant la réconciliation : la
+ * coalition qui mène peut être fusionnée dans le même tick. Sans réparation, le
+ * snapshot persisté nomme une entité `merged` (sans carte, sans existence) comme
+ * contrôleur — la carte de la sous-entité meneuse disparaît de la vue et
+ * l'attribution mémoire écrit un `ENCODED_UNDER` vers une coalition morte.
+ *
+ * On ne recalcule aucun score : on transfère l'attention qu'une coalition
+ * absorbée détenait vers son survivant. Deux créneaux qui retombent sur le même
+ * survivant se replient sur le mieux classé, en cumulant leur allocation — la
+ * coalition unifiée tient bien la somme des caractères des deux.
+ *
+ * @param resolveController id d'une coalition → id de son survivant actif
+ */
+export function remapWorkspaceSnapshotControllers(snapshot, resolveController) {
+  if (!snapshot || snapshot.semanticType !== "WorkspaceSnapshot") return snapshot;
+  const resolve = id => (id == null ? id : resolveController(id));
+
+  const referenced = [
+    snapshot.controllerId,
+    snapshot.activeEntity?.id,
+    ...(snapshot.slots || []).map(slot => slot.controllerId),
+    ...(snapshot.bids || []).map(bid => bid.controllerId),
+    ...(snapshot.controllers || []).map(controller => controller.subentityId)
+  ].filter(id => id != null);
+  // Aucune identité fusionnée n'est référencée : le snapshot est déjà cohérent.
+  if (referenced.every(id => resolve(id) === id)) return snapshot;
+
+  const slotByController = new Map();
+  (snapshot.slots || []).forEach((slot, index) => {
+    const controllerId = resolve(slot.controllerId);
+    const key = controllerId ?? `__slot_null_${index}`;
+    const existing = slotByController.get(key);
+    if (!existing) {
+      slotByController.set(key, { ...slot, controllerId });
+      return;
+    }
+    const winner = slot.rank < existing.rank ? { ...slot, controllerId } : existing;
+    winner.characterAllocation = (Number(existing.characterAllocation) || 0) + (Number(slot.characterAllocation) || 0);
+    winner.score = Math.max(Number(existing.score) || 0, Number(slot.score) || 0);
+    winner.positiveScore = Math.max(Number(existing.positiveScore) || 0, Number(slot.positiveScore) || 0);
+    winner.penalty = Math.min(Number(existing.penalty) || 0, Number(slot.penalty) || 0);
+    slotByController.set(key, winner);
+  });
+  const slots = [...slotByController.values()]
+    .sort((left, right) => left.rank - right.rank)
+    .map((slot, index) => ({ ...slot, rank: index + 1, role: index === 0 ? "lead" : "support" }));
+
+  const bidByController = new Map();
+  (snapshot.bids || []).forEach((bid, index) => {
+    const controllerId = resolve(bid.controllerId);
+    const key = controllerId ?? `__bid_null_${index}`;
+    const existing = bidByController.get(key);
+    if (!existing || bid.rank < existing.rank) bidByController.set(key, { ...bid, controllerId });
+  });
+  const bids = [...bidByController.values()]
+    .sort((left, right) => (Number(right.score) || 0) - (Number(left.score) || 0)
+      || String(left.controllerId ?? "").localeCompare(String(right.controllerId ?? "")))
+    .map((bid, index) => ({ ...bid, rank: index + 1 }));
+
+  const controllers = [];
+  const seenControllers = new Set();
+  for (const controller of snapshot.controllers || []) {
+    const subentityId = resolve(controller.subentityId);
+    if (subentityId != null && seenControllers.has(subentityId)) continue;
+    if (subentityId != null) seenControllers.add(subentityId);
+    controllers.push({ ...controller, subentityId });
+  }
+
+  const controllerId = slots[0]?.controllerId ?? resolve(snapshot.controllerId) ?? null;
+  return {
+    ...snapshot,
+    controllerId,
+    controllerStatus: controllerId ? "attributed_live" : "unknown",
+    controllers,
+    activeEntity: controllerId
+      ? { ...(snapshot.activeEntity || { semanticType: "subentity" }), id: controllerId }
+      : null,
+    slots,
+    bids,
+    characterUsed: slots.reduce((sum, slot) => sum + (Number(slot.characterAllocation) || 0), 0),
+    audit: snapshot.audit ? { ...snapshot.audit, controllerUnknown: !controllerId } : snapshot.audit
+  };
+}
+
 export function workspaceCandidateFromSubentity(entity, context = {}) {
   return {
     id: `workspace-candidate-${entity.id}`,

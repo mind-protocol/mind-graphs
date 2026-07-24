@@ -135,6 +135,15 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
     newRelations.push(...promotion.relations);
   }
 
+  // Le snapshot est arbitré sur les candidats d'avant la fusion : une coalition
+  // meneuse peut avoir été absorbée dans ce tick. On réancre son identité sur le
+  // survivant actif avant toute persistance ou attribution, pour qu'aucun
+  // consommateur ne voie un contrôleur fantôme.
+  const resolveSurvivor = buildSurvivorResolver([...active, ...reconciliation.retired]);
+  const workspaceSnapshot = input.workspaceSnapshot?.semanticType === "WorkspaceSnapshot"
+    ? remapWorkspaceSnapshotControllers(input.workspaceSnapshot, resolveSurvivor)
+    : input.workspaceSnapshot;
+
   let memoryResult = null;
   let attributionResult = null;
   if (input.memory) {

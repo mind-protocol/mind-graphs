@@ -1,0 +1,300 @@
+{
+  "schemaVersion": "0.1.0",
+  "language": "fr",
+  "status": "active",
+  "supersedes": [],
+  "purpose": "Registre canonique du vocabulaire comportemental des sous-entités L1. Il projette explicitement chaque terme métier vers l'un des cinq types universels (Actor, Moment, Narrative, Space, Thing), enregistre chaque prédicat comportemental avec sa physique réelle, et fixe la doctrine qui interdit de transformer un terme d'usage algorithmique (cluster, coalition) ou une propriété de statut (confirmedByHuman) en catégorie d'être. Ce fichier est la source d'autorité pour la couche vocabulaire ; il ne matérialise aucune node runtime et ne porte ni énergie, ni attention.",
+  "doctrine": {
+    "universalTypesOnly": "Le graphe de design et le graphe runtime n'emploient que cinq types universels de nodes. Les termes métier sont des semanticType portés par l'un de ces cinq types, jamais un sixième nodeType.",
+    "subentityIsActor": "Une sous-entité persistante est un Actor avec semanticType Subentity. Elle n'est ni une personne autonome, ni un Citizen. Son corps est un champ d'appartenance flou autour de sa node centrale ; son attention courante est un état temporaire.",
+    "clusterIsAlgorithmic": "cluster et coalition sont des termes d'usage algorithmique ou historique. Une sortie de clustering est une sélection calculée (NodeSelection), jamais un Actor. Elle ne reçoit ni énergie, ni attention, ni identité.",
+    "questionIsOptional": "Une Question est une action possible parmi d'autres, pas la réponse obligatoire à un pattern reconnu.",
+    "behaviorEmerges": "Le comportement émerge de l'état émotionnel, de l'état énergétique, du corps, de l'entourage, des problèmes et opportunités perçus, des souvenirs pertinents, des affordances réellement disponibles, et d'un choix borné par un petit modèle. Aucun état de cortex ne produit directement une ActionExecution.",
+    "ratificationIsMoment": "confirmedByHuman disparaît. Une ratification humaine est un Moment relié à l'Actor humain par AUTHORED_BY et à la node ratifiée par RATIFIED_IN. Un refus, une correction ou une révocation est aussi un Moment append-only. L'absence de ratification signifie seulement « ratification humaine non observée », jamais false ni rejet.",
+    "epistemicStatusQualifiesClaims": "Les statuts épistémiques qualifient des claims, observations et décisions, pas l'identité entière d'une personne ou d'une sous-entité.",
+    "blueprintIsNonCognitive": "Les nodes de blueprint sont inspectables mais NonCognitive : aucune énergie, aucune attention, aucun workspace, aucune mémoire épisodique, aucune appartenance identitaire.",
+    "layerSeparation": "Doctrine, runtime, observabilité et affichage restent séparés. Le même terme peut avoir une projection universelle (ici), une existence runtime éphémère (couche runtime) et un rendu (couche visuelle) sans les confondre.",
+    "appendOnly": "Les changements historiques sont append-only ; superséder ne supprime jamais la trace précédente."
+  },
+  "universalTypes": ["Actor", "Moment", "Narrative", "Space", "Thing"],
+  "cognitiveStatuses": [
+    { "id": "Cognitive", "description": "Node runtime pouvant porter énergie, attention, appartenance et mémoire épisodique." },
+    { "id": "NonCognitive", "description": "Node de blueprint ou de doctrine, inspectable, sans énergie ni attention ni appartenance identitaire." },
+    { "id": "Ephemeral", "description": "État runtime calculé et temporaire (snapshot, sélection, enchère) vivant dans la couche runtime ou observabilité, jamais promu en identité." }
+  ],
+  "provenance": {
+    "behaviorSemanticTypesSource": "data/l1-design.json (famille Behavioral Patterns et State Machine)",
+    "predicateSource": "data/graph-ontology.json (relationTypes) et data/l1-design.json (links), enrichis ici des dimensions physiques manquantes",
+    "note": "Quand un exemple des consignes diverge de la source de compilation (ex. PatternEvaluation présenté comme Narrative dans les consignes mais matérialisé en Moment dans l1-design.json), ce registre suit la source de compilation pour que code, ontologie, blueprint et données décrivent le même système."
+  },
+  "behaviorSemanticTypes": [
+    {
+      "semanticType": "SituationPattern",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-situation-pattern",
+      "description": "Configuration reconnue de contexte et d'émotions qui identifie un état du sous-graphe.",
+      "allowedOutgoing": ["INCREASES_PROPENSITY", "DECREASES_PROPENSITY", "MAKES_SALIENT", "MATCHES"],
+      "allowedIncoming": ["INSTANCE_OF"]
+    },
+    {
+      "semanticType": "BehaviorPattern",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-behavior-pattern",
+      "description": "Comportement appris activé par une situation reconnue ; décrit une transformation possible du sous-graphe.",
+      "allowedOutgoing": ["RECRUITS", "APPLIES_IN", "EXPECTS", "COMPILES_TO"],
+      "allowedIncoming": ["INCREASES_PROPENSITY", "DECREASES_PROPENSITY", "MAKES_SALIENT", "INHIBITS", "USED", "REINFORCES", "WEAKENS", "LIMITS"]
+    },
+    {
+      "semanticType": "ApplicabilityContext",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-applicability-context",
+      "description": "Contrainte contextuelle précisant où une stratégie est utile ou échoue.",
+      "allowedOutgoing": [],
+      "allowedIncoming": ["APPLIES_IN"]
+    },
+    {
+      "semanticType": "ExpectedEffect",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-expected-effect",
+      "description": "Résultat anticipé d'une action ou d'un pattern, avant vérification.",
+      "allowedOutgoing": [],
+      "allowedIncoming": ["EXPECTS", "COMPARED_WITH"]
+    },
+    {
+      "semanticType": "BehaviorEpisode",
+      "universalNodeType": "Moment",
+      "cognitiveStatus": "Cognitive",
+      "sourceDesignId": "moment-behavior-episode",
+      "description": "Trace datée d'une situation réelle, de la stratégie utilisée et du résultat observé.",
+      "allowedOutgoing": ["INSTANCE_OF", "USED"],
+      "allowedIncoming": ["MATCHES"]
+    },
+    {
+      "semanticType": "PatternEvaluation",
+      "universalNodeType": "Moment",
+      "cognitiveStatus": "Cognitive",
+      "sourceDesignId": "moment-pattern-evaluation",
+      "description": "Comparaison datée d'un effet observé à son effet attendu, base du renforcement ou de l'affaiblissement.",
+      "allowedOutgoing": ["COMPARED_WITH", "REINFORCES", "WEAKENS"],
+      "allowedIncoming": []
+    },
+    {
+      "semanticType": "Counterexample",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-counterexample",
+      "description": "Observation d'une situation où un pattern a échoué ; condition négative ou spécialisation.",
+      "allowedOutgoing": ["LIMITS"],
+      "allowedIncoming": []
+    },
+    {
+      "semanticType": "PatternVersion",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-pattern-version",
+      "description": "Itération d'un comportement appris, conservant l'histoire de ses corrections.",
+      "allowedOutgoing": ["SUPERSEDES"],
+      "allowedIncoming": ["SUPERSEDES"]
+    },
+    {
+      "semanticType": "ActionGraph",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-action-graph",
+      "description": "Séquence ou flux d'opérations exécutable par une sous-entité (détection, décision, exécution, vérification).",
+      "allowedOutgoing": [],
+      "allowedIncoming": ["RECRUITS"]
+    },
+    {
+      "semanticType": "CompiledArtifact",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-compiled-artifact",
+      "description": "Version optimisée d'un comportement stable, exécutable sans modèle général, avec code, permissions, entrées, sorties et provenance.",
+      "allowedOutgoing": [],
+      "allowedIncoming": ["COMPILES_TO"]
+    },
+    {
+      "semanticType": "Comment",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-comment",
+      "description": "Observation, interprétation ou suggestion écrite par la sous-entité sur une action passée, distincte du fait brut, de l'évaluation et de l'affect.",
+      "allowedOutgoing": ["EXPLAINS", "REGRETS", "APPROVES", "QUESTIONS", "REINTERPRETS", "LEARNS_FROM"],
+      "allowedIncoming": ["COMMENTED_ON"]
+    },
+    {
+      "semanticType": "BehaviorPatternCandidate",
+      "universalNodeType": "Thing",
+      "cognitiveStatus": "NonCognitive",
+      "sourceDesignId": "thing-behavior-pattern-candidate",
+      "description": "Motif comportemental en cours d'inférence à partir de plusieurs épisodes ; suggère une cristallisation possible en BehaviorPattern sans la décréter.",
+      "allowedOutgoing": [],
+      "allowedIncoming": []
+    }
+  ],
+  "cortexStates": {
+    "universalNodeType": "Thing",
+    "cognitiveStatus": "NonCognitive",
+    "invariant": "Un CortexState contribue au snapshot, aux saillances ou au contexte de policy, mais ne produit jamais directement une ActionExecution.",
+    "producesActionExecution": false,
+    "count": 8,
+    "states": [
+      { "semanticType": "CortexState", "sourceDesignId": "state-monitoring", "name": "MONITORING" },
+      { "semanticType": "CortexState", "sourceDesignId": "state-activation-evaluation", "name": "ACTIVATION_EVALUATION" },
+      { "semanticType": "CortexState", "sourceDesignId": "state-workspace-bidding", "name": "WORKSPACE_BIDDING" },
+      { "semanticType": "CortexState", "sourceDesignId": "state-targeting-planning", "name": "TARGETING_AND_PLANNING" },
+      { "semanticType": "CortexState", "sourceDesignId": "state-execution", "name": "EXECUTION" },
+      { "semanticType": "CortexState", "sourceDesignId": "state-feedback-monitoring", "name": "FEEDBACK_MONITORING" },
+      { "semanticType": "CortexState", "sourceDesignId": "state-closure-consolidation", "name": "CLOSURE_AND_CONSOLIDATION" },
+      { "semanticType": "CortexState", "sourceDesignId": "state-frustration-pivot", "name": "FRUSTRATION_AND_PIVOT" }
+    ],
+    "note": "Dans data/l1-design.json ces états portent semanticType subentity_state_machine et sont projetés en Thing par le compilateur. CortexState est leur nom doctrinal canonique. La décomposition à huit états reste une hypothèse de design (voir narrative-cortex-state-count-remains-hypothesis)."
+  },
+  "cortexPrimitives": {
+    "universalNodeType": "Thing",
+    "cognitiveStatus": "NonCognitive",
+    "note": "ENFOLD, RELEASE, GATE_LOCK, PULSE. Seul PULSE transporte de l'énergie, et uniquement une quantité finie déjà disponible sous conservation L4 ; il ne crée jamais une pompe énergétique.",
+    "primitives": [
+      { "sourceDesignId": "action-enfold", "name": "ENFOLD", "energyTransport": "none" },
+      { "sourceDesignId": "action-release", "name": "RELEASE", "energyTransport": "none" },
+      { "sourceDesignId": "action-gate-lock", "name": "GATE_LOCK", "energyTransport": "none" },
+      { "sourceDesignId": "action-pulse", "name": "PULSE", "energyTransport": "finite_conserved" }
+    ]
+  },
+  "predicateFamilies": {
+    "policy_modulation": {
+      "description": "Modulation de propension relative d'une stratégie ou action par une situation ou une expérience. Ne déclenche jamais automatiquement l'action.",
+      "predicates": [
+        {
+          "id": "INCREASES_PROPENSITY",
+          "meaning": "Une situation ou expérience augmente la propension relative à une stratégie ou action, sans la déclencher.",
+          "endpoints": { "sourceSemanticTypes": ["SituationPattern", "BehaviorEpisode", "CortexState"], "targetSemanticTypes": ["BehaviorPattern", "CortexState"] },
+          "runtimeEffect": "propensity_bias",
+          "energyTransport": "none",
+          "attentionEffect": "none",
+          "causalClaim": false
+        },
+        {
+          "id": "DECREASES_PROPENSITY",
+          "meaning": "Une situation ou expérience diminue la propension relative aux stratégies moins adaptées.",
+          "endpoints": { "sourceSemanticTypes": ["SituationPattern", "BehaviorEpisode"], "targetSemanticTypes": ["BehaviorPattern"] },
+          "runtimeEffect": "propensity_bias",
+          "energyTransport": "none",
+          "attentionEffect": "none",
+          "causalClaim": false
+        }
+      ]
+    },
+    "gating": {
+      "description": "Inhibition d'une stratégie ou action. Ferme une porte sans transférer d'énergie.",
+      "predicates": [
+        {
+          "id": "INHIBITS",
+          "meaning": "Une situation ou un commentaire inhibe une stratégie ou action.",
+          "endpoints": { "sourceSemanticTypes": ["SituationPattern", "Comment", "Counterexample"], "targetSemanticTypes": ["BehaviorPattern"] },
+          "runtimeEffect": "gate_close",
+          "energyTransport": "none",
+          "attentionEffect": "suppresses",
+          "causalClaim": false
+        }
+      ]
+    },
+    "salience": {
+      "description": "Mise en saillance d'une stratégie ou action dans le champ comportemental, sans la sélectionner.",
+      "predicates": [
+        {
+          "id": "MAKES_SALIENT",
+          "meaning": "Une situation ou un commentaire rend certaines stratégies plus saillantes.",
+          "endpoints": { "sourceSemanticTypes": ["SituationPattern", "Comment"], "targetSemanticTypes": ["BehaviorPattern"] },
+          "runtimeEffect": "salience_boost",
+          "energyTransport": "none",
+          "attentionEffect": "raises_salience",
+          "causalClaim": false
+        }
+      ]
+    },
+    "attention_recruitment": {
+      "description": "Recrutement d'une action primitive comme possibilité parmi d'autres. Ne l'impose pas comme unique suite.",
+      "predicates": [
+        {
+          "id": "RECRUITS",
+          "meaning": "Un pattern de comportement recrute une action primitive possible plutôt qu'une séquence unique.",
+          "endpoints": { "sourceSemanticTypes": ["BehaviorPattern", "CortexState"], "targetSemanticTypes": ["ActionGraph", "CortexPrimitive"] },
+          "runtimeEffect": "affordance_offer",
+          "energyTransport": "none",
+          "attentionEffect": "adds_to_field",
+          "causalClaim": false
+        }
+      ]
+    },
+    "pattern_lifecycle": {
+      "description": "Reconnaissance, instanciation, usage, applicabilité, évaluation et supersession des patterns. Décrit l'apprentissage, non une physique attentionnelle.",
+      "predicates": [
+        { "id": "MATCHES", "meaning": "Un situation pattern correspond à un épisode concret.", "endpoints": { "sourceSemanticTypes": ["SituationPattern"], "targetSemanticTypes": ["BehaviorEpisode"] }, "runtimeEffect": "recognition", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "INSTANCE_OF", "meaning": "Un épisode particulier est une instance d'un pattern général.", "endpoints": { "sourceSemanticTypes": ["BehaviorEpisode"], "targetSemanticTypes": ["SituationPattern"] }, "runtimeEffect": "classification", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "USED", "meaning": "L'épisode documente le pattern réellement utilisé.", "endpoints": { "sourceSemanticTypes": ["BehaviorEpisode"], "targetSemanticTypes": ["BehaviorPattern"] }, "runtimeEffect": "provenance", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "APPLIES_IN", "meaning": "Un comportement est lié à son contexte d'applicabilité.", "endpoints": { "sourceSemanticTypes": ["BehaviorPattern"], "targetSemanticTypes": ["ApplicabilityContext"] }, "runtimeEffect": "scoping", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "EXPECTS", "meaning": "Un comportement prédit un effet attendu vérifiable après exécution.", "endpoints": { "sourceSemanticTypes": ["BehaviorPattern"], "targetSemanticTypes": ["ExpectedEffect"] }, "runtimeEffect": "prediction", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "COMPARED_WITH", "meaning": "L'évaluation compare l'effet observé avec l'effet attendu.", "endpoints": { "sourceSemanticTypes": ["PatternEvaluation"], "targetSemanticTypes": ["ExpectedEffect"] }, "runtimeEffect": "comparison", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "REINFORCES", "meaning": "Une évaluation positive renforce le comportement utilisé.", "endpoints": { "sourceSemanticTypes": ["PatternEvaluation"], "targetSemanticTypes": ["BehaviorPattern"] }, "runtimeEffect": "weight_increase", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "WEAKENS", "meaning": "Une évaluation négative ou partielle affaiblit le comportement choisi.", "endpoints": { "sourceSemanticTypes": ["PatternEvaluation"], "targetSemanticTypes": ["BehaviorPattern"] }, "runtimeEffect": "weight_decrease", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "LIMITS", "meaning": "Un contre-exemple enregistre une situation où le pattern ne doit plus s'appliquer.", "endpoints": { "sourceSemanticTypes": ["Counterexample"], "targetSemanticTypes": ["BehaviorPattern"] }, "runtimeEffect": "scope_restriction", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "SUPERSEDES", "meaning": "Une nouvelle version de pattern remplace une version précédente sans effacer son histoire.", "endpoints": { "sourceSemanticTypes": ["PatternVersion"], "targetSemanticTypes": ["PatternVersion"] }, "runtimeEffect": "version_replacement", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false, "appendOnly": true },
+        { "id": "COMPILES_TO", "meaning": "Un comportement stable pointe vers un artifact compilé exécutable.", "endpoints": { "sourceSemanticTypes": ["BehaviorPattern"], "targetSemanticTypes": ["CompiledArtifact"] }, "runtimeEffect": "compilation", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false }
+      ]
+    },
+    "comment_communication": {
+      "description": "Actes narratifs d'une sous-entité sur une action ou un moment passé. Restent des Narrative, jamais une exécution.",
+      "predicates": [
+        { "id": "COMMENTED_ON", "meaning": "Une action ou un moment est commenté.", "endpoints": { "sourceSemanticTypes": ["BehaviorEpisode"], "targetSemanticTypes": ["Comment"] }, "runtimeEffect": "annotation", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "EXPLAINS", "meaning": "Un commentaire explique une action ou un moment.", "endpoints": { "sourceSemanticTypes": ["Comment"], "targetSemanticTypes": ["BehaviorEpisode"] }, "runtimeEffect": "annotation", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "REGRETS", "meaning": "Un commentaire regrette une action ou décision passée.", "endpoints": { "sourceSemanticTypes": ["Comment"], "targetSemanticTypes": ["BehaviorEpisode"] }, "runtimeEffect": "affective_annotation", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "APPROVES", "meaning": "Un commentaire approuve une action ou décision passée.", "endpoints": { "sourceSemanticTypes": ["Comment"], "targetSemanticTypes": ["BehaviorEpisode"] }, "runtimeEffect": "affective_annotation", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "QUESTIONS", "meaning": "Un commentaire questionne une action, un moment ou une hypothèse. La Question reste une action possible, jamais obligatoire.", "endpoints": { "sourceSemanticTypes": ["Comment"], "targetSemanticTypes": ["BehaviorEpisode"] }, "runtimeEffect": "annotation", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false },
+        { "id": "REINTERPRETS", "meaning": "Un commentaire réinterprète une action ou un résultat passé sans écraser sa version.", "endpoints": { "sourceSemanticTypes": ["Comment"], "targetSemanticTypes": ["BehaviorEpisode"] }, "runtimeEffect": "reinterpretation", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false, "appendOnly": true },
+        { "id": "LEARNS_FROM", "meaning": "Un commentaire apprend d'un moment ou d'une évaluation.", "endpoints": { "sourceSemanticTypes": ["Comment"], "targetSemanticTypes": ["BehaviorEpisode", "PatternEvaluation"] }, "runtimeEffect": "learning", "energyTransport": "none", "attentionEffect": "none", "causalClaim": false }
+      ]
+    }
+  },
+  "reclassification": {
+    "coalition": {
+      "temporaryNodeGroup": "NodeSelection",
+      "subentityCurrentField": "SubentityFieldSnapshot",
+      "workspaceProposal": "WorkspaceBid",
+      "recurringUnattributedGroup": "PatternObservation",
+      "identityHypothesis": "SubentityHypothesis",
+      "rule": "Aucune SubentityHypothesis ne devient automatiquement Actor, ne contrôle le workspace, ne possède d'énergie propre ni de mémoire propre."
+    },
+    "cluster": {
+      "semanticCluster": "SemanticNeighborhood",
+      "blueprintCluster": "BlueprintModule",
+      "mapCluster": "VisualRegion",
+      "subentityMembership": "MembershipFieldSnapshot",
+      "subentityAttention": "AttentionFieldSnapshot",
+      "recurringCluster": "PatternObservation",
+      "algorithmNamesAllowed": ["clusterEmbeddings", "communityDetection", "densityClustering"],
+      "rule": "Le terme cluster peut rester dans le nom d'un algorithme, mais sa sortie est une sélection calculée portant méthode, paramètres, révision du graphe et nodeIds sélectionnés, jamais une identité cognitive."
+    }
+  },
+  "ratification": {
+    "canonicalForm": "Subentity ─RATIFIED_IN─▶ Moment ; Moment ─AUTHORED_BY─▶ Actor/person",
+    "removedProperties": ["confirmedByHuman", "humanConfirmed", "isRatified", "humanValidated"],
+    "absenceMeaning": "ratification humaine non observée",
+    "refusalIsMoment": true,
+    "appendOnly": true
+  },
+  "ephemeralRuntimeObjects": [
+    { "id": "NodeSelection", "cognitiveStatus": "Ephemeral", "carriesEnergy": false, "carriesAttention": false, "becomesActor": false, "description": "Sortie calculée d'un algorithme de clustering : méthode, paramètres, révision du graphe, nodeIds sélectionnés." },
+    { "id": "SubentityFieldSnapshot", "cognitiveStatus": "Ephemeral", "carriesEnergy": false, "carriesAttention": false, "becomesActor": false, "description": "Champ d'appartenance courant d'une sous-entité à un instant ; état temporaire, pas une nouvelle entité." },
+    { "id": "AttentionFieldSnapshot", "cognitiveStatus": "Ephemeral", "carriesEnergy": false, "carriesAttention": false, "becomesActor": false, "description": "Attention courante d'une sous-entité à un instant." },
+    { "id": "WorkspaceBid", "cognitiveStatus": "Ephemeral", "carriesEnergy": false, "carriesAttention": false, "becomesActor": false, "description": "Proposition d'une sous-entité reconnue ou du Citizen au workspace." },
+    { "id": "PatternObservation", "cognitiveStatus": "Ephemeral", "carriesEnergy": false, "carriesAttention": false, "becomesActor": false, "description": "Regroupement récurrent non attribué, observé mais non promu en identité." },
+    { "id": "SubentityHypothesis", "cognitiveStatus": "Ephemeral", "carriesEnergy": false, "carriesAttention": false, "becomesActor": false, "description": "Hypothèse d'identité (Narrative) ; ne contrôle pas le workspace et ne possède ni énergie ni mémoire propres." },
+    { "id": "VisualRegion", "cognitiveStatus": "Ephemeral", "carriesEnergy": false, "carriesAttention": false, "becomesActor": false, "description": "Région de rendu de la carte ; jamais écrite dans le graphe cognitif." }
+  ]
+}

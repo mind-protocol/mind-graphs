@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  remapWorkspaceSnapshotControllers,
   scoreWorkspaceCandidate,
   selectGlobalWorkspace,
   workspaceCandidateFromSubentity

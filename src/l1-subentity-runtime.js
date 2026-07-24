@@ -70,6 +70,25 @@ function upsertCandidates(existing, candidates) {
   return [...byId.values()];
 }
 
+/**
+ * Suit la chaîne `supersededBy` d'une coalition fusionnée jusqu'à son survivant
+ * encore actif. Une entité non fusionnée se résout en elle-même.
+ */
+function buildSurvivorResolver(population) {
+  const byId = new Map(population.map(entity => [entity.id, entity]));
+  const cache = new Map();
+  const resolve = (id, seen = new Set()) => {
+    if (cache.has(id)) return cache.get(id);
+    const entity = byId.get(id);
+    if (!entity || entity.status !== "merged" || !entity.supersededBy || seen.has(id)) return id;
+    seen.add(id);
+    const survivor = resolve(entity.supersededBy, seen);
+    cache.set(id, survivor);
+    return survivor;
+  };
+  return id => resolve(id);
+}
+
 function previousConversationMoment(moments, memory) {
   const metadata = memory?.metadata || {};
   if (metadata.previousMomentId || !metadata.conversationId) return metadata.previousMomentId || null;

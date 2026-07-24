@@ -253,8 +253,8 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
       perceptualMomentId: perception?.moment?.id || null,
       memoryMomentId: memoryResult?.moment.id || null,
       memoryAttributionId: attributionResult?.attribution.id || null,
-      workspaceSnapshotId: input.workspaceSnapshot?.semanticType === "WorkspaceSnapshot"
-        ? input.workspaceSnapshot.id
+      workspaceSnapshotId: workspaceSnapshot?.semanticType === "WorkspaceSnapshot"
+        ? workspaceSnapshot.id
         : null,
       reinforcedMomentCount: momentReinforcement?.updates.length || 0,
       reinforcementScore: momentReinforcement?.score.score ?? null,

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L1 · Cerveau en marche</title>
+  <link rel="stylesheet" href="/brain.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">L1 · cognition observable</p>
+      <h1>Cerveau en marche</h1>
+      <p class="lede">Vue de dessus de l'espace vectoriel. Chaque sous-entité occupe le barycentre de son champ attentionnel : quand son champ change, elle se déplace réellement. Rien ne bouge sans qu'un tick l'ait produit.</p>
+    </div>
+    <div class="topbar-actions">
+      <label for="graph-select" class="sr-only">Graphe L1</label>
+      <select id="graph-select" class="select" title="Graphe L1 observé"></select>
+      <span id="connection" class="status" aria-live="polite">Connexion…</span>
+      <a href="/l1-runtime.html">Runtime détaillé</a>
+      <a href="/">Graphe</a>
+    </div>
+  </header>
+
+  <section class="transport" aria-label="Pupitre de tick">
+    <div class="transport-controls" role="group" aria-label="Cadence des pulsations">
+      <button id="step" type="button" class="btn btn-step">Un tick</button>
+      <div class="speeds" role="radiogroup" aria-label="Vitesse">
+        <button type="button" class="btn speed" data-period="5000" role="radio" aria-checked="false">Lent · 5 s</button>
+        <button type="button" class="btn speed" data-period="2000" role="radio" aria-checked="false">Moyen · 2 s</button>
+        <button type="button" class="btn speed" data-period="500" role="radio" aria-checked="false">Rapide · 0,5 s</button>
+      </div>
+      <button id="pause" type="button" class="btn btn-pause" disabled>Pause</button>
+    </div>
+    <div class="transport-readout">
+      <span id="pulse-state" class="pill">À l'arrêt</span>
+      <span class="counter"><strong id="count-pulses">0</strong> pulsations</span>
+      <span class="counter"><strong id="count-applied">0</strong> appliquées</span>
+      <span class="counter"><strong id="count-unchanged">0</strong> sans nouveauté</span>
+      <label class="toggle"><input id="show-nodes" type="checkbox" checked /> nœuds du champ</label>
+      <label class="toggle"><input id="show-labels" type="checkbox" checked /> noms des nœuds</label>
+      <label class="toggle"><input id="show-landmarks" type="checkbox" checked /> repères de clusters</label>
+      <button id="reset-layout" type="button" class="btn btn-small" disabled>Replacer</button>
+    </div>
+  </section>
+
+  <main>
+    <section class="map-panel">
+      <div class="map-wrap">
+        <svg id="map" viewBox="0 0 1600 900" role="img" aria-label="Carte des sous-entités dans l'espace vectoriel">
+          <g id="layer-landmarks"></g>
+          <g id="layer-auras"></g>
+          <g id="layer-edges"></g>
+          <g id="layer-flows"></g>
+          <g id="layer-fields"></g>
+          <g id="layer-labels"></g>
+          <g id="layer-subentities"></g>
+          <g id="layer-bubbles"></g>
+        </svg>
+        <div class="map-legend">
+          <span class="legend-item"><i class="legend-lead"></i>mène le workspace</span>
+          <span class="legend-item"><i class="legend-support"></i>admise en soutien</span>
+          <span class="legend-item"><i class="legend-silent"></i>hors workspace</span>
+          <span class="legend-item"><i class="legend-flash"></i>a changé au dernier tick</span>
+          <span class="legend-item"><i class="legend-boundary"></i>frontière partagée</span>
+          <span class="legend-item"><i class="legend-periphery"></i>frontière du champ</span>
+          <div id="family-legend" class="family-legend"></div>
+        </div>
+        <div id="energy-status" class="energy-status"></div>
+        <p id="map-note" class="map-note"></p>
+        <div id="map-empty" class="map-empty" hidden></div>
+        <div id="hover-card" class="hover-card" hidden></div>
+      </div>
+    </section>
+
+    <section class="narration-panel">
+      <header class="narration-header">
+        <div><p class="eyebrow">Ce qui se passe</p><h2 id="inspect-title">Narration</h2></div>
+      </header>
+      <div id="inspect-body" class="narration-strip"></div>
+    </section>
+
+    <section id="stats" class="stats" aria-label="Compteurs du runtime"></section>
+
+    <section class="grid">
+      <article class="panel">
+        <header><p class="eyebrow">Ce qui entre</p><h2>Source du battement</h2></header>
+        <div id="source" class="stack"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Ce que le citoyen publie déjà</p><h2>État conscient</h2></header>
+        <div id="citizen" class="stack"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Arbitrage de l'attention</p><h2>Enchères du workspace</h2></header>
+        <div id="workspace" class="stack"></div>
+      </article>
+      <article class="panel">
+        <header><p class="eyebrow">Trace des pulsations</p><h2>Journal</h2></header>
+        <div id="journal" class="journal"></div>
+      </article>
+    </section>
+  </main>
+
+  <template id="empty-template"><p class="empty-state">Aucune donnée pour le moment.</p></template>
+  <script type="module" src="/brain.js"></script>
+</body>
+</html>

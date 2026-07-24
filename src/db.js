@@ -35,8 +35,11 @@ export async function getGraphByName(name) {
   return client.selectGraph(name);
 }
 
+// Le graphe L1 canonique est `l1_nlr_ai`. L'ancien nom `nlr_ai` a été migré et
+// n'existe plus : le viser produisait un L1 vide, donc un cerveau sans
+// sous-entités alors que le runtime tournait à côté.
 export async function getL1Graph(name) {
-  return getGraphByName(name || process.env.FALKORDB_L1_GRAPH || "nlr_ai");
+  return getGraphByName(name || process.env.FALKORDB_L1_GRAPH || "l1_nlr_ai");
 }
 
 export async function getL2MindGraph() {

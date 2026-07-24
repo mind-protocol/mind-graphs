@@ -161,6 +161,16 @@
       ]
     },
     {
+      "id": "l2-mind-causal",
+      "status": "active",
+      "label": "L2 · Graphe causal migré (mind_causal → l2_mind_causal)",
+      "falkorGraph": "l2_mind_causal",
+      "purpose": "Base vers laquelle le contenu causal de design a été migré. Déclarée pour que la résolution de nœuds la balaie pendant la migration ; à fusionner avec l'entrée 'design' quand le nom canonique sera arrêté.",
+      "ontology": "data/graph-ontology.json",
+      "dataDir": "data",
+      "datasets": []
+    },
+    {
       "id": "science",
       "status": "active",
       "label": "Graphe scientifique · matière évaluée",
@@ -184,7 +194,7 @@
       "id": "l1-nlr-ai",
       "status": "active",
       "label": "L1 · Mémoire personnelle de NLR AI",
-      "falkorGraph": "nlr_ai",
+      "falkorGraph": "l1_nlr_ai",
       "purpose": "Instance concrète du blueprint L1 pour le citoyen NLR AI. Contenu souverain : identité, mémoire, relations, valeurs, préférences, apportés par la personne et jamais installés par le blueprint. La doctrine de design reste dans le graphe de design ; ce graphe en est un sujet, pas une copie.",
       "ontology": "l1/ontology.json",
       "dataDir": "l1/data",

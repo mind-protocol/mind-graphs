@@ -276,6 +276,7 @@ export function summarizeSubentityRuntime(state, { recentLimit = 20 } = {}) {
     latestMoment,
     latestWorkspaceSnapshot: [...(state.workspaceSnapshots || [])].sort((a, b) => String(b.occurredAt || "").localeCompare(String(a.occurredAt || "")))[0] || null,
     controllers: controllerEdges.map(edge => ({ subentityId: edge.source, confidence: edge.confidence, attribution: edge.attribution })),
+    manualControl: state.manualControl || null,
     recentEvents: (state.events || []).slice(-recentLimit).reverse(),
     narratives: state.narratives || []
   };

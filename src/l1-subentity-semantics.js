@@ -148,3 +148,157 @@ export function describeFeeling(feeling) {
     affect: feeling.affect
   };
 }
+
+/**
+ * Compile le cockpit complet de contrôle manuel d'une sous-entité :
+ * identité/prompt, périmètre perceptif, liens visibles, état dérivé,
+ * recommandation algorithmique et actions manuelles disponibles.
+ */
+export function compileSubentityCockpit(state = {}, subentityId) {
+  if (!subentityId) throw new Error("compileSubentityCockpit requires a subentityId.");
+  const subentities = state.subentities || [];
+  const entity = subentities.find(item => item.id === subentityId || item.coalitionKey === subentityId) || {
+    id: subentityId,
+    name: String(subentityId).replace(/^candidate-coalition-/, "Coalition "),
+    level: "candidate",
+    status: "candidate",
+    weight: 1.0,
+    stability: 0.5,
+    certainty: 0.5,
+    dominantAffect: "curiosity",
+    goals: [{ key: "evaluer_coalition", score: 1.0 }],
+    signature: {}
+  };
+
+  const latestSnapshot = [...(state.workspaceSnapshots || [])]
+    .sort((a, b) => String(b.occurredAt || "").localeCompare(String(a.occurredAt || "")))[0] || null;
+  const place = (latestSnapshot?.slots || []).find(slot => slot.controllerId === subentityId) || null;
+  const derived = deriveSubentityState({ place, goals: entity.goals || [], promotedThisTick: false });
+
+  // Périmètre et liens visibles
+  const activeNodeIds = [...new Set([
+    ...Object.keys(entity.signature || {}).filter(k => k.startsWith("node:")).map(k => k.replace("node:", "")),
+    ...(place?.nodeIds || [])
+  ])];
+
+  const visibleRelations = (state.relations || []).filter(edge =>
+    edge.source === subentityId || edge.target === subentityId || activeNodeIds.includes(edge.source) || activeNodeIds.includes(edge.target)
+  ).slice(0, 15);
+
+  // Recommandation algorithmique
+  let recommendation = {
+    action: "maintain_automatic_monitoring",
+    label: "Maintenir la veille automatique",
+    reason: "L'algorithme de récurrence et la coalition perçue sont stables."
+  };
+  if (entity.level !== "high" && (entity.weight || 0) >= 3.0) {
+    recommendation = {
+      action: "promote_subentity",
+      label: "Promouvoir en niveau haut",
+      reason: "Le poids d'évidence accumulé dépasse le seuil pour l'admission au niveau haut."
+    };
+  } else if (derived.id === "state-frustration-pivot") {
+    recommendation = {
+      action: "pivot_strategy",
+      label: "Pivoter les pénalités et libérer",
+      reason: "Pénalités excessives au workspace : il est recommandé d'alléger la pression."
+    };
+  } else if (place?.role === "lead" && entity.goals?.length) {
+    recommendation = {
+      action: "execute_primary_goal",
+      label: "Poursuivre l'exécution du but",
+      reason: `La sous-entité est en tête et porte le but « ${entity.goals[0]?.key || entity.goals[0]} ».`
+    };
+  }
+
+  // Prompt / Mission opérationnelle
+  const goalsSummary = (entity.goals || []).map(g => typeof g === "string" ? g : g.key).join(", ") || "Aucun but attribué";
+  const missionPrompt = `Sous-entité « ${entity.name || entity.id} » [Niveau: ${entity.level || "low"}, Statut: ${entity.status || "candidate"}]. Buts actifs: ${goalsSummary}. Affect dominant: ${entity.dominantAffect || "aucun"}. Mission: Évaluer et exécuter les actions relatives à sa coalition sémantique.`;
+
+  // Actions manuelles disponibles
+  const isManuallyControlled = Boolean(state.manualControl?.active && state.manualControl?.subentityId === subentityId);
+  const availableActions = [
+    {
+      id: "set_attention_head",
+      label: "🎯 Définir la tête d'attention",
+      description: "Changer le nœud qui sert de focalisation principale (tête d'attention) pour la sous-entité",
+      requiresInput: "nodeId",
+      current: Boolean(entity.headNodeId)
+    },
+    {
+      id: "admit_node",
+      label: "📥 Faire entrer une node au périmètre",
+      description: "Choisir et intégrer le nœud voulu dans la signature d'attention de la sous-entité",
+      requiresInput: "nodeId",
+      current: false
+    },
+    {
+      id: "remove_node",
+      label: "🗑️ Retirer une node du périmètre",
+      description: "Retirer un nœud du champ d'attention de la sous-entité",
+      requiresInput: "nodeId",
+      current: false
+    },
+    {
+      id: "create_node",
+      label: "✨ Créer une nouvelle node",
+      description: "Instancier un nouveau nœud dans le graphe L1 et l'intégrer au champ de la sous-entité",
+      requiresInput: "nodePayload",
+      current: false
+    },
+    {
+      id: "inject_node_energy",
+      label: "⚡ Diriger de l'énergie dans un nœud",
+      description: "Allouer une part d'énergie (10%, 25%, 50%, 100%) vers un nœud spécifique de la sous-entité",
+      requiresInput: "energyPayload",
+      current: false
+    },
+    {
+      id: "create_relation",
+      label: "🔗 Créer un lien sémantique",
+      description: "Tisser un lien sémantique entre une node source et une node cible avec le type choisi (ex: ACTIVATES, OCCUPIES, SUPPORTS_EMERGENCE)",
+      requiresInput: "relationPayload",
+      current: false
+    },
+    {
+      id: "clear",
+      label: "🔄 Libérer le contrôle (Mode automatique)",
+      description: "Restituer la sous-entité à l'arbitrage automatique par le runtime L1",
+      current: !isManuallyControlled
+    }
+  ];
+
+  return {
+    subentity: {
+      id: entity.id,
+      name: entity.name || entity.id,
+      level: entity.level,
+      status: entity.status,
+      weight: entity.weight || 0,
+      stability: entity.stability || 0,
+      certainty: entity.certainty || 0,
+      goals: entity.goals || [],
+      strategies: entity.strategies || [],
+      preferences: entity.preferences || [],
+      beliefs: entity.beliefs || [],
+      dominantAffect: entity.dominantAffect || null,
+      missionPrompt
+    },
+    perception: {
+      signature: entity.signature || {},
+      activeNodeIds,
+      visibleRelations,
+      place
+    },
+    stateMachine: {
+      stateId: derived.id,
+      label: SUBENTITY_STATES[derived.id]?.label || derived.id,
+      icon: SUBENTITY_STATES[derived.id]?.icon || "👁",
+      rule: derived.rule,
+      doing: describeDoing(derived.id, place, latestSnapshot?.characterBudget)
+    },
+    recommendation,
+    availableActions,
+    manualControl: state.manualControl || null
+  };
+}

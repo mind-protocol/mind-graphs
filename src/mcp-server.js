@@ -14,8 +14,10 @@ import { z } from "zod";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { buildGraphQueryEngine } from "../public/graph-query.js";
-import { projectDir } from "./graph-manifest.js";
+import { getGraphByName } from "./db.js";
+import { loadManifest, projectDir } from "./graph-manifest.js";
 import { L4_PHYSICS_TUNING } from "./l4-physics.js";
+import { loadCorpus } from "./corpus.js";
 import { formatMoveResult, moveToSpace } from "./graph-move.js";
 import { formatL1BlueprintSync, syncDeclaredL1Blueprints } from "./l1-blueprint-sync.js";
 import {
@@ -37,19 +39,33 @@ const injectionsPath = path.resolve(projectDir, "artifacts/l4/injections.jsonl")
 const statePath = path.resolve(projectDir, "artifacts/l4/physics-state.json");
 const QUERY_AMOUNT = L4_PHYSICS_TUNING.parameters.queryInjection.value;
 
-// Le graphe est chargé une fois puis mémorisé : le même corpus sert toutes les
-// requêtes d'une session, et un agent qui n'interroge jamais ne paie pas le coût.
-let enginePromise = null;
-async function getEngine() {
-  if (!enginePromise) {
-    enginePromise = (async () => {
-      const response = await fetch(GRAPH_API_URL);
-      if (!response.ok) throw new Error(`Graph API ${response.status} sur ${GRAPH_API_URL}`);
-      const graph = await response.json();
-      return { engine: buildGraphQueryEngine(graph.nodes, graph.links), size: graph.nodes.length };
-    })().catch(err => { enginePromise = null; throw err; });
+// Le graphe est chargé par graphId puis mémorisé dans un Map.
+const enginePromises = new Map();
+async function getEngine(graphId = "design") {
+  const key = graphId || "design";
+  if (!enginePromises.has(key)) {
+    const promise = (async () => {
+      try {
+        const targetUrl = key === "design" ? GRAPH_API_URL : `${GRAPH_API_URL}?graphId=${encodeURIComponent(key)}`;
+        const response = await fetch(targetUrl);
+        if (response.ok) {
+          const graph = await response.json();
+          if (graph.nodes && graph.links) {
+            return { engine: buildGraphQueryEngine(graph.nodes, graph.links), size: graph.nodes.length };
+          }
+        }
+      } catch {
+        // En cas d'erreur API, repli sur le chargement direct du corpus déclaré
+      }
+      const { nodes, links } = await loadCorpus(key);
+      return { engine: buildGraphQueryEngine(nodes, links), size: nodes.length };
+    })().catch(err => {
+      enginePromises.delete(key);
+      throw err;
+    });
+    enginePromises.set(key, promise);
   }
-  return enginePromise;
+  return enginePromises.get(key);
 }
 
 // Dépose le chemin parcouru. On n'enregistre pas la question, seulement les nœuds :
@@ -66,19 +82,22 @@ const server = new McpServer({ name: "mind-causal-graph", version: "0.1.0" });
 const graphQuestionSchema = {
   title: "Demander au graphe causal",
   description:
-    "Pose une question au graphe causal de Mind Protocol par similarité sémantique locale. "
+    "Pose une question à un graphe de Mind Protocol par similarité sémantique locale. "
     + "Renvoie le cluster pertinent et injecte l'énergie L4 sur les nœuds parcourus.",
-  inputSchema: { question: z.string().min(1).describe("La question, en langage naturel.") }
+  inputSchema: {
+    question: z.string().min(1).describe("La question, en langage naturel."),
+    graphId: z.string().min(1).default("design").describe("Identifiant du graphe déclaré dans graphs.json (défaut : 'design').")
+  }
 };
 
-async function answerGraphQuestion({ question }) {
+async function answerGraphQuestion({ question, graphId = "design" }) {
   let engine;
   try {
-    ({ engine } = await getEngine());
+    ({ engine } = await getEngine(graphId));
   } catch (err) {
     return {
       isError: true,
-      content: [{ type: "text", text: `Graphe injoignable : ${err.message}. Lance le serveur (npm start) puis réessaie.` }]
+      content: [{ type: "text", text: `Graphe "${graphId}" injoignable : ${err.message}. Lance le serveur (npm start) puis réessaie.` }]
     };
   }
   const result = engine.query(question);
@@ -89,8 +108,9 @@ async function answerGraphQuestion({ question }) {
     .map((item, i) => `${i + 1}. ${(item.score * 100).toFixed(1)}% — ${item.name}  [${item.path.join(" → ")}]`)
     .join("\n");
   const text =
-    `Cluster pertinent : ${result.nodes.length} nœuds, ${result.links.length} relations `
-    + `(moteur ${result.metadata.kind}, ${result.metadata.documents} nœuds actifs).\n\n${top}\n\n`
+    `Graphe : ${graphId}\n`
+    + `Cluster pertinent : ${result.nodes.length} nœuds, ${result.links.length} relations `
+    + `(moteur ${result.metadata.kind}, ${result.metadata.documents} nœuds actifs).\n\n${top || "(aucun résultat)"}\n\n`
     + `Énergie ${QUERY_AMOUNT} déposée sur ${nodeIds.length} nœuds parcourus — visible en live sur /l4-live.html.`;
   return { content: [{ type: "text", text }] };
 }
@@ -99,6 +119,56 @@ server.registerTool("ask_graph", graphQuestionSchema, answerGraphQuestion);
 
 // Alias conservé pour les clients MCP déjà configurés.
 server.registerTool("query_graph", graphQuestionSchema, answerGraphQuestion);
+
+async function resolveFalkorGraphName(graphId = "design") {
+  if (typeof graphId === "string" && /^[A-Za-z0-9_-]+$/.test(graphId)) {
+    try {
+      const manifest = await loadManifest();
+      const graphSpec = manifest.graphs.find(g => g.id === graphId || g.falkorGraph === graphId);
+      if (graphSpec && graphSpec.falkorGraph) return graphSpec.falkorGraph;
+    } catch {
+      // Si graphs.json n'est pas accessible, repli sur le nom nettoyé
+    }
+    return graphId.replace(/-/g, "_");
+  }
+  return "mind_causal";
+}
+
+const cypherQuestionSchema = {
+  title: "Exécuter une requête Cypher sur le graphe",
+  description:
+    "Exécute une requête Cypher sur la base FalkorDB d'un graphe de Mind Protocol (ex: design, science, l1-nlr-ai, l2-mind-graphs, l3-ecosystem, l4-registry, l4-kernel).",
+  inputSchema: {
+    cypher: z.string().min(1).describe("La requête Cypher à exécuter (ex: MATCH (n:MindNode) RETURN n.id, n.name LIMIT 10)."),
+    graphId: z.string().min(1).default("design").describe("Identifiant du graphe déclaré dans graphs.json ou nom de la base FalkorDB."),
+    params: z.record(z.any()).optional().describe("Paramètres de la requête Cypher."),
+    readOnly: z.boolean().default(true).describe("Si true, la requête est exécutée en lecture seule (roQuery).")
+  }
+};
+
+async function executeCypherGraph({ cypher, graphId = "design", params = {}, readOnly = true }) {
+  const falkorName = await resolveFalkorGraphName(graphId);
+  try {
+    const graph = await getGraphByName(falkorName);
+    const options = params && Object.keys(params).length > 0 ? { params } : {};
+    const result = readOnly ? await graph.roQuery(cypher, options) : await graph.query(cypher, options);
+    const data = result.data || [];
+    const text = `Exécution Cypher sur '${graphId}' (base '${falkorName}') — ${data.length} résultat(s) :\n\n`
+      + (data.length > 0 ? JSON.stringify(data, null, 2) : "(aucun résultat)");
+    return {
+      content: [{ type: "text", text }],
+      structuredContent: { graphId, falkorGraph: falkorName, cypher, count: data.length, data }
+    };
+  } catch (err) {
+    return {
+      isError: true,
+      content: [{ type: "text", text: `Erreur d'exécution Cypher sur '${graphId}' (base '${falkorName}') : ${err.message}` }]
+    };
+  }
+}
+
+server.registerTool("cypher_graph", cypherQuestionSchema, executeCypherGraph);
+server.registerTool("cypher-graph", cypherQuestionSchema, executeCypherGraph);
 
 server.registerTool(
   "think",

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diagnostic L1 · Sous-entités & IRM</title>
+  <link rel="stylesheet" href="/diag.css" />
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand">
+      <p class="eyebrow">Mind Protocol · Diagnostic Runtime L1</p>
+      <h1>Diagnostic des Sous-entités & IRM</h1>
+      <p class="lede">Inspection en temps réel de l'homéostasie, de la dynamique multi-ticks, de la pression de capacité et des plans de résolution.</p>
+    </div>
+    <nav class="nav-links" aria-label="Navigation">
+      <a href="/">Graphe</a>
+      <a href="/citizens.html">Citoyens</a>
+      <a href="/l1-runtime.html">Sous-entités</a>
+      <a href="/diag.html" class="active">Diagnostic</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Top Action & Overall Status Header -->
+    <section class="status-banner" id="status-banner">
+      <div class="banner-summary">
+        <div class="status-pill status-unknown" id="global-status-pill">
+          <span class="pulse-dot"></span>
+          <span id="global-status-text">Initialisation...</span>
+        </div>
+        <div class="banner-meta">
+          <span id="last-check-time">Dernier contrôle : --:--:--</span>
+          <span id="projection-drift-badge" class="badge">Drift: Non contrôlé</span>
+        </div>
+      </div>
+      <div class="banner-actions">
+        <button id="btn-run-diag" class="btn btn-primary">
+          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          Diagnostic rapide
+        </button>
+        <button id="btn-run-5-ticks" class="btn btn-secondary">
+          🚀 5 Ticks
+        </button>
+        <button id="btn-run-10-ticks" class="btn btn-secondary">
+          ⚡ 10 Ticks Séquentiels
+        </button>
+      </div>
+    </section>
+
+    <!-- Key Metrics Grid -->
+    <section class="metrics-grid">
+      <div class="metric-card">
+        <span class="metric-label">Sous-entités Actives</span>
+        <div class="metric-value" id="metric-active-count">--</div>
+        <span class="metric-sub" id="metric-high-low-split">High: -- | Low: --</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Pression de Capacité</span>
+        <div class="metric-value" id="metric-capacity-pressure">--%</div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="capacity-progress-fill" style="width: 0%;"></div>
+        </div>
+        <span class="metric-sub" id="metric-capacity-sub">Cible d'équilibre : 10</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Contrôleur du Workspace</span>
+        <div class="metric-value metric-text" id="metric-controller">--</div>
+        <span class="metric-sub" id="metric-controller-attribution">Statut: Inconnu</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Dérive de Projection</span>
+        <div class="metric-value metric-text" id="metric-projection-status">OK</div>
+        <span class="metric-sub" id="metric-revision-info">Révision: --</span>
+      </div>
+    </section>
+
+    <!-- Multi-Ticks Dynamic Activity Stream -->
+    <section class="panel wide-panel">
+      <header class="panel-header">
+        <p class="eyebrow">Dynamique Temporelle & Activité Multi-Ticks</p>
+        <h2>Flux d'Activité en Temps Réel (<span id="dynamic-ticks-count">0</span> ticks exécutés)</h2>
+      </header>
+      <div class="panel-body">
+        <div class="progress-bar-track" style="margin-bottom: 1rem;">
+          <div class="progress-bar-fill" id="multi-tick-progress" style="width: 0%; transition: width 0.2s ease;"></div>
+        </div>
+        <div id="dynamic-activity-stream" class="activity-stream">
+          <div class="empty-state">Cliquez sur "5 Ticks" ou "10 Ticks Séquentiels" pour observer la dynamique d'activation, la fluctuation d'énergie et les transitions de contrôleurs.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Detailed Diagnostic Suites -->
+    <section class="diag-grid">
+      <!-- Panel 1: Subentity Population & Merge Rules -->
+      <article class="panel">
+        <header class="panel-header">
+          <p class="eyebrow">Population & Attracteurs</p>
+          <h2>Registre des Sous-entités</h2>
+        </header>
+        <div class="panel-body">
+          <div id="subentities-list" class="entity-list">
+            <div class="skeleton">Chargement des sous-entités...</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Panel 2: Conflict & Dissent Audit -->
+      <article class="panel">
+        <header class="panel-header">
+          <p class="eyebrow">Intégrité Épistémique</p>
+          <h2>Audit des Conflits & Dissentement</h2>
+        </header>
+        <div class="panel-body">
+          <div id="conflicts-audit" class="audit-list">
+            <div class="empty-state">Aucun conflit actif détecté. Les sous-entités de haut niveau coexistent sans suppression autoritaire.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Panel 3: Workspace Broadcaster & Monopolization -->
+      <article class="panel">
+        <header class="panel-header">
+          <p class="eyebrow">Global Workspace</p>
+          <h2>Broadcast & Pénalité de Monopolisation</h2>
+        </header>
+        <div class="panel-body">
+          <div id="workspace-audit" class="workspace-details">
+            <div class="info-row">
+              <span class="info-key">Enchère Active :</span>
+              <span class="info-val" id="ws-active-bid">Aucune</span>
+            </div>
+            <div class="info-row">
+              <span class="info-key">Slots de Soutien :</span>
+              <span class="info-val" id="ws-support-slots">0 slot</span>
+            </div>
+            <div class="info-row">
+              <span class="info-key">Temps de Résidence :</span>
+              <span class="info-val" id="ws-residence-ticks">0 tick</span>
+            </div>
+            <div class="info-row">
+              <span class="info-key">Statut de Monopolisation :</span>
+              <span class="info-val" id="ws-monopolization-status">Nominal (Pas de Task Lock)</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Panel 4: Test Suite Assertions -->
+      <article class="panel">
+        <header class="panel-header">
+          <p class="eyebrow">Vérification Continue</p>
+          <h2>Assertions de Santé du Runtime</h2>
+        </header>
+        <div class="panel-body">
+          <ul id="diag-tests-list" class="test-results-list">
+            <li class="test-item pending">Vérification de l'endpoint d'état...</li>
+            <li class="test-item pending">Vérification du résumé d'observation...</li>
+            <li class="test-item pending">Vérification de la projection FalkorDB...</li>
+            <li class="test-item pending">Vérification des invariants de résiliation...</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- Remediation & Actionable Solutions Section for Negative Diagnostics -->
+    <section class="panel remediation-panel" id="remediation-section">
+      <header class="panel-header" style="background: rgba(239, 68, 68, 0.1);">
+        <p class="eyebrow" style="color: var(--color-danger);">Analyse & Solutions d'Ingénierie</p>
+        <h2>Diagnostics Négatifs & Plan de Résolution</h2>
+      </header>
+      <div class="panel-body">
+        <div id="remediation-container" class="remediation-list">
+          <div class="remediation-card status-healthy-card">
+            <div class="remediation-header">
+              <span class="status-icon">✔</span>
+              <h3>Aucune anomalie critique détectée</h3>
+            </div>
+            <p class="remediation-body">Le runtime L1 fonctionne nominalement : pas de dérive de projection, population sous les seuils critiques d'attraction, et alternance attentionnelle équilibrée.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Raw JSON Inspector -->
+    <section class="raw-inspector-section">
+      <details class="panel raw-panel">
+        <summary class="raw-summary">🔍 Inspecter le Snapshot JSON Brut & Rapport de Diagnostic</summary>
+        <div class="raw-actions">
+          <button id="btn-copy-json" class="btn btn-small">Copier le JSON</button>
+        </div>
+        <pre id="raw-json-output" class="code-block">{}</pre>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Mind Protocol · Module de Diagnostic du Runtime des Sous-entités L1 · Version 0.1.0</p>
+  </footer>
+
+  <script type="module" src="/diag.js"></script>
+</body>
+</html>

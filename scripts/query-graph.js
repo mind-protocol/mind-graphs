@@ -5,15 +5,34 @@
 // chemin : le moteur d'énergie n'a pas à savoir ce qui a été demandé.
 import fs from "node:fs/promises";
 import path from "node:path";
+import { loadCorpus } from "../src/corpus.js";
 import { buildGraphQueryEngine } from "../public/graph-query.js";
 import { projectDir } from "../src/graph-manifest.js";
 import { L4_PHYSICS_TUNING } from "../src/l4-physics.js";
 
-const question = process.argv.slice(2).join(" ") || "Pourquoi la simulation économique à l’échelle d’une ville est-elle importante ?";
-const response = await fetch(process.env.GRAPH_API_URL || "http://localhost:4173/api/graph");
-if (!response.ok) throw new Error(`Graph API: ${response.status} ${response.statusText}`);
-const graph = await response.json();
-const engine = buildGraphQueryEngine(graph.nodes, graph.links);
+const args = process.argv.slice(2);
+const graphArg = args.find(arg => arg.startsWith("--graph=") || arg.startsWith("--graphId="));
+const graphId = graphArg ? graphArg.split("=")[1] : "design";
+const rawArgs = args.filter(arg => !arg.startsWith("--graph") && arg !== "--no-inject");
+const question = rawArgs.join(" ") || "Pourquoi la simulation économique à l’échelle d’une ville est-elle importante ?";
+
+let graphData;
+try {
+  const baseUrl = process.env.GRAPH_API_URL || "http://localhost:4173/api/graph";
+  const url = graphId === "design" ? baseUrl : `${baseUrl}?graphId=${encodeURIComponent(graphId)}`;
+  const response = await fetch(url);
+  if (response.ok) {
+    graphData = await response.json();
+  }
+} catch {
+  // Repli sur le chargement direct du corpus
+}
+
+if (!graphData || !graphData.nodes) {
+  graphData = await loadCorpus(graphId);
+}
+
+const engine = buildGraphQueryEngine(graphData.nodes, graphData.links);
 const result = engine.query(question);
 console.log(`Question: ${question}`);
 console.log(`Moteur: ${result.metadata.kind}, ${result.metadata.documents} nœuds actifs`);

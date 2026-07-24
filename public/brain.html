@@ -17,6 +17,7 @@
       <label for="graph-select" class="sr-only">Graphe L1</label>
       <select id="graph-select" class="select" title="Graphe L1 observé"></select>
       <span id="connection" class="status" aria-live="polite">Connexion…</span>
+      <button id="open-global-cockpit-btn" type="button" class="btn btn-step" style="padding:.4rem .8rem; font-size:.8rem;">Cockpit 🎛️</button>
       <a href="/l1-runtime.html">Runtime détaillé</a>
       <a href="/">Graphe</a>
     </div>
@@ -129,6 +130,21 @@
       </article>
     </section>
   </main>
+
+  <div id="cockpit-modal" class="modal-backdrop hidden" aria-hidden="true">
+    <div class="cockpit-dialog" role="dialog" aria-labelledby="cockpit-title">
+      <header class="cockpit-header">
+        <div>
+          <p class="eyebrow">Cockpit de Contrôle Manuel</p>
+          <h2 id="cockpit-title">Sous-entité</h2>
+        </div>
+        <button id="cockpit-close-btn" type="button" class="btn-close">&times;</button>
+      </header>
+      <div id="cockpit-body" class="cockpit-body">
+        <p class="loading">Chargement du cockpit...</p>
+      </div>
+    </div>
+  </div>
 
   <template id="empty-template"><p class="empty-state">Aucune donnée pour le moment.</p></template>
   <script type="module" src="/brain.js"></script>

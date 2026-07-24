@@ -192,7 +192,61 @@ const FAMILY_HUES = {
 };
 const familyHue = family => FAMILY_HUES[family] ?? null;
 
-/** Arêtes vivantes entre les nœuds affichés, colorées par famille de relation. */
+/**
+ * Calcule la teinte HSL (.hue) de l'émotion / affect du lien.
+ *
+ * 🔴 Rouge / Rose Vif   : Conflit, Inhibition, Risque, Alerte, Frustration, Peur (CONSTRAINS, INHIBITS, RISK, WARNS, CONTRADICTS, OVERLOAD)
+ * 🟢 Vert Émeraude      : Soin, Protection, Confiance, Sécurité, Apaisement (PROTECTS, JUSTIFIES, SOOTHES, TRUSTS, REPAIRS, RESPONDS_TO_NEED)
+ * 🟣 Violet / Magenta   : Drive, Motivation, Ambition, Passion, Énergie (MOTIVATES, DRIVES, EXERCISES, ATTRACTS, DESIRES, CREATES)
+ * 🟡 Ambre / Doré       : Attention, Perceptions, Nouveauté, Curiosité (SENSORY, ATTENDS, PERCEIVES, DISCOVERS, OBSERVES)
+ * 🔵 Cyan / Bleu Néon   : Cognition, Structure, Provenance, Description (AUTHORED_BY, DESCRIBES, CONVERGES_IN, CONFIGURES, MODULATES)
+ */
+function edgeEmotionHue(edge, frame) {
+  const type = String(edge.predicate || edge.type || "").toUpperCase();
+  const kinds = (edge.flowKinds || []).map(k => String(k).toLowerCase());
+  const family = String(edge.family || "").toLowerCase();
+
+  // 1. Détection directe par type / prédicat de relation
+  if (/INHIBIT|CONSTRAIN|CONTRADICT|RISK|FAIL|CONFLICT|WARN|DENY|RESTRICT|CRISIS|PRESSURE|OVERLOAD/i.test(type)) {
+    return 348; // 🔴 Rouge / Crimson (Tension / Inhibition / Risque)
+  }
+  if (/PROTECT|JUSTIFY|SOOTHE|TRUST|CONFIRM|HEAL|REPAIR|SUPPORT|SAFE|CARE|AFFINITY|NEED/i.test(type)) {
+    return 158; // 🟢 Vert Émeraude / Turquoise (Soin / Protection / Confiance)
+  }
+  if (/MOTIVATE|DRIVE|EXERCISE|ATTRACT|DESIRE|CREATE|PROMOT|GOAL|WANT|PASSION/i.test(type)) {
+    return 282; // 🟣 Violet / Magenta (Drive / Intentionalité / Motivation)
+  }
+  if (/SENSORY|ATTEND|PERCEIVE|OBSERVE|DISCOVER|EMERGE|NOVELTY|STIMUL/i.test(type)) {
+    return 42;  // 🟡 Ambre Doré / Jaune (Attention / Perception / Nouveauté)
+  }
+
+  // 2. Détection par type de flux (flowKinds)
+  if (kinds.some(k => /inhibition|risk|conflict|fear|anxiety|anger/i.test(k))) return 348;
+  if (kinds.some(k => /care|soothe|trust|safety|heal|calm/i.test(k))) return 158;
+  if (kinds.some(k => /drive|motivation|desire|passion|goal/i.test(k))) return 282;
+  if (kinds.some(k => /sensory|stimulus|attention|curiosity/i.test(k))) return 42;
+
+  // 3. Détection par famille de relation
+  if (family === "normative" || family === "inhibition") return 348;
+  if (family === "validation" || family === "enablement") return 158;
+  if (family === "scenario" || family === "drive") return 282;
+  if (family === "contextual" || family === "sensory") return 42;
+
+  // 4. Couleur du lien selon l'émotion de la sous-entité source (si colocalisée)
+  if (frame?.subentities) {
+    const holder = frame.subentities.find(e =>
+      (e.field?.admitted || []).some(n => n.id === edge.source || n.id === edge.target)
+    );
+    if (holder && typeof holder.hue === "number") {
+      return holder.hue;
+    }
+  }
+
+  // 5. Défaut bleu cyan pour la structure cognitive
+  return familyHue(edge.family) ?? 195;
+}
+
+/** Arêtes vivantes entre les nœuds affichés, colorées par l'émotion et la valence du lien. */
 function renderEdges(frame, positions) {
   const energy = frame.energy || {};
   const edges = [];
@@ -209,24 +263,35 @@ function renderEdges(frame, positions) {
     const from = positions.get(edge.source);
     const to = positions.get(edge.target);
     if (!from || !to) continue;
-    const hue = familyHue(edge.family);
-    const stroke = hue === null ? "#5b6b85" : `hsl(${hue} 80% 62%)`;
+    const hue = edgeEmotionHue(edge, frame);
+    const stroke = `hsl(${hue} 85% 62%)`;
     // Épaisseur et opacité suivent l'énergie stockée, relative à la plus chaude.
     const share = energy.maxEdgeEnergy ? edge.energy / energy.maxEdgeEnergy : 0;
     const line = svg("line", {
       x1: from.x, y1: from.y, x2: to.x, y2: to.y,
-      stroke, "stroke-width": 1.2 + 4 * share, "stroke-opacity": .25 + .55 * share,
-      class: "energy-edge"
+      stroke, "stroke-width": 1.4 + 4.2 * share, "stroke-opacity": .35 + .55 * share,
+      class: "energy-edge",
+      "data-source": edge.source,
+      "data-target": edge.target,
+      "data-hue": hue
     });
+
+    const emotionLabel =
+      hue === 348 ? "Tension / Inhibition / Risque (🔴)"
+      : hue === 158 ? "Soin / Protection / Confiance (🟢)"
+      : hue === 282 ? "Drive / Motivation / Intention (🟣)"
+      : hue === 42 ? "Attention / Nouveauté / Perception (🟡)"
+      : "Structure / Cognition (🔵)";
+
     const title = svg("title");
-    title.textContent = `${edge.predicate || edge.type} · ${edge.family || "famille inconnue"}\nénergie ${edge.energy.toFixed(4)} · transfert ${edge.flow.toFixed(4)}${edge.flowKinds.length ? ` (${edge.flowKinds.join(", ")})` : ""}`;
+    title.textContent = `${edge.predicate || edge.type} · ${edge.family || "famille"}\n`
+      + `Émotion / Valence : ${emotionLabel}\n`
+      + `Énergie ${edge.energy.toFixed(4)} · transfert ${edge.flow.toFixed(4)}`
+      + `${edge.flowKinds.length ? ` (${edge.flowKinds.join(", ")})` : ""}`;
     line.append(title);
     edges.push(line);
 
-    // Le transfert mesuré est retenu, mais rien ne circule tant qu'un tick n'a
-    // pas eu lieu : une bulle en boucle laisserait croire à un écoulement
-    // continu, alors que la mesure est un instantané par tick.
-    if (edge.flow > 0) flows.push({ edge, from, to, stroke });
+    if (edge.flow > 0) flows.push({ edge, from, to, stroke, hue });
   }
   byId("layer-edges").replaceChildren(...edges);
   pendingFlows = flows;
@@ -238,11 +303,8 @@ function renderEnergyStatus(frame, edgeCount, flowCount) {
   const box = byId("energy-status");
   const children = [];
   if (energy.measurementStatus === "observed") {
-    children.push(element("strong", "", `${edgeCount} arête(s) vivante(s) · ${flowCount} transfert(s) en cours`));
-    children.push(element("span", "", `énergie max sur un nœud ${energy.maxNodeEnergy.toFixed(4)} · tick L4 ${energy.physicsTick ?? "—"}`));
-    if (energy.truncatedEdges) {
-      children.push(element("span", "dim", `${energy.truncatedEdges} arête(s) plus froide(s) non dessinée(s) sur ${energy.totalTouchingEdges} touchant le champ.`));
-    }
+    children.push(element("strong", "", `Physique L4 · ${edgeCount} lien(s) vivant(s)`));
+    children.push(element("span", "", `${flowCount} transfert(s) actif(s) · ${energy.summary?.totalEnergy ? energy.summary.totalEnergy.toFixed(4) : "0"} E au total`));
   } else {
     children.push(element("strong", "warn", "Énergie non mesurée"));
     children.push(element("span", "", energy.reason || "aucune donnée physique"));
@@ -254,15 +316,23 @@ function renderEnergyStatus(frame, edgeCount, flowCount) {
 }
 
 function renderFamilyLegend(frame) {
-  const families = [...new Set((frame.energy?.edges || []).map(edge => edge.family).filter(Boolean))];
   const legend = byId("family-legend");
-  if (!families.length) { legend.replaceChildren(); return; }
-  const children = [element("p", "family-title", "Nature du lien (pas une émotion)")];
-  for (const family of families) {
+  const children = [element("p", "family-title", "Émotion & Valence des liens")];
+
+  const emotionTypes = [
+    { label: "Tension / Risque / Inhibition", color: "#ff3b5c" },
+    { label: "Soin / Protection / Confiance", color: "#10b981" },
+    { label: "Drive / Motivation / Intention", color: "#d946ef" },
+    { label: "Attention / Nouveauté / Vigilance", color: "#f59e0b" },
+    { label: "Structure / Cognition", color: "#38bdf8" }
+  ];
+
+  for (const emotion of emotionTypes) {
     const row = element("span", "legend-item");
     const swatch = element("i", "legend-family");
-    swatch.style.background = `hsl(${familyHue(family)} 80% 62%)`;
-    row.append(swatch, document.createTextNode(family));
+    swatch.style.background = emotion.color;
+    swatch.style.boxShadow = `0 0 8px ${emotion.color}`;
+    row.append(swatch, document.createTextNode(emotion.label));
     children.push(row);
   }
   legend.replaceChildren(...children);
@@ -439,9 +509,20 @@ function renderSubentities(frame) {
     group.append(caption);
 
     attachPointer(group, entity, { trueX: anchor.x, trueY: anchor.y });
-    group.addEventListener("pointerenter", () => showHover(entity));
-    group.addEventListener("pointerleave", hideHover);
-    group.addEventListener("focus", () => showHover(entity));
+    group.addEventListener("pointerenter", event => {
+      group.classList.add("is-hovered");
+      document.querySelectorAll(".subentity").forEach(sub => {
+        if (sub !== group) sub.classList.add("is-dimmed");
+      });
+      showHover(entity, event);
+    });
+    group.addEventListener("pointermove", event => positionHoverCard(event));
+    group.addEventListener("pointerleave", () => {
+      group.classList.remove("is-hovered");
+      document.querySelectorAll(".subentity").forEach(sub => sub.classList.remove("is-dimmed"));
+      hideHover();
+    });
+    group.addEventListener("focus", event => showHover(entity, event));
     group.addEventListener("blur", hideHover);
     bodies.push(group);
   }
@@ -483,17 +564,43 @@ function renderSubentities(frame) {
 }
 
 // ── Survol : le contenu, pas seulement le nom ─────────────────────────
-function hideHover() {
-  byId("hover-card").hidden = true;
+function positionHoverCard(event) {
+  const card = byId("hover-card");
+  if (!card || card.hidden) return;
+  if (!event || typeof event.clientX !== "number") return;
+  const padding = 16;
+  const cardWidth = card.offsetWidth || 360;
+  const cardHeight = card.offsetHeight || 180;
+  let left = event.clientX + 18;
+  let top = event.clientY + 18;
+
+  if (left + cardWidth > window.innerWidth - padding) {
+    left = Math.max(padding, event.clientX - cardWidth - 18);
+  }
+  if (top + cardHeight > window.innerHeight - padding) {
+    top = Math.max(padding, event.clientY - cardHeight - 18);
+  }
+  card.style.left = `${left}px`;
+  card.style.top = `${top}px`;
+  card.style.bottom = "auto";
 }
 
-function showHoverCard(children) {
+function hideHover() {
+  const card = byId("hover-card");
+  if (card) card.hidden = true;
+  document.querySelectorAll(".is-hovered, .is-dimmed, .edge-highlight").forEach(el => {
+    el.classList.remove("is-hovered", "is-dimmed", "edge-highlight");
+  });
+}
+
+function showHoverCard(children, event) {
   const card = byId("hover-card");
   card.replaceChildren(...children);
   card.hidden = false;
+  if (event) positionHoverCard(event);
 }
 
-function showHover(entity) {
+function showHover(entity, event) {
   const children = [
     element("p", "hover-title", `${entity.state.icon} ${entity.name || shortId(entity.id)}`),
     element("p", "hover-role", entity.doing.role === "lead" ? "Mène le Global Workspace"
@@ -506,7 +613,7 @@ function showHover(entity) {
     ? element("p", "hover-unmeasured", `Affect non mesuré — ${entity.reading.feeling.reason || "aucune mesure disponible"}.`)
     : element("p", "hover-feeling", `${entity.reading.feeling.smiley} ${entity.reading.feeling.text}`));
   children.push(element("p", "hover-rule", `État dérivé de : ${entity.state.rule}. Teinte : ${entity.hueLabel || "indéterminée"}.`));
-  showHoverCard(children);
+  showHoverCard(children, event);
 }
 
 /** Survol : chaque nœud dessiné renseigne, sans exception. */
@@ -519,8 +626,17 @@ function attachNodeHovers(frame) {
   for (const dot of document.querySelectorAll(".node-dot")) {
     const found = byKey.get(`${dot.dataset.entity}::${dot.dataset.node}`);
     if (!found) continue;
-    const show = () => {
+    const show = event => {
       const { entity, node, zone } = found;
+      dot.classList.add("is-hovered");
+
+      const labelEl = document.querySelector(`.node-label[data-node="${node.id}"], .node-label[data-entity="${entity.id}"][data-node="${node.id}"]`);
+      if (labelEl) labelEl.classList.add("is-hovered");
+
+      document.querySelectorAll(`.energy-edge[data-source="${node.id}"], .energy-edge[data-target="${node.id}"]`).forEach(edge => {
+        edge.classList.add("edge-highlight");
+      });
+
       const children = [
         element("p", "hover-title", node.name || node.id),
         element("p", "hover-role", `${label(node.semanticType) || "nœud"} · ${zone === "periphery" ? "frontière du champ" : "au cœur du champ"}${node.clusterId ? ` · ${node.clusterId}` : " · sans cluster"}`)
@@ -529,7 +645,6 @@ function attachNodeHovers(frame) {
         ? element("p", "hover-body", node.content)
         : element("p", "hover-unmeasured", "Ce nœud ne porte aucun texte : il n'y a rien à lire derrière son identifiant."));
 
-      // Frontière entre sous-entités : qui d'autre tient ce nœud.
       if (node.sharedWith?.length) {
         const shared = element("p", "hover-boundary",
           `Terrain partagé avec ${node.sharedWith.map(holder => `« ${holder.label} » (${holder.zone === "periphery" ? "frontière" : "cœur"}, alignement ${holder.alignment.toFixed(2)})`).join(", ")}.`);
@@ -541,25 +656,29 @@ function attachNodeHovers(frame) {
         + `${typeof node.energy === "number" ? ` · énergie ${node.energy.toFixed(4)}` : " · énergie non mesurée"}`
         + `${node.epistemicStatus ? ` · ${label(node.epistemicStatus)}` : ""}`
         + `${node.hasEmbedding ? "" : " · sans vecteur"}`));
-      showHoverCard(children);
+      showHoverCard(children, event);
     };
     dot.addEventListener("pointerenter", show);
+    dot.addEventListener("pointermove", event => positionHoverCard(event));
     dot.addEventListener("pointerleave", hideHover);
   }
 
-  // Les satellites sont dessinés hors des champs : ils renseignent aussi.
   const satellites = new Map((frame.energy?.satellites || []).map(item => [item.id, item]));
   for (const dot of document.querySelectorAll(".satellite")) {
     const satellite = satellites.get(dot.dataset.node);
     if (!satellite) continue;
-    dot.addEventListener("pointerenter", () => showHoverCard([
-      element("p", "hover-title", satellite.name || satellite.id),
-      element("p", "hover-role", `${label(satellite.semanticType) || "nœud"} · hors du champ attentionnel${satellite.clusterId ? ` · ${satellite.clusterId}` : ""}`),
-      satellite.content
-        ? element("p", "hover-body", satellite.content)
-        : element("p", "hover-unmeasured", "Ce nœud ne porte aucun texte : il n'y a rien à lire derrière son identifiant."),
-      element("p", "hover-rule", "Relié au champ par une arête vivante, mais non recruté par une sous-entité.")
-    ]));
+    dot.addEventListener("pointerenter", event => {
+      dot.classList.add("is-hovered");
+      showHoverCard([
+        element("p", "hover-title", satellite.name || satellite.id),
+        element("p", "hover-role", `${label(satellite.semanticType) || "nœud"} · hors du champ attentionnel${satellite.clusterId ? ` · ${satellite.clusterId}` : ""}`),
+        satellite.content
+          ? element("p", "hover-body", satellite.content)
+          : element("p", "hover-unmeasured", "Ce nœud ne porte aucun texte : il n'y a rien à lire derrière son identifiant."),
+        element("p", "hover-rule", "Relié au champ par une arête vivante, mais non recruté par une sous-entité.")
+      ], event);
+    });
+    dot.addEventListener("pointermove", event => positionHoverCard(event));
     dot.addEventListener("pointerleave", hideHover);
   }
 }
@@ -792,6 +911,22 @@ function renderNarration(frame) {
         card.append(element("p", "rule", `Position x ${entity.position.x.toFixed(3)} · y ${entity.position.y.toFixed(3)}, barycentre de ${entity.position.basedOn} vecteur(s).`));
       }
     }
+
+    const cardActions = element("div", "narration-actions");
+    cardActions.style.marginTop = ".5rem";
+    cardActions.style.display = "flex";
+    cardActions.style.gap = ".5rem";
+
+    const cockpitBtn = element("button", "btn btn-step btn-small", "Cockpit 🎛️");
+    cockpitBtn.type = "button";
+    cockpitBtn.style.fontSize = ".78rem";
+    cockpitBtn.style.padding = ".25rem .65rem";
+    cockpitBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      openCockpit(entity.id);
+    });
+    cardActions.append(cockpitBtn);
+    card.append(cardActions);
 
     card.addEventListener("click", () => {
       selectedId = selectedId === entity.id ? null : entity.id;
@@ -1095,3 +1230,168 @@ byId("think-clear").addEventListener("click", () => {
   document.querySelector("input[name='think-mode'][value='simulate']").checked = true;
   byId("think-result").replaceChildren(element("p", "empty-state", "Aucun résultat."));
 });
+
+let currentCockpitSubentityId = null;
+
+async function executeCockpitAction(actionObj, subentityId) {
+  const action = typeof actionObj === "string" ? actionObj : actionObj.id;
+  const body = { action, subentityId, reasoning: `Action '${action}' exécutée depuis le Cockpit` };
+
+  if (action === "set_attention_head") {
+    const val = prompt("Entrez l'ID du nœud à placer en tête d'attention :");
+    if (!val) return;
+    body.nodeId = val.trim();
+  } else if (action === "admit_node" || action === "remove_node") {
+    const val = prompt(`Entrez l'ID du nœud à ${action === "admit_node" ? "faire entrer au" : "retirer du"} périmètre :`);
+    if (!val) return;
+    body.nodeId = val.trim();
+  } else if (action === "create_node") {
+    const nodeId = prompt("ID du nouveau nœud (ex: node-idee) :");
+    if (!nodeId) return;
+    const label = prompt("Nom / Label du nœud :", nodeId);
+    const semanticType = prompt("Type sémantique (Thing, Moment, Narrative, Actor, Space) :", "Thing");
+    body.nodeId = nodeId.trim();
+    body.label = (label || nodeId).trim();
+    body.semanticType = (semanticType || "Thing").trim();
+  } else if (action === "inject_node_energy" || action === "direct_energy") {
+    const targetNodeId = prompt("ID du nœud cible dans lequel diriger l'énergie :");
+    if (!targetNodeId) return;
+    const percentStr = prompt("Pourcentage d'énergie à allouer (10, 25, 50, 75, 100 %) :", "50");
+    if (!percentStr) return;
+    body.nodeId = targetNodeId.trim();
+    body.energyPercentage = Number(percentStr.replace("%", "").trim()) || 50;
+  } else if (action === "create_relation") {
+    const sourceNodeId = prompt("ID du nœud source :", subentityId);
+    if (!sourceNodeId) return;
+    const targetNodeId = prompt("ID du nœud cible :");
+    if (!targetNodeId) return;
+    const relationType = prompt("Type de relation (ACTIVATES, OCCUPIES, SUPPORTS_EMERGENCE, SUPERSEDES, PERCEIVED_BY...) :", "ACTIVATES");
+    body.sourceNodeId = sourceNodeId.trim();
+    body.targetNodeId = targetNodeId.trim();
+    body.relationType = (relationType || "ACTIVATES").trim();
+  }
+
+  try {
+    const response = await fetch(`/api/l1/subentities/manual-control${query()}`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err.error || `HTTP ${response.status}`);
+    }
+    await openCockpit(subentityId);
+    await loadFrame();
+  } catch (error) {
+    alert(`Erreur d'action cockpit : ${error.message}`);
+  }
+}
+
+async function openCockpit(subentityId) {
+  currentCockpitSubentityId = subentityId;
+  const modal = byId("cockpit-modal");
+  const bodyNode = byId("cockpit-body");
+  const titleNode = byId("cockpit-title");
+  if (!modal || !bodyNode) return;
+
+  modal.classList.remove("hidden");
+  modal.setAttribute("aria-hidden", "false");
+  bodyNode.innerHTML = `<p class="loading">Chargement du cockpit pour ${subentityId}...</p>`;
+
+  const queryPrefix = graphParam ? `&graph=${encodeURIComponent(graphParam)}` : "";
+  try {
+    const res = await fetch(`/api/l1/subentities/cockpit?id=${encodeURIComponent(subentityId)}${queryPrefix}`, { cache: "no-store" });
+    if (!res.ok) {
+      const errPayload = await res.json().catch(() => ({}));
+      throw new Error(errPayload.error || `HTTP ${res.status}`);
+    }
+    const data = await res.json();
+
+    titleNode.textContent = `Cockpit · ${data.subentity.name || data.subentity.id}`;
+    bodyNode.replaceChildren();
+
+    // Recommandation Algorithmique
+    const recBanner = element("div", "recommendation-banner");
+    recBanner.append(
+      element("strong", "", `💡 Recommandation Algorithmique : ${data.recommendation.label}`),
+      element("span", "", data.recommendation.reason)
+    );
+
+    // Prompt / Mission Box
+    const promptBox = element("div", "cockpit-box prompt-box");
+    promptBox.append(
+      element("h4", "", "Mission & Prompt Opérationnel"),
+      element("div", "prompt-text", data.subentity.missionPrompt)
+    );
+
+    // Grid Container
+    const grid = element("div", "cockpit-grid");
+
+    // Senses & Perimeter Box
+    const sensesBox = element("div", "cockpit-box");
+    sensesBox.append(element("h4", "", "Sensation & Périmètre"));
+    const nodesList = element("div", "nodes-tag-list");
+    if (data.perception.activeNodeIds.length) {
+      data.perception.activeNodeIds.forEach(nodeId => {
+        nodesList.append(element("span", "node-tag", nodeId));
+      });
+    } else {
+      nodesList.append(element("span", "meta", "Aucun nœud actif au périmètre"));
+    }
+    sensesBox.append(
+      element("p", "meta", `Affect dominant: ${data.subentity.dominantAffect || "aucun"}`),
+      nodesList,
+      element("p", "meta", `${data.perception.visibleRelations.length} arêtes sémantiques visibles`)
+    );
+
+    // State Machine Box
+    const stateBox = element("div", "cockpit-box");
+    stateBox.append(
+      element("h4", "", `Machine à États · ${data.stateMachine.icon} ${data.stateMachine.label}`),
+      element("p", "meta", `Règle : ${data.stateMachine.rule}`),
+      element("p", "meta", data.stateMachine.doing)
+    );
+
+    // Actions Box
+    const actionsBox = element("div", "cockpit-box");
+    actionsBox.append(element("h4", "", "Choix des Actions (Contrôle Manuel)"));
+    const actionsList = element("div", "action-buttons-list");
+
+    data.availableActions.forEach(act => {
+      const btn = element("button", `action-btn ${act.current ? "current" : ""}`);
+      btn.type = "button";
+      btn.append(
+        element("span", "action-btn-title", `${act.current ? "✓ " : ""}${act.label}`),
+        element("span", "action-btn-desc", act.description)
+      );
+      btn.addEventListener("click", () => executeCockpitAction(act, subentityId));
+      actionsList.append(btn);
+    });
+
+    actionsBox.append(actionsList);
+
+    grid.append(sensesBox, stateBox, actionsBox);
+    bodyNode.append(recBanner, promptBox, grid);
+  } catch (error) {
+    bodyNode.innerHTML = `<p class="empty-state">Échec du chargement du cockpit : ${error.message}</p>`;
+  }
+}
+
+function closeCockpit() {
+  const modal = byId("cockpit-modal");
+  if (modal) {
+    modal.classList.add("hidden");
+    modal.setAttribute("aria-hidden", "true");
+  }
+}
+
+byId("open-global-cockpit-btn")?.addEventListener("click", () => {
+  if (lastFrame?.subentities?.length) {
+    openCockpit(lastFrame.subentities[0].id);
+  } else {
+    alert("Aucune sous-entité active observée sur ce tick.");
+  }
+});
+byId("cockpit-close-btn")?.addEventListener("click", closeCockpit);
+byId("cockpit-modal")?.addEventListener("click", e => { if (e.target === byId("cockpit-modal")) closeCockpit(); });

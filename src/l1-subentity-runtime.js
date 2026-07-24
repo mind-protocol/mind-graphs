@@ -24,7 +24,8 @@ export const EMPTY_SUBENTITY_RUNTIME_STATE = Object.freeze({
   memoryAttributions: [],
   relations: [],
   events: [],
-  processedTickIds: []
+  processedTickIds: [],
+  manualControl: null
 });
 
 const clone = value => structuredClone(value);
@@ -49,7 +50,8 @@ function normalizeState(state = {}) {
     memoryAttributions: clone(state.memoryAttributions || []),
     relations: clone(state.relations || []),
     events: clone(state.events || []),
-    processedTickIds: unique(state.processedTickIds)
+    processedTickIds: unique(state.processedTickIds),
+    manualControl: state.manualControl ? clone(state.manualControl) : null
   };
 }
 
@@ -140,6 +142,13 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
   // survivant actif avant toute persistance ou attribution, pour qu'aucun
   // consommateur ne voie un contrôleur fantôme.
   const resolveSurvivor = buildSurvivorResolver([...active, ...reconciliation.retired]);
+  let manualControl = state.manualControl ? clone(state.manualControl) : null;
+  if (manualControl?.subentityId) {
+    const survivorId = resolveSurvivor(manualControl.subentityId);
+    if (survivorId && survivorId !== manualControl.subentityId) {
+      manualControl = { ...manualControl, subentityId: survivorId };
+    }
+  }
   const workspaceSnapshot = input.workspaceSnapshot?.semanticType === "WorkspaceSnapshot"
     ? remapWorkspaceSnapshotControllers(input.workspaceSnapshot, resolveSurvivor)
     : input.workspaceSnapshot;
@@ -223,6 +232,7 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
     ...state,
     revision: Number(state.revision || 0) + 1,
     updatedAt: input.recordedAt || new Date().toISOString(),
+    manualControl,
     actors: nextActors,
     spaces: nextSpaces,
     perceptualMoments: nextPerceptualMoments,
@@ -262,6 +272,377 @@ export function runSubentityLifecycleTick(previousState, input, options = {}) {
       highLevelSubentityCount: active.filter(entity => entity.level === "high").length
     }
   };
+}
+
+export function setSubentityManualControl(previousState, { action, subentityId = null, reasoning = null, recordedAt = null } = {}) {
+  const state = normalizeState(previousState);
+  const now = recordedAt || new Date().toISOString();
+
+  if (action === "set" || action === "lead_workspace" || action === "support_workspace") {
+    const targetId = subentityId || state.manualControl?.subentityId;
+    if (!targetId) throw new Error("Manual control requires a subentityId.");
+    let existing = state.subentities.find(item => item.id === targetId || item.coalitionKey === targetId);
+    if (!existing) {
+      existing = {
+        id: targetId,
+        name: String(targetId).replace(/^(candidate-coalition-|subentity-)/, "Sous-entité "),
+        level: "low",
+        status: "active",
+        weight: 1.0,
+        stability: 0.5,
+        certainty: 0.5,
+        dominantAffect: "curiosity",
+        goals: [{ key: "evaluer_coalition", score: 1.0 }],
+        signature: {}
+      };
+      state.subentities = [...state.subentities, existing];
+    }
+    if (existing.status === "merged") throw new Error(`Cannot set manual control on merged subentity ${targetId}.`);
+
+    const forceRole = action === "lead_workspace" ? "lead" : action === "support_workspace" ? "support" : (state.manualControl?.forceRole || null);
+    const manualControl = {
+      subentityId: targetId,
+      subentityName: existing.name || targetId,
+      forceRole,
+      setAt: now,
+      reasoning: reasoning || (action === "lead_workspace" ? "Manually forced workspace lead" : action === "support_workspace" ? "Manually assigned workspace support" : "Manual operator override"),
+      active: true
+    };
+    const event = {
+      id: `event-manual-control-${action}-${targetId}-${Date.now()}`,
+      type: "SUBENTITY_MANUAL_CONTROL_SET",
+      action,
+      subentityId: targetId,
+      reasoning: manualControl.reasoning,
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      manualControl,
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action, subentityId: targetId, manualControl, changed: true, revision: nextState.revision }
+    };
+  } else if (action === "boost_confidence") {
+    const targetId = subentityId || state.manualControl?.subentityId;
+    if (!targetId) throw new Error("Manual control requires a subentityId.");
+    const existingIndex = state.subentities.findIndex(item => item.id === targetId);
+    if (existingIndex === -1) throw new Error(`Subentity ${targetId} does not exist.`);
+    const existing = state.subentities[existingIndex];
+
+    const updatedEntity = {
+      ...existing,
+      certainty: Math.min(1, (existing.certainty || 0) + 0.25),
+      stability: Math.min(1, (existing.stability || 0) + 0.25)
+    };
+    const nextSubentities = [...state.subentities];
+    nextSubentities[existingIndex] = updatedEntity;
+
+    const event = {
+      id: `event-manual-control-boost-${targetId}-${Date.now()}`,
+      type: "SUBENTITY_MANUAL_BOOST",
+      subentityId: targetId,
+      reasoning: reasoning || "Manual confidence & stability boost (+0.25)",
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      subentities: nextSubentities,
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action: "boost_confidence", subentityId: targetId, certainty: updatedEntity.certainty, stability: updatedEntity.stability, changed: true, revision: nextState.revision }
+    };
+  } else if (action === "set_attention_head") {
+    const targetId = subentityId || state.manualControl?.subentityId;
+    if (!targetId) throw new Error("set_attention_head requires a subentityId.");
+    const existingIndex = state.subentities.findIndex(item => item.id === targetId || item.coalitionKey === targetId);
+    if (existingIndex === -1) throw new Error(`Subentity ${targetId} does not exist.`);
+    const existing = state.subentities[existingIndex];
+    const headId = nodeId || targetNodeId || "node-focus";
+
+    const updatedEntity = {
+      ...existing,
+      headNodeId: headId,
+      updatedAt: now
+    };
+    const nextSubentities = [...state.subentities];
+    nextSubentities[existingIndex] = updatedEntity;
+
+    const event = {
+      id: `event-manual-head-${targetId}-${Date.now()}`,
+      type: "SUBENTITY_ATTENTION_HEAD_SET",
+      subentityId: targetId,
+      headNodeId: headId,
+      reasoning: reasoning || `Attention head set to ${headId}`,
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      subentities: nextSubentities,
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action: "set_attention_head", subentityId: targetId, headNodeId: headId, changed: true, revision: nextState.revision }
+    };
+  } else if (action === "admit_node" || action === "admit_perimeter_node") {
+    const targetId = subentityId || state.manualControl?.subentityId;
+    if (!targetId) throw new Error("admit_node requires a subentityId.");
+    const existingIndex = state.subentities.findIndex(item => item.id === targetId || item.coalitionKey === targetId);
+    if (existingIndex === -1) throw new Error(`Subentity ${targetId} does not exist.`);
+    const existing = state.subentities[existingIndex];
+
+    const targetNode = nodeId || targetNodeId || "node-admitted-" + Date.now().toString(36);
+    const key = targetNode.startsWith("node:") ? targetNode : "node:" + targetNode;
+    const signature = { ...(existing.signature || {}), [key]: ((existing.signature || {})[key] || 0) + 0.4 };
+
+    const updatedEntity = {
+      ...existing,
+      signature,
+      observationCount: (existing.observationCount || 0) + 1
+    };
+    const nextSubentities = [...state.subentities];
+    nextSubentities[existingIndex] = updatedEntity;
+
+    const event = {
+      id: `event-manual-admit-${targetId}-${Date.now()}`,
+      type: "SUBENTITY_NODE_ADMITTED",
+      subentityId: targetId,
+      nodeId: targetNode,
+      reasoning: reasoning || `Admitted node ${targetNode} into signature`,
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      subentities: nextSubentities,
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action: "admit_node", subentityId: targetId, nodeId: targetNode, changed: true, revision: nextState.revision }
+    };
+  } else if (action === "inject_node_energy" || action === "direct_energy") {
+    const targetId = subentityId || state.manualControl?.subentityId;
+    if (!targetId) throw new Error("inject_node_energy requires a subentityId.");
+    const existingIndex = state.subentities.findIndex(item => item.id === targetId || item.coalitionKey === targetId);
+    if (existingIndex === -1) throw new Error(`Subentity ${targetId} does not exist.`);
+    const existing = state.subentities[existingIndex];
+
+    const targetNode = nodeId || targetNodeId;
+    if (!targetNode) throw new Error("inject_node_energy requires a nodeId.");
+    const key = targetNode.startsWith("node:") ? targetNode : "node:" + targetNode;
+
+    const percent = Math.min(100, Math.max(1, Number(energyPercentage || energyAmount || 50)));
+    const energyWeight = percent / 100;
+
+    const signature = { ...(existing.signature || {}), [key]: energyWeight };
+
+    const updatedEntity = {
+      ...existing,
+      signature,
+      updatedAt: now
+    };
+    const nextSubentities = [...state.subentities];
+    nextSubentities[existingIndex] = updatedEntity;
+
+    const event = {
+      id: `event-manual-energy-${targetId}-${Date.now()}`,
+      type: "SUBENTITY_ENERGY_DIRECTED",
+      subentityId: targetId,
+      nodeId: targetNode,
+      energyPercentage: percent,
+      energyWeight,
+      reasoning: reasoning || `Directed ${percent}% energy into node ${targetNode}`,
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      subentities: nextSubentities,
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action: "inject_node_energy", subentityId: targetId, nodeId: targetNode, energyPercentage: percent, energyWeight, changed: true, revision: nextState.revision }
+    };
+  } else if (action === "remove_node") {
+    const targetId = subentityId || state.manualControl?.subentityId;
+    if (!targetId) throw new Error("remove_node requires a subentityId.");
+    const existingIndex = state.subentities.findIndex(item => item.id === targetId || item.coalitionKey === targetId);
+    if (existingIndex === -1) throw new Error(`Subentity ${targetId} does not exist.`);
+    const existing = state.subentities[existingIndex];
+
+    const targetNode = nodeId || targetNodeId;
+    if (!targetNode) throw new Error("remove_node requires a nodeId.");
+    const key = targetNode.startsWith("node:") ? targetNode : "node:" + targetNode;
+
+    const signature = { ...(existing.signature || {}) };
+    delete signature[key];
+
+    const updatedEntity = { ...existing, signature };
+    const nextSubentities = [...state.subentities];
+    nextSubentities[existingIndex] = updatedEntity;
+
+    const event = {
+      id: `event-manual-remove-${targetId}-${Date.now()}`,
+      type: "SUBENTITY_NODE_REMOVED",
+      subentityId: targetId,
+      nodeId: targetNode,
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      subentities: nextSubentities,
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action: "remove_node", subentityId: targetId, nodeId: targetNode, changed: true, revision: nextState.revision }
+    };
+  } else if (action === "create_node") {
+    const targetId = subentityId || state.manualControl?.subentityId;
+    const newNodeId = nodeId || `node-${Date.now().toString(36)}`;
+    const nodeLabel = label || newNodeId;
+    const type = semanticType || "Thing";
+
+    const newNode = { id: newNodeId, label: nodeLabel, semanticType: type, createdAt: now };
+
+    let nextSubentities = [...state.subentities];
+    if (targetId) {
+      const existingIndex = nextSubentities.findIndex(item => item.id === targetId || item.coalitionKey === targetId);
+      if (existingIndex !== -1) {
+        const existing = nextSubentities[existingIndex];
+        const key = newNodeId.startsWith("node:") ? newNodeId : "node:" + newNodeId;
+        const signature = { ...(existing.signature || {}), [key]: 0.5 };
+        nextSubentities[existingIndex] = { ...existing, signature };
+      }
+    }
+
+    const event = {
+      id: `event-manual-create-node-${newNodeId}-${Date.now()}`,
+      type: "SUBENTITY_NODE_CREATED",
+      subentityId: targetId || null,
+      node: newNode,
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      subentities: nextSubentities,
+      nodes: [...(state.nodes || []), newNode],
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action: "create_node", node: newNode, changed: true, revision: nextState.revision }
+    };
+  } else if (action === "create_relation" || action === "create_semantic_link") {
+    const srcNode = sourceNodeId || source || subentityId || state.manualControl?.subentityId;
+    const tgtNode = targetNodeId || target || "node-target";
+    const relType = relationType || type || "ACTIVATES";
+    if (!srcNode) throw new Error("create_relation requires a sourceNodeId.");
+
+    const newRelation = {
+      id: `rel-manual-${Date.now()}`,
+      source: srcNode,
+      target: tgtNode,
+      type: relType,
+      weight: 0.8,
+      createdAt: now
+    };
+
+    const event = {
+      id: `event-manual-control-link-${srcNode}-${Date.now()}`,
+      type: "SUBENTITY_RELATION_CREATED",
+      relation: newRelation,
+      reasoning: reasoning || `Created relation ${srcNode} -[${relType}]-> ${tgtNode}`,
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      relations: [...(state.relations || []), newRelation],
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action: "create_relation", relation: newRelation, changed: true, revision: nextState.revision }
+    };
+  } else if (action === "move_towards_barycenter") {
+    const targetId = subentityId || state.manualControl?.subentityId;
+    if (!targetId) throw new Error("Manual control requires a subentityId.");
+    const existingIndex = state.subentities.findIndex(item => item.id === targetId || item.coalitionKey === targetId);
+    if (existingIndex === -1) throw new Error(`Subentity ${targetId} does not exist.`);
+    const existing = state.subentities[existingIndex];
+
+    const updatedEntity = {
+      ...existing,
+      weight: (existing.weight || 1.0) + 0.5,
+      stability: Math.min(1.0, (existing.stability || 0.5) + 0.1)
+    };
+    const nextSubentities = [...state.subentities];
+    nextSubentities[existingIndex] = updatedEntity;
+
+    const event = {
+      id: `event-manual-control-move-${targetId}-${Date.now()}`,
+      type: "SUBENTITY_MOVED_BARYCENTER",
+      subentityId: targetId,
+      reasoning: reasoning || "Displaced sub-entity position towards focus barycenter",
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      subentities: nextSubentities,
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action: "move_towards_barycenter", subentityId: targetId, weight: updatedEntity.weight, stability: updatedEntity.stability, changed: true, revision: nextState.revision }
+    };
+  } else if (action === "clear") {
+    if (!state.manualControl) {
+      return { state, report: { action: "clear", changed: false, revision: state.revision } };
+    }
+    const previousSubentityId = state.manualControl.subentityId;
+    const event = {
+      id: `event-manual-control-cleared-${previousSubentityId}-${Date.now()}`,
+      type: "SUBENTITY_MANUAL_CONTROL_CLEARED",
+      subentityId: previousSubentityId,
+      recordedAt: now
+    };
+    const nextState = {
+      ...state,
+      revision: Number(state.revision || 0) + 1,
+      updatedAt: now,
+      manualControl: null,
+      events: [...state.events, event]
+    };
+    return {
+      state: nextState,
+      report: { action: "clear", previousSubentityId, changed: true, revision: nextState.revision }
+    };
+  } else {
+    throw new Error(`Invalid manual control action '${action}'. Expected 'set', 'lead_workspace', 'support_workspace', 'boost_confidence', or 'clear'.`);
+  }
 }
 
 export async function readSubentityRuntimeState(filePath) {

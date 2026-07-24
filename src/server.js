@@ -2,6 +2,7 @@ import express from "express";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFile, readdir } from "node:fs/promises";
+import { loadCorpus } from "./corpus.js";
 import { getGraph, getGraphByName, getL1Graph, graphName, host, port as dbPort } from "./db.js";
 import { createL1SubentityRouter } from "./l1-subentity-api.js";
 import { createL1ShadowRouter } from "./l1-shadow-api.js";
@@ -348,8 +349,17 @@ app.get("/api/runtime-health", async (_req, res) => {
   }
 });
 
-app.get("/api/graph", async (_req, res) => {
+app.get("/api/graph", async (req, res) => {
   try {
+    const requestedGraphId = req.query.graphId || req.query.graph;
+    if (requestedGraphId && requestedGraphId !== "design") {
+      const corpus = await loadCorpus(requestedGraphId);
+      return res.json({
+        nodes: corpus.nodes,
+        links: corpus.links,
+        meta: { graph: requestedGraphId, generatedAt: new Date().toISOString() }
+      });
+    }
     const graph = await getGraph();
     const nodesResult = await graph.roQuery(`
       MATCH (n:MindNode)

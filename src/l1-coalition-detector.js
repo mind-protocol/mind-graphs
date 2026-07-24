@@ -28,7 +28,10 @@ function activeWorkspaceEntity(workspace = {}) {
   return workspace.activeEntity || workspace.activeSubentity || workspace.broadcastEntity || null;
 }
 
-function controllerId(workspace, existingIds) {
+function controllerId(workspace, existingIds, manualControl = null) {
+  if (manualControl?.active && manualControl?.subentityId) {
+    if (existingIds.has(manualControl.subentityId)) return manualControl.subentityId;
+  }
   const entity = activeWorkspaceEntity(workspace);
   const id = entity?.subentityId || entity?.id;
   const declaredSubentity = entity?.subentity === true || String(entity?.semanticType || entity?.nodeType || "").toLowerCase() === "subentity";
@@ -135,7 +138,7 @@ export function deriveSubentityCandidates({ state = {}, sensory = {}, affect = {
 
   const existing = state.subentities || [];
   const existingIds = new Set(existing.filter(item => item.status !== "merged").map(item => item.id));
-  const explicitControllerId = controllerId(workspace, existingIds);
+  const explicitControllerId = controllerId(workspace, existingIds, state.manualControl);
   const key = stableCoalitionKey({ targets, affect: dominantAffect, workspace });
   if (!key) return { candidates: [], workspaceSnapshot: { id: workspace.id || null, controllers: [] }, observation: null, perception: null };
   const actorId = sensory.citizenId
@@ -217,6 +220,7 @@ export function deriveSubentityCandidates({ state = {}, sensory = {}, affect = {
   const perception = novelObservation
     ? perceptualSubgraph({ key, tickId, recordedAt, actorId, candidate, targets, sensory, workspace, dominantAffect })
     : null;
+  const isManualControl = Boolean(state.manualControl?.active && state.manualControl?.subentityId === explicitControllerId);
   return {
     candidates: [candidate],
     workspaceSnapshot: { id: workspace.id || null, controllers },
@@ -229,6 +233,8 @@ export function deriveSubentityCandidates({ state = {}, sensory = {}, affect = {
       recurrence,
       coherence,
       explicitController: Boolean(explicitControllerId),
+      controlMode: isManualControl ? "manual" : "automatic",
+      manualOverride: isManualControl,
       actorId,
       spaceId: perception?.space.id || null,
       momentId: perception?.moment.id || null,

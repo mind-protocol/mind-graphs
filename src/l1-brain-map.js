@@ -104,10 +104,16 @@ export async function enrichBrainFrame(frame, {
     // localisés comme les autres pour qu'on puisse voir où le champ s'arrête.
     const peripheryNodes = (field.periphery || []).map(locate);
 
-    const tint = hueOf(field.barycentre, position);
+import { generateSubentityName } from "./l1-subentity-namer.js";
+
+    const naming = generateSubentityName(entity, [...nodes, ...peripheryNodes]);
 
     return {
       ...entity,
+      name: entity.name || naming.name,
+      shortName: naming.shortName,
+      archetype: naming.archetype,
+      salientConcepts: naming.salientConcepts,
       state: {
         ...SUBENTITY_STATES[state.id],
         ...state,

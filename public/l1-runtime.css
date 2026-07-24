@@ -35,6 +35,33 @@ main { padding:clamp(1rem,3vw,3rem) clamp(1rem,4vw,4rem) 4rem; }
 .review-actions button { padding:.38rem .62rem; border:1px solid var(--line); border-radius:9px; background:#182235; color:var(--text); cursor:pointer; }
 .review-actions button:hover { border-color:var(--cyan); }
 .reviewed { color:var(--green); font-size:.75rem; }
-@media (max-width:900px) { .stats { grid-template-columns:repeat(3,1fr); } .grid { grid-template-columns:1fr; } .topbar { flex-direction:column; } }
+.badge.manual-control { background:#451a03; color:var(--amber); border:1px solid var(--amber); font-weight:700; }
+.btn-manual-control { padding:.32rem .6rem; border:1px solid var(--amber); border-radius:8px; background:rgba(245,208,138,0.12); color:var(--amber); font-size:.75rem; font-weight:600; cursor:pointer; transition:all .2s ease; margin-top:.6rem; }
+.btn-manual-control:hover { background:rgba(245,208,138,0.28); color:#fff; box-shadow:0 0 8px rgba(245,208,138,0.4); }
+.btn-manual-control.active { border-color:var(--cyan); background:rgba(103,238,249,0.15); color:var(--cyan); }
+.btn-manual-control.active:hover { background:rgba(103,238,249,0.3); }
+.manual-banner { padding:.65rem .85rem; border:1px solid var(--amber); border-radius:12px; background:rgba(245,208,138,0.08); color:var(--amber); font-size:.82rem; margin-bottom:.8rem; display:flex; justify-content:space-between; align-items:center; }
+.modal-backdrop { position:fixed; inset:0; background:rgba(5,8,14,0.82); backdrop-filter:blur(10px); display:flex; align-items:center; justify-content:center; z-index:1000; padding:1.5rem; opacity:1; transition:opacity 0.2s ease; }
+.modal-backdrop.hidden { opacity:0; pointer-events:none; }
+.cockpit-dialog { width:100%; max-width:58rem; max-height:88vh; overflow-y:auto; border:1px solid var(--line); border-radius:20px; background:linear-gradient(150deg,#131b2a,#0b111c); box-shadow:0 25px 70px rgba(0,0,0,0.6); padding:1.8rem; }
+.cockpit-header { display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:1.2rem; border-bottom:1px solid var(--line); margin-bottom:1.2rem; }
+.btn-close { border:none; background:transparent; color:var(--muted); font-size:1.8rem; cursor:pointer; line-height:1; transition:color 0.2s; }
+.btn-close:hover { color:var(--text); }
+.cockpit-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; margin-top:1rem; }
+.cockpit-box { border:1px solid #202c40; border-radius:14px; background:#0d1420; padding:1.1rem; }
+.cockpit-box h4 { margin-top:0; margin-bottom:.6rem; color:var(--cyan); font-size:.92rem; text-transform:uppercase; letter-spacing:.08em; }
+.prompt-box { grid-column:1 / -1; border-color:#2b3952; background:#111927; }
+.prompt-text { font-family:monospace; font-size:.84rem; color:var(--text); white-space:pre-wrap; word-break:break-word; background:#0a0f18; padding:.8rem; border-radius:9px; border:1px solid var(--line); }
+.nodes-tag-list { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.4rem; }
+.node-tag { padding:.2rem .5rem; border-radius:6px; background:#1e293b; color:var(--cyan); font-size:.78rem; border:1px solid #334155; }
+.recommendation-banner { padding:.8rem 1rem; border-radius:12px; background:rgba(110,231,183,0.09); border:1px solid var(--green); color:var(--green); margin-bottom:1rem; }
+.recommendation-banner strong { display:block; font-size:.95rem; margin-bottom:.2rem; }
+.action-buttons-list { display:flex; flex-direction:column; gap:.6rem; margin-top:.8rem; }
+.action-btn { display:flex; flex-direction:column; align-items:flex-start; text-align:left; padding:.65rem .9rem; border:1px solid var(--line); border-radius:10px; background:#162032; color:var(--text); cursor:pointer; transition:all .2s; }
+.action-btn:hover { border-color:var(--cyan); background:#1e2c44; transform:translateY(-1px); }
+.action-btn.current { border-color:var(--amber); background:rgba(245,208,138,0.15); }
+.action-btn-title { font-weight:700; font-size:.88rem; color:var(--cyan); }
+.action-btn-desc { font-size:.76rem; color:var(--muted); margin-top:.2rem; }
+@media (max-width:900px) { .stats { grid-template-columns:repeat(3,1fr); } .grid { grid-template-columns:1fr; } .topbar { flex-direction:column; } .cockpit-grid { grid-template-columns:1fr; } }
 @media (max-width:900px) { .shadow-metrics { grid-template-columns:repeat(2,1fr); } }
 @media (max-width:520px) { .stats { grid-template-columns:repeat(2,1fr); } .shadow-metrics { grid-template-columns:1fr; } }

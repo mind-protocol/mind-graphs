@@ -79,6 +79,8 @@ TOOL_TO_PERMISSION = {
     "graph_query": "read_code",
     "ask_graph": "read_code",
     "query_graph": "read_code",
+    "cypher_graph": "read_code",
+    "cypher-graph": "read_code",
     "graph_write": "write_code",
     "procedure":   "read_code",
     "think":       "read_code",
@@ -122,6 +124,8 @@ ALWAYS_ALLOWED_TOOLS = frozenset({
     "graph_query",    # Read-only graph search
     "ask_graph",      # Read-only graph search
     "query_graph",
+    "cypher_graph",
+    "cypher-graph",
     "smart_search",   # Read-only fuzzy entity search
     "think",          # Gemini reasoning (no side effects)
     "sense",          # Read-only awareness & perception

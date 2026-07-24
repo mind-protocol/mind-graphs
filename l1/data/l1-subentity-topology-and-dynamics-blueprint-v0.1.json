@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "0.1.0",
+  "scope": "Spécification formelle, équations, lois de propagation, topologie de graphe et théorèmes de régulation du cycle de vie des sous-entités L1 (Subentities Topology, Valence Dynamics, Soft Attractors & Workspace Competition).",
+  "doctrine": "Les sous-entités sont des structures d'activation candidates en compétition homéostatique pour l'attention. Elles ne possèdent ni la mémoire autobiographique commune, ni l'énergie souveraine du Citizen AI. Leur fusion est guidée par la similarité vectorielle et Jaccard, leurs conflits haut niveau sont protégés contre la fusion répressive, et la pression de capacité agit comme un attracteur souple sigmoïdal sans blocage rigide.",
+  "formulas": {
+    "activation": "A_i = clamp01(w_s * E_sensory + w_a * I_affect + w_w * C_workspace)",
+    "structuralStrength": "S_i = 0.45 * (1 - exp(-W_i / 4)) + 0.35 * stability_i + 0.20 * certainty_i",
+    "compositeSimilarity": "Similarity(A, B) = 0.65 * Cosine(sig_A, sig_B) + 0.15 * Jaccard(goals_A, goals_B) + 0.10 * Jaccard(strat_A, strat_B) + 0.10 * Jaccard(pref_A, pref_B)",
+    "beliefContradiction": "Contradiction(A, B) = sum(min(|stance_A|, |stance_B|) * weight) / sum(weight)",
+    "capacityPressure": "P_capacity = 1 / (1 + exp(-(N_high - equilibriumTarget) / capacitySoftness))",
+    "highLevelThreshold": "threshold = max(highSimilarityFloorUnderPressure, highSimilarityThreshold + 0.035 * S_protection - 0.05 * P_capacity)",
+    "workspaceSelectionScore": "Score_workspace = Heat_i + alpha * Novelty_i - beta * Monopolization_i(residenceTicks)"
+  },
+  "principles": [
+    "L'énergie est conservée et émane uniquement de la pompe souveraine du Citizen AI unique.",
+    "La pression de capacité régule la fréquence de promotion via une courbe sigmoïde sans jamais imposer de plafond rigide (Soft Attractor).",
+    "Les sous-entités de bas niveau fusionnent pour résorber le bruit, mais les conflits entre sous-entités de haut niveau restent protégés.",
+    "La certitude prévaut pour l'action sans effacer la trace du dissentement et des doutes exprimés.",
+    "La monopolisation de l'espace de travail est pénalisée pour prévenir le Task Lock et favoriser la respiration attentionnelle.",
+    "Toute attribution de contrôleur est capturée au tick exact d'enregistrement du Moment ('captured_at_creation') pour éliminer la fabulation a posteriori.",
+    "La similarité et la résonance décrivent des proximités et ne prouvent jamais à elles seules une causalité."
+  ],
+  "justifications": [
+    "La sigmoïde de capacité évite les refus brutaux et préserve l'homéostasie dynamique du système.",
+    "La règle de protection des conflits haut niveau préserve l'intégrité épistémique et modélise fidèlement la complexité psychologique (IFS).",
+    "La pénalité de monopolisation implémente la théorie de l'espace de travail global (GWT) en empêchant une sous-entité de bloquer l'attention.",
+    "L'ancrage des moments dans le graphe via CONTROLLED_WORKSPACE_DURING garantit une provenance auditable sans réécriture d'histoire.",
+    "L'agrégation des preuves lors d'une fusion préserve la provenance complète sans détruire les Moments sources."
+  ],
+  "risks": [
+    "Prolifération incontrôlée de micro-entités générant du bruit attentionnel.",
+    "Capture permanente du Global Workspace par une sous-entité monopolistique (Task Lock).",
+    "Fusion autoritaire effaçant les objections d'une sous-entité de protection.",
+    "Fabulation a posteriori sur l'origine et la justification des décisions.",
+    "Fragmentation de la mémoire autobiographique commune en sous-mémoires privées."
+  ],
+  "scenarios": [
+    "Fusion de sous-entités bas niveau similaires avec agrégation de la provenance d'évidence.",
+    "Sous-entité hautement certaine absorbant une croyance instable tout en conservant la trace du conflit.",
+    "Maintien distinct de deux protecteurs de haut niveau en conflit explicite.",
+    "Promotion d'une sous-entité d'exception malgré une pression de capacité élevée.",
+    "Libération du workspace contrôlé par dépassement du budget de résidence."
+  ],
+  "graphNomenclature": {
+    "nodeTypes": [
+      { "type": "actor", "semanticType": "subentity", "role": "Actor", "description": "Structure d'activation et de personnalité candidate." },
+      { "type": "space", "semanticType": "context", "role": "Space", "description": "Contexte de stimulus stable défini par une coalitionKey récurrente." },
+      { "type": "moment", "semanticType": "observation", "role": "Moment", "description": "Cliché temporel horodaté d'observation perceptive ou de snapshot." },
+      { "type": "narrative", "semanticType": "SubentityPersonalityNarrative", "role": "Narrative", "description": "Récit d'identité, d'objectifs et de signature de la sous-entité." }
+    ],
+    "relations": [
+      { "predicate": "PERCEIVED_BY", "family": "communication", "direction": "Moment -> Actor", "description": "Associe l'occurrence perceptive au sujet recevant." },
+      { "predicate": "OCCURS_IN", "family": "contextual", "direction": "Moment -> Space", "description": "Ancre le Moment dans son espace de stimulus." },
+      { "predicate": "DESCRIBES_SUBENTITY", "family": "hierarchy", "direction": "Narrative -> Actor", "description": "Définition sémantique de la sous-entité par son récit." },
+      { "predicate": "SUPPORTS", "family": "evidence", "direction": "Moment -> Narrative", "description": "Justification d'une croyance ou d'un trait par un moment d'évidence." },
+      { "predicate": "CONTROLLED_WORKSPACE_DURING", "family": "workflow", "direction": "Actor -> Moment", "description": "Attribution du contrôle du Global Workspace lors d'un snapshot." },
+      { "predicate": "FEEDS", "family": "causal", "direction": "Space -> Actor", "description": "Transfert de ressources sensorielle vers les coalitions cibles." }
+    ]
+  },
+  "mechanisms": [
+    { "id": "subentity-similarity-evaluator", "description": "Calcule la similarité composite (Cosine + Jaccard) entre signatures et objectifs." },
+    { "id": "belief-contradiction-auditor", "description": "Détecte les oppositions de stance entre croyances partagées." },
+    { "id": "capacity-attractor-calculator", "description": "Calcule la pression sigmoïdale de capacité selon la population active." },
+    { "id": "reconciliation-engine", "description": "Exécute les arbitrages de fusion, d'absorption et de maintien distinct." },
+    { "id": "workspace-monopolization-auditor", "description": "Applique le malus de résidence temporelle sur les enchères de workspace." },
+    { "id": "memory-attribution-logger", "description": "Scelle l'attribution du contrôleur et des alternatives au moment exact du snapshot." },
+    { "id": "falkor-projection-adapter", "description": "Assure la persistance transactionnelle et la détection de dérive dans FalkorDB." }
+  ],
+  "guardrails": [
+    "no-rigid-subentity-cap|Seul l'attracteur souple module la promotion.",
+    "no-dissent-erasure-on-high-level|Les sous-entités haut niveau en conflit ne fusionnent jamais de force.",
+    "anti-task-lock-monopolization|Le temps de résidence dégrade progressivement le score de sélection.",
+    "append-only-evidence|Les preuves apportées par la fusion s'additionnent sans écraser le passé.",
+    "one-citizen-pump|Les sous-entités ne créent aucune énergie et ne possèdent aucune mémoire privée."
+  ],
+  "defaultPolicyDefaults": {
+    "equilibriumTarget": 10,
+    "capacitySoftness": 2.5,
+    "lowSimilarityThreshold": 0.72,
+    "highSimilarityThreshold": 0.94,
+    "highSimilarityFloorUnderPressure": 0.89,
+    "contradictionThreshold": 0.65,
+    "certaintyDominance": 0.25,
+    "basePromotionThreshold": 0.58,
+    "capacityPromotionCost": 0.24
+  }
+}

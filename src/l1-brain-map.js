@@ -10,6 +10,7 @@ import { buildProjectionBasis, projectVector, projectWeightedCentroid } from "./
 import { buildAttentionField, hueFromKey } from "./l1-attention-field.js";
 import { buildEnergyField } from "./l1-energy-field.js";
 import { SUBENTITY_STATES, describeDoing, describeFeeling, describeSeeing, deriveSubentityState } from "./l1-subentity-semantics.js";
+import { generateSubentityName } from "./l1-subentity-namer.js";
 
 /**
  * Teinte du centre de gravité. Le cluster dominant est la lecture la plus
@@ -103,8 +104,6 @@ export async function enrichBrainFrame(frame, {
     // sous le seuil d'admission mais au-dessus du seuil de rétention. Ils sont
     // localisés comme les autres pour qu'on puisse voir où le champ s'arrête.
     const peripheryNodes = (field.periphery || []).map(locate);
-
-import { generateSubentityName } from "./l1-subentity-namer.js";
 
     const naming = generateSubentityName(entity, [...nodes, ...peripheryNodes]);
 

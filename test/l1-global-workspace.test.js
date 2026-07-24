@@ -79,3 +79,43 @@ test("character budget is explicit and cannot be silently invented", () => {
   assert.throws(() => selectGlobalWorkspace({ tickId: "missing", candidates: [] }), /characterBudget/);
   assert.throws(() => selectGlobalWorkspace({ tickId: "zero", characterBudget: 0, candidates: [] }), /at least 1/);
 });
+
+test("un snapshot inchangé traverse le remap sans être touché", () => {
+  const snapshot = selectGlobalWorkspace({
+    tickId: "stable",
+    characterBudget: 1000,
+    candidates: [candidate("lead", { heat: 1, goalSalience: 1 }), candidate("support"), candidate("third")]
+  });
+  // Toutes les coalitions survivent à elles-mêmes : le remap doit être un no-op référentiel.
+  assert.equal(remapWorkspaceSnapshotControllers(snapshot, id => id), snapshot);
+});
+
+test("une coalition meneuse fusionnée cède son attention au survivant, sans contrôleur fantôme", () => {
+  const snapshot = selectGlobalWorkspace({
+    tickId: "merge-tick",
+    characterBudget: 2000,
+    candidates: [
+      candidate("lead", { heat: 1, goalSalience: 1 }),
+      candidate("survivor", { heat: 0.9, goalSalience: 0.9 }),
+      candidate("bystander", { heat: 0.5 })
+    ]
+  });
+  assert.equal(snapshot.controllerId, "lead");
+  const leadShare = snapshot.slots.find(slot => slot.controllerId === "lead").characterAllocation;
+  const survivorShare = snapshot.slots.find(slot => slot.controllerId === "survivor").characterAllocation;
+
+  // "lead" a été absorbée par "survivor" dans le même tick.
+  const repaired = remapWorkspaceSnapshotControllers(snapshot, id => (id === "lead" ? "survivor" : id));
+
+  assert.equal(repaired.controllerId, "survivor");
+  assert.equal(repaired.controllerStatus, "attributed_live");
+  assert.equal(repaired.slots[0].controllerId, "survivor");
+  assert.equal(repaired.slots[0].role, "lead");
+  // Aucun créneau ne pointe encore vers la coalition disparue.
+  assert.ok(!repaired.slots.some(slot => slot.controllerId === "lead"));
+  assert.ok(!repaired.bids.some(bid => bid.controllerId === "lead"));
+  // "survivor" tient désormais la somme des deux parts ; le budget total est conservé.
+  assert.equal(repaired.slots[0].characterAllocation, leadShare + survivorShare);
+  assert.equal(repaired.characterUsed, snapshot.characterUsed);
+  assert.deepEqual(repaired.slots.map(slot => slot.rank), repaired.slots.map((_, index) => index + 1));
+});

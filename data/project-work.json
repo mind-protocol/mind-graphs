@@ -567,9 +567,16 @@
       "phrase": "Établir une chronologie vérifiable qui sépare le standard Token-2022, la création du mint et les éventuels déploiements antérieurs.",
       "family": "Travail du projet · validation factuelle",
       "summary": "Résoudre le conflit uniquement à partir de preuves primaires identifiables, puis corriger ou qualifier les affirmations incompatibles après revue humaine.",
-      "workStatus": "ready",
+      "workStatus": "blocked",
       "priority": 90,
       "autonomyMode": "autonomous",
+      "blockedBy": "task-human-review-mind-deployment-chronology",
+      "blockerReason": "La recherche primaire est terminée, mais le corpus interdit de modifier les claims avant validation humaine de la formulation proposée.",
+      "researchCompletedAt": "2026-07-25",
+      "evidenceNodeIds": [
+        "observation-mind-deployment-chronology-conflict-2026",
+        "proposal-mind-deployment-chronology-wording"
+      ],
       "acceptanceCriteria": [
         "L’adresse du mint et les transactions pertinentes sont identifiées par des sources primaires vérifiables.",
         "La chronologie distingue explicitement le standard Token-2022, la création du mint et tout déploiement antérieur revendiqué.",
@@ -577,7 +584,94 @@
         "Une revue humaine valide la formulation avant modification des claims du corpus."
       ],
       "verificationCommand": "npm run validate && npm test",
-      "updatedAt": "2026-07-23",
+      "updatedAt": "2026-07-25",
+      "clusterId": "project-work",
+      "semanticType": "task"
+    },
+    {
+      "id": "observation-mind-deployment-chronology-conflict-2026",
+      "name": "Observation · La date devnet 2025 contredit la chronologie primaire du dépôt",
+      "nodeType": "moment",
+      "phrase": "Le dépôt officiel documente un déploiement devnet au 6 janvier 2025, mais le commit qui publie les adresses et déclare ce déploiement est horodaté du 6 janvier 2026.",
+      "family": "Preuve primaire · provenance de $MIND",
+      "summary": "Le document officiel identifie le mint devnet BFP3oicmCg2WsDMMG9TXhdC8Fzu3yR7kLYNEVxCx5efa, le programme TransferHook 325JiLH2czH47tnDzheS6rQdDh9rHa1mD8wVuRUPDAnD, l’autorité CCsJLZR8b19iDgS9hXUYs9q2c928ihzZdfSgZLPYffWg et la signature TransferHook 3zaCMEHVz2LLKGkDcPvgSj2yoXjuRBQwro5WD1fau457tM7WiF3nzNWFgbKEmGWkghJ864rwK8LVV1XhUyc5Sh4p. Il ne publie pas la signature de création du mint. Le commit GitHub 6473a39662a9a1de410750d3628d5457c257ec7a est horodaté 2026-01-06T20:05:54+01:00 : la date devnet 2025 est donc incompatible avec la provenance Git disponible et reste non établie on-chain.",
+      "observedAt": "2026-07-25",
+      "epistemicStatus": "unresolved",
+      "populationOrSystem": "Dépôt officiel mind-protocol/mind-protocol, Solana devnet et Solana mainnet",
+      "standardName": "SPL Token-2022",
+      "standardEvidenceUrl": "https://solana.com/solutions/token-extensions",
+      "devnetMint": "BFP3oicmCg2WsDMMG9TXhdC8Fzu3yR7kLYNEVxCx5efa",
+      "devnetTransferHookProgram": "325JiLH2czH47tnDzheS6rQdDh9rHa1mD8wVuRUPDAnD",
+      "devnetMintAuthority": "CCsJLZR8b19iDgS9hXUYs9q2c928ihzZdfSgZLPYffWg",
+      "devnetTransferHookSignature": "3zaCMEHVz2LLKGkDcPvgSj2yoXjuRBQwro5WD1fau457tM7WiF3nzNWFgbKEmGWkghJ864rwK8LVV1XhUyc5Sh4p",
+      "devnetMintCreationSignature": null,
+      "projectDocumentUrl": "https://github.com/mind-protocol/mind-protocol/blob/main/docs/economy/SYNC_Economy.md",
+      "projectCommitUrl": "https://github.com/mind-protocol/mind-protocol/commit/6473a39662a9a1de410750d3628d5457c257ec7a",
+      "projectCommitAt": "2026-01-06T20:05:54+01:00",
+      "mainnetMint": "EgLGfRrjX3du7Pwbj8dzyubSk8ic1WdDfq1ysLqhBm6p",
+      "mainnetMintCreationSignature": "5kTvrH91kNF9y16L5ThyxzfdGCCiytPQkiTFS46wA3Qq1y8Q6zqGz7dxBBcnnfeoDRiH27CkyXVYWRp5wbi1soML",
+      "mainnetMintCreatedAt": "2026-02-07T13:26:14Z",
+      "currentWakeChainVerification": "unavailable_network_and_explorer_blocked",
+      "updatedAt": "2026-07-25",
+      "clusterId": "project-work",
+      "semanticType": "observation"
+    },
+    {
+      "id": "proposal-mind-deployment-chronology-wording",
+      "name": "Proposition de revue · Chronologie qualifiée de $MIND",
+      "nodeType": "narrative",
+      "phrase": "Token-2022 est le nom du standard ; la première provenance Git identifiable du déploiement devnet date du 6 janvier 2026, et le mint mainnet actuel a été créé le 7 février 2026.",
+      "family": "Travail du projet · formulation soumise à revue",
+      "summary": "Proposition sans mutation des claims existants : « $MIND utilise SPL Token-2022. Un document du projet revendique un déploiement devnet au 6 janvier 2025, mais le premier commit Git identifiable qui publie les adresses et déclare ce déploiement date du 6 janvier 2026 ; faute de signature de création du mint devnet, la date 2025 n’est pas établie on-chain. Le mint mainnet actuel EgLG…Bm6p est un artefact distinct, créé le 7 février 2026. Aucune création de $MIND en 2022 n’est établie. »",
+      "workStatus": "proposed",
+      "priority": 90,
+      "autonomyMode": "review_required",
+      "reviewStatus": "pending_human_review",
+      "claimAssessments": [
+        {
+          "claimId": "hypothesis-mind-solana-2022",
+          "assessment": "non_established",
+          "justification": "Token-2022 nomme le standard ; aucune adresse ni transaction de 2022 n’est identifiée."
+        },
+        {
+          "claimId": "repo-token-deployment",
+          "assessment": "date_conflicting",
+          "justification": "Les adresses devnet sont publiées, mais la date 2025 du document contredit l’horodatage 2026 du commit de déploiement et la signature de création du mint manque."
+        },
+        {
+          "claimId": "repo-claim-token-year",
+          "assessment": "partially_confirmed",
+          "justification": "La distinction entre Token-2022 et une année de déploiement est confirmée ; la date janvier 2025 ne l’est pas."
+        },
+        {
+          "claimId": "observation-mind-mainnet-mint-2026",
+          "assessment": "confirmed_from_existing_rpc_observation_not_refreshed",
+          "justification": "Le corpus conserve l’adresse et la transaction fondatrice mainnet ; la RPC n’a pas pu être relue pendant ce réveil."
+        }
+      ],
+      "updatedAt": "2026-07-25",
+      "clusterId": "project-work",
+      "epistemicStatus": "design_proposal",
+      "semanticType": "idea"
+    },
+    {
+      "id": "task-human-review-mind-deployment-chronology",
+      "name": "Revue humaine · Valider la chronologie qualifiée de $MIND",
+      "nodeType": "moment",
+      "phrase": "Valider, amender ou refuser la formulation proposée avant toute modification des claims du corpus.",
+      "family": "Travail du projet · revue factuelle",
+      "summary": "La recherche distingue désormais standard, devnet et mainnet. La revue humaine doit décider si le corpus remplace la date devnet 2025 par une qualification fondée sur le commit 2026, tout en conservant visible l’absence de signature de création du mint devnet.",
+      "workStatus": "ready",
+      "priority": 90,
+      "autonomyMode": "review_required",
+      "acceptanceCriteria": [
+        "La formulation distingue Token-2022, le mint devnet et le mint mainnet.",
+        "La date devnet 2025 est soit justifiée par une transaction primaire, soit marquée non établie.",
+        "L’absence de preuve d’une création en 2022 reste explicite.",
+        "Les claims existants ne sont modifiés qu’après décision humaine explicite."
+      ],
+      "verificationCommand": "npm run validate && npm test",
+      "updatedAt": "2026-07-25",
       "clusterId": "project-work",
       "semanticType": "task"
     },
@@ -2922,6 +3016,26 @@
       "target": "hypothesis-mind-solana-2022",
       "type": "TARGETS",
       "justification": "La tâche doit instruire l’ancienne affirmation de présence sur Solana depuis 2022 au lieu de la supprimer sans preuve."
+    },
+    {
+      "source": "observation-mind-deployment-chronology-conflict-2026",
+      "target": "repo-token-deployment",
+      "type": "CONTRADICTS",
+      "condition": "La contradiction porte uniquement sur la date 2025 du document, pas sur l’existence des adresses devnet publiées.",
+      "justification": "Le commit qui publie le déploiement est horodaté du 6 janvier 2026 et aucune signature de création du mint devnet n’établit le 6 janvier 2025."
+    },
+    {
+      "source": "observation-mind-deployment-chronology-conflict-2026",
+      "target": "hypothesis-mind-solana-2022",
+      "type": "CONTRADICTS",
+      "condition": "La contradiction porte sur une création de $MIND en 2022 : Token-2022 est le nom du standard et aucune adresse ou transaction de 2022 n’est identifiée.",
+      "justification": "Les seuls artefacts identifiés sont les adresses devnet publiées par un commit de 2026 et le mint mainnet créé en 2026."
+    },
+    {
+      "source": "task-human-review-mind-deployment-chronology",
+      "target": "proposal-mind-deployment-chronology-wording",
+      "type": "TARGETS",
+      "justification": "La tâche de revue vise explicitement la formulation candidate afin qu’un humain la valide, l’amende ou la refuse avant mutation des claims."
     },
     {
       "source": "idea-evidence-social-contract-pressure",

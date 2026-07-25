@@ -676,8 +676,8 @@
       "semanticType": "task"
     },
     {
-      "id": "method-solana-mint-provenance-audit",
-      "name": "Méthode · Audit reproductible de provenance des mints Solana",
+      "id": "unlock-solana-mint-provenance-audit",
+      "name": "Capacité · Audit reproductible de provenance des mints Solana",
       "nodeType": "thing",
       "phrase": "Construire une table de provenance séparée par réseau et par adresse, puis remonter chaque historique jusqu'à sa plus ancienne transaction disponible.",
       "family": "Travail du projet · méthode de déblocage",
@@ -695,11 +695,11 @@
       "epistemicStatus": "design_proposal",
       "updatedAt": "2026-07-25",
       "clusterId": "project-work",
-      "semanticType": "method"
+      "semanticType": "unlock"
     },
     {
-      "id": "method-mind-token-function-separation-review",
-      "name": "Méthode · Matrice de séparation des fonctions de $MIND",
+      "id": "unlock-mind-token-function-separation-review",
+      "name": "Capacité · Matrice de séparation des fonctions de $MIND",
       "nodeType": "thing",
       "phrase": "Faire qualifier séparément par l'auteur chaque comportement proposé comme accès, allocation, gouvernance ou échange, avec permissions, bénéficiaires et interdictions.",
       "family": "Travail du projet · méthode de déblocage",
@@ -721,23 +721,7 @@
       "autonomyMode": "review_required",
       "updatedAt": "2026-07-25",
       "clusterId": "project-work",
-      "semanticType": "method"
-    },
-    {
-      "id": "metric-mind-chronology-review-criteria-coverage",
-      "name": "Métrique · Couverture des critères de revue de la chronologie $MIND",
-      "nodeType": "thing",
-      "phrase": "Compter les critères d'acceptation disposant d'une décision humaine explicite et d'une justification traçable.",
-      "family": "Travail du projet · métrique de progression",
-      "summary": "Unité : critère qualifié, de 0 à 4, rapporté aussi en pourcentage. Calcul : nombre de critères d'acceptation de task-human-review-mind-deployment-chronology portant une disposition humaine explicite (accepté, amendé ou refusé) et une référence de preuve, divisé par quatre. Un critère sans décision ou sans preuve compte zéro.",
-      "unit": "critère qualifié sur 4 et pourcentage de couverture",
-      "calculationMethod": "coverage = 100 × count(criteria with explicit human disposition and supporting evidence reference) / 4",
-      "progressCondition": "La progression est observable lorsque le numérateur augmente entre deux snapshots de revue sans qu'un critère précédemment qualifié perde sa décision ou sa preuve.",
-      "completionCondition": "4 critères sur 4 sont qualifiés et la formulation globale porte une décision humaine explicite : valider, amender ou refuser.",
-      "baseline": "0/4 tant qu'aucune disposition humaine explicite n'est enregistrée ; les preuves techniques existantes seules ne valent pas décision de revue.",
-      "updatedAt": "2026-07-25",
-      "clusterId": "project-work",
-      "semanticType": "metric"
+      "semanticType": "unlock"
     },
     {
       "id": "change-2026-07-22-offline-autonomy-diagnostics",
@@ -3102,28 +3086,16 @@
       "justification": "La tâche de revue vise explicitement la formulation candidate afin qu’un humain la valide, l’amende ou la refuse avant mutation des claims."
     },
     {
-      "source": "method-solana-mint-provenance-audit",
+      "source": "unlock-solana-mint-provenance-audit",
       "target": "hypothesis-mind-solana-2022",
       "type": "UNLOCKS",
       "justification": "Blocage observé : question-token-proof exige une preuve on-chain de 2022, mais aucune adresse et transaction fondatrice de 2022 ne sont établies. Changement attendu : produire pour chaque mint candidat une chronologie reproductible séparant réseau, adresse, standard et création, ou un constat explicite d'absence de preuve. Test invalidant : l'historique le plus ancien ne peut pas être atteint, la création du mint ne peut pas être identifiée, ou deux exécutions finalisées donnent des chronologies incompatibles."
     },
     {
-      "source": "method-mind-token-function-separation-review",
+      "source": "unlock-mind-token-function-separation-review",
       "target": "hypothesis-mind-solana-2022",
       "type": "UNLOCKS",
       "justification": "Blocage observé : question-token-role laisse indéterminé si $MIND est un droit d'accès, une allocation, un pouvoir de gouvernance ou un actif échangeable. Changement attendu : une matrice soumise à l'auteur rend chaque comportement et conflit explicites et dérive un test observable par fonction retenue. Test invalidant : un comportement important reste non qualifié, des propriétés incompatibles restent fusionnées, ou aucun test du programme ne peut être dérivé."
-    },
-    {
-      "source": "task-human-review-mind-deployment-chronology",
-      "target": "metric-mind-chronology-review-criteria-coverage",
-      "type": "MEASURED_BY",
-      "justification": "La progression de la revue est le nombre de ses quatre critères disposant à la fois d'une disposition humaine explicite et d'une référence de preuve ; elle progresse lorsque ce nombre augmente entre deux snapshots et s'achève à 4/4 avec une décision globale."
-    },
-    {
-      "source": "observation-mind-deployment-chronology-conflict-2026",
-      "target": "task-human-review-mind-deployment-chronology",
-      "type": "MOTIVATES",
-      "justification": "L'observation d'une date devnet 2025 incompatible avec le commit 2026, jointe à l'absence de signature de création du mint devnet et au mint mainnet créé en 2026, rend nécessaire une revue humaine avant de modifier les claims de chronologie."
     },
     {
       "source": "idea-evidence-social-contract-pressure",

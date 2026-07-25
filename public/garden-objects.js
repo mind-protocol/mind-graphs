@@ -143,7 +143,21 @@ export const CONNECTORS = {
   PROMOTES_TO: { kind: "signpost", port: null, note: "promue en tâche" },
   TARGETS: { kind: "sight_line", port: null, note: "vise le travail" },
   DEPENDS_ON: { kind: "chain", port: null, note: "chaîne entre travaux" },
-  DOCUMENTS_PROGRESS: { kind: "chain", port: null, note: "journalise l'achèvement" }
+  DOCUMENTS_PROGRESS: { kind: "chain", port: null, note: "journalise l'achèvement" },
+
+  // vocabulaire comportemental L1
+  INCREASES_PROPENSITY: { kind: "crossing", port: "outlet", note: "augmente la propension" },
+  DECREASES_PROPENSITY: { kind: "pressure", port: "cap", note: "diminue la propension" },
+  INHIBITS: { kind: "barrier", port: "intake", note: "inhibe la stratégie" },
+  MAKES_SALIENT: { kind: "haze", port: null, note: "rend saillant" },
+  RECRUITS: { kind: "key_link", port: "intake", note: "recrute l'action primitive" },
+  COMMENTED_ON: { kind: "signpost", port: null, note: "commenté" },
+  EXPLAINS: { kind: "signpost", port: null, note: "explique" },
+  REGRETS: { kind: "signpost", port: null, note: "regrette" },
+  APPROVES: { kind: "signpost", port: null, note: "approuve" },
+  QUESTIONS: { kind: "signpost", port: null, note: "questionne" },
+  REINTERPRETS: { kind: "signpost", port: null, note: "réinterprète" },
+  LEARNS_FROM: { kind: "root", port: "footing", note: "apprend de" }
 };
 
 export const connectorOf = (link) =>

@@ -12,7 +12,15 @@ export const RELATION_FAMILY_WEIGHTS = Object.freeze({
   evidence: 0.95,
   hierarchy: 0.95,
   contextual: 0.85,
-  workflow: 0.9
+  workflow: 0.9,
+  policy_modulation: 0.8,
+  gating: 0.85,
+  salience: 0.75,
+  attention_recruitment: 0.8,
+  pattern_lifecycle: 0.85,
+  comment_communication: 0.6,
+  learning: 0.85,
+  affective: 0.65
 });
 
 const TYPE_TO_FAMILY = Object.freeze({

@@ -1,0 +1,195 @@
+{
+  "scope": "Indexation Direction B pour choix-de-vie-complexe-681ae64b",
+  "provenance": {
+    "conversationId": "choix-de-vie-complexe-681ae64b",
+    "sourceArtifact": "choix-de-vie-complexe.txt",
+    "sourcePathAtImport": "C:\\Users\\reyno\\OneDrive\\Documents\\choix-de-vie-complexe.txt",
+    "sourceHash": "sha256:681ae64bbb4e91f84bc7bd9669fa87d900008c05cbd36e846c0a8b7bdc2c4a93",
+    "importedAt": "2026-07-23",
+    "extractionMethod": "Découpage conservateur de trois unités récupérables, conservation textuelle et extraction limitée aux actes observables de l'assistant",
+    "timestampRule": "occurredAt reste inconnu lorsque l'export ne fournit pas de date ; la date de modification du fichier n'est pas substituée à la date de conversation.",
+    "confirmationRule": "L'autorisation d'import confirme l'entrée des trois blocs dans le L1, pas la vérité personnelle des formulations produites par l'assistant.",
+    "segmentationRule": "Les unités suivent les ruptures visibles de production ; les traces d'édition très courtes sont regroupées avec la prochaine réponse substantielle.",
+    "declaredParticipantIds": [
+      "actor-source-chatgpt-pro",
+      "self-nlr-ai"
+    ],
+    "participantEvidence": "NLR a confirmé que les participants sont ChatGPT et nlr_ai ; seuls les tours ChatGPT sont présents dans cet export partiel.",
+    "ingestionGeneration": "direction_b_preindex",
+    "assimilationStatus": "legacy_assimilated",
+    "experiencedByCitizen": true,
+    "supersededBy": "decision-ci-latent-memory-first",
+    "indexedAt": "2026-07-24"
+  },
+  "nodes": [
+    {
+      "id": "memory-ci-conversation-index-card-choix-de-vie-complexe-681ae64b",
+      "name": "Fiche d'Indexation Direction B · choix-de-vie-complexe-681ae64b",
+      "nodeType": "memory",
+      "claimNature": "conversation_index_card",
+      "semanticType": "ConversationIndexCard",
+      "phrase": "Fiche d'indexation pré-lecture Direction B pour la conversation choix-de-vie-complexe-681ae64b.",
+      "summary": "Indexation déterministe légère. Contient la timeline émotionnelle (0.3, 1, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3), la masse émotionnelle (0.8), le champ dominant (orientation_de_vie_et_symbiose_cognition) et les entités candidates sans créer de souvenirs ou d'acteurs prématurés.",
+      "emotionalMass": 0.8,
+      "emotionalTimeline": [
+        0.3,
+        1,
+        0.3,
+        0.3,
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "turningPoints": [
+        "bloc-002: pic d'intensité émotionnelle/cognitive"
+      ],
+      "dominantField": "orientation_de_vie_et_symbiose_cognition",
+      "weight": 7.5,
+      "automaticCreation": "forbidden",
+      "automaticMerge": "forbidden",
+      "sourceArtifact": "choix-de-vie-complexe.txt",
+      "sourceHash": "sha256:681ae64bbb4e91f84bc7bd9669fa87d900008c05cbd36e846c0a8b7bdc2c4a93",
+      "confirmedByHuman": true,
+      "epistemicStatus": "observed"
+    },
+    {
+      "id": "candidate-person-chatgpt-pro",
+      "name": "Candidat Personne · ChatGPT Pro",
+      "nodeType": "person",
+      "claimNature": "candidate_person",
+      "semanticType": "EntityCandidate",
+      "entityType": "person",
+      "phrase": "Candidat personne/interlocuteur externe extrait de la conversation.",
+      "automaticCreation": "forbidden",
+      "automaticMerge": "forbidden",
+      "status": "candidate_unconfirmed",
+      "confirmedByHuman": false,
+      "epistemicStatus": "inferred"
+    },
+    {
+      "id": "candidate-person-nlr",
+      "name": "Candidat Personne · NLR",
+      "nodeType": "person",
+      "claimNature": "candidate_person",
+      "semanticType": "EntityCandidate",
+      "entityType": "person",
+      "phrase": "Candidat personne/interlocuteur humain extrait de la conversation.",
+      "automaticCreation": "forbidden",
+      "automaticMerge": "forbidden",
+      "status": "candidate_unconfirmed",
+      "confirmedByHuman": false,
+      "epistemicStatus": "inferred"
+    },
+    {
+      "id": "candidate-place-voilier-29er",
+      "name": "Candidat Lieu / Espace · Voilier 29er",
+      "nodeType": "observation",
+      "claimNature": "candidate_place",
+      "semanticType": "EntityCandidate",
+      "entityType": "place",
+      "phrase": "Candidat lieu/cadre physique mentionné dans la conversation.",
+      "automaticCreation": "forbidden",
+      "automaticMerge": "forbidden",
+      "status": "candidate_unconfirmed",
+      "confirmedByHuman": false,
+      "epistemicStatus": "observed"
+    },
+    {
+      "id": "objective-identity-candidate-person-chatgpt-pro",
+      "name": "Question d'identité · Qui est ChatGPT Pro ?",
+      "nodeType": "objective",
+      "claimNature": "identity_question",
+      "semanticType": "IdentityQuestion",
+      "phrase": "Qui est la personne ou l'interlocuteur 'ChatGPT Pro' mentionné dans la conversation ?",
+      "targetCandidateId": "candidate-person-chatgpt-pro",
+      "confirmedByHuman": false,
+      "epistemicStatus": "pending"
+    },
+    {
+      "id": "objective-identity-candidate-place-voilier-29er",
+      "name": "Question de lieu · Quel est le cadre 'Voilier 29er' ?",
+      "nodeType": "objective",
+      "claimNature": "identity_question",
+      "semanticType": "IdentityQuestion",
+      "phrase": "Quel est le lieu ou le contexte 'Voilier 29er' mentionné dans la conversation ?",
+      "targetCandidateId": "candidate-place-voilier-29er",
+      "confirmedByHuman": false,
+      "epistemicStatus": "pending"
+    },
+    {
+      "id": "memory-ci-reading-queue-choix-de-vie-complexe-681ae64b",
+      "name": "Queue de Lecture Agentique · choix-de-vie-complexe-681ae64b",
+      "nodeType": "memory",
+      "claimNature": "reading_queue",
+      "semanticType": "ConversationReadingQueue",
+      "phrase": "Queue de lecture bloc par bloc pour la conversation choix-de-vie-complexe-681ae64b.",
+      "blocksTotal": 8,
+      "blocksPending": 8,
+      "status": "queued",
+      "confirmedByHuman": true,
+      "epistemicStatus": "observed"
+    },
+    {
+      "id": "memory-ci-reading-ledger-choix-de-vie-complexe-681ae64b",
+      "name": "Registre de Lecture (Ledger) · choix-de-vie-complexe-681ae64b",
+      "nodeType": "memory",
+      "claimNature": "reading_ledger",
+      "semanticType": "BlockReadingLedger",
+      "phrase": "Ledger d'audit des blocs lus et des décisions d'écriture/no_write pour choix-de-vie-complexe-681ae64b.",
+      "entriesJson": "[]",
+      "confirmedByHuman": true,
+      "epistemicStatus": "observed"
+    }
+  ],
+  "links": [
+    {
+      "source": "memory-ci-conversation-index-card-choix-de-vie-complexe-681ae64b",
+      "target": "memory-conversation-choix-de-vie-complexe-source",
+      "type": "DERIVED_FROM",
+      "justification": "La fiche ConversationIndexCard pointe de manière immuable vers le nœud source de la conversation."
+    },
+    {
+      "source": "memory-ci-conversation-index-card-choix-de-vie-complexe-681ae64b",
+      "target": "candidate-person-chatgpt-pro",
+      "type": "DESCRIBES",
+      "justification": "Rattache un candidat entité à la fiche d'indexation sans valider son existence de manière absolue."
+    },
+    {
+      "source": "memory-ci-conversation-index-card-choix-de-vie-complexe-681ae64b",
+      "target": "candidate-person-nlr",
+      "type": "DESCRIBES",
+      "justification": "Rattache un candidat entité à la fiche d'indexation sans valider son existence de manière absolue."
+    },
+    {
+      "source": "memory-ci-conversation-index-card-choix-de-vie-complexe-681ae64b",
+      "target": "candidate-place-voilier-29er",
+      "type": "DESCRIBES",
+      "justification": "Rattache un candidat entité à la fiche d'indexation sans valider son existence de manière absolue."
+    },
+    {
+      "source": "memory-ci-conversation-index-card-choix-de-vie-complexe-681ae64b",
+      "target": "objective-identity-candidate-person-chatgpt-pro",
+      "type": "DESCRIBES",
+      "justification": "La question d'identité vise à clarifier la nature et la relation de cette entité candidate."
+    },
+    {
+      "source": "memory-ci-conversation-index-card-choix-de-vie-complexe-681ae64b",
+      "target": "objective-identity-candidate-place-voilier-29er",
+      "type": "DESCRIBES",
+      "justification": "La question d'identité vise à clarifier la nature et la relation de cette entité candidate."
+    },
+    {
+      "source": "memory-ci-reading-queue-choix-de-vie-complexe-681ae64b",
+      "target": "memory-ci-conversation-index-card-choix-de-vie-complexe-681ae64b",
+      "type": "DERIVED_FROM",
+      "justification": "La queue de lecture agentique s'appuie sur la fiche d'indexation pré-calculée."
+    },
+    {
+      "source": "memory-ci-reading-ledger-choix-de-vie-complexe-681ae64b",
+      "target": "memory-ci-reading-queue-choix-de-vie-complexe-681ae64b",
+      "type": "DERIVED_FROM",
+      "justification": "Le registre de lecture (ledger) enregistre l'avancement bloc par bloc de la queue."
+    }
+  ]
+}

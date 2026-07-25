@@ -1372,6 +1372,314 @@
       "epistemicStatus": "documented",
       "clusterId": "ontology-vocabulary",
       "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-INCREASES_PROPENSITY",
+      "name": "augmente la propension à",
+      "nodeType": "narrative",
+      "phrase": "situation ou expérience → stratégie ou action",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "situation ou expérience → stratégie ou action",
+      "definition": "situation ou expérience → stratégie ou action",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille policy_modulation.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-DECREASES_PROPENSITY",
+      "name": "diminue la propension à",
+      "nodeType": "narrative",
+      "phrase": "situation ou expérience → stratégie ou action",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "situation ou expérience → stratégie ou action",
+      "definition": "situation ou expérience → stratégie ou action",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille policy_modulation.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-INHIBITS",
+      "name": "inhibe",
+      "nodeType": "narrative",
+      "phrase": "situation ou commentaire → stratégie ou action",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "situation ou commentaire → stratégie ou action",
+      "definition": "situation ou commentaire → stratégie ou action",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille gating.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-MAKES_SALIENT",
+      "name": "rend saillant",
+      "nodeType": "narrative",
+      "phrase": "situation ou commentaire → stratégie ou action",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "situation ou commentaire → stratégie ou action",
+      "definition": "situation ou commentaire → stratégie ou action",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille salience.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-RECRUITS",
+      "name": "recrute",
+      "nodeType": "narrative",
+      "phrase": "pattern de comportement → action primitive",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "pattern de comportement → action primitive",
+      "definition": "pattern de comportement → action primitive",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille attention_recruitment.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-COMMENTED_ON",
+      "name": "commenté par",
+      "nodeType": "narrative",
+      "phrase": "action ou moment → commentaire",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "action ou moment → commentaire",
+      "definition": "action ou moment → commentaire",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille comment_communication.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-EXPLAINS",
+      "name": "explique",
+      "nodeType": "narrative",
+      "phrase": "commentaire → action ou moment",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "commentaire → action ou moment",
+      "definition": "commentaire → action ou moment",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille comment_communication.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-REGRETS",
+      "name": "regrette",
+      "nodeType": "narrative",
+      "phrase": "commentaire → action ou décision passée",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "commentaire → action ou décision passée",
+      "definition": "commentaire → action ou décision passée",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille affective.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-APPROVES",
+      "name": "approuve",
+      "nodeType": "narrative",
+      "phrase": "commentaire → action ou décision passée",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "commentaire → action ou décision passée",
+      "definition": "commentaire → action ou décision passée",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille affective.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-QUESTIONS",
+      "name": "questionne",
+      "nodeType": "narrative",
+      "phrase": "commentaire → action, moment ou hypothèse",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "commentaire → action, moment ou hypothèse",
+      "definition": "commentaire → action, moment ou hypothèse",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille comment_communication.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-REINTERPRETS",
+      "name": "réinterprète",
+      "nodeType": "narrative",
+      "phrase": "commentaire → action ou résultat passé",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "commentaire → action ou résultat passé",
+      "definition": "commentaire → action ou résultat passé",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille learning.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-LEARNS_FROM",
+      "name": "apprend de",
+      "nodeType": "narrative",
+      "phrase": "commentaire → moment ou évaluation",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "commentaire → moment ou évaluation",
+      "definition": "commentaire → moment ou évaluation",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille learning.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-PROPOSES_CHANGE_TO",
+      "name": "propose de changer",
+      "nodeType": "narrative",
+      "phrase": "commentaire → stratégie ou pattern",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "commentaire → stratégie ou pattern",
+      "definition": "commentaire → stratégie ou pattern",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille learning.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-predicat-BASED_ON",
+      "name": "s’appuie sur",
+      "nodeType": "narrative",
+      "phrase": "commentaire → observation ou moment",
+      "family": "Vocabulaire de l'ontologie · prédicat",
+      "summary": "commentaire → observation ou moment",
+      "definition": "commentaire → observation ou moment",
+      "definitionStatus": "defined",
+      "context": "Prédicat de relation de l'ontologie 1.17.0, famille evidence.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-famille-policy_modulation",
+      "name": "modulation de politique",
+      "nodeType": "narrative",
+      "phrase": "Famille de relations · modulation de politique",
+      "family": "Vocabulaire de l'ontologie · famille",
+      "summary": "Module la propension d'un comportement.",
+      "definition": "Module la propension d'un comportement.",
+      "definitionStatus": "defined",
+      "context": "Famille de relation de l'ontologie 1.17.0.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-famille-gating",
+      "name": "portillon attentionnel",
+      "nodeType": "narrative",
+      "phrase": "Famille de relations · portillon attentionnel",
+      "family": "Vocabulaire de l'ontologie · famille",
+      "summary": "Inhibe ou active l'accès attentionnel.",
+      "definition": "Inhibe ou active l'accès attentionnel.",
+      "definitionStatus": "defined",
+      "context": "Famille de relation de l'ontologie 1.17.0.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-famille-salience",
+      "name": "saillance",
+      "nodeType": "narrative",
+      "phrase": "Famille de relations · saillance",
+      "family": "Vocabulaire de l'ontologie · famille",
+      "summary": "Rend saillant dans le champ attentionnel.",
+      "definition": "Rend saillant dans le champ attentionnel.",
+      "definitionStatus": "defined",
+      "context": "Famille de relation de l'ontologie 1.17.0.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-famille-attention_recruitment",
+      "name": "recrutement attentionnel",
+      "nodeType": "narrative",
+      "phrase": "Famille de relations · recrutement attentionnel",
+      "family": "Vocabulaire de l'ontologie · famille",
+      "summary": "Recrute une action primitive.",
+      "definition": "Recrute une action primitive.",
+      "definitionStatus": "defined",
+      "context": "Famille de relation de l'ontologie 1.17.0.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-famille-pattern_lifecycle",
+      "name": "cycle de vie de pattern",
+      "nodeType": "narrative",
+      "phrase": "Famille de relations · cycle de vie de pattern",
+      "family": "Vocabulaire de l'ontologie · famille",
+      "summary": "Instancie, compare, renforce ou remplace un pattern.",
+      "definition": "Instancie, compare, renforce ou remplace un pattern.",
+      "definitionStatus": "defined",
+      "context": "Famille de relation de l'ontologie 1.17.0.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-famille-comment_communication",
+      "name": "commentaire et communication",
+      "nodeType": "narrative",
+      "phrase": "Famille de relations · commentaire et communication",
+      "family": "Vocabulaire de l'ontologie · famille",
+      "summary": "Annotation narrative ou métacognitive.",
+      "definition": "Annotation narrative ou métacognitive.",
+      "definitionStatus": "defined",
+      "context": "Famille de relation de l'ontologie 1.17.0.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-famille-learning",
+      "name": "apprentissage",
+      "nodeType": "narrative",
+      "phrase": "Famille de relations · apprentissage",
+      "family": "Vocabulaire de l'ontologie · famille",
+      "summary": "Apprentissage narratif issu d'une expérience.",
+      "definition": "Apprentissage narratif issu d'une expérience.",
+      "definitionStatus": "defined",
+      "context": "Famille de relation de l'ontologie 1.17.0.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
+    },
+    {
+      "id": "terme-famille-affective",
+      "name": "affectif",
+      "nodeType": "narrative",
+      "phrase": "Famille de relations · affectif",
+      "family": "Vocabulaire de l'ontologie · famille",
+      "summary": "Annotation affective d'une expérience.",
+      "definition": "Annotation affective d'une expérience.",
+      "definitionStatus": "defined",
+      "context": "Famille de relation de l'ontologie 1.17.0.",
+      "epistemicStatus": "documented",
+      "clusterId": "ontology-vocabulary",
+      "semanticType": "terme"
     }
   ],
   "links": [
@@ -1662,6 +1970,138 @@
       "target": "terme-type-claim",
       "type": "SUBCASE_OF",
       "justification": "L'ontologie déclare estimate comme spécialisation de claim ; le vocabulaire reprend cette hiérarchie au lieu de la laisser dans le seul schéma."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-INCREASES_PROPENSITY",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-DECREASES_PROPENSITY",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-INHIBITS",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-MAKES_SALIENT",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-RECRUITS",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-COMMENTED_ON",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-EXPLAINS",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-REGRETS",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-APPROVES",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-QUESTIONS",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-REINTERPRETS",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-LEARNS_FROM",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-PROPOSES_CHANGE_TO",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-predicat-BASED_ON",
+      "type": "DEFINES",
+      "justification": "Définit le terme dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-famille-policy_modulation",
+      "type": "DEFINES",
+      "justification": "Définit le terme de famille dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-famille-gating",
+      "type": "DEFINES",
+      "justification": "Définit le terme de famille dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-famille-salience",
+      "type": "DEFINES",
+      "justification": "Définit le terme de famille dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-famille-attention_recruitment",
+      "type": "DEFINES",
+      "justification": "Définit le terme de famille dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-famille-pattern_lifecycle",
+      "type": "DEFINES",
+      "justification": "Définit le terme de famille dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-famille-comment_communication",
+      "type": "DEFINES",
+      "justification": "Définit le terme de famille dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-famille-learning",
+      "type": "DEFINES",
+      "justification": "Définit le terme de famille dans le graphe de vocabulaire."
+    },
+    {
+      "source": "terme-predicat-DEFINES",
+      "target": "terme-famille-affective",
+      "type": "DEFINES",
+      "justification": "Définit le terme de famille dans le graphe de vocabulaire."
     }
   ]
 }

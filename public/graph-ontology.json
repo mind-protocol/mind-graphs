@@ -336,6 +336,46 @@
       "id": "workflow",
       "label": "travail du projet",
       "description": "Relie idées, tâches, dépendances, cibles et changements livrés."
+    },
+    {
+      "id": "policy_modulation",
+      "label": "modulation de politique",
+      "description": "Module la propension d'un comportement."
+    },
+    {
+      "id": "gating",
+      "label": "portillon attentionnel",
+      "description": "Inhibe ou active l'accès attentionnel."
+    },
+    {
+      "id": "salience",
+      "label": "saillance",
+      "description": "Rend saillant dans le champ attentionnel."
+    },
+    {
+      "id": "attention_recruitment",
+      "label": "recrutement attentionnel",
+      "description": "Recrute une action primitive."
+    },
+    {
+      "id": "pattern_lifecycle",
+      "label": "cycle de vie de pattern",
+      "description": "Instancie, compare, renforce ou remplace un pattern."
+    },
+    {
+      "id": "comment_communication",
+      "label": "commentaire et communication",
+      "description": "Annotation narrative ou métacognitive."
+    },
+    {
+      "id": "learning",
+      "label": "apprentissage",
+      "description": "Apprentissage narratif issu d'une expérience."
+    },
+    {
+      "id": "affective",
+      "label": "affectif",
+      "description": "Annotation affective d'une expérience."
     }
   ],
   "relationTypes": [
@@ -448,6 +488,132 @@
       "causalClaim": false,
       "direction": "problème ou raison → choix de design",
       "status": "active"
+    },
+    {
+      "id": "INCREASES_PROPENSITY",
+      "label": "augmente la propension à",
+      "family": "policy_modulation",
+      "scope": "behavioral",
+      "causalClaim": false,
+      "direction": "situation ou expérience → stratégie ou action",
+      "status": "active"
+    },
+    {
+      "id": "DECREASES_PROPENSITY",
+      "label": "diminue la propension à",
+      "family": "policy_modulation",
+      "scope": "behavioral",
+      "causalClaim": false,
+      "direction": "situation ou expérience → stratégie ou action",
+      "status": "active"
+    },
+    {
+      "id": "RECRUITS",
+      "label": "recrute",
+      "family": "attention_recruitment",
+      "scope": "action_selection",
+      "causalClaim": false,
+      "direction": "pattern de comportement → action primitive",
+      "status": "active"
+    },
+    {
+      "id": "INHIBITS",
+      "label": "inhibe",
+      "family": "gating",
+      "scope": "behavioral",
+      "causalClaim": false,
+      "direction": "situation ou commentaire → stratégie ou action",
+      "status": "active"
+    },
+    {
+      "id": "MAKES_SALIENT",
+      "label": "rend saillant",
+      "family": "salience",
+      "scope": "behavioral",
+      "causalClaim": false,
+      "direction": "situation ou commentaire → stratégie ou action",
+      "status": "active"
+    },
+    {
+      "id": "COMMENTED_ON",
+      "label": "commenté par",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "action ou moment → commentaire",
+      "status": "active"
+    },
+    {
+      "id": "EXPLAINS",
+      "label": "explique",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action ou moment",
+      "status": "active"
+    },
+    {
+      "id": "REGRETS",
+      "label": "regrette",
+      "family": "affective",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action ou décision passée",
+      "status": "active"
+    },
+    {
+      "id": "APPROVES",
+      "label": "approuve",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action ou décision passée",
+      "status": "active"
+    },
+    {
+      "id": "QUESTIONS",
+      "label": "questionne",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action, moment ou hypothèse",
+      "status": "active"
+    },
+    {
+      "id": "REINTERPRETS",
+      "label": "réinterprète",
+      "family": "communication",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → action ou résultat passé",
+      "status": "active"
+    },
+    {
+      "id": "LEARNS_FROM",
+      "label": "apprend de",
+      "family": "learning",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → moment ou évaluation",
+      "status": "active"
+    },
+    {
+      "id": "PROPOSES_CHANGE_TO",
+      "label": "propose de changer",
+      "family": "learning",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → stratégie ou pattern",
+      "status": "proposed"
+    },
+    {
+      "id": "BASED_ON",
+      "label": "s’appuie sur",
+      "family": "evidence",
+      "scope": "narrative",
+      "causalClaim": false,
+      "direction": "commentaire → observation ou moment",
+      "status": "proposed"
     },
     {
       "id": "CAUSES",
@@ -1171,10 +1337,13 @@
     "GROUNDS": {
       "sourceGroups": [
         "design",
-        "testable"
+        "testable",
+        "evidence",
+        "work"
       ],
       "targetGroups": [
-        "design"
+        "design",
+        "evidence"
       ]
     },
     "SAFEGUARDS": {
@@ -1190,7 +1359,8 @@
       "sourceGroups": [
         "design",
         "testable",
-        "evidence"
+        "evidence",
+        "work"
       ],
       "targetGroups": [
         "design",
@@ -1511,10 +1681,18 @@
       "sourceGroups": [
         "design",
         "claims",
-        "testable"
+        "testable",
+        "work"
       ],
       "targetTypes": [
-        "context"
+        "context",
+        "ApplicabilityContext"
+      ],
+      "sourceTypes": [
+        "BehaviorPattern"
+      ],
+      "targetGroups": [
+        "design"
       ]
     },
     "OPTION_FOR": {
@@ -1582,6 +1760,485 @@
         "terme"
       ],
       "allowAny": true
+    },
+    "INCREASES_PROPENSITY": {
+      "source": {
+        "nodeTypes": [
+          "thing",
+          "moment"
+        ],
+        "semanticTypes": [
+          "SituationPattern",
+          "BehaviorEpisode",
+          "CortexState"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern",
+          "CortexState"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "DECREASES_PROPENSITY": {
+      "source": {
+        "nodeTypes": [
+          "thing",
+          "moment"
+        ],
+        "semanticTypes": [
+          "SituationPattern",
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "INHIBITS": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "SituationPattern",
+          "Comment",
+          "Counterexample"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "MAKES_SALIENT": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "SituationPattern",
+          "Comment"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "RECRUITS": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern",
+          "CortexState"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "ActionGraph",
+          "CortexPrimitive"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "COMMENTED_ON": {
+      "source": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "Comment"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "EXPLAINS": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "Comment"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "REGRETS": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "Comment"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "APPROVES": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "Comment"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "QUESTIONS": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "Comment"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "REINTERPRETS": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "Comment"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "LEARNS_FROM": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "Comment"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode",
+          "PatternEvaluation"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "MATCHES": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "SituationPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "EXPECTS": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "ExpectedEffect"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "INSTANCE_OF": {
+      "source": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "SituationPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "USED": {
+      "source": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "BehaviorEpisode"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "COMPARED_WITH": {
+      "source": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "PatternEvaluation"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "ExpectedEffect"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "REINFORCES": {
+      "source": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "PatternEvaluation"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "WEAKENS": {
+      "source": {
+        "nodeTypes": [
+          "moment"
+        ],
+        "semanticTypes": [
+          "PatternEvaluation"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "LIMITS": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "Counterexample"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "SUPERSEDES": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "PatternVersion"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "PatternVersion"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "COMPILES_TO": {
+      "source": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "BehaviorPattern"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      },
+      "target": {
+        "nodeTypes": [
+          "thing"
+        ],
+        "semanticTypes": [
+          "CompiledArtifact"
+        ],
+        "semanticVocabulary": "l1_behavior"
+      }
+    },
+    "REFINES": {
+      "sourceGroups": [
+        "design",
+        "claims",
+        "work"
+      ],
+      "targetGroups": [
+        "design",
+        "claims",
+        "work"
+      ]
+    },
+    "AUDITS": {
+      "sourceGroups": [
+        "design",
+        "testable",
+        "evidence",
+        "work"
+      ],
+      "targetGroups": [
+        "design",
+        "testable",
+        "evidence",
+        "claims",
+        "work"
+      ]
     }
   },
   "traversalContract": {
@@ -1815,5 +2472,14 @@
         "meaning": "laisse passer en transformant ; artefact ou composant exécutable."
       }
     ]
+  },
+  "legacyReadTypes": {
+    "subentity": {
+      "legacyReadOnly": true,
+      "newWritesAllowed": false,
+      "canonicalProjection": "Actor/Subentity",
+      "canonicalNodeType": "actor",
+      "canonicalSemanticType": "subentity"
+    }
   }
 }

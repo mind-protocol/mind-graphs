@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { capacityPressure, createMemoryMoment, decideSubentityMerge, mergeSubentities, promoteSubentity, promotionThreshold, reconcileSubentities } from "../src/l1-subentities.js";
+import { capacityPressure, createMembershipFieldSnapshot, createMemoryMoment, decideSubentityMerge, mergeSubentities, promoteSubentity, promotionThreshold, reconcileSubentities } from "../src/l1-subentities.js";
 
 const low = overrides => ({ id: "belief-a", level: "low", status: "candidate", weight: 1, stability: 0.3, certainty: 0.55, signature: { safety: 1, retreat: 0.8 }, goals: ["safety"], strategies: ["retreat"], preferences: [], beliefs: [], evidenceMomentIds: ["m1"], ...overrides });
 
@@ -70,4 +70,17 @@ test("memory explicitly stays unknown when no controller is observable", () => {
   const result = createMemoryMoment({ id: "moment-unknown", content: "blur", occurredAt: "2026-07-23T10:01:00.000Z" });
   assert.equal(result.moment.controllerAttributionStatus, "unknown");
   assert.deepEqual(result.relations, []);
+});
+
+test("createMembershipFieldSnapshot formats weighted body membership fields correctly", () => {
+  const snapshot = createMembershipFieldSnapshot({
+    subentityId: "subentity-captain",
+    tick: 402,
+    memberships: [{ nodeId: "goal-protect-continuity", membership: 0.84 }],
+    attentionNodeIds: ["goal-protect-continuity"]
+  });
+  assert.equal(snapshot.subentityId, "subentity-captain");
+  assert.equal(snapshot.tick, 402);
+  assert.deepEqual(snapshot.memberships, [{ nodeId: "goal-protect-continuity", membership: 0.84 }]);
+  assert.deepEqual(snapshot.attentionNodeIds, ["goal-protect-continuity"]);
 });

@@ -38,7 +38,31 @@ export const TYPE_FAMILIES = {
   PROMOTES_TO: "workflow",
   TARGETS: "workflow",
   DEPENDS_ON: "workflow",
-  DOCUMENTS_PROGRESS: "workflow"
+  DOCUMENTS_PROGRESS: "workflow",
+  INCREASES_PROPENSITY: "policy_modulation",
+  DECREASES_PROPENSITY: "policy_modulation",
+  INHIBITS: "gating",
+  MAKES_SALIENT: "salience",
+  RECRUITS: "attention_recruitment",
+  COMMENTED_ON: "comment_communication",
+  EXPLAINS: "comment_communication",
+  REGRETS: "affective",
+  APPROVES: "affective",
+  QUESTIONS: "comment_communication",
+  REINTERPRETS: "learning",
+  LEARNS_FROM: "learning",
+  MATCHES: "pattern_lifecycle",
+  EXPECTS: "pattern_lifecycle",
+  INSTANCE_OF: "pattern_lifecycle",
+  USED: "pattern_lifecycle",
+  COMPARED_WITH: "pattern_lifecycle",
+  REINFORCES: "pattern_lifecycle",
+  WEAKENS: "pattern_lifecycle",
+  LIMITS: "pattern_lifecycle",
+  SUPERSEDES: "pattern_lifecycle",
+  COMPILES_TO: "pattern_lifecycle",
+  REFINES: "validation",
+  AUDITS: "validation"
 };
 
 export const LINK_FAMILY_STYLES = {
@@ -55,7 +79,15 @@ export const LINK_FAMILY_STYLES = {
   contextual: { dash: [7, 3, 1, 3], width: 1.8, speed: .012, cap: "round" },
   workflow: { dash: [8, 4], width: 2.5, speed: .02, cap: "round", pulse: true },
   obstruction: { dash: [], width: 3.6, speed: 0, cap: "butt" },
-  conflict: { dash: [5, 5], width: 2.6, speed: .04, cap: "round", pulse: true }
+  conflict: { dash: [5, 5], width: 2.6, speed: .04, cap: "round", pulse: true },
+  policy_modulation: { dash: [12, 3, 3, 3], width: 2.1, speed: .025, cap: "round", pulse: true },
+  gating: { dash: [4, 4, 1, 4], width: 3.0, speed: 0, cap: "butt" },
+  salience: { dash: [1, 3, 1, 3], width: 2.7, speed: .06, cap: "round", pulse: true },
+  attention_recruitment: { dash: [15, 5], width: 3.2, speed: .03, cap: "butt" },
+  pattern_lifecycle: { dash: [6, 2, 6, 2], width: 2.4, speed: .015, cap: "round", rail: true },
+  comment_communication: { dash: [1, 8], width: 1.6, speed: .04, cap: "round" },
+  learning: { dash: [3, 3, 12, 3], width: 2.3, speed: .028, cap: "butt", pulse: true },
+  affective: { dash: [9, 3, 3, 3], width: 2.0, speed: .02, cap: "round" }
 };
 
 // Expressive endpoint markers ("almost a video game"): the arrowhead is

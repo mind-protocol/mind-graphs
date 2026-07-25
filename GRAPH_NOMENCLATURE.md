@@ -164,3 +164,24 @@ Enfin, une baisse de compétence est une hypothèse à deux branches avant d’�
 ## Objets de travail du projet
 
 Depuis le schéma 1.5, `idea`, `task` et `change` décrivent le pilotage sans les confondre avec une hypothèse scientifique ou une preuve. Le statut opérationnel (`workStatus`) reste séparé du statut épistémique. `DOCUMENTS_PROGRESS` affirme qu’un changement a été livré pour une tâche ; il ne soutient aucune estimation scientifique.
+
+## Le Cluster n'est pas une entité ontologique
+
+**« Cluster » décrit une opération de regroupement calculée ou une vue pratique ; ce n’est pas une catégorie d'entité cognitive dans le brain.**
+
+Formellement :
+```text
+cluster = méthode + paramètres + snapshot du graphe + ensemble résultant
+```
+
+Un regroupement calculé ne devient jamais automatiquement un nœud ou un Actor. Il ne possède ni mémoire, ni énergie, ni personnalité, ni contrôle sur le workspace.
+
+Les concepts sont explicitement distingués :
+- `NodeSelection` : nœuds sélectionnés par une requête ou un algorithme.
+- `MembershipFieldSnapshot` : champ d'appartenance d'une sous-entité (`{ subentityId, tick, memberships, attentionNodeIds, barycenter }`).
+- `AttentionFieldSnapshot` : champ attentionnel courant.
+- `PatternObservation` / `SubentityHypothesis` : motif récurrent détecté et son interprétation sourcée.
+- `VisualRegion` : région éphémère dessinée sur la carte, jamais écrite dans le graphe cognitif L1.
+- `BlueprintModule` : conteneur de compilation du blueprint, membrané `NonCognitive`.
+- `WorkspaceBid` : proposition soumise par une sous-entité (`Subentity -> SUBMITS -> WorkspaceBid -> CONTAINS -> NodeSelection`).
+

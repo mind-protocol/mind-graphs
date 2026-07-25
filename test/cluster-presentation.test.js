@@ -10,7 +10,7 @@ test("the presentation algorithm covers the complete current nomenclature", () =
   assert.equal(audit.ok, true, audit.errors.join("\n"));
   assert.equal(audit.schemaVersion, ontology.schemaVersion);
   assert.equal(audit.nodeTypeCount, ontology.nodeTypes.length);
-  assert.equal(audit.relationTypeCount, ontology.relationTypes.length);
+  assert.equal(audit.relationTypeCount, ontology.relationTypes.filter(r => r.status === "active").length);
   assert.equal(audit.relationFamilyCount, ontology.relationFamilies.length);
   assert.equal(audit.epistemicStatusCount, ontology.epistemicStatuses.length);
 });

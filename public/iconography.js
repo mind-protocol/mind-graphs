@@ -80,7 +80,19 @@ export const RELATION_TYPE_ICONS = Object.freeze({
   PROMOTES_TO: "⇥",
   TARGETS: "◎",
   DEPENDS_ON: "↳",
-  DOCUMENTS_PROGRESS: "Δ"
+  DOCUMENTS_PROGRESS: "Δ",
+  INCREASES_PROPENSITY: "↗",
+  DECREASES_PROPENSITY: "↘",
+  INHIBITS: "⊘",
+  MAKES_SALIENT: "☼",
+  RECRUITS: "⚡",
+  COMMENTED_ON: "💬",
+  EXPLAINS: "💡",
+  REGRETS: "☁",
+  APPROVES: "👍",
+  QUESTIONS: "?",
+  REINTERPRETS: "↻",
+  LEARNS_FROM: "🎓"
 });
 
 export function iconForNode(nodeOrType) {

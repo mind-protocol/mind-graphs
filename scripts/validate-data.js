@@ -86,6 +86,11 @@ async function validateGraph(graphConfig) {
       if (!typeGroups.has(group)) errors.push(`relation constraint references unknown group ${group}`);
       for (const type of typeGroups.get(group) || []) allowed.add(type);
     }
+    const sideObj = constraint?.[side];
+    if (sideObj) {
+      if (Array.isArray(sideObj.nodeTypes)) for (const t of sideObj.nodeTypes) allowed.add(t);
+      if (Array.isArray(sideObj.semanticTypes)) for (const t of sideObj.semanticTypes) allowed.add(t);
+    }
     return allowed;
   }
 

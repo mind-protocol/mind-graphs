@@ -25,6 +25,16 @@ test("all nodes obey the five-role L4 grammar", () => {
   }
 });
 
+test("blueprint modules are nonCognitive build containers and no cognitive node has semanticType Cluster", () => {
+  const modules = graph.nodes.filter(node => node.semanticType === "BlueprintModule");
+  assert.ok(modules.length > 0, "BlueprintModule spaces must exist");
+  for (const moduleNode of modules) {
+    assert.equal(moduleNode.nonCognitive, true, `${moduleNode.id} must be nonCognitive`);
+  }
+  const badClusterNodes = graph.nodes.filter(node => ["Cluster", "BlueprintCluster", "CognitiveCluster", "CandidateCluster"].includes(node.semanticType));
+  assert.equal(badClusterNodes.length, 0, "No node may carry an ontological Cluster semanticType");
+});
+
 test("only the local citizen actor can inject energy", () => {
   const pumps = graph.nodes.filter(node => node.injectsEnergy);
   assert.deepEqual(pumps.map(node => node.id), ["actor-citizen-runtime-citizen-role"]);
@@ -69,12 +79,12 @@ test("open thresholds remain explicit questions, not invented constants", () => 
 });
 
 test("the complete graph includes the eight-state subentity behavior artifacts and their action influences", () => {
-  const states = graph.nodes.filter(node => node.semanticType === "subentity_state_machine");
+  const states = graph.nodes.filter(node => node.semanticType === "CortexState" || node.semanticType === "subentity_state_machine");
   const primitives = graph.nodes.filter(node => node.semanticType === "CortexPrimitive");
   assert.equal(states.length, 8);
   assert.equal(primitives.length, 4);
-  assert.equal(graph.relations.filter(relation => relation.type === "INCREASES_PROPENSITY").length, 10);
-  assert.equal(graph.relations.filter(relation => relation.type === "RECRUITS").length, 7);
+  assert.equal(graph.relations.filter(relation => relation.type === "TRANSITIONS_TO" || relation.type === "INCREASES_PROPENSITY").length, 10);
+  assert.equal(graph.relations.filter(relation => relation.type === "RECRUITS" || (relation.source.startsWith("state-") && relation.target.startsWith("action-"))).length, 7);
   for (const state of states) {
     assert.ok(graph.relations.some(relation =>
       relation.target === state.id

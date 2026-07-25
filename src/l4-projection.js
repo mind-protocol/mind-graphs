@@ -36,10 +36,15 @@ function distance(a, b) {
 /** Types de nœuds qu'un prédicat accepte à une extrémité, selon l'ontologie. */
 function allowedTypes(ontology, predicate, side) {
   const constraint = ontology.relationConstraints?.[predicate];
-  if (!constraint || constraint.allowAny) return null;
+  if (!constraint || (constraint.allowAny && side === "target")) return null;
   const types = new Set(constraint[`${side}Types`] || []);
   for (const group of constraint[`${side}Groups`] || []) {
     for (const type of ontology.typeGroups?.[group] || []) types.add(type);
+  }
+  const sideObj = constraint[side];
+  if (sideObj) {
+    if (Array.isArray(sideObj.nodeTypes)) for (const t of sideObj.nodeTypes) types.add(t);
+    if (Array.isArray(sideObj.semanticTypes)) for (const t of sideObj.semanticTypes) types.add(t);
   }
   return types.size ? types : null;
 }

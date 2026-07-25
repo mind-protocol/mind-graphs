@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "single-model-1b-scientific-ingestion-blueprint-v1",
+  "title": "Single-Model 1B Scientific Ingestion Blueprint v1",
+  "description": "Formalisation de la pipeline d'ingestion scientifique mono-modèle 1B guidée par micro-tâches, enveloppes de provenance, invariants bloquants et boucles de réparation locale.",
+  "scope": "Pipeline d'ingestion déterministe, ultra-légère et réversible pour le Causal Science Graph (CSG).",
+  "architecture": {
+    "model": "Mono-modèle 1B (ex: Llama-3.2-1B-Instruct / Qwen2.5-1.5B)",
+    "executionMode": "Microtâches bornées en contexte fermé avec protocole REQUEST_CONTEXT",
+    "atomicityGateEnabled": true,
+    "reviewPassesCount": 3,
+    "reversibleChangeSet": true
+  },
+  "states": [
+    {
+      "id": "REGISTER_SOURCE",
+      "order": 1,
+      "name": "Enregistrement de la Source",
+      "description": "Création du nœud immuable SourceDocument, déduction du hash SHA-256 et ancrage des métadonnées.",
+      "allowedActions": ["hash_content", "create_source_node"],
+      "outputArtifact": "SourceDocumentNode"
+    },
+    {
+      "id": "FETCH_SOURCE",
+      "order": 2,
+      "name": "Récupération du Contenu Brut",
+      "description": "Lecture et validation UTF-8 du contenu textuel ou des extraits structurés (BioRxiv/PubMed/ArXiv/PDF).",
+      "allowedActions": ["read_raw_text", "verify_encoding"],
+      "outputArtifact": "RawTextStream"
+    },
+    {
+      "id": "SEGMENT_TEXT",
+      "order": 3,
+      "name": "Segmentation en Chunks",
+      "description": "Découpage du texte en segments de granularité contrôlée (200-500 mots) avec identifiants de position stables.",
+      "allowedActions": ["slice_text", "index_positions"],
+      "outputArtifact": "SegmentChunks"
+    },
+    {
+      "id": "EXTRACT_MICRO_STRUCTURES",
+      "order": 4,
+      "name": "Extraction des Micro-structures",
+      "description": "Décomposition en atomes d'affirmation scientifique (Variable, Effect, Claim, Method, SampleSize).",
+      "allowedActions": ["extract_claim_atoms", "tag_variables"],
+      "outputArtifact": "ClaimAtomsDraft"
+    },
+    {
+      "id": "ATOMICITY_CHECK",
+      "order": 5,
+      "name": "Barrière d'Atomicité (AtomicityGate)",
+      "description": "Vérification qu'aucun atome ne contient de propositions composites ou de relations multiples non décomposées.",
+      "allowedActions": ["validate_atomicity", "split_composite_claim"],
+      "outputArtifact": "AtomicClaimsValidated"
+    },
+    {
+      "id": "RESOLVE_ENTITIES",
+      "order": 6,
+      "name": "Résolution d'Entités & Ambiguïtés",
+      "description": "Mapping vers les ontologies (UBERON, GO, ChEMBL, DOID) en conservant les ambiguïtés irrésolues explicites.",
+      "allowedActions": ["match_ontology_terms", "flag_unresolved_ambiguity"],
+      "outputArtifact": "ResolvedEntityCandidates"
+    },
+    {
+      "id": "REVIEW_PASS_1",
+      "order": 7,
+      "name": "Revue Passe 1 · Conformité Syntaxe & Schéma",
+      "description": "Vérification déterministe de la validité du schéma JSON, des types de nœuds et des propriétés requises.",
+      "allowedActions": ["check_schema_compliance"],
+      "outputArtifact": "Pass1Approval"
+    },
+    {
+      "id": "REVIEW_PASS_2",
+      "order": 8,
+      "name": "Revue Passe 2 · Statut Épistémique & Limites de Preuve",
+      "description": "Audit du niveau de preuve (observed, inferred, reported) et de la non-surinterprétation des résultats.",
+      "allowedActions": ["verify_epistemic_bounds"],
+      "outputArtifact": "Pass2Approval"
+    },
+    {
+      "id": "REVIEW_PASS_3",
+      "order": 9,
+      "name": "Revue Passe 3 · Invariants & Cohérence Globale",
+      "description": "Vérification des invariants déterministes et de la consistance avec le graphe existant.",
+      "allowedActions": ["verify_global_invariants"],
+      "outputArtifact": "Pass3Approval"
+    },
+    {
+      "id": "INVARIANT_CHECK",
+      "order": 10,
+      "name": "Contrôle Strict des Invariants Bloquants",
+      "description": "Blocage immédiat en cas de violation d'un invariant (ex: absence de provenance, champ requis manquant).",
+      "allowedActions": ["assert_invariants"],
+      "outputArtifact": "InvariantVerdict"
+    },
+    {
+      "id": "LOCAL_REPAIR",
+      "order": 11,
+      "name": "Boucle de Réparation Locale",
+      "description": "En cas d'échec de la passe de revue ou d'invariant, exécution d'une microtâche ciblée de correction sans tout réextraire.",
+      "allowedActions": ["repair_schema_error", "request_additional_context", "refine_extraction"],
+      "outputArtifact": "RepairedMicrotask"
+    },
+    {
+      "id": "BUILD_CHANGESET",
+      "order": 12,
+      "name": "Construction du ChangeSet Versionné",
+      "description": "Assemblage du ChangeSet atomique réversible contenant la totalité des ajouts, modifications et provenances.",
+      "allowedActions": ["package_changeset"],
+      "outputArtifact": "ReversibleChangeSet"
+    },
+    {
+      "id": "COMMIT",
+      "order": 13,
+      "name": "Commit Canonique dans le Graphe",
+      "description": "Application atomique des modifications dans FalkorDB et mise à jour du registre d'ingestion.",
+      "allowedActions": ["apply_to_falkordb", "log_ingestion_moment"],
+      "outputArtifact": "IngestionReceipt"
+    }
+  ],
+  "contracts": {
+    "taskEnvelope": {
+      "definition": "Structure d'isolation d'une micro-tâche 1B.",
+      "fields": [
+        "taskId",
+        "pipelineState",
+        "sourceAnchor",
+        "inputContext",
+        "maxTokens",
+        "temperature",
+        "provenanceHash",
+        "outputSchema"
+      ]
+    },
+    "requestContextProtocol": {
+      "definition": "Mécanisme permettant au modèle 1B de solliciter un extrait contextuel élargi plutôt que d'inventer une valeur.",
+      "requestTrigger": "missing_antecedent_or_ambiguous_entity",
+      "allowedRequests": ["expand_window_lines", "lookup_entity_definition", "fetch_table_caption"]
+    },
+    "atomicityGate": {
+      "maxVariablesPerClaim": 2,
+      "maxRelationsPerClaim": 1,
+      "forbiddenComplexStructures": ["subordinate_conjunction_loops", "multi_study_aggregations"]
+    },
+    "deterministicInvariants": [
+      "EVERY_NODE_HAS_STABLE_ID",
+      "EVERY_CLAIM_HAS_PROVENANCE_HASH",
+      "EPISTEMIC_STATUS_MUST_MATCH_EVIDENCE",
+      "CONFIDENCE_BOUNDED_IN_0_1",
+      "NO_UNLABELLED_EDGES"
+    ],
+    "granularityLevels": [
+      { "level": 1, "name": "Document", "entity": "SourceDocument" },
+      { "level": 2, "name": "Segment", "entity": "TextChunk" },
+      { "level": 3, "name": "MicroStructure", "entity": "ClaimAtom" },
+      { "level": 4, "name": "GraphPrimitive", "entity": "FalkorNodeAndEdge" }
+    ]
+  },
+  "verticalSliceImplementationOrder": [
+    "1. Define TaskEnvelope & State Machine Runner in JS/Python",
+    "2. Implement REGISTER_SOURCE and SEGMENT_TEXT deterministic splitters",
+    "3. Implement 1B Microtask Extractor for ClaimAtoms (EXTRACT_MICRO_STRUCTURES)",
+    "4. Implement AtomicityGate & Invariant Checkers",
+    "5. Implement 3-pass Review Loop with local repair fallback (LOCAL_REPAIR)",
+    "6. Build ChangeSet packager and FalkorDB Commit runner (BUILD_CHANGESET -> COMMIT)"
+  ]
+}

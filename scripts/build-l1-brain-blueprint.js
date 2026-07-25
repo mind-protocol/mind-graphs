@@ -355,13 +355,14 @@ for (const definition of affect.clusters) {
   addNode({
     id: definition.spaceId,
     nodeType: "Space",
-    semanticType: "BlueprintCluster",
+    semanticType: "BlueprintModule",
     facets: ["blueprint", "affective_system"],
     name: `${String(order).padStart(2, "0")} · ${definition.title}`,
     description: definition.objective,
     epistemicStatus: "design_proposal",
     clusterId: cluster.id,
     citizen: false,
+    nonCognitive: true,
     injectsEnergy: false,
     initialEnergy: 0
   });
@@ -485,7 +486,7 @@ for (const narrative of sensory.narratives) {
     initialEnergy: 0
   });
   cluster.nodeIds.push(narrative.id);
-  const clusterSpace = cluster.nodeIds.map(id => nodes.find(node => node.id === id)).find(node => node?.semanticType === "BlueprintCluster");
+  const clusterSpace = cluster.nodeIds.map(id => nodes.find(node => node.id === id)).find(node => node?.semanticType === "BlueprintModule");
   if (!clusterSpace) throw new Error(`Space principal absent pour ${cluster.id}`);
   addDerivedRelation({ source: narrative.id, type: "GROUNDS", target: clusterSpace.id, W: 0.9, S: 0.95, justification: narrative.statement, cluster, provenance: "sensory_blueprint" });
 }
@@ -507,7 +508,7 @@ for (const definition of sensory.nodes) {
     initialEnergy: 0
   });
   cluster.nodeIds.push(definition.id);
-  const clusterSpace = cluster.nodeIds.map(id => nodes.find(node => node.id === id)).find(node => node?.semanticType === "BlueprintCluster");
+  const clusterSpace = cluster.nodeIds.map(id => nodes.find(node => node.id === id)).find(node => node?.semanticType === "BlueprintModule");
   addDerivedRelation({ source: definition.id, type: "PART_OF", target: clusterSpace.id, W: 0.95, S: 0.95, justification: `${definition.name} appartient au cluster « ${cluster.title} ».`, cluster, provenance: "sensory_blueprint" });
   for (const rationaleId of definition.justifiedBy) {
     addDerivedRelation({ source: rationaleId, type: "JUSTIFIES", target: definition.id, W: 0.9, S: 0.95, justification: `${nodes.find(node => node.id === rationaleId)?.description || rationaleId} Cette raison justifie directement ${definition.name}.`, cluster, provenance: "sensory_blueprint" });
@@ -542,7 +543,7 @@ for (const narrative of metacognitive.narratives) {
     initialEnergy: 0
   });
   cluster.nodeIds.push(narrative.id);
-  const clusterSpace = cluster.nodeIds.map(id => nodes.find(node => node.id === id)).find(node => node?.semanticType === "BlueprintCluster");
+  const clusterSpace = cluster.nodeIds.map(id => nodes.find(node => node.id === id)).find(node => node?.semanticType === "BlueprintModule");
   if (!clusterSpace) throw new Error(`Space principal absent pour ${cluster.id}`);
   addDerivedRelation({ source: narrative.id, type: "GROUNDS", target: clusterSpace.id, W: 0.9, S: 0.95, justification: narrative.statement, cluster, provenance: "metacognitive_blueprint" });
 }
@@ -564,7 +565,7 @@ for (const definition of metacognitive.nodes) {
     initialEnergy: 0
   });
   cluster.nodeIds.push(definition.id);
-  const clusterSpace = cluster.nodeIds.map(id => nodes.find(node => node.id === id)).find(node => node?.semanticType === "BlueprintCluster");
+  const clusterSpace = cluster.nodeIds.map(id => nodes.find(node => node.id === id)).find(node => node?.semanticType === "BlueprintModule");
   if (!clusterSpace) throw new Error(`Space principal absent pour ${cluster.id}`);
   addDerivedRelation({ source: definition.id, type: "PART_OF", target: clusterSpace.id, W: 0.95, S: 0.95, justification: `${definition.name} appartient au cluster « ${cluster.title} ».`, cluster, provenance: "metacognitive_blueprint" });
   for (const rationaleId of definition.justifiedBy) {
@@ -609,7 +610,7 @@ const addRoleSystemNode = (definition, cluster = roleSystemCluster) => {
 addRoleSystemNode({
   id: "space-citizen-ai-role-system",
   nodeType: "Space",
-  semanticType: "BlueprintCluster",
+  semanticType: "BlueprintModule",
   name: "Système universel des rôles Citizen AI",
   description: citizenAIRoles.doctrine
 });
@@ -1095,7 +1096,7 @@ const parsePair = entry => {
 addAttributionNode({
   id: attributionSpaceId,
   nodeType: "Space",
-  semanticType: "BlueprintSubcluster",
+  semanticType: "BlueprintModule",
   name: "Attribution mémorielle des sous-entités",
   description: subentityAttribution.doctrine
 });

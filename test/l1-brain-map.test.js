@@ -4,6 +4,7 @@ import { buildProjectionBasis, projectVector, projectWeightedCentroid } from "..
 import { CONSTELLATION_POLICY, MAXIMUM_FIELD_SIZE, buildAttentionField, computeBarycentre } from "../src/l1-attention-field.js";
 import { compileLiveTickInput } from "../src/l1-live-signals.js";
 import { deriveSubentityState, describeFeeling } from "../src/l1-subentity-semantics.js";
+import { enrichBrainFrame, hueOf, renderVisualRegion } from "../src/l1-brain-map.js";
 
 const reference = [
   [1, 0, 0, 0], [0.9, 0.1, 0, 0], [0, 1, 0, 0], [0, 0.9, 0.1, 0], [0, 0, 1, 0], [0, 0, 0, 1]
@@ -167,9 +168,106 @@ test("l'état dérivé distingue conduire, soutenir et être écrasé par ses p�
   assert.equal(deriveSubentityState({ place: {}, promotedThisTick: true }).id, "state-closure-consolidation");
 });
 
-test("un affect non mesuré ne reçoit pas de visage neutre", () => {
+test("renderVisualRegion constructs ephemeral VisualRegion render object", () => {
+  const visualRegion = renderVisualRegion({
+    regionId: "visual-region:subentity-captain:t402",
+    renderingPurpose: "membership_field",
+    sourceSubentityId: "subentity-captain",
+    nodes: [{ id: "n1" }, { id: "n2" }],
+    tick: 402
+  });
+  assert.equal(visualRegion.regionId, "visual-region:subentity-captain:t402");
+  assert.equal(visualRegion.ephemeral, true);
+  assert.equal(visualRegion.renderingPurpose, "membership_field");
+  assert.equal(visualRegion.sourceSubentityId, "subentity-captain");
+  assert.deepEqual(visualRegion.nodeIds, ["n1", "n2"]);
+});
+
+// --- Tranche 5A : préparation du workspace spatial (livrables A + D) ---
+//
+// Ces tests restent vrais après la future migration (WorkspaceBid, sous-entités
+// canoniques, trace Python → JS). Ils ne sanctuarisent ni `candidate-coalition-*`,
+// ni `coalitionId`, ni un tie-break par ordre de tableau, ni les seuils
+// 0.70 / 7±2 / 0.50, ni le broadcast actuel, ni la projection actuelle comme
+// architecture finale.
+
+test("A · la teinte mesurée d'un cluster est déclarée avec sa provenance", () => {
+  const tint = hueOf({ measurementStatus: "derived", hue: 210, clusterId: "temporal-membrane" }, null);
+  assert.equal(tint.hue, 210);
+  assert.equal(tint.hueSource, "cluster");
+  assert.equal(tint.hueLabel, "temporal-membrane");
+});
+
+test("A · à défaut de cluster, la teinte suit l'angle du barycentre et le dit", () => {
+  const tint = hueOf({ measurementStatus: "unavailable", hue: null }, { x: 1, y: 0 });
+  assert.equal(typeof tint.hue, "number");
+  assert.equal(tint.hueSource, "position");
+});
+
+test("A · une teinte non mesurée reste unavailable et ne devient jamais un zéro silencieux", () => {
+  const tint = hueOf({ measurementStatus: "unavailable", hue: null }, null);
+  assert.equal(tint.hue, null);
+  assert.notEqual(tint.hue, 0);
+  assert.equal(tint.hueSource, "unavailable");
+  assert.equal(tint.hueLabel, null);
+});
+
+test("A · un affect non mesuré ne reçoit pas de visage neutre", () => {
   const silent = describeFeeling({ measurementStatus: "unavailable", reason: "aucune mesure" });
   assert.equal(silent.smiley, null);
+  assert.equal(silent.measurementStatus, "unavailable");
   const measured = describeFeeling({ measurementStatus: "inferred", affect: "curiosity" });
   assert.equal(typeof measured.smiley, "string");
+});
+
+test("A · enrichBrainFrame charge et enrichit une sous-entité sans ReferenceError (le fix `tint`)", async () => {
+  const frame = {
+    workspace: { characterBudget: 2000 },
+    subentities: [{
+      id: "subentity-test",
+      why: { activatedNodes: [{ id: "node-a", share: 1 }], goals: ["goal-a"] },
+      doing: { behaviour: { measurementStatus: "unavailable" } },
+      feeling: { measurementStatus: "unavailable", reason: "aucune mesure" },
+      barycentre: { measurementStatus: "unavailable", hue: null }
+    }]
+  };
+  // resolveNodes ne fournit aucun vecteur : l'absence est comptée, jamais comblée.
+  const enriched = await enrichBrainFrame(frame, {
+    resolveNodes: async ids => new Map(ids.map(id => [id, { name: id, embedding: null }])),
+    clusterProfiles: []
+  });
+  const entity = enriched.subentities[0];
+  // Le champ enrichi porte bien la provenance de teinte injectée par `...tint`.
+  assert.ok(["cluster", "position", "unavailable"].includes(entity.hueSource));
+  assert.equal(entity.hueSource, "unavailable");
+  assert.equal(entity.hue, null);
+});
+
+test("D · sans profils de cluster, la base de projection est signalée unavailable, pas fabriquée", async () => {
+  const frame = {
+    workspace: { characterBudget: 2000 },
+    subentities: [{
+      id: "subentity-test",
+      why: { activatedNodes: [{ id: "node-a", share: 1 }], goals: [] },
+      doing: { behaviour: { measurementStatus: "unavailable" } },
+      feeling: { measurementStatus: "unavailable" },
+      barycentre: { measurementStatus: "unavailable", hue: null }
+    }]
+  };
+  const enriched = await enrichBrainFrame(frame, {
+    resolveNodes: async ids => new Map(ids.map(id => [id, { name: id, embedding: null }])),
+    clusterProfiles: []
+  });
+  assert.equal(enriched.map.measurementStatus, "unavailable");
+  assert.match(enriched.map.reason, /profils d'embedding de clusters sont absents/);
+  assert.equal(enriched.subentities[0].position.measurementStatus, "unavailable");
+});
+
+test("D · une VisualRegion est éphémère et ne porte aucun attribut cognitif (ni énergie, ni relations)", () => {
+  const region = renderVisualRegion({ sourceSubentityId: "subentity-test", nodes: ["n1"], tick: 7 });
+  assert.equal(region.ephemeral, true);
+  // Une région visuelle existe pour le rendu : elle n'écrit rien dans le graphe.
+  for (const forbidden of ["energy", "initialEnergy", "relations", "memory", "workspace", "membership"]) {
+    assert.equal(Object.prototype.hasOwnProperty.call(region, forbidden), false, `VisualRegion must not carry ${forbidden}`);
+  }
 });

@@ -5258,7 +5258,8 @@
     {
       "id": "space-constitution",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-00"
@@ -5354,7 +5355,8 @@
     {
       "id": "space-blueprint-sync",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-01"
@@ -5482,7 +5484,8 @@
     {
       "id": "space-citizen-runtime",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-02"
@@ -5610,7 +5613,8 @@
     {
       "id": "space-media-capture",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-03"
@@ -5754,7 +5758,8 @@
     {
       "id": "space-perception",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-04"
@@ -5931,7 +5936,8 @@
     {
       "id": "space-l4-physics",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-05"
@@ -6059,7 +6065,8 @@
     {
       "id": "space-routing",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-06"
@@ -6188,7 +6195,8 @@
     {
       "id": "space-clusters",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-07"
@@ -6316,7 +6324,8 @@
     {
       "id": "space-homeostasis",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-08"
@@ -6444,7 +6453,8 @@
     {
       "id": "space-affect",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-09"
@@ -6588,7 +6598,8 @@
     {
       "id": "space-subentities",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-10"
@@ -6765,7 +6776,8 @@
     {
       "id": "space-global-workspace",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-11"
@@ -6927,7 +6939,8 @@
     {
       "id": "space-memory",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-12"
@@ -7103,7 +7116,8 @@
     {
       "id": "space-goals",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-13"
@@ -7215,7 +7229,8 @@
     {
       "id": "space-simulation",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-14"
@@ -7391,7 +7406,8 @@
     {
       "id": "space-action",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-15"
@@ -7551,7 +7567,8 @@
     {
       "id": "space-intergraph",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-16"
@@ -7711,7 +7728,8 @@
     {
       "id": "space-learning",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-17"
@@ -7871,7 +7889,8 @@
     {
       "id": "space-metacognition",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-18"
@@ -8015,7 +8034,8 @@
     {
       "id": "space-relations",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-19"
@@ -8159,7 +8179,8 @@
     {
       "id": "space-skills",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-20"
@@ -8303,7 +8324,8 @@
     {
       "id": "space-continuity",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-21"
@@ -8447,7 +8469,8 @@
     {
       "id": "space-validation",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "cluster-22"
@@ -9339,7 +9362,8 @@
     {
       "id": "space-affect-metabolism",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -9355,7 +9379,8 @@
     {
       "id": "space-affect-reptilian",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -9371,7 +9396,8 @@
     {
       "id": "space-affect-cortical-appraisal",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -9387,7 +9413,8 @@
     {
       "id": "space-affect-limbic-runtime",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -9403,7 +9430,8 @@
     {
       "id": "space-affect-prototypes",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -9419,7 +9447,8 @@
     {
       "id": "space-affect-subentity-activation",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -9435,7 +9464,8 @@
     {
       "id": "space-affect-learning",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -9451,7 +9481,8 @@
     {
       "id": "space-affect-audit-recovery",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -9467,7 +9498,8 @@
     {
       "id": "space-human-needs",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -9483,7 +9515,8 @@
     {
       "id": "space-ai-operational-requirements",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "facets": [
         "blueprint",
         "affective_system"
@@ -12012,7 +12045,8 @@
     {
       "id": "space-citizen-ai-role-system",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "name": "Système universel des rôles Citizen AI",
       "description": "Un seul Actor Citizen AI peut enact plusieurs rôles explicites. Capacité ne vaut jamais autorisation ; proximité ne vaut jamais dépendance ; prédiction ne vaut jamais vérité ; soutien psychologique ne vaut jamais autorité clinique.",
       "facets": [
@@ -23595,7 +23629,8 @@
     {
       "id": "space-human-situation",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "name": "33 · Situation humaine et situation partagée",
       "description": "Espace du modèle vivant de l'humain, de la relation bilatérale et de leur projection partagée.",
       "facets": [
@@ -24110,7 +24145,8 @@
     {
       "id": "space-subentity-memory-attribution",
       "nodeType": "Space",
-      "semanticType": "BlueprintSubcluster",
+      "semanticType": "BlueprintModule",
+      "nonCognitive": true,
       "name": "Attribution mémorielle des sous-entités",
       "description": "Les Moments appartiennent à la mémoire du Citizen AI unique. Une sous-entité peut contrôler, générer fonctionnellement, contribuer ou seulement résonner avec un Moment sans jamais en devenir propriétaire. Toute attribution reste sourcée, révisable, ambiguë, collective ou inconnue.",
       "facets": [

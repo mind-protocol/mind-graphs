@@ -244,3 +244,17 @@ export function createMemoryMoment({ id, occurredAt, content, workspaceSnapshot 
   });
   return { moment, relations };
 }
+
+export function createMembershipFieldSnapshot({ subentityId, tick, memberships = [], attentionNodeIds = [], barycenter = {} }) {
+  return {
+    subentityId,
+    tick: Number(tick) || 0,
+    memberships: memberships.map(item => ({
+      nodeId: item.nodeId || item.id,
+      membership: clamp01(item.membership ?? item.score ?? 0.5)
+    })),
+    attentionNodeIds: [...new Set(attentionNodeIds)],
+    barycenter: barycenter || {}
+  };
+}
+

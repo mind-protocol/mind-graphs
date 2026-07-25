@@ -315,7 +315,7 @@
     },
     {
       "id": "l4-predicate-translation-dictionary",
-      "name": "Dictionnaire · 41 prédicats vers le lien universel",
+      "name": "Dictionnaire · 53 prédicats vers le lien universel",
       "nodeType": "narrative",
       "phrase": "Chaque ancien verbe possède un prototype physique, une synthèse de lecture et un niveau de perte déclaré.",
       "family": "Migration L4 · prédicats",
@@ -736,7 +736,7 @@
           ],
           "hierarchy": 0.35,
           "permanence": 0.85,
-          "mode": "composite",
+          "mode": "semantic_required",
           "collisionGroup": "forward_generation",
           "synthesis": "{a} produit {b}.",
           "reason": "Génération fortement orientée et relativement stable."
@@ -908,6 +908,342 @@
           "collisionGroup": "hierarchy",
           "synthesis": "Le terme {a} définit {b} dans le vocabulaire courant.",
           "reason": "La définition élabore durablement l élément décrit, avec lecture retour importante."
+        },
+        {
+          "source": "INCREASES_PROPENSITY",
+          "family": "policy_modulation",
+          "polarity": [
+            0.7,
+            0.1
+          ],
+          "hierarchy": -0.5,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "policy_modulation",
+          "synthesis": "{a} augmente la propension à {b}.",
+          "reason": "Modulation de propension comportementale sans déclenchement automatique."
+        },
+        {
+          "source": "DECREASES_PROPENSITY",
+          "family": "policy_modulation",
+          "polarity": [
+            -0.7,
+            0.1
+          ],
+          "hierarchy": -0.5,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "policy_modulation",
+          "synthesis": "{a} diminue la propension à {b}.",
+          "reason": "Diminution de propension comportementale relative."
+        },
+        {
+          "source": "INHIBITS",
+          "family": "gating",
+          "polarity": [
+            -0.9,
+            0.05
+          ],
+          "hierarchy": -0.6,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "gating",
+          "synthesis": "{a} inhibe {b}.",
+          "reason": "Fermeture de porte comportementale sans transfert d'énergie."
+        },
+        {
+          "source": "MAKES_SALIENT",
+          "family": "salience",
+          "polarity": [
+            0.75,
+            0.15
+          ],
+          "hierarchy": -0.4,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "salience",
+          "synthesis": "{a} rend saillant {b}.",
+          "reason": "Augmentation de la saillance dans le champ attentionnel."
+        },
+        {
+          "source": "RECRUITS",
+          "family": "attention_recruitment",
+          "polarity": [
+            0.85,
+            0.25
+          ],
+          "hierarchy": -0.3,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "attention_recruitment",
+          "synthesis": "{a} recrute l'action primitive {b}.",
+          "reason": "Recrutement d'une action primitive possible."
+        },
+        {
+          "source": "COMMENTED_ON",
+          "family": "comment_communication",
+          "polarity": [
+            0.6,
+            0.35
+          ],
+          "hierarchy": -0.7,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "commentary",
+          "synthesis": "{a} est commenté par {b}.",
+          "reason": "Annotation narrative d'une action ou d'un moment."
+        },
+        {
+          "source": "EXPLAINS",
+          "family": "comment_communication",
+          "polarity": [
+            0.65,
+            0.25
+          ],
+          "hierarchy": -0.7,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "commentary",
+          "synthesis": "{a} explique {b}.",
+          "reason": "Commentaire explicatif d'une action passée."
+        },
+        {
+          "source": "REGRETS",
+          "family": "affective",
+          "polarity": [
+            -0.65,
+            0.25
+          ],
+          "hierarchy": -0.7,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "commentary",
+          "synthesis": "{a} regrette {b}.",
+          "reason": "Annotation affective regrettant une action passée."
+        },
+        {
+          "source": "APPROVES",
+          "family": "affective",
+          "polarity": [
+            0.75,
+            0.25
+          ],
+          "hierarchy": -0.7,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "commentary",
+          "synthesis": "{a} approuve {b}.",
+          "reason": "Annotation affective approuvant une action passée."
+        },
+        {
+          "source": "QUESTIONS",
+          "family": "comment_communication",
+          "polarity": [
+            -0.35,
+            0.35
+          ],
+          "hierarchy": -0.7,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "commentary",
+          "synthesis": "{a} questionne {b}.",
+          "reason": "Questionnement narratif d'un moment ou d'un choix."
+        },
+        {
+          "source": "REINTERPRETS",
+          "family": "learning",
+          "polarity": [
+            0.6,
+            0.3
+          ],
+          "hierarchy": -0.7,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "commentary",
+          "synthesis": "{a} réinterprète {b}.",
+          "reason": "Réinterprétation narrative d'un épisode passé."
+        },
+        {
+          "source": "LEARNS_FROM",
+          "family": "learning",
+          "polarity": [
+            0.8,
+            0.35
+          ],
+          "hierarchy": -0.7,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "learning",
+          "synthesis": "{a} apprend de {b}.",
+          "reason": "Apprentissage narratif issu d'une évaluation ou d'un épisode."
+        },
+        {
+          "source": "MATCHES",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            0.72,
+            0.22
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} correspond à {b}.",
+          "reason": "Reconnaissance d'un pattern sur une situation."
+        },
+        {
+          "source": "EXPECTS",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            0.73,
+            0.23
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} s'attend à {b}.",
+          "reason": "Effet attendu d'un comportement."
+        },
+        {
+          "source": "INSTANCE_OF",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            0.74,
+            0.24
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} est une instance de {b}.",
+          "reason": "Instanciation d'un pattern général."
+        },
+        {
+          "source": "USED",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            0.75,
+            0.25
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} a utilisé {b}.",
+          "reason": "Comportement réellement utilisé."
+        },
+        {
+          "source": "COMPARED_WITH",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            0.55,
+            0.35
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} est comparé avec {b}.",
+          "reason": "Comparaison d'évaluation."
+        },
+        {
+          "source": "REINFORCES",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            0.85,
+            0.25
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} renforce {b}.",
+          "reason": "Renforcement d'un comportement."
+        },
+        {
+          "source": "WEAKENS",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            -0.75,
+            0.25
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} affaiblit {b}.",
+          "reason": "Affaiblissement d'un comportement."
+        },
+        {
+          "source": "LIMITS",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            -0.85,
+            0.15
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} limite {b}.",
+          "reason": "Restriction par contre-exemple."
+        },
+        {
+          "source": "SUPERSEDES",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            0.65,
+            0.35
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} remplace {b}.",
+          "reason": "Remplacement par une nouvelle version."
+        },
+        {
+          "source": "COMPILES_TO",
+          "family": "pattern_lifecycle",
+          "polarity": [
+            0.95,
+            0.15
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "pattern_lifecycle",
+          "synthesis": "{a} se compile en {b}.",
+          "reason": "Compilation en artefact exécutable."
+        },
+        {
+          "source": "REFINES",
+          "family": "validation",
+          "polarity": [
+            0.77,
+            0.27
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "validation",
+          "synthesis": "{a} affine {b}.",
+          "reason": "Affinage d'un concept ou pattern."
+        },
+        {
+          "source": "AUDITS",
+          "family": "validation",
+          "polarity": [
+            0.67,
+            0.37
+          ],
+          "hierarchy": -0.8,
+          "permanence": 0.1,
+          "mode": "semantic_required",
+          "collisionGroup": "validation",
+          "synthesis": "{a} audite {b}.",
+          "reason": "Audit de conformité ou de comportement."
         }
       ],
       "clusterId": "l4-ontology-mapping",

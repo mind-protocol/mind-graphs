@@ -281,7 +281,7 @@
     {
       "id": "space-human-situation",
       "nodeType": "Space",
-      "semanticType": "BlueprintCluster",
+      "semanticType": "BlueprintModule",
       "name": "33 · Situation humaine et situation partagée",
       "description": "Espace du modèle vivant de l'humain, de la relation bilatérale et de leur projection partagée.",
       "facets": [

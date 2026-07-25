@@ -21,7 +21,7 @@ import { generateSubentityName } from "./l1-subentity-namer.js";
  * rapprochent. La provenance de la teinte est transportée pour que la vue ne
  * fasse pas passer une lecture pour l'autre.
  */
-function hueOf(barycentre, position) {
+export function hueOf(barycentre, position) {
   if (barycentre?.measurementStatus === "derived" && barycentre.hue !== null) {
     return { hue: barycentre.hue, hueSource: "cluster", hueLabel: barycentre.clusterId };
   }
@@ -106,6 +106,8 @@ export async function enrichBrainFrame(frame, {
     const peripheryNodes = (field.periphery || []).map(locate);
 
     const naming = generateSubentityName(entity, [...nodes, ...peripheryNodes]);
+
+    const tint = hueOf(entity.barycentre, position);
 
     return {
       ...entity,
@@ -237,3 +239,16 @@ export async function enrichBrainFrame(frame, {
     }
   };
 }
+
+export function renderVisualRegion({ regionId, renderingPurpose = "membership_field", sourceSubentityId, nodes = [], position = null, tick = null }) {
+  return {
+    regionId: regionId || `visual-region:${sourceSubentityId}:${tick || "t0"}`,
+    renderingPurpose,
+    ephemeral: true,
+    sourceSubentityId,
+    nodeIds: nodes.map(node => node.id || node),
+    position,
+    tick
+  };
+}
+

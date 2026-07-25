@@ -96,7 +96,7 @@
         "Une revue scientifique indépendante est consignée."
       ],
       "verificationCommand": "npm run validate",
-      "updatedAt": "2026-07-23",
+      "updatedAt": "2026-07-25",
       "clusterId": "project-work",
       "semanticType": "task"
     },
@@ -2796,7 +2796,7 @@
         "npm run validate réussit."
       ],
       "verificationCommand": "npm run validate",
-      "updatedAt": "2026-07-25",
+      "updatedAt": "2026-07-23",
       "clusterId": "project-work",
       "semanticType": "task"
     },

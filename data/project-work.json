@@ -2645,12 +2645,13 @@
       "phrase": "Le citoyen ne peut pas se connecter aux comptes : il demande l'export à NLR et garde la chaîne éveillée jusqu'à réception.",
       "family": "Travail du projet · seed conversationnel L1",
       "summary": "L'export dépend d'une action humaine : Claude via Settings > Privacy > Export Data depuis le web ou Desktop (données JSON), ChatGPT via Settings > Data Controls > Export Data (.zip). La tâche notifie NLR sur Telegram avec les étapes exactes, le format attendu et le dossier de dépôt convenu, puis reste en priorité maximale et resignale le blocage à chaque réveil, sans jamais se mettre en veille silencieuse. Elle se clôt dès qu'au moins un export attendu est disponible.",
-      "workStatus": "ready",
+      "workStatus": "done",
       "priority": 100,
       "autonomyMode": "autonomous",
       "depositPath": "artifacts/private/conversation-exports/inbox",
-      "blockerCause": "Aucun export Claude ou ChatGPT n'est encore disponible dans le dossier privé de dépôt.",
-      "needsFromCitizen": "Déclencher au moins un export depuis le compte concerné puis déposer le fichier reçu dans le dossier privé convenu.",
+      "resolvedExportPath": "C:\\Users\\reyno\\Downloads\\1009485593bfbaccd6ce6562766efd1ebcfef58f80e35d28cab81fdb264f9607-2026-07-23-02-58-40-89840a620e89433588407971a56edc6e.zip",
+      "resolutionEvidence": "Archive ChatGPT de 817171521 octets lisible ; elle contient chat.html, codex.json et conversations-000.json à conversations-013.json.",
+      "blockerResolvedAt": "2026-07-25T19:37:00+02:00",
       "lastNotificationAt": "2026-07-23T19:22:54.904Z",
       "lastNotificationChannel": "telegram",
       "lastNotificationMessageId": "302071",
@@ -2662,7 +2663,8 @@
         "npm run validate réussit."
       ],
       "verificationCommand": "npm run validate",
-      "updatedAt": "2026-07-23",
+      "completedAt": "2026-07-25",
+      "updatedAt": "2026-07-25",
       "clusterId": "project-work",
       "semanticType": "task"
     },
@@ -2673,9 +2675,11 @@
       "phrase": "Un export n'est utile que localisé, vérifié et reconnu dans son format avant toute atomisation.",
       "family": "Travail du projet · seed conversationnel L1",
       "summary": "La tâche détecte l'export Claude (.json) ou ChatGPT (.zip) dans le dossier de téléchargement ou le dossier de dépôt convenu, vérifie son intégrité, calcule une empreinte SHA-256, laisse anamnesis auto-détecter le format parmi ceux supportés, et fige une copie stable. Aucune atomisation à ce stade. Un export corrompu ou partiel bloque la tâche et notifie NLR au lieu d'ingérer des données tronquées.",
-      "workStatus": "blocked",
+      "workStatus": "ready",
       "priority": 100,
       "autonomyMode": "autonomous",
+      "sourcePathCandidate": "C:\\Users\\reyno\\Downloads\\1009485593bfbaccd6ce6562766efd1ebcfef58f80e35d28cab81fdb264f9607-2026-07-23-02-58-40-89840a620e89433588407971a56edc6e.zip",
+      "unblockedAt": "2026-07-25T19:37:00+02:00",
       "acceptanceCriteria": [
         "Le fichier d'export est localisé, copié en un emplacement stable et haché (SHA-256).",
         "Le format est auto-détecté parmi les formats supportés par anamnesis (claude, chatgpt).",
@@ -2792,7 +2796,7 @@
         "npm run validate réussit."
       ],
       "verificationCommand": "npm run validate",
-      "updatedAt": "2026-07-23",
+      "updatedAt": "2026-07-25",
       "clusterId": "project-work",
       "semanticType": "task"
     },

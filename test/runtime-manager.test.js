@@ -3,7 +3,15 @@ import assert from "node:assert/strict";
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { buildRuntimeAlert, buildTransitionEvents, classifyService, commandMatches, repairDecision, runtimeCycle } from "../src/runtime-manager.js";
+import {
+  buildRuntimeAlert,
+  buildTransitionEvents,
+  classifyService,
+  commandMatches,
+  repairDecision,
+  runtimeCycle,
+  sendTelegramAlert
+} from "../src/runtime-manager.js";
 
 test("process command matching requires every declared fragment", () => {
   assert.equal(commandMatches("node scripts/autonomous-agent.js --no-personal", ["scripts/autonomous-agent.js"]), true);
@@ -184,6 +192,37 @@ test("runtime alert is created only when health becomes non-healthy or changes",
   assert.match(alert.message, /Mind runtime n'est pas healthy/);
   assert.match(alert.message, /Web: down/);
   assert.equal(buildRuntimeAlert(degraded, degraded, now), null);
+});
+
+test("Telegram delivery reports missing credentials without claiming success", async () => {
+  const delivery = await sendTelegramAlert(
+    { message: "Blocage exact" },
+    { tokenEnv: "TEST_MISSING_TOKEN", chatIdEnv: "TEST_MISSING_CHAT" },
+    { env: {} }
+  );
+  assert.deepEqual(delivery, { delivered: false, reason: "telegram credentials missing" });
+});
+
+test("Telegram delivery sends the exact blocker message", async () => {
+  let request = null;
+  const delivery = await sendTelegramAlert(
+    { message: "Aucun export n'est disponible." },
+    { tokenEnv: "TEST_TOKEN", chatIdEnv: "TEST_CHAT" },
+    {
+      env: { TEST_TOKEN: "token-value", TEST_CHAT: "chat-value" },
+      fetchImpl: async (url, options) => {
+        request = { url, options };
+        return { ok: true, status: 200 };
+      }
+    }
+  );
+  assert.deepEqual(delivery, { delivered: true, reason: "sent" });
+  assert.match(request.url, /bottoken-value\/sendMessage$/u);
+  assert.deepEqual(JSON.parse(request.options.body), {
+    chat_id: "chat-value",
+    text: "Aucun export n'est disponible.",
+    disable_web_page_preview: true
+  });
 });
 
 test("runtime cycle emits a Telegram notification event for degraded state", async () => {

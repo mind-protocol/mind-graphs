@@ -408,7 +408,7 @@ function envValue(env, names = []) {
   return "";
 }
 
-async function sendTelegramAlert(alert, telegramConfig = {}, options = {}) {
+export async function sendTelegramAlert(alert, telegramConfig = {}, options = {}) {
   const env = options.env || process.env;
   const token = envValue(env, [telegramConfig.tokenEnv || "MIND_TELEGRAM_BOT_TOKEN", "TELEGRAM_BOT_TOKEN"]);
   const chatId = telegramConfig.chatId || envValue(env, [telegramConfig.chatIdEnv || "MIND_TELEGRAM_CHAT_ID", "TELEGRAM_CHAT_ID"]);

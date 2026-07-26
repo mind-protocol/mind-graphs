@@ -1600,7 +1600,7 @@
       "summary": "Le détecteur classe les mots employés sans définition par portée inter-clusters. Écrire ces définitions fixe le sens des mots du projet : c est un arbitrage doctrinal, il revient à l auteur et ne peut pas être exécuté en autonomie.",
       "workStatus": "ready",
       "priority": 82,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chacun des mots de tête porte un nœud terme avec definition et context.",
         "Les affirmations concernées sont reliées à un nœud context par APPLIES_IN.",
@@ -2479,9 +2479,11 @@
       "phrase": "Le rôle par défaut a été écrit sur 13 nœuds actor ; une règle d'override peut en faire des autre rôle.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 13 nœuds de type actor ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; réintroduire roleArbitration sur les acteurs contredirait ce contrat courant.",
+      "resolvedAt": "2026-07-25T21:42:53.567Z",
       "acceptanceCriteria": [
         "Chaque nœud actor porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2500,9 +2502,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 8 nœuds unlock ; une règle d'override peut en faire des thing.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 8 nœuds de type unlock ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud unlock porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2512,7 +2514,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-mechanism",
@@ -2521,9 +2525,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 157 nœuds mechanism ; une règle d'override peut en faire des thing/moment.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 157 nœuds de type mechanism ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud mechanism porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2533,7 +2537,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-institution",
@@ -2542,9 +2548,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 31 nœuds institution ; une règle d'override peut en faire des actor/space.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 31 nœuds de type institution ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud institution porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2554,7 +2560,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-economic-mechanism",
@@ -2563,9 +2571,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 32 nœuds economic_mechanism ; une règle d'override peut en faire des thing/moment.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 32 nœuds de type economic_mechanism ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud economic_mechanism porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2575,7 +2583,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-decision",
@@ -2584,9 +2594,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 23 nœuds decision ; une règle d'override peut en faire des autre rôle.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 23 nœuds de type decision ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud decision porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2596,7 +2606,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-system-state",
@@ -2605,9 +2617,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 38 nœuds system_state ; une règle d'override peut en faire des moment.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 38 nœuds de type system_state ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud system_state porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2617,7 +2629,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-metric",
@@ -2626,9 +2640,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 55 nœuds metric ; une règle d'override peut en faire des thing.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 55 nœuds de type metric ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud metric porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2638,7 +2652,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-context",
@@ -2647,9 +2663,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 6 nœuds context ; une règle d'override peut en faire des autre rôle.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 6 nœuds de type context ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud context porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2659,7 +2675,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-protocol",
@@ -2668,9 +2686,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 8 nœuds protocol ; une règle d'override peut en faire des moment.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 8 nœuds de type protocol ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud protocol porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2680,7 +2698,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-method",
@@ -2689,9 +2709,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 45 nœuds method ; une règle d'override peut en faire des thing/moment.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 45 nœuds de type method ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud method porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2701,7 +2721,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-observation",
@@ -2710,9 +2732,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 6 nœuds observation ; une règle d'override peut en faire des thing.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 6 nœuds de type observation ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud observation porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2722,7 +2744,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-experiment",
@@ -2731,9 +2755,9 @@
       "phrase": "Le rôle par défaut a été écrit sur 14 nœuds experiment ; une règle d'override peut en faire des narrative.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 14 nœuds de type experiment ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
       "acceptanceCriteria": [
         "Chaque nœud experiment porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",
@@ -2743,7 +2767,9 @@
       "verificationCommand": "npm run validate",
       "updatedAt": "2026-07-23",
       "clusterId": "project-work",
-      "semanticType": "task"
+      "semanticType": "task",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; ces anciennes tâches de revue ne doivent pas réintroduire ce champ.",
+      "resolvedAt": "2026-07-25T22:12:55.602Z"
     },
     {
       "id": "task-role-review-change",
@@ -2752,9 +2778,11 @@
       "phrase": "Le rôle par défaut a été écrit sur 37 nœuds change ; une règle d'override peut en faire des thing.",
       "family": "Migration L4 · revue des rôles",
       "summary": "Les 37 nœuds de type change ont reçu leur rôle par défaut et sont marqués roleArbitration=default-pending-review. Cette tâche relit chacun pour confirmer le défaut ou appliquer l'override d'instance, puis passe roleArbitration à confirmed. Aucune facette épistémique n'est modifiée : seul l'axe physique du rôle est en jeu, et une correction ne perd rien.",
-      "workStatus": "ready",
+      "workStatus": "superseded",
       "priority": 40,
-      "autonomyMode": "autonomous",
+      "autonomyMode": "review_required",
+      "supersededReason": "Le corpus courant utilise directement les cinq types universels dans nodeType et conserve la précision dans semanticType. La migration ultérieure migrate-nodetype-semantictype supprime role et roleArbitration ; réintroduire roleArbitration sur les changements contredirait ce contrat courant.",
+      "resolvedAt": "2026-07-25T21:57:53.918Z",
       "acceptanceCriteria": [
         "Chaque nœud change porte roleArbitration=confirmed après relecture.",
         "Le rôle final est soit le défaut confirmé, soit l'override d'instance justifié.",

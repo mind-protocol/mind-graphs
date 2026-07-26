@@ -26,6 +26,7 @@ import {
   getNextL1TaskWake,
   reportL1TaskWake
 } from "./l1-task-engine.js";
+import { loadRuntimeConfig, sendTelegramAlert } from "./runtime-manager.js";
 import {
   CONVERSATION_STIMULUS_DEFAULTS,
   formatConversationStimulus,
@@ -38,6 +39,15 @@ const GRAPH_API_URL = process.env.GRAPH_API_URL || "http://localhost:4173/api/gr
 const injectionsPath = path.resolve(projectDir, "artifacts/l4/injections.jsonl");
 const statePath = path.resolve(projectDir, "artifacts/l4/physics-state.json");
 const QUERY_AMOUNT = L4_PHYSICS_TUNING.parameters.queryInjection.value;
+
+async function deliverL1TaskNotification(notification) {
+  const runtimeConfig = await loadRuntimeConfig();
+  const telegramConfig = runtimeConfig.manager?.notifications?.telegram || {};
+  if (!telegramConfig.enabled) {
+    return { delivered: false, reason: "telegram notifications disabled" };
+  }
+  return sendTelegramAlert(notification, telegramConfig);
+}
 
 // Le graphe est chargé par graphId puis mémorisé dans un Map.
 const enginePromises = new Map();
@@ -293,8 +303,8 @@ server.registerTool(
   {
     title: "Consigner le résultat d'un réveil de tâche L1",
     description:
-      "Ajoute une observation append-only, met à jour le prochain réveil choisi par le Citizen AI et produit un payload Telegram obligatoire si le résultat est blocked. "
-      + "Le client MCP doit alors transmettre notification.message avec mcp__mind.send.",
+      "Ajoute une observation append-only, met à jour le prochain réveil choisi par le Citizen AI et tente immédiatement la livraison Telegram si le résultat est blocked. "
+      + "Le statut delivered, failed ou pending est conservé ; un échec ne débloque jamais la tâche.",
     inputSchema: {
       graphId: z.string().min(1).optional().describe("L1 déclarée dans graphs.json. Facultatif lorsqu'une seule L1 est active."),
       objectiveId: z.string().min(1).describe("Identifiant de l'objectif découvert par next_l1_task_wake."),
@@ -311,7 +321,11 @@ server.registerTool(
   },
   async args => {
     try {
-      const result = await reportL1TaskWake({ ...args, graphId: args.graphId || null });
+      const result = await reportL1TaskWake({
+        ...args,
+        graphId: args.graphId || null,
+        deliverNotification: deliverL1TaskNotification
+      });
       return { content: [{ type: "text", text: formatL1TaskReport(result) }], structuredContent: result };
     } catch (err) {
       return { isError: true, content: [{ type: "text", text: `Rapport de réveil impossible : ${err.message}` }] };
